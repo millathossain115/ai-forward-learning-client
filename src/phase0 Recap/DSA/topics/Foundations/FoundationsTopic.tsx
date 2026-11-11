@@ -39,69 +39,69 @@ interface ComplexityMetric {
   insert: { val: string; cost: number; desc: string };
   delete: { val: string; cost: number; desc: string };
   space: { val: string; cost: number; desc: string };
-  cacheLocality: 'High' | 'Low' | 'Medium';
+  cacheLocality: 'উচ্চ (High)' | 'কম (Low)' | 'মাঝারি (Medium)';
 }
 
 const COMPLEXITY_DATA: ComplexityMetric[] = [
   {
     name: 'Array',
-    category: 'Linear / Contiguous',
-    access: { val: 'O(1)', cost: 1, desc: 'সরাসরি ইনডেক্স দিয়ে তাৎক্ষণিক মেমরি অ্যাড্রেসিং' },
-    search: { val: 'O(N)', cost: 3, desc: 'আন-সর্টেড হলে পুরোটা স্ক্যান করতে হয়' },
-    insert: { val: 'O(N)', cost: 3, desc: 'মাঝখানে ইনসার্ট করলে বাকি উপাদানগুলো শিফট করতে হয়' },
-    delete: { val: 'O(N)', cost: 3, desc: 'এলিমেন্ট ডিলিটের পর গ্যাপ পূরণ করতে শিফটিং লাগে' },
-    space: { val: 'O(N)', cost: 1, desc: 'কোনো পয়েন্টার ওভারহেড নেই, একটানা মেমরি' },
-    cacheLocality: 'High',
+    category: 'লিনিয়ার ও একটানা মেমরি',
+    access: { val: 'O(1)', cost: 1, desc: 'সরাসরি ইনডেক্স ধরে মুহূর্তেই ডেটা রিড করা যায়' },
+    search: { val: 'O(N)', cost: 3, desc: 'সর্ট করা না থাকলে পুরো অ্যারে ঘুরে খুঁজতে হয়' },
+    insert: { val: 'O(N)', cost: 3, desc: 'মাঝখানে ইনসার্ট করলে পরের সব উপাদানকে এক ঘর শিফট করতে হয়' },
+    delete: { val: 'O(N)', cost: 3, desc: 'ডিলিটের পর মেমরির খালি জায়গা পূরণ করতে শিফটিং লাগে' },
+    space: { val: 'O(N)', cost: 1, desc: 'অতিরিক্ত কোনো পয়েন্টার ওভারহেড নেই, নিখুঁত মেমরি ব্যবহার' },
+    cacheLocality: 'উচ্চ (High)',
   },
   {
     name: 'Linked List',
-    category: 'Pointer-Chained',
-    access: { val: 'O(N)', cost: 3, desc: 'হেড থেকে পয়েন্টার ধরে নোড বাই নোড যেতে হয়' },
-    search: { val: 'O(N)', cost: 3, desc: 'লিনিয়ার ট্রাভার্সাল অপরিহার্য' },
-    insert: { val: 'O(1)', cost: 1, desc: 'পয়েন্টার রেফারেন্স জানা থাকলে তাৎক্ষণিক স্প্লাইসিং' },
-    delete: { val: 'O(1)', cost: 1, desc: 'শুধু পয়েন্টার রি-লিঙ্ক করলেই রিমুভ সম্পন্ন' },
-    space: { val: 'O(N) + Overheads', cost: 3, desc: 'প্রতিটি নোডে ডেটা ছাড়াও ৮-বাইট নেক্সট পয়েন্টার ওভারহেড' },
-    cacheLocality: 'Low',
+    category: 'পয়েন্টার চেইন',
+    access: { val: 'O(N)', cost: 3, desc: 'হেড থেকে পয়েন্টার ধরে নোড বাই নোড এগিয়ে যেতে হয়' },
+    search: { val: 'O(N)', cost: 3, desc: 'নির্দিষ্ট মান খুঁজতে পুরো লিস্ট ট্রাভার্স করতে হয়' },
+    insert: { val: 'O(1)', cost: 1, desc: 'পয়েন্টার জানা থাকলে কোনো শিফটিং ছাড়া সাথে সাথে যুক্ত করা যায়' },
+    delete: { val: 'O(1)', cost: 1, desc: 'শুধু পয়েন্টারের লিংক পরিবর্তন করলেই নোড মুছে যায়' },
+    space: { val: 'O(N) + Overheads', cost: 3, desc: 'প্রতিটি নোডে মূল ডেটার পাশাপাশি নেক্সট পয়েন্টারের অতিরিক্ত মেমরি লাগে' },
+    cacheLocality: 'কম (Low)',
   },
   {
     name: 'Hash Table',
-    category: 'Key-Value Buckets',
-    access: { val: 'N/A', cost: 0, desc: 'ইনডেক্স এক্সেস প্রযোজ্য নয়, শুধু কী (Key)' },
-    search: { val: 'O(1)', cost: 1, desc: 'হ্যাশ কোড দিয়ে সরাসরি মেমরি বাকেট চিহ্নিতকরণ' },
-    insert: { val: 'O(1)', cost: 1, desc: 'বাকেটে সরাসরি পুট (কলিশন না থাকলে)' },
-    delete: { val: 'O(1)', cost: 1, desc: 'বাকেট থেকে তাৎক্ষণিক রিমুভাল' },
-    space: { val: 'O(N) + Padding', cost: 3, desc: 'কলিশন রোধে লোড ফ্যাক্টর মেনে অতিরিক্ত বাকেট বাফার রাখা লাগে' },
-    cacheLocality: 'Medium',
+    category: 'কী-ভ্যালু বাকেট',
+    access: { val: 'N/A', cost: 0, desc: 'ইনডেক্স দিয়ে সরাসরি এক্সেস প্রযোজ্য নয়, শুধু কী (Key)' },
+    search: { val: 'O(1)', cost: 1, desc: 'হ্যাশ ফাংশন দিয়ে সরাসরি সঠিক বাকেটে পৌঁছে ডেটা বের করা হয়' },
+    insert: { val: 'O(1)', cost: 1, desc: 'কী হ্যাশ করে সাথে সাথে বাকেটে নতুন মান রাখা যায়' },
+    delete: { val: 'O(1)', cost: 1, desc: 'কী দিয়ে বাকেট চিহ্নিত করে তাৎক্ষণিক ডিলিট' },
+    space: { val: 'O(N) + Padding', cost: 3, desc: 'কলিশন এড়াতে বেশ কিছু খালি বাকেট ব্যাকআপ রাখতে হয়' },
+    cacheLocality: 'মাঝারি (Medium)',
   },
   {
     name: 'Balanced BST (AVL / RB)',
-    category: 'Self-Balancing Tree',
-    access: { val: 'N/A', cost: 0, desc: 'ট্রি ডিরেক্ট ইনডেক্স সাপোর্ট করে না' },
-    search: { val: 'O(log N)', cost: 2, desc: 'প্রতি ধাপে সার্চ স্পেস অর্ধেক হয়ে যায়' },
-    insert: { val: 'O(log N)', cost: 2, desc: 'ইনসার্টের পর প্রয়োজনে O(1) রোটেশন চালায়' },
-    delete: { val: 'O(log N)', cost: 2, desc: 'ডিলিটের পর ব্যালেন্স ফ্যাক্টর বজায় রাখে' },
-    space: { val: 'O(N)', cost: 2, desc: 'প্রতি নোডে Left, Right এবং Height/Color ডেটা' },
-    cacheLocality: 'Low',
+    category: 'স্বয়ংক্রিয় ব্যালেন্সড ট্রি',
+    access: { val: 'N/A', cost: 0, desc: 'ট্রি ডিরেক্ট ইনডেক্সিং সাপোর্ট করে না' },
+    search: { val: 'O(log N)', cost: 2, desc: 'প্রতি ধাপে সার্চের পরিধি অর্ধেক হয়ে যায়, ফলে খুব দ্রুত খোঁজা যায়' },
+    insert: { val: 'O(log N)', cost: 2, desc: 'ইনসার্ট করার পর প্রয়োজনে স্বয়ংক্রিয় রোটেশন দিয়ে ব্যালেন্স রাখে' },
+    delete: { val: 'O(log N)', cost: 2, desc: 'ডিলিটের পর ট্রি ব্যালেন্সড অবস্থায় ফিরিয়ে আনা হয়' },
+    space: { val: 'O(N)', cost: 2, desc: 'প্রতিটি নোডে Left, Right পয়েন্টার ও হাইট ডেটা সংরক্ষণ করতে হয়' },
+    cacheLocality: 'কম (Low)',
   },
   {
     name: 'Trie',
-    category: 'Prefix Tree',
-    access: { val: 'N/A', cost: 0, desc: 'ক্যারেক্টার পাথ ভিত্তিক traversal' },
-    search: { val: 'O(L)', cost: 1, desc: 'L = শব্দের দৈর্ঘ্য; ডেটাবেজের মোট রেকর্ডের ওপর নির্ভর করে না' },
-    insert: { val: 'O(L)', cost: 1, desc: 'অক্ষর ধরে নতুন শাখা তৈরি বা রিইউজ' },
-    delete: { val: 'O(L)', cost: 1, desc: 'শব্দের শেষ ফ্ল্যাগ বন্ধ বা আনইউজড ব্রাঞ্চ ট্রিম' },
-    space: { val: 'O(Σ * L * N)', cost: 4, desc: 'অ্যালফাবেট সাইজ বড় হলে মেমরির বিস্তার বাড়ে' },
-    cacheLocality: 'Low',
+    category: 'প্রিফিক্স ট্রি',
+    access: { val: 'N/A', cost: 0, desc: 'অক্ষরের পাথ ধরে ট্রাভার্স করতে হয়' },
+    search: { val: 'O(L)', cost: 1, desc: 'L = শব্দের দৈর্ঘ্য; ডেটাবেজে কোটি কোটি শব্দ থাকলেও সার্চ স্পিড কমে না' },
+    insert: { val: 'O(L)', cost: 1, desc: 'অক্ষর ধরে নতুন শাখা তৈরি বা রিইউজ করা হয়' },
+    delete: { val: 'O(L)', cost: 1, desc: 'শব্দের শেষ ফ্ল্যাগ রিমুভ বা অব্যবহৃত শাখা মুছে ফেলা হয়' },
+    space: { val: 'O(Σ * L * N)', cost: 4, desc: 'শব্দের সংখ্যা ও অক্ষরের ভ্যারিয়েশন বাড়লে মেমরির বিস্তার বাড়ে' },
+    cacheLocality: 'কম (Low)',
   },
   {
     name: 'Binary Heap (PQ)',
-    category: 'Priority Tree',
-    access: { val: 'O(1) peek', cost: 1, desc: 'সর্বোচ্চ/সর্বনিম্ন মান সব সময় রুটে থাকে' },
-    search: { val: 'O(N)', cost: 3, desc: 'হিপ কেবল প্রায়োরিটি নিশ্চিত করে, বাইনারি সার্চ নয়' },
-    insert: { val: 'O(log N)', cost: 2, desc: 'নিচে যোগ করে Sift-Up অপারেশন' },
-    delete: { val: 'O(log N)', cost: 2, desc: 'রুট ডিলিট করে শেষ নোড এনে Sift-Down' },
-    space: { val: 'O(N)', cost: 1, desc: 'সম্পূর্ণ বাইনারি ট্রি সাধারণ অ্যারেই সংরক্ষণ করা যায়' },
-    cacheLocality: 'High',
+    category: 'প্রায়োরিটি ট্রি',
+    access: { val: 'O(1) peek', cost: 1, desc: 'সবচেয়ে গুরুত্বপূর্ণ (সর্বোচ্চ বা সর্বনিম্ন) মান সব সময় শীর্ষে থাকে' },
+    search: { val: 'O(N)', cost: 3, desc: 'হিপ শুধুমাত্র প্রায়োরিটি মেইনটেইন করে, সাধারণ সার্চের জন্য নয়' },
+    insert: { val: 'O(log N)', cost: 2, desc: 'শেষে যোগ করে Sift-Up করে সঠিক অবস্থানে বসানো হয়' },
+    delete: { val: 'O(log N)', cost: 2, desc: 'শীর্ষ নোড ডিলিট করে শেষ নোড এনে Sift-Down করা হয়' },
+    space: { val: 'O(N)', cost: 1, desc: 'সম্পূর্ণ ট্রি একটি সাধারণ অ্যারেই মেমরি অপটিমাইজডভাবে রাখা যায়' },
+    cacheLocality: 'উচ্চ (High)',
   },
 ];
 
@@ -123,63 +123,62 @@ interface DomainCard {
 const DOMAINS: DomainCard[] = [
   {
     id: 'direct-access',
-    title: 'Instant Lookup & Memory Locality',
-    subtitle: 'তাৎক্ষণিক ডেটা রিড ও মেমরি ক্যাশিং',
+    title: 'তাৎক্ষণিক এক্সেস ও মেমরি স্পিড',
+    subtitle: 'ইনডেক্স ধরে দ্রুত রিড ও কী-ভ্যালু সার্চ',
     icon: Binary,
     primaryDS: 'Array (অ্যারে)',
     secondaryDS: 'Hash Table (হ্যাশ টেবিল)',
-    bestFor: 'নির্দিষ্ট ইনডেক্স ধরে O(1) রিড এবং কী-ভ্যালু দিয়ে চোখের পলকে অবজেক্ট খোঁজা।',
-    tradeoff: 'অ্যারে সাইজ ফিক্সড এবং শিফটিং ব্যয়বহুল; হ্যাশ টেবিলে মেমরি প্যাডিং লাগে।',
+    bestFor: 'নির্দিষ্ট ইনডেক্স ধরে সাথে সাথে মান পড়তে এবং আইডি বা নাম দিয়ে চোখের পলকে ডেটা খুঁজে পেতে।',
+    tradeoff: 'অ্যারের সাইজ ফিক্সড এবং এলিমেন্ট শিফট করা ব্যয়বহুল; হ্যাশ টেবিলে অতিরিক্ত খালি বাকেট মেমরি লাগে।',
     visualType: 'grid',
   },
   {
     id: 'ordered-stream',
-    title: 'Streaming & Order Pipelines',
-    subtitle: 'কাজের ক্রম ও ফেয়ার শিডিউলিং',
+    title: 'ধারাবাহিক প্রসেসিং ও বাফার',
+    subtitle: 'কাজের ক্রম ও সারিবদ্ধ শিডিউলিং',
     icon: Workflow,
     primaryDS: 'Stack (LIFO)',
     secondaryDS: 'Queue (FIFO)',
-    bestFor: 'Undo/Redo ইতিহাস, ফাংশন কল ফ্রেম (Stack) এবং সার্ভার রিকোয়েস্ট বাফার (Queue)।',
-    tradeoff: 'মাঝখানের কোনো উপাদান সরাসরি রিড করা যায় না; শুধু প্রান্ত দিয়ে এক্সেস।',
+    bestFor: 'আন্ডু/রিডু হিস্ট্রি, ফাংশন কল ফ্রেম (Stack) এবং ওয়েব সার্ভারের রিকোয়েস্ট কিউ বা প্রিন্টার লাইন (Queue)।',
+    tradeoff: 'মাঝখানের উপাদান সরাসরি পড়া যায় না; কেবল প্রান্ত দিয়ে ডেটা প্রবেশ ও বের করা যায়।',
     visualType: 'pipeline',
   },
   {
     id: 'hierarchical',
-    title: 'Hierarchies & Range Queries',
-    subtitle: 'সাজানো ডেটা ও ব্যালেন্সড রেঞ্জ সার্চ',
+    title: 'ক্রমবিন্যাস ও সাজানো ডেটা',
+    subtitle: 'হায়ারার্কি, রেঞ্জ সার্চ ও অগ্রাধিকার',
     icon: Network,
     primaryDS: 'Balanced BST (AVL / RB)',
     secondaryDS: 'Binary Heap (Priority Queue)',
-    bestFor: 'ডেটা সবসময় সাজিয়ে রাখা, রেঞ্জ কুয়েরি ($O(\\log N)$) এবং সর্বোচ্চ জরুরি টাস্ক শিডিউলিং।',
-    tradeoff: 'পয়েন্টার ট্রাভার্সালে CPU ক্যাশ মিস বেশি হয়; রোটেশন ওভারহেড বিদ্যমান।',
+    bestFor: 'ডেটা সব সময় সর্টেড রাখা, রেঞ্জ অনুযায়ী মান খোঁজা ($O(\\log N)$) এবং জরুরি কাজকে সবার আগে প্রসেস করা।',
+    tradeoff: 'পয়েন্টার ঘুরে ঘুরে খোঁজার কারণে CPU ক্যাশ মিস বেশি হতে পারে।',
     visualType: 'tree',
   },
   {
     id: 'prefix-network',
-    title: 'Prefix Search & Network Graphs',
-    subtitle: 'অটোকমপ্লিট ও নন-লিনিয়ার রিলেশনস',
+    title: 'প্রিফিক্স সার্চ ও নেটওয়ার্ক গ্রাফ',
+    subtitle: 'অটোকমপ্লিট ও পারস্পরিক সম্পর্ক',
     icon: Search,
     primaryDS: 'Trie (প্রিফিক্স ট্রি)',
-    secondaryDS: 'Graph (ভার্টেক্স ও এজ)',
-    bestFor: 'সার্চ বার ডিকশনারি সাজেশন, স্পেল চেকার এবং ম্যাপ নেভিগেশন ও ফ্রেন্ড কানেকশন।',
-    tradeoff: 'ট্রাইয়ে ক্যারেক্টার টেবিল অনেক বেশি মেমরি নেয়; গ্রাফে সাইকেল হ্যান্ডলিং জটিল।',
+    secondaryDS: 'Graph (গ্রাফ)',
+    bestFor: 'সার্চ বক্সে শব্দের সাজেশন ও বানান সংশোধন (Trie); সোশ্যাল নেটওয়ার্কে ফ্রেন্ড রিকমেন্ডেশন ও গুগল ম্যাপ রুট (Graph)।',
+    tradeoff: 'ট্রাইয়ে প্রচুর ক্যারেক্টার পয়েন্টার থাকায় মেমরি বেশি লাগে; গ্রাফে সাইকেল ম্যানেজমেন্ট কিছুটা জটিল।',
     visualType: 'trie_graph',
   },
 ];
 
 export default function FoundationsTopic() {
-  // Metaphor Vector Animation State
   const [activeStep, setActiveStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [selectedOp, setSelectedOp] = useState<'search' | 'insert' | 'delete' | 'space'>('search');
   const [activeDomain, setActiveDomain] = useState<string>('direct-access');
 
-  // Auto-play loop for the Science & Art vector simulation
+  // Auto-play loop for the simulation
   useEffect(() => {
     if (!isPlaying) return;
     const timer = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % 4);
-    }, 1800);
+    }, 2000);
     return () => clearInterval(timer);
   }, [isPlaying]);
 
@@ -195,30 +194,27 @@ export default function FoundationsTopic() {
             <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
               Phase 0 • Foundations &amp; Roadmap
             </span>
-            <span className="text-xs text-zinc-500 font-mono">Systems &amp; Algorithmic Thinking</span>
+            <span className="text-xs text-zinc-500 font-mono">Core Mechanics</span>
           </div>
           <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white">
-            Architecture Foundations: The Science &amp; The Art
+            ডেটা স্ট্রাকচার ও অ্যালগরিদমের মূল ভিত্তি
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-3xl leading-relaxed">
-            কম্পিউটার সায়েন্সে <b>ডেটা স্ট্রাকচার হলো বিজ্ঞান (Science)</b>—যা নির্ধারণ করে মেমরিতে ডেটা কীভাবে বসবে; 
-            এবং <b>অ্যালগরিদম হলো শিল্প (Art)</b>—যা সুনির্দিষ্ট নিখুঁত পথে সেই ডেটা থেকে সমাধান বের করে আনে।
+            মেমরিতে ডেটা কীভাবে সাজিয়ে রাখা হয় (Data Structure) এবং সেই ডেটা ব্যবহার করে কীভাবে নিখুঁত ধাপে সমস্যা সমাধান করা হয় (Algorithm)—এদের যৌথ সমন্বয়েই আধুনিক সফটওয়্যার আর্কিটেকচার গড়ে ওঠে।
           </p>
         </div>
       </div>
 
-      {/* 2. LIVE VECTOR CANVAS: Data Structure (Science) vs Algorithm (Art) */}
+      {/* 2. INTERACTIVE SIMULATION: Data Structure vs Algorithm */}
       <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1b1f33] pb-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
+            <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-400" />
-              <h2 className="text-base md:text-lg font-bold text-white">
-                লাইভ ভেক্টর অ্যানিমেশন: বিজ্ঞান (কাঠামো) বনাম শিল্প (লজিক্যাল পথ)
-              </h2>
-            </div>
+              <span>ডেটা স্ট্রাকচার বনাম অ্যালগরিদম: এদের ভেতরের মেকানিজম ও পার্থক্য</span>
+            </h2>
             <p className="text-xs text-zinc-400">
-              মেমরির ভৌত কাঠামো (Science) এবং অপটিমাল রুটের গতিশীল আলোর রেখা (Art) একসাথে পর্যবেক্ষণ করুন।
+              মেমরি সেলে ডেটা কীভাবে থাকে এবং অ্যালগরিদম কীভাবে প্রতিটি ধাপে সিদ্ধান্ত নিয়ে গন্তব্যে পৌঁছায় তা নিচে লক্ষ্য করুন।
             </p>
           </div>
 
@@ -230,28 +226,28 @@ export default function FoundationsTopic() {
               {isPlaying ? (
                 <>
                   <span className="w-2 h-2 rounded-sm bg-amber-400" />
-                  <span>Pause Motion</span>
+                  <span>পজ করুন (Pause)</span>
                 </>
               ) : (
                 <>
                   <Play className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Play Motion</span>
+                  <span>চালান (Play)</span>
                 </>
               )}
             </button>
             <button
               onClick={() => setActiveStep(0)}
               className="p-1.5 rounded-lg bg-[#141829] hover:bg-[#1c223a] border border-[#232a45] text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer"
-              title="Reset Animation"
+              title="শুরু থেকে দেখুন"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
-        {/* Dual Interactive SVG Canvas */}
+        {/* Dual Visual Canvas */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          {/* Visual Vector SVG (7 Cols) */}
+          {/* Visual SVG (7 Cols) */}
           <div className="lg:col-span-7 bg-[#080911] border border-[#1b1f33] rounded-2xl p-4 flex flex-col items-center justify-center relative overflow-hidden min-h-[320px]">
             {/* Background Grid Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#131626_1px,transparent_1px),linear-gradient(to_bottom,#131626_1px,transparent_1px)] bg-[size:24px_24px] opacity-40 pointer-events-none" />
@@ -268,9 +264,9 @@ export default function FoundationsTopic() {
                 </filter>
               </defs>
 
-              {/* SCIENCE: Static Physical Memory Infrastructure */}
+              {/* Data Structure Layer: RAM Memory Architecture */}
               <text x="20" y="24" fill="#64748b" fontSize="11" fontFamily="monospace" fontWeight="bold">
-                PHYSICAL RAM ARCHITECTURE (THE SCIENCE)
+                মেমরি লেআউট (Data Structure: RAM Allocation)
               </text>
 
               {/* Memory slots with addresses */}
@@ -313,9 +309,9 @@ export default function FoundationsTopic() {
                 </g>
               ))}
 
-              {/* ART: Algorithmic Routing Beam (Dynamic Traversal Flow) */}
+              {/* Algorithm Layer: Traversal & Decision Path */}
               <text x="20" y="150" fill="#f59e0b" fontSize="11" fontFamily="monospace" fontWeight="bold">
-                ALGORITHMIC ROUTE &amp; DECISION PATH (THE ART)
+                অ্যালগরিদমিক রুট (Algorithm: Traversal &amp; Decision)
               </text>
 
               {/* Route connecting curve */}
@@ -327,7 +323,7 @@ export default function FoundationsTopic() {
                 strokeDasharray="4 4"
               />
 
-              {/* Active Golden Beam traversing based on activeStep */}
+              {/* Dynamic Path Beam */}
               <path
                 d={
                   activeStep === 0
@@ -357,7 +353,7 @@ export default function FoundationsTopic() {
                 className="transition-all duration-500 ease-out"
               />
 
-              {/* Step Status Indicator in SVG */}
+              {/* Step Status Message */}
               <rect x="20" y="215" width="500" height="45" rx="8" fill="#101424" stroke="#1f2640" />
               <circle
                 cx="38"
@@ -367,10 +363,10 @@ export default function FoundationsTopic() {
                 className="animate-pulse"
               />
               <text x="52" y="241" fill="#e2e8f0" fontSize="11" fontFamily="sans-serif">
-                {activeStep === 0 && 'ধাপ ১: অ্যালগরিদম মেমরির প্রথম সেল 0x100-এ আর্টফুল রুট শুরু করল।'}
-                {activeStep === 1 && 'ধাপ ২: শর্ত চেক: Target পাওয়া যায়নি, পরবর্তী মেমরি সেলে জাম্প।'}
-                {activeStep === 2 && 'ধাপ ৩: বিজ্ঞান অনুযায়ী পয়েন্টার ধরে এগিয়ে গিয়ে পরবর্তী নোড ভ্যালিডেট।'}
-                {activeStep === 3 && 'ধাপ ৪: Target D সফলভাবে ম্যাচ করেছে! অপটিমাল রুটে O(1) ডিরিফারেন্স।'}
+                {activeStep === 0 && 'ধাপ ১: মেমরির শুরুতে (0x100) সার্চ অপারেশন শুরু হয়েছে।'}
+                {activeStep === 1 && 'ধাপ ২: শর্ত চেক: কাঙ্ক্ষিত মান পাওয়া যায়নি, পরবর্তী মেমরি অ্যাড্রেসে জাম্প।'}
+                {activeStep === 2 && 'ধাপ ৩: পয়েন্টার ধরে মেমরি সেল ভ্যালিডেশন চলমান।'}
+                {activeStep === 3 && 'ধাপ ৪: কাঙ্ক্ষিত Target D খুঁজে পাওয়া গেছে! সফলভাবে সম্পন্ন।'}
               </text>
             </svg>
 
@@ -388,51 +384,51 @@ export default function FoundationsTopic() {
             </div>
           </div>
 
-          {/* Conceptual Insight Cards (5 Cols) */}
+          {/* Simple & Clear Explanations (5 Cols) */}
           <div className="lg:col-span-5 space-y-4">
-            {/* The Science */}
+            {/* Card 1: Data Structure */}
             <div className="p-4 rounded-2xl bg-[#111425] border border-[#212742] space-y-2">
               <div className="flex items-center gap-2 text-sky-400">
                 <Layers className="w-4 h-4" />
                 <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                  ১. বিজ্ঞান (Data Structure is Science)
+                  ১. ডেটা স্ট্রাকচার (Data Structure)
                 </span>
               </div>
-              <h3 className="text-sm font-bold text-white">কোথায় ও কীভাবে ডেটা মেমরিতে থাকবে</h3>
+              <h3 className="text-sm font-bold text-white">মেমরিতে ডেটা রাখার নিয়ম ও বিন্যাস</h3>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                এটি হলো ব্লুপ্রিন্ট ও আর্কিটেকচার। RAM-এর নির্দিষ্ট সেল অ্যাড্রেস (`0x100`, `0x104`), একটানা মেমরি ব্লক (Array) অথবা দূরবর্তী নোড পয়েন্টার (Linked List)—কোন ডেটা কোথায় অবস্থান করবে তা বিজ্ঞানের নিয়মে ঠিক করা হয়।
+                কম্পিউটারের RAM-এ ডেটা কীভাবে সংরক্ষিত থাকবে তা ডেটা স্ট্রাকচার নির্ধারণ করে। 
+                যেমন: <b>Array</b> একটানা মেমরি ব্লকে ডেটা রাখে, ফলে ইনডেক্স ধরে দ্রুত পড়া যায়; আবার <b>Linked List</b> ভিন্ন ভিন্ন মেমরি ব্লকে নোড রেখে পয়েন্টার দিয়ে যুক্ত করে।
               </p>
             </div>
 
-            {/* The Art */}
+            {/* Card 2: Algorithm */}
             <div className="p-4 rounded-2xl bg-[#111425] border border-[#212742] space-y-2">
               <div className="flex items-center gap-2 text-amber-400">
                 <Compass className="w-4 h-4" />
                 <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                  ২. শিল্প (Algorithm is Art)
+                  ২. অ্যালগরিদম (Algorithm)
                 </span>
               </div>
-              <h3 className="text-sm font-bold text-white">কোন পথে ও কীভাবে ডেটা প্রসেস হবে</h3>
+              <h3 className="text-sm font-bold text-white">সমস্যা সমাধানের সুনির্দিষ্ট ধাপ ও লজিক</h3>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                কাঠামো তৈরি হওয়ার পর সেই ডেটার ওপর কাজ করার নান্দনিক লজিক হলো অ্যালগরিদম। কীভাবে সার্চ করবেন, কোন রুটটি সবচেয়ে শর্টেস্ট হবে, কীভাবে ব্রুট-ফোর্স এড়িয়ে $O(\log N)$ লুপ পরিচালনা করবেন—এটিই ইঞ্জিনিয়ারিংয়ের মূল শিল্প।
+                সংরক্ষিত ডেটার ওপর কীভাবে কাজ করা হবে তা অ্যালগরিদম ঠিক করে। 
+                কীভাবে সবচেয়ে কম সময়ে ডেটা সার্চ করবেন, সর্ট করবেন বা কোন পথে গেলে সর্বনিম্ন মেমরি খরচে সমাধান পাওয়া যাবে—এটিই অ্যালগরিদমের কাজ।
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 3. EFFICIENCY DASHBOARD (Time & Memory Complexity Visualizer) */}
+      {/* 3. EFFICIENCY DASHBOARD (Time & Memory Complexity) */}
       <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#1b1f33] pb-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
+            <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
               <Gauge className="w-5 h-5 text-emerald-400" />
-              <h2 className="text-base md:text-lg font-bold text-white">
-                দক্ষতা ও জটিলতা বিশ্লেষণ (System Efficiency &amp; Cost Engine)
-              </h2>
-            </div>
+              <span>দক্ষতা ও মেমরি জটিলতা বিশ্লেষণ (Time &amp; Memory Complexity)</span>
+            </h2>
             <p className="text-xs text-zinc-400">
-              অপারেশনভেদে সিস্টেমের সময় (Time Complexity) এবং RAM মেমরি খরচের (Space &amp; Overheads) প্রত্যক্ষ তুলনা।
+              বিভিন্ন অপারেশনে সিস্টেমের সময় (Time) এবং RAM মেমরি ব্যবহারের (Memory/Space) সরাসরি তুলনা।
             </p>
           </div>
 
@@ -440,10 +436,10 @@ export default function FoundationsTopic() {
           <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#090b14] border border-[#1d2238]">
             {(
               [
-                { id: 'search', label: 'Search' },
-                { id: 'insert', label: 'Insert' },
-                { id: 'delete', label: 'Delete' },
-                { id: 'space', label: 'Memory / Space' },
+                { id: 'search', label: 'Search (খোঁজা)' },
+                { id: 'insert', label: 'Insert (যোগ)' },
+                { id: 'delete', label: 'Delete (মুছে ফেলা)' },
+                { id: 'space', label: 'Memory (মেমরি খরচ)' },
               ] as const
             ).map((op) => (
               <button
@@ -505,9 +501,9 @@ export default function FoundationsTopic() {
                   {/* Visual Cost Meter Bar */}
                   <div className="space-y-1">
                     <div className="flex justify-between text-[10px] font-mono text-zinc-400">
-                      <span>Relative Cost</span>
+                      <span>কাজের গতি ও খরচ</span>
                       <span>
-                        {isBest ? '⚡ Instant (Optimal)' : isMedium ? '⚖ Logarithmic' : '⏳ Linear / Overhead'}
+                        {isBest ? '⚡ সর্বোচ্চ দ্রুত (O(1))' : isMedium ? '⚖ মাঝারি (O(log N))' : '⏳ ধীর (O(N))'}
                       </span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-[#0a0c16] overflow-hidden p-0.5 border border-[#1b2036]">
@@ -519,18 +515,18 @@ export default function FoundationsTopic() {
                     </div>
                   </div>
 
-                  {/* Operation Insight Description */}
+                  {/* Operation Description */}
                   <p className="text-xs text-zinc-300 leading-relaxed font-sans">{currentMetric.desc}</p>
                 </div>
 
-                {/* Hardware Cache Locality Badge */}
+                {/* Hardware Cache Locality */}
                 <div className="pt-3 border-t border-[#1a1f36] flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-500">Hardware Cache Locality:</span>
+                  <span className="text-zinc-500">মেমরি ক্যাশ এক্সেস:</span>
                   <span
                     className={`font-semibold ${
-                      item.cacheLocality === 'High'
+                      item.cacheLocality === 'উচ্চ (High)'
                         ? 'text-emerald-400'
-                        : item.cacheLocality === 'Medium'
+                        : item.cacheLocality === 'মাঝারি (Medium)'
                         ? 'text-sky-400'
                         : 'text-amber-400'
                     }`}
@@ -544,18 +540,16 @@ export default function FoundationsTopic() {
         </div>
       </div>
 
-      {/* 4. VISUAL ARCHITECTURE NAVIGATOR (Replacing Plain Filter List) */}
+      {/* 4. VISUAL ARCHITECTURE NAVIGATOR */}
       <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#1b1f33] pb-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
+            <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
               <Scale className="w-5 h-5 text-amber-400" />
-              <h2 className="text-base md:text-lg font-bold text-white">
-                ব্যবহারিক আর্কিটেকচার নেভিগেটর: কোন পরিস্থিতিতে কোনটি?
-              </h2>
-            </div>
+              <span>ব্যবহারিক প্রয়োগ: কোন প্রয়োজনে কোন ডেটা স্ট্রাকচার?</span>
+            </h2>
             <p className="text-xs text-zinc-400">
-              সমস্যার ধরন অনুযায়ী ৪টি প্রধান ইঞ্জিনিয়ারিং ডোমেইন নির্বাচন করে ভিজ্যুয়াল তুলনা দেখুন।
+              বাস্তব কাজের ৪টি প্রধান ক্ষেত্র নির্বাচন করে ডেটা স্ট্রাকচারের সুবিধা ও সীমাবদ্ধতা সরাসরি দেখুন।
             </p>
           </div>
         </div>
@@ -584,7 +578,7 @@ export default function FoundationsTopic() {
                   >
                     <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-500">Domain</span>
+                  <span className="text-[10px] font-mono text-zinc-500">ক্ষেত্র</span>
                 </div>
 
                 <div>
@@ -598,19 +592,19 @@ export default function FoundationsTopic() {
           })}
         </div>
 
-        {/* Selected Domain Visual Comparison Canvas */}
+        {/* Selected Domain Visual Comparison */}
         <div className="bg-[#090b14] border border-[#1d2238] rounded-2xl p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          {/* Left Visual Diagram Representation */}
+          {/* Left Diagram */}
           <div className="lg:col-span-5 bg-[#0e101c] border border-[#232a45] rounded-xl p-4 flex flex-col items-center justify-center min-h-[220px]">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider mb-2">
-              Visual Structure Comparison
+              তুলনামূলক চিত্র (Visual Preview)
             </span>
 
-            {/* Dynamic mini-vector illustration depending on domain */}
+            {/* Dynamic illustration */}
             {selectedDomainData.visualType === 'grid' && (
               <div className="space-y-4 w-full">
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono text-amber-400">Array: Contiguous Memory</div>
+                  <div className="text-[10px] font-mono text-amber-400">Array: মেমরিতে একটানা ব্লক</div>
                   <div className="grid grid-cols-4 gap-1">
                     {['[0] 10', '[1] 20', '[2] 30', '[3] 40'].map((val, i) => (
                       <div
@@ -624,14 +618,14 @@ export default function FoundationsTopic() {
                 </div>
 
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono text-sky-400">Hash Table: Key ➔ Bucket Hash</div>
+                  <div className="text-[10px] font-mono text-sky-400">Hash Table: কী ➔ হ্যাশ করে বাকেটে রাখা</div>
                   <div className="flex items-center gap-2 text-xs font-mono">
                     <span className="px-2 py-1 rounded bg-[#161a2e] border border-sky-500/30 text-zinc-200">
                       &quot;user_99&quot;
                     </span>
                     <span className="text-zinc-500">➔ hash%4 ➔</span>
                     <span className="px-2 py-1 rounded bg-sky-500/20 border border-sky-400 text-sky-300 font-bold">
-                      Bucket #3
+                      বাকেট #3
                     </span>
                   </div>
                 </div>
@@ -641,9 +635,9 @@ export default function FoundationsTopic() {
             {selectedDomainData.visualType === 'pipeline' && (
               <div className="space-y-4 w-full">
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono text-amber-400">Stack (LIFO): In Top ➔ Out Top</div>
+                  <div className="text-[10px] font-mono text-amber-400">Stack (LIFO): ওপরে ইন ➔ ওপর থেকেই আউট</div>
                   <div className="flex flex-col-reverse gap-1 max-w-[160px] mx-auto">
-                    {['Frame 1 (Base)', 'Frame 2 (Mid)', 'Frame 3 (Top ➔ Pop)'].map((frame, i) => (
+                    {['ফ্রেম ১ (নিচে)', 'ফ্রেম ২ (মাঝে)', 'ফ্রেম ৩ (ওপরে ➔ Pop)'].map((frame, i) => (
                       <div
                         key={i}
                         className="py-1 px-2 rounded bg-[#161a2e] border border-amber-500/30 text-center text-xs font-mono font-bold text-zinc-200"
@@ -655,10 +649,10 @@ export default function FoundationsTopic() {
                 </div>
 
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono text-emerald-400">Queue (FIFO): In Back ➔ Out Front</div>
+                  <div className="text-[10px] font-mono text-emerald-400">Queue (FIFO): পেছনে ইন ➔ সামনে আউট</div>
                   <div className="flex items-center gap-1 overflow-x-auto py-1">
-                    <span className="text-[10px] text-zinc-500 font-mono">In ➔</span>
-                    {['Task 3', 'Task 2', 'Task 1'].map((t, i) => (
+                    <span className="text-[10px] text-zinc-500 font-mono">ইন ➔</span>
+                    {['টাস্ক ৩', 'টাস্ক ২', 'টাস্ক ১'].map((t, i) => (
                       <div
                         key={i}
                         className="px-2 py-1 rounded bg-[#161a2e] border border-emerald-500/30 text-xs font-mono text-zinc-200 shrink-0"
@@ -666,7 +660,7 @@ export default function FoundationsTopic() {
                         {t}
                       </div>
                     ))}
-                    <span className="text-[10px] text-zinc-500 font-mono">➔ Out</span>
+                    <span className="text-[10px] text-zinc-500 font-mono">➔ আউট</span>
                   </div>
                 </div>
               </div>
@@ -674,7 +668,7 @@ export default function FoundationsTopic() {
 
             {selectedDomainData.visualType === 'tree' && (
               <div className="space-y-4 w-full text-center">
-                <div className="text-[10px] font-mono text-sky-400">Balanced BST &amp; Heap Invariant</div>
+                <div className="text-[10px] font-mono text-sky-400">ব্যালেন্সড ট্রি ও হিপের কাঠামো</div>
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center font-mono font-bold text-xs text-amber-300">
                     50
@@ -689,14 +683,14 @@ export default function FoundationsTopic() {
                   </div>
                 </div>
                 <div className="text-[10px] font-mono text-zinc-400">
-                  Left &lt; Root &lt; Right strictly balanced to guarantee O(log N)
+                  Left &lt; Root &lt; Right নিয়ম মেনে O(log N) নিশ্চিত করে
                 </div>
               </div>
             )}
 
             {selectedDomainData.visualType === 'trie_graph' && (
               <div className="space-y-3 w-full text-center">
-                <div className="text-[10px] font-mono text-purple-400">Trie Prefix &amp; Cyclic Graph</div>
+                <div className="text-[10px] font-mono text-purple-400">প্রিফিক্স ট্রি ও নেটওয়ার্ক গ্রাফ</div>
                 <div className="flex items-center justify-center gap-2 text-xs font-mono">
                   <span className="px-2 py-0.5 rounded bg-[#181d33] text-zinc-200 border border-zinc-700">R</span>
                   <span>➔</span>
@@ -709,38 +703,38 @@ export default function FoundationsTopic() {
                   </span>
                 </div>
                 <div className="text-[10px] font-mono text-zinc-400">
-                  Search speed O(L) proportional only to character length L
+                  শব্দের দৈর্ঘ্যের (L) ওপর নির্ভর করে O(L) গতিতে সার্চ
                 </div>
               </div>
             )}
           </div>
 
-          {/* Right Textual & Strategic Breakdown */}
+          {/* Right Explanations */}
           <div className="lg:col-span-7 space-y-4">
             <div className="flex items-center gap-3">
               <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400">
-                Primary: {selectedDomainData.primaryDS}
+                প্রথম পছন্দ: {selectedDomainData.primaryDS}
               </span>
-              <span className="text-xs text-zinc-500 font-mono">vs</span>
+              <span className="text-xs text-zinc-500 font-mono">বনাম</span>
               <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400">
-                Alternative: {selectedDomainData.secondaryDS}
+                বিকল্প: {selectedDomainData.secondaryDS}
               </span>
             </div>
 
             <div className="space-y-2">
               <div className="text-xs text-zinc-300">
-                <b className="text-white block mb-0.5">কখন এটি বেছে নেবেন:</b>
+                <b className="text-white block mb-0.5">কখন এটি ব্যবহার করবেন:</b>
                 {selectedDomainData.bestFor}
               </div>
 
               <div className="text-xs text-zinc-400">
-                <b className="text-amber-400 block mb-0.5">ট্রেড-অফ ও সীমাবদ্ধতা:</b>
+                <b className="text-amber-400 block mb-0.5">সীমাবদ্ধতা বা ট্রেড-অফ:</b>
                 {selectedDomainData.tradeoff}
               </div>
             </div>
 
             <div className="pt-2 border-t border-[#1a1f33] flex items-center justify-between text-xs font-mono text-zinc-500">
-              <span>বিস্তারিত কোড ও লাইভ ভিজ্যুয়ালাইজারের জন্য সাইডবারে যান</span>
+              <span>টপিকের ইন্টারঅ্যাক্টিভ সিমুলেশনের জন্য সাইডবার থেকে সিলেক্ট করুন</span>
               <span className="text-amber-400 flex items-center gap-1 font-semibold">
                 Explore Modules <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -767,7 +761,7 @@ export default function FoundationsTopic() {
             </div>
             <h4 className="text-sm font-bold text-white">১. ফান্ডামেন্টালস ও অ্যালগরিদম</h4>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              মেমরি পয়েন্টার, লিনিয়ার ও নন-লিনিয়ার ডেটা স্ট্রাকচার (Array, Stack, Queue, Hash Table, Tree, Trie, Graph) এবং ৪টি কোর অ্যালগরিদমিক প্যারাডাইম।
+              মেমরি পয়েন্টার, লিনিয়ার ও নন-লিনিয়ার ডেটা স্ট্রাকচার (Array, Stack, Queue, Hash Table, Tree, Trie, Graph) এবং কোর অ্যালগরিদমিক প্যারাডাইম।
             </p>
             <div className="pt-2 text-[11px] font-mono text-amber-400/90">✓ ১৪টি ইন্টারঅ্যাক্টিভ ভিজ্যুয়ালাইজার প্রস্তুত</div>
           </div>
