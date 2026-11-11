@@ -25,10 +25,12 @@ import {
   Compass,
   BarChart3,
   TrendingDown,
-  Scale
+  Scale,
+  BookOpen
 } from 'lucide-react';
 
 export type TopicId =
+  | 'foundations'
   | 'array'
   | 'linkedlist'
   | 'stack'
@@ -67,6 +69,13 @@ interface NavSection {
 }
 
 const NAV_SECTIONS: NavSection[] = [
+  {
+    title: '0. Foundations & Roadmap',
+    phase: 'Phase 0 • Foundations',
+    items: [
+      { id: 'foundations', label: '0. DSA & Systems Foundations', icon: BookOpen, status: 'ready', tag: 'Core Roadmap' },
+    ],
+  },
   {
     title: '1. Linear Data Structures',
     phase: 'Phase 0 • Recap',
@@ -313,7 +322,7 @@ export default function Sidebar({
 
       {/* Footer Info */}
       <div className="p-3.5 border-t border-[#1b1d2a] text-xs font-mono text-zinc-400 flex items-center justify-between">
-        <span>Workspace: FL DB</span>
+        <span>Forward Learning</span>
         <span className="text-emerald-400 font-medium flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-emerald-400" />
           Active

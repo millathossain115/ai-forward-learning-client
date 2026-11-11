@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FlowLogic DB & DSA Platform",
-  description: "Interactive Systems, Database Internals, and Data Structures & Algorithms Visualizer",
+  title: "FORWARD LEARNING | Systems Architecture, Database & DSA Platform",
+  description: "Forward Engineering Learning Roadmap: Interactive Systems, Database Internals, and Data Structures & Algorithms Visualizer",
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },

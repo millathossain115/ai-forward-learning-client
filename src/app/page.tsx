@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar, { TopicId } from '@/components/Sidebar';
 import ArrayTopic from '@/phase0 Recap/DSA/topics/Array/ArrayTopic';
+import FoundationsTopic from '@/phase0 Recap/DSA/topics/Foundations/FoundationsTopic';
 import LinkedListTopic from '@/phase0 Recap/DSA/topics/LinkedList/LinkedListTopic';
 import StackTopic from '@/phase0 Recap/DSA/topics/Stack/StackTopic';
 import QueueTopic from '@/phase0 Recap/DSA/topics/Queue/QueueTopic';
@@ -18,14 +19,21 @@ import ParadigmsTopic from '@/phase0 Recap/DSA/topics/Paradigms/ParadigmsTopic';
 import GraphTopic from '@/phase0 Recap/DSA/topics/Graph/GraphTopic';
 import DatabasePlayground from '@/components/DatabasePlayground';
 import PgVectorTopic from '@/components/PgVectorTopic';
+import WelcomeModal from '@/components/WelcomeModal';
 import {
   Server,
   Command,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  HelpCircle
 } from 'lucide-react';
 
 const TOPIC_METADATA: Record<TopicId, { title: string; category: string; description: string }> = {
+  foundations: {
+    category: '0. Foundations & Roadmap',
+    title: '0. DSA & Systems Foundations',
+    description: 'Core engineering philosophy: why data structures and algorithms matter, situational decision guidelines, and the forward roadmap.',
+  },
   array: {
     category: '1. Linear Data Structures',
     title: 'Array & Contiguous Memory Architecture',
@@ -139,8 +147,21 @@ const TOPIC_METADATA: Record<TopicId, { title: string; category: string; descrip
 };
 
 export default function Home() {
-  const [activeTopic, setActiveTopic] = useState<TopicId>('array');
+  const [activeTopic, setActiveTopic] = useState<TopicId>('foundations');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  // Check localStorage for welcome modal on first landing
+  useEffect(() => {
+    try {
+      const dismissed = localStorage.getItem('fl_welcome_dismissed');
+      if (!dismissed) {
+        setShowWelcome(true);
+      }
+    } catch {
+      setShowWelcome(true);
+    }
+  }, []);
 
   // Sync topic from URL query param on load & browser back/forward buttons
   useEffect(() => {
@@ -175,7 +196,7 @@ export default function Home() {
   // Dynamically update browser tab title to match sidebar active topic
   useEffect(() => {
     if (meta.title) {
-      document.title = `${meta.title} | FlowLogic DB Platform`;
+      document.title = `${meta.title} | FORWARD LEARNING`;
     }
   }, [meta.title]);
 
@@ -214,6 +235,16 @@ export default function Home() {
               <Command className="w-3.5 h-3.5" />
               <span>K</span>
             </div>
+
+            {/* Welcome Guide Trigger */}
+            <button
+              onClick={() => setShowWelcome(true)}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#131520] hover:bg-[#1a1c2c] border border-[#1e2130] text-xs font-mono text-zinc-300 transition-colors cursor-pointer"
+              title="Platform Overview & Welcome Guide"
+            >
+              <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden sm:inline">Guide</span>
+            </button>
           </div>
         </header>
 
@@ -221,6 +252,7 @@ export default function Home() {
         <main className="flex-1 overflow-y-auto p-8">
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Active Topic Router */}
+            {activeTopic === 'foundations' && <FoundationsTopic />}
             {activeTopic === 'array' && <ArrayTopic />}
             {activeTopic === 'linkedlist' && <LinkedListTopic />}
             {activeTopic === 'stack' && <StackTopic />}
@@ -278,6 +310,9 @@ export default function Home() {
           </div>
         </main>
       </div>
+
+      {/* Global Welcome Modal */}
+      <WelcomeModal isOpen={showWelcome} onClose={() => setShowWelcome(false)} />
     </div>
   );
 }
