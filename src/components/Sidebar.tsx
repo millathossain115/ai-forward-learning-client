@@ -41,8 +41,14 @@ export type TopicId =
   | 'balanced-tree'
   | 'trie'
   | 'graphs'
+  | 'graph-dag'
   | 'searching'
   | 'sorting'
+  | 'sorting-bubble'
+  | 'sorting-selection'
+  | 'sorting-insertion'
+  | 'sorting-merge'
+  | 'sorting-quick'
   | 'recursion'
   | 'paradigms'
   | 'backend-sql'
@@ -54,12 +60,20 @@ export type TopicId =
   | 'ai-agents'
   | 'ai-eval';
 
+export interface NavSubItem {
+  id: TopicId;
+  label: string;
+  tag?: string;
+  status: 'ready' | 'upcoming';
+}
+
 interface NavItem {
   id: TopicId;
   label: string;
   icon: React.ElementType;
   status: 'ready' | 'upcoming';
   tag?: string;
+  subItems?: NavSubItem[];
 }
 
 interface NavSection {
@@ -101,11 +115,26 @@ const NAV_SECTIONS: NavSection[] = [
     title: '3. Graphs & Algorithms',
     phase: 'Phase 0 • Recap',
     items: [
-      { id: 'graphs', label: '10. Graphs: Cyclic vs DAGs', icon: Network, status: 'ready', tag: 'Cycle Check' },
-      { id: 'searching', label: '11. Searching (Linear vs Binary)', icon: Search, status: 'ready', tag: 'Race' },
-      { id: 'sorting', label: '12. Sorting Visualizer', icon: BarChart3, status: 'ready', tag: 'O(N log N)' },
-      { id: 'recursion', label: '13. Recursion & Call Stack', icon: Boxes, status: 'ready', tag: 'Unwinding' },
-      { id: 'paradigms', label: '14. 4 Core Paradigms', icon: Compass, status: 'ready', tag: 'DP / Greedy' },
+      { id: 'graphs', label: '10. Graph Basics & Types', icon: Network, status: 'ready', tag: 'V & E' },
+      { id: 'graph-dag', label: '11. Cyclic vs DAG (Topo Sort)', icon: GitCommit, status: 'ready', tag: 'Deadlock' },
+      { id: 'searching', label: '12. Searching (Linear vs Binary)', icon: Search, status: 'ready', tag: 'Race' },
+      {
+        id: 'sorting',
+        label: '13. Sorting Algorithms',
+        icon: BarChart3,
+        status: 'ready',
+        tag: 'Submenu',
+        subItems: [
+          { id: 'sorting', label: '13.0 Overview & Matrix', tag: 'Guide', status: 'ready' },
+          { id: 'sorting-bubble', label: '13.1 Bubble Sort', tag: 'O(N²)', status: 'ready' },
+          { id: 'sorting-selection', label: '13.2 Selection Sort', tag: 'O(N) Swaps', status: 'ready' },
+          { id: 'sorting-insertion', label: '13.3 Insertion Sort', tag: 'Cards', status: 'ready' },
+          { id: 'sorting-merge', label: '13.4 Merge Sort', tag: 'Tree', status: 'ready' },
+          { id: 'sorting-quick', label: '13.5 Quick Sort', tag: '3-Zone', status: 'ready' },
+        ]
+      },
+      { id: 'recursion', label: '14. Recursion & Call Stack', icon: Boxes, status: 'ready', tag: 'Unwinding' },
+      { id: 'paradigms', label: '15. 4 Core Paradigms', icon: Compass, status: 'ready', tag: 'DP / Greedy' },
     ],
   },
   {
@@ -145,9 +174,17 @@ export default function Sidebar({
 }: SidebarProps) {
   const [filterQuery, setFilterQuery] = useState('');
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({});
+  const [expandedSubmenus, setExpandedSubmenus] = useState<Record<string, boolean>>({
+    sorting: true,
+  });
 
   const toggleSection = (title: string) => {
     setCollapsedSections(prev => ({ ...prev, [title]: !prev[title] }));
+  };
+
+  const toggleSubmenu = (itemId: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setExpandedSubmenus(prev => ({ ...prev, [itemId]: !prev[itemId] }));
   };
 
   const filteredSections = useMemo(() => {
@@ -156,7 +193,10 @@ export default function Sidebar({
     return NAV_SECTIONS.map(sec => ({
       ...sec,
       items: sec.items.filter(
-        it => it.label.toLowerCase().includes(q) || it.tag?.toLowerCase().includes(q)
+        it =>
+          it.label.toLowerCase().includes(q) ||
+          it.tag?.toLowerCase().includes(q) ||
+          it.subItems?.some(s => s.label.toLowerCase().includes(q) || s.tag?.toLowerCase().includes(q))
       ),
     })).filter(sec => sec.items.length > 0);
   }, [filterQuery]);
@@ -278,39 +318,88 @@ export default function Sidebar({
                     const Icon = item.icon;
                     const isActive = activeTopic === item.id;
                     const isReady = item.status === 'ready';
+                    const hasSubItems = item.subItems && item.subItems.length > 0;
+                    const isSubActive = hasSubItems && item.subItems!.some(sub => sub.id === activeTopic);
+                    const isSubExpanded = expandedSubmenus[item.id] || isSubActive;
 
                     return (
-                      <button
-                        key={item.id}
-                        onClick={() => onSelectTopic(item.id)}
-                        className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors group cursor-pointer ${
-                          isActive
-                            ? 'bg-[#181a27] text-zinc-100 font-semibold border border-[#2a2e44] shadow-sm'
-                            : 'text-zinc-300 hover:text-zinc-100 hover:bg-[#12141f]'
-                        }`}
-                      >
-                        <div className="flex items-center gap-2.5 truncate">
-                          <Icon
-                            className={`w-4 h-4 shrink-0 ${
-                              isActive ? 'text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'
-                            }`}
-                          />
-                          <span className="truncate">{item.label}</span>
-                        </div>
+                      <div key={item.id} className="space-y-0.5">
+                        <button
+                          onClick={() => {
+                            if (hasSubItems) {
+                              toggleSubmenu(item.id);
+                            }
+                            onSelectTopic(item.id);
+                          }}
+                          className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors group cursor-pointer ${
+                            isActive || isSubActive
+                              ? 'bg-[#181a27] text-zinc-100 font-semibold border border-[#2a2e44] shadow-sm'
+                              : 'text-zinc-300 hover:text-zinc-100 hover:bg-[#12141f]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2.5 truncate">
+                            <Icon
+                              className={`w-4 h-4 shrink-0 ${
+                                isActive || isSubActive ? 'text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'
+                              }`}
+                            />
+                            <span className="truncate">{item.label}</span>
+                          </div>
 
-                        <div className="flex items-center gap-2 shrink-0 ml-2">
-                          {item.tag && (
-                            <span className="text-[11px] font-mono px-1.5 py-0.5 rounded bg-[#13141f] text-zinc-300 border border-[#1e202e]">
-                              {item.tag}
-                            </span>
-                          )}
-                          <span
-                            className={`w-2 h-2 rounded-full ${
-                              isReady ? 'bg-emerald-400 shadow-sm shadow-emerald-400/50' : 'bg-zinc-700'
-                            }`}
-                          />
-                        </div>
-                      </button>
+                          <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                            {item.tag && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#13141f] text-zinc-300 border border-[#1e202e]">
+                                {item.tag}
+                              </span>
+                            )}
+                            {hasSubItems ? (
+                              <span
+                                onClick={(e) => toggleSubmenu(item.id, e)}
+                                className="p-0.5 text-zinc-400 hover:text-zinc-200"
+                              >
+                                {isSubExpanded ? (
+                                  <ChevronDown className="w-3.5 h-3.5" />
+                                ) : (
+                                  <ChevronRight className="w-3.5 h-3.5" />
+                                )}
+                              </span>
+                            ) : (
+                              <span
+                                className={`w-2 h-2 rounded-full ${
+                                  isReady ? 'bg-emerald-400 shadow-sm shadow-emerald-400/50' : 'bg-zinc-700'
+                                }`}
+                              />
+                            )}
+                          </div>
+                        </button>
+
+                        {/* Submenu Dropdown Items */}
+                        {hasSubItems && isSubExpanded && (
+                          <div className="border-l-2 border-[#24283d] ml-5 pl-2.5 space-y-1 py-1">
+                            {item.subItems!.map(sub => {
+                              const isChildActive = activeTopic === sub.id;
+                              return (
+                                <button
+                                  key={sub.id}
+                                  onClick={() => onSelectTopic(sub.id)}
+                                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-mono transition-colors group cursor-pointer ${
+                                    isChildActive
+                                      ? 'bg-[#202538] text-amber-300 font-bold border border-amber-500/30 shadow-sm'
+                                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#151724]'
+                                  }`}
+                                >
+                                  <span className="truncate">{sub.label}</span>
+                                  {sub.tag && (
+                                    <span className="text-[9px] px-1 py-0.2 rounded bg-[#10121c] text-zinc-500 border border-[#1b1e2c]">
+                                      {sub.tag}
+                                    </span>
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
                     );
                   })}
                 </div>

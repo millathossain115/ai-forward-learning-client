@@ -13,10 +13,18 @@ import TreeTopic from '@/phase0 Recap/DSA/topics/Tree/TreeTopic';
 import BalancedTreeTopic from '@/phase0 Recap/DSA/topics/BalancedTree/BalancedTreeTopic';
 import TrieTopic from '@/phase0 Recap/DSA/topics/Trie/TrieTopic';
 import SearchingTopic from '@/phase0 Recap/DSA/topics/Searching/SearchingTopic';
-import SortingTopic from '@/phase0 Recap/DSA/topics/Sorting/SortingTopic';
+import {
+  SortingOverviewTopic,
+  BubbleSortTopic,
+  SelectionSortTopic,
+  InsertionSortTopic,
+  MergeSortTopic,
+  QuickSortTopic
+} from '@/phase0 Recap/DSA/topics/Sorting';
 import RecursionTopic from '@/phase0 Recap/DSA/topics/Recursion/RecursionTopic';
 import ParadigmsTopic from '@/phase0 Recap/DSA/topics/Paradigms/ParadigmsTopic';
 import GraphTopic from '@/phase0 Recap/DSA/topics/Graph/GraphTopic';
+import DagTopic from '@/phase0 Recap/DSA/topics/Graph/DagTopic';
 import DatabasePlayground from '@/components/DatabasePlayground';
 import PgVectorTopic from '@/components/PgVectorTopic';
 import WelcomeModal from '@/components/WelcomeModal';
@@ -81,27 +89,57 @@ const TOPIC_METADATA: Record<TopicId, { title: string; category: string; descrip
   },
   graphs: {
     category: '3. Graphs & Algorithms',
-    title: 'Graphs: Cyclic vs Directed Acyclic Graphs (DAGs)',
-    description: 'Cycle detection via 3-Color DFS (White/Gray/Black) vs Kahn topological sort for deadlock-free DAG task execution.',
+    title: '10. Graph Basics & Types',
+    description: 'Vertices, edges, representations (List vs Matrix), and interactive Undirected, Directed, Weighted graph simulators.',
+  },
+  'graph-dag': {
+    category: '3. Graphs & Algorithms',
+    title: '11. Cyclic vs Directed Acyclic Graphs (DAGs)',
+    description: 'Circular deadlocks vs safe DAG execution, 3-Color DFS cycle detection, and Kahn’s topological sort pipeline engine.',
   },
   searching: {
     category: '3. Graphs & Algorithms',
-    title: 'Searching: Linear vs Binary Search',
+    title: '12. Searching: Linear vs Binary Search',
     description: 'Direct comparison race between sequential scans and halving search spaces.',
   },
   sorting: {
     category: '3. Graphs & Algorithms',
-    title: 'Sorting Algorithms: Bar Race',
-    description: 'Animated comparisons and swaps for Bubble Sort, Insertion Sort, and Divide & Conquer.',
+    title: '13.0 Sorting Overview & Decision Matrix',
+    description: 'Comprehensive taxonomy: O(N²) quadratic vs O(N log N) divide & conquer, stability, and real-world selection guidelines.',
+  },
+  'sorting-bubble': {
+    category: '3. Graphs & Algorithms',
+    title: '13.1 Bubble Sort (বুদ্বুদ সোয়াপ)',
+    description: 'Adjacent element comparison, floating bubble elevation, and early-exit O(N) adaptive optimization.',
+  },
+  'sorting-selection': {
+    category: '3. Graphs & Algorithms',
+    title: '13.2 Selection Sort (মিনিমাম স্ক্যানার)',
+    description: 'Sorted boundary expansion, minimum champion scanner, and strictly O(N) flash-friendly write cycles.',
+  },
+  'sorting-insertion': {
+    category: '3. Graphs & Algorithms',
+    title: '13.3 Insertion Sort (তাসের পকেট সাজানো)',
+    description: 'Hand of playing cards metaphor, active key card lifting, rightward shifting, and V8 engine hybrid sorts.',
+  },
+  'sorting-merge': {
+    category: '3. Graphs & Algorithms',
+    title: '13.4 Merge Sort (ডিভাইড অ্যান্ড কনকার ট্রি)',
+    description: 'Recursive divide tree down to base cases, 2-pointer zipper merging, and guaranteed O(N log N) stability.',
+  },
+  'sorting-quick': {
+    category: '3. Graphs & Algorithms',
+    title: '13.5 Quick Sort (৩-জোন পিভট পার্টিশন)',
+    description: 'Pivot element partitioning, 3-zone visual distribution (Left < Pivot < Right), and CPU cache locality.',
   },
   recursion: {
     category: '3. Graphs & Algorithms',
-    title: 'Recursion: Base Case & Stack Unwinding',
+    title: '14. Recursion: Base Case & Stack Unwinding',
     description: 'Visualizing memory activation frames winding down to base conditions and returning.',
   },
   paradigms: {
     category: '3. Graphs & Algorithms',
-    title: 'The 4 Core Algorithmic Paradigms',
+    title: '15. The 4 Core Algorithmic Paradigms',
     description: 'Greedy approach, Divide & Conquer, Dynamic Programming memoization, and Backtracking.',
   },
   'backend-sql': {
@@ -187,6 +225,10 @@ export default function Home() {
     }
   };
 
+  const handleNavigateTopic = (id: string) => {
+    handleSelectTopic(id as TopicId);
+  };
+
   const meta = TOPIC_METADATA[activeTopic] || {
     category: 'Phase 0 • Recap',
     title: 'Topic',
@@ -263,11 +305,17 @@ export default function Home() {
             {activeTopic === 'balanced-tree' && <BalancedTreeTopic />}
             {activeTopic === 'trie' && <TrieTopic />}
             {activeTopic === 'searching' && <SearchingTopic />}
-            {activeTopic === 'sorting' && <SortingTopic />}
+            {activeTopic === 'sorting' && <SortingOverviewTopic onNavigate={handleNavigateTopic} />}
+            {activeTopic === 'sorting-bubble' && <BubbleSortTopic onNavigate={handleNavigateTopic} />}
+            {activeTopic === 'sorting-selection' && <SelectionSortTopic onNavigate={handleNavigateTopic} />}
+            {activeTopic === 'sorting-insertion' && <InsertionSortTopic onNavigate={handleNavigateTopic} />}
+            {activeTopic === 'sorting-merge' && <MergeSortTopic onNavigate={handleNavigateTopic} />}
+            {activeTopic === 'sorting-quick' && <QuickSortTopic onNavigate={handleNavigateTopic} />}
             {activeTopic === 'recursion' && <RecursionTopic />}
             {activeTopic === 'paradigms' && <ParadigmsTopic />}
 
             {activeTopic === 'graphs' && <GraphTopic />}
+            {activeTopic === 'graph-dag' && <DagTopic />}
 
             {(activeTopic === 'backend-sql' || activeTopic === 'backend-indexing') && (
               <div className="space-y-6">

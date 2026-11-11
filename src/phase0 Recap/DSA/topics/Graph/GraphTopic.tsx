@@ -1,116 +1,157 @@
 'use client';
 
-import RealLifeScenario from '@/components/RealLifeScenario';
-
-import React from 'react';
+import React, { useState } from 'react';
 import GraphBasics from './GraphBasics';
-import GraphVisualizer from './GraphVisualizer';
+import RealLifeScenario from '@/components/RealLifeScenario';
 import {
   Network,
-  Cpu,
-  Sparkles,
-  Zap,
+  Share2,
   Table,
-  Workflow,
-  Boxes,
-  Database
+  CheckCircle2,
+  Grid,
+  List
 } from 'lucide-react';
 
-const GRAPH_COMPLEXITIES = [
-  {
-    operation: '3-Color DFS Cycle Detection',
-    bestCase: 'O(1)',
-    worstCase: 'O(V + E)',
-    averageCase: 'O(V + E)',
-    space: 'O(V)',
-    reason: 'Recursion stack depth is bounded by V; detects back-edges to gray ancestors immediately.'
-  },
-  {
-    operation: "Kahn's Topological Sort",
-    bestCase: 'O(V + E)',
-    worstCase: 'O(V + E)',
-    averageCase: 'O(V + E)',
-    space: 'O(V)',
-    reason: 'Initializes in-degrees over all E edges; processes zero-dependency vertices via FIFO queue.'
-  },
-  {
-    operation: 'BFS Shortest Path (Unweighted)',
-    bestCase: 'O(1)',
-    worstCase: 'O(V + E)',
-    averageCase: 'O(V + E)',
-    space: 'O(V)',
-    reason: 'Level-order queue traversal finds minimum hop distance across unweighted edges.'
-  },
-  {
-    operation: "Dijkstra's Shortest Path (Non-negative)",
-    bestCase: 'O(V log V)',
-    worstCase: 'O((V + E) log V)',
-    averageCase: 'O((V + E) log V)',
-    space: 'O(V)',
-    reason: 'Min-Heap priority queue repeatedly relaxes neighboring distances with logarithmic cost.'
-  }
-];
-
-const GRAPH_APPLICATIONS = [
-  {
-    icon: Workflow,
-    color: 'text-indigo-400',
-    title: '1. LangGraph & Agentic Cognitive Flows',
-    desc: 'Modern AI agent runtimes model tool calling, planner loops, and multi-agent coordination as state graphs. Directed Acyclic Subgraphs guarantee deterministic evaluation order while controlled cycles support reflection loops.'
-  },
-  {
-    icon: Boxes,
-    color: 'text-sky-400',
-    title: '2. Turborepo, Nx & Monorepo Build DAGs',
-    desc: 'High-performance build systems parse package dependency graphs into DAGs. Using Kahn’s algorithm, tasks with zero pending upstream tasks execute across parallel CPU cores without race conditions.'
-  },
-  {
-    icon: Database,
-    color: 'text-emerald-400',
-    title: '3. Database Foreign Keys & Deadlock Graphs',
-    desc: 'RDBMS engines (PostgreSQL/MySQL) construct wait-for graphs between concurrent transactions. Cycle detection flags deadlocks in O(V + E) time, triggering safe rollbacks to preserve ACID isolation.'
-  }
-];
-
 export default function GraphTopic() {
+  const [repView, setRepView] = useState<'list' | 'matrix'>('list');
+
   return (
     <div className="flex flex-col gap-10 w-full text-zinc-100">
-      {/* 1. Graph Basics: Definition, Vertices, Edges & 3 Types with Interactive Visualizers */}
-      <GraphBasics />
-
-      {/* 2. DAG & Cycle Detection Overview */}
-      <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-3xl flex flex-col gap-4 shadow-xl">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#181a26] text-indigo-400 flex items-center justify-center border border-[#262a3f]">
-            <Network className="w-5 h-5" />
+      {/* 1. Header Banner */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#13162b] via-[#0d0f1b] to-[#070912] border border-[#232945] p-6 md:p-8 shadow-2xl">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10 space-y-3">
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-bold">
+              Topic 10 • Non-Linear Topologies
+            </span>
+            <span className="text-xs text-zinc-500 font-mono">Vertices, Edges &amp; Connectivity</span>
           </div>
-          <div>
-            <h2 className="text-xl font-bold text-zinc-100">সাইকেল ডিটেকশন ও ডিএজি (DAGs &amp; Cycle Resolution)</h2>
-            <span className="text-xs text-zinc-400 font-mono font-medium">Topic 10 • Non-Linear Topologies &amp; Dependency Scheduling</span>
-          </div>
-        </div>
-
-        <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-4xl">
-          <b>DAG (Directed Acyclic Graph)</b> হলো এমন একটি ডিরেক্টেড গ্রাফ যাতে কোনো চক্র বা সাইকেল (Deadlock) থাকে না। 
-          টাস্ক শিডিউলিং, বিল্ড সিস্টেম (যেমন: Turborepo) এবং অটোনোমাস AI এজেন্ট ওয়ার্কফ্লোতে কাজের সঠিক ক্রম নির্ধারণে এটি ব্যবহৃত হয়।
-        </p>
-
-        {/* Invariant Highlights Box */}
-        <div className="p-4 rounded-xl bg-[#090a10] border border-[#1a1c29] font-mono text-xs md:text-sm text-indigo-300 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <Cpu className="w-4 h-4 text-zinc-400" />
-            <span className="text-zinc-400">Cycle Invariant:</span>
-            <span className="font-semibold text-zinc-100">Edge(u, v) is a Back-Edge &hArr; Color(v) == GRAY</span>
-          </div>
-          <span className="text-xs text-indigo-400 bg-indigo-950/40 px-2.5 py-1 rounded border border-indigo-800/60 font-mono font-medium">
-            Kahn Topological Sort: &sum; in_degree = 0 &rArr; Executable
-          </span>
+          <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white">
+            গ্রাফ পরিচিতি ও প্রকারভেদ (Graph Basics &amp; Types)
+          </h1>
+          <p className="text-xs md:text-sm text-zinc-300 max-w-3xl leading-relaxed">
+            বাস্তব পৃথিবীর যেকোনো পরস্পর সংযুক্ত সম্পর্ক (যেমন: সোশ্যাল মিডিয়া ফ্রেন্ডলিস্ট, সড়কের মোড় ও হাইওয়ে ম্যাপ কিংবা ইন্টারনেট কেবল নেটওয়ার্ক) সংরক্ষণের জন্য গ্রাফ হলো সবচেয়ে শক্তিশালী নন-লিনিয়ার ডেটা স্ট্রাকচার।
+          </p>
         </div>
       </div>
 
-      {/* Real-Life Scenarios */}
-            <RealLifeScenario
-        topicName="গ্রাফ, সাইকেল ও ডিএজি (Graph, Cycles and DAG)"
+      {/* 2. Core Basics: Vertex, Edge & 3 Types with Interactive Simulators */}
+      <GraphBasics />
+
+      {/* 3. Representation in Memory: Adjacency List vs Adjacency Matrix */}
+      <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6 shadow-xl">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1b1f30] pb-4">
+          <div className="space-y-1">
+            <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
+              <Share2 className="w-4 h-4 text-indigo-400" />
+              <span>মেমরিতে গ্রাফ কীভাবে রাখা হয়? (Graph Representation in RAM)</span>
+            </h2>
+            <p className="text-xs text-zinc-400">
+              কম্পিউটারের মেমরিতে গ্রাফ সংরক্ষণের দুটি প্রধান উপায়: অ্যাডজাসেন্সি লিস্ট ও অ্যাডজাসেন্সি ম্যাট্রিক্স।
+            </p>
+          </div>
+
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#090b14] border border-[#1d2238]">
+            <button
+              onClick={() => setRepView('list')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                repView === 'list'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
+              }`}
+            >
+              <List className="w-3.5 h-3.5" />
+              <span>Adjacency List (লিস্ট)</span>
+            </button>
+            <button
+              onClick={() => setRepView('matrix')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                repView === 'matrix'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
+              }`}
+            >
+              <Grid className="w-3.5 h-3.5" />
+              <span>Adjacency Matrix (ম্যাট্রিক্স)</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Dynamic Display of Representation */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          {/* Visual Code / Table Block (6 Cols) */}
+          <div className="lg:col-span-6 bg-[#080a12] border border-[#1b1f33] rounded-2xl p-5 flex flex-col justify-center font-mono text-xs">
+            {repView === 'list' ? (
+              <div className="space-y-2">
+                <div className="text-zinc-400 text-[11px] pb-1 border-b border-zinc-800">
+                  // Adjacency List: O(V + E) Space (Sparse গ্রাফে সেরা)
+                </div>
+                <div className="p-3 rounded-xl bg-[#0e1222] border border-[#1e2642] space-y-1 text-indigo-300">
+                  <div>&quot;A&quot;: [&quot;B&quot;, &quot;C&quot;]</div>
+                  <div>&quot;B&quot;: [&quot;A&quot;, &quot;C&quot;, &quot;D&quot;]</div>
+                  <div>&quot;C&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;D&quot;]</div>
+                  <div>&quot;D&quot;: [&quot;B&quot;, &quot;C&quot;]</div>
+                </div>
+                <div className="text-[11px] text-emerald-400 pt-1">
+                  ✓ কেবল যে নোডগুলোর সাথে সংযোগ আছে শুধু সেগুলোই মেমরিতে থাকে।
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                <div className="text-zinc-400 text-[11px] pb-1 border-b border-zinc-800">
+                  // Adjacency Matrix: O(V²) Space (Dense গ্রাফে দ্রুত চেক)
+                </div>
+                <div className="p-3 rounded-xl bg-[#0e1222] border border-[#1e2642] overflow-x-auto">
+                  <table className="w-full text-center">
+                    <thead>
+                      <tr className="text-zinc-400 border-b border-zinc-800">
+                        <th className="p-1"></th>
+                        <th className="p-1">A</th>
+                        <th className="p-1">B</th>
+                        <th className="p-1">C</th>
+                        <th className="p-1">D</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-zinc-800/50 text-indigo-200">
+                      <tr><td className="p-1 text-zinc-400 font-bold">A</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+                      <tr><td className="p-1 text-zinc-400 font-bold">B</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+                      <tr><td className="p-1 text-zinc-400 font-bold">C</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                      <tr><td className="p-1 text-zinc-400 font-bold">D</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="text-[11px] text-sky-400 pt-1">
+                  ✓ Matrix[i][j] দিয়ে O(1) সময়ে চেক করা যায় দুটি নোড যুক্ত কিনা।
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Explanation Card (6 Cols) */}
+          <div className="lg:col-span-6 space-y-4">
+            <div className="p-4 rounded-2xl bg-[#111425] border border-[#212742] space-y-2">
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>
+                  {repView === 'list'
+                    ? 'অ্যাডজাসেন্সি লিস্ট কেন প্রোডাকশনে বেশি ব্যবহৃত হয়?'
+                    : 'অ্যাডজাসেন্সি ম্যাট্রিক্স কখন উপযুক্ত?'}
+                </span>
+              </h3>
+              <p className="text-xs text-zinc-300 leading-relaxed font-sans">
+                {repView === 'list'
+                  ? 'বাস্তব জীবনের অধিকাংশ গ্রাফই স্পার্স (Sparse Graph)—অর্থাৎ মোট সম্ভাব্য এজের তুলনায় আসল এজ অনেক কম থাকে। ফেসবুকের ৩০০ কোটি ব্যবহারকারীর প্রত্যেকে যদি গড়ে ৫০০ জনের বন্ধু হয়, ম্যাট্রিক্স বানালে বিলিয়ন বিলিয়ন খালি 0 মেমরিতে অপচয় হতো। তাই অ্যাডজাসেন্সি লিস্ট মেমরি অপটিমাইজেশনের জন্য সেরা।'
+                  : 'যখন গ্রাফের নোড সংখ্যা খুব কম কিন্তু তাদের মধ্যে প্রায় সবাই সবার সাথে যুক্ত থাকে (Dense Graph), তখন ম্যাট্রিক্স ব্যবহার করা হয়। এতে কোনো দুটি নোড সরাসরি কানেক্টেড কিনা তা কোনো লুপ ছাড়া সাথে সাথে O(1) সময়ে চেক করা যায়।'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Real-Life Scenarios */}
+      <RealLifeScenario
+        topicName="গ্রাফের বাস্তব ব্যবহার (Real-Life Applications of Graphs)"
         scenarios={[
           {
             title: "১. গুগল ম্যাপসের রোড নেটওয়ার্ক ও ট্রাফিক জ্যাম",
@@ -133,103 +174,27 @@ export default function GraphTopic() {
             ),
           },
           {
-            title: "২. বিশ্ববিদ্যালয়ের কোর্স প্রি-রিকুইজিট বা বিরিয়ানি রান্নার রেসিপি",
-            subtitle: "পূর্বশর্তের ধারাবাহিক শৃঙ্খলা — চক্র থাকলে ডেডলক!",
-            badge: "DAG (Directed Acyclic Graph)",
-            visualTag: "Topological Sort",
+            title: "২. সোশ্যাল মিডিয়া ফ্রেন্ড সাজেশন ও নেটওয়ার্ক গ্রাফ",
+            subtitle: "মিউচুয়াল ফ্রেন্ড ও ডিগ্রি অফ সেপারেশন",
+            badge: "Undirected Graph",
+            visualTag: "BFS Traversal",
             accentColor: "emerald",
             analogy:
-              "CSE101 না করে CSE201 করা যায় না, আবার ভাত না ফুটিয়ে বিরিয়ানি দমে বসানো যায় না। এগুলোতে কাজের সঠিক ক্রম (Topological Sort) থাকতে হয়। চক্র (Cycle) থাকলে ডেডলক হয়ে ছাত্র কোনোদিন পাস করতে পারবে না!",
+              "ফেসবুকে আপনার বন্ধুদের বন্ধুদের (Friends of Friends) খুঁজে বের করতে গ্রাফের ব্রেডথ-ফার্স্ট সার্চ (BFS) চালানো হয়। দুই স্তরের নোড চেক করলেই 'People You May Know' বের হয়ে আসে!",
             whyItFits:
-              "DAG নিশ্চিত করে ডিপেন্ডেন্সি চেইনে কোনো অন্তহীন লুপ নেই, ফলে কাজগুলো সুশৃঙ্খল ধাপে সম্পন্ন করা যায়।",
+              "আনডিরেক্টেড গ্রাফ দ্বিমুখী সম্পর্ক সহজে ট্রাভার্স করতে দেয় এবং সোশ্যাল কানেকশনের দূরত্ব পরিমাপ করে।",
             diagram: (
               <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-300 py-1">
-                <span className="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-800">CSE 101</span>
-                <span>➔</span>
-                <span className="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-800">CSE 201 (DSA)</span>
-                <span>➔</span>
-                <span className="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-bold">CSE 301 (Algorithms)</span>
+                <span className="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-800">ইউজার (আপনি)</span>
+                <span>⟷</span>
+                <span className="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-800">ফ্রেন্ড A</span>
+                <span>⟷</span>
+                <span className="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-bold">ফ্রেন্ড B (সাজেশন)</span>
               </div>
             ),
           },
         ]}
       />
-
-      {/* 2. Interactive Simulation Playground */}
-      <div className="flex flex-col gap-3">
-        <div className="flex items-center justify-between">
-          <h3 className="text-xs font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
-            <Zap className="w-3.5 h-3.5 text-indigo-400" />
-            Interactive Graph Visualizer &amp; Pipeline Engine
-          </h3>
-          <span className="text-[11px] text-zinc-400 font-mono">
-            DFS Cycle Check O(V + E) • Kahn Topo Sort O(V + E)
-          </span>
-        </div>
-        <GraphVisualizer />
-      </div>
-
-      {/* 3. Time & Space Complexity Benchmark Table */}
-      <div className="bg-[#0f111a] border border-[#1e2233] rounded-2xl p-6 flex flex-col gap-4">
-        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
-          <Table className="w-4 h-4 text-zinc-400" />
-          Time &amp; Space Complexity Benchmarks
-        </h3>
-
-        <div className="overflow-x-auto rounded-xl border border-[#1a1c29] bg-[#090a10]">
-          <table className="w-full text-left text-sm font-mono">
-            <thead className="bg-[#12141f] text-zinc-300 border-b border-[#1c1f2e]">
-              <tr>
-                <th className="p-3.5 font-medium">Algorithm</th>
-                <th className="p-3.5 font-medium">Best</th>
-                <th className="p-3.5 font-medium">Worst</th>
-                <th className="p-3.5 font-medium">Average</th>
-                <th className="p-3.5 font-medium">Aux Space</th>
-                <th className="p-3.5 font-medium font-sans">Algorithmic Invariant</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#171926] text-zinc-200">
-              {GRAPH_COMPLEXITIES.map((c, idx) => (
-                <tr key={idx} className="hover:bg-[#11131c]">
-                  <td className="p-3.5 font-medium text-zinc-100">{c.operation}</td>
-                  <td className="p-3.5 text-emerald-400">{c.bestCase}</td>
-                  <td className="p-3.5 text-rose-400">{c.worstCase}</td>
-                  <td className="p-3.5 text-amber-300">{c.averageCase}</td>
-                  <td className="p-3.5 text-sky-400">{c.space}</td>
-                  <td className="p-3.5 text-zinc-300 text-xs md:text-sm font-sans">{c.reason}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* 4. Real-World Systems & AI Engineering Applications */}
-      <div className="flex flex-col gap-3.5">
-        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
-          <Sparkles className="w-4 h-4 text-zinc-400" />
-          Production &amp; AI Engineering Usages
-        </h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {GRAPH_APPLICATIONS.map((app, idx) => {
-            const Icon = app.icon;
-            return (
-              <div
-                key={idx}
-                className="bg-[#0f111a] border border-[#1e2233] p-5 rounded-xl space-y-2.5 hover:border-[#2b3047] transition-colors"
-              >
-                <Icon className={`w-5 h-5 ${app.color}`} />
-                <h4 className="text-sm md:text-base font-bold text-zinc-100">{app.title}</h4>
-                <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                  {app.desc}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
     </div>
   );
 }
-
