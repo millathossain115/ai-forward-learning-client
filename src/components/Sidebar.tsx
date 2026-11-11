@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import FlowLogicLogo from '@/components/FlowLogicLogo';
 import {
   Binary,
   GitCommit,
@@ -153,14 +154,17 @@ export default function Sidebar({
 
   if (collapsed) {
     return (
-      <aside className="w-14 border-r border-[#1e202e] bg-[#0c0d14] flex flex-col justify-between py-4 items-center shrink-0">
-        <button
-          onClick={onToggleCollapse}
-          className="p-2 text-zinc-400 hover:text-zinc-100 hover:bg-[#181a26] rounded-md transition-colors"
-          title="Expand Sidebar"
-        >
-          <PanelLeftOpen className="w-4 h-4" />
-        </button>
+      <aside className="w-14 border-r border-[#1e202e] bg-[#0c0d14] flex flex-col justify-between py-3.5 items-center shrink-0">
+        <div className="flex flex-col items-center gap-3">
+          <FlowLogicLogo size="xs" />
+          <button
+            onClick={onToggleCollapse}
+            className="p-1.5 text-zinc-400 hover:text-zinc-100 hover:bg-[#181a26] rounded-md transition-colors"
+            title="Expand Sidebar"
+          >
+            <PanelLeftOpen className="w-4 h-4" />
+          </button>
+        </div>
 
         <div className="flex flex-col gap-2 overflow-y-auto">
           {NAV_SECTIONS.flatMap(s => s.items)
@@ -196,9 +200,7 @@ export default function Sidebar({
       <div className="flex flex-col border-b border-[#1b1d2a]">
         <div className="p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg bg-[#1c1f2e] border border-[#2c3047] flex items-center justify-center font-mono text-sm font-bold text-amber-400">
-              FL
-            </div>
+            <FlowLogicLogo size="sm" />
             <div>
               <span className="font-bold text-sm tracking-tight text-zinc-100 block">
                 FORWARD LEARNING
