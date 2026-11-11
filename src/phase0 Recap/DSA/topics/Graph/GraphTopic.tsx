@@ -3,6 +3,7 @@
 import RealLifeScenario from '@/components/RealLifeScenario';
 
 import React from 'react';
+import GraphBasics from './GraphBasics';
 import GraphVisualizer from './GraphVisualizer';
 import {
   Network,
@@ -73,30 +74,32 @@ const GRAPH_APPLICATIONS = [
 
 export default function GraphTopic() {
   return (
-    <div className="flex flex-col gap-8 w-full">
-      {/* 1. Header & Architectural Overview */}
-      <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-4">
+    <div className="flex flex-col gap-10 w-full text-zinc-100">
+      {/* 1. Graph Basics: Definition, Vertices, Edges & 3 Types with Interactive Visualizers */}
+      <GraphBasics />
+
+      {/* 2. DAG & Cycle Detection Overview */}
+      <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-3xl flex flex-col gap-4 shadow-xl">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-[#181a26] text-indigo-400 flex items-center justify-center border border-[#262a3f]">
             <Network className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-zinc-100">Graph Theory &amp; Directed Acyclic Graphs (DAGs)</h2>
-            <span className="text-xs text-zinc-400 font-mono font-medium">Topic 5 • Non-Linear Topologies &amp; Dependency Resolution</span>
+            <h2 className="text-xl font-bold text-zinc-100">সাইকেল ডিটেকশন ও ডিএজি (DAGs &amp; Cycle Resolution)</h2>
+            <span className="text-xs text-zinc-400 font-mono font-medium">Topic 10 • Non-Linear Topologies &amp; Dependency Scheduling</span>
           </div>
         </div>
 
-        <p className="text-sm text-zinc-200 leading-relaxed max-w-4xl">
-          Graphs represent arbitrary relationships between vertices \(V\) connected by edges \(E\).
-          Directed Acyclic Graphs (DAGs) impose directional flow with strictly no cyclic paths, making them
-          the mathematical foundation for compilation dependency trees, distributed job schedulers, and agentic workflows.
+        <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-4xl">
+          <b>DAG (Directed Acyclic Graph)</b> হলো এমন একটি ডিরেক্টেড গ্রাফ যাতে কোনো চক্র বা সাইকেল (Deadlock) থাকে না। 
+          টাস্ক শিডিউলিং, বিল্ড সিস্টেম (যেমন: Turborepo) এবং অটোনোমাস AI এজেন্ট ওয়ার্কফ্লোতে কাজের সঠিক ক্রম নির্ধারণে এটি ব্যবহৃত হয়।
         </p>
 
         {/* Invariant Highlights Box */}
-        <div className="p-4 rounded-xl bg-[#090a10] border border-[#1a1c29] font-mono text-sm text-indigo-300 flex flex-wrap items-center justify-between gap-3">
+        <div className="p-4 rounded-xl bg-[#090a10] border border-[#1a1c29] font-mono text-xs md:text-sm text-indigo-300 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <Cpu className="w-4 h-4 text-zinc-400" />
-            <span className="text-zinc-400">Cycle Detection Invariant:</span>
+            <span className="text-zinc-400">Cycle Invariant:</span>
             <span className="font-semibold text-zinc-100">Edge(u, v) is a Back-Edge &hArr; Color(v) == GRAY</span>
           </div>
           <span className="text-xs text-indigo-400 bg-indigo-950/40 px-2.5 py-1 rounded border border-indigo-800/60 font-mono font-medium">
