@@ -104,7 +104,7 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { id: 'backend-sql', label: 'SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
       { id: 'backend-indexing', label: 'B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: 'pgvector & Embeddings', icon: Cpu, status: 'upcoming', tag: 'HNSW' },
+      { id: 'backend-pgvector', label: 'pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {

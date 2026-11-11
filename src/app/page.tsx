@@ -17,6 +17,7 @@ import RecursionTopic from '@/phase0 Recap/DSA/topics/Recursion/RecursionTopic';
 import ParadigmsTopic from '@/phase0 Recap/DSA/topics/Paradigms/ParadigmsTopic';
 import GraphTopic from '@/phase0 Recap/DSA/topics/Graph/GraphTopic';
 import DatabasePlayground from '@/components/DatabasePlayground';
+import PgVectorTopic from '@/components/PgVectorTopic';
 import {
   Server,
   Command,
@@ -246,9 +247,10 @@ export default function Home() {
               </div>
             )}
 
+            {activeTopic === 'backend-pgvector' && <PgVectorTopic />}
+
             {/* Upcoming Chapters (Phase 1 AI Core) */}
             {[
-              'backend-pgvector',
               'ai-llm',
               'ai-rag',
               'ai-mcp',
