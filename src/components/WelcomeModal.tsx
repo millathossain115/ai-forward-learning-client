@@ -8,7 +8,6 @@ import {
   Database,
   Bot,
   ArrowRight,
-  Sparkles,
   Layers
 } from 'lucide-react';
 
@@ -46,7 +45,7 @@ export default function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-xl bg-[#0c0e18] border border-[#232942] rounded-3xl p-6 md:p-7 shadow-2xl shadow-amber-500/10 flex flex-col gap-5 text-zinc-100 overflow-hidden"
+        className="relative w-full max-w-lg bg-[#0c0e18] border border-[#232942] rounded-3xl p-6 md:p-7 shadow-2xl shadow-amber-500/10 flex flex-col gap-4 text-zinc-100 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Ambient Top Glow */}
@@ -80,55 +79,40 @@ export default function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
           </div>
         </div>
 
-        {/* Core Mission & Platform Purpose */}
-        <div className="bg-[#101322]/80 border border-[#1e233b] rounded-2xl p-4 space-y-2">
-          <p className="text-xs md:text-sm text-zinc-200 leading-relaxed font-sans">
-            স্বাগতম <b>FORWARD LEARNING</b>-এ! এটি একটি পূর্ণাঙ্গ <b>Forward Engineering Learning Roadmap</b> প্ল্যাটফর্ম। 
-            আধুনিক সফটওয়্যার ইঞ্জিনিয়ারিংয়ের মূল ভিত্তি থেকে শুরু করে বাস্তব সিস্টেমস ও ভবিষ্যৎ AI আর্কিটেকচার ইন্টারঅ্যাক্টিভভাবে আয়ত্ত করার জন্য এটি তৈরি করা হয়েছে।
-          </p>
-        </div>
+        {/* Short & Punchy Intro */}
+        <p className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans">
+          স্বাগতম! এটি একটি পূর্ণাঙ্গ <b>Forward Engineering Roadmap</b> প্ল্যাটফর্ম—কম্পিউটার সায়েন্সের কোর ভিত্তি (DSA) থেকে শুরু করে ডেটাবেজ ইঞ্জিন ও আধুনিক AI সিস্টেমের ইন্টারঅ্যাক্টিভ লার্নিং হাব।
+        </p>
 
-        {/* Roadmap Stages Summary */}
-        <div className="space-y-2.5">
-          <span className="text-[11px] font-mono uppercase text-zinc-400 tracking-wider font-semibold">
-            এই প্ল্যাটফর্মে যা যা কভার করা হচ্ছে:
-          </span>
-
-          <div className="grid grid-cols-1 gap-2 text-xs">
-            <div className="flex items-start gap-3 p-2.5 rounded-xl bg-[#121524]/60 border border-[#1a1f33]">
-              <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 mt-0.5 shrink-0">
-                <Layers className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="font-semibold text-zinc-100 font-mono text-xs">১. DSA &amp; Foundations</span>
-                <p className="text-zinc-400 text-[11px] mt-0.5 leading-relaxed">
-                  মেমরি আর্কিটেকচার, ডেটা স্ট্রাকচার (Array, Tree, Graph, Trie) এবং অপটিমাল অ্যালগরিদমের ভিজ্যুয়াল সিমুলেশন।
-                </p>
-              </div>
+        {/* 3 Phases Clean Badges */}
+        <div className="space-y-2 pt-1">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#121524]/70 border border-[#1a1f33]">
+            <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 shrink-0">
+              <Layers className="w-4 h-4" />
             </div>
-
-            <div className="flex items-start gap-3 p-2.5 rounded-xl bg-[#121524]/60 border border-[#1a1f33]">
-              <div className="p-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 mt-0.5 shrink-0">
-                <Database className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="font-semibold text-zinc-100 font-mono text-xs">২. Systems &amp; Database Internals</span>
-                <p className="text-zinc-400 text-[11px] mt-0.5 leading-relaxed">
-                  SQL কুয়েরি এক্সিকিউশন প্ল্যান (EXPLAIN ANALYZE), B-Tree ইনডেক্সিং এবং pgvector হাই-ডাইমেনশনাল ভেক্টর সার্চ।
-                </p>
-              </div>
+            <div className="min-w-0">
+              <span className="font-semibold text-zinc-100 font-mono text-xs block">Phase 0 • DSA &amp; Foundations</span>
+              <p className="text-zinc-400 text-[11px] truncate">মেমরি লেআউট, অ্যালগরিদম ও লাইভ ভিজ্যুয়ালাইজার</p>
             </div>
+          </div>
 
-            <div className="flex items-start gap-3 p-2.5 rounded-xl bg-[#121524]/60 border border-[#1a1f33]">
-              <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mt-0.5 shrink-0">
-                <Bot className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="font-semibold text-zinc-100 font-mono text-xs">৩. Forward AI Engineering</span>
-                <p className="text-zinc-400 text-[11px] mt-0.5 leading-relaxed">
-                  LLM স্ট্রিমিং, RAG পাইপলাইন, মডেল কনটেক্সট প্রোটোকল (MCP) এবং অটোনোমাস মাল্টি-এজেন্ট সিস্টেমস।
-                </p>
-              </div>
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#121524]/70 border border-[#1a1f33]">
+            <div className="p-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 shrink-0">
+              <Database className="w-4 h-4" />
+            </div>
+            <div className="min-w-0">
+              <span className="font-semibold text-zinc-100 font-mono text-xs block">Phase 1 • Database Systems</span>
+              <p className="text-zinc-400 text-[11px] truncate">SQL কুয়েরি অপটিমাইজার ও pgvector হাই-ডাইমেনশনাল সার্চ</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#121524]/70 border border-[#1a1f33]">
+            <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0">
+              <Bot className="w-4 h-4" />
+            </div>
+            <div className="min-w-0">
+              <span className="font-semibold text-zinc-100 font-mono text-xs block">Phase 2 • Forward AI Core</span>
+              <p className="text-zinc-400 text-[11px] truncate">LLM স্ট্রিমিং, RAG ও মাল্টি-এজেন্ট সিস্টেমস</p>
             </div>
           </div>
         </div>
@@ -147,7 +131,7 @@ export default function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
 
           <button
             onClick={handleDismiss}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold font-mono text-xs md:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold font-mono text-xs md:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
           >
             <span>এক্সপ্লোর শুরু করুন</span>
             <ArrowRight className="w-4 h-4" />
