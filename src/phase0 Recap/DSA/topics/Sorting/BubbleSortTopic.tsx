@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import {
   ArrowRight,
   ArrowLeft,
@@ -12,8 +13,21 @@ import {
   generateBubbleTrace
 } from './utils/bubbleSortUtils';
 import BubbleSortCanvas from './components/BubbleSortCanvas';
-import BubbleSortCodeView from './components/BubbleSortCodeView';
-import BubbleSortCases from './components/BubbleSortCases';
+
+const BubbleSortCodeView = dynamic(() => import('./components/BubbleSortCodeView'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading code view...
+    </div>
+  )
+});
+const BubbleSortCases = dynamic(() => import('./components/BubbleSortCases'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading case studies...
+    </div>
+  )
+});
 
 export default function BubbleSortTopic({ onNavigate }: { onNavigate?: (id: string) => void }) {
   const [initialArray, setInitialArray] = useState<number[]>(DEFAULT_ARRAY);

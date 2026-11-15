@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import {
   Play,
   Pause,
@@ -19,10 +20,29 @@ import {
   QUICK_SORT_TREE_STEPS
 } from './utils/quickSortUtils';
 import QuickSortTreeCanvas from './components/QuickSortTreeCanvas';
-import QuickSortBarCanvas from './components/QuickSortBarCanvas';
 import QuickSortInspector from './components/QuickSortInspector';
-import QuickSortCodeView from './components/QuickSortCodeView';
-import QuickSortCases from './components/QuickSortCases';
+
+const QuickSortBarCanvas = dynamic(() => import('./components/QuickSortBarCanvas'), {
+  loading: () => (
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading bar canvas...
+    </div>
+  )
+});
+const QuickSortCodeView = dynamic(() => import('./components/QuickSortCodeView'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading code view...
+    </div>
+  )
+});
+const QuickSortCases = dynamic(() => import('./components/QuickSortCases'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading case studies...
+    </div>
+  )
+});
 
 export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: string) => void }) {
   const [activeTab, setActiveTab] = useState<'visualizer' | 'code' | 'cases'>('visualizer');

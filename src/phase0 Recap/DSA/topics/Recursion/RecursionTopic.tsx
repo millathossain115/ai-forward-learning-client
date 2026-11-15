@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import {
   Play,
@@ -24,9 +25,22 @@ import {
   generateFactNodes
 } from './utils/recursionGenerators';
 import BaseCaseVisualizer from './components/BaseCaseVisualizer';
-import BacktrackingVisualizer from './components/BacktrackingVisualizer';
-import FibonacciVisualizer from './components/FibonacciVisualizer';
 import RecursionInspector from './components/RecursionInspector';
+
+const BacktrackingVisualizer = dynamic(() => import('./components/BacktrackingVisualizer'), {
+  loading: () => (
+    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading backtracking visualizer...
+    </div>
+  )
+});
+const FibonacciVisualizer = dynamic(() => import('./components/FibonacciVisualizer'), {
+  loading: () => (
+    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading tree visualizer...
+    </div>
+  )
+});
 
 export default function RecursionTopic() {
   const [activeMode, setActiveMode] = useState<RecursionMode>('base_case');

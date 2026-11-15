@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import GraphVisualizer from './GraphVisualizer';
+import dynamic from 'next/dynamic';
 import {
   GitCommit,
   RotateCcw,
@@ -16,6 +16,14 @@ import {
   AlertTriangle,
   Play
 } from 'lucide-react';
+
+const GraphVisualizer = dynamic(() => import('./GraphVisualizer'), {
+  loading: () => (
+    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse border border-[#1e2233] rounded-3xl bg-[#090b14]">
+      Loading graph pipeline simulator...
+    </div>
+  )
+});
 
 const GRAPH_COMPLEXITIES = [
   {

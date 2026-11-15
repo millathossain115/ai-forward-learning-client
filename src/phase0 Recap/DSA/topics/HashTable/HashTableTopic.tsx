@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Sparkles } from 'lucide-react';
 import {
   TableMode,
@@ -15,12 +16,31 @@ import {
 import { computeHash } from './utils/hashUtils';
 import HashPipelineBanner from './components/HashPipelineBanner';
 import ChainingVisualizer from './components/ChainingVisualizer';
-import LinearProbingVisualizer from './components/LinearProbingVisualizer';
-import HashSetVisualizer from './components/HashSetVisualizer';
 import HashTableOverview from './components/HashTableOverview';
 import HashTableModeCard from './components/HashTableModeCard';
 import HashTableControls from './components/HashTableControls';
-import HashTableRealWorld from './components/HashTableRealWorld';
+
+const LinearProbingVisualizer = dynamic(() => import('./components/LinearProbingVisualizer'), {
+  loading: () => (
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading linear probing...
+    </div>
+  )
+});
+const HashSetVisualizer = dynamic(() => import('./components/HashSetVisualizer'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading hash set...
+    </div>
+  )
+});
+const HashTableRealWorld = dynamic(() => import('./components/HashTableRealWorld'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading scenarios...
+    </div>
+  )
+});
 
 export default function HashTableTopic() {
   const [tableMode, setTableMode] = useState<TableMode>('chaining');

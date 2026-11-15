@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import {
   Boxes,
@@ -22,7 +23,14 @@ import {
 } from './types';
 import HeapTreeCanvas from './components/HeapTreeCanvas';
 import HeapArrayView from './components/HeapArrayView';
-import HeapApplications from './components/HeapApplications';
+
+const HeapApplications = dynamic(() => import('./components/HeapApplications'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading heap applications...
+    </div>
+  )
+});
 
 export default function HeapTopic() {
   const [isMaxHeap, setIsMaxHeap] = useState<boolean>(true);

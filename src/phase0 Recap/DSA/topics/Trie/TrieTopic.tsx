@@ -1,13 +1,21 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import { Search } from 'lucide-react';
 import { DICTIONARY } from './types';
 import AutocompleteCard from './components/AutocompleteCard';
 import SpellCheckerCard from './components/SpellCheckerCard';
 import WordSearchCard from './components/WordSearchCard';
-import TrieApplications from './components/TrieApplications';
+
+const TrieApplications = dynamic(() => import('./components/TrieApplications'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading trie applications...
+    </div>
+  )
+});
 
 export default function TrieTopic() {
   // 1. Autocomplete Card State

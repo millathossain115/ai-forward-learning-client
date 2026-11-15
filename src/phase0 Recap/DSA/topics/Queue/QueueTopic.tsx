@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import {
   ListFilter,
@@ -20,10 +21,23 @@ import {
   INITIAL_JOBS,
   INITIAL_CIRCULAR_SLOTS
 } from './types';
-import CircularQueueVisualizer from './components/CircularQueueVisualizer';
 import LinearQueueVisualizer from './components/LinearQueueVisualizer';
 import QueueComparison from './components/QueueComparison';
-import QueueApplications from './components/QueueApplications';
+
+const CircularQueueVisualizer = dynamic(() => import('./components/CircularQueueVisualizer'), {
+  loading: () => (
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading circular queue...
+    </div>
+  )
+});
+const QueueApplications = dynamic(() => import('./components/QueueApplications'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading applications...
+    </div>
+  )
+});
 
 export default function QueueTopic() {
   // Default Queue is strictly Linear Queue as requested

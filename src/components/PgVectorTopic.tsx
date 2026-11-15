@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import { Database, Cpu, Code2 } from 'lucide-react';
 import {
@@ -16,7 +17,14 @@ import {
 import PgVectorControls from './pgvector/components/PgVectorControls';
 import VectorCanvas from './pgvector/components/VectorCanvas';
 import VectorInspector from './pgvector/components/VectorInspector';
-import PgVectorBenchmarkTable from './pgvector/components/PgVectorBenchmarkTable';
+
+const PgVectorBenchmarkTable = dynamic(() => import('./pgvector/components/PgVectorBenchmarkTable'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading benchmark table...
+    </div>
+  )
+});
 
 export default function PgVectorTopic() {
   const [metric, setMetric] = useState<MetricType>('cosine');

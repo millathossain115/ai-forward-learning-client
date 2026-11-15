@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import {
   ArrowRight,
   ArrowLeft,
@@ -12,8 +13,21 @@ import {
   generateInsertionTrace
 } from './utils/insertionSortUtils';
 import InsertionSortCanvas from './components/InsertionSortCanvas';
-import InsertionSortCodeView from './components/InsertionSortCodeView';
-import InsertionSortCases from './components/InsertionSortCases';
+
+const InsertionSortCodeView = dynamic(() => import('./components/InsertionSortCodeView'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading code view...
+    </div>
+  )
+});
+const InsertionSortCases = dynamic(() => import('./components/InsertionSortCases'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading case studies...
+    </div>
+  )
+});
 
 export default function InsertionSortTopic({ onNavigate }: { onNavigate?: (id: string) => void }) {
   const [initialArray, setInitialArray] = useState<number[]>(INSERTION_DEFAULT_ARRAY);

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import {
   Play,
   Pause,
@@ -19,8 +20,21 @@ import {
 } from './utils/mergeSortUtils';
 import MergeSortTreeCanvas from './components/MergeSortTreeCanvas';
 import MergeSortInspector from './components/MergeSortInspector';
-import MergeSortCodeView from './components/MergeSortCodeView';
-import MergeSortCases from './components/MergeSortCases';
+
+const MergeSortCodeView = dynamic(() => import('./components/MergeSortCodeView'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading code view...
+    </div>
+  )
+});
+const MergeSortCases = dynamic(() => import('./components/MergeSortCases'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading case studies...
+    </div>
+  )
+});
 
 export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: string) => void }) {
   const [arrayData, setArrayData] = useState<number[]>(DEFAULT_8_ARRAY);

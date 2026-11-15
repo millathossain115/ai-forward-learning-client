@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import {
   ArrowRight,
   ArrowLeft,
@@ -12,8 +13,21 @@ import {
   generateSelectionTrace
 } from './utils/selectionSortUtils';
 import SelectionSortCanvas from './components/SelectionSortCanvas';
-import SelectionSortCodeView from './components/SelectionSortCodeView';
-import SelectionSortCases from './components/SelectionSortCases';
+
+const SelectionSortCodeView = dynamic(() => import('./components/SelectionSortCodeView'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading code view...
+    </div>
+  )
+});
+const SelectionSortCases = dynamic(() => import('./components/SelectionSortCases'), {
+  loading: () => (
+    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading case studies...
+    </div>
+  )
+});
 
 export default function SelectionSortTopic({ onNavigate }: { onNavigate?: (id: string) => void }) {
   const [initialArray, setInitialArray] = useState<number[]>(SELECTION_DEFAULT_ARRAY);

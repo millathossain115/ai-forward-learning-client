@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import { Sparkles, RefreshCw } from 'lucide-react';
 import { TreeStep, AVLNode } from './types';
 import {
@@ -11,11 +12,24 @@ import {
   flattenTree
 } from './utils/treeAlgorithms';
 import BalancedTreeCanvas from './components/BalancedTreeCanvas';
-import RotationGuide from './components/RotationGuide';
 import BalancedTreeHeader from './components/BalancedTreeHeader';
 import BalancedTreeModelCard from './components/BalancedTreeModelCard';
 import BalancedTreeControls from './components/BalancedTreeControls';
-import BalancedTreeRealWorld from './components/BalancedTreeRealWorld';
+
+const RotationGuide = dynamic(() => import('./components/RotationGuide'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading rotation playbook...
+    </div>
+  )
+});
+const BalancedTreeRealWorld = dynamic(() => import('./components/BalancedTreeRealWorld'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading scenarios...
+    </div>
+  )
+});
 
 export default function BalancedTreeTopic() {
   const [activeModel, setActiveModel] = useState<'avl' | 'redblack'>('avl');

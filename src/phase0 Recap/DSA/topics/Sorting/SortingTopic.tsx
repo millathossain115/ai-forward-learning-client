@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import {
   Play,
@@ -20,12 +21,35 @@ import {
   MERGE_TRACE,
   QUICK_TRACE
 } from './utils/sortingOverviewTraces';
-import BubbleVisualizer from './components/BubbleVisualizer';
-import SelectionVisualizer from './components/SelectionVisualizer';
-import InsertionVisualizer from './components/InsertionVisualizer';
-import MergeTreeVisualizer from './components/MergeTreeVisualizer';
-import QuickZoneVisualizer from './components/QuickZoneVisualizer';
-import ComplexityGrowthTable from './components/ComplexityGrowthTable';
+
+const TabFallback = () => (
+  <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    Loading visualizer...
+  </div>
+);
+
+const BubbleVisualizer = dynamic(() => import('./components/BubbleVisualizer'), {
+  loading: () => <TabFallback />
+});
+const SelectionVisualizer = dynamic(() => import('./components/SelectionVisualizer'), {
+  loading: () => <TabFallback />
+});
+const InsertionVisualizer = dynamic(() => import('./components/InsertionVisualizer'), {
+  loading: () => <TabFallback />
+});
+const MergeTreeVisualizer = dynamic(() => import('./components/MergeTreeVisualizer'), {
+  loading: () => <TabFallback />
+});
+const QuickZoneVisualizer = dynamic(() => import('./components/QuickZoneVisualizer'), {
+  loading: () => <TabFallback />
+});
+const ComplexityGrowthTable = dynamic(() => import('./components/ComplexityGrowthTable'), {
+  loading: () => (
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading table...
+    </div>
+  )
+});
 
 export default function SortingTopic() {
   const [selectedAlgo, setSelectedAlgo] = useState<AlgoKey>('bubble');

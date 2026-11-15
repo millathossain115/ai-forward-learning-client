@@ -1,12 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import { GitCommit, Sparkles } from 'lucide-react';
 import { LLNode, ListType, INITIAL_NODES, randomAddr } from './types';
-import CircularLinkedListCanvas from './components/CircularLinkedListCanvas';
 import LinearLinkedListCanvas from './components/LinearLinkedListCanvas';
 import LinkedListControls from './components/LinkedListControls';
+
+const CircularLinkedListCanvas = dynamic(() => import('./components/CircularLinkedListCanvas'), {
+  loading: () => (
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+      Loading circular list canvas...
+    </div>
+  )
+});
 
 export default function LinkedListTopic() {
   const [nodes, setNodes] = useState<LLNode[]>(INITIAL_NODES);
