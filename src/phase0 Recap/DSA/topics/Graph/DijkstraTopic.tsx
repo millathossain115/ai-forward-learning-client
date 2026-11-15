@@ -9,82 +9,13 @@ import {
   SkipBack,
   RotateCcw,
   Clock,
-  Compass,
   Route,
-  Network,
-  CheckCircle2,
-  Table,
-  Zap,
-  ArrowRight,
-  Sparkles,
   ShieldAlert
 } from 'lucide-react';
-
-interface WeightedNode {
-  id: string;
-  x: number;
-  y: number;
-}
-
-interface WeightedEdge {
-  u: string;
-  v: string;
-  w: number;
-}
-
-interface HeapItem {
-  node: string;
-  dist: number;
-}
-
-interface DijkstraStep {
-  stepIndex: number;
-  action: 'INIT' | 'PICK_MIN' | 'RELAX_EDGE' | 'NO_RELAX' | 'COMPLETE';
-  currentNode: string;
-  targetNeighbor?: string;
-  edgeWeight?: number;
-  distances: Record<string, number>;
-  visited: string[];
-  priorityQueue: HeapItem[];
-  previous: Record<string, string | null>;
-  activeEdge?: string;
-  relaxedEdges: string[];
-  finalPath: string[];
-  title: string;
-  actionTag: string;
-  desc: string;
-}
-
-// 6-Node Weighted Graph
-const GRAPH_NODES: WeightedNode[] = [
-  { id: 'A', x: 100, y: 160 },
-  { id: 'B', x: 250, y: 70 },
-  { id: 'C', x: 250, y: 250 },
-  { id: 'D', x: 420, y: 70 },
-  { id: 'E', x: 420, y: 250 },
-  { id: 'F', x: 570, y: 160 }
-];
-
-const GRAPH_EDGES: WeightedEdge[] = [
-  { u: 'A', v: 'B', w: 4 },
-  { u: 'A', v: 'C', w: 2 },
-  { u: 'C', v: 'B', w: 1 },
-  { u: 'B', v: 'D', w: 5 },
-  { u: 'C', v: 'D', w: 8 },
-  { u: 'C', v: 'E', w: 10 },
-  { u: 'D', v: 'E', w: 2 },
-  { u: 'D', v: 'F', w: 6 },
-  { u: 'E', v: 'F', w: 3 }
-];
-
-const ADJACENCY: Record<string, { node: string; w: number }[]> = {
-  A: [{ node: 'C', w: 2 }, { node: 'B', w: 4 }],
-  B: [{ node: 'D', w: 5 }],
-  C: [{ node: 'B', w: 1 }, { node: 'D', w: 8 }, { node: 'E', w: 10 }],
-  D: [{ node: 'E', w: 2 }, { node: 'F', w: 6 }],
-  E: [{ node: 'F', w: 3 }],
-  F: []
-};
+import { DijkstraStep } from './dijkstraTypes';
+import { generateDijkstraSteps } from './utils/dijkstraAlgorithm';
+import DijkstraCanvas from './components/DijkstraCanvas';
+import DijkstraQueueDistancePanel from './components/DijkstraQueueDistancePanel';
 
 export default function DijkstraTopic() {
   const [currentStepIdx, setCurrentStepIdx] = useState<number>(0);
@@ -93,146 +24,7 @@ export default function DijkstraTopic() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Precompute Dijkstra simulation from A to F
-  const steps = useMemo<DijkstraStep[]>(() => {
-    const list: DijkstraStep[] = [];
-    const dist: Record<string, number> = {
-      A: 0,
-      B: Infinity,
-      C: Infinity,
-      D: Infinity,
-      E: Infinity,
-      F: Infinity
-    };
-    const prev: Record<string, string | null> = {
-      A: null,
-      B: null,
-      C: null,
-      D: null,
-      E: null,
-      F: null
-    };
-    const visitedSet = new Set<string>();
-    let pq: HeapItem[] = [{ node: 'A', dist: 0 }];
-    const relaxedEdgeSet = new Set<string>();
-
-    list.push({
-      stepIndex: 0,
-      action: 'INIT',
-      currentNode: 'A',
-      distances: { ...dist },
-      visited: [],
-      priorityQueue: [...pq],
-      previous: { ...prev },
-      relaxedEdges: [],
-      finalPath: [],
-      title: 'প্রারম্ভিক অবস্থা: dist[A] = 0, বাকি সব ∞',
-      actionTag: '1. INITIALIZE',
-      desc: 'সোর্স নোড A-এর দূরত্ব 0 এবং অন্য সব নোডের দূরত্ব অসীম (∞) ধরা হলো। Min-Heap প্রায়োরিটি কিউতে (A, 0) যোগ হলো।'
-    });
-
-    while (pq.length > 0) {
-      // Pick node with minimum tentative distance
-      pq.sort((a, b) => a.dist - b.dist);
-      const { node: curr, dist: currentD } = pq.shift()!;
-
-      if (visitedSet.has(curr)) continue;
-      visitedSet.add(curr);
-
-      list.push({
-        stepIndex: list.length,
-        action: 'PICK_MIN',
-        currentNode: curr,
-        distances: { ...dist },
-        visited: Array.from(visitedSet),
-        priorityQueue: [...pq],
-        previous: { ...prev },
-        relaxedEdges: Array.from(relaxedEdgeSet),
-        finalPath: [],
-        title: `Min-Heap থেকে সর্বনিম্ন নোড চয়ন ➔ ${curr} (দূরত্ব: ${currentD})`,
-        actionTag: `2. PICK MIN (${curr})`,
-        desc: `অবিজিটেড নোডগুলোর মধ্যে ${curr}-এর দূরত্ব সর্বনিম্ন (${currentD})। এটি ফাইনাল হলো এবং এর সংলগ্ন এজ রিল্যাক্স করা হবে।`
-      });
-
-      if (curr === 'F') break; // Reached target
-
-      for (const edge of ADJACENCY[curr] || []) {
-        const neighbor = edge.node;
-        const weight = edge.w;
-        const edgeKey = `${curr}-${neighbor}`;
-        const newDist = currentD + weight;
-
-        if (newDist < dist[neighbor]) {
-          const oldDist = dist[neighbor];
-          dist[neighbor] = newDist;
-          prev[neighbor] = curr;
-          pq.push({ node: neighbor, dist: newDist });
-          relaxedEdgeSet.add(edgeKey);
-
-          list.push({
-            stepIndex: list.length,
-            action: 'RELAX_EDGE',
-            currentNode: curr,
-            targetNeighbor: neighbor,
-            edgeWeight: weight,
-            distances: { ...dist },
-            visited: Array.from(visitedSet),
-            priorityQueue: [...pq],
-            previous: { ...prev },
-            activeEdge: edgeKey,
-            relaxedEdges: Array.from(relaxedEdgeSet),
-            finalPath: [],
-            title: `এজ রিল্যাক্সেশন ⚡: (${curr} ➔ ${neighbor})`,
-            actionTag: '3. RELAX EDGE',
-            desc: `ছোট পথ পাওয়া গেছে! ${currentD} + ${weight} = ${newDist} < ${oldDist === Infinity ? '∞' : oldDist}। dist[${neighbor}] আপডেট হলো ${newDist}-এ এবং প্যারেন্ট হলো ${curr}।`
-          });
-        } else {
-          list.push({
-            stepIndex: list.length,
-            action: 'NO_RELAX',
-            currentNode: curr,
-            targetNeighbor: neighbor,
-            edgeWeight: weight,
-            distances: { ...dist },
-            visited: Array.from(visitedSet),
-            priorityQueue: [...pq],
-            previous: { ...prev },
-            activeEdge: edgeKey,
-            relaxedEdges: Array.from(relaxedEdgeSet),
-            finalPath: [],
-            title: `রিল্যাক্সেশনের প্রয়োজন নেই: (${curr} ➔ ${neighbor})`,
-            actionTag: 'KEEP CURRENT',
-            desc: `বিকল্প দূরত্ব ${currentD} + ${weight} = ${newDist} বর্তমান দূরত্বের (${dist[neighbor]}) চেয়ে ছোট নয়। কোনো পরিবর্তন নেই।`
-          });
-        }
-      }
-    }
-
-    // Reconstruct shortest path from A to F
-    const finalRoute: string[] = [];
-    let p: string | null = 'F';
-    while (p) {
-      finalRoute.push(p);
-      p = prev[p];
-    }
-    finalRoute.reverse();
-
-    list.push({
-      stepIndex: list.length,
-      action: 'COMPLETE',
-      currentNode: 'F',
-      distances: { ...dist },
-      visited: Array.from(visitedSet),
-      priorityQueue: [],
-      previous: { ...prev },
-      relaxedEdges: Array.from(relaxedEdgeSet),
-      finalPath: finalRoute,
-      title: `ডাইকস্ট্রা সম্পূর্ণ! সর্বনিম্ন দূরত্ব = ${dist['F']} 🎉`,
-      actionTag: '✅ FINAL PATH FOUND',
-      desc: `সোর্স A থেকে গন্তব্য F পর্যন্ত সর্বোত্তম পথ: ${finalRoute.join(' ➔ ')}। মোট ওজন (Cost) = ${dist['F']}।`
-    });
-
-    return list;
-  }, []);
+  const steps = useMemo<DijkstraStep[]>(() => generateDijkstraSteps('A', 'F'), []);
 
   const totalSteps = steps.length;
   const isAtEnd = currentStepIdx >= totalSteps - 1;
@@ -243,7 +35,7 @@ export default function DijkstraTopic() {
     if (isPlaying) {
       const intervalMs = speedMode === 'slow' ? 2400 : 1300;
       timerRef.current = setInterval(() => {
-        setCurrentStepIdx(prev => {
+        setCurrentStepIdx((prev) => {
           if (prev < totalSteps - 1) return prev + 1;
           setIsPlaying(false);
           return prev;
@@ -329,7 +121,7 @@ export default function DijkstraTopic() {
           <button
             onClick={() => {
               setIsPlaying(false);
-              setCurrentStepIdx(prev => Math.max(0, prev - 1));
+              setCurrentStepIdx((prev) => Math.max(0, prev - 1));
             }}
             disabled={isPlaying || currentStepIdx === 0}
             className="p-1.5 rounded-lg bg-[#141726] hover:bg-[#1d2238] disabled:opacity-30 text-zinc-300 border border-[#232942] transition-colors cursor-pointer"
@@ -376,7 +168,7 @@ export default function DijkstraTopic() {
           <button
             onClick={() => {
               setIsPlaying(false);
-              setCurrentStepIdx(prev => Math.min(totalSteps - 1, prev + 1));
+              setCurrentStepIdx((prev) => Math.min(totalSteps - 1, prev + 1));
             }}
             disabled={isPlaying || isAtEnd}
             className="p-1.5 rounded-lg bg-[#141726] hover:bg-[#1d2238] disabled:opacity-30 text-zinc-300 border border-[#232942] transition-colors cursor-pointer"
@@ -429,277 +221,8 @@ export default function DijkstraTopic() {
 
       {/* 4. MAIN SIMULATION ARENA */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-        {/* Left: SVG Canvas (65%) */}
-        <div className="lg:col-span-8 bg-[#090b14] border border-[#1e2338] rounded-3xl p-5 flex flex-col justify-between min-h-[460px] shadow-2xl relative space-y-4">
-          <div className="w-full flex items-center justify-center overflow-x-auto py-2 bg-[#060810] rounded-2xl border border-[#1b2238]">
-            <svg viewBox="0 0 680 320" className="w-full h-auto max-h-[360px] select-none">
-              <defs>
-                <marker
-                  id="dijk-arrow-gray"
-                  markerWidth="8"
-                  markerHeight="8"
-                  refX="18"
-                  refY="3.5"
-                  orient="auto"
-                >
-                  <polygon points="0 0, 7 3.5, 0 7" fill="#334155" />
-                </marker>
-                <marker
-                  id="dijk-arrow-active"
-                  markerWidth="8"
-                  markerHeight="8"
-                  refX="18"
-                  refY="3.5"
-                  orient="auto"
-                >
-                  <polygon points="0 0, 7 3.5, 0 7" fill="#f59e0b" />
-                </marker>
-                <marker
-                  id="dijk-arrow-path"
-                  markerWidth="8"
-                  markerHeight="8"
-                  refX="18"
-                  refY="3.5"
-                  orient="auto"
-                >
-                  <polygon points="0 0, 7 3.5, 0 7" fill="#10b981" />
-                </marker>
-              </defs>
-
-              {/* Edges with weight pills */}
-              {GRAPH_EDGES.map(edge => {
-                const uNode = GRAPH_NODES.find(n => n.id === edge.u)!;
-                const vNode = GRAPH_NODES.find(n => n.id === edge.v)!;
-                const edgeKey = `${edge.u}-${edge.v}`;
-                const isActive = currentStep.activeEdge === edgeKey;
-
-                // Check if this edge is in the final shortest path
-                const isInFinalPath =
-                  currentStep.finalPath.length > 1 &&
-                  currentStep.finalPath.some((node, i) => {
-                    return (
-                      i < currentStep.finalPath.length - 1 &&
-                      currentStep.finalPath[i] === edge.u &&
-                      currentStep.finalPath[i + 1] === edge.v
-                    );
-                  });
-
-                const isRelaxed = currentStep.relaxedEdges.includes(edgeKey);
-                const midX = (uNode.x + vNode.x) / 2;
-                const midY = (uNode.y + vNode.y) / 2;
-
-                return (
-                  <g key={edgeKey}>
-                    <line
-                      x1={uNode.x}
-                      y1={uNode.y}
-                      x2={vNode.x}
-                      y2={vNode.y}
-                      stroke={
-                        isInFinalPath
-                          ? '#10b981'
-                          : isActive
-                          ? '#f59e0b'
-                          : isRelaxed
-                          ? '#059669'
-                          : '#1e293b'
-                      }
-                      strokeWidth={isInFinalPath ? 4 : isActive ? 3.5 : isRelaxed ? 2.5 : 1.5}
-                      markerEnd={
-                        isInFinalPath
-                          ? 'url(#dijk-arrow-path)'
-                          : isActive
-                          ? 'url(#dijk-arrow-active)'
-                          : 'url(#dijk-arrow-gray)'
-                      }
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Edge Weight Pill */}
-                    <g transform={`translate(${midX}, ${midY})`}>
-                      <rect
-                        x={-11}
-                        y={-9}
-                        width={22}
-                        height={18}
-                        rx={4}
-                        fill={isActive ? '#78350f' : isInFinalPath ? '#064e3b' : '#0a0d18'}
-                        stroke={isActive ? '#f59e0b' : isInFinalPath ? '#10b981' : '#1e293b'}
-                        strokeWidth={1}
-                      />
-                      <text
-                        textAnchor="middle"
-                        dy="3.5"
-                        fill={isActive ? '#fef08a' : isInFinalPath ? '#a7f3d0' : '#94a3b8'}
-                        fontSize="10"
-                        fontWeight="bold"
-                        fontFamily="monospace"
-                      >
-                        {edge.w}
-                      </text>
-                    </g>
-                  </g>
-                );
-              })}
-
-              {/* Nodes */}
-              {GRAPH_NODES.map(node => {
-                const isCurrent = currentStep.currentNode === node.id;
-                const isVisited = currentStep.visited.includes(node.id);
-                const isInFinalPath = currentStep.finalPath.includes(node.id);
-                const dist = currentStep.distances[node.id];
-
-                return (
-                  <g key={node.id} transform={`translate(${node.x}, ${node.y})`}>
-                    <circle
-                      r={22}
-                      fill={
-                        isInFinalPath
-                          ? '#064e3b'
-                          : isCurrent
-                          ? '#b45309'
-                          : isVisited
-                          ? '#1e293b'
-                          : '#0a0e1c'
-                      }
-                      stroke={
-                        isInFinalPath
-                          ? '#10b981'
-                          : isCurrent
-                          ? '#fbbf24'
-                          : isVisited
-                          ? '#475569'
-                          : '#1e293b'
-                      }
-                      strokeWidth={isInFinalPath || isCurrent ? 3 : 2}
-                      className="transition-all duration-300"
-                    />
-                    <text
-                      textAnchor="middle"
-                      dy="5"
-                      fill={isCurrent || isInFinalPath ? '#ffffff' : '#cbd5e1'}
-                      fontWeight="bold"
-                      fontSize="14"
-                      fontFamily="monospace"
-                      className="select-none pointer-events-none"
-                    >
-                      {node.id}
-                    </text>
-
-                    {/* Distance Badge Below Node */}
-                    <g transform="translate(0, 30)">
-                      <rect
-                        x={-20}
-                        y={-8}
-                        width={40}
-                        height={16}
-                        rx={4}
-                        fill="#060913"
-                        stroke={dist !== Infinity ? '#10b981' : '#334155'}
-                        strokeWidth={1}
-                      />
-                      <text
-                        textAnchor="middle"
-                        dy="4"
-                        fill={dist !== Infinity ? '#34d399' : '#64748b'}
-                        fontSize="9.5"
-                        fontWeight="bold"
-                        fontFamily="monospace"
-                      >
-                        {dist === Infinity ? '∞' : dist}
-                      </text>
-                    </g>
-                  </g>
-                );
-              })}
-            </svg>
-          </div>
-
-          {/* Explanation Step Card */}
-          <div className="p-4 rounded-2xl bg-[#0b0e1a] border border-[#1b2238] shadow-lg space-y-1">
-            <div className="flex items-center gap-2 text-xs font-mono">
-              <span className="text-zinc-400">ধাপ {currentStepIdx + 1}:</span>
-              <span className="text-white font-bold">{currentStep.title}</span>
-            </div>
-            <p className="text-xs md:text-sm text-zinc-300 font-sans leading-relaxed">
-              {currentStep.desc}
-            </p>
-          </div>
-        </div>
-
-        {/* Right: Min-Heap Queue & Distance Array (35%) */}
-        <div className="lg:col-span-4 flex flex-col gap-4">
-          {/* Card 1: Min-Heap Priority Queue */}
-          <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-3 shadow-xl">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
-                <Compass className="w-3.5 h-3.5 text-amber-400" />
-                <span>Min-Heap Priority Queue</span>
-              </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 border border-amber-800 text-amber-300">
-                Min First
-              </span>
-            </div>
-
-            <div className="flex flex-wrap gap-2 p-2.5 rounded-xl bg-[#07080f] border border-[#181d30] min-h-[60px] items-center">
-              {currentStep.priorityQueue.length === 0 ? (
-                <span className="text-[11px] font-mono text-zinc-500 m-auto">
-                  Min-Heap খালি
-                </span>
-              ) : (
-                currentStep.priorityQueue.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className={`px-2.5 py-1 rounded-lg font-mono text-xs flex items-center gap-1.5 border ${
-                      idx === 0
-                        ? 'bg-amber-950 border-amber-500 text-amber-200 font-bold ring-1 ring-amber-400'
-                        : 'bg-[#101426] border-[#1f2845] text-zinc-400'
-                    }`}
-                  >
-                    <span>{item.node}</span>
-                    <span className="text-[10px] text-amber-400">({item.dist})</span>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* Card 2: Distance Table dist[] */}
-          <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 shadow-xl text-xs font-mono">
-            <span className="font-bold text-white flex items-center gap-1.5">
-              <Table className="w-3.5 h-3.5 text-emerald-400" />
-              <span>দূরত্ব টেবিল (Tentative Distance Table)</span>
-            </span>
-            <div className="grid grid-cols-3 gap-2">
-              {GRAPH_NODES.map(node => {
-                const dist = currentStep.distances[node.id];
-                const isVisited = currentStep.visited.includes(node.id);
-                const parent = currentStep.previous[node.id];
-
-                return (
-                  <div
-                    key={node.id}
-                    className={`p-2 rounded-xl border flex flex-col items-center justify-between ${
-                      isVisited
-                        ? 'bg-emerald-950/40 border-emerald-500/50 text-emerald-300'
-                        : dist !== Infinity
-                        ? 'bg-amber-950/30 border-amber-600/40 text-amber-200'
-                        : 'bg-[#07080f] border-[#181d30] text-zinc-600'
-                    }`}
-                  >
-                    <div className="text-[10px] text-zinc-400 font-bold">{node.id}</div>
-                    <div className="text-sm font-bold my-0.5">
-                      {dist === Infinity ? '∞' : dist}
-                    </div>
-                    <div className="text-[9px] text-zinc-500">
-                      via {parent || 'null'}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+        <DijkstraCanvas currentStep={currentStep} currentStepIdx={currentStepIdx} />
+        <DijkstraQueueDistancePanel currentStep={currentStep} />
       </div>
 
       {/* 5. Real Life Scenario */}
