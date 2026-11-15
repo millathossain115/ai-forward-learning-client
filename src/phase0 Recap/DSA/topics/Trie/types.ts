@@ -1,0 +1,15 @@
+export const DICTIONARY = [
+  'app',
+  'apple',
+  'apply',
+  'application',
+  'apt',
+  'api',
+  'cat',
+  'car',
+  'card',
+  'cart',
+  'code',
+  'data',
+  'database',
+];
