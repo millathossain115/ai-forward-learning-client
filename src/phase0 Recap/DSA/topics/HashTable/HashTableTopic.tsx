@@ -15,76 +15,26 @@ import {
   Hash,
   Link as LinkIcon,
   Key,
-  CheckCircle2,
-  Activity
+  CheckCircle2
 } from 'lucide-react';
-
-interface ChainItem {
-  id: string;
-  key: string;
-  value: string;
-  state?: 'idle' | 'hashing' | 'comparing' | 'found' | 'inserted' | 'collision';
-}
-
-interface LinearSlot {
-  key: string | null;
-  value: string | null;
-  state?: 'idle' | 'probed' | 'found' | 'inserted' | 'collision';
-}
-
-const BUCKET_COUNT = 7;
-
-// Pre-calculated deterministic hash:
-// token   -> bucket 0
-// admin   -> bucket 0 (Collision!)
-// roll:42 -> bucket 1
-// priya   -> bucket 3
-// rahul   -> bucket 4
-// sabbir  -> bucket 6
-// login   -> bucket 0
-const PRESET_ENTRIES = [
-  { key: 'sabbir', val: '01912-1122' },
-  { key: 'login', val: 'Active_2026' },
-  { key: 'tanvir', val: '01552-3344' },
-  { key: 'cache', val: 'HTML_Page' },
-  { key: 'token', val: 'Bearer_JWT' },
-  { key: 'admin', val: 'SuperUser' },
-  { key: 'rahul', val: '01711-9876' }
-];
-
-// Initial chaining state strictly aligned with hash function
-const INITIAL_CHAIN_BUCKETS: ChainItem[][] = [
-  [
-    { id: '1', key: 'token', value: 'Bearer_JWT', state: 'idle' },
-    { id: '2', key: 'admin', value: 'SuperUser', state: 'idle' } // real collision at bucket 0!
-  ],
-  [
-    { id: '3', key: 'roll:42', value: 'GPA_5.00', state: 'idle' }
-  ],
-  [],
-  [
-    { id: '4', key: 'priya', value: '01819-5432', state: 'idle' }
-  ],
-  [
-    { id: '5', key: 'rahul', value: '01711-9876', state: 'idle' }
-  ],
-  [],
-  []
-];
-
-// Initial linear probing state strictly aligned with hash function + probing
-const INITIAL_PROBING_SLOTS: LinearSlot[] = [
-  { key: 'token', value: 'Bearer_JWT', state: 'idle' },
-  { key: 'admin', value: 'SuperUser', state: 'idle' }, // probed from 0 to 1, but roll:42 placed after
-  { key: 'roll:42', value: 'GPA_5.00', state: 'idle' }, // probed from 1 to 2
-  { key: 'priya', value: '01819-5432', state: 'idle' },
-  { key: 'rahul', value: '01711-9876', state: 'idle' },
-  { key: null, value: null, state: 'idle' },
-  { key: null, value: null, state: 'idle' }
-];
+import {
+  TableMode,
+  ChainItem,
+  LinearSlot,
+  PipelineState,
+  BUCKET_COUNT,
+  PRESET_ENTRIES,
+  INITIAL_CHAIN_BUCKETS,
+  INITIAL_PROBING_SLOTS
+} from './types';
+import { computeHash } from './utils/hashUtils';
+import HashPipelineBanner from './components/HashPipelineBanner';
+import ChainingVisualizer from './components/ChainingVisualizer';
+import LinearProbingVisualizer from './components/LinearProbingVisualizer';
+import HashSetVisualizer from './components/HashSetVisualizer';
 
 export default function HashTableTopic() {
-  const [tableMode, setTableMode] = useState<'chaining' | 'probing' | 'set'>('chaining');
+  const [tableMode, setTableMode] = useState<TableMode>('chaining');
 
   const [chainBuckets, setChainBuckets] = useState<ChainItem[][]>(INITIAL_CHAIN_BUCKETS);
   const [probingSlots, setProbingSlots] = useState<LinearSlot[]>(INITIAL_PROBING_SLOTS);
@@ -95,29 +45,14 @@ export default function HashTableTopic() {
   const [inputVal, setInputVal] = useState('01912-1122');
   const [insertPresetIdx, setInsertPresetIdx] = useState(0);
 
-  // Dedicated Input for SEARCH (Pre-filled with valid existing key!)
+  // Dedicated Input for SEARCH
   const [searchKey, setSearchKey] = useState('token');
 
   const [message, setMessage] = useState('Hash Table প্রস্তুত। বাকেট [0]-এ token ও admin-এর রিয়েল কলিশন চেইন লক্ষ্য করুন।');
   const [isAnimating, setIsAnimating] = useState(false);
-  const [pipelineState, setPipelineState] = useState<{
-    key?: string;
-    rawHash?: number;
-    bucketIndex?: number;
-    step?: string;
-  }>({});
+  const [pipelineState, setPipelineState] = useState<PipelineState>({});
 
   const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-
-  // Compute ASCII sum hash
-  const computeHash = (key: string): { rawHash: number; bucketIndex: number } => {
-    let hash = 0;
-    for (let i = 0; i < key.length; i++) {
-      hash = (hash * 31 + key.charCodeAt(i)) >>> 0;
-    }
-    const bucketIndex = hash % BUCKET_COUNT;
-    return { rawHash: hash, bucketIndex };
-  };
 
   // Helper: Get list of currently stored keys for cycling search
   const getExistingKeys = (): string[] => {
@@ -151,8 +86,6 @@ export default function HashTableTopic() {
     setInsertPresetIdx(nextP);
     setInputKey(PRESET_ENTRIES[nextP].key);
     setInputVal(PRESET_ENTRIES[nextP].val);
-
-    // Also update searchKey to newly inserted key
     setSearchKey(key);
 
     // --- CASE A: CHAINING MODE ---
@@ -241,7 +174,7 @@ export default function HashTableTopic() {
     setIsAnimating(false);
   };
 
-  // STEP-BY-STEP SEARCH / GET WITH STEP-BY-STEP CHAIN TRAVERSAL
+  // STEP-BY-STEP SEARCH / GET
   const handleSearch = async () => {
     if (isAnimating || !searchKey.trim()) return;
     setIsAnimating(true);
@@ -262,14 +195,12 @@ export default function HashTableTopic() {
         setMessage(`❌ পাওয়া যায়নি! বাকেট [${bucketIndex}] সম্পূর্ণ খালি (NULL)।`);
         await delay(1400);
       } else {
-        // Step 2: Traverse chain step-by-step
         let matchFound = false;
         for (let i = 0; i < bucket.length; i++) {
           const item = bucket[i];
           setPipelineState({ key, rawHash, bucketIndex, step: `চেইন আইটেম [${i + 1}/${bucket.length}] চেক` });
 
           if (item.key === key) {
-            // Found!
             setChainBuckets(prev => prev.map((b, bI) =>
               bI === bucketIndex
                 ? b.map((it, itI) => itI === i ? { ...it, state: 'found' } : it)
@@ -280,7 +211,6 @@ export default function HashTableTopic() {
             await delay(1500);
             break;
           } else {
-            // Comparing & not matched, move to next node in chain
             setChainBuckets(prev => prev.map((b, bI) =>
               bI === bucketIndex
                 ? b.map((it, itI) => itI === i ? { ...it, state: 'comparing' } : it)
@@ -341,7 +271,7 @@ export default function HashTableTopic() {
       await delay(1400);
     }
 
-    // Automatically rotate searchKey to the NEXT existing key so the user can just click GET again!
+    // Rotate searchKey to the NEXT existing key
     const existing = getExistingKeys();
     const currIdx = existing.indexOf(key);
     const nextKey = existing[(currIdx + 1) % existing.length] || existing[0];
@@ -361,9 +291,6 @@ export default function HashTableTopic() {
     setSearchKey('token');
     setMessage('হ্যাশ টেবিল রিসেট করা হয়েছে। বাকেট [0]-এ token ও admin-এর রিয়েল কলিশন চেইন প্রস্তুত।');
   };
-
-  const totalChainItems = chainBuckets.reduce((acc, b) => acc + b.length, 0);
-  const loadFactor = (totalChainItems / BUCKET_COUNT).toFixed(2);
 
   return (
     <div className="flex flex-col gap-6 w-full">
@@ -427,7 +354,7 @@ export default function HashTableTopic() {
         </div>
       </div>
 
-      {/* 2. Compact & Reorganized Interactive Simulator */}
+      {/* 2. Interactive Simulator */}
       <div className="bg-[#0c0d15] border border-[#1e2233] p-5 rounded-2xl flex flex-col gap-4 shadow-xl">
         {/* Tier 1: Mode Selector Header Bar */}
         <div className="flex flex-wrap items-center justify-between gap-3 bg-[#11131f] p-2.5 rounded-xl border border-[#1d2030]">
@@ -485,7 +412,7 @@ export default function HashTableTopic() {
           </button>
         </div>
 
-        {/* Dynamic Mode Definition Card right below Mode Selector */}
+        {/* Dynamic Mode Definition Card */}
         <div className="bg-[#090a10] border border-[#1d2238] p-3 rounded-xl flex items-start gap-3 transition-all duration-300 shadow-sm">
           {tableMode === 'chaining' && (
             <div className="flex items-start gap-2.5 text-xs text-zinc-300 w-full animate-in fade-in duration-300">
@@ -530,9 +457,9 @@ export default function HashTableTopic() {
           )}
         </div>
 
-        {/* Tier 2: SEPARATE INSERT & SEARCH CONTROLS (Dedicated Input Fields!) */}
+        {/* Tier 2: SEPARATE INSERT & SEARCH CONTROLS */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 bg-[#11131f] p-3 rounded-xl border border-[#1d2030] items-center">
-          {/* Section A: INSERT CONTROLS (Left side) */}
+          {/* Section A: INSERT CONTROLS */}
           <div className="lg:col-span-7 flex flex-wrap items-center gap-2 border-b lg:border-b-0 lg:border-r border-[#1f2336] pb-2.5 lg:pb-0 lg:pr-3">
             <span className="text-[11px] font-mono text-pink-400 font-bold uppercase tracking-wider flex items-center gap-1 shrink-0">
               <PlusCircle className="w-3.5 h-3.5 text-pink-400" /> ইনসার্ট:
@@ -569,7 +496,7 @@ export default function HashTableTopic() {
             </button>
           </div>
 
-          {/* Section B: SEARCH CONTROLS (Right side with Auto-Advancing Existing Keys!) */}
+          {/* Section B: SEARCH CONTROLS */}
           <div className="lg:col-span-5 flex flex-wrap items-center gap-2">
             <span className="text-[11px] font-mono text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1 shrink-0">
               <Search className="w-3.5 h-3.5 text-rose-400" /> সার্চ:
@@ -596,184 +523,20 @@ export default function HashTableTopic() {
           </div>
         </div>
 
-        {/* Live Hash Pipeline Visual (Step Indicator) */}
-        <div className="flex items-center justify-between bg-[#10121d] px-3.5 py-2 rounded-xl border border-[#1e2235] text-xs font-mono">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-zinc-500">হ্যাশ পাইপলাইন:</span>
-            {pipelineState.key ? (
-              <div className="flex items-center gap-1.5 text-zinc-200">
-                <span className="px-2 py-0.5 rounded bg-pink-950/60 border border-pink-500/40 text-pink-300 font-bold">
-                  Key: &quot;{pipelineState.key}&quot;
-                </span>
-                <span>➔</span>
-                <span className="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-500/40 text-amber-300 font-bold">
-                  Hash: {pipelineState.rawHash}
-                </span>
-                <span>➔ % 7 ➔</span>
-                <span className="px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 font-bold">
-                  বাকেট [{pipelineState.bucketIndex}]
-                </span>
-              </div>
-            ) : (
-              <span className="text-zinc-400 italic">PUT বা GET বাটনে ক্লিক করে লাইভ হ্যাশ রেজাল্ট দেখুন</span>
-            )}
-          </div>
-          {pipelineState.step && (
-            <span className="px-2 py-0.5 rounded bg-pink-500/10 text-pink-400 border border-pink-500/20 text-[10px]">
-              {pipelineState.step}
-            </span>
-          )}
-        </div>
+        {/* Live Hash Pipeline Visual */}
+        <HashPipelineBanner pipelineState={pipelineState} />
 
-        {/* COMPACT BUCKET VISUALIZER (2-Column Balanced Grid - Fits Viewport With ZERO Scroll!) */}
+        {/* VISUALIZERS */}
         {tableMode === 'chaining' && (
-          <div className="bg-[#090a10] rounded-xl border border-[#1a1d2e] p-3.5 sm:p-4 flex flex-col gap-2.5">
-            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider flex items-center justify-between">
-              <span>Bucket Array (৭টি বাকেট • ২-কলাম ভিউ)</span>
-              <span className="text-pink-400">Index = hash(key) % 7</span>
-            </div>
-
-            {/* 2-Column Responsive Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {chainBuckets.map((chain, bIdx) => {
-                const isTargetBucket = pipelineState.bucketIndex === bIdx;
-                return (
-                  <div
-                    key={bIdx}
-                    className={`flex items-center gap-2 px-2.5 py-2 rounded-xl border transition-all duration-300 min-h-[46px] ${
-                      isTargetBucket
-                        ? 'bg-pink-950/40 border-pink-500 ring-2 ring-pink-500/30'
-                        : 'bg-[#121422] border-[#1e2236]'
-                    }`}
-                  >
-                    {/* Compact Bucket Cell */}
-                    <div className="w-12 h-7 rounded-lg bg-[#1a1d30] border border-[#282d4d] flex items-center justify-center font-mono font-bold text-xs text-pink-300 shrink-0">
-                      [{bIdx}]
-                    </div>
-
-                    <ArrowRight className="w-3 h-3 text-zinc-600 shrink-0" />
-
-                    {/* Compact Linked List Chained Nodes */}
-                    <div className="flex flex-wrap items-center gap-1.5 flex-1 overflow-x-auto py-0.5">
-                      {chain.length === 0 ? (
-                        <span className="text-[10px] font-mono text-zinc-600 italic">খালি (NULL)</span>
-                      ) : (
-                        chain.map((item, itemIdx) => {
-                          let itemBadge = 'bg-[#1c1f33] border-pink-500/40 text-zinc-200';
-                          if (item.state === 'inserted') {
-                            itemBadge = 'bg-cyan-500 border-cyan-300 text-slate-950 font-bold scale-105 shadow-md shadow-cyan-500/30 ring-2 ring-cyan-400';
-                          } else if (item.state === 'found') {
-                            itemBadge = 'bg-emerald-500 border-emerald-300 text-slate-950 font-bold scale-105 shadow-md shadow-emerald-500/30 ring-2 ring-emerald-400 animate-pulse';
-                          } else if (item.state === 'comparing') {
-                            itemBadge = 'bg-amber-500/30 border-amber-400 text-amber-300 ring-2 ring-amber-400/40 animate-pulse';
-                          }
-
-                          return (
-                            <React.Fragment key={item.id || itemIdx}>
-                              {itemIdx > 0 && <span className="text-pink-500 font-bold text-[10px]">➔</span>}
-                              <div
-                                className={`flex items-center gap-1 px-2 py-0.5 rounded-lg border text-[11px] font-mono transition-all duration-300 shrink-0 ${itemBadge}`}
-                              >
-                                <span className="font-semibold text-pink-300">{item.key}</span>
-                                <span className="opacity-50">:</span>
-                                <span className="text-emerald-300">{item.value}</span>
-                              </div>
-                            </React.Fragment>
-                          );
-                        })
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* 8th Slot in Grid: Summary & Load Factor Mini Card for Perfect Balance */}
-              <div className="flex items-center justify-between px-3 py-2 rounded-xl border border-pink-500/20 bg-pink-950/15 text-xs font-mono min-h-[46px]">
-                <div className="flex items-center gap-2">
-                  <Activity className="w-3.5 h-3.5 text-pink-400" />
-                  <span className="text-zinc-400 text-[11px]">লোড ফ্যাক্টর:</span>
-                  <span className="text-pink-300 font-bold">{totalChainItems}/7 ({loadFactor})</span>
-                </div>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-bold">
-                  O(1) Optimal
-                </span>
-              </div>
-            </div>
-          </div>
+          <ChainingVisualizer chainBuckets={chainBuckets} pipelineState={pipelineState} />
         )}
 
         {tableMode === 'probing' && (
-          /* 2. LINEAR PROBING VISUALIZER (Horizontal 7-slot array) */
-          <div className="bg-[#090a10] rounded-xl border border-[#1a1d2e] p-3.5 sm:p-4 flex flex-col gap-2.5">
-            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider flex items-center justify-between">
-              <span>Open Addressing: Linear Probing Array (কোনো লিংকড লিস্ট নেই)</span>
-              <span className="text-amber-400">Collision: (Index + 1) % 7</span>
-            </div>
-
-            <div className="grid grid-cols-7 gap-1.5 bg-[#111320] p-2 rounded-xl border border-[#1f2336]">
-              {probingSlots.map((slot, idx) => {
-                const isTarget = pipelineState.bucketIndex === idx;
-                const isOccupied = slot.key !== null;
-
-                let cardStyle = 'bg-black/30 border-zinc-800 text-zinc-600';
-                if (slot.state === 'inserted') {
-                  cardStyle = 'bg-amber-500 border-amber-300 text-slate-950 font-bold scale-105 shadow-lg shadow-amber-500/30 ring-2 ring-amber-400';
-                } else if (slot.state === 'found') {
-                  cardStyle = 'bg-emerald-500 border-emerald-300 text-slate-950 font-bold scale-105 shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400 animate-pulse';
-                } else if (slot.state === 'collision') {
-                  cardStyle = 'bg-rose-950/60 border-rose-500 text-rose-300 ring-2 ring-rose-500/40';
-                } else if (isOccupied) {
-                  cardStyle = 'bg-[#181b2e] border-pink-500/40 text-zinc-200';
-                }
-
-                return (
-                  <div key={idx} className="flex flex-col items-center gap-1">
-                    <span className="text-[10px] font-mono text-zinc-400 font-bold">[{idx}]</span>
-                    <div
-                      className={`w-full h-14 rounded-lg border p-1 flex flex-col items-center justify-center text-center font-mono transition-all duration-300 ${cardStyle} ${
-                        isTarget ? 'ring-2 ring-cyan-400' : ''
-                      }`}
-                    >
-                      {isOccupied ? (
-                        <>
-                          <span className="text-xs font-bold truncate w-full text-pink-300">{slot.key}</span>
-                          <span className="text-[9px] truncate w-full opacity-75 text-emerald-300">{slot.value}</span>
-                        </>
-                      ) : (
-                        <span className="text-[10px] italic text-zinc-600">খালি</span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <LinearProbingVisualizer probingSlots={probingSlots} pipelineState={pipelineState} />
         )}
 
         {tableMode === 'set' && (
-          /* 3. HASH SET VISUALIZER */
-          <div className="bg-[#090a10] rounded-xl border border-[#1a1d2e] p-3.5 sm:p-4 flex flex-col gap-2.5">
-            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider flex items-center justify-between">
-              <span>Hash Set Pool (শুধুমাত্র অনন্য কী-সমূহ সংরক্ষিত)</span>
-              <span className="text-emerald-400">শূন্য ডুপ্লিকেট • O(1) Exists Check</span>
-            </div>
-
-            <div className="flex flex-wrap gap-2 p-3 rounded-xl bg-[#111320] border border-[#1f2336] min-h-[64px] items-center">
-              {setKeys.length === 0 ? (
-                <span className="text-xs font-mono text-zinc-600 italic">সেট খালি।</span>
-              ) : (
-                setKeys.map((k, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 font-mono text-xs font-bold shadow-sm"
-                  >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>&quot;{k}&quot;</span>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
+          <HashSetVisualizer setKeys={setKeys} />
         )}
 
         {/* Live Feedback Banner */}

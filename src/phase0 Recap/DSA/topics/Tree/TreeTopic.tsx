@@ -8,152 +8,22 @@ import {
   Search,
   RotateCcw,
   Sparkles,
-  Zap,
   Cpu,
   FileCode2,
   Database,
-  Play,
-  Pause,
-  SkipForward,
-  SkipBack,
-  ArrowDownLeft,
-  ArrowDownRight,
   CheckCircle2,
-  XCircle,
-  HelpCircle
+  XCircle
 } from 'lucide-react';
-
-interface BSTNode {
-  val: number;
-  left: BSTNode | null;
-  right: BSTNode | null;
-}
-
-interface PositionedNode {
-  val: number;
-  x: number;
-  y: number;
-  depth: number;
-  left: PositionedNode | null;
-  right: PositionedNode | null;
-}
-
-interface TreeStep {
-  type: 'COMPARE' | 'MOVE_LEFT' | 'MOVE_RIGHT' | 'FOUND' | 'NOT_FOUND' | 'INSERT_SUCCESS' | 'DUPLICATE' | 'IDLE';
-  currNodeVal?: number;
-  targetVal: number;
-  visitedPath: number[];
-  activeEdge?: { from: number; to: number };
-  newTreeValues?: number[];
-  action: 'insert' | 'search';
-  explanation: string;
-}
-
-function insertIntoBST(root: BSTNode | null, val: number): BSTNode {
-  if (!root) return { val, left: null, right: null };
-  if (val < root.val) root.left = insertIntoBST(root.left, val);
-  else if (val > root.val) root.right = insertIntoBST(root.right, val);
-  return root;
-}
-
-function buildBST(values: number[]): BSTNode | null {
-  let root: BSTNode | null = null;
-  for (const v of values) {
-    root = insertIntoBST(root, v);
-  }
-  return root;
-}
-
-function getTreeDepth(node: BSTNode | null): number {
-  if (!node) return 0;
-  return 1 + Math.max(getTreeDepth(node.left), getTreeDepth(node.right));
-}
-
-const MAX_TREE_DEPTH = 8;
-const DEFAULT_TREE = [50, 30, 70, 20, 40, 60, 85];
-
-function layoutTree(
-  root: BSTNode | null,
-  width = 760,
-  height = 380
-): PositionedNode | null {
-  if (!root) return null;
-
-  const totalDepth = Math.max(1, getTreeDepth(root));
-
-  // In-order traversal to calculate strictly ordered horizontal slots
-  const rankMap = new Map<number, number>();
-  let rank = 0;
-  function inOrder(n: BSTNode | null) {
-    if (!n) return;
-    inOrder(n.left);
-    rankMap.set(n.val, rank++);
-    inOrder(n.right);
-  }
-  inOrder(root);
-
-  const totalNodes = rank;
-  const paddingX = Math.max(45, Math.min(80, width / (totalNodes + 1)));
-  const stepX = totalNodes > 1 ? (width - 2 * paddingX) / (totalNodes - 1) : 0;
-  const stepY = totalDepth > 1 ? (height - 90) / (totalDepth - 1) : 0;
-
-  function build(n: BSTNode | null, depth: number): PositionedNode | null {
-    if (!n) return null;
-    const r = rankMap.get(n.val) ?? 0;
-    const x = totalNodes === 1 ? width / 2 : paddingX + r * stepX;
-    const y = 45 + depth * stepY;
-    const left = build(n.left, depth + 1);
-    const right = build(n.right, depth + 1);
-    return { val: n.val, x, y, depth, left, right };
-  }
-
-  return build(root, 0);
-}
-
-function flattenTree(root: PositionedNode | null) {
-  const nodes: PositionedNode[] = [];
-  const edges: {
-    fromX: number;
-    fromY: number;
-    toX: number;
-    toY: number;
-    fromVal: number;
-    toVal: number;
-    dir: 'left' | 'right';
-  }[] = [];
-
-  function traverse(n: PositionedNode | null) {
-    if (!n) return;
-    nodes.push(n);
-    if (n.left) {
-      edges.push({
-        fromX: n.x,
-        fromY: n.y,
-        toX: n.left.x,
-        toY: n.left.y,
-        fromVal: n.val,
-        toVal: n.left.val,
-        dir: 'left'
-      });
-      traverse(n.left);
-    }
-    if (n.right) {
-      edges.push({
-        fromX: n.x,
-        fromY: n.y,
-        toX: n.right.x,
-        toY: n.right.y,
-        fromVal: n.val,
-        toVal: n.right.val,
-        dir: 'right'
-      });
-      traverse(n.right);
-    }
-  }
-
-  traverse(root);
-  return { nodes, edges };
-}
+import { TreeStep, DEFAULT_TREE } from './types';
+import {
+  buildBST,
+  getTreeDepth,
+  layoutTree,
+  flattenTree,
+  generateSearchSteps,
+  generateInsertSteps
+} from './utils/bstAlgorithms';
+import TreeCanvas from './components/TreeCanvas';
 
 export default function TreeTopic() {
   const [treeValues, setTreeValues] = useState<number[]>(DEFAULT_TREE);
@@ -183,7 +53,6 @@ export default function TreeTopic() {
   );
 
   const nodeRadius = treeDepth >= 7 || treeValues.length >= 14 ? 15 : 18;
-
   const currentStep = steps[currentStepIndex] || null;
 
   // Auto-play timer
@@ -193,7 +62,6 @@ export default function TreeTopic() {
         setCurrentStepIndex((prev) => {
           if (prev < steps.length - 1) {
             const nextIdx = prev + 1;
-            // If the next step has newTreeValues, commit them to tree
             if (steps[nextIdx]?.newTreeValues) {
               setTreeValues(steps[nextIdx].newTreeValues!);
             }
@@ -211,260 +79,29 @@ export default function TreeTopic() {
     };
   }, [isPlaying, steps, speedMs]);
 
-  // Generate Search Steps
+  // Search Action
   const startSearch = () => {
     setIsPlaying(false);
-    if (treeValues.length === 0) {
-      setSteps([
-        {
-          type: 'NOT_FOUND',
-          targetVal: searchVal,
-          visitedPath: [],
-          action: 'search',
-          explanation: 'Tree is empty. Cannot search.'
-        }
-      ]);
-      setCurrentStepIndex(0);
-      return;
-    }
-
-    const generatedSteps: TreeStep[] = [];
-    const path: number[] = [];
-    let curr = bstRoot;
-
-    while (curr) {
-      path.push(curr.val);
-      const currVal = curr.val;
-
-      if (searchVal === currVal) {
-        generatedSteps.push({
-          type: 'COMPARE',
-          currNodeVal: currVal,
-          targetVal: searchVal,
-          visitedPath: [...path],
-          action: 'search',
-          explanation: `Comparing target ${searchVal} with node ${currVal}: They are equal! Value located.`
-        });
-        generatedSteps.push({
-          type: 'FOUND',
-          currNodeVal: currVal,
-          targetVal: searchVal,
-          visitedPath: [...path],
-          action: 'search',
-          explanation: `🎯 MATCH FOUND! Target ${searchVal} discovered at depth ${path.length - 1} in ${path.length} comparison(s) (O(log N)).`
-        });
-        break;
-      } else if (searchVal < currVal) {
-        generatedSteps.push({
-          type: 'COMPARE',
-          currNodeVal: currVal,
-          targetVal: searchVal,
-          visitedPath: [...path],
-          action: 'search',
-          explanation: `Evaluating ${searchVal} < ${currVal}: Target is SMALLER ➔ Discard right subtree and branch LEFT ↙`
-        });
-
-        if (curr.left) {
-          generatedSteps.push({
-            type: 'MOVE_LEFT',
-            currNodeVal: curr.left.val,
-            targetVal: searchVal,
-            visitedPath: [...path, curr.left.val],
-            activeEdge: { from: currVal, to: curr.left.val },
-            action: 'search',
-            explanation: `Following left branch (${currVal} ➔ ${curr.left.val}) ↙`
-          });
-          curr = curr.left;
-        } else {
-          generatedSteps.push({
-            type: 'NOT_FOUND',
-            currNodeVal: currVal,
-            targetVal: searchVal,
-            visitedPath: [...path],
-            action: 'search',
-            explanation: `❌ Node ${currVal} has NO left child (NULL pointer). Target ${searchVal} does not exist in BST.`
-          });
-          break;
-        }
-      } else {
-        generatedSteps.push({
-          type: 'COMPARE',
-          currNodeVal: currVal,
-          targetVal: searchVal,
-          visitedPath: [...path],
-          action: 'search',
-          explanation: `Evaluating ${searchVal} > ${currVal}: Target is LARGER ➔ Discard left subtree and branch RIGHT ↘`
-        });
-
-        if (curr.right) {
-          generatedSteps.push({
-            type: 'MOVE_RIGHT',
-            currNodeVal: curr.right.val,
-            targetVal: searchVal,
-            visitedPath: [...path, curr.right.val],
-            activeEdge: { from: currVal, to: curr.right.val },
-            action: 'search',
-            explanation: `Following right branch (${currVal} ➔ ${curr.right.val}) ↘`
-          });
-          curr = curr.right;
-        } else {
-          generatedSteps.push({
-            type: 'NOT_FOUND',
-            currNodeVal: currVal,
-            targetVal: searchVal,
-            visitedPath: [...path],
-            action: 'search',
-            explanation: `❌ Node ${currVal} has NO right child (NULL pointer). Target ${searchVal} does not exist in BST.`
-          });
-          break;
-        }
-      }
-    }
-
+    const generatedSteps = generateSearchSteps(bstRoot, searchVal, treeValues.length);
     setSteps(generatedSteps);
     setCurrentStepIndex(0);
-    setIsPlaying(true);
+    if (generatedSteps.length > 1) {
+      setIsPlaying(true);
+    }
   };
 
-  // Generate Insertion Steps
+  // Insertion Action
   const startInsert = () => {
     setIsPlaying(false);
-
-    if (treeValues.includes(inputVal)) {
-      setSteps([
-        {
-          type: 'DUPLICATE',
-          targetVal: inputVal,
-          visitedPath: [inputVal],
-          currNodeVal: inputVal,
-          action: 'insert',
-          explanation: `Value ${inputVal} already exists in BST! BST requires unique keys to maintain ordering invariants.`
-        }
-      ]);
-      setCurrentStepIndex(0);
-      return;
+    const { steps: generatedSteps, immediateNewTree } = generateInsertSteps(bstRoot, treeValues, inputVal);
+    if (immediateNewTree) {
+      setTreeValues(immediateNewTree);
     }
-
-    if (treeValues.length === 0) {
-      const nextTree = [inputVal];
-      setSteps([
-        {
-          type: 'INSERT_SUCCESS',
-          targetVal: inputVal,
-          currNodeVal: inputVal,
-          visitedPath: [inputVal],
-          newTreeValues: nextTree,
-          action: 'insert',
-          explanation: `Tree was empty. Inserted ${inputVal} directly as the root node!`
-        }
-      ]);
-      setTreeValues(nextTree);
-      setCurrentStepIndex(0);
-      return;
-    }
-
-    // Check tree depth limitation for clean diagram rendering
-    const tempRoot = buildBST([...treeValues, inputVal]);
-    if (getTreeDepth(tempRoot) > MAX_TREE_DEPTH) {
-      setSteps([
-        {
-          type: 'DUPLICATE',
-          targetVal: inputVal,
-          visitedPath: [],
-          action: 'insert',
-          explanation: `Insertion of ${inputVal} would exceed max visual display depth (${MAX_TREE_DEPTH} levels). Tree height is currently limited to ${MAX_TREE_DEPTH} levels.`
-        }
-      ]);
-      setCurrentStepIndex(0);
-      return;
-    }
-
-    const generatedSteps: TreeStep[] = [];
-    const path: number[] = [];
-    let curr = bstRoot;
-
-    while (curr) {
-      path.push(curr.val);
-      const currVal = curr.val;
-
-      if (inputVal < currVal) {
-        generatedSteps.push({
-          type: 'COMPARE',
-          currNodeVal: currVal,
-          targetVal: inputVal,
-          visitedPath: [...path],
-          action: 'insert',
-          explanation: `Comparing new value ${inputVal} < ${currVal}: Belongs in LEFT subtree ↙`
-        });
-
-        if (curr.left) {
-          generatedSteps.push({
-            type: 'MOVE_LEFT',
-            currNodeVal: curr.left.val,
-            targetVal: inputVal,
-            visitedPath: [...path, curr.left.val],
-            activeEdge: { from: currVal, to: curr.left.val },
-            action: 'insert',
-            explanation: `Navigating to left child (${currVal} ➔ ${curr.left.val}) ↙`
-          });
-          curr = curr.left;
-        } else {
-          // Found insertion location!
-          const nextTree = [...treeValues, inputVal];
-          generatedSteps.push({
-            type: 'INSERT_SUCCESS',
-            currNodeVal: inputVal,
-            targetVal: inputVal,
-            visitedPath: [...path, inputVal],
-            activeEdge: { from: currVal, to: inputVal },
-            newTreeValues: nextTree,
-            action: 'insert',
-            explanation: `🎉 Empty slot found! Attached ${inputVal} as LEFT child of ${currVal} in O(log N) comparisons.`
-          });
-          break;
-        }
-      } else {
-        generatedSteps.push({
-          type: 'COMPARE',
-          currNodeVal: currVal,
-          targetVal: inputVal,
-          visitedPath: [...path],
-          action: 'insert',
-          explanation: `Comparing new value ${inputVal} > ${currVal}: Belongs in RIGHT subtree ↘`
-        });
-
-        if (curr.right) {
-          generatedSteps.push({
-            type: 'MOVE_RIGHT',
-            currNodeVal: curr.right.val,
-            targetVal: inputVal,
-            visitedPath: [...path, curr.right.val],
-            activeEdge: { from: currVal, to: curr.right.val },
-            action: 'insert',
-            explanation: `Navigating to right child (${currVal} ➔ ${curr.right.val}) ↘`
-          });
-          curr = curr.right;
-        } else {
-          // Found insertion location!
-          const nextTree = [...treeValues, inputVal];
-          generatedSteps.push({
-            type: 'INSERT_SUCCESS',
-            currNodeVal: inputVal,
-            targetVal: inputVal,
-            visitedPath: [...path, inputVal],
-            activeEdge: { from: currVal, to: inputVal },
-            newTreeValues: nextTree,
-            action: 'insert',
-            explanation: `🎉 Empty slot found! Attached ${inputVal} as RIGHT child of ${currVal} in O(log N) comparisons.`
-          });
-          break;
-        }
-      }
-    }
-
     setSteps(generatedSteps);
     setCurrentStepIndex(0);
-    setIsPlaying(true);
+    if (generatedSteps.length > 1) {
+      setIsPlaying(true);
+    }
   };
 
   const handleReset = () => {
@@ -475,9 +112,25 @@ export default function TreeTopic() {
     setCurrentStepIndex(0);
   };
 
+  const handleStepBack = () => {
+    setIsPlaying(false);
+    setCurrentStepIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleStepForward = () => {
+    setIsPlaying(false);
+    if (currentStepIndex < steps.length - 1) {
+      const nextIdx = currentStepIndex + 1;
+      if (steps[nextIdx]?.newTreeValues) {
+        setTreeValues(steps[nextIdx].newTreeValues!);
+      }
+      setCurrentStepIndex(nextIdx);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-6 w-full">
-      {/* 1. Header Card - Simplified & Clear Visual Definition */}
+      {/* 1. Header Card */}
       <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-lime-400 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-emerald-500/20">
@@ -576,301 +229,21 @@ export default function TreeTopic() {
           </div>
         </div>
 
-        {/* Dynamic Tree SVG Canvas with Integrated Top-Left Controls */}
-        <div className="min-h-[380px] bg-[#07080e] rounded-xl border border-[#1a1d2e] p-4 flex flex-col items-center justify-center relative overflow-x-auto">
-          {/* Integrated Playback Controls (Top-Left Corner) */}
-          <div className="absolute top-3 left-3 z-10 bg-[#0d101d]/90 backdrop-blur border border-[#1e243a] p-1.5 rounded-lg flex items-center gap-2 shadow-lg">
-            {/* Step Back */}
-            <button
-              onClick={() => {
-                setIsPlaying(false);
-                setCurrentStepIndex((prev) => Math.max(0, prev - 1));
-              }}
-              disabled={steps.length === 0 || currentStepIndex === 0 || isPlaying}
-              className="p-1.5 rounded bg-[#141624] hover:bg-[#1d2033] disabled:opacity-30 text-zinc-300 border border-[#20243a] transition-colors cursor-pointer"
-              title="Step Back"
-            >
-              <SkipBack className="w-3.5 h-3.5" />
-            </button>
-
-            {/* Play/Pause */}
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              disabled={steps.length === 0 || currentStepIndex >= steps.length - 1}
-              className="flex items-center gap-1.5 px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-30 text-xs font-mono text-slate-950 font-bold shadow transition-all cursor-pointer"
-            >
-              {isPlaying ? (
-                <>
-                  <Pause className="w-3.5 h-3.5 fill-current" /> Pause
-                </>
-              ) : (
-                <>
-                  <Play className="w-3.5 h-3.5 fill-current" /> Auto-Play
-                </>
-              )}
-            </button>
-
-            {/* Step Forward */}
-            <button
-              onClick={() => {
-                setIsPlaying(false);
-                if (currentStepIndex < steps.length - 1) {
-                  const nextIdx = currentStepIndex + 1;
-                  if (steps[nextIdx]?.newTreeValues) {
-                    setTreeValues(steps[nextIdx].newTreeValues!);
-                  }
-                  setCurrentStepIndex(nextIdx);
-                }
-              }}
-              disabled={steps.length === 0 || currentStepIndex >= steps.length - 1 || isPlaying}
-              className="p-1.5 rounded bg-[#141624] hover:bg-[#1d2033] disabled:opacity-30 text-zinc-300 border border-[#20243a] transition-colors cursor-pointer"
-              title="Step Forward"
-            >
-              <SkipForward className="w-3.5 h-3.5" />
-            </button>
-
-            {/* Step Counter */}
-            <div className="text-xs font-mono text-zinc-300 px-2 py-0.5 border-l border-[#20243a]">
-              {steps.length > 0 ? (
-                <>
-                  Step <span className="text-emerald-400 font-bold">{currentStepIndex + 1}</span>/{steps.length}
-                </>
-              ) : (
-                <span className="text-zinc-500 text-[11px]">Ready</span>
-              )}
-            </div>
-          </div>
-          {flatNodes.length === 0 ? (
-            <div className="text-xs font-mono text-zinc-500 italic">Tree is empty. Insert a value to start.</div>
-          ) : (
-            <svg
-              viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
-              className="w-full select-none"
-              style={{ minWidth: `${Math.min(canvasWidth, 960)}px`, height: `${canvasHeight}px` }}
-            >
-              {/* Definitions for arrow markers / filters */}
-              <defs>
-                <filter id="glow-emerald" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-                <filter id="glow-amber" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-
-              {/* Connecting Tree Edges */}
-              {flatEdges.map((e, idx) => {
-                const isActiveEdge =
-                  currentStep?.activeEdge?.from === e.fromVal &&
-                  currentStep?.activeEdge?.to === e.toVal;
-
-                const isTraversed =
-                  currentStep?.visitedPath.includes(e.fromVal) &&
-                  currentStep?.visitedPath.includes(e.toVal);
-
-                const midX = (e.fromX + e.toX) / 2;
-                const midY = (e.fromY + e.toY) / 2;
-
-                return (
-                  <g key={`edge-${idx}`}>
-                    <line
-                      x1={e.fromX}
-                      y1={e.fromY}
-                      x2={e.toX}
-                      y2={e.toY}
-                      stroke={
-                        isActiveEdge
-                          ? '#f59e0b'
-                          : isTraversed
-                          ? '#10b981'
-                          : '#1e2438'
-                      }
-                      strokeWidth={isActiveEdge ? 3.5 : isTraversed ? 2.5 : 2}
-                      strokeDasharray={isActiveEdge ? '6,3' : 'none'}
-                      className={isActiveEdge ? 'animate-pulse' : ''}
-                    />
-                    {/* Directional Inequality Pill (e.g., < or >) */}
-                    <rect
-                      x={midX - 9}
-                      y={midY - 8}
-                      width={18}
-                      height={16}
-                      rx={4}
-                      fill="#0d101a"
-                      stroke={isActiveEdge ? '#f59e0b' : '#232940'}
-                      strokeWidth={1}
-                    />
-                    <text
-                      x={midX}
-                      y={midY + 3.5}
-                      textAnchor="middle"
-                      fill={isActiveEdge ? '#fbbf24' : isTraversed ? '#34d399' : '#64748b'}
-                      fontSize={10}
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                    >
-                      {e.dir === 'left' ? '<' : '>'}
-                    </text>
-                  </g>
-                );
-              })}
-
-              {/* Tree Nodes */}
-              {flatNodes.map((n) => {
-                const isCurrent = currentStep?.currNodeVal === n.val;
-                const isVisited = currentStep?.visitedPath.includes(n.val);
-                const isFound = currentStep?.type === 'FOUND' && currentStep?.currNodeVal === n.val;
-                const isNewlyInserted =
-                  currentStep?.type === 'INSERT_SUCCESS' && currentStep?.currNodeVal === n.val;
-
-                // Step index of visit
-                const visitIndex = currentStep?.visitedPath.indexOf(n.val);
-
-                return (
-                  <g key={`node-${n.val}`} className="transition-all duration-300">
-                    {/* Outer Glow Ring for Current / Found */}
-                    {(isCurrent || isFound || isNewlyInserted) && (
-                      <circle
-                        cx={n.x}
-                        cy={n.y}
-                        r={nodeRadius + 6}
-                        fill="none"
-                        stroke={
-                          isFound || isNewlyInserted
-                            ? '#10b981'
-                            : '#f59e0b'
-                        }
-                        strokeWidth={2}
-                        strokeDasharray="4,2"
-                        className="animate-spin"
-                        style={{ animationDuration: '6s', transformOrigin: `${n.x}px ${n.y}px` }}
-                      />
-                    )}
-
-                    {/* Node Body Circle */}
-                    <circle
-                      cx={n.x}
-                      cy={n.y}
-                      r={nodeRadius}
-                      fill={
-                        isFound || isNewlyInserted
-                          ? '#064e3b'
-                          : isCurrent
-                          ? '#451a03'
-                          : isVisited
-                          ? '#0b261a'
-                          : '#0f1322'
-                      }
-                      stroke={
-                        isFound || isNewlyInserted
-                          ? '#34d399'
-                          : isCurrent
-                          ? '#f59e0b'
-                          : isVisited
-                          ? '#10b981'
-                          : '#28304a'
-                      }
-                      strokeWidth={isCurrent || isFound || isNewlyInserted ? 2.5 : 1.5}
-                      filter={
-                        isFound || isNewlyInserted
-                          ? 'url(#glow-emerald)'
-                          : isCurrent
-                          ? 'url(#glow-amber)'
-                          : undefined
-                      }
-                    />
-
-                    {/* Node Value Label */}
-                    <text
-                      x={n.x}
-                      y={n.y + 4}
-                      textAnchor="middle"
-                      fill={
-                        isFound || isNewlyInserted
-                          ? '#f0fdf4'
-                          : isCurrent
-                          ? '#fef08a'
-                          : isVisited
-                          ? '#a7f3d0'
-                          : '#cbd5e1'
-                      }
-                      fontSize={11}
-                      fontWeight="bold"
-                      fontFamily="monospace"
-                    >
-                      {n.val}
-                    </text>
-
-                    {/* Step Sequence Badge (1, 2, 3...) */}
-                    {isVisited && visitIndex !== undefined && visitIndex >= 0 && (
-                      <g>
-                        <circle
-                          cx={n.x + 14}
-                          cy={n.y - 14}
-                          r={7.5}
-                          fill="#10b981"
-                        />
-                        <text
-                          x={n.x + 14}
-                          y={n.y - 11.5}
-                          textAnchor="middle"
-                          fill="#022c22"
-                          fontSize={8.5}
-                          fontWeight="bold"
-                          fontFamily="monospace"
-                        >
-                          {visitIndex + 1}
-                        </text>
-                      </g>
-                    )}
-
-                    {/* Status Pill on top of current active node */}
-                    {isCurrent && (
-                      <g>
-                        <rect
-                          x={n.x - 30}
-                          y={n.y - 32}
-                          width={60}
-                          height={14}
-                          rx={4}
-                          fill="#451a03"
-                          stroke="#f59e0b"
-                          strokeWidth={1}
-                        />
-                        <text
-                          x={n.x}
-                          y={n.y - 22}
-                          textAnchor="middle"
-                          fill="#fbbf24"
-                          fontSize={8.5}
-                          fontFamily="monospace"
-                          fontWeight="bold"
-                        >
-                          {currentStep.action === 'insert' ? 'COMPARE' : 'EVALUATING'}
-                        </text>
-                      </g>
-                    )}
-                  </g>
-                );
-              })}
-            </svg>
-          )}
-
-          {/* Subtree Pruning Guide Legend */}
-          <div className="absolute top-3 right-3 bg-[#0d101d]/90 backdrop-blur border border-[#1e243a] px-3.5 py-2 rounded-lg flex items-center gap-3.5 text-xs font-mono text-zinc-300">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#f59e0b]"></span> Active Comparing
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#10b981]"></span> Visited Path
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#1e2438]"></span> Pruned / Unvisited
-            </span>
-          </div>
-        </div>
+        {/* Dynamic Tree SVG Canvas with Integrated Controls */}
+        <TreeCanvas
+          flatNodes={flatNodes}
+          flatEdges={flatEdges}
+          canvasWidth={canvasWidth}
+          canvasHeight={canvasHeight}
+          nodeRadius={nodeRadius}
+          steps={steps}
+          currentStepIndex={currentStepIndex}
+          currentStep={currentStep}
+          isPlaying={isPlaying}
+          onPlayPause={() => setIsPlaying(!isPlaying)}
+          onStepBack={handleStepBack}
+          onStepForward={handleStepForward}
+        />
 
         {/* Live Step Explanation Banner */}
         <div className="p-4 rounded-xl bg-[#090a10] border border-[#1a1c29] text-sm font-mono flex items-start gap-3.5">

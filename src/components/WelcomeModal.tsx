@@ -126,15 +126,15 @@ export default function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
               onChange={(e) => setDontShowAgain(e.target.checked)}
               className="w-4 h-4 rounded bg-[#121422] border-[#252b42] text-amber-500 focus:ring-amber-500/20 cursor-pointer"
             />
-            <span>আর সরাসরি দেখাবেন না (Don&apos;t show again)</span>
+            <span>আর দেখাবেন না (Don&apos;t show again)</span>
           </label>
 
           <button
             onClick={handleDismiss}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold font-mono text-xs md:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold font-mono text-xs shadow-md shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
           >
-            <span>এক্সপ্লোর শুরু করুন</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>এক্সপ্লোর</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

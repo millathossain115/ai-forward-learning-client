@@ -3,44 +3,20 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import RealLifeScenario from '@/components/RealLifeScenario';
 import {
-  Search,
   Play,
   Pause,
   SkipForward,
   SkipBack,
   RotateCcw,
   Sparkles,
-  Zap,
-  ArrowRight,
-  TrendingDown,
-  Cpu,
-  CheckCircle2,
-  AlertCircle,
-  HelpCircle,
-  Layers,
-  Sliders,
-  Divide
+  CheckCircle2
 } from 'lucide-react';
-
-const SORTED_ARRAY = [4, 12, 19, 27, 35, 42, 58, 64, 71, 83, 91, 99];
-
-type SearchMode = 'binary' | 'linear' | 'race';
-
-interface BinaryStep {
-  low: number;
-  mid: number;
-  high: number;
-  val: number;
-  action: 'check' | 'eliminate_left' | 'eliminate_right' | 'found' | 'not_found';
-  explanation: string;
-}
-
-interface LinearStep {
-  currIndex: number;
-  val: number;
-  action: 'check' | 'mismatch' | 'found' | 'not_found';
-  explanation: string;
-}
+import { SORTED_ARRAY, SearchMode, BinaryStep, LinearStep } from './types';
+import { generateBinarySteps, generateLinearSteps } from './utils/searchAlgorithms';
+import BinarySearchVisualizer from './components/BinarySearchVisualizer';
+import LinearSearchVisualizer from './components/LinearSearchVisualizer';
+import RaceSearchVisualizer from './components/RaceSearchVisualizer';
+import SearchGrowthTable from './components/SearchGrowthTable';
 
 export default function SearchingTopic() {
   const [activeMode, setActiveMode] = useState<SearchMode>('binary');
@@ -55,105 +31,15 @@ export default function SearchingTopic() {
   const speedMs = 1200; // Comfortable 1.2s slow readable step interval
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Compute Binary Search Steps synchronously via useMemo
-  const binarySteps = useMemo<BinaryStep[]>(() => {
-    const steps: BinaryStep[] = [];
-    let low = 0;
-    let high = SORTED_ARRAY.length - 1;
-
-    while (low <= high) {
-      const mid = Math.floor((low + high) / 2);
-      const midVal = SORTED_ARRAY[mid];
-
-      steps.push({
-        low,
-        mid,
-        high,
-        val: midVal,
-        action: 'check',
-        explanation: `ধাপ ${steps.length + 1}: রেঞ্জ [${low}..${high}]। মিডল ইনডেক্স mid = floor((${low} + ${high}) / 2) = ${mid}। Array[${mid}] = ${midVal}-এর সাথে টার্গেট ${target} মেলানো হচ্ছে।`
-      });
-
-      if (midVal === target) {
-        steps.push({
-          low,
-          mid,
-          high,
-          val: midVal,
-          action: 'found',
-          explanation: `🎯 সফল! ইনডেক্স ${mid}-এ কাঙ্ক্ষিত মান ${target} পাওয়া গেছে। বাইনারি সার্চ সফলভাবে সমাপ্ত!`
-        });
-        break;
-      } else if (midVal < target) {
-        steps.push({
-          low,
-          mid,
-          high,
-          val: midVal,
-          action: 'eliminate_left',
-          explanation: `Array[${mid}] (${midVal}) < ${target}। যেহেতু অ্যারে সর্টেড, তাই ${midVal} এবং তার বামের সব মান টার্গেটের চেয়ে ছোট। বামের ৫০% অংশ বাদ দিয়ে low = mid + 1 (${mid + 1}) নির্ধারণ করা হলো।`
-        });
-        low = mid + 1;
-      } else {
-        steps.push({
-          low,
-          mid,
-          high,
-          val: midVal,
-          action: 'eliminate_right',
-          explanation: `Array[${mid}] (${midVal}) > ${target}। যেহেতু অ্যারে সর্টেড, তাই ${midVal} এবং তার ডানের সব মান টার্গেটের চেয়ে বড়। ডানের ৫০% অংশ বাদ দিয়ে high = mid - 1 (${mid - 1}) নির্ধারণ করা হলো।`
-        });
-        high = mid - 1;
-      }
-    }
-
-    if (low > high) {
-      steps.push({
-        low,
-        mid: -1,
-        high,
-        val: -1,
-        action: 'not_found',
-        explanation: `❌ অনুসন্ধান শেষ: টার্গেট ${target} এই অ্যারেতে বিদ্যমান নেই (low > high)।`
-      });
-    }
-
-    return steps;
-  }, [target]);
-
-  // Compute Linear Search Steps synchronously via useMemo
-  const linearSteps = useMemo<LinearStep[]>(() => {
-    const steps: LinearStep[] = [];
-    let found = false;
-
-    for (let i = 0; i < SORTED_ARRAY.length; i++) {
-      const val = SORTED_ARRAY[i];
-      steps.push({
-        currIndex: i,
-        val,
-        action: val === target ? 'found' : 'check',
-        explanation: `ধাপ ${i + 1}: ইনডেক্স ${i} পরীক্ষা করা হচ্ছে। Array[${i}] = ${val}। ${
-          val === target ? `🎯 মিলে গেছে! কাঙ্ক্ষিত ${target} পাওয়া গেছে!` : `টার্গেট ${target}-এর সাথে মেলেনি, পরবর্তী ইনডেক্সে যাওয়া হচ্ছে।`
-        }`
-      });
-
-      if (val === target) {
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      steps.push({
-        currIndex: SORTED_ARRAY.length,
-        val: -1,
-        action: 'not_found',
-        explanation: `❌ পুরো অ্যারে শেষ পর্যন্ত স্ক্যান করা হয়েছে। টার্গেট ${target} পাওয়া যায়নি।`
-      });
-    }
-
-    return steps;
-  }, [target]);
+  // Compute steps synchronously via utility functions
+  const binarySteps = useMemo<BinaryStep[]>(
+    () => generateBinarySteps(SORTED_ARRAY, target),
+    [target]
+  );
+  const linearSteps = useMemo<LinearStep[]>(
+    () => generateLinearSteps(SORTED_ARRAY, target),
+    [target]
+  );
 
   const handleTargetChange = (newTarget: number) => {
     setIsPlaying(false);
@@ -162,7 +48,6 @@ export default function SearchingTopic() {
     setLinearStepIdx(0);
   };
 
-  // Handle active mode change or reset
   const handleModeChange = (mode: SearchMode) => {
     setIsPlaying(false);
     setActiveMode(mode);
@@ -188,14 +73,8 @@ export default function SearchingTopic() {
           });
         } else {
           // Race Mode: advance both step by step
-          setBinaryStepIdx(prevB => {
-            const nextB = prevB < binarySteps.length - 1 ? prevB + 1 : prevB;
-            return nextB;
-          });
-          setLinearStepIdx(prevL => {
-            const nextL = prevL < linearSteps.length - 1 ? prevL + 1 : prevL;
-            return nextL;
-          });
+          setBinaryStepIdx(prevB => (prevB < binarySteps.length - 1 ? prevB + 1 : prevB));
+          setLinearStepIdx(prevL => (prevL < linearSteps.length - 1 ? prevL + 1 : prevL));
         }
       }, speedMs);
     } else if (timerRef.current) {
@@ -206,21 +85,9 @@ export default function SearchingTopic() {
     };
   }, [isPlaying, activeMode, binarySteps.length, linearSteps.length]);
 
-  // Current active steps for display with safe fallbacks
-  const currentBinaryStep = binarySteps[binaryStepIdx] || binarySteps[0] || {
-    low: 0,
-    mid: 0,
-    high: 0,
-    val: 0,
-    action: 'check',
-    explanation: ''
-  };
-  const currentLinearStep = linearSteps[linearStepIdx] || linearSteps[0] || {
-    currIndex: 0,
-    val: 0,
-    action: 'check',
-    explanation: ''
-  };
+  // Current active steps with safe fallbacks
+  const currentBinaryStep = binarySteps[binaryStepIdx] || binarySteps[0];
+  const currentLinearStep = linearSteps[linearStepIdx] || linearSteps[0];
 
   const isAtEnd =
     activeMode === 'binary'
@@ -322,7 +189,7 @@ export default function SearchingTopic() {
         </div>
       </div>
 
-      {/* 3. INTERACTIVE SIMULATION LAB: Dedicated Modes for Linear, Binary & Race */}
+      {/* 3. INTERACTIVE SIMULATION LAB */}
       <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-[#1b1f33] pb-4">
           <div className="space-y-1">
@@ -407,7 +274,7 @@ export default function SearchingTopic() {
 
         {/* MAIN VISUAL SIMULATION CANVAS */}
         <div className="bg-[#080911] border border-[#1d2238] rounded-2xl p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between space-y-6">
-          {/* Integrated Playback Controls (Floating Top-Left Overlay) */}
+          {/* Integrated Playback Controls */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#1b1f33]">
             <div className="bg-[#0d101e]/90 backdrop-blur-md border border-[#212742] p-1.5 rounded-xl flex items-center gap-2 shadow-xl">
               {/* Step Back */}
@@ -510,215 +377,16 @@ export default function SearchingTopic() {
             )}
           </div>
 
-          {/* VIEW MODE 1: BINARY SEARCH IN-DEPTH VIEW */}
-          {activeMode === 'binary' && (
-            <div className="space-y-6">
-              {/* Formula & Range Banner */}
-              <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[#0e1120] border border-[#1d233c] font-mono text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="text-zinc-400">বর্তমান রেঞ্জ:</span>
-                  <span className="text-sky-300 font-bold">Low = {currentBinaryStep.low}</span>
-                  <span className="text-zinc-500">|</span>
-                  <span className="text-purple-300 font-bold">High = {currentBinaryStep.high}</span>
-                </div>
-                <div className="text-amber-300 font-bold">
-                  mid = floor(({currentBinaryStep.low} + {currentBinaryStep.high}) / 2) = {currentBinaryStep.mid}
-                </div>
-                <div className="text-zinc-300">
-                  Array[{currentBinaryStep.mid}] = <b className="text-white text-sm">{currentBinaryStep.val}</b>
-                </div>
-              </div>
-
-              {/* Array Cells with Pointer Tags */}
-              <div className="space-y-2">
-                {/* Top Pointers Line */}
-                <div className="grid grid-cols-12 gap-1.5 text-center text-[10px] font-mono font-bold">
-                  {SORTED_ARRAY.map((_, i) => {
-                    const isLow = currentBinaryStep.low === i;
-                    const isMid = currentBinaryStep.mid === i;
-                    const isHigh = currentBinaryStep.high === i;
-                    return (
-                      <div key={i} className="h-5 flex items-center justify-center">
-                        {isMid ? (
-                          <span className="px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 shadow">MID</span>
-                        ) : isLow ? (
-                          <span className="px-1.5 py-0.5 rounded bg-sky-500 text-slate-950">LOW</span>
-                        ) : isHigh ? (
-                          <span className="px-1.5 py-0.5 rounded bg-purple-500 text-white">HIGH</span>
-                        ) : null}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Array Boxes */}
-                <div className="grid grid-cols-12 gap-1.5">
-                  {SORTED_ARRAY.map((v, i) => {
-                    const isMid = currentBinaryStep.mid === i;
-                    const isFound = isMid && currentBinaryStep.action === 'found';
-                    const inRange = i >= currentBinaryStep.low && i <= currentBinaryStep.high;
-
-                    return (
-                      <div
-                        key={i}
-                        className={`h-14 rounded-xl border font-mono flex flex-col items-center justify-center transition-all ${
-                          isFound
-                            ? 'bg-emerald-500 text-slate-950 font-black ring-4 ring-emerald-500/40 scale-105 shadow-xl'
-                            : isMid
-                            ? 'bg-amber-400 text-slate-950 font-black ring-4 ring-amber-400/30 scale-105 shadow-lg'
-                            : inRange
-                            ? 'bg-[#13172b] border-[#293354] text-zinc-100 font-bold hover:border-sky-500'
-                            : 'bg-[#090b14] border-[#141829] text-zinc-600 opacity-30 line-through'
-                        }`}
-                      >
-                        <span className="text-xs md:text-sm">{v}</span>
-                        <span className="text-[9px] opacity-70">[{i}]</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* VIEW MODE 2: LINEAR SEARCH IN-DEPTH VIEW */}
-          {activeMode === 'linear' && (
-            <div className="space-y-6">
-              <div className="p-3 rounded-xl bg-[#0e1120] border border-[#1d233c] font-mono text-xs flex items-center justify-between">
-                <div>
-                  <span className="text-zinc-400">বর্তমান অবস্থান: </span>
-                  <span className="text-rose-400 font-bold">ইন্ডেক্স {currentLinearStep.currIndex}</span>
-                </div>
-                <div>
-                  মান: <b className="text-white text-sm">{currentLinearStep.val}</b>
-                </div>
-                <div className="text-zinc-400">
-                  মোট ধাপ: <b className="text-rose-400">{linearStepIdx + 1}</b>
-                </div>
-              </div>
-
-              {/* Array Cells with Linear Scanner Pointer */}
-              <div className="space-y-2">
-                {/* Pointer indicator */}
-                <div className="grid grid-cols-12 gap-1.5 text-center text-[10px] font-mono font-bold">
-                  {SORTED_ARRAY.map((_, i) => (
-                    <div key={i} className="h-5 flex items-center justify-center">
-                      {currentLinearStep.currIndex === i && (
-                        <span className="px-1.5 py-0.5 rounded bg-rose-500 text-white shadow">SCAN</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Array Boxes */}
-                <div className="grid grid-cols-12 gap-1.5">
-                  {SORTED_ARRAY.map((v, i) => {
-                    const isCurrent = currentLinearStep.currIndex === i;
-                    const isFound = isCurrent && currentLinearStep.action === 'found';
-                    const isPassed = i < currentLinearStep.currIndex;
-
-                    return (
-                      <div
-                        key={i}
-                        className={`h-14 rounded-xl border font-mono flex flex-col items-center justify-center transition-all ${
-                          isFound
-                            ? 'bg-emerald-500 text-slate-950 font-black ring-4 ring-emerald-500/40 scale-105 shadow-xl'
-                            : isCurrent
-                            ? 'bg-rose-500 text-white font-black ring-4 ring-rose-500/30 scale-105 shadow-lg'
-                            : isPassed
-                            ? 'bg-[#0b0d18] border-[#181d30] text-zinc-500 opacity-40'
-                            : 'bg-[#13172b] border-[#293354] text-zinc-100 font-bold'
-                        }`}
-                      >
-                        <span className="text-xs md:text-sm">{v}</span>
-                        <span className="text-[9px] opacity-70">[{i}]</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* VIEW MODE 3: SIDE-BY-SIDE COMPARATIVE RACE */}
+          {/* VIEW MODES */}
+          {activeMode === 'binary' && <BinarySearchVisualizer currentStep={currentBinaryStep} />}
+          {activeMode === 'linear' && <LinearSearchVisualizer currentStep={currentLinearStep} stepIdx={linearStepIdx} />}
           {activeMode === 'race' && (
-            <div className="space-y-6">
-              {/* Lane 1: Binary Search */}
-              <div className="p-4 rounded-xl bg-[#090b14] border border-emerald-500/30 space-y-2">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-emerald-400 font-bold flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                    বাইনারি সার্চ (Binary Search O(log N))
-                  </span>
-                  <span className="text-zinc-300 font-bold">
-                    ধাপ: <span className="text-emerald-400 text-sm">{binaryStepIdx + 1}</span> (বাকি ৫০% এলিমিনেট)
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-12 gap-1 pt-1">
-                  {SORTED_ARRAY.map((v, i) => {
-                    const isMid = currentBinaryStep.mid === i;
-                    const isFound = isMid && currentBinaryStep.action === 'found';
-                    const inRange = i >= currentBinaryStep.low && i <= currentBinaryStep.high;
-
-                    return (
-                      <div
-                        key={i}
-                        className={`h-10 rounded-lg border font-mono text-xs flex items-center justify-center font-bold transition-all ${
-                          isFound
-                            ? 'bg-emerald-500 text-slate-950 ring-2 ring-emerald-500'
-                            : isMid
-                            ? 'bg-amber-400 text-slate-950 ring-2 ring-amber-400'
-                            : inRange
-                            ? 'bg-[#13172b] border-[#293354] text-zinc-200'
-                            : 'bg-[#090a10] border-[#151928] text-zinc-700 opacity-20 line-through'
-                        }`}
-                      >
-                        {v}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Lane 2: Linear Search */}
-              <div className="p-4 rounded-xl bg-[#090b14] border border-rose-500/30 space-y-2">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-rose-400 font-bold flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
-                    লিনিয়ার সার্চ (Linear Search O(N))
-                  </span>
-                  <span className="text-zinc-300 font-bold">
-                    ধাপ: <span className="text-rose-400 text-sm">{linearStepIdx + 1}</span> (১টি করে স্ক্যান)
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-12 gap-1 pt-1">
-                  {SORTED_ARRAY.map((v, i) => {
-                    const isCurrent = currentLinearStep.currIndex === i;
-                    const isFound = isCurrent && currentLinearStep.action === 'found';
-                    const isPassed = i < currentLinearStep.currIndex;
-
-                    return (
-                      <div
-                        key={i}
-                        className={`h-10 rounded-lg border font-mono text-xs flex items-center justify-center font-bold transition-all ${
-                          isFound
-                            ? 'bg-emerald-500 text-slate-950 ring-2 ring-emerald-500'
-                            : isCurrent
-                            ? 'bg-rose-500 text-white ring-2 ring-rose-500'
-                            : isPassed
-                            ? 'bg-[#090a10] border-[#151928] text-zinc-600 opacity-30'
-                            : 'bg-[#13172b] border-[#293354] text-zinc-200'
-                        }`}
-                      >
-                        {v}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
+            <RaceSearchVisualizer
+              currentBinaryStep={currentBinaryStep}
+              currentLinearStep={currentLinearStep}
+              binaryStepIdx={binaryStepIdx}
+              linearStepIdx={linearStepIdx}
+            />
           )}
 
           {/* Current Step Explanation Box */}
@@ -751,57 +419,7 @@ export default function SearchingTopic() {
       </div>
 
       {/* 4. Efficiency Growth Table: Linear O(N) vs Binary O(log N) */}
-      <div className="bg-[#0f111a] border border-[#1e2233] rounded-3xl p-6 md:p-8 flex flex-col gap-4 shadow-xl">
-        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
-          <TrendingDown className="w-4 h-4 text-emerald-400" />
-          <span>ডেটার পরিমাণ বাড়লে স্টেপ সংখ্যার তুলনামূলক বৃদ্ধি (Growth Comparison)</span>
-        </h3>
-
-        <div className="overflow-x-auto rounded-xl border border-[#1a1c29] bg-[#090a10]">
-          <table className="w-full text-left text-sm font-mono">
-            <thead className="bg-[#12141f] text-zinc-300 border-b border-[#1c1f2e]">
-              <tr>
-                <th className="p-3.5 font-medium">অ্যারের আকার (N)</th>
-                <th className="p-3.5 font-medium text-rose-400">লিনিয়ার সার্চ সর্বোচ্চ ধাপ (N)</th>
-                <th className="p-3.5 font-medium text-emerald-400">বাইনারি সার্চ সর্বোচ্চ ধাপ (log₂ N)</th>
-                <th className="p-3.5 font-medium font-sans">দক্ষতার পার্থক্য</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#171926] text-zinc-200">
-              <tr className="hover:bg-[#11131c]">
-                <td className="p-3.5 font-bold">১০ টি</td>
-                <td className="p-3.5 text-rose-400">১০ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400">৪ টি ধাপ</td>
-                <td className="p-3.5 text-zinc-300 text-xs font-sans">ছোট ডেটায় প্রায় সমান</td>
-              </tr>
-              <tr className="hover:bg-[#11131c]">
-                <td className="p-3.5 font-bold">১,০০০ টি</td>
-                <td className="p-3.5 text-rose-400">১,০০০ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400">১০ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400 text-xs font-sans font-bold">১০০ গুণ বেশি দ্রুত!</td>
-              </tr>
-              <tr className="hover:bg-[#11131c]">
-                <td className="p-3.5 font-bold">১,০০,০০০ টি (১ লাখ)</td>
-                <td className="p-3.5 text-rose-400">১,০০,০০০ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400">১৭ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400 text-xs font-sans font-bold">~৬,০০০ গুণ বেশি দ্রুত!</td>
-              </tr>
-              <tr className="hover:bg-[#11131c]">
-                <td className="p-3.5 font-bold">১০,০০,০০০ টি (১০ লাখ)</td>
-                <td className="p-3.5 text-rose-400">১০,০০,০০০ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400">২০ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400 text-xs font-sans font-bold">৫০,০০০ গুণ বেশি দ্রুত!</td>
-              </tr>
-              <tr className="hover:bg-[#11131c]">
-                <td className="p-3.5 font-bold">১,০০,০০,০০,০০০ (১০০ কোটি)</td>
-                <td className="p-3.5 text-rose-400">১০০ কোটি ধাপ (CPU ফ্রিজ!)</td>
-                <td className="p-3.5 text-emerald-400">মাত্র ৩০ টি ধাপ</td>
-                <td className="p-3.5 text-emerald-400 text-xs font-sans font-bold">চোখের পলকে সম্পন্ন!</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <SearchGrowthTable />
 
       {/* 5. Real-Life Production Engineering Scenarios */}
       <RealLifeScenario

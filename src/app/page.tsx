@@ -1,32 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Sidebar, { TopicId } from '@/components/Sidebar';
-import ArrayTopic from '@/phase0 Recap/DSA/topics/Array/ArrayTopic';
-import FoundationsTopic from '@/phase0 Recap/DSA/topics/Foundations/FoundationsTopic';
-import LinkedListTopic from '@/phase0 Recap/DSA/topics/LinkedList/LinkedListTopic';
-import StackTopic from '@/phase0 Recap/DSA/topics/Stack/StackTopic';
-import QueueTopic from '@/phase0 Recap/DSA/topics/Queue/QueueTopic';
-import HeapTopic from '@/phase0 Recap/DSA/topics/Heap/HeapTopic';
-import HashTableTopic from '@/phase0 Recap/DSA/topics/HashTable/HashTableTopic';
-import TreeTopic from '@/phase0 Recap/DSA/topics/Tree/TreeTopic';
-import BalancedTreeTopic from '@/phase0 Recap/DSA/topics/BalancedTree/BalancedTreeTopic';
-import TrieTopic from '@/phase0 Recap/DSA/topics/Trie/TrieTopic';
-import SearchingTopic from '@/phase0 Recap/DSA/topics/Searching/SearchingTopic';
-import {
-  SortingOverviewTopic,
-  BubbleSortTopic,
-  SelectionSortTopic,
-  InsertionSortTopic,
-  MergeSortTopic,
-  QuickSortTopic
-} from '@/phase0 Recap/DSA/topics/Sorting';
-import RecursionTopic from '@/phase0 Recap/DSA/topics/Recursion/RecursionTopic';
-import ParadigmsTopic from '@/phase0 Recap/DSA/topics/Paradigms/ParadigmsTopic';
-import GraphTopic from '@/phase0 Recap/DSA/topics/Graph/GraphTopic';
-import DagTopic from '@/phase0 Recap/DSA/topics/Graph/DagTopic';
-import DatabasePlayground from '@/components/DatabasePlayground';
-import PgVectorTopic from '@/components/PgVectorTopic';
+import { TOPIC_METADATA } from '@/config/topicMetadata';
+import TopicSkeleton from '@/components/TopicSkeleton';
 import WelcomeModal from '@/components/WelcomeModal';
 import {
   Server,
@@ -36,153 +14,33 @@ import {
   HelpCircle
 } from 'lucide-react';
 
-const TOPIC_METADATA: Record<TopicId, { title: string; category: string; description: string }> = {
-  foundations: {
-    category: '0. Foundations & Roadmap',
-    title: '0. DSA & Systems Foundations',
-    description: 'Core engineering philosophy: why data structures and algorithms matter, situational decision guidelines, and the forward roadmap.',
-  },
-  array: {
-    category: '1. Linear Data Structures',
-    title: 'Array & Contiguous Memory Architecture',
-    description: 'Hardware pointer arithmetic, cache locality, and element shifting simulation.',
-  },
-  linkedlist: {
-    category: '1. Linear Data Structures',
-    title: 'Linked List (Singly & Doubly)',
-    description: 'Pointer dereferencing, heap-allocated nodes, and O(1) head/tail splicing.',
-  },
-  stack: {
-    category: '1. Linear Data Structures',
-    title: 'Stack (LIFO Execution)',
-    description: 'Last-In-First-Out access, call stack frames in recursion, and undo history.',
-  },
-  queue: {
-    category: '1. Linear Data Structures',
-    title: 'Queue (FIFO Buffers)',
-    description: 'First-In-First-Out processing pipelines, message brokers, and rate limiters.',
-  },
-  heap: {
-    category: '2. Fast Access & Hierarchies',
-    title: 'Priority Queue & Binary Heap',
-    description: 'Complete binary tree, O(1) top-priority peek, and O(log N) sift-up/down.',
-  },
-  hashtable: {
-    category: '2. Fast Access & Hierarchies',
-    title: 'Hash Table & Set (O(1) Lookup)',
-    description: 'Hash functions, modulo bucket arrays, and separate chaining collision resolution.',
-  },
-  tree: {
-    category: '2. Fast Access & Hierarchies',
-    title: 'Tree & Binary Search Tree (BST)',
-    description: 'Hierarchical branching, Left < Root < Right BST invariant, and logarithmic search.',
-  },
-  'balanced-tree': {
-    category: '2. Fast Access & Hierarchies',
-    title: 'Balanced Trees: AVL & Red-Black Trees',
-    description: 'Self-balancing trees, rotation maneuvers (LL, RR, LR, RL), and strict O(log N) worst-case performance guarantee.',
-  },
-  trie: {
-    category: '2. Fast Access & Hierarchies',
-    title: 'Trie: Prefix Tree & Autocomplete',
-    description: 'Character-based prefix matching, dictionary tokenizers, and subword retrieval.',
-  },
-  graphs: {
-    category: '3. Graphs & Algorithms',
-    title: '10. Graph Basics & Types',
-    description: 'Vertices, edges, representations (List vs Matrix), and interactive Undirected, Directed, Weighted graph simulators.',
-  },
-  'graph-dag': {
-    category: '3. Graphs & Algorithms',
-    title: '11. Cyclic vs Directed Acyclic Graphs (DAGs)',
-    description: 'Circular deadlocks vs safe DAG execution, 3-Color DFS cycle detection, and Kahn’s topological sort pipeline engine.',
-  },
-  searching: {
-    category: '3. Graphs & Algorithms',
-    title: '12. Searching: Linear vs Binary Search',
-    description: 'Direct comparison race between sequential scans and halving search spaces.',
-  },
-  sorting: {
-    category: '3. Graphs & Algorithms',
-    title: '13.0 Sorting Overview & Decision Matrix',
-    description: 'Comprehensive taxonomy: O(N²) quadratic vs O(N log N) divide & conquer, stability, and real-world selection guidelines.',
-  },
-  'sorting-bubble': {
-    category: '3. Graphs & Algorithms',
-    title: '13.1 Bubble Sort (বুদ্বুদ সোয়াপ)',
-    description: 'Adjacent element comparison, floating bubble elevation, and early-exit O(N) adaptive optimization.',
-  },
-  'sorting-selection': {
-    category: '3. Graphs & Algorithms',
-    title: '13.2 Selection Sort (মিনিমাম স্ক্যানার)',
-    description: 'Sorted boundary expansion, minimum champion scanner, and strictly O(N) flash-friendly write cycles.',
-  },
-  'sorting-insertion': {
-    category: '3. Graphs & Algorithms',
-    title: '13.3 Insertion Sort (তাসের পকেট সাজানো)',
-    description: 'Hand of playing cards metaphor, active key card lifting, rightward shifting, and V8 engine hybrid sorts.',
-  },
-  'sorting-merge': {
-    category: '3. Graphs & Algorithms',
-    title: '13.4 Merge Sort (ডিভাইড অ্যান্ড কনকার ট্রি)',
-    description: 'Recursive divide tree down to base cases, 2-pointer zipper merging, and guaranteed O(N log N) stability.',
-  },
-  'sorting-quick': {
-    category: '3. Graphs & Algorithms',
-    title: '13.5 Quick Sort (৩-জোন পিভট পার্টিশন)',
-    description: 'Pivot element partitioning, 3-zone visual distribution (Left < Pivot < Right), and CPU cache locality.',
-  },
-  recursion: {
-    category: '3. Graphs & Algorithms',
-    title: '14. Recursion: Base Case & Stack Unwinding',
-    description: 'Visualizing memory activation frames winding down to base conditions and returning.',
-  },
-  paradigms: {
-    category: '3. Graphs & Algorithms',
-    title: '15. The 4 Core Algorithmic Paradigms',
-    description: 'Greedy approach, Divide & Conquer, Dynamic Programming memoization, and Backtracking.',
-  },
-  'backend-sql': {
-    category: '4. Database & Systems',
-    title: 'SQL & Query Planner (EXPLAIN ANALYZE)',
-    description: 'Interactive execution plans, sequential scans vs B-Tree searches on 5,000 synthetic rows.',
-  },
-  'backend-indexing': {
-    category: '4. Database & Systems',
-    title: 'B-Tree Indexing Benchmarks',
-    description: 'Measuring latency drops and composite index selectivity on high-throughput tables.',
-  },
-  'backend-pgvector': {
-    category: '4. Database & Systems',
-    title: 'pgvector & High-Dimensional Vectors',
-    description: 'IVFFlat vs HNSW indexing for storing and querying AI embeddings directly in PostgreSQL.',
-  },
-  'ai-llm': {
-    category: '5. Forward AI Engineering',
-    title: 'LLM APIs & Token Streaming',
-    description: 'Structured JSON outputs, function calling, temperature tuning, and Server-Sent Events (SSE).',
-  },
-  'ai-rag': {
-    category: '5. Forward AI Engineering',
-    title: 'RAG (Retrieval Augmented Generation)',
-    description: 'Semantic chunking, dense vector retrieval, hybrid BM25 search, and cross-encoder rerankers.',
-  },
-  'ai-mcp': {
-    category: '5. Forward AI Engineering',
-    title: 'Model Context Protocol (MCP)',
-    description: 'Building custom MCP tools and resource servers to connect local databases to LLMs.',
-  },
-  'ai-agents': {
-    category: '5. Forward AI Engineering',
-    title: 'Autonomous AI Agents & Workflows',
-    description: 'ReAct loops, LangGraph stateful DAGs, human-in-the-loop validation, and memory persistence.',
-  },
-  'ai-eval': {
-    category: '5. Forward AI Engineering',
-    title: 'Evaluation & Observability',
-    description: 'Faithfulness, answer relevance metrics, latency tracking, and regression harnesses.',
-  },
-};
+const FoundationsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Foundations/FoundationsTopic'), { loading: () => <TopicSkeleton /> });
+const ArrayTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Array/ArrayTopic'), { loading: () => <TopicSkeleton /> });
+const LinkedListTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/LinkedList/LinkedListTopic'), { loading: () => <TopicSkeleton /> });
+const StackTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Stack/StackTopic'), { loading: () => <TopicSkeleton /> });
+const QueueTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Queue/QueueTopic'), { loading: () => <TopicSkeleton /> });
+const HeapTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Heap/HeapTopic'), { loading: () => <TopicSkeleton /> });
+const HashTableTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/HashTable/HashTableTopic'), { loading: () => <TopicSkeleton /> });
+const TreeTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Tree/TreeTopic'), { loading: () => <TopicSkeleton /> });
+const BalancedTreeTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/BalancedTree/BalancedTreeTopic'), { loading: () => <TopicSkeleton /> });
+const TrieTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Trie/TrieTopic'), { loading: () => <TopicSkeleton /> });
+const SearchingTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Searching/SearchingTopic'), { loading: () => <TopicSkeleton /> });
+const SortingOverviewTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Sorting/SortingOverviewTopic'), { loading: () => <TopicSkeleton /> });
+const BubbleSortTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Sorting/BubbleSortTopic'), { loading: () => <TopicSkeleton /> });
+const SelectionSortTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Sorting/SelectionSortTopic'), { loading: () => <TopicSkeleton /> });
+const InsertionSortTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Sorting/InsertionSortTopic'), { loading: () => <TopicSkeleton /> });
+const MergeSortTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Sorting/MergeSortTopic'), { loading: () => <TopicSkeleton /> });
+const QuickSortTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Sorting/QuickSortTopic'), { loading: () => <TopicSkeleton /> });
+const RecursionTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Recursion/RecursionTopic'), { loading: () => <TopicSkeleton /> });
+const ParadigmsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Paradigms/ParadigmsTopic'), { loading: () => <TopicSkeleton /> });
+const GraphTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/GraphTopic'), { loading: () => <TopicSkeleton /> });
+const DagTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/DagTopic'), { loading: () => <TopicSkeleton /> });
+const DfsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/DfsTopic'), { loading: () => <TopicSkeleton /> });
+const BfsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/BfsTopic'), { loading: () => <TopicSkeleton /> });
+const DijkstraTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/DijkstraTopic'), { loading: () => <TopicSkeleton /> });
+const DatabaseRoadmapTopic = dynamic(() => import('@/components/DatabaseRoadmapTopic'), { loading: () => <TopicSkeleton /> });
+const DatabasePlayground = dynamic(() => import('@/components/DatabasePlayground'), { loading: () => <TopicSkeleton /> });
+const PgVectorTopic = dynamic(() => import('@/components/PgVectorTopic'), { loading: () => <TopicSkeleton /> });
 
 export default function Home() {
   const [activeTopic, setActiveTopic] = useState<TopicId>('foundations');
@@ -316,6 +174,13 @@ export default function Home() {
 
             {activeTopic === 'graphs' && <GraphTopic />}
             {activeTopic === 'graph-dag' && <DagTopic />}
+            {activeTopic === 'graph-dfs' && <DfsTopic />}
+            {activeTopic === 'graph-bfs' && <BfsTopic />}
+            {activeTopic === 'graph-dijkstra' && <DijkstraTopic />}
+
+            {activeTopic === 'backend-roadmap' && (
+              <DatabaseRoadmapTopic onNavigate={handleNavigateTopic} />
+            )}
 
             {(activeTopic === 'backend-sql' || activeTopic === 'backend-indexing') && (
               <div className="space-y-6">
