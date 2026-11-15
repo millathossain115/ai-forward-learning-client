@@ -7,28 +7,22 @@ import {
   RotateCcw,
   SkipForward,
   SkipBack,
-  Sparkles,
   ArrowRight,
   ArrowLeft,
-  CheckCircle2,
-  Zap,
-  HardDrive,
-  ShieldCheck,
-  Target,
   Shuffle,
   GitBranch,
-  BarChart3,
-  Terminal
+  BarChart3
 } from 'lucide-react';
 import {
-  TREE_PRESET_1,
-  FinalAssemblyState,
-  TreePartitionStep,
-  BarSortStep,
   generateBarTrace,
   generateRandomBarArray,
   QUICK_SORT_TREE_STEPS
 } from './utils/quickSortUtils';
+import QuickSortTreeCanvas from './components/QuickSortTreeCanvas';
+import QuickSortBarCanvas from './components/QuickSortBarCanvas';
+import QuickSortInspector from './components/QuickSortInspector';
+import QuickSortCodeView from './components/QuickSortCodeView';
+import QuickSortCases from './components/QuickSortCases';
 
 export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: string) => void }) {
   const [activeTab, setActiveTab] = useState<'visualizer' | 'code' | 'cases'>('visualizer');
@@ -52,7 +46,6 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
   const currentBarStep = barTrace[barStepIdx] || barTrace[0];
 
   const treeSteps = QUICK_SORT_TREE_STEPS;
-
   const currentTreeStep = treeSteps[treeStepIdx] || treeSteps[0];
 
   useEffect(() => {
@@ -100,171 +93,9 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
     setTreeStepIdx(0);
   };
 
-  const renderTreeBlock = (
-    id: string,
-    values: number[],
-    xCenter: number,
-    yTop: number,
-    pivotIndex?: number,
-    isStandalonePivot?: boolean,
-    badgeText?: string
-  ) => {
-    const isRevealed = currentTreeStep.revealedNodeIds.includes(id);
-    const isActive = currentTreeStep.activeNodeIds.includes(id);
-
-    const cellW = 24;
-    const cellH = 26;
-    const totalW = values.length * cellW;
-    const xStart = xCenter - totalW / 2;
-
-    return (
-      <g
-        key={id}
-        className="transition-all duration-300"
-        style={{ opacity: isRevealed ? 1 : 0.12 }}
-      >
-        {isActive && (
-          <rect
-            x={xStart - 2.5}
-            y={yTop - 2.5}
-            width={totalW + 5}
-            height={cellH + 5}
-            rx={7}
-            fill="none"
-            stroke={isStandalonePivot ? '#fbbf24' : '#38bdf8'}
-            strokeWidth={1.5}
-            opacity={0.8}
-          />
-        )}
-
-        <rect
-          x={xStart}
-          y={yTop}
-          width={totalW}
-          height={cellH}
-          rx={5}
-          fill={isStandalonePivot ? '#332004' : '#0c1a2c'}
-          stroke={isStandalonePivot ? '#fbbf24' : '#38bdf8'}
-          strokeWidth={isActive ? 2 : 1.2}
-        />
-
-        {values.map((_, i) => {
-          if (i === 0) return null;
-          const lx = xStart + i * cellW;
-          return (
-            <line
-              key={`div-${i}`}
-              x1={lx}
-              y1={yTop}
-              x2={lx}
-              y2={yTop + cellH}
-              stroke={isStandalonePivot ? '#654209' : '#1d3b5c'}
-              strokeWidth={1}
-            />
-          );
-        })}
-
-        {values.map((v, i) => {
-          const isCellPivot = pivotIndex !== undefined && pivotIndex === i;
-          return (
-            <g key={`c-${i}`}>
-              {isCellPivot && (
-                <rect
-                  x={xStart + i * cellW}
-                  y={yTop}
-                  width={cellW}
-                  height={cellH}
-                  fill="#d97706"
-                  opacity={0.7}
-                />
-              )}
-              <text
-                x={xStart + i * cellW + cellW / 2}
-                y={yTop + cellH / 2 + 3.5}
-                textAnchor="middle"
-                fill={isCellPivot || isStandalonePivot ? '#fef3c7' : '#e0f2fe'}
-                fontSize="11"
-                fontFamily="ui-monospace, monospace"
-                fontWeight="bold"
-              >
-                {v}
-              </text>
-            </g>
-          );
-        })}
-
-        {badgeText && (
-          <g>
-            <rect
-              x={xCenter - (badgeText.length * 5 + 6) / 2}
-              y={yTop - 13}
-              width={badgeText.length * 5 + 6}
-              height={11}
-              rx={3}
-              fill="#06111f"
-              stroke={isStandalonePivot ? '#fbbf24' : '#38bdf8'}
-              strokeWidth={0.8}
-            />
-            <text
-              x={xCenter}
-              y={yTop - 4.5}
-              textAnchor="middle"
-              fill={isStandalonePivot ? '#fde047' : '#7dd3fc'}
-              fontSize="7"
-              fontFamily="ui-monospace, monospace"
-              fontWeight="bold"
-            >
-              {badgeText}
-            </text>
-          </g>
-        )}
-      </g>
-    );
-  };
-
-  const renderTreeArrow = (
-    id: string,
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
-    label?: string
-  ) => {
-    const isRevealed = currentTreeStep.revealedArrowIds.includes(id);
-    const isActive = currentTreeStep.activeArrowIds.includes(id);
-
-    const midX = (x1 + x2) / 2;
-    const midY = (y1 + y2) / 2;
-
-    return (
-      <g key={id} style={{ opacity: isRevealed ? 1 : 0.12 }} className="transition-all duration-300">
-        <path
-          d={`M ${x1} ${y1} L ${x2} ${y2}`}
-          stroke={isActive ? '#38bdf8' : '#64748b'}
-          strokeWidth={isActive ? 2 : 1.2}
-          markerEnd="url(#arrow-head)"
-          fill="none"
-        />
-        {label && (
-          <text
-            x={midX + (x2 < x1 ? -10 : 10)}
-            y={midY - 3}
-            textAnchor="middle"
-            fill={isActive ? '#38bdf8' : '#94a3b8'}
-            fontSize="9"
-            fontFamily="ui-monospace, monospace"
-            fontWeight="bold"
-          >
-            {label}
-          </text>
-        )}
-      </g>
-    );
-  };
-
   return (
     <div className="flex flex-col gap-4 w-full text-zinc-100">
-      {/* 1. COMPACT UNIFIED TOP TOOLBAR (Zero vertical overhead) */}
+      {/* 1. COMPACT UNIFIED TOP TOOLBAR */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0e0707] border border-[#2e1414] shadow-lg">
         {/* Left: Brand Pill & Visual Mode Switcher */}
         <div className="flex flex-wrap items-center gap-2.5">
@@ -316,7 +147,6 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
 
         {/* Right: Integrated Player Controls & Tab Switcher */}
         <div className="flex items-center gap-2">
-          {/* Tree Player Controls */}
           {visualMode === 'tree' ? (
             <div className="flex items-center gap-1 bg-[#150a0a] p-1 rounded-xl border border-[#2b1212]">
               <button
@@ -330,11 +160,26 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
                 }}
                 className="flex items-center gap-1 px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold transition-all cursor-pointer shadow"
               >
-                {isTreePlaying ? <Pause className="w-3.5 h-3.5" /> : treeStepIdx >= treeSteps.length - 1 ? <RotateCcw className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                <span>{isTreePlaying ? 'Pause' : treeStepIdx >= treeSteps.length - 1 ? 'Replay' : 'Play'}</span>
+                {isTreePlaying ? (
+                  <Pause className="w-3.5 h-3.5" />
+                ) : treeStepIdx >= treeSteps.length - 1 ? (
+                  <RotateCcw className="w-3.5 h-3.5" />
+                ) : (
+                  <Play className="w-3.5 h-3.5" />
+                )}
+                <span>
+                  {isTreePlaying
+                    ? 'Pause'
+                    : treeStepIdx >= treeSteps.length - 1
+                    ? 'Replay'
+                    : 'Play'}
+                </span>
               </button>
               <button
-                onClick={() => { setIsTreePlaying(false); setTreeStepIdx(Math.max(0, treeStepIdx - 1)); }}
+                onClick={() => {
+                  setIsTreePlaying(false);
+                  setTreeStepIdx(Math.max(0, treeStepIdx - 1));
+                }}
                 disabled={treeStepIdx === 0}
                 className="p-1 rounded-md hover:bg-[#201010] disabled:opacity-30 text-zinc-300 cursor-pointer"
                 title="Step Back"
@@ -345,7 +190,10 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
                 {treeStepIdx + 1}/{treeSteps.length}
               </span>
               <button
-                onClick={() => { setIsTreePlaying(false); setTreeStepIdx(Math.min(treeSteps.length - 1, treeStepIdx + 1)); }}
+                onClick={() => {
+                  setIsTreePlaying(false);
+                  setTreeStepIdx(Math.min(treeSteps.length - 1, treeStepIdx + 1));
+                }}
                 disabled={treeStepIdx >= treeSteps.length - 1}
                 className="p-1 rounded-md hover:bg-[#201010] disabled:opacity-30 text-zinc-300 cursor-pointer"
                 title="Step Forward"
@@ -353,7 +201,10 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
                 <SkipForward className="w-3.5 h-3.5" />
               </button>
               <button
-                onClick={() => { setIsTreePlaying(false); setTreeStepIdx(0); }}
+                onClick={() => {
+                  setIsTreePlaying(false);
+                  setTreeStepIdx(0);
+                }}
                 className="p-1 rounded-md hover:bg-[#201010] text-zinc-400 hover:text-zinc-100 cursor-pointer"
                 title="Reset"
               >
@@ -373,11 +224,26 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
                 }}
                 className="flex items-center gap-1 px-3 py-1 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs font-bold transition-all cursor-pointer shadow"
               >
-                {isBarPlaying ? <Pause className="w-3.5 h-3.5" /> : barStepIdx >= barTrace.length - 1 ? <RotateCcw className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                <span>{isBarPlaying ? 'Pause' : barStepIdx >= barTrace.length - 1 ? 'Replay' : 'Sort Bars'}</span>
+                {isBarPlaying ? (
+                  <Pause className="w-3.5 h-3.5" />
+                ) : barStepIdx >= barTrace.length - 1 ? (
+                  <RotateCcw className="w-3.5 h-3.5" />
+                ) : (
+                  <Play className="w-3.5 h-3.5" />
+                )}
+                <span>
+                  {isBarPlaying
+                    ? 'Pause'
+                    : barStepIdx >= barTrace.length - 1
+                    ? 'Replay'
+                    : 'Sort Bars'}
+                </span>
               </button>
               <button
-                onClick={() => { setIsBarPlaying(false); setBarStepIdx(0); }}
+                onClick={() => {
+                  setIsBarPlaying(false);
+                  setBarStepIdx(0);
+                }}
                 className="p-1 rounded-md hover:bg-[#201010] text-zinc-400 hover:text-zinc-100 cursor-pointer"
                 title="Reset Bars"
               >
@@ -428,297 +294,36 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
           {/* LEFT COLUMN: THE VISUAL CANVAS (8 cols = 66%) */}
           <div className="lg:col-span-8 flex flex-col space-y-3">
             {visualMode === 'tree' ? (
-              <div className="relative rounded-2xl bg-[#080d14] border border-[#182838] p-3 shadow-xl overflow-hidden flex flex-col items-center">
-                {/* SVG Header Strip */}
-                <div className="w-full flex items-center justify-between pb-2 border-b border-[#121e2d] text-xs font-mono">
-                  <span className="text-zinc-400 flex items-center gap-1.5">
-                    <GitBranch className="w-3.5 h-3.5 text-sky-400" />
-                    <span>পার্টিশন ট্রি ভিউ (Partition Tree): [20, 2, 9, 7, 12, 15, 1, 6, 8]</span>
-                  </span>
-                  <div className="flex items-center gap-3 text-[11px]">
-                    <span className="text-sky-300">■ সাব-অ্যারে</span>
-                    <span className="text-amber-300">■ পিভট</span>
-                    <span className="text-emerald-300">■ লকড</span>
-                  </div>
-                </div>
-
-                {/* Compact Scaled SVG Tree */}
-                <div className="w-full flex justify-center py-1 overflow-x-auto">
-                  <svg viewBox="0 0 840 440" className="w-full h-auto max-h-[460px] select-none">
-                    <defs>
-                      <marker id="arrow-head" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                        <path d="M 0 0 L 6 3 L 0 6 z" fill="#38bdf8" />
-                      </marker>
-                    </defs>
-
-                    {/* Level 0 -> Level 1 */}
-                    {renderTreeArrow('a_root_left', 340, 58, 200, 128, '< 8')}
-                    {renderTreeArrow('a_root_pivot', 420, 58, 420, 128, 'Pivot')}
-                    {renderTreeArrow('a_root_right', 500, 58, 650, 128, '>= 8')}
-
-                    {/* Level 1 (Left) -> Level 2 */}
-                    {renderTreeArrow('a_l1_ll', 170, 158, 110, 233, '< 6')}
-                    {renderTreeArrow('a_l1_lp', 200, 158, 200, 233, 'Pivot')}
-                    {renderTreeArrow('a_l1_lr', 230, 158, 290, 233, '>= 6')}
-
-                    {/* Level 2 (Left) -> Level 3 */}
-                    {renderTreeArrow('a_l2_p1', 95, 263, 80, 338, 'Pivot')}
-                    {renderTreeArrow('a_l2_v2', 125, 263, 140, 338, '>= 1')}
-
-                    {/* Level 1 (Right) -> Level 2 */}
-                    {renderTreeArrow('a_l1_rl', 620, 158, 560, 233, '< 12')}
-                    {renderTreeArrow('a_l1_rp', 650, 158, 650, 233, 'Pivot')}
-                    {renderTreeArrow('a_l1_rr', 680, 158, 740, 233, '>= 12')}
-
-                    {/* Level 2 (Right) -> Level 3 */}
-                    {renderTreeArrow('a_l2_v15', 725, 263, 700, 338, '< 20')}
-                    {renderTreeArrow('a_l2_p20', 755, 263, 780, 338, 'Pivot')}
-
-                    {/* NODES */}
-                    {renderTreeBlock('root', TREE_PRESET_1, 420, 30, 8, false, 'ROOT')}
-
-                    {renderTreeBlock('l1_left', [2, 7, 1, 6], 200, 130, 3, false, '< 8')}
-                    {renderTreeBlock('l1_pivot', [8], 420, 130, 0, true, 'PIVOT 8')}
-                    {renderTreeBlock('l1_right', [15, 9, 20, 12], 650, 130, 3, false, '>= 8')}
-
-                    {renderTreeBlock('l2_l_left', [2, 1], 110, 235, 1, false, '< 6')}
-                    {renderTreeBlock('l2_l_pivot', [6], 200, 235, 0, true, 'PIVOT 6')}
-                    {renderTreeBlock('l2_l_right', [7], 290, 235, -1, false, '>= 6')}
-
-                    {renderTreeBlock('l2_r_left', [9], 560, 235, -1, false, '< 12')}
-                    {renderTreeBlock('l2_r_pivot', [12], 650, 235, 0, true, 'PIVOT 12')}
-                    {renderTreeBlock('l2_r_right', [15, 20], 740, 235, 1, false, '>= 12')}
-
-                    {renderTreeBlock('l3_pivot_1', [1], 80, 340, 0, true, 'PIVOT 1')}
-                    {renderTreeBlock('l3_val_2', [2], 140, 340, -1, false, 'BASE')}
-
-                    {renderTreeBlock('l3_val_15', [15], 700, 340, -1, false, 'BASE')}
-                    {renderTreeBlock('l3_pivot_20', [20], 780, 340, 0, true, 'PIVOT 20')}
-                  </svg>
-                </div>
-              </div>
+              <QuickSortTreeCanvas currentTreeStep={currentTreeStep} />
             ) : (
-              /* LIVE BAR CANVAS */
-              <div className="relative rounded-2xl bg-[#07090e] border border-[#1f283d] overflow-hidden shadow-xl p-3 flex flex-col space-y-3">
-                <div className="flex items-center justify-between pb-2 border-b border-[#1b253b] text-xs font-mono">
-                  <span className="text-orange-400 font-bold flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5" />
-                    <span>লাইভ বার সর্টিং সিমুলেটর ({barArray.length} টি বার)</span>
-                  </span>
-                  <span className="text-zinc-400">কিবোর্ড: 'Enter' (সর্ট/পজ), 'R' (নতুন বার)</span>
-                </div>
-
-                <div className="w-full h-64 bg-[#04060a] border border-[#151f33] rounded-xl p-3 flex items-end justify-center gap-1 relative overflow-hidden">
-                  {currentBarStep.arr.map((val: number, idx: number) => {
-                    const isPivot = idx === currentBarStep.pivotIdx;
-                    const isComparing = idx === currentBarStep.comparingIdx;
-                    const isSorted = currentBarStep.sortedIndices.includes(idx);
-                    const isInActivePartition = idx >= currentBarStep.partitionStart && idx <= currentBarStep.partitionEnd;
-
-                    let barColor = 'bg-[#f97316]';
-                    let barBorder = 'border-orange-500';
-
-                    if (isSorted) {
-                      barColor = 'bg-[#22c55e]';
-                      barBorder = 'border-emerald-400';
-                    } else if (isPivot) {
-                      barColor = 'bg-[#38bdf8]';
-                      barBorder = 'border-sky-300';
-                    } else if (isComparing) {
-                      barColor = 'bg-[#ef4444]';
-                      barBorder = 'border-rose-400';
-                    } else if (!isInActivePartition) {
-                      barColor = 'bg-[#334155] opacity-50';
-                      barBorder = 'border-slate-600';
-                    }
-
-                    return (
-                      <div
-                        key={idx}
-                        className={`flex-1 min-w-[3px] max-w-[12px] rounded-t-sm transition-all duration-75 ${barColor} border-t ${barBorder}`}
-                        style={{ height: `${val}%` }}
-                      />
-                    );
-                  })}
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-[#0b101c] border border-[#18253b] text-xs font-mono flex items-center justify-between">
-                  <span className="text-orange-300 font-bold">স্টেপ {barStepIdx + 1} / {barTrace.length}:</span>
-                  <span className="text-zinc-300 truncate max-w-md">{currentBarStep.desc}</span>
-                </div>
-              </div>
+              <QuickSortBarCanvas
+                barArrayLength={barArray.length}
+                currentBarStep={currentBarStep}
+                barStepIdx={barStepIdx}
+                totalBarSteps={barTrace.length}
+              />
             )}
           </div>
 
           {/* RIGHT COLUMN: TELEMETRY & LIVE INSPECTOR DECK (4 cols = 34%) */}
-          <div className="lg:col-span-4 flex flex-col space-y-3">
-            {/* Step Description Card */}
-            <div className="p-4 rounded-2xl bg-[#0e0707] border border-[#2e1414] shadow-lg space-y-2">
-              <div className="flex items-center justify-between border-b border-[#210f0f] pb-2">
-                <span className="text-[10px] font-mono text-zinc-400 font-bold uppercase">
-                  {visualMode === 'tree' ? `ধাপ ${treeStepIdx + 1} / ${treeSteps.length}` : `বার স্টেপ ${barStepIdx + 1}`}
-                </span>
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-300 border border-rose-500/30">
-                  {visualMode === 'tree' ? (currentTreeStep.finalAssembly ? 'ASSEMBLY' : 'PARTITION') : 'IN-PLACE'}
-                </span>
-              </div>
-
-              <h3 className="text-sm font-bold text-white leading-snug">
-                {visualMode === 'tree' ? currentTreeStep.title : 'লাইভ পার্টিশনিং স্ট্যাটাস'}
-              </h3>
-
-              <p className="text-xs text-zinc-300 leading-relaxed font-sans">
-                {visualMode === 'tree' ? currentTreeStep.desc : currentBarStep.desc}
-              </p>
-            </div>
-
-            {/* LIVE FINAL ASSEMBLY ARENA (Visible in Tree mode during assembly steps) */}
-            {visualMode === 'tree' && currentTreeStep.finalAssembly && (
-              <div className="p-4 rounded-2xl bg-[#09111c] border-2 border-rose-500/40 shadow-xl space-y-3 animate-in fade-in">
-                <div className="flex items-center gap-1.5 border-b border-[#182a40] pb-2">
-                  <Target className="w-3.5 h-3.5 text-rose-400" />
-                  <span className="text-xs font-mono font-bold text-rose-300 uppercase tracking-wider">
-                    চূড়ান্ত সংযোজন (Left + Pivot + Right)
-                  </span>
-                </div>
-
-                {/* 3 components */}
-                <div className="space-y-2 text-xs font-mono">
-                  {/* Left block */}
-                  <div className="p-2 rounded-xl bg-[#060c14] border border-sky-500/30 flex items-center justify-between">
-                    <span className="text-[10px] text-sky-400 uppercase font-bold">১. বামের সর্টেড (&lt; 8):</span>
-                    <div className="flex items-center gap-1">
-                      {currentTreeStep.finalAssembly.leftBlock.map((v, i) => (
-                        <span key={i} className="px-1.5 py-0.5 rounded bg-sky-900 border border-sky-500 text-sky-100 font-bold text-[11px]">
-                          {v}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Pivot */}
-                  <div className="p-2 rounded-xl bg-[#1c1204] border border-amber-500/40 flex items-center justify-between">
-                    <span className="text-[10px] text-amber-300 uppercase font-bold flex items-center gap-1">
-                      <Target className="w-3 h-3 text-amber-400" />
-                      <span>২. কেন্দ্রীয় পিভট:</span>
-                    </span>
-                    <span className="px-2 py-0.5 rounded bg-amber-500 border border-amber-300 text-black font-black text-xs">
-                      {currentTreeStep.finalAssembly.pivotVal}
-                    </span>
-                  </div>
-
-                  {/* Right block */}
-                  <div className="p-2 rounded-xl bg-[#060c14] border border-rose-500/30 flex items-center justify-between">
-                    <span className="text-[10px] text-rose-400 uppercase font-bold">৩. ডানের সর্টেড (&gt;= 8):</span>
-                    <div className="flex items-center gap-1">
-                      {currentTreeStep.finalAssembly.rightBlock.map((v, i) => (
-                        <span key={i} className="px-1.5 py-0.5 rounded bg-rose-900 border border-rose-500 text-rose-100 font-bold text-[11px]">
-                          {v}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Combined Assembled Array */}
-                <div className="p-2 rounded-xl bg-[#050912] border border-emerald-500/30 flex flex-col items-center space-y-1.5">
-                  <span className="text-[9px] font-mono text-emerald-400 uppercase font-bold">
-                    সমন্বিত পূর্ণাঙ্গ সর্টেড অ্যারে
-                  </span>
-                  <div className="flex flex-wrap items-center justify-center gap-1">
-                    {currentTreeStep.finalAssembly.assembledSoFar.map((v, idx) => {
-                      const isP = v === currentTreeStep.finalAssembly?.pivotVal;
-                      return (
-                        <span
-                          key={idx}
-                          className={`w-6 h-6 rounded flex items-center justify-center font-mono text-xs font-black border ${
-                            isP
-                              ? 'bg-amber-500 text-black border-amber-300 scale-105'
-                              : 'bg-emerald-950 text-emerald-200 border-emerald-700'
-                          }`}
-                        >
-                          {v}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Quick Invariants & Complexity Matrix */}
-            <div className="p-3.5 rounded-2xl bg-[#0e0707] border border-[#2e1414] text-xs font-mono space-y-2">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 block border-b border-[#210f0f] pb-1">
-                মৌলিক ইনভ্যারিয়েন্ট (Invariants)
-              </span>
-              <div className="flex justify-between">
-                <span className="text-zinc-400">Average Time:</span>
-                <span className="text-emerald-300 font-bold">O(N log N) Fast</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-400">Auxiliary Space:</span>
-                <span className="text-sky-300 font-bold">O(log N) Call Stack</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-400">In-Place:</span>
-                <span className="text-emerald-300 font-bold">Yes (RAM Locality)</span>
-              </div>
-            </div>
+          <div className="lg:col-span-4">
+            <QuickSortInspector
+              visualMode={visualMode}
+              treeStepIdx={treeStepIdx}
+              totalTreeSteps={treeSteps.length}
+              currentTreeStep={currentTreeStep}
+              barStepIdx={barStepIdx}
+              currentBarStep={currentBarStep}
+            />
           </div>
         </div>
       )}
 
       {/* 3. CODE TAB */}
-      {activeTab === 'code' && (
-        <div className="rounded-2xl bg-[#080d14] border border-[#182838] p-5 shadow-xl space-y-3">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2">
-            <span>TypeScript লোমুটো পার্টিশন (Lomuto Partition) কোড</span>
-          </h3>
-          <pre className="p-3.5 rounded-xl bg-[#04070c] border border-[#142130] text-xs font-mono text-zinc-300 overflow-x-auto leading-relaxed">
-{`function quickSort(arr: number[], low = 0, high = arr.length - 1): number[] {
-  if (low < high) {
-    const pivotIdx = partition(arr, low, high);
-    quickSort(arr, low, pivotIdx - 1);  // বাম পাশ সর্ট
-    quickSort(arr, pivotIdx + 1, high); // ডান পাশ সর্ট
-  }
-  return arr;
-}
-
-function partition(arr: number[], low: number, high: number): number {
-  const pivot = arr[high]; // শেষ উপাদান পিভট
-  let i = low - 1; // ছোট উপাদানের সীমানা
-
-  for (let j = low; j < high; j++) {
-    if (arr[j] <= pivot) {
-      i++;
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-  }
-
-  [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
-  return i + 1;
-}`}
-          </pre>
-        </div>
-      )}
+      {activeTab === 'code' && <QuickSortCodeView />}
 
       {/* 4. CASE STUDIES TAB */}
-      {activeTab === 'cases' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-2xl bg-[#080d14] border border-[#182838] p-4 shadow-xl space-y-2">
-            <h4 className="text-xs font-bold text-rose-300 uppercase font-mono">CPU Cache Locality</h4>
-            <p className="text-xs text-zinc-300 leading-relaxed font-sans">
-              কুইক সর্ট ইন-প্লেস কাজ করে। কোনো অতিরিক্ত অ্যারে তৈরি না করায় ডেটা সরাসরি CPU L1/L2 ক্যাশে থাকে, যা মেমোরি রিডকে আলোর গতি দেয়।
-            </p>
-          </div>
-          <div className="rounded-2xl bg-[#080d14] border border-[#182838] p-4 shadow-xl space-y-2">
-            <h4 className="text-xs font-bold text-rose-300 uppercase font-mono">Dual-Pivot Quicksort (Java & V8)</h4>
-            <p className="text-xs text-zinc-300 leading-relaxed font-sans">
-              জাভার আধুনিক রানটাইমে ভ্লাদিমির ইয়ারোস্লাভস্কির ২-পিভট অ্যালগরিদম ব্যবহৃত হয় যা অ্যারেকে একবারে ৩ ভাগে ভাগ করে আরও ২০% গতি বাড়ায়।
-            </p>
-          </div>
-        </div>
-      )}
+      {activeTab === 'cases' && <QuickSortCases />}
 
       {/* 5. FOOTER NAVIGATION */}
       <div className="flex items-center justify-between pt-2 border-t border-[#2e1414] text-xs font-mono">
