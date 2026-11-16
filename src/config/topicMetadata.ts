@@ -167,9 +167,14 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '7. Lesson 7: Advanced SQL Queries',
     description: 'Intermediate level • University exam prep: Subqueries, correlated subqueries, IN/EXISTS, ANY/ALL, Common Table Expressions (CTEs), set operations (UNION, INTERSECT, EXCEPT), window functions (ROW_NUMBER, RANK, DENSE_RANK), and relational division.',
   },
+  'backend-lesson8': {
+    category: '4. Database & Systems',
+    title: '8. Lesson 8: Database Normalization',
+    description: 'Beginner to University Exam Level: Database normalization, data redundancy and consistency, insertion/update/deletion anomalies, functional dependencies (trivial, full, partial, transitive), 1NF, 2NF, 3NF, BCNF, and normalized SQL schemas.',
+  },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '8. Database & Systems Architecture Roadmap',
+    title: '9. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {
