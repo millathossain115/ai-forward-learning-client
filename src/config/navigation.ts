@@ -18,7 +18,9 @@ import {
   Compass,
   BarChart3,
   Scale,
-  BookOpen
+  BookOpen,
+  KeyRound,
+  Workflow
 } from 'lucide-react';
 
 export type TopicId =
@@ -46,6 +48,15 @@ export type TopicId =
   | 'sorting-quick'
   | 'recursion'
   | 'paradigms'
+  | 'backend-basics'
+  | 'backend-lesson1'
+  | 'backend-lesson2'
+  | 'backend-lesson3'
+  | 'backend-lesson4'
+  | 'backend-lesson5'
+  | 'backend-lesson6'
+  | 'backend-lesson7'
+  | 'backend-lesson8'
   | 'backend-roadmap'
   | 'backend-sql'
   | 'backend-indexing'
@@ -140,10 +151,18 @@ export const NAV_SECTIONS: NavSection[] = [
     title: '4. Database & Systems',
     phase: 'Phase 1 • Data Core',
     items: [
-      { id: 'backend-roadmap', label: '0. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
-      { id: 'backend-sql', label: '1. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
-      { id: 'backend-indexing', label: '2. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: '3. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
+      { id: 'backend-basics', label: '0. Database 101: Zero to Hero', icon: Table, status: 'ready', tag: 'Foundations' },
+      { id: 'backend-lesson1', label: '1. Lesson 1: Data, Information, DB & DBMS', icon: BookOpen, status: 'ready', tag: 'Beginner' },
+      { id: 'backend-lesson2', label: '2. Lesson 2: Database Models & Types', icon: Layers, status: 'ready', tag: 'Models' },
+      { id: 'backend-lesson3', label: '3. Lesson 3: Relational Database Model', icon: Table, status: 'ready', tag: 'Relations' },
+      { id: 'backend-lesson4', label: '4. Lesson 4: Keys in DBMS', icon: KeyRound, status: 'ready', tag: 'Keys & FK' },
+      { id: 'backend-lesson5', label: '5. Lesson 5: ER Model & Diagrams', icon: Workflow, status: 'ready', tag: 'ER Model' },
+      { id: 'backend-lesson6', label: '6. Lesson 6: Introduction to SQL', icon: Terminal, status: 'ready', tag: 'SQL Basics' },
+      { id: 'backend-lesson7', label: '7. Lesson 7: Advanced SQL Queries', icon: FileCode2, status: 'ready', tag: 'Subqueries & CTEs' },
+      { id: 'backend-roadmap', label: '8. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
+      { id: 'backend-sql', label: '9. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
+      { id: 'backend-indexing', label: '10. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
+      { id: 'backend-pgvector', label: '11. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {

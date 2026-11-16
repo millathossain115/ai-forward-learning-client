@@ -38,6 +38,14 @@ const DagTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/DagTopic'
 const DfsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/DfsTopic'), { loading: () => <TopicSkeleton /> });
 const BfsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/BfsTopic'), { loading: () => <TopicSkeleton /> });
 const DijkstraTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Graph/DijkstraTopic'), { loading: () => <TopicSkeleton /> });
+const DatabaseBasicsTopic = dynamic(() => import('@/components/DatabaseBasicsTopic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson1Topic = dynamic(() => import('@/components/DatabaseLesson1Topic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson2Topic = dynamic(() => import('@/components/DatabaseLesson2Topic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson3Topic = dynamic(() => import('@/components/DatabaseLesson3Topic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson4Topic = dynamic(() => import('@/components/DatabaseLesson4Topic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson5Topic = dynamic(() => import('@/components/DatabaseLesson5Topic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson6Topic = dynamic(() => import('@/components/DatabaseLesson6Topic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson7Topic = dynamic(() => import('@/components/DatabaseLesson7Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseRoadmapTopic = dynamic(() => import('@/components/DatabaseRoadmapTopic'), { loading: () => <TopicSkeleton /> });
 const DatabasePlayground = dynamic(() => import('@/components/DatabasePlayground'), { loading: () => <TopicSkeleton /> });
 const PgVectorTopic = dynamic(() => import('@/components/PgVectorTopic'), { loading: () => <TopicSkeleton /> });
@@ -177,6 +185,38 @@ export default function Home() {
             {activeTopic === 'graph-dfs' && <DfsTopic />}
             {activeTopic === 'graph-bfs' && <BfsTopic />}
             {activeTopic === 'graph-dijkstra' && <DijkstraTopic />}
+
+            {activeTopic === 'backend-basics' && (
+              <DatabaseBasicsTopic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson1' && (
+              <DatabaseLesson1Topic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson2' && (
+              <DatabaseLesson2Topic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson3' && (
+              <DatabaseLesson3Topic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson4' && (
+              <DatabaseLesson4Topic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson5' && (
+              <DatabaseLesson5Topic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson6' && (
+              <DatabaseLesson6Topic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson7' && (
+              <DatabaseLesson7Topic onNavigate={handleNavigateTopic} />
+            )}
 
             {activeTopic === 'backend-roadmap' && (
               <DatabaseRoadmapTopic onNavigate={handleNavigateTopic} />

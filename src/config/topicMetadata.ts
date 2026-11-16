@@ -127,9 +127,49 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '15. The 4 Core Algorithmic Paradigms',
     description: 'Greedy approach, Divide & Conquer, Dynamic Programming memoization, and Backtracking.',
   },
+  'backend-basics': {
+    category: '4. Database & Systems',
+    title: '0. Database 101: Zero to Hero',
+    description: 'Relational database fundamentals: University scenario, tables, rows/tuples, columns/attributes, keys (PK, FK, Candidate, Composite), relationships (1:1, 1:N, M:N), constraints, indexes, views, and Database vs DBMS.',
+  },
+  'backend-lesson1': {
+    category: '4. Database & Systems',
+    title: '1. Lesson 1: Understanding Data, Information, Database, and DBMS',
+    description: 'Beginner level • Lesson 1 of your DBMS journey. Start from absolute zero: What is Data, Information, Database, DBMS, University scenario, Mobile banking balance simulation flow, and Summary matrix.',
+  },
+  'backend-lesson2': {
+    category: '4. Database & Systems',
+    title: '2. Lesson 2: Types of Databases and Database Models',
+    description: 'Beginner level • Lesson 2: Why different databases exist, blueprint concepts, 6 models (Flat File, Hierarchical, Network, Relational, Object-Oriented, NoSQL), comparison matrix, and key exam questions.',
+  },
+  'backend-lesson3': {
+    category: '4. Database & Systems',
+    title: '3. Lesson 3: Introduction to Relational Databases',
+    description: 'Beginner level • Lesson 3: What is a relation, tuple, attribute, domain validator, relational schema vs instance, degree, cardinality, NULL values, and 7 core relational properties.',
+  },
+  'backend-lesson4': {
+    category: '4. Database & Systems',
+    title: '4. Lesson 4: Keys in DBMS – Complete Beginner\'s Guide',
+    description: 'Beginner level • Lesson 4: Why keys are essential, 8 key types (Super, Candidate, Primary, Alternate, Foreign, Composite, Unique, Natural vs Surrogate), referential integrity tester, and exam prep.',
+  },
+  'backend-lesson5': {
+    category: '4. Database & Systems',
+    title: '5. Lesson 5: Entity Relationship (ER) Model',
+    description: 'Beginner level • University exam prep: Entities, attributes (simple, composite, multivalued, derived), relationships, degree, cardinality (1:1, 1:N, M:N), participation constraints, strong vs weak entities, and ER-to-table conversion.',
+  },
+  'backend-lesson6': {
+    category: '4. Database & Systems',
+    title: '6. Lesson 6: Introduction to SQL (Structured Query Language)',
+    description: 'Beginner level • University exam prep: DDL, DML, DQL, DCL, TCL, table creation, constraints, WHERE filtering, operators, ORDER BY, aggregate functions, GROUP BY, HAVING, and SQL joins.',
+  },
+  'backend-lesson7': {
+    category: '4. Database & Systems',
+    title: '7. Lesson 7: Advanced SQL Queries',
+    description: 'Intermediate level • University exam prep: Subqueries, correlated subqueries, IN/EXISTS, ANY/ALL, Common Table Expressions (CTEs), set operations (UNION, INTERSECT, EXCEPT), window functions (ROW_NUMBER, RANK, DENSE_RANK), and relational division.',
+  },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '0. Database & Systems Architecture Roadmap',
+    title: '8. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {
