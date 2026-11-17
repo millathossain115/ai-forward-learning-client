@@ -2263,10 +2263,10 @@ export default function DatabaseLesson14Topic({ onNavigate }: DatabaseLesson14To
               <span>Review Lesson 13: NoSQL &amp; Modern DBs</span>
             </button>
             <button
-              onClick={() => onNavigate?.('backend-roadmap')}
+              onClick={() => onNavigate?.('backend-lesson15')}
               className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
             >
-              <span>Explore Database Architecture Roadmap</span>
+              <span>Next: Lesson 15 (DBA Operations &amp; Management)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

@@ -202,9 +202,14 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '14. Lesson 14: Database Security & Authorization',
     description: 'Beginner to University Exam Level: Database security fundamentals, CIA Triad, Authentication vs Authorization, Access Control Models (DAC, MAC, RBAC), SQL GRANT & REVOKE, Principle of Least Privilege, SQL Injection defense via Prepared Statements, Encryption at Rest & in Transit, Auditing, and Backup & Recovery strategies.',
   },
+  'backend-lesson15': {
+    category: '4. Database & Systems',
+    title: '15. Lesson 15: Database Administration & Management (DBA)',
+    description: 'Beginner to University Exam Level: Role and responsibilities of a Database Administrator (DBA), Types of DBAs (System, Application, Development, Production), Installation & Configuration, User & Permission Management, Monitoring & Performance Tuning, Backup & Recovery, High Availability (HA) & Replication, and Disaster Recovery (DR, RPO, RTO).',
+  },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '15. Database & Systems Architecture Roadmap',
+    title: '16. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {

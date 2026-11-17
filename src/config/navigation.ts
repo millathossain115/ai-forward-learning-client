@@ -21,7 +21,8 @@ import {
   BookOpen,
   KeyRound,
   Workflow,
-  ShieldCheck
+  ShieldCheck,
+  Server
 } from 'lucide-react';
 
 export type TopicId =
@@ -64,6 +65,7 @@ export type TopicId =
   | 'backend-lesson12'
   | 'backend-lesson13'
   | 'backend-lesson14'
+  | 'backend-lesson15'
   | 'backend-roadmap'
   | 'backend-sql'
   | 'backend-indexing'
@@ -173,10 +175,11 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'backend-lesson12', label: '12. Lesson 12: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: '2PC, CAP & Sharding' },
       { id: 'backend-lesson13', label: '13. Lesson 13: NoSQL & Modern Database Systems', icon: Boxes, status: 'ready', tag: 'MongoDB, Redis & Sharding' },
       { id: 'backend-lesson14', label: '14. Lesson 14: Database Security & Authorization', icon: ShieldCheck, status: 'ready', tag: 'CIA, RBAC & SQLi' },
-      { id: 'backend-roadmap', label: '15. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
-      { id: 'backend-sql', label: '16. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
-      { id: 'backend-indexing', label: '17. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: '18. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
+      { id: 'backend-lesson15', label: '15. Lesson 15: Database Administration & Management (DBA)', icon: Server, status: 'ready', tag: 'DBA Ops, HA & DR' },
+      { id: 'backend-roadmap', label: '16. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
+      { id: 'backend-sql', label: '17. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
+      { id: 'backend-indexing', label: '18. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
+      { id: 'backend-pgvector', label: '19. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {
