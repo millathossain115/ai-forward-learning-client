@@ -1458,10 +1458,10 @@ export default function DatabaseLesson17Topic({ onNavigate }: DatabaseLesson17To
               <span>Review Lesson 16: Distributed Databases</span>
             </button>
             <button
-              onClick={() => onNavigate?.('backend-roadmap')}
+              onClick={() => onNavigate?.('backend-lesson18')}
               className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
             >
-              <span>Explore Database Architecture Roadmap</span>
+              <span>Next: Lesson 18 (Grand Revision &amp; Mock Examination)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

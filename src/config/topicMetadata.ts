@@ -217,9 +217,14 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '17. Lesson 17: Data Warehousing and Data Mining',
     description: 'Beginner to University Exam Level: Fundamentals of Data Warehousing, 4 Inmon Characteristics (Subject-Oriented, Integrated, Time-Variant, Non-Volatile), ETL Pipeline (Extract, Transform, Load), OLTP vs OLAP, EDW vs Data Mart vs Virtual DW, Data Mining Techniques (Classification, Clustering, Association Rules, Prediction, Anomaly Detection), KDD Process, and Business Analytics.',
   },
+  'backend-lesson18': {
+    category: '4. Database & Systems',
+    title: '18. Lesson 18: Complete DBMS Revision & University Mock Exam',
+    description: 'Final Lesson 18 of 18 • University Exam Preparation: Complete 18-lesson syllabus revision, Database Models, ER Model & Cardinality, Normalization (1NF–BCNF), Practical SQL, Transactions & ACID, Concurrency Control, Indexing & Query Optimization, NoSQL, Database Security (CIA, RBAC), DBA Responsibilities, Distributed DDBMS, Data Warehousing, Top 14 Comparison Matrix, Top 20 Broad Questions, 6 Essential Diagram Blueprints, and Full 60-Mark University Mock Examination.',
+  },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '18. Database & Systems Architecture Roadmap',
+    title: '19. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {

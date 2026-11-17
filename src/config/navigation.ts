@@ -22,7 +22,8 @@ import {
   KeyRound,
   Workflow,
   ShieldCheck,
-  Server
+  Server,
+  GraduationCap
 } from 'lucide-react';
 
 export type TopicId =
@@ -68,6 +69,7 @@ export type TopicId =
   | 'backend-lesson15'
   | 'backend-lesson16'
   | 'backend-lesson17'
+  | 'backend-lesson18'
   | 'backend-roadmap'
   | 'backend-sql'
   | 'backend-indexing'
@@ -180,10 +182,11 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'backend-lesson15', label: '15. Lesson 15: Database Administration & Management (DBA)', icon: Server, status: 'ready', tag: 'DBA Ops, HA & DR' },
       { id: 'backend-lesson16', label: '16. Lesson 16: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: 'Fragmentation, 2PC & CAP' },
       { id: 'backend-lesson17', label: '17. Lesson 17: Data Warehousing & Data Mining', icon: Layers, status: 'ready', tag: 'ETL, OLAP & KDD' },
-      { id: 'backend-roadmap', label: '18. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
-      { id: 'backend-sql', label: '19. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
-      { id: 'backend-indexing', label: '20. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: '21. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
+      { id: 'backend-lesson18', label: '18. Lesson 18: Complete DBMS Revision & Mock Exam', icon: GraduationCap, status: 'ready', tag: 'Final Review & 60-Mark Exam' },
+      { id: 'backend-roadmap', label: '19. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
+      { id: 'backend-sql', label: '20. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
+      { id: 'backend-indexing', label: '21. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
+      { id: 'backend-pgvector', label: '22. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {
