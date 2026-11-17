@@ -192,9 +192,14 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '12. Lesson 12: Distributed Databases & Distributed DBMS',
     description: 'Beginner to University Exam Level: Distributed databases and DDBMS, Centralized vs Distributed, Client-Server vs Peer-to-Peer vs Three-Tier architectures, Homogeneous vs Heterogeneous systems, 4 Distribution Transparencies, Horizontal/Vertical/Hybrid Fragmentation, Data Replication & Allocation, Two-Phase Commit (2PC), Brewer’s CAP Theorem, and Strong vs Eventual Consistency.',
   },
+  'backend-lesson13': {
+    category: '4. Database & Systems',
+    title: '13. Lesson 13: NoSQL and Modern Database Systems',
+    description: 'Beginner to University Exam Level: NoSQL fundamentals, SQL vs NoSQL, 4 NoSQL models (Document, Key-Value, Column-Family, Graph), MongoDB BSON & CRUD operations, Vertical vs Horizontal scaling, Database Sharding, CAP Theorem in NoSQL, and multi-model modern systems.',
+  },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '13. Database & Systems Architecture Roadmap',
+    title: '14. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {
