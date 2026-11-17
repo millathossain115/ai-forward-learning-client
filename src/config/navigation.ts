@@ -67,6 +67,7 @@ export type TopicId =
   | 'backend-lesson14'
   | 'backend-lesson15'
   | 'backend-lesson16'
+  | 'backend-lesson17'
   | 'backend-roadmap'
   | 'backend-sql'
   | 'backend-indexing'
@@ -178,10 +179,11 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'backend-lesson14', label: '14. Lesson 14: Database Security & Authorization', icon: ShieldCheck, status: 'ready', tag: 'CIA, RBAC & SQLi' },
       { id: 'backend-lesson15', label: '15. Lesson 15: Database Administration & Management (DBA)', icon: Server, status: 'ready', tag: 'DBA Ops, HA & DR' },
       { id: 'backend-lesson16', label: '16. Lesson 16: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: 'Fragmentation, 2PC & CAP' },
-      { id: 'backend-roadmap', label: '17. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
-      { id: 'backend-sql', label: '18. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
-      { id: 'backend-indexing', label: '19. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: '20. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
+      { id: 'backend-lesson17', label: '17. Lesson 17: Data Warehousing & Data Mining', icon: Layers, status: 'ready', tag: 'ETL, OLAP & KDD' },
+      { id: 'backend-roadmap', label: '18. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
+      { id: 'backend-sql', label: '19. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
+      { id: 'backend-indexing', label: '20. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
+      { id: 'backend-pgvector', label: '21. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {

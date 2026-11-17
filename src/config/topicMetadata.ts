@@ -210,11 +210,16 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
   'backend-lesson16': {
     category: '4. Database & Systems',
     title: '16. Lesson 16: Distributed Databases & Distributed DBMS (DDBMS)',
-    description: 'Beginner to University Exam Level: Distributed databases and DDBMS architecture, Centralized vs Distributed, Homogeneous vs Heterogeneous, 4 Distribution Transparencies, Data Fragmentation (Horizontal, Vertical, Hybrid), Data Replication & Allocation, Distributed Query Processing, Distributed Transactions & Two-Phase Commit (2PC), Data Consistency, and CAP Theorem.',
+    description: 'Beginner to University Exam Level: Distributed databases and DDBMS architecture, Centralized vs Distributed, Peer-to-Peer vs Three-Tier models, Homogeneous vs Heterogeneous, 4 Distribution Transparencies, Data Fragmentation (Horizontal, Vertical, Hybrid), Data Replication (Primary-to-Replica) & Allocation, Distributed Query Processing, Two-Phase Commit (2PC), Data Consistency, and CAP Theorem.',
+  },
+  'backend-lesson17': {
+    category: '4. Database & Systems',
+    title: '17. Lesson 17: Data Warehousing and Data Mining',
+    description: 'Beginner to University Exam Level: Fundamentals of Data Warehousing, 4 Inmon Characteristics (Subject-Oriented, Integrated, Time-Variant, Non-Volatile), ETL Pipeline (Extract, Transform, Load), OLTP vs OLAP, EDW vs Data Mart vs Virtual DW, Data Mining Techniques (Classification, Clustering, Association Rules, Prediction, Anomaly Detection), KDD Process, and Business Analytics.',
   },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '17. Database & Systems Architecture Roadmap',
+    title: '18. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {
