@@ -1636,10 +1636,10 @@ WHERE Name = 'Rahim';`}
               <span>Review Lesson 14: Security &amp; Authorization</span>
             </button>
             <button
-              onClick={() => onNavigate?.('backend-roadmap')}
+              onClick={() => onNavigate?.('backend-lesson16')}
               className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
             >
-              <span>Explore Database Architecture Roadmap</span>
+              <span>Next: Lesson 16 (Distributed Databases &amp; DDBMS)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

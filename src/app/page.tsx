@@ -54,6 +54,7 @@ const DatabaseLesson12Topic = dynamic(() => import('@/components/DatabaseLesson1
 const DatabaseLesson13Topic = dynamic(() => import('@/components/DatabaseLesson13Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseLesson14Topic = dynamic(() => import('@/components/DatabaseLesson14Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseLesson15Topic = dynamic(() => import('@/components/DatabaseLesson15Topic'), { loading: () => <TopicSkeleton /> });
+const DatabaseLesson16Topic = dynamic(() => import('@/components/DatabaseLesson16Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseRoadmapTopic = dynamic(() => import('@/components/DatabaseRoadmapTopic'), { loading: () => <TopicSkeleton /> });
 const DatabasePlayground = dynamic(() => import('@/components/DatabasePlayground'), { loading: () => <TopicSkeleton /> });
 const PgVectorTopic = dynamic(() => import('@/components/PgVectorTopic'), { loading: () => <TopicSkeleton /> });
@@ -256,6 +257,10 @@ export default function Home() {
 
             {activeTopic === 'backend-lesson15' && (
               <DatabaseLesson15Topic onNavigate={handleNavigateTopic} />
+            )}
+
+            {activeTopic === 'backend-lesson16' && (
+              <DatabaseLesson16Topic onNavigate={handleNavigateTopic} />
             )}
 
             {activeTopic === 'backend-roadmap' && (
