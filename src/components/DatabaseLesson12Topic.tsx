@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState, useMemo } from 'react';
 import {
   Network,
   Globe,
@@ -38,7 +37,13 @@ import {
   Zap,
   Sparkles,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Share2,
+  Monitor,
+  Laptop,
+  ArrowDown,
+  RefreshCw,
+  HardDrive
 } from 'lucide-react';
 import { TopicId } from '@/config/navigation';
 
@@ -179,26 +184,44 @@ const MCQ_DATA: MCQQuestion[] = [
 ];
 
 export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12TopicProps) {
-  // 1. Data Fragmentation Playground State
+  // 1. Bangladesh Multi-Branch Distributed Visualizer State
+  const [bankActiveAction, setBankActiveAction] = useState<'idle' | 'dhaka_deposit' | 'ctg_withdraw' | 'sylhet_query'>('dhaka_deposit');
+
+  // 2. Centralized vs Distributed Architecture Mode
+  const [archMode, setArchMode] = useState<'centralized' | 'distributed'>('distributed');
+
+  // 3. Peer-to-Peer Ring Visualizer: Active Coordinator Node Selection
+  const [selectedRingNode, setSelectedRingNode] = useState<number>(1);
+
+  // 4. Three-Tier Web Architecture Interactive Request Simulator
+  const [simTierStep, setSimTierStep] = useState<number>(1); // 1: Client Request, 2: App Server Logic, 3: DB Data Access, 4: Complete
+
+  // 5. Data Fragmentation Playground State
   const [fragMode, setFragMode] = useState<'horizontal' | 'vertical' | 'hybrid'>('horizontal');
 
-  // 2. Two-Phase Commit (2PC) Interactive Simulator State
+  // 6. Data Replication Visualizer State
+  const [replMode, setReplMode] = useState<'full' | 'partial' | 'none'>('full');
+  const [replSyncType, setReplSyncType] = useState<'sync' | 'async'>('sync');
+
+  // 7. Distributed Query Pipeline Step
+  const [activeQueryStep, setActiveQueryStep] = useState<number>(3);
+
+  // 8. Two-Phase Commit (2PC) Interactive Simulator State
   const [nodeAVote, setNodeAVote] = useState<'YES' | 'NO'>('YES');
   const [nodeBVote, setNodeBVote] = useState<'YES' | 'NO'>('YES');
   const [twoPcStage, setTwoPcStage] = useState<'idle' | 'preparing' | 'decided'>('idle');
 
-  // 3. CAP Theorem Simulator State
-  const [networkPartitionActive, setNetworkPartitionActive] = useState<boolean>(true);
+  // 9. CAP Theorem Simulator State
   const [capMode, setCapMode] = useState<'CP' | 'AP'>('CP');
 
-  // 4. MCQ State
+  // 10. MCQ State
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, 'A' | 'B' | 'C' | 'D'>>({});
   const [quizSubmitted, setQuizSubmitted] = useState<boolean>(false);
 
-  // 5. Exam Questions Accordions
+  // 11. Exam Questions Accordions
   const [openExamQ, setOpenExamQ] = useState<Record<string, boolean>>({});
 
-  // 6. Revision Checklist (16 items)
+  // 12. Revision Checklist (16 items)
   const [checkedChecklist, setCheckedChecklist] = useState<Record<number, boolean>>({});
 
   const toggleExamQ = (id: string) => {
@@ -219,7 +242,7 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
     setQuizSubmitted(false);
   };
 
-  const quizScore = React.useMemo(() => {
+  const quizScore = useMemo(() => {
     let score = 0;
     MCQ_DATA.forEach(q => {
       if (selectedAnswers[q.id] === q.correct) score++;
@@ -237,7 +260,7 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
     setTwoPcStage('preparing');
     setTimeout(() => {
       setTwoPcStage('decided');
-    }, 900);
+    }, 700);
   };
 
   const resetTwoPcSim = () => {
@@ -301,7 +324,7 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
       </div>
 
       {/* ========================================================
-          PART 1: WHAT IS A DISTRIBUTED DATABASE?
+          PART 1: WHAT IS A DISTRIBUTED DATABASE? (CUSTOM SVG VISUALIZER)
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -325,51 +348,124 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
           </div>
         </div>
 
-        {/* Real-World University & Banking Scenario */}
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-700/60 space-y-4">
-          <span className="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
-            Real-World Banking Scenario: 3 Branches Connected Across Bangladesh
-          </span>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="p-4 rounded-xl bg-slate-900 border border-cyan-500/30 text-center space-y-2">
-              <Server className="w-6 h-6 text-cyan-400 mx-auto" />
-              <div className="text-xs font-bold text-white font-mono">Dhaka Branch (Node 1)</div>
-              <p className="text-[11px] text-zinc-400 font-sans">Customer opens a savings account and deposits ৳50,000.</p>
+        {/* Custom Interactive Multi-Branch Topology Visualizer */}
+        <div className="p-6 rounded-2xl bg-[#14182d] border border-cyan-500/40 space-y-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <div>
+              <span className="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
+                Interactive Architecture: National Banking Network (Dhaka &bull; Chittagong &bull; Sylhet)
+              </span>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                Click a transaction scenario to trace cross-branch network synchronization in real-time.
+              </p>
             </div>
-            <div className="p-4 rounded-xl bg-slate-900 border border-emerald-500/30 text-center space-y-2">
-              <Server className="w-6 h-6 text-emerald-400 mx-auto" />
-              <div className="text-xs font-bold text-white font-mono">Chittagong Branch (Node 2)</div>
-              <p className="text-[11px] text-zinc-400 font-sans">The same customer withdraws ৳10,000 from an ATM in Chittagong.</p>
-            </div>
-            <div className="p-4 rounded-xl bg-slate-900 border border-purple-500/30 text-center space-y-2">
-              <Server className="w-6 h-6 text-purple-400 mx-auto" />
-              <div className="text-xs font-bold text-white font-mono">Sylhet Branch (Node 3)</div>
-              <p className="text-[11px] text-zinc-400 font-sans">Branch manager views real-time statement balance (৳40,000).</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setBankActiveAction('dhaka_deposit')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                  bankActiveAction === 'dhaka_deposit' ? 'bg-cyan-600 text-white shadow' : 'bg-slate-800 text-zinc-400'
+                }`}
+              >
+                1. Deposit in Dhaka
+              </button>
+              <button
+                onClick={() => setBankActiveAction('ctg_withdraw')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                  bankActiveAction === 'ctg_withdraw' ? 'bg-emerald-600 text-white shadow' : 'bg-slate-800 text-zinc-400'
+                }`}
+              >
+                2. Withdraw in Chittagong
+              </button>
+              <button
+                onClick={() => setBankActiveAction('sylhet_query')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                  bankActiveAction === 'sylhet_query' ? 'bg-purple-600 text-white shadow' : 'bg-slate-800 text-zinc-400'
+                }`}
+              >
+                3. Query Balance in Sylhet
+              </button>
             </div>
           </div>
-          <p className="text-xs text-zinc-400 font-sans">
-            Although the physical storage hardware is distributed 300+ kilometers apart, the <strong>DDBMS software layer</strong> coordinates synchronization so all 3 nodes appear as one unified logical ledger!
-          </p>
-        </div>
 
-        {/* Industry DDBMS Systems */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          {[
-            { name: 'Google Spanner', role: 'Global ACID with atomic TrueTime GPS clocks' },
-            { name: 'Apache Cassandra', role: 'Leaderless peer-to-peer linear write scaling' },
-            { name: 'CockroachDB', role: 'Distributed SQL with automated range rebalancing' },
-            { name: 'Amazon DynamoDB', role: 'Managed single-digit millisecond key-value scale' }
-          ].map(db => (
-            <div key={db.name} className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-              <span className="text-xs font-mono font-bold text-cyan-300 block">{db.name}</span>
-              <p className="text-[11px] text-zinc-400 font-sans leading-tight">{db.role}</p>
+          {/* SVG Multi-Branch Mesh Canvas */}
+          <div className="relative p-6 bg-black/60 rounded-xl border border-slate-800 overflow-hidden">
+            {/* Top Central Network Cloud */}
+            <div className="flex justify-center mb-6">
+              <div className="px-6 py-2.5 rounded-2xl bg-cyan-950/40 border border-cyan-500/50 flex items-center gap-3 shadow-lg shadow-cyan-950/50">
+                <Network className="w-5 h-5 text-cyan-400 animate-pulse" />
+                <div className="text-center">
+                  <div className="text-xs font-mono font-bold text-cyan-300">High-Speed Computer WAN Mesh</div>
+                  <div className="text-[10px] text-zinc-400 font-sans">DDBMS Distributed Coordinator &amp; Transport Layer</div>
+                </div>
+              </div>
             </div>
-          ))}
+
+            {/* 3 Physical Database Nodes */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10">
+              {/* Node 1: Dhaka */}
+              <div className={`p-4 rounded-xl border transition-all text-center space-y-2 ${
+                bankActiveAction === 'dhaka_deposit'
+                  ? 'bg-cyan-950/40 border-cyan-400 shadow-lg shadow-cyan-500/20 scale-105'
+                  : 'bg-slate-900/90 border-slate-800'
+              }`}>
+                <div className="w-10 h-10 mx-auto rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/30">
+                  <Database className="w-5 h-5" />
+                </div>
+                <div className="text-xs font-mono font-bold text-white">Dhaka Branch (Node 1)</div>
+                <div className="text-[11px] font-mono text-cyan-300">Account DB #1</div>
+                <p className="text-[11px] text-zinc-400 font-sans">
+                  {bankActiveAction === 'dhaka_deposit' ? '⚡ New Account Created: Balance = ৳50,000' : 'Holding Primary Records'}
+                </p>
+              </div>
+
+              {/* Node 2: Chittagong */}
+              <div className={`p-4 rounded-xl border transition-all text-center space-y-2 ${
+                bankActiveAction === 'ctg_withdraw'
+                  ? 'bg-emerald-950/40 border-emerald-400 shadow-lg shadow-emerald-500/20 scale-105'
+                  : 'bg-slate-900/90 border-slate-800'
+              }`}>
+                <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/30">
+                  <Database className="w-5 h-5" />
+                </div>
+                <div className="text-xs font-mono font-bold text-white">Chittagong Branch (Node 2)</div>
+                <div className="text-[11px] font-mono text-emerald-300">Account DB #2</div>
+                <p className="text-[11px] text-zinc-400 font-sans">
+                  {bankActiveAction === 'ctg_withdraw' ? '⚡ Remote ATM Withdrawal: ৳10,000 (Deducting)' : 'Synchronized Replica'}
+                </p>
+              </div>
+
+              {/* Node 3: Sylhet */}
+              <div className={`p-4 rounded-xl border transition-all text-center space-y-2 ${
+                bankActiveAction === 'sylhet_query'
+                  ? 'bg-purple-950/40 border-purple-400 shadow-lg shadow-purple-500/20 scale-105'
+                  : 'bg-slate-900/90 border-slate-800'
+              }`}>
+                <div className="w-10 h-10 mx-auto rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/30">
+                  <Database className="w-5 h-5" />
+                </div>
+                <div className="text-xs font-mono font-bold text-white">Sylhet Branch (Node 3)</div>
+                <div className="text-[11px] font-mono text-purple-300">Account DB #3</div>
+                <p className="text-[11px] text-zinc-400 font-sans">
+                  {bankActiveAction === 'sylhet_query' ? '⚡ Instant Balance Query: Displays ৳40,000' : 'Transparent Query Node'}
+                </p>
+              </div>
+            </div>
+
+            {/* Live Status Bar */}
+            <div className="mt-5 p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-zinc-300 flex items-center gap-2">
+              <Zap className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>
+                {bankActiveAction === 'dhaka_deposit' && 'Transaction Active: Account registered in Dhaka. Replicating write to Chittagong and Sylhet...'}
+                {bankActiveAction === 'ctg_withdraw' && 'Transaction Active: Chittagong node acquires 2PC lock across WAN to ensure balance integrity.'}
+                {bankActiveAction === 'sylhet_query' && 'Query Active: Sylhet reads local consistent replica in sub-milliseconds without cross-WAN roundtrips!'}
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ========================================================
-          PART 3: CENTRALIZED VS DISTRIBUTED DATABASE
+          PART 3: CENTRALIZED VS DISTRIBUTED (CUSTOM VISUAL COMPARISON)
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -380,57 +476,91 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-bold">
               Part 3 of 19
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">Centralized Database vs. Distributed Database</h2>
+            <h2 className="text-xl font-bold text-white mt-1">Centralized vs. Distributed Architecture Comparison</h2>
           </div>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border border-slate-800">
-          <table className="w-full text-left text-xs font-sans">
-            <thead className="bg-[#14182d] text-zinc-300 border-b border-slate-800 font-mono text-[11px] uppercase">
-              <tr>
-                <th className="p-3.5">Comparison Factor</th>
-                <th className="p-3.5 text-indigo-300">Centralized Database</th>
-                <th className="p-3.5 text-cyan-300">Distributed Database</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800 bg-[#0d1020]">
-              <tr>
-                <td className="p-3.5 font-bold text-white">Physical Location</td>
-                <td className="p-3.5 text-zinc-300">All data stored on a single central server/site</td>
-                <td className="p-3.5 text-cyan-200">Data distributed across multiple servers/locations</td>
-              </tr>
-              <tr>
-                <td className="p-3.5 font-bold text-white">Hardware Structure</td>
-                <td className="p-3.5 text-zinc-300">Single database server (scale-up / vertical)</td>
-                <td className="p-3.5 text-cyan-200">Cluster of nodes (scale-out / horizontal)</td>
-              </tr>
-              <tr>
-                <td className="p-3.5 font-bold text-white">Failure Impact</td>
-                <td className="p-3.5 text-rose-300">Single point of failure (SPOF) halts whole system</td>
-                <td className="p-3.5 text-emerald-300">High fault tolerance: surviving nodes keep serving</td>
-              </tr>
-              <tr>
-                <td className="p-3.5 font-bold text-white">Network Sensitivity</td>
-                <td className="p-3.5 text-zinc-300">Low network overhead for local queries</td>
-                <td className="p-3.5 text-zinc-300">Network latency and bandwidth are critical factors</td>
-              </tr>
-              <tr>
-                <td className="p-3.5 font-bold text-white">Scalability</td>
-                <td className="p-3.5 text-zinc-300">Limited by CPU/RAM limits of one machine</td>
-                <td className="p-3.5 text-emerald-300">Near-infinite horizontal scaling by adding cheap nodes</td>
-              </tr>
-              <tr>
-                <td className="p-3.5 font-bold text-white">Administrative Complexity</td>
-                <td className="p-3.5 text-emerald-300">Simple schema, backups, and single transaction log</td>
-                <td className="p-3.5 text-rose-300">Complex: 2PC, data sync, fragmentation, quorum consensus</td>
-              </tr>
-            </tbody>
-          </table>
+        {/* Visual Architecture Switcher */}
+        <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-700/60 space-y-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <span className="text-xs font-mono font-bold text-indigo-300 uppercase">
+              Interactive Architectural Diagram Switcher
+            </span>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setArchMode('centralized')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                  archMode === 'centralized' ? 'bg-indigo-600 text-white shadow' : 'bg-slate-800 text-zinc-400'
+                }`}
+              >
+                Centralized (Single Server / SPOF)
+              </button>
+              <button
+                onClick={() => setArchMode('distributed')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                  archMode === 'distributed' ? 'bg-cyan-600 text-white shadow' : 'bg-slate-800 text-zinc-400'
+                }`}
+              >
+                Distributed (Multi-Node Resilient Mesh)
+              </button>
+            </div>
+          </div>
+
+          {/* Dynamic Architecture Display */}
+          {archMode === 'centralized' ? (
+            <div className="p-6 bg-black/60 rounded-xl border border-indigo-500/30 space-y-4">
+              <div className="text-center font-mono text-xs font-bold text-indigo-300">
+                Centralized Topology: All Users Funnel into One Database Server
+              </div>
+              <div className="flex flex-col items-center justify-center gap-4 py-2">
+                <div className="flex gap-4">
+                  <div className="px-3 py-1.5 rounded bg-slate-900 border border-slate-700 text-[11px] font-mono text-zinc-300">Client 1 (Web)</div>
+                  <div className="px-3 py-1.5 rounded bg-slate-900 border border-slate-700 text-[11px] font-mono text-zinc-300">Client 2 (Mobile)</div>
+                  <div className="px-3 py-1.5 rounded bg-slate-900 border border-slate-700 text-[11px] font-mono text-zinc-300">Client 3 (API)</div>
+                </div>
+                <div className="text-zinc-500 font-mono text-xs">&darr; All Traffic Traversing Single WAN Gateway &darr;</div>
+                <div className="p-5 rounded-2xl bg-indigo-950/40 border-2 border-indigo-500 text-center space-y-2 max-w-sm">
+                  <Server className="w-8 h-8 text-indigo-400 mx-auto" />
+                  <div className="text-sm font-bold text-white font-mono">Single Mainframe / Central DB</div>
+                  <p className="text-[11px] text-zinc-400">Stores 100% of tables, transactions &amp; logs.</p>
+                  <div className="px-2 py-1 bg-rose-950/60 border border-rose-500/50 rounded text-rose-300 text-[10px] font-mono font-bold">
+                    💥 Single Point of Failure (SPOF): If this crashes, the whole world stops!
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="p-6 bg-black/60 rounded-xl border border-cyan-500/30 space-y-4">
+              <div className="text-center font-mono text-xs font-bold text-cyan-300">
+                Distributed Topology: Partitioned &amp; Replicated Across Autonomous Nodes
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div className="p-4 rounded-xl bg-slate-900 border border-cyan-500/40 text-center space-y-2">
+                  <Server className="w-6 h-6 text-cyan-400 mx-auto" />
+                  <div className="text-xs font-bold text-white font-mono">Node 1 (US-East)</div>
+                  <div className="text-[10px] text-zinc-400">Local Users connect locally</div>
+                </div>
+                <div className="p-4 rounded-xl bg-slate-900 border border-emerald-500/40 text-center space-y-2">
+                  <Server className="w-6 h-6 text-emerald-400 mx-auto" />
+                  <div className="text-xs font-bold text-white font-mono">Node 2 (EU-West)</div>
+                  <div className="text-[10px] text-zinc-400">Low-latency European reads</div>
+                </div>
+                <div className="p-4 rounded-xl bg-slate-900 border border-purple-500/40 text-center space-y-2">
+                  <Server className="w-6 h-6 text-purple-400 mx-auto" />
+                  <div className="text-xs font-bold text-white font-mono">Node 3 (Asia-South)</div>
+                  <div className="text-[10px] text-zinc-400">Autonomous Regional Shard</div>
+                </div>
+              </div>
+              <div className="p-3 bg-emerald-950/30 border border-emerald-500/40 rounded text-emerald-300 text-xs font-mono text-center">
+                &check; Zero SPOF: If Node 2 loses power, Nodes 1 &amp; 3 continue serving without interruption!
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
       {/* ========================================================
-          PART 4: ARCHITECTURES (CLIENT-SERVER, P2P, THREE-TIER)
+          PART 4: ARCHITECTURES (CLIENT-SERVER, P2P RING, 3-TIER)
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -441,67 +571,161 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
               Part 4 of 19
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">Distributed Database Architectures</h2>
+            <h2 className="text-xl font-bold text-white mt-1">Distributed Architectures: Interactive Visual Models</h2>
           </div>
         </div>
 
-        {/* 3 Architecture Cards with Uploaded Reference Visuals */}
-        <div className="space-y-6">
-          {/* 4.1 Client-Server */}
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-800 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-cyan-400 uppercase">4.1 Client-Server Architecture</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">Central Request-Response</span>
+        {/* 4.2 Custom Interactive Peer-to-Peer Cassandra Ring Visualizer */}
+        <div className="p-5 rounded-2xl bg-[#14182d] border border-purple-500/40 space-y-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <div>
+              <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider">
+                4.2 Interactive Peer-to-Peer (No-Master Ring) Architecture
+              </span>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                Every node acts as both client and server. Click any node to designate it as the Query Coordinator!
+              </p>
             </div>
-            <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-              Clients submit SQL requests across a network to dedicated database servers that execute query parsing, optimization, and disk I/O before returning result sets.
-            </p>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold">
+              Apache Cassandra Style
+            </span>
           </div>
 
-          {/* 4.2 Peer-to-Peer with user image */}
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-purple-500/30 space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-purple-400 uppercase">4.2 Peer-to-Peer (Leaderless Ring) Architecture</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold">Apache Cassandra Style</span>
+          {/* SVG / Circular Interactive Ring Visualizer */}
+          <div className="p-6 bg-black/60 rounded-xl border border-slate-800 space-y-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map(nodeNum => {
+                const isSelected = selectedRingNode === nodeNum;
+                return (
+                  <button
+                    key={nodeNum}
+                    onClick={() => setSelectedRingNode(nodeNum)}
+                    className={`p-3 rounded-xl border text-center transition-all cursor-pointer space-y-1.5 ${
+                      isSelected
+                        ? 'bg-purple-950/60 border-purple-400 shadow-lg shadow-purple-500/30 scale-105'
+                        : 'bg-slate-900 border-slate-800 hover:border-slate-700'
+                    }`}
+                  >
+                    <div className="text-[10px] font-mono font-bold text-zinc-400">Node {nodeNum}</div>
+                    <div className="w-8 h-8 mx-auto rounded-full bg-black/50 flex items-center justify-center text-purple-300 font-mono text-xs font-bold border border-purple-500/30">
+                      N{nodeNum}
+                    </div>
+                    <div className="text-[9px] font-mono text-cyan-300">
+                      Shard {String.fromCharCode(65 + ((nodeNum - 1) % 4))}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-            <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-              Every node in the cluster plays an identical role (symmetric no-master topology). Any node can receive a client read/write query, act as coordinator, and route requests to replica nodes. Eliminates master bottlenecks!
-            </p>
-            <div className="relative rounded-xl overflow-hidden border border-slate-700 bg-black/40 p-2 flex justify-center">
-              <Image
-                src="/images/lesson12/peer-to-peer-architecture.jpg"
-                alt="Peer-to-Peer Distributed Database Ring Architecture"
-                width={800}
-                height={450}
-                className="rounded-lg object-contain max-h-96 w-auto shadow-xl"
-              />
+
+            {/* Selected Node Ring Inspection */}
+            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono space-y-2">
+              <div className="flex items-center justify-between text-purple-300 font-bold">
+                <span>Active Coordinator: Node {selectedRingNode}</span>
+                <span className="text-emerald-400">Status: Healthy &bull; Peer Gossip Protocol Active</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] text-zinc-300 font-sans pt-1">
+                <div className="p-2 bg-black/40 rounded border border-slate-800">
+                  <strong className="text-white block font-mono">Replication Flow:</strong>
+                  Replicates data clockwise to Node {(selectedRingNode % 8) + 1} and Node {((selectedRingNode + 1) % 8) + 1}.
+                </div>
+                <div className="p-2 bg-black/40 rounded border border-slate-800">
+                  <strong className="text-white block font-mono">Load Balancing:</strong>
+                  Client queries can hit ANY node; coordinator routes shards to closest token range.
+                </div>
+                <div className="p-2 bg-black/40 rounded border border-slate-800">
+                  <strong className="text-white block font-mono">Elastic Scalability:</strong>
+                  New nodes (Node 9, 10) can be spliced into the token ring dynamically without taking the cluster offline!
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* 4.3 Three-Tier Web Architecture with user image */}
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-emerald-500/30 space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-emerald-400 uppercase">4.3 Three-Tier Web &amp; Database Architecture</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">Enterprise Standard</span>
+        {/* 4.3 Custom Interactive Three-Tier Web Architecture Visualizer */}
+        <div className="p-5 rounded-2xl bg-[#14182d] border border-emerald-500/40 space-y-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <div>
+              <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
+                4.3 Interactive Three-Tier Web &amp; Database Architecture
+              </span>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                Step through an end-to-end user request traversing Presentation, Logic, and Data Tiers.
+              </p>
             </div>
-            <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-              Separates the user interface (Presentation Tier / Web Browser), business application logic (Logic Tier / App Server), and relational storage (Data Tier / Distributed DB) for modularity, security, and connection pooling.
-            </p>
-            <div className="relative rounded-xl overflow-hidden border border-slate-700 bg-black/40 p-2 flex justify-center">
-              <Image
-                src="/images/lesson12/three-tier-architecture.jpg"
-                alt="Three-Tier Architecture Web Server App Server Database"
-                width={700}
-                height={380}
-                className="rounded-lg object-contain max-h-80 w-auto shadow-xl"
-              />
+            <button
+              onClick={() => setSimTierStep(prev => (prev >= 4 ? 1 : prev + 1))}
+              className="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs font-mono flex items-center gap-1.5 cursor-pointer shadow transition-all"
+            >
+              <Zap className="w-3.5 h-3.5" />
+              <span>Step: {simTierStep} / 4 (Advance)</span>
+            </button>
+          </div>
+
+          {/* Three Tiers Visual Pipeline */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Tier 1 */}
+            <div className={`p-4 rounded-xl border text-center space-y-3 transition-all ${
+              simTierStep === 1
+                ? 'bg-blue-950/40 border-blue-400 shadow-lg shadow-blue-500/20 ring-2 ring-blue-500/50'
+                : 'bg-slate-900 border-slate-800'
+            }`}>
+              <div className="text-[10px] font-mono text-zinc-400 font-bold">TIER 1</div>
+              <Monitor className="w-8 h-8 text-blue-400 mx-auto" />
+              <div className="text-xs font-bold text-white font-mono">Presentation Tier</div>
+              <p className="text-[11px] text-zinc-400 font-sans">
+                Web Browser / Mobile Client App. Renders UI and initiates HTTP requests.
+              </p>
+              {simTierStep === 1 && (
+                <div className="p-1.5 bg-blue-900/40 border border-blue-500/40 rounded text-[10px] font-mono text-blue-300 animate-pulse">
+                  &rarr; Sending HTTP POST /transfer
+                </div>
+              )}
+            </div>
+
+            {/* Tier 2 */}
+            <div className={`p-4 rounded-xl border text-center space-y-3 transition-all ${
+              simTierStep === 2
+                ? 'bg-amber-950/40 border-amber-400 shadow-lg shadow-amber-500/20 ring-2 ring-amber-500/50'
+                : 'bg-slate-900 border-slate-800'
+            }`}>
+              <div className="text-[10px] font-mono text-zinc-400 font-bold">TIER 2</div>
+              <Cpu className="w-8 h-8 text-amber-400 mx-auto" />
+              <div className="text-xs font-bold text-white font-mono">Logic Tier (App Server)</div>
+              <p className="text-[11px] text-zinc-400 font-sans">
+                Business rules, authentication checks, connection pooling &amp; transaction coordinator.
+              </p>
+              {simTierStep === 2 && (
+                <div className="p-1.5 bg-amber-900/40 border border-amber-500/40 rounded text-[10px] font-mono text-amber-300 animate-pulse">
+                  &rarr; Validating balance; firing SQL query
+                </div>
+              )}
+            </div>
+
+            {/* Tier 3 */}
+            <div className={`p-4 rounded-xl border text-center space-y-3 transition-all ${
+              simTierStep === 3 || simTierStep === 4
+                ? 'bg-emerald-950/40 border-emerald-400 shadow-lg shadow-emerald-500/20 ring-2 ring-emerald-500/50'
+                : 'bg-slate-900 border-slate-800'
+            }`}>
+              <div className="text-[10px] font-mono text-zinc-400 font-bold">TIER 3</div>
+              <Database className="w-8 h-8 text-emerald-400 mx-auto" />
+              <div className="text-xs font-bold text-white font-mono">Data Tier (Database)</div>
+              <p className="text-[11px] text-zinc-400 font-sans">
+                Relational clusters, distributed storage pages, WAL logs &amp; disk commits.
+              </p>
+              {(simTierStep === 3 || simTierStep === 4) && (
+                <div className="p-1.5 bg-emerald-900/40 border border-emerald-500/40 rounded text-[10px] font-mono text-emerald-300">
+                  {simTierStep === 3 ? '⚡ Executing SQL UPDATE' : '✔ Transaction Committed!'}
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          PART 5: HOMOGENEOUS VS HETEROGENEOUS DDBMS
+          PART 5: HOMOGENEOUS VS HETEROGENEOUS (CUSTOM VISUAL DIAGRAM)
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -512,61 +736,83 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
               Part 5 of 19
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">Homogeneous vs. Heterogeneous Distributed Databases</h2>
+            <h2 className="text-xl font-bold text-white mt-1">Homogeneous vs. Heterogeneous Topologies</h2>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Homogeneous */}
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-cyan-500/30 space-y-3">
-            <span className="text-xs font-mono font-bold text-cyan-400 uppercase block">
-              Homogeneous Distributed Database
-            </span>
-            <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-              Every node across all sites runs the <strong>exact same DBMS software</strong> (e.g. all nodes run PostgreSQL or all run MySQL) and shares a unified global catalog.
-            </p>
-            <div className="rounded-xl overflow-hidden border border-slate-700 bg-black/40 p-2 flex justify-center">
-              <Image
-                src="/images/lesson12/homogeneous-architecture.jpg"
-                alt="Homogeneous Distributed Database Architecture"
-                width={500}
-                height={300}
-                className="rounded-lg object-contain max-h-56 w-auto"
-              />
+          {/* Custom Homogeneous Diagram */}
+          <div className="p-5 rounded-2xl bg-[#14182d] border border-cyan-500/40 space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-cyan-400 uppercase">
+                Homogeneous Architecture (Identical Engines)
+              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">All PostgreSQL / MySQL</span>
             </div>
-            <div className="p-2.5 bg-black/40 rounded text-[11px] font-mono text-zinc-300 space-y-1">
-              <div>&check; Easy schema synchronization &amp; unified SQL dialect.</div>
-              <div>&check; Straightforward query planning &amp; distributed joins.</div>
+            <div className="p-4 bg-black/60 rounded-xl border border-slate-800 space-y-3 text-center font-mono text-xs">
+              <div className="p-2.5 bg-slate-900 rounded border border-cyan-500/30 text-cyan-300 font-bold">
+                Global Users &bull; Global Distributed Schema
+              </div>
+              <div className="text-zinc-500">&darr; Unified DDBMS Software Layer &darr;</div>
+              <div className="grid grid-cols-3 gap-2 text-[11px]">
+                <div className="p-2.5 bg-cyan-950/30 border border-cyan-500/30 rounded text-cyan-200">
+                  <div className="font-bold">Node 1</div>
+                  <div className="text-[10px] text-zinc-400">PostgreSQL</div>
+                </div>
+                <div className="p-2.5 bg-cyan-950/30 border border-cyan-500/30 rounded text-cyan-200">
+                  <div className="font-bold">Node 2</div>
+                  <div className="text-[10px] text-zinc-400">PostgreSQL</div>
+                </div>
+                <div className="p-2.5 bg-cyan-950/30 border border-cyan-500/30 rounded text-cyan-200">
+                  <div className="font-bold">Node 3</div>
+                  <div className="text-[10px] text-zinc-400">PostgreSQL</div>
+                </div>
+              </div>
+            </div>
+            <div className="p-2.5 bg-slate-900 rounded text-[11px] font-sans text-zinc-300 space-y-1">
+              <div>&check; Native binary replication and distributed locks.</div>
+              <div>&check; Zero dialect translation overhead; simplest maintenance.</div>
             </div>
           </div>
 
-          {/* Heterogeneous */}
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-purple-500/30 space-y-3">
-            <span className="text-xs font-mono font-bold text-purple-400 uppercase block">
-              Heterogeneous Distributed Database
-            </span>
-            <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-              Participating sites utilize <strong>different DBMS engines</strong> (e.g. Node 1 runs Oracle, Node 2 runs PostgreSQL, Node 3 runs MongoDB). Requires translation middleware and gateways!
-            </p>
-            <div className="p-4 bg-slate-900 rounded-xl border border-slate-800 text-xs font-mono space-y-2 text-zinc-300">
-              <div className="text-purple-300 font-bold">Global Middleware Gateway</div>
-              <div className="text-zinc-500">&darr; Translates queries via wrappers/mediators &darr;</div>
-              <div className="grid grid-cols-3 gap-1.5 text-center text-[10px]">
-                <div className="p-2 bg-black/50 rounded border border-slate-700 text-amber-300">Oracle</div>
-                <div className="p-2 bg-black/50 rounded border border-slate-700 text-cyan-300">PostgreSQL</div>
-                <div className="p-2 bg-black/50 rounded border border-slate-700 text-emerald-300">MySQL</div>
+          {/* Custom Heterogeneous Diagram */}
+          <div className="p-5 rounded-2xl bg-[#14182d] border border-purple-500/40 space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-purple-400 uppercase">
+                Heterogeneous Architecture (Mixed Engines)
+              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold">Multi-Vendor Integration</span>
+            </div>
+            <div className="p-4 bg-black/60 rounded-xl border border-slate-800 space-y-3 text-center font-mono text-xs">
+              <div className="p-2.5 bg-slate-900 rounded border border-purple-500/30 text-purple-300 font-bold">
+                Global Users &bull; Mediated Federated Query Engine
+              </div>
+              <div className="text-zinc-500">&darr; Middleware Wrappers &amp; SQL Dialect Translators &darr;</div>
+              <div className="grid grid-cols-3 gap-2 text-[11px]">
+                <div className="p-2.5 bg-amber-950/30 border border-amber-500/30 rounded text-amber-200">
+                  <div className="font-bold">Node 1</div>
+                  <div className="text-[10px] text-zinc-400">Oracle DB</div>
+                </div>
+                <div className="p-2.5 bg-cyan-950/30 border border-cyan-500/30 rounded text-cyan-200">
+                  <div className="font-bold">Node 2</div>
+                  <div className="text-[10px] text-zinc-400">PostgreSQL</div>
+                </div>
+                <div className="p-2.5 bg-emerald-950/30 border border-emerald-500/30 rounded text-emerald-200">
+                  <div className="font-bold">Node 3</div>
+                  <div className="text-[10px] text-zinc-400">MySQL</div>
+                </div>
               </div>
             </div>
-            <div className="p-2.5 bg-black/40 rounded text-[11px] font-mono text-zinc-300 space-y-1">
-              <div>&check; Accommodates legacy enterprise mergers without migration.</div>
-              <div>&cross; High translation overhead; distributed 2PC is difficult across engines.</div>
+            <div className="p-2.5 bg-slate-900 rounded text-[11px] font-sans text-zinc-300 space-y-1">
+              <div>&check; Unifies acquired companies without rewriting legacy databases.</div>
+              <div>&cross; Highly complex distributed 2PC; potential schema impedance mismatch.</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          PART 6: DISTRIBUTION TRANSPARENCY
+          PART 6: DISTRIBUTION TRANSPARENCY (CUSTOM VISUAL STACK)
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -577,7 +823,7 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
               Part 6 of 19
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">Distribution Transparency: The 4 Layers</h2>
+            <h2 className="text-xl font-bold text-white mt-1">Distribution Transparency: The 4 Abstraction Layers</h2>
           </div>
         </div>
 
@@ -585,6 +831,7 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
           <strong>Distribution Transparency</strong> ensures the application developer or SQL user interacts with the system as if it were a single centralized database, completely oblivious to where data fragments and copies reside.
         </p>
 
+        {/* 4 Transparency Visual Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <div className="p-4 rounded-xl bg-[#14182d] border border-cyan-500/30 space-y-2">
             <span className="text-xs font-mono font-bold text-cyan-400 uppercase">1. Location Transparency</span>
@@ -740,7 +987,7 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
       </section>
 
       {/* ========================================================
-          PART 8 & 9: DATA REPLICATION & ALLOCATION
+          PART 8: DATA REPLICATION (CUSTOM INTERACTIVE VISUALIZER)
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -749,39 +996,129 @@ export default function DatabaseLesson12Topic({ onNavigate }: DatabaseLesson12To
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
-              Part 8 &amp; 9 of 19
+              Part 8 of 19
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">Data Replication Strategies &amp; Fragment Allocation</h2>
+            <h2 className="text-xl font-bold text-white mt-1">Data Replication: Interactive Primary-to-Replica Engine</h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-          <div className="space-y-3 text-xs font-sans text-zinc-300 leading-relaxed">
-            <p>
-              <strong>Data Replication</strong> stores copies of the same logical data item across multiple physical server nodes. It eliminates single-site downtime and allows local users to execute lightning-fast reads without traversing cross-country WAN networks.
-            </p>
-            <div className="space-y-2">
-              <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 font-mono text-[11px]">
-                <strong className="text-cyan-300">1. Full Replication:</strong> Complete database duplicated at every single site. Maximum read speed &amp; availability; heavy write penalty.
-              </div>
-              <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 font-mono text-[11px]">
-                <strong className="text-emerald-300">2. Partial Replication:</strong> Critical or frequently accessed fragments copied to 2–3 regional nodes. Best real-world balance.
-              </div>
-              <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 font-mono text-[11px]">
-                <strong className="text-amber-300">3. No Replication:</strong> Each fragment exists exclusively on one node. Lowest storage cost; zero fault tolerance if node crashes.
-              </div>
+        {/* Custom Interactive Primary -> Replica Visualizer */}
+        <div className="p-6 rounded-2xl bg-[#14182d] border border-purple-500/40 space-y-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <div>
+              <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider">
+                Primary-to-Replica Replication Pipeline
+              </span>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                Toggle between Synchronous and Asynchronous replication stream modes.
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setReplSyncType('sync')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                  replSyncType === 'sync' ? 'bg-cyan-600 text-white shadow' : 'bg-slate-800 text-zinc-400'
+                }`}
+              >
+                Synchronous (Zero Data Loss)
+              </button>
+              <button
+                onClick={() => setReplSyncType('async')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                  replSyncType === 'async' ? 'bg-amber-600 text-white shadow' : 'bg-slate-800 text-zinc-400'
+                }`}
+              >
+                Asynchronous (Fastest Writes)
+              </button>
             </div>
           </div>
 
-          <div className="rounded-xl overflow-hidden border border-slate-700 bg-black/40 p-2 flex justify-center">
-            <Image
-              src="/images/lesson12/replication-architecture.jpg"
-              alt="Primary Database Replication to Multiple Replicas"
-              width={500}
-              height={320}
-              className="rounded-lg object-contain max-h-72 w-auto shadow-xl"
-            />
+          {/* SVG / CSS Primary & Replicas Diagram */}
+          <div className="p-6 bg-black/60 rounded-xl border border-slate-800 space-y-6">
+            {/* Primary Leader Cylinder */}
+            <div className="flex justify-center">
+              <div className="p-4 rounded-2xl bg-emerald-950/40 border-2 border-emerald-400 text-center space-y-1.5 shadow-xl shadow-emerald-950/50 min-w-[220px]">
+                <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 border border-emerald-500/30">
+                  <Database className="w-6 h-6" />
+                </div>
+                <div className="text-sm font-bold text-white font-mono">Primary Database (Leader)</div>
+                <div className="text-[10px] font-mono text-emerald-300">Accepts Client Writes &amp; Updates</div>
+              </div>
+            </div>
+
+            {/* Connecting Stream Arrows */}
+            <div className="flex justify-center">
+              <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+                <span className="text-cyan-300 font-bold">
+                  {replSyncType === 'sync' ? 'Sync Stream: 2-Way Lockstep Acknowledgment' : 'Async Stream: Non-blocking Background Log Replay'}
+                </span>
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+              </div>
+            </div>
+
+            {/* 3 Followers Cylinders */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/30 text-center space-y-1">
+                <Database className="w-6 h-6 text-cyan-400 mx-auto" />
+                <div className="text-xs font-mono font-bold text-white">Replica 1 (Follower)</div>
+                <div className="text-[10px] font-mono text-cyan-300">Serving Local Read Traffic</div>
+              </div>
+              <div className="p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/30 text-center space-y-1">
+                <Database className="w-6 h-6 text-cyan-400 mx-auto" />
+                <div className="text-xs font-mono font-bold text-white">Replica 2 (Follower)</div>
+                <div className="text-[10px] font-mono text-cyan-300">Analytics &amp; Reporting Node</div>
+              </div>
+              <div className="p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/30 text-center space-y-1">
+                <Database className="w-6 h-6 text-cyan-400 mx-auto" />
+                <div className="text-xs font-mono font-bold text-white">Replica 3 (Follower)</div>
+                <div className="text-[10px] font-mono text-cyan-300">Standby Failover Candidate</div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          PART 10: DISTRIBUTED QUERY PROCESSING (CUSTOM PIPELINE)
+         ======================================================== */}
+      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
+        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+          <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <Search className="w-6 h-6" />
+          </div>
+          <div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
+              Part 10 of 19
+            </span>
+            <h2 className="text-xl font-bold text-white mt-1">Distributed Query Processing: 6-Stage Pipeline</h2>
+          </div>
+        </div>
+
+        {/* 6 Stages Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {[
+            { step: 1, title: '1. Query Submission', desc: 'Client issues SQL query (e.g. SELECT * FROM CUSTOMER WHERE city = "Dhaka").' },
+            { step: 2, title: '2. Query Decomposition', desc: 'Parser validates syntax, checks catalog schema, and builds relational algebra tree.' },
+            { step: 3, title: '3. Data Localization', desc: 'Replaces global relations with local fragments using transparency metadata.' },
+            { step: 4, title: '4. Distributed Optimization', desc: 'Calculates network transfer costs and decides optimal distributed join order.' },
+            { step: 5, title: '5. Distributed Execution', desc: 'Subqueries broadcast across remote nodes; partial queries execute locally.' },
+            { step: 6, title: '6. Result Assembly', desc: 'Coordinator merges sub-results (UNION/JOIN) and returns unified dataset to user.' }
+          ].map(s => (
+            <div
+              key={s.step}
+              onClick={() => setActiveQueryStep(s.step)}
+              className={`p-4 rounded-xl border transition-all cursor-pointer space-y-1 ${
+                activeQueryStep === s.step
+                  ? 'bg-cyan-950/40 border-cyan-400 shadow-lg shadow-cyan-500/20'
+                  : 'bg-[#14182d] border-slate-800 hover:border-slate-700'
+              }`}
+            >
+              <div className="text-[10px] font-mono font-bold text-cyan-400">STAGE {s.step}</div>
+              <div className="text-xs font-bold text-white font-mono">{s.title}</div>
+              <p className="text-[11px] text-zinc-400 font-sans leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
