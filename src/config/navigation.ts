@@ -20,7 +20,8 @@ import {
   Scale,
   BookOpen,
   KeyRound,
-  Workflow
+  Workflow,
+  ShieldCheck
 } from 'lucide-react';
 
 export type TopicId =
@@ -57,6 +58,8 @@ export type TopicId =
   | 'backend-lesson6'
   | 'backend-lesson7'
   | 'backend-lesson8'
+  | 'backend-lesson9'
+  | 'backend-lesson10'
   | 'backend-roadmap'
   | 'backend-sql'
   | 'backend-indexing'
@@ -160,10 +163,12 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'backend-lesson6', label: '6. Lesson 6: Introduction to SQL', icon: Terminal, status: 'ready', tag: 'SQL Basics' },
       { id: 'backend-lesson7', label: '7. Lesson 7: Advanced SQL Queries', icon: FileCode2, status: 'ready', tag: 'Subqueries & CTEs' },
       { id: 'backend-lesson8', label: '8. Lesson 8: Database Normalization', icon: Layers, status: 'ready', tag: '1NF to BCNF' },
-      { id: 'backend-roadmap', label: '9. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
-      { id: 'backend-sql', label: '10. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
-      { id: 'backend-indexing', label: '11. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: '12. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
+      { id: 'backend-lesson9', label: '9. Lesson 9: Transactions & Concurrency', icon: ShieldCheck, status: 'ready', tag: 'ACID & 2PL' },
+      { id: 'backend-lesson10', label: '10. Lesson 10: Indexing & Query Optimization', icon: Search, status: 'ready', tag: 'B+ Tree & EXPLAIN' },
+      { id: 'backend-roadmap', label: '11. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
+      { id: 'backend-sql', label: '12. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
+      { id: 'backend-indexing', label: '13. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
+      { id: 'backend-pgvector', label: '14. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {

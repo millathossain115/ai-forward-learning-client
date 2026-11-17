@@ -1226,10 +1226,10 @@ CREATE TABLE Enrollments (
               <span>Review Lesson 7: Advanced SQL</span>
             </button>
             <button
-              onClick={() => onNavigate?.('backend-roadmap')}
-              className="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-purple-600/20 cursor-pointer"
+              onClick={() => onNavigate?.('backend-lesson9')}
+              className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
             >
-              <span>Explore Database Architecture Roadmap</span>
+              <span>Go to Lesson 9: Transactions &amp; Concurrency</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

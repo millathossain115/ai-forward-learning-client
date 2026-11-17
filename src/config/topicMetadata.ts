@@ -172,9 +172,19 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '8. Lesson 8: Database Normalization',
     description: 'Beginner to University Exam Level: Database normalization, data redundancy and consistency, insertion/update/deletion anomalies, functional dependencies (trivial, full, partial, transitive), 1NF, 2NF, 3NF, BCNF, and normalized SQL schemas.',
   },
+  'backend-lesson9': {
+    category: '4. Database & Systems',
+    title: '9. Lesson 9: Database Transactions & Concurrency Control',
+    description: 'Beginner to University Exam Level: Database transactions, ACID properties, transaction lifecycle, lost update, dirty read, unrepeatable read, phantom read, conflict serializability, Two-Phase Locking (2PL), deadlock Coffman conditions, isolation levels, and Write-Ahead Log recovery.',
+  },
+  'backend-lesson10': {
+    category: '4. Database & Systems',
+    title: '10. Lesson 10: Database Indexing & Query Optimization',
+    description: 'Beginner to University Exam Level: Full table scan vs index lookup, primary vs secondary, clustered vs non-clustered, dense vs sparse, B-Tree vs B+ Tree, hash indexing, 5-stage query processing engine, EXPLAIN plans, and 10 query optimization rules.',
+  },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '9. Database & Systems Architecture Roadmap',
+    title: '11. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {
