@@ -61,6 +61,7 @@ export type TopicId =
   | 'backend-lesson9'
   | 'backend-lesson10'
   | 'backend-lesson11'
+  | 'backend-lesson12'
   | 'backend-roadmap'
   | 'backend-sql'
   | 'backend-indexing'
@@ -167,10 +168,11 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'backend-lesson9', label: '9. Lesson 9: Transactions & Concurrency', icon: ShieldCheck, status: 'ready', tag: 'ACID & 2PL' },
       { id: 'backend-lesson10', label: '10. Lesson 10: Indexing & Query Optimization', icon: Search, status: 'ready', tag: 'B+ Tree & EXPLAIN' },
       { id: 'backend-lesson11', label: '11. Lesson 11: Security, Backup & Recovery', icon: ShieldCheck, status: 'ready', tag: 'RBAC, WAL & PITR' },
-      { id: 'backend-roadmap', label: '12. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
-      { id: 'backend-sql', label: '13. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
-      { id: 'backend-indexing', label: '14. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: '15. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
+      { id: 'backend-lesson12', label: '12. Lesson 12: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: '2PC, CAP & Sharding' },
+      { id: 'backend-roadmap', label: '13. Database Architecture Roadmap', icon: Compass, status: 'ready', tag: 'Sequence' },
+      { id: 'backend-sql', label: '14. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
+      { id: 'backend-indexing', label: '15. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
+      { id: 'backend-pgvector', label: '16. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {

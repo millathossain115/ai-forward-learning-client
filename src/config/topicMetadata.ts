@@ -187,9 +187,14 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '11. Lesson 11: Database Security, Authorization, Backup & Recovery',
     description: 'Beginner to University Exam Level: Confidentiality, Integrity, Availability (CIA Triad), Authentication vs Authorization, RBAC, Least Privilege, SQL GRANT and REVOKE, SQL injection prevention, Full/Incremental/Differential backups, Transaction/System/Media failures, UNDO & REDO, WAL, Checkpoints, PITR, Disaster Recovery (RPO & RTO), 3-2-1 backup rule, and interactive MCQ test.',
   },
+  'backend-lesson12': {
+    category: '4. Database & Systems',
+    title: '12. Lesson 12: Distributed Databases & Distributed DBMS',
+    description: 'Beginner to University Exam Level: Distributed databases and DDBMS, Centralized vs Distributed, Client-Server vs Peer-to-Peer vs Three-Tier architectures, Homogeneous vs Heterogeneous systems, 4 Distribution Transparencies, Horizontal/Vertical/Hybrid Fragmentation, Data Replication & Allocation, Two-Phase Commit (2PC), Brewer’s CAP Theorem, and Strong vs Eventual Consistency.',
+  },
   'backend-roadmap': {
     category: '4. Database & Systems',
-    title: '12. Database & Systems Architecture Roadmap',
+    title: '13. Database & Systems Architecture Roadmap',
     description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {

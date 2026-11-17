@@ -2123,10 +2123,10 @@ The condition '1'='1' is always true, and '--' comments out password verificatio
               <span>Review Lesson 10: Indexing &amp; Optimization</span>
             </button>
             <button
-              onClick={() => onNavigate?.('backend-roadmap')}
+              onClick={() => onNavigate?.('backend-lesson12')}
               className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
             >
-              <span>Explore Database Architecture Roadmap</span>
+              <span>Next: Lesson 12 (Distributed Databases)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
