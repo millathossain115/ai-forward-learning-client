@@ -6,12 +6,11 @@ import Sidebar, { TopicId } from '@/components/Sidebar';
 import { TOPIC_METADATA } from '@/config/topicMetadata';
 import TopicSkeleton from '@/components/TopicSkeleton';
 import WelcomeModal from '@/components/WelcomeModal';
+import LanguageToggle from '@/components/LanguageToggle';
 import {
   Server,
-  Command,
   ChevronRight,
-  Sparkles,
-  HelpCircle
+  Sparkles
 } from 'lucide-react';
 
 const FoundationsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Foundations/FoundationsTopic'), { loading: () => <TopicSkeleton /> });
@@ -141,29 +140,9 @@ export default function Home() {
           </div>
 
           {/* Quick Actions & Status */}
-          <div className="flex items-center gap-4 text-xs md:text-sm font-mono">
-            {/* Pure Client-Side Mode Badge */}
-            <div className="flex items-center gap-2 text-zinc-400">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 ring-4 ring-emerald-500/20" />
-              <span className="text-xs font-medium text-emerald-400">Client Engine Active</span>
-            </div>
-
-            <div className="h-4 w-[1px] bg-[#1e202e]" />
-
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#131520] border border-[#1e2130] text-xs text-zinc-400">
-              <Command className="w-3.5 h-3.5" />
-              <span>K</span>
-            </div>
-
-            {/* Welcome Guide Trigger */}
-            <button
-              onClick={() => setShowWelcome(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#131520] hover:bg-[#1a1c2c] border border-[#1e2130] text-xs font-mono text-zinc-300 transition-colors cursor-pointer"
-              title="Platform Overview & Welcome Guide"
-            >
-              <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-              <span className="hidden sm:inline">Guide</span>
-            </button>
+          <div className="flex items-center gap-3 text-xs md:text-sm font-mono">
+            {/* Language Switcher */}
+            <LanguageToggle />
           </div>
         </header>
 
