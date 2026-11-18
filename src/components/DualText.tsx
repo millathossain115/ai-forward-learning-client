@@ -45,14 +45,18 @@ export default function DualText({
     );
   }
 
+  // Prevent invalid HTML nesting: <p> or <span> cannot have <div> children
+  const isInlineOrTextTag = Component === 'span' || Component === 'p';
+  const Inner = isInlineOrTextTag ? 'span' : 'div';
+
   return (
     <Component className={`space-y-1 ${className}`.trim()}>
-      <div className={enClassName}>{en}</div>
-      <div
-        className={`text-xs text-indigo-300/90 font-sans border-l-2 border-indigo-500/40 pl-2.5 py-0.5 leading-relaxed ${bnClassName}`.trim()}
+      <Inner className={`${isInlineOrTextTag ? 'block ' : ''}${enClassName}`.trim()}>{en}</Inner>
+      <Inner
+        className={`${isInlineOrTextTag ? 'block ' : ''}text-xs text-indigo-300/90 font-sans border-l-2 border-indigo-500/40 pl-2.5 py-0.5 leading-relaxed ${bnClassName}`.trim()}
       >
         {bn}
-      </div>
+      </Inner>
     </Component>
   );
 }
