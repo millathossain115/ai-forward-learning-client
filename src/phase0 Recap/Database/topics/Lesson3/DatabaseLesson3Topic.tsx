@@ -2,15 +2,15 @@
 
 import React from 'react';
 import { TopicId } from '@/components/Sidebar';
-import Lesson3Hero from './lessons/lesson3/Lesson3Hero';
-import Lesson3Part1Relation from './lessons/lesson3/Lesson3Part1Relation';
-import Lesson3Part2TuplesAttrs from './lessons/lesson3/Lesson3Part2TuplesAttrs';
-import Lesson3Part3Domain from './lessons/lesson3/Lesson3Part3Domain';
-import Lesson3Part4SchemaInstance from './lessons/lesson3/Lesson3Part4SchemaInstance';
-import Lesson3Part5DegreeCard from './lessons/lesson3/Lesson3Part5DegreeCard';
-import Lesson3Part6NullConcept from './lessons/lesson3/Lesson3Part6NullConcept';
-import Lesson3Part7Properties from './lessons/lesson3/Lesson3Part7Properties';
-import Lesson3Part8SummaryExam from './lessons/lesson3/Lesson3Part8SummaryExam';
+import Lesson3Hero from './components/Lesson3Hero';
+import Lesson3Part1Relation from './components/Lesson3Part1Relation';
+import Lesson3Part2TuplesAttrs from './components/Lesson3Part2TuplesAttrs';
+import Lesson3Part3Domain from './components/Lesson3Part3Domain';
+import Lesson3Part4SchemaInstance from './components/Lesson3Part4SchemaInstance';
+import Lesson3Part5DegreeCard from './components/Lesson3Part5DegreeCard';
+import Lesson3Part6NullConcept from './components/Lesson3Part6NullConcept';
+import Lesson3Part7Properties from './components/Lesson3Part7Properties';
+import Lesson3Part8SummaryExam from './components/Lesson3Part8SummaryExam';
 
 interface DatabaseLesson3TopicProps {
   onNavigate?: (id: TopicId) => void;

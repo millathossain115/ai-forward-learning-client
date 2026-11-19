@@ -2,15 +2,15 @@
 
 import React from 'react';
 import { TopicId } from '@/components/Sidebar';
-import Lesson1Hero from './lessons/lesson1/Lesson1Hero';
-import Lesson1Part1Data from './lessons/lesson1/Lesson1Part1Data';
-import Lesson1Part2Info from './lessons/lesson1/Lesson1Part2Info';
-import Lesson1Part3Database from './lessons/lesson1/Lesson1Part3Database';
-import Lesson1Part4DBMS from './lessons/lesson1/Lesson1Part4DBMS';
-import Lesson1Part5Diff from './lessons/lesson1/Lesson1Part5Diff';
-import Lesson1Part6Need from './lessons/lesson1/Lesson1Part6Need';
-import Lesson1Part7Summary from './lessons/lesson1/Lesson1Part7Summary';
-import Lesson1Part8Review from './lessons/lesson1/Lesson1Part8Review';
+import Lesson1Hero from './components/Lesson1Hero';
+import Lesson1Part1Data from './components/Lesson1Part1Data';
+import Lesson1Part2Info from './components/Lesson1Part2Info';
+import Lesson1Part3Database from './components/Lesson1Part3Database';
+import Lesson1Part4DBMS from './components/Lesson1Part4DBMS';
+import Lesson1Part5Diff from './components/Lesson1Part5Diff';
+import Lesson1Part6Need from './components/Lesson1Part6Need';
+import Lesson1Part7Summary from './components/Lesson1Part7Summary';
+import Lesson1Part8Review from './components/Lesson1Part8Review';
 
 interface DatabaseLesson1TopicProps {
   onNavigate?: (id: TopicId) => void;

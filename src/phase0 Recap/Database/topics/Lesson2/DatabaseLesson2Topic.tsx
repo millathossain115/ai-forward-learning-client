@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { TopicId } from '@/components/Sidebar';
-import Lesson2Hero from './lessons/lesson2/Lesson2Hero';
-import Lesson2Part1WhyTypes from './lessons/lesson2/Lesson2Part1WhyTypes';
-import Lesson2Part2ModelConcept from './lessons/lesson2/Lesson2Part2ModelConcept';
-import Lesson2Part3SixModels from './lessons/lesson2/Lesson2Part3SixModels';
-import Lesson2Part4Comparison from './lessons/lesson2/Lesson2Part4Comparison';
-import Lesson2Part5ExamQuestions from './lessons/lesson2/Lesson2Part5ExamQuestions';
+import Lesson2Hero from './components/Lesson2Hero';
+import Lesson2Part1WhyTypes from './components/Lesson2Part1WhyTypes';
+import Lesson2Part2ModelConcept from './components/Lesson2Part2ModelConcept';
+import Lesson2Part3SixModels from './components/Lesson2Part3SixModels';
+import Lesson2Part4Comparison from './components/Lesson2Part4Comparison';
+import Lesson2Part5ExamQuestions from './components/Lesson2Part5ExamQuestions';
 
 interface DatabaseLesson2TopicProps {
   onNavigate?: (id: TopicId) => void;

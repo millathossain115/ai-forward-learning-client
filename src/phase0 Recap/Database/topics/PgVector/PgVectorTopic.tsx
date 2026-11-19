@@ -7,18 +7,20 @@ import { Database, Cpu, Code2 } from 'lucide-react';
 import {
   MetricType,
   IndexType,
+  Centroid,
   PresetQuery,
+  VectorPoint,
   DATASET,
   CENTROIDS,
   CANVAS_W,
   CANVAS_H,
   RankedVectorPoint,
-} from './pgvector/types';
-import PgVectorControls from './pgvector/components/PgVectorControls';
-import VectorCanvas from './pgvector/components/VectorCanvas';
-import VectorInspector from './pgvector/components/VectorInspector';
+} from './types';
+import PgVectorControls from './components/PgVectorControls';
+import VectorCanvas from './components/VectorCanvas';
+import VectorInspector from './components/VectorInspector';
 
-const PgVectorBenchmarkTable = dynamic(() => import('./pgvector/components/PgVectorBenchmarkTable'), {
+const PgVectorBenchmarkTable = dynamic(() => import('./components/PgVectorBenchmarkTable'), {
   loading: () => (
     <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
       Loading benchmark table...
@@ -39,7 +41,7 @@ export default function PgVectorTopic() {
 
   // Calculate distance between query and each point
   const rankedPoints = useMemo<RankedVectorPoint[]>(() => {
-    return DATASET.map((p) => {
+    return DATASET.map((p: VectorPoint) => {
       const dx = p.x - queryX;
       const dy = p.y - queryY;
       const l2Dist = Math.sqrt(dx * dx + dy * dy);
@@ -72,7 +74,7 @@ export default function PgVectorTopic() {
         cosineSim,
         l2Dist,
       };
-    }).sort((a, b) => a.sortKey - b.sortKey);
+    }).sort((a: RankedVectorPoint, b: RankedVectorPoint) => a.sortKey - b.sortKey);
   }, [queryX, queryY, metric]);
 
   const top3 = rankedPoints.slice(0, 3);
