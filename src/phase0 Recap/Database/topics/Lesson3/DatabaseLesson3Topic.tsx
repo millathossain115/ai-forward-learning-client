@@ -19,7 +19,7 @@ interface DatabaseLesson3TopicProps {
 export default function DatabaseLesson3Topic({ onNavigate }: DatabaseLesson3TopicProps) {
   return (
     <div className="max-w-5xl mx-auto space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
-      {/* 1. Header Hero Banner with Language Toggle */}
+      {/* 1. Header Hero Banner */}
       <Lesson3Hero onNavigate={onNavigate} />
 
       {/* Part 1 & 2: What is a Relational Database & a Relation? */}
@@ -31,17 +31,17 @@ export default function DatabaseLesson3Topic({ onNavigate }: DatabaseLesson3Topi
       {/* Part 5: What is a Domain? Interactive Validator */}
       <Lesson3Part3Domain />
 
-      {/* Part 6 & 7: Relational Schema vs Relational Instance */}
-      <Lesson3Part4SchemaInstance />
-
-      {/* Part 8 & 9: Degree vs Cardinality */}
+      {/* Part 6 & 7: Degree vs Cardinality */}
       <Lesson3Part5DegreeCard />
 
-      {/* Part 10: What is NULL in a Database? */}
+      {/* Part 8: What is NULL in a Database? */}
       <Lesson3Part6NullConcept />
 
-      {/* Part 11: 7 Fundamental Properties of a Relational Table */}
+      {/* Part 9: 7 Fundamental Properties of a Relational Table */}
       <Lesson3Part7Properties />
+
+      {/* Part 10 & 11: Relational Schema vs Relational Instance */}
+      <Lesson3Part4SchemaInstance />
 
       {/* Part 12 & 13: Master Summary & University Exam Preparation */}
       <Lesson3Part8SummaryExam onNavigate={onNavigate} />

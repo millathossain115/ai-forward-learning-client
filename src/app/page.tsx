@@ -56,7 +56,6 @@ const DatabaseLesson15Topic = dynamic(() => import('@/phase0 Recap/Database/topi
 const DatabaseLesson16Topic = dynamic(() => import('@/phase0 Recap/Database/topics/Lesson16/DatabaseLesson16Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseLesson17Topic = dynamic(() => import('@/phase0 Recap/Database/topics/Lesson17/DatabaseLesson17Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseLesson18Topic = dynamic(() => import('@/phase0 Recap/Database/topics/Lesson18/DatabaseLesson18Topic'), { loading: () => <TopicSkeleton /> });
-const DatabaseRoadmapTopic = dynamic(() => import('@/phase0 Recap/Database/topics/Roadmap/DatabaseRoadmapTopic'), { loading: () => <TopicSkeleton /> });
 const DatabasePlayground = dynamic(() => import('@/phase0 Recap/Database/topics/Playground/DatabasePlayground'), { loading: () => <TopicSkeleton /> });
 const PgVectorTopic = dynamic(() => import('@/phase0 Recap/Database/topics/PgVector/PgVectorTopic'), { loading: () => <TopicSkeleton /> });
 
@@ -250,10 +249,6 @@ export default function Home() {
 
             {activeTopic === 'backend-lesson18' && (
               <DatabaseLesson18Topic onNavigate={handleNavigateTopic} />
-            )}
-
-            {activeTopic === 'backend-roadmap' && (
-              <DatabaseRoadmapTopic onNavigate={handleNavigateTopic} />
             )}
 
             {(activeTopic === 'backend-sql' || activeTopic === 'backend-indexing') && (

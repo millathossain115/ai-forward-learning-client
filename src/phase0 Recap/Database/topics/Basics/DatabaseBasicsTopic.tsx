@@ -177,13 +177,6 @@ export default function DatabaseBasicsTopic({ onNavigate }: DatabaseBasicsTopicP
               <span>পরবর্তী পাঠ: Lesson 1 (Data, Info, DB &amp; DBMS)</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
-            <button
-              onClick={() => onNavigate?.('backend-roadmap')}
-              className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer border border-slate-700"
-            >
-              <Compass className="w-4 h-4" />
-              <span>আর্কিটেকচার রোডম্যাপ</span>
-            </button>
           </div>
         </div>
 
@@ -1142,13 +1135,6 @@ export default function DatabaseBasicsTopic({ onNavigate }: DatabaseBasicsTopicP
                 >
                   <BookOpen className="w-4 h-4" />
                   <span>পরবর্তী পাঠ: Lesson 1 এ যান</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => onNavigate?.('backend-roadmap')}
-                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-emerald-600/20"
-                >
-                  <span>Phase 1: আর্কিটেকচার রোডম্যাপ</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

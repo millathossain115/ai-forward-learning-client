@@ -17,13 +17,13 @@ interface DatabaseLesson4TopicProps {
 export default function DatabaseLesson4Topic({ onNavigate }: DatabaseLesson4TopicProps) {
   return (
     <div className="max-w-5xl mx-auto space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
-      {/* 1. Header Hero Banner with Language Toggle & Recap */}
+      {/* 1. Header Hero Banner & Recap */}
       <Lesson4Hero onNavigate={onNavigate} />
 
       {/* Part 1: Why do we need keys? (The Problem of Ambiguity) */}
       <Lesson4Part1WhyKeys />
 
-      {/* Part 2: The 8 Types of Keys in DBMS (Interactive PK & FK Testers) */}
+      {/* Part 2: The Types of Keys in DBMS (Interactive PK & FK Testers) */}
       <Lesson4Part2KeyTypes />
 
       {/* Part 3: Master Key Comparison & Hierarchy */}

@@ -102,11 +102,11 @@ export default function DatabaseLesson5Topic({ onNavigate }: DatabaseLesson5Topi
               <span>Back to Lesson 4 (Keys)</span>
             </button>
             <button
-              onClick={() => onNavigate?.('backend-roadmap')}
-              className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-lg shadow-indigo-600/20 cursor-pointer"
+              onClick={() => onNavigate?.('backend-lesson6')}
+              className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-lg shadow-purple-600/20 cursor-pointer"
             >
-              <Compass className="w-4 h-4" />
-              <span>Database Architecture Roadmap</span>
+              <FileCode2 className="w-4 h-4" />
+              <span>Next: Lesson 6 (Intro to SQL)</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

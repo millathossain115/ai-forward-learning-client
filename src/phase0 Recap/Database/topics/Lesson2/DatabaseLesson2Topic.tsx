@@ -16,7 +16,7 @@ interface DatabaseLesson2TopicProps {
 export default function DatabaseLesson2Topic({ onNavigate }: DatabaseLesson2TopicProps) {
   return (
     <div className="max-w-5xl mx-auto space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
-      {/* Hero Banner & Language Switcher & Lesson 1 Recap */}
+      {/* Hero Banner & Lesson 1 Recap */}
       <Lesson2Hero onNavigate={onNavigate} />
 
       {/* Part 1: Why do we have different types of databases? */}

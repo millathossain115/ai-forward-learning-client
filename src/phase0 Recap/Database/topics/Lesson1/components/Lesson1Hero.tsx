@@ -4,7 +4,6 @@ import React from 'react';
 import { BookOpen, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
 import { TopicId } from '@/components/Sidebar';
 import { useLanguage } from '@/context/LanguageContext';
-import LanguageToggle from '@/components/LanguageToggle';
 
 interface Lesson1HeroProps {
   onNavigate?: (id: TopicId) => void;
@@ -17,7 +16,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
     <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#12162a] via-[#0d1020] to-[#070810] border border-[#202744] p-6 md:p-8 shadow-2xl">
       <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Top Banner Actions: Lesson Status & Language Switcher */}
+      {/* Top Banner Actions: Lesson Status */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800/60">
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold flex items-center gap-1.5">
@@ -36,8 +35,6 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
               : 'Start from absolute zero'}
           </span>
         </div>
-
-        <LanguageToggle />
       </div>
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">

@@ -78,7 +78,7 @@ export default function Lesson3Part4SchemaInstance() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ৬ ও ৭ / ১৩' : 'Part 6 & 7 of 13'}
+            {language === 'bn' ? 'পর্ব ১০ ও ১১ / ১৩' : 'Part 10 & 11 of 13'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText

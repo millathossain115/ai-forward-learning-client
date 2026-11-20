@@ -16,7 +16,7 @@ export default function Lesson3Part5DegreeCard() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-pink-500/10 text-pink-400 border border-pink-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ৮ ও ৯ / ১৩' : 'Part 8 & 9 of 13'}
+            {language === 'bn' ? 'পর্ব ৬ ও ৭ / ১৩' : 'Part 6 & 7 of 13'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText

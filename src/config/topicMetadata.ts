@@ -150,7 +150,7 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
   'backend-lesson4': {
     category: '4. Database & Systems',
     title: '4. Lesson 4: Keys in DBMS – Complete Beginner\'s Guide',
-    description: 'Beginner level • Lesson 4: Why keys are essential, 8 key types (Super, Candidate, Primary, Alternate, Foreign, Composite, Unique, Natural vs Surrogate), referential integrity tester, and exam prep.',
+    description: 'Beginner level • Lesson 4: Why keys are essential, key types (Super, Candidate, Primary, Alternate, Foreign, Composite, Unique, Natural and Surrogate), referential integrity tester, and exam prep.',
   },
   'backend-lesson5': {
     category: '4. Database & Systems',
@@ -221,11 +221,6 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     category: '4. Database & Systems',
     title: '18. Lesson 18: Complete DBMS Revision & University Mock Exam',
     description: 'Final Lesson 18 of 18 • University Exam Preparation: Complete 18-lesson syllabus revision, Database Models, ER Model & Cardinality, Normalization (1NF–BCNF), Practical SQL, Transactions & ACID, Concurrency Control, Indexing & Query Optimization, NoSQL, Database Security (CIA, RBAC), DBA Responsibilities, Distributed DDBMS, Data Warehousing, Top 14 Comparison Matrix, Top 20 Broad Questions, 6 Essential Diagram Blueprints, and Full 60-Mark University Mock Examination.',
-  },
-  'backend-roadmap': {
-    category: '4. Database & Systems',
-    title: '19. Database & Systems Architecture Roadmap',
-    description: 'The end-to-end sequential path from Relational Storage, Buffer Pools, Query Planners, B-Trees to Vector Databases (pgvector) and Hybrid Search.',
   },
   'backend-sql': {
     category: '4. Database & Systems',
