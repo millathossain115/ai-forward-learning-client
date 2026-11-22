@@ -1,228 +1,264 @@
 'use client';
 
-import React from 'react';
-import { User, Layers, CheckCircle2, Box } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { User, Layers, Shield, AlertCircle, Maximize2, X } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
 
 export default function Lesson5Part2Entity() {
   const { language } = useLanguage();
+  const [modalImage, setModalImage] = useState<{ src: string; title: string; desc: string } | null>(null);
 
-  const entityExamples = [
-    { itemEn: 'Student', itemBn: 'শিক্ষার্থী (Student)', isEntity: true, reasonEn: 'We store ID, name, email, department', reasonBn: 'আমরা আইডি, নাম, ইমেইল, ডিপার্টমেন্ট সংরক্ষণ করি' },
-    { itemEn: 'Teacher', itemBn: 'শিক্ষক (Teacher)', isEntity: true, reasonEn: 'We store Teacher_ID, designation, salary', reasonBn: 'টিচার আইডি, পদবী, বেতন ইত্যাদি ডেটা থাকে' },
-    { itemEn: 'Book', itemBn: 'বই (Book)', isEntity: true, reasonEn: 'Library stores ISBN, title, author, copies', reasonBn: 'লাইব্রেরিতে ISBN, শিরোনাম, লেখক ও কপি সংরক্ষিত হয়' },
-    { itemEn: 'Employee', itemBn: 'কর্মচারী (Employee)', isEntity: true, reasonEn: 'HR stores Emp_ID, joining date, role', reasonBn: 'HR সিস্টেমে Emp_ID, যোগদানের তারিখ, পদবী থাকে' },
-    { itemEn: 'Department', itemBn: 'বিভাগ (Department)', isEntity: true, reasonEn: 'University stores Dept_ID, name, building', reasonBn: 'Dept_ID, বিভাগের নাম, ভবন নম্বর সংরক্ষিত থাকে' },
-    { itemEn: 'University', itemBn: 'বিশ্ববিদ্যালয় (University)', isEntity: true, reasonEn: 'Stores Reg_No, ranking, location', reasonBn: 'রেজিস্ট্রেশন নম্বর, র্যাঙ্কিং, লোকেশন ইত্যাদি থাকে' },
-  ];
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setModalImage(null);
+    };
+    if (modalImage) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [modalImage]);
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
-      {/* Header Badge */}
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <User className="w-6 h-6" />
-        </div>
-        <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
-            {language === 'bn' ? 'পার্ট ২ • এনটিটি পরিচিতি' : 'Part 2 • Entities'}
-          </span>
-          <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
-            <DualText
-              en="2. What is an Entity?"
-              bn="২. এনটিটি (Entity) কী?"
-            />
-          </h2>
-        </div>
-      </div>
-
-      {/* Intro Definition */}
-      <div className="space-y-4">
-        <div className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans">
-          <DualText
-            en="An Entity is any real-world object, person, place, concept, or thing about which we want to store information in a database."
-            bn="এনটিটি (Entity) হলো বাস্তব জগতের এমন যেকোনো ব্যক্তি, বস্তু, স্থান বা ধারণা, যার সম্পর্কে আমরা ডেটাবেসে তথ্য সংরক্ষণ করতে চাই।"
-          />
-        </div>
-
-        {/* Examples Table */}
-        <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
-          <table className="w-full text-left font-mono text-xs">
-            <thead>
-              <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px]">
-                <th className="py-2.5 px-4">{language === 'bn' ? 'বাস্তব অবজেক্ট' : 'Real-World Object'}</th>
-                <th className="py-2.5 px-4 text-center">{language === 'bn' ? 'এনটিটি কি না?' : 'Is it an Entity?'}</th>
-                <th className="py-2.5 px-4">{language === 'bn' ? 'কেন আমরা তথ্য সংরক্ষণ করি' : 'Why We Store Information'}</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/60 text-[11px] text-zinc-300">
-              {entityExamples.map((ex, idx) => (
-                <tr key={idx} className={idx % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#0c0e18]'}>
-                  <td className="py-2.5 px-4 font-bold text-white">
-                    {language === 'bn' ? ex.itemBn : ex.itemEn}
-                  </td>
-                  <td className="py-2.5 px-4 text-center">
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
-                      Yes ✓
-                    </span>
-                  </td>
-                  <td className="py-2.5 px-4 text-zinc-400 font-sans">
-                    {language === 'bn' ? ex.reasonBn : ex.reasonEn}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Concrete Example: Student Rahim */}
-        <div className="p-4 rounded-2xl bg-[#121526] border border-slate-800 space-y-2.5 font-mono text-xs">
-          <div className="flex items-center justify-between text-amber-300 font-bold">
-            <span>{language === 'bn' ? 'বাস্তব উদাহরণ: স্টুডেন্ট রহিম (Student Entity Instance)' : 'Concrete Example: Student Rahim (An Entity Instance)'}</span>
-            <span className="text-[10px] text-zinc-400">[ Real-World Instance ]</span>
+    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 space-y-4 shadow-lg">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+        <div className="flex items-center gap-2.5">
+          <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <User className="w-4 h-4" />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
-            <div className="p-2.5 rounded-xl bg-black/40 border border-slate-800">
-              <span className="text-zinc-500 text-[10px] block">Student_ID</span>
-              <span className="text-white font-bold text-sm">101</span>
-            </div>
-            <div className="p-2.5 rounded-xl bg-black/40 border border-slate-800">
-              <span className="text-zinc-500 text-[10px] block">Name</span>
-              <span className="text-amber-300 font-bold text-sm">Rahim</span>
-            </div>
-            <div className="p-2.5 rounded-xl bg-black/40 border border-slate-800">
-              <span className="text-zinc-500 text-[10px] block">Age</span>
-              <span className="text-cyan-300 font-bold text-sm">22</span>
-            </div>
-            <div className="p-2.5 rounded-xl bg-black/40 border border-slate-800">
-              <span className="text-zinc-500 text-[10px] block">Email</span>
-              <span className="text-pink-300 text-[11px] truncate block">rahim@gmail.com</span>
-            </div>
-          </div>
-          <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
-            <DualText
-              en="Here, Rahim is an entity because we want to store specific, distinguishable information about him in our university system."
-              bn="এখানে রহিম হলো একটি একক এনটিটি (Entity), কারণ আমরা তার নির্দিষ্ট তথ্যগুলো আমাদের বিশ্ববিদ্যালয়ের ডেটাবেস সিস্টেমে সংরক্ষণ করতে চাই।"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* ========================================================
-          AUTHENTIC ER DIAGRAM NOTATION: 2-COLUMN COMPACT LAYOUT
-          (Excluding inaccurate rounded corners)
-         ======================================================== */}
-      <div className="p-4 md:p-5 rounded-2xl bg-gradient-to-br from-[#0c0f1d] via-[#101426] to-[#0a0d18] border border-indigo-500/30 space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-2.5">
-          <div className="flex items-center gap-2">
-            <Box className="w-4 h-4 text-indigo-400" />
-            <h3 className="font-bold text-white text-xs md:text-sm font-mono">
-              {language === 'bn'
-                ? 'ইআর ডায়াগ্রামে এনটিটি দেখতে কেমন হয়?'
-                : 'What Does an Entity Look Like in an ER Diagram?'}
+          <div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 font-bold uppercase tracking-wider">
+              {language === 'bn' ? 'পার্ট ২ • এনটিটি ও প্রকারভেদ' : 'Part 2 • Entity & Entity Types'}
+            </span>
+            <h3 className="text-sm md:text-base font-bold text-white mt-0.5">
+              <DualText
+                en="2. What is an Entity? & Entity Types (Strong vs Weak)"
+                bn="২. এনটিটি কী এবং এনটিটির প্রকারভেদ (স্ট্রং ও উইক)"
+              />
             </h3>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 font-bold">
-            Peter Chen Strict Notation
+        </div>
+        <div className="flex items-center gap-1.5 text-[10px] font-mono">
+          <span className="px-2 py-0.5 rounded bg-cyan-950/70 text-cyan-300 border border-cyan-700/60 font-bold">
+            Strong: Single ▭
+          </span>
+          <span className="px-2 py-0.5 rounded bg-amber-950/70 text-amber-300 border border-amber-700/60 font-bold">
+            Weak: Double ⧉
           </span>
         </div>
+      </div>
 
-        {/* 2-Column Organization for low vertical overhead */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-          {/* Left Column: Standard Rule & Description */}
-          <div className="space-y-2 text-xs text-zinc-300 font-sans leading-relaxed">
-            <div>
-              <DualText
-                en="In Peter Chen ER notation, an Entity is drawn strictly as a SHARP 90-DEGREE RECTANGLE with flat edges and 0px border radius."
-                bn="পিটার চেনের স্ট্যান্ডার্ড ইআর নোটেশনে এনটিটি সবসময় খাঁটি ৯০-ডিগ্রি সোজা কোণবিশিষ্ট আয়তক্ষেত্র (Sharp Rectangle) দিয়ে আঁকা হয়।"
-              />
-            </div>
-            <div className="text-[11px] text-zinc-400 font-sans">
-              <DualText
-                en="✓ Standard textbook notation: right-angled corners ensure clear differentiation from rounded attributes (ovals) and relationships (diamonds)."
-                bn="✓ স্ট্যান্ডার্ড পাঠ্যবই নিয়ম: সোজা কোণ ডিম্বাকৃতি অ্যাট্রিবিউট বা রম্বস সম্পর্কের সাথে বিভ্রান্তি দূর করে।"
-              />
-            </div>
-          </div>
-
-          {/* Right Column: Visual Sharp Rectangle */}
-          <div className="p-4 bg-[#05070f] border border-emerald-500/40 rounded-xl flex flex-col items-center justify-center space-y-2">
-            <div
-              className="w-44 py-2.5 bg-[#0d1428] border-2 border-cyan-400 text-white font-mono font-bold text-center text-sm shadow-[0_0_12px_rgba(6,182,212,0.2)] uppercase tracking-wider"
-              style={{ borderRadius: '0px' }}
-            >
-              STUDENT
-            </div>
-            <span className="text-[10px] font-mono text-emerald-400 font-semibold flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              Standard Sharp Rectangle (0px Radius)
-            </span>
-          </div>
+      {/* Intro Definition & Quick Examples */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl bg-[#080b16] border border-slate-800 text-xs font-sans">
+        <div className="text-zinc-300 leading-relaxed">
+          <DualText
+            en="An Entity is any real-world person, place, object, or concept stored in a database. In Chen ER notation, entities are drawn as sharp 90-degree rectangles (0px radius)."
+            bn="এনটিটি (Entity) হলো বাস্তব জগতের যেকোনো স্বতন্ত্র ব্যক্তি, বস্তু, স্থান বা ধারণা যার তথ্য ডেটাবেসে রাখা হয়। চেন নোটেশনে এনটিটি সবসময় সোজা কোণবিশিষ্ট আয়তক্ষেত্র (0px রেডিয়াস) দিয়ে আঁকা হয়।"
+          />
+        </div>
+        <div className="flex flex-wrap items-center gap-1 shrink-0 font-mono text-[10px]">
+          <span className="px-2 py-0.5 rounded bg-[#101426] border border-slate-800 text-zinc-300">
+            Student <span className="text-amber-400">(Rahim)</span>
+          </span>
+          <span className="px-2 py-0.5 rounded bg-[#101426] border border-slate-800 text-zinc-300">
+            Course <span className="text-cyan-400">(DBMS)</span>
+          </span>
+          <span className="px-2 py-0.5 rounded bg-[#101426] border border-slate-800 text-zinc-300">
+            Department
+          </span>
         </div>
       </div>
 
       {/* ========================================================
-          ENTITY VS ENTITY TYPE VS ENTITY SET
+          ENTITY TYPES: 2-COLUMN VIEW (Strong vs Weak Entity)
+          With Generated High-Resolution Diagrams & Fullscreen Modal
          ======================================================== */}
-      <div className="space-y-3 pt-1">
-        {/* Subtitle Style */}
-        <div className="flex items-center gap-2 text-xs md:text-sm font-semibold text-zinc-400 font-mono">
-          <Layers className="w-4 h-4 text-purple-400 shrink-0" />
-          <span className="text-zinc-300">
-            {language === 'bn'
-              ? 'পার্থক্য: Entity বনাম Entity Type বনাম Entity Set'
-              : 'Crucial Distinction: Entity vs Entity Type vs Entity Set'}
-          </span>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+        {/* 1. Strong Entity Card */}
+        <div className="p-3.5 rounded-2xl bg-[#0b0e1b] border border-cyan-900/40 flex flex-col justify-between space-y-3">
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <span className="font-mono font-bold text-cyan-300 text-xs flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5 text-cyan-400" />
+                {language === 'bn' ? '১. স্ট্রং এনটিটি (Strong Entity)' : '1. Strong Entity Type'}
+              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-700/60 font-bold">
+                Single Rectangle ▭
+              </span>
+            </div>
+            <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
+              <DualText
+                en="Has its own Primary Key (underlined oval) to uniquely identify instances. Exists independently without relying on any other entity (e.g. EMPLOYEE with Emp_ID)."
+                bn="যার নিজস্ব প্রাইমারি কি (আন্ডারলাইন ওভাল) থাকে এবং প্রতিটি ইনস্ট্যান্সকে অনন্যভাবে শনাক্ত করতে পারে। অন্য কোনো সত্তার ওপর নির্ভরশীল নয় (যেমন: Emp_ID সহ EMPLOYEE)।"
+              />
+            </div>
+          </div>
+
+          {/* Strong Entity Diagram Preview */}
+          <div
+            onClick={() =>
+              setModalImage({
+                src: '/images/entity-strong.png',
+                title: 'Strong Entity Diagram (Chen Notation)',
+                desc: 'Single Sharp Rectangle ▭: Has its own Primary Key (Emp_ID) with independent existence.',
+              })
+            }
+            className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#070A14] border border-cyan-500/30 transition-all hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-950/40 p-2 flex flex-col items-center justify-center"
+          >
+            <img
+              src="/images/entity-strong.png"
+              alt="Strong Entity Diagram"
+              className="w-full h-auto max-h-36 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+            <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+              <Maximize2 className="w-3.5 h-3.5 text-cyan-300" />
+            </div>
+            <div className="w-full mt-1.5 pt-1 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+              <span className="text-cyan-300 font-semibold">Single Rectangle [ EMPLOYEE ]</span>
+              <span className="text-zinc-500 group-hover:text-cyan-400 transition-colors">Click to expand ⤢</span>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
-          <div className="p-3.5 rounded-xl bg-[#14182e] border border-amber-900/40 space-y-1">
-            <span className="text-[10px] text-amber-400 uppercase font-bold block">1. Entity</span>
-            <h4 className="text-xs font-bold text-white">
-              {language === 'bn' ? 'একক অবজেক্ট' : 'One Specific Object'}
-            </h4>
-            <div className="text-[11px] text-zinc-300 font-sans leading-snug">
-              {language === 'bn'
-                ? 'একটি নির্দিষ্ট অস্তিত্ব, যেমন শিক্ষার্থী "Rahim" (ID: 101)।'
-                : 'A specific concrete instance, e.g. "Rahim" (Student ID 101).'}
+        {/* 2. Weak Entity Card */}
+        <div className="p-3.5 rounded-2xl bg-[#0b0e1b] border border-amber-900/40 flex flex-col justify-between space-y-3">
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <span className="font-mono font-bold text-amber-300 text-xs flex items-center gap-1.5">
+                <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
+                {language === 'bn' ? '২. উইক এনটিটি (Weak Entity)' : '2. Weak Entity Type'}
+              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60 font-bold">
+                Double Rectangle ⧉
+              </span>
+            </div>
+            <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
+              <DualText
+                en="Does NOT have its own Primary Key. Identified via Owner PK + Partial Key (dashed underline) through an Identifying Relationship (double diamond << >>)."
+                bn="যার নিজস্ব কোনো প্রাইমারি কি থাকে না। স্ট্রং সত্তার ওপর নির্ভরশীল এবং পার্শিয়াল কি (ড্যাশড আন্ডারলাইন) ও আইডেন্টিফায়িং রিলেশন (ডাবল ডায়মন্ড) দিয়ে শনাক্ত হয়।"
+              />
             </div>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#14182e] border border-cyan-900/40 space-y-1">
-            <span className="text-[10px] text-cyan-400 uppercase font-bold block">2. Entity Type</span>
-            <h4 className="text-xs font-bold text-white">
-              {language === 'bn' ? 'ক্যাটাগরি বা কাঠামো' : 'The Category / Schema'}
-            </h4>
-            <div className="text-[11px] text-zinc-300 font-sans leading-snug">
-              {language === 'bn'
-                ? 'এনটিটিগুলোর সাধারণ ব্লুপ্রিন্ট বা ক্যাটাগরি, যেমন "STUDENT"।'
-                : 'The schema definition or category, e.g. "STUDENT".'}
+          {/* Weak Entity Diagram Preview */}
+          <div
+            onClick={() =>
+              setModalImage({
+                src: '/images/entity-weak.png',
+                title: 'Weak Entity Diagram (Chen Notation)',
+                desc: 'Double Sharp Rectangle ⧉: DEPENDENT (Employee Family/Child) entity connected to EMPLOYEE via DEPENDS identifying relationship with Dependent_Name Partial Key.',
+              })
+            }
+            className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#070A14] border border-amber-500/30 transition-all hover:border-amber-400 hover:shadow-lg hover:shadow-amber-950/40 p-2 flex flex-col items-center justify-center"
+          >
+            <img
+              src="/images/entity-weak.png"
+              alt="Weak Entity Diagram"
+              className="w-full h-auto max-h-36 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+            <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+              <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
+            </div>
+            <div className="w-full mt-1.5 pt-1 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+              <span className="text-amber-300 font-semibold">Double Rectangle [[ DEPENDENT (Family) ]]</span>
+              <span className="text-zinc-500 group-hover:text-amber-400 transition-colors">Click to expand ⤢</span>
             </div>
           </div>
-
-          <div className="p-3.5 rounded-xl bg-[#14182e] border border-purple-900/40 space-y-1">
-            <span className="text-[10px] text-purple-400 uppercase font-bold block">3. Entity Set</span>
-            <h4 className="text-xs font-bold text-white">
-              {language === 'bn' ? 'এনটিটিগুলোর সমষ্টি' : 'Collection of Similar Entities'}
-            </h4>
-            <div className="text-[11px] text-zinc-300 font-sans leading-snug">
-              {language === 'bn'
-                ? 'একই ধরনের সকল এনটিটির কালেকশন, যেমন "বিশ্ববিদ্যালয়ের সকল ছাত্র-ছাত্রী"।'
-                : 'Collection of similar entities sharing identical attributes, e.g. "All students".'}
-            </div>
-          </div>
-        </div>
-
-        <div className="p-3 rounded-xl bg-purple-950/20 border border-purple-800/40 text-xs font-mono text-purple-200">
-          <strong className="text-purple-300">
-            {language === 'bn' ? 'পরীক্ষার সংজ্ঞা:' : 'Exam Definition:'}{' '}
-          </strong>
-          {language === 'bn'
-            ? 'এনটিটি সেট (Entity Set) হলো সমজাতীয় এনটিটিগুলোর একটি কালেকশন, যা একই বৈশিষ্ট্য বা অ্যাট্রিবিউট শেয়ার করে।'
-            : 'An Entity Set is a collection of similar entities that share the same attributes.'}
         </div>
       </div>
+
+      {/* Crucial Distinction: Entity vs Entity Type vs Entity Set (3-Column Row) */}
+      <div className="space-y-2 pt-2 border-t border-slate-800/80">
+        <span className="text-[11px] font-mono font-bold text-purple-300 uppercase tracking-wide flex items-center gap-1.5">
+          <Layers className="w-3.5 h-3.5 text-purple-400" />
+          {language === 'bn' ? 'পার্থক্য: Entity বনাম Entity Type বনাম Entity Set' : 'Crucial Distinction: Entity vs Entity Type vs Entity Set'}
+        </span>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs font-sans">
+          <div className="p-2.5 rounded-xl bg-[#090d1c] border border-amber-900/40 space-y-0.5">
+            <div className="flex items-center justify-between font-mono">
+              <span className="text-amber-400 font-bold text-[11px]">1. Entity (সত্তা)</span>
+              <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-950/80 text-amber-300 border border-amber-800">
+                Instance
+              </span>
+            </div>
+            <p className="text-[11px] text-zinc-300 leading-snug">
+              {language === 'bn'
+                ? 'একটি নির্দিষ্ট একক অস্তিত্ব, যেমন শিক্ষার্থী "Rahim" (ID: 101)।'
+                : 'A single specific object instance, e.g. Student "Rahim" (ID: 101).'}
+            </p>
+          </div>
+
+          <div className="p-2.5 rounded-xl bg-[#090d1c] border border-cyan-900/40 space-y-0.5">
+            <div className="flex items-center justify-between font-mono">
+              <span className="text-cyan-400 font-bold text-[11px]">2. Entity Type (টাইপ)</span>
+              <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800">
+                Schema
+              </span>
+            </div>
+            <p className="text-[11px] text-zinc-300 leading-snug">
+              {language === 'bn'
+                ? 'সমজাতীয় এনটিটিগুলোর ক্যাটাগরি বা ব্লুপ্রিন্ট, যেমন "STUDENT"।'
+                : 'The common category/schema blueprint, e.g. "STUDENT".'}
+            </p>
+          </div>
+
+          <div className="p-2.5 rounded-xl bg-[#090d1c] border border-purple-900/40 space-y-0.5">
+            <div className="flex items-center justify-between font-mono">
+              <span className="text-purple-400 font-bold text-[11px]">3. Entity Set (সেট)</span>
+              <span className="text-[9px] px-1.5 py-0.2 rounded bg-purple-950/80 text-purple-300 border border-purple-800">
+                Collection
+              </span>
+            </div>
+            <p className="text-[11px] text-zinc-300 leading-snug">
+              {language === 'bn'
+                ? 'একই বৈশিষ্ট্যের সকল এনটিটির সমষ্টি, যেমন "সকল শিক্ষার্থী"।'
+                : 'Collection of all similar entities, e.g. "All students".'}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Full-Screen Image Modal / Lightbox */}
+      {modalImage && (
+        <div
+          onClick={() => setModalImage(null)}
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+          >
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div>
+                <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
+                  <span className="text-cyan-400">▣</span>
+                  {modalImage.title}
+                </h3>
+                <p className="text-xs text-zinc-400 font-sans mt-0.5">{modalImage.desc}</p>
+              </div>
+              <button
+                onClick={() => setModalImage(null)}
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-slate-800/80">
+              <img
+                src={modalImage.src}
+                alt={modalImage.title}
+                className="w-full max-h-[75vh] object-contain rounded-lg"
+              />
+            </div>
+            <div className="flex items-center justify-between text-[11px] font-mono text-zinc-500 pt-1">
+              <span>Press ESC or click anywhere outside to close</span>
+              <span className="text-cyan-400 font-semibold">High-Resolution Thematic Asset</span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

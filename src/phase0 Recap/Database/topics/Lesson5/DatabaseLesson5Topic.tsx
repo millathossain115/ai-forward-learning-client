@@ -9,7 +9,6 @@ import Lesson5Part2Entity from './components/Lesson5Part2Entity';
 import Lesson5Part2Attributes from './components/Lesson5Part2Attributes';
 import Lesson5Part3Relationships from './components/Lesson5Part3Relationships';
 import Lesson5Part4CardinalityParticipation from './components/Lesson5Part4CardinalityParticipation';
-import Lesson5Part5WeakEntity from './components/Lesson5Part5WeakEntity';
 import Lesson5Part6SymbolsAndUniversityER from './components/Lesson5Part6SymbolsAndUniversityER';
 import Lesson5Part7InterviewPrep from './components/Lesson5Part7InterviewPrep';
 import Lesson5BottomNav from './components/Lesson5BottomNav';
@@ -36,19 +35,16 @@ export default function DatabaseLesson5Topic({ onNavigate }: DatabaseLesson5Topi
       {/* Part 3: What are Attributes? & 5 Core Attribute Types */}
       <Lesson5Part2Attributes />
 
-      {/* Part 4 & 5: Relationships & Degree of Relationship */}
+      {/* Part 4: Relationships & Degree of Relationship */}
       <Lesson5Part3Relationships />
 
-      {/* Part 6 & 7: Cardinality Ratios (1:1, 1:N, M:N) & Participation Constraints */}
+      {/* Part 5: Structural Constraints (Cardinality Ratios & Participation Constraints) */}
       <Lesson5Part4CardinalityParticipation />
 
-      {/* Part 8: Strong Entity and Weak Entity (Employee vs Dependent) */}
-      <Lesson5Part5WeakEntity />
-
-      {/* Part 9, 10 & 11: Symbols Cheat Sheet, Complete University ER & Table Mapping */}
+      {/* Part 6: ER Diagram Symbols Cheat Sheet */}
       <Lesson5Part6SymbolsAndUniversityER />
 
-      {/* Part 12: Selective Technical Interview Questions (System Design & Relational Mapping) */}
+      {/* Part 7: Selective Technical Interview Questions (System Design & Relational Mapping) */}
       <Lesson5Part7InterviewPrep />
 
       {/* Lesson 5 Roadmap Bridge & Navigation */}

@@ -40,10 +40,10 @@ interface InterviewQuestion {
 export default function Lesson5Part7InterviewPrep() {
   const { language } = useLanguage();
 
-  // Accordion state - Q1 open by default for immediate preview
+  // Accordion state - all questions collapsed by default
   const [expanded, setExpanded] = useState<Record<number, boolean>>({
-    1: true,
-    2: true,
+    1: false,
+    2: false,
     3: false,
     4: false,
     5: false,

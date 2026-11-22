@@ -1,443 +1,395 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Layers, ShieldCheck, Sparkles, CheckCircle2, ArrowRight, ArrowLeftRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Layers, ShieldCheck, Sparkles, CheckCircle2, Maximize2, X, Database, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
 
 export default function Lesson5Part4CardinalityParticipation() {
   const { language } = useLanguage();
-  const [activeCardinality, setActiveCardinality] = useState<'1:1' | '1:N' | 'N:1' | 'M:N'>('1:N');
+  const [activeCardinality, setActiveCardinality] = useState<'1:1' | '1:N' | 'N:1' | 'M:N'>('1:1');
+  const [modalImage, setModalImage] = useState<{ src: string; title: string; desc: string } | null>(null);
 
-  const cardinalityRevisionTable = [
-    { ratio: '1:1', meaningEn: 'One to One (এক-থেকে-এক)', meaningBn: 'এক-থেকে-এক', exampleEn: 'Person ↔ Passport (১ জন ব্যক্তি ↔ ১টি পাসপোর্ট)', exampleBn: 'Person ↔ Passport' },
-    { ratio: '1:N', meaningEn: 'One to Many (এক-থেকে-অনেক)', meaningBn: 'এক-থেকে-অনেক', exampleEn: 'Department → Employee (১টি বিভাগ → একাধিক কর্মী)', exampleBn: 'Department → Employee' },
-    { ratio: 'N:1', meaningEn: 'Many to One (অনেক-থেকে-এক)', meaningBn: 'অনেক-থেকে-এক', exampleEn: 'Employee → Department (১:N এর উল্টো দিক)', exampleBn: 'Employee → Department' },
-    { ratio: 'M:N', meaningEn: 'Many to Many (অনেক-থেকে-অনেক)', meaningBn: 'অনেক-থেকে-অনেক', exampleEn: 'Student ↔ Course (একাধিক ছাত্র ↔ একাধিক কোর্স)', exampleBn: 'Student ↔ Course' },
-  ];
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setModalImage(null);
+    };
+    if (modalImage) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [modalImage]);
+
+  const cardinalityData = {
+    '1:1': {
+      titleEn: '1:1 (One-to-One) Ratio',
+      titleBn: '১:১ (One-to-One) সম্পর্ক',
+      badge: 'Strict Pair',
+      image: '/images/cardinality-1-1.png',
+      descEn: 'One entity in A associates with at most one entity in B, and each entity in B links to at most one in A.',
+      descBn: 'A সেটের একটি সত্তা B সেটের সর্বোচ্চ একটি সত্তার সাথে এবং B সেটের একটি সত্তাও A-এর সর্বোচ্চ একটির সাথেই যুক্ত হতে পারে।',
+      exampleTitle: 'Person ↔ Passport',
+      exampleEn: 'Each citizen has at most one passport, and each passport belongs to strictly one citizen.',
+      exampleBn: 'একজন নাগরিকের সর্বোচ্চ একটি পাসপোর্ট থাকে এবং প্রতিটি পাসপোর্ট একক নাগরিকের নামে ইস্যু হয়।',
+      sqlRuleEn: 'Add UNIQUE FOREIGN KEY in either table (typically the optional side).',
+      sqlRuleBn: 'যেকোনো একটি টেবিলে UNIQUE FOREIGN KEY যোগ করে খুব সহজে ম্যাপিং করা যায়।',
+      borderColor: 'border-emerald-500/40',
+      badgeColor: 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60',
+    },
+    '1:N': {
+      titleEn: '1:N (One-to-Many) Ratio',
+      titleBn: '১:N (One-to-Many) সম্পর্ক',
+      badge: 'Single to Multiple',
+      image: '/images/cardinality-1-n.png',
+      descEn: 'One entity in A associates with multiple entities in B, but each entity in B links to at most one in A.',
+      descBn: 'A সেটের একটি সত্তা B সেটের একাধিক সত্তার সাথে যুক্ত হতে পারে, কিন্তু B সেটের প্রতিটি সত্তা A-এর কেবল একটিতেই যুক্ত হয়।',
+      exampleTitle: 'Department → Doctors',
+      exampleEn: 'One department employs multiple doctors, but each doctor belongs to strictly one department.',
+      exampleBn: 'একটি বিভাগে বহু ডাক্তার কাজ করতে পারেন, কিন্তু একজন ডাক্তার নির্দিষ্ট একটি বিভাগেরই অন্তর্ভুক্ত।',
+      sqlRuleEn: 'Place the Primary Key of (1-side) as a FOREIGN KEY in the (N-side) table.',
+      sqlRuleBn: '(১-সাইড)-এর প্রাইমারি কি-কে (N-সাইড) টেবিলে FOREIGN KEY হিসেবে রাখা হয়।',
+      borderColor: 'border-amber-500/40',
+      badgeColor: 'bg-amber-950/80 text-amber-300 border-amber-700/60',
+    },
+    'N:1': {
+      titleEn: 'N:1 (Many-to-One) Ratio',
+      titleBn: 'N:১ (Many-to-One) সম্পর্ক',
+      badge: 'Multiple to Single',
+      image: '/images/cardinality-n-1.png',
+      descEn: 'Multiple entities in A link to a single entity in B. This is the reverse directional perspective of 1:N.',
+      descBn: 'A সেটের একাধিক সত্তা B সেটের একটিমাত্র সত্তার সাথে যুক্ত হয় (এটি মূলত ১:N সম্পর্কের বিপরীত রূপ)।',
+      exampleTitle: 'Doctors → Department',
+      exampleEn: 'Many doctors converge into a single parent department.',
+      exampleBn: 'একাধিক ডাক্তার মিলে একই মূল বিভাগের অধীনে কাজ করেন।',
+      sqlRuleEn: 'Foreign key resides in the many-side (Doctors) referencing Department.',
+      sqlRuleBn: 'অনেক-সাইডের টেবিলে (Doctors) ডিপার্টমেন্টের Foreign Key যুক্ত থাকে।',
+      borderColor: 'border-cyan-500/40',
+      badgeColor: 'bg-cyan-950/80 text-cyan-300 border-cyan-700/60',
+    },
+    'M:N': {
+      titleEn: 'M:N (Many-to-Many) Ratio',
+      titleBn: 'M:N (Many-to-Many) সম্পর্ক',
+      badge: 'Cross-Mesh',
+      image: '/images/cardinality-m-n.png',
+      descEn: 'An entity in A can relate to multiple entities in B, and vice-versa. Most flexible binary association.',
+      descBn: 'A সেটের একটি সত্তা B সেটের একাধিক সত্তার সাথে এবং B সেটের একটি সত্তাও A-এর একাধিক সত্তার সাথে যুক্ত হতে পারে।',
+      exampleTitle: 'Student ↔ Course',
+      exampleEn: 'A student can enroll in multiple courses, and each course has many enrolled students.',
+      exampleBn: 'একজন শিক্ষার্থী বহু কোর্সে পড়তে পারেন এবং প্রতিটি কোর্সে বহু শিক্ষার্থী ভর্তি থাকে।',
+      sqlRuleEn: 'CANNOT be stored directly in two tables. REQUIRES a Junction (Bridge) Table with Composite PK!',
+      sqlRuleBn: 'সরাসরি দুটি টেবিলে রাখা যায় না; ডেটাবেসে রূপান্তরের জন্য একটি Junction (Bridge) Table বাধ্যতামূলক!',
+      borderColor: 'border-purple-500/40',
+      badgeColor: 'bg-purple-950/80 text-purple-300 border-purple-800/60',
+    },
+  };
+
+  const current = cardinalityData[activeCardinality];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-8">
-      {/* Section Header */}
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-          <Layers className="w-6 h-6" />
+    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-5 md:p-7 space-y-7 shadow-xl">
+      {/* Section Header: Unified & Professional */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <Layers className="w-5 h-5" />
+          </div>
+          <div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-bold uppercase tracking-wider">
+              {language === 'bn' ? 'পার্ট ৫ • কাঠামোগত শর্তাবলী' : 'Part 5 • Structural Constraints'}
+            </span>
+            <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
+              <DualText
+                en="5. Structural Constraints: Cardinality Ratio & Participation Constraints"
+                bn="৫. কাঠামোগত শর্তাবলী: কার্ডিনালিটি অনুপাত এবং পার্টিসিপেশন শর্ত"
+              />
+            </h2>
+          </div>
         </div>
-        <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-            {language === 'bn' ? 'পার্ট ৬ ও ৭ • কার্ডিনালিটি ও পার্টিসিপেশন' : 'Part 6 & 7 • Cardinality & Participation'}
+        <div className="flex items-center gap-1.5 text-[10px] font-mono">
+          <span className="px-2 py-0.5 rounded bg-[#101426] text-emerald-300 border border-emerald-800/60 font-bold">
+            Ratio (Max)
           </span>
-          <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
-            <DualText
-              en="6. Cardinality Ratio & 7. Participation Constraints"
-              bn="৬. কার্ডিনালিটি অনুপাত এবং ৭. পার্টিসিপেশন শর্তাবলী (Participation Constraints)"
-            />
-          </h2>
+          <span className="px-2 py-0.5 rounded bg-[#101426] text-pink-300 border border-pink-800/60 font-bold">
+            Participation (Min)
+          </span>
         </div>
       </div>
 
       {/* ========================================================
-          6. CARDINALITY RATIO
+          5.1 CARDINALITY RATIO (Interactive Tabs + Visual Asset)
          ======================================================== */}
       <div className="space-y-4">
-        <div className="flex items-center gap-2 text-sm font-bold text-emerald-300 font-mono">
-          <Sparkles className="w-4 h-4 text-emerald-400" />
-          <span>{language === 'bn' ? '৬. কার্ডিনালিটি রেশিও (সম্পর্কের অনুপাত) কী?' : '6. What is Cardinality Ratio (Relationship Cardinality)?'}</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm font-bold text-emerald-300 font-mono">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span>
+              {language === 'bn'
+                ? '৫.১ কার্ডিনালিটি অনুপাত (Mapping Cardinalities: 1:1, 1:N, N:1, M:N)'
+                : '5.1 Cardinality Ratio (Mapping Cardinalities: 1:1, 1:N, N:1, M:N)'}
+            </span>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-400">Maximum Limits</span>
         </div>
 
-        <div className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans">
+        <div className="text-xs text-zinc-300 leading-relaxed font-sans">
           <DualText
-            en="Cardinality describes HOW MANY entities of one entity set can be associated with entities of another entity set. GeeksforGeeks and university DBMS standards test 4 core mapping ratios:"
-            bn="কার্ডিনালিটি (Cardinality) নির্দেশ করে একটি এনটিটি সেটের কতগুলো এনটিটি অন্য এনটিটি সেটের কতগুলো এনটিটির সাথে সম্পর্কযুক্ত হতে পারে (সংখ্যাগত অনুপাত)। গিকসফরগিকস ও বিশ্ববিদ্যালয়ের সিলেবাস অনুযায়ী ৪টি প্রধান কার্ডিনালিটি ম্যাপিং রয়েছে:"
+            en="Cardinality specifies the maximum number of relationship instances that an entity can participate in. Below are the 4 standard binary mapping ratios with Chen notation and set mapping models:"
+            bn="কার্ডিনালিটি নির্দেশ করে একটি এনটিটি অপর এনটিটির সর্বোচ্চ (Maximum) কতগুলো ইনস্ট্যান্সের সাথে যুক্ত হতে পারে। নিচে চেন নোটেশন ও সেট ম্যাপিং উভয়সহ ৪টি অনুপাত তুলে ধরা হলো:"
           />
         </div>
 
-        {/* 4 Interactive Cardinality Switcher Tabs */}
+        {/* 4 Compact Switcher Tabs */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {[
-            { id: '1:1', title: '1:1 (One-to-One)', subEn: 'Person ↔ Passport', subBn: 'ব্যক্তি ↔ পাসপোর্ট' },
-            { id: '1:N', title: '1:N (One-to-Many)', subEn: 'Dept → Doctors', subBn: 'বিভাগ → ডাক্তার' },
-            { id: 'N:1', title: 'N:1 (Many-to-One)', subEn: 'Doctors → Dept', subBn: 'ডাক্তার → বিভাগ' },
-            { id: 'M:N', title: 'M:N (Many-to-Many)', subEn: 'Emp ↔ Project', subBn: 'কর্মী ↔ প্রকল্প' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveCardinality(tab.id as typeof activeCardinality)}
-              className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                activeCardinality === tab.id
-                  ? 'bg-emerald-600/20 border-emerald-500 text-white font-bold ring-1 ring-emerald-500/50 shadow-lg'
-                  : 'bg-[#101322] border-slate-800 text-zinc-400 hover:border-slate-700 hover:text-zinc-200'
-              }`}
-            >
-              <span className="text-xs block font-mono font-bold">{tab.title}</span>
-              <span className="text-[10px] text-zinc-400">
-                {language === 'bn' ? tab.subBn : tab.subEn}
-              </span>
-            </button>
-          ))}
+          {(['1:1', '1:N', 'N:1', 'M:N'] as const).map((key) => {
+            const item = cardinalityData[key];
+            const isActive = activeCardinality === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveCardinality(key)}
+                className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer font-mono ${
+                  isActive
+                    ? 'bg-[#12192e] border-emerald-500 text-white font-bold ring-1 ring-emerald-500/50 shadow-md'
+                    : 'bg-[#0a0d18] border-slate-800 text-zinc-400 hover:border-slate-700 hover:text-zinc-200'
+                }`}
+              >
+                <div className="flex items-center justify-between text-xs">
+                  <span className={isActive ? 'text-emerald-300 font-bold' : 'text-zinc-300'}>{key}</span>
+                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-black/40 border border-slate-800 text-zinc-400">
+                    {item.badge}
+                  </span>
+                </div>
+                <div className="text-[10px] text-zinc-500 font-sans mt-0.5 truncate">
+                  {item.exampleTitle}
+                </div>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Interactive Cardinality Display Panel */}
-        <div className="p-5 md:p-6 rounded-2xl bg-[#14182e] border border-slate-800 space-y-4 font-mono text-xs">
-          {activeCardinality === '1:1' && (
-            <div className="space-y-4 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between text-emerald-300">
-                <span className="font-bold text-sm">6.1 One-to-One (1:1) Relationship</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 border border-emerald-700">
-                  Strict Pair
+        {/* Active Ratio 2-Column Showcase */}
+        <div className="p-4 md:p-5 rounded-2xl bg-[#0a0d18] border border-slate-800">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+            {/* Left Column: Context, Examples & SQL Rule (5 cols) */}
+            <div className="lg:col-span-5 space-y-3">
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <span className="font-mono font-bold text-white text-sm">
+                  {language === 'bn' ? current.titleBn : current.titleEn}
+                </span>
+                <span className={`text-[10px] font-mono px-2 py-0.5 rounded border font-bold ${current.badgeColor}`}>
+                  {current.badge}
                 </span>
               </div>
 
-              {/* 2-Column: Left Example, Right GfG Diagram */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                <div className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-black/40 border border-slate-800 text-center">
-                  <div className="p-3 rounded-xl bg-indigo-950/60 border border-indigo-700 w-full max-w-xs">
-                    <span className="text-indigo-400 font-bold block text-xs">PERSON</span>
-                    <span className="text-white text-xs">Rahim (NID: 9912)</span>
-                  </div>
-                  <div className="text-emerald-400 font-bold text-xs flex items-center gap-1.5">
-                    <span className="px-2.5 py-1 rounded bg-emerald-950 border border-emerald-600 font-bold">
-                      1 : 1 HAS
-                    </span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-cyan-950/60 border border-cyan-700 w-full max-w-xs">
-                    <span className="text-cyan-400 font-bold block text-xs">PASSPORT</span>
-                    <span className="text-white text-xs">BP-091283</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center">
-                  <img
-                    src="/images/gfg-cardinality-1-1.webp"
-                    alt="One-to-One ER Diagram (GeeksforGeeks)"
-                    className="max-h-40 object-contain"
-                  />
-                  <span className="text-[10px] font-mono text-zinc-600 mt-1">
-                    GeeksforGeeks: 1:1 Mapping (Person ↔ Passport)
-                  </span>
-                </div>
+              <div className="text-xs text-zinc-300 font-sans leading-relaxed">
+                <DualText en={current.descEn} bn={current.descBn} />
               </div>
 
-              <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
-                <DualText
-                  en="One person can possess at most one passport, and each passport belongs strictly to one person. An entity in A relates to at most one entity in B, and vice-versa."
-                  bn="একজন ব্যক্তির সর্বোচ্চ একটিমাত্র পাসপোর্ট থাকতে পারে এবং প্রতিটি পাসপোর্ট নির্দিষ্ট একজন ব্যক্তিরই হয়। A সেটের একটি এনটিটি B সেটের সর্বোচ্চ একটি এনটিটির সাথে যুক্ত থাকতে পারে।"
-                />
-              </div>
-            </div>
-          )}
-
-          {activeCardinality === '1:N' && (
-            <div className="space-y-4 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between text-amber-300">
-                <span className="font-bold text-sm">6.2 One-to-Many (1:N) Relationship</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-950 border border-amber-700">
-                  Single to Multiple
+              {/* Real World Scenario Box */}
+              <div className="p-3 rounded-xl bg-[#070913] border border-slate-800/80 space-y-1 text-xs">
+                <span className="text-[10px] font-mono text-zinc-400 uppercase font-semibold block">
+                  {language === 'bn' ? 'বাস্তব দৃশ্যপট:' : 'Real-World Scenario:'}
                 </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                <div className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-black/40 border border-slate-800 text-center">
-                  <div className="p-3 rounded-xl bg-amber-950/60 border border-amber-700 w-full max-w-xs">
-                    <span className="text-amber-400 font-bold block text-xs">DEPARTMENT (1)</span>
-                    <span className="text-white text-xs">Surgeon Department</span>
-                  </div>
-                  <div className="text-amber-400 font-bold text-xs">
-                    <span className="px-2.5 py-1 rounded bg-amber-950 border border-amber-600 font-bold">
-                      1 : N CONTAINS &rarr;
-                    </span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-cyan-950/60 border border-cyan-700 w-full max-w-xs">
-                    <span className="text-cyan-400 font-bold block text-xs">DOCTORS (N)</span>
-                    <span className="text-zinc-300 text-xs">Dr. Hasan, Dr. Nila, Dr. Karim</span>
-                  </div>
+                <div className="font-mono font-bold text-emerald-300 text-xs">
+                  {current.exampleTitle}
                 </div>
-
-                <div className="p-3 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center">
-                  <img
-                    src="/images/gfg-cardinality-1-n.webp"
-                    alt="One-to-Many ER Diagram (GeeksforGeeks)"
-                    className="max-h-40 object-contain"
-                  />
-                  <span className="text-[10px] font-mono text-zinc-600 mt-1">
-                    GeeksforGeeks: 1:N Mapping (Department → Multiple Doctors)
-                  </span>
+                <div className="text-[11px] text-zinc-400 font-sans leading-snug">
+                  <DualText en={current.exampleEn} bn={current.exampleBn} />
                 </div>
               </div>
 
-              <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
-                <DualText
-                  en="One department can contain multiple doctors, but each doctor belongs to strictly one department."
-                  bn="একটি ডিপার্টমেন্টের অধীনে অনেকজন ডাক্তার থাকতে পারেন, কিন্তু প্রতিটি ডাক্তার কেবল একটি নির্দিষ্ট বিভাগের অন্তর্ভুক্ত হন।"
-                />
+              {/* SQL Relational Mapping Rule */}
+              <div className="p-2.5 rounded-xl bg-[#0f1426] border border-cyan-900/40 text-xs space-y-1">
+                <div className="text-[10px] font-mono font-bold text-cyan-300 flex items-center gap-1.5">
+                  <Database className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>{language === 'bn' ? 'SQL রিলেশনাল রূপান্তর নিয়ম:' : 'SQL Relational Mapping Rule:'}</span>
+                </div>
+                <div className="text-[11px] text-zinc-300 font-sans leading-snug">
+                  <DualText en={current.sqlRuleEn} bn={current.sqlRuleBn} />
+                </div>
               </div>
             </div>
-          )}
 
-          {activeCardinality === 'N:1' && (
-            <div className="space-y-4 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between text-cyan-300">
-                <span className="font-bold text-sm">6.3 Many-to-One (N:1) Relationship</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-950 border border-cyan-700">
-                  Multiple to Single
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                <div className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-black/40 border border-slate-800 text-center">
-                  <div className="p-3 rounded-xl bg-cyan-950/60 border border-cyan-700 w-full max-w-xs">
-                    <span className="text-cyan-400 font-bold block text-xs">DOCTORS (N)</span>
-                    <span className="text-zinc-300 text-xs">Multiple Doctors</span>
-                  </div>
-                  <div className="text-cyan-400 font-bold text-xs">
-                    <span className="px-2.5 py-1 rounded bg-cyan-950 border border-cyan-600 font-bold">
-                      N : 1 BELONG TO &rarr;
-                    </span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-amber-950/60 border border-amber-700 w-full max-w-xs">
-                    <span className="text-amber-400 font-bold block text-xs">DEPARTMENT (1)</span>
-                    <span className="text-white text-xs">Single Department</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center">
-                  <img
-                    src="/images/gfg-cardinality-n-1.webp"
-                    alt="Many-to-One ER Diagram (GeeksforGeeks)"
-                    className="max-h-40 object-contain"
-                  />
-                  <span className="text-[10px] font-mono text-zinc-600 mt-1">
-                    GeeksforGeeks: N:1 Mapping (Multiple Doctors → 1 Department)
-                  </span>
-                </div>
-              </div>
-
-              <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
-                <DualText
-                  en="Many entities in set A associate with a single entity in set B. This is the reverse perspective of 1:N."
-                  bn="A সেটের একাধিক সত্তা B সেটের একটিমাত্র সত্তার সাথে যুক্ত হয়। এটি মূলত ১:N সম্পর্কের বিপরীতমুখী রূপ।"
+            {/* Right Column: High-Resolution Thematic Diagram Preview (7 cols) */}
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <div
+                onClick={() =>
+                  setModalImage({
+                    src: current.image,
+                    title: `${current.titleEn} (Chen Notation & Set Mapping)`,
+                    desc: `${current.exampleTitle} — ${current.descEn}`,
+                  })
+                }
+                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-all hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-950/30 p-2.5 flex flex-col items-center justify-center"
+              >
+                <img
+                  src={current.image}
+                  alt={current.titleEn}
+                  className="w-full h-auto max-h-56 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                 />
+                <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-4 h-4 text-emerald-300" />
+                </div>
+                <div className="w-full mt-2 pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                  <span className="text-emerald-300 font-semibold">{current.exampleTitle}</span>
+                  <span className="text-zinc-500 group-hover:text-emerald-400 transition-colors">Click to expand full screen ⤢</span>
+                </div>
               </div>
             </div>
-          )}
-
-          {activeCardinality === 'M:N' && (
-            <div className="space-y-4 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between text-purple-300">
-                <span className="font-bold text-sm">6.4 Many-to-Many (M:N) Relationship</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-purple-950 border border-purple-700">
-                  Cross-Mesh
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                <div className="flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-black/40 border border-slate-800 text-center">
-                  <div className="p-3 rounded-xl bg-purple-950/60 border border-purple-700 w-full max-w-xs">
-                    <span className="text-purple-400 font-bold block text-xs">EMPLOYEES (M)</span>
-                    <span className="text-zinc-300 text-xs">Rahim, Karim, Nila</span>
-                  </div>
-                  <div className="text-purple-400 font-bold text-xs flex items-center gap-1.5">
-                    <span className="px-2.5 py-1 rounded bg-purple-950 border border-purple-600 font-bold">
-                      M : N WORKS ON
-                    </span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-pink-950/60 border border-pink-700 w-full max-w-xs">
-                    <span className="text-pink-400 font-bold block text-xs">PROJECTS (N)</span>
-                    <span className="text-zinc-300 text-xs">Database, Mobile App, Cloud</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center">
-                  <img
-                    src="/images/gfg-cardinality-m-n.webp"
-                    alt="Many-to-Many ER Diagram (GeeksforGeeks)"
-                    className="max-h-40 object-contain"
-                  />
-                  <span className="text-[10px] font-mono text-zinc-600 mt-1">
-                    GeeksforGeeks: M:N Mapping (Employees ↔ Projects)
-                  </span>
-                </div>
-              </div>
-
-              <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
-                <DualText
-                  en="One employee can work on multiple projects, and each project has multiple employees assigned. In SQL, this requires an intermediate Junction Table!"
-                  bn="একজন কর্মী একাধিক প্রকল্পে কাজ করতে পারেন এবং প্রতিটি প্রকল্পে একাধিক কর্মী নিযুক্ত থাকেন। এসকিউএল-এ এটি সমাধানের জন্য একটি জাংশন টেবিল (Junction Table) প্রয়োজন হয়!"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Cardinality Revision Table */}
-        <div className="space-y-2 pt-2">
-          <div className="text-xs font-mono font-bold text-white flex items-center justify-between">
-            <span>{language === 'bn' ? 'কার্ডিনালিটি অনুপাত রিভিশন টেবিল' : 'Cardinality Revision Quick Reference'}</span>
-            <span className="text-[10px] text-zinc-400">Exam Must-Know</span>
-          </div>
-
-          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
-            <table className="w-full text-left font-mono text-xs">
-              <thead>
-                <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px]">
-                  <th className="py-2.5 px-4">{language === 'bn' ? 'অনুপাত (Ratio)' : 'Ratio'}</th>
-                  <th className="py-2.5 px-4">{language === 'bn' ? 'অর্থ' : 'Meaning'}</th>
-                  <th className="py-2.5 px-4">{language === 'bn' ? 'বাস্তব উদাহরণ' : 'Real-World Example'}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800/60 text-[11px] text-zinc-300">
-                {cardinalityRevisionTable.map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#0c0e18]'}>
-                    <td className="py-2.5 px-4 font-bold text-emerald-400">
-                      {row.ratio}
-                    </td>
-                    <td className="py-2.5 px-4 text-zinc-300">
-                      {language === 'bn' ? row.meaningBn : row.meaningEn}
-                    </td>
-                    <td className="py-2.5 px-4 text-zinc-400">
-                      {language === 'bn' ? row.exampleEn : row.exampleEn}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
 
       {/* ========================================================
-          7. PARTICIPATION CONSTRAINTS
+          5.2 PARTICIPATION CONSTRAINTS (Total vs Partial)
          ======================================================== */}
       <div className="space-y-4 pt-4 border-t border-slate-800">
-        <div className="flex items-center gap-2 text-sm font-bold text-pink-300 font-mono">
-          <ShieldCheck className="w-4 h-4 text-pink-400" />
-          <span>{language === 'bn' ? '৭. পার্টিসিপেশন শর্তাবলী: Total বনাম Partial' : '7. Participation Constraints: Total vs Partial'}</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm font-bold text-pink-300 font-mono">
+            <ShieldCheck className="w-4 h-4 text-pink-400" />
+            <span>
+              {language === 'bn'
+                ? '৫.২ পার্টিসিপেশন শর্তাবলী (Total ════ বনাম Partial ────)'
+                : '5.2 Participation Constraints (Total vs Partial Participation)'}
+            </span>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-400">Minimum Limits</span>
         </div>
 
-        <div className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans">
+        <div className="text-xs text-zinc-300 leading-relaxed font-sans">
           <DualText
-            en="Cardinality tells us HOW MANY entities can be related. Participation tells us whether an entity MUST participate in a relationship or if participation is OPTIONAL."
-            bn="কার্ডিনালিটি আমাদের বলে একটি সত্তার সাথে 'কতগুলো' সত্তা যুক্ত হতে পারে। আর পার্টিসিপেশন কনস্ট্রেইন্ট আমাদের বলে কোনো সত্তাকে সম্পর্কের মধ্যে থাকা 'বাধ্যতামূলক (Mandatory)' নাকি 'ঐচ্ছিক (Optional)'।"
+            en="While Cardinality sets the MAXIMUM associations, Participation Constraint determines the MINIMUM: whether every instance MUST participate (Total / Mandatory) or whether participation is OPTIONAL (Partial):"
+            bn="কার্ডিনালিটি যেখানে সর্বোচ্চ (Maximum) সীমা ঠিক করে, পার্টিসিপেশন ঠিক করে সর্বনিম্ন (Minimum) সীমা: কোনো সম্পর্কে প্রতিটি সত্তার অংশগ্রহণ কি বাধ্যতামূলক (Total / Mandatory) নাকি ঐচ্ছিক (Partial / Optional):"
           />
         </div>
 
-        {/* GfG Participation Diagram */}
-        <div className="p-3 rounded-2xl bg-white border border-slate-700 flex flex-col items-center justify-center">
-          <img
-            src="/images/gfg-participation.webp"
-            alt="Participation Constraints in ER Diagram (GeeksforGeeks)"
-            className="max-h-48 md:max-h-56 object-contain"
-          />
-          <span className="text-[10px] font-mono text-zinc-600 mt-1">
-            GeeksforGeeks Diagram: Total Participation (Double Line) vs Partial Participation (Single Line)
-          </span>
-        </div>
-
-        {/* Total vs Partial Side-by-Side Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
-          {/* Total Participation */}
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-emerald-900/50 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-emerald-400 text-sm">7.1 Total Participation</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
-                ════ Double Line (দ্বৈত রেখা)
-              </span>
-            </div>
-            <div className="text-zinc-300 font-sans leading-relaxed text-[11px]">
-              <DualText
-                en="Mandatory participation. EVERY entity in the entity set MUST participate in at least one relationship."
-                bn="বাধ্যতামূলক অংশগ্রহণ। এনটিটি সেটের প্রতিটি সত্তাকে অবশ্যই কমপক্ষে একটি সম্পর্কে অংশগ্রহণ করতেই হবে।"
-              />
-            </div>
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-slate-800 text-[11px] text-emerald-300 space-y-1">
-              <div><strong>Example:</strong> Every Employee <em>must</em> belong to a Department.</div>
-              <div className="text-zinc-500 text-[10px]">
-                {language === 'bn'
-                  ? 'কোনো কর্মী বিভাগ ছাড়া একা থাকতে পারে না (Mandatory)।'
-                  : 'No employee can exist in the company without an assigned department.'}
+        {/* 2-Column Comparison Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          {/* Left Column: Conceptual Cards (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3">
+            {/* Total Participation Card */}
+            <div className="p-3.5 rounded-2xl bg-[#091510] border border-emerald-500/40 space-y-1.5">
+              <div className="flex items-center justify-between font-mono">
+                <span className="text-xs font-bold text-emerald-300">
+                  {language === 'bn' ? '১. টোটাল পার্টিসিপেশন (Mandatory)' : '1. Total Participation'}
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold">
+                  ════ Double Line
+                </span>
+              </div>
+              <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
+                <DualText
+                  en="Every single entity instance must participate in the relationship. Minimum Cardinality ≥ 1. E.g. Every employee MUST belong to a department."
+                  bn="প্রতিটি সত্তাকে অবশ্যই সম্পর্কে অংশ নিতে হবে। সর্বনিম্ন কার্ডিনালিটি ≥ ১। যেমন: প্রতিটি কর্মীকে অবশ্যই কোনো না কোনো বিভাগে থাকতেই হবে।"
+                />
+              </div>
+              <div className="text-[10px] font-mono text-emerald-400 pt-1 border-t border-emerald-900/60 flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3" />
+                <span>Min Cardinality = 1 (বাধ্যতামূলক)</span>
               </div>
             </div>
-          </div>
 
-          {/* Partial Participation */}
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-indigo-900/50 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-indigo-400 text-sm">7.2 Partial Participation</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 font-bold">
-                ──── Single Line (একক রেখা)
-              </span>
-            </div>
-            <div className="text-zinc-300 font-sans leading-relaxed text-[11px]">
-              <DualText
-                en="Optional participation. Only SOME entities participate; other entities might not participate at all."
-                bn="ঐচ্ছিক অংশগ্রহণ। এনটিটি সেটের কেবল কিছু সত্তা অংশগ্রহণ করে; বাকিরা অংশ নাও নিতে পারে।"
-              />
-            </div>
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-slate-800 text-[11px] text-indigo-300 space-y-1">
-              <div><strong>Example:</strong> Not every Employee supervises another employee.</div>
-              <div className="text-zinc-500 text-[10px]">
-                {language === 'bn'
-                  ? 'সকল কর্মী সুপারভাইজার নন; জুনিয়র কর্মীরা কাউকে সুপারভাইজ করেন না।'
-                  : 'Only senior staff supervise; junior employees participate in 0 supervisor relationships.'}
+            {/* Partial Participation Card */}
+            <div className="p-3.5 rounded-2xl bg-[#0c0f24] border border-indigo-500/40 space-y-1.5">
+              <div className="flex items-center justify-between font-mono">
+                <span className="text-xs font-bold text-indigo-300">
+                  {language === 'bn' ? '২. পার্শিয়াল পার্টিসিপেশন (Optional)' : '2. Partial Participation'}
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-700 font-bold">
+                  ──── Single Line
+                </span>
+              </div>
+              <div className="text-[11px] text-zinc-300 font-sans leading-relaxed">
+                <DualText
+                  en="Only some entity instances participate in the relationship. Minimum Cardinality = 0. E.g. Not all employees are managers."
+                  bn="সবার অংশগ্রহণ জরুরি নয়; কিছু সত্তা অংশ নিতে পারে আবার নাও নিতে পারে। সর্বনিম্ন কার্ডিনালিটি = ০। যেমন: সব কর্মী ম্যানেজার নন।"
+                />
+              </div>
+              <div className="text-[10px] font-mono text-indigo-400 pt-1 border-t border-indigo-900/60 flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3" />
+                <span>Min Cardinality = 0 (ঐচ্ছিক)</span>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Total vs Partial Comparison Table */}
-        <div className="space-y-2 pt-2">
-          <div className="text-xs font-mono font-bold text-white">
-            {language === 'bn' ? 'টোটাল বনাম পার্শিয়াল পার্টিসিপেশন পার্থক্য টেবিল' : 'Total vs Partial Participation: Core Exam Comparison'}
+            {/* Core Exam Takeaway Pill */}
+            <div className="p-2.5 rounded-xl bg-[#070b16] border border-slate-800 text-[10px] font-mono text-zinc-400 flex items-center justify-between">
+              <span>Exam Formula: (Min, Max) = (0/1, 1/N)</span>
+              <span className="text-pink-400 font-semibold">Notation Rule</span>
+            </div>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
-            <table className="w-full text-left font-mono text-xs">
-              <thead>
-                <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px]">
-                  <th className="py-2.5 px-4">{language === 'bn' ? 'বৈশিষ্ট্য' : 'Feature'}</th>
-                  <th className="py-2.5 px-4 text-emerald-400">{language === 'bn' ? 'টোটাল পার্টিসিপেশন (Total)' : 'Total Participation'}</th>
-                  <th className="py-2.5 px-4 text-indigo-400">{language === 'bn' ? 'পার্শিয়াল পার্টিসিপেশন (Partial)' : 'Partial Participation'}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800/60 text-[11px] text-zinc-300 font-sans">
-                <tr className="bg-[#0f1224]/30">
-                  <td className="py-2.5 px-4 font-bold text-white font-mono">
-                    {language === 'bn' ? 'অংশগ্রহণের শর্ত' : 'Rule'}
-                  </td>
-                  <td className="py-2.5 px-4 text-emerald-300">
-                    {language === 'bn' ? 'প্রতিটি এনটিটিকে অবশ্যই অংশ নিতে হবে' : 'Every entity must participate'}
-                  </td>
-                  <td className="py-2.5 px-4 text-indigo-300">
-                    {language === 'bn' ? 'কিছু এনটিটি অংশ না-ও নিতে পারে' : 'Some entities may not participate'}
-                  </td>
-                </tr>
-                <tr className="bg-[#0c0e18]">
-                  <td className="py-2.5 px-4 font-bold text-white font-mono">
-                    {language === 'bn' ? 'প্রকৃতি' : 'Nature'}
-                  </td>
-                  <td className="py-2.5 px-4 text-emerald-300">
-                    {language === 'bn' ? 'বাধ্যতামূলক (Mandatory)' : 'Mandatory'}
-                  </td>
-                  <td className="py-2.5 px-4 text-indigo-300">
-                    {language === 'bn' ? 'ঐচ্ছিক (Optional)' : 'Optional for some entities'}
-                  </td>
-                </tr>
-                <tr className="bg-[#0f1224]/30">
-                  <td className="py-2.5 px-4 font-bold text-white font-mono">
-                    {language === 'bn' ? 'ইআর রেখা প্রতীক' : 'ER Line Notation'}
-                  </td>
-                  <td className="py-2.5 px-4 font-mono font-bold text-emerald-300">
-                    ════ Double Line (দ্বৈত রেখা)
-                  </td>
-                  <td className="py-2.5 px-4 font-mono font-bold text-indigo-300">
-                    ──── Single Line (একক রেখা)
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          {/* Right Column: High-Resolution Thematic Participation Diagram (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <div
+              onClick={() =>
+                setModalImage({
+                  src: '/images/participation-constraints.png',
+                  title: 'Participation Constraints: Total vs Partial (Chen Notation)',
+                  desc: 'Total (Double Line ════: EMPLOYEE belongs to DEPARTMENT) vs Partial (Single Line ────: EMPLOYEE manages DEPARTMENT)',
+                })
+              }
+              className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-all hover:border-pink-500/50 hover:shadow-xl hover:shadow-pink-950/30 p-2.5 flex flex-col items-center justify-center"
+            >
+              <img
+                src="/images/participation-constraints.png"
+                alt="Participation Constraints Diagram"
+                className="w-full h-auto max-h-56 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+              <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="w-4 h-4 text-pink-300" />
+              </div>
+              <div className="w-full mt-2 pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                <span className="text-pink-300 font-semibold">Total (════) vs Partial (────) Notation</span>
+                <span className="text-zinc-500 group-hover:text-pink-400 transition-colors">Click to expand full screen ⤢</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* ========================================================
+          FULL-SCREEN IMAGE MODAL / LIGHTBOX
+         ======================================================== */}
+      {modalImage && (
+        <div
+          onClick={() => setModalImage(null)}
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-emerald-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+          >
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div>
+                <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
+                  <span className="text-emerald-400">▣</span>
+                  {modalImage.title}
+                </h3>
+                <p className="text-xs text-zinc-400 font-sans mt-0.5">{modalImage.desc}</p>
+              </div>
+              <button
+                onClick={() => setModalImage(null)}
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-slate-800/80">
+              <img
+                src={modalImage.src}
+                alt={modalImage.title}
+                className="w-full max-h-[75vh] object-contain rounded-lg"
+              />
+            </div>
+
+            <div className="flex items-center justify-between text-[11px] font-mono text-zinc-500 pt-1">
+              <span>Press ESC or click anywhere outside to close</span>
+              <span className="text-emerald-400 font-semibold">High-Resolution Thematic Asset</span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,13 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Circle, Sparkles, Calculator, Layers, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Circle, Sparkles, Calculator, Layers, CheckCircle2, Maximize2, X } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
 
 export default function Lesson5Part2Attributes() {
   const { language } = useLanguage();
   const [birthYear, setBirthYear] = useState<number>(2004);
+  const [modalImage, setModalImage] = useState<{ src: string; title: string; desc: string } | null>(null);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setModalImage(null);
+    };
+    if (modalImage) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [modalImage]);
 
   const calculatedAge = 2026 - birthYear;
 
@@ -100,7 +112,7 @@ export default function Lesson5Part2Attributes() {
       {/* ========================================================
           ATTRIBUTE TYPES (Organized as low-overhead 2-column cards)
           Left: Definition, Key Rules & Examples
-          Right: Single Official Diagram (Keeping GeeksforGeeks images)
+          Right: High-Resolution Thematic Image with Fullscreen Popup
          ======================================================== */}
       <div className="space-y-3.5">
         {/* 3.1 Simple Attribute */}
@@ -124,14 +136,29 @@ export default function Lesson5Part2Attributes() {
               </div>
             </div>
 
-            {/* Right: Single Diagram */}
-            <div className="p-3 bg-[#03060f] border border-slate-800 rounded-xl flex flex-col items-center justify-center">
-              <div className="px-7 py-2 rounded-full border-2 border-cyan-400 bg-cyan-950/30 text-white font-mono font-bold text-xs shadow-[0_0_12px_rgba(6,182,212,0.2)]">
-                Gender
+            {/* Right: Thematic Image with Fullscreen Popup Trigger */}
+            <div
+              onClick={() =>
+                setModalImage({
+                  src: '/images/attr-simple-attribute.png',
+                  title: 'Simple (Atomic) Attribute Diagram',
+                  desc: 'Single Oval ⬭: Atomic attribute that cannot be divided further (e.g. Gender, Salary, Roll_No).',
+                })
+              }
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-cyan-500/30 bg-[#0B0F19] transition-all hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-950/40"
+            >
+              <img
+                src="/images/attr-simple-attribute.png"
+                alt="Simple Attribute Diagram"
+                className="w-full h-auto max-h-36 sm:max-h-40 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+              <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="w-3.5 h-3.5 text-cyan-300" />
               </div>
-              <span className="text-[10px] text-zinc-400 font-mono mt-1.5">
-                Single oval = Simple Attribute
-              </span>
+              <div className="px-3 py-1 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+                <span className="text-cyan-300 font-semibold font-mono">Single Oval (Atomic)</span>
+                <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
+              </div>
             </div>
           </div>
         </div>
@@ -158,16 +185,29 @@ export default function Lesson5Part2Attributes() {
               </div>
             </div>
 
-            {/* Right: Single GeeksforGeeks Diagram */}
-            <div className="p-2 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center">
+            {/* Right: Thematic Image with Fullscreen Popup Trigger */}
+            <div
+              onClick={() =>
+                setModalImage({
+                  src: '/images/attr-composite-attribute.png',
+                  title: 'Composite Attribute Diagram',
+                  desc: 'Hierarchy of Ovals: Main attribute (Address) branches into multiple independent sub-attributes.',
+                })
+              }
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-emerald-500/30 bg-[#0B0F19] transition-all hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-950/40"
+            >
               <img
-                src="/images/gfg-composite-attr.webp"
-                alt="Composite Attribute Diagram (GeeksforGeeks)"
-                className="max-h-20 md:max-h-24 object-contain"
+                src="/images/attr-composite-attribute.png"
+                alt="Composite Attribute Diagram"
+                className="w-full h-auto max-h-36 sm:max-h-40 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
               />
-              <span className="text-[10px] font-mono text-zinc-600 mt-1">
-                GeeksforGeeks: Address &rarr; Street, City, State, Country
-              </span>
+              <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="w-3.5 h-3.5 text-emerald-300" />
+              </div>
+              <div className="px-3 py-1 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+                <span className="text-emerald-300 font-semibold font-mono">Main Oval ➔ Sub-Ovals</span>
+                <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
+              </div>
             </div>
           </div>
         </div>
@@ -193,14 +233,29 @@ export default function Lesson5Part2Attributes() {
               </div>
             </div>
 
-            {/* Right: Single Diagram */}
-            <div className="p-3 bg-[#03060f] border border-slate-800 rounded-xl flex flex-col items-center justify-center">
-              <div className="px-7 py-2 rounded-full border-2 border-amber-400 bg-amber-950/30 text-amber-200 font-mono font-bold text-xs shadow-[0_0_12px_rgba(251,191,36,0.2)]">
-                <u>Student_ID</u>
+            {/* Right: Thematic Image with Fullscreen Popup Trigger */}
+            <div
+              onClick={() =>
+                setModalImage({
+                  src: '/images/attr-key-attribute.png',
+                  title: 'Key Attribute (Primary Key) Diagram',
+                  desc: 'Underlined text in oval: Uniquely identifies each entity instance in an entity set (Primary Key).',
+                })
+              }
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-all hover:border-amber-400 hover:shadow-lg hover:shadow-amber-950/40"
+            >
+              <img
+                src="/images/attr-key-attribute.png"
+                alt="Key Attribute Diagram"
+                className="w-full h-auto max-h-36 sm:max-h-40 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+              <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
               </div>
-              <span className="text-[10px] text-amber-400 font-mono mt-1.5">
-                Underlined text = Key Attribute (Primary Key)
-              </span>
+              <div className="px-3 py-1 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+                <span className="text-amber-300 font-semibold font-mono"><u>Underlined</u> (Primary Key)</span>
+                <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
+              </div>
             </div>
           </div>
         </div>
@@ -226,16 +281,29 @@ export default function Lesson5Part2Attributes() {
               </div>
             </div>
 
-            {/* Right: Single GeeksforGeeks Diagram */}
-            <div className="p-2 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center">
+            {/* Right: Thematic Image with Fullscreen Popup Trigger */}
+            <div
+              onClick={() =>
+                setModalImage({
+                  src: '/images/attr-multivalued-attribute.png',
+                  title: 'Multivalued Attribute Diagram',
+                  desc: 'Double Concentric Oval (( )): Capable of holding multiple values for a single entity instance.',
+                })
+              }
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-emerald-500/30 bg-[#0B0F19] transition-all hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-950/40"
+            >
               <img
-                src="/images/gfg-multivalued-attr.webp"
-                alt="Multivalued Attribute Diagram (GeeksforGeeks)"
-                className="max-h-20 md:max-h-24 object-contain"
+                src="/images/attr-multivalued-attribute.png"
+                alt="Multivalued Attribute Diagram"
+                className="w-full h-auto max-h-36 sm:max-h-40 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
               />
-              <span className="text-[10px] font-mono text-zinc-600 mt-1">
-                GeeksforGeeks: Multivalued Attribute (Double Oval: Phone_No)
-              </span>
+              <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="w-3.5 h-3.5 text-emerald-300" />
+              </div>
+              <div className="px-3 py-1 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+                <span className="text-emerald-300 font-semibold font-mono">Double Oval (( ))</span>
+                <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
+              </div>
             </div>
           </div>
         </div>
@@ -277,16 +345,29 @@ export default function Lesson5Part2Attributes() {
               </div>
             </div>
 
-            {/* Right: Single GeeksforGeeks Diagram */}
-            <div className="p-2 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center">
+            {/* Right: Thematic Image with Fullscreen Popup Trigger */}
+            <div
+              onClick={() =>
+                setModalImage({
+                  src: '/images/attr-derived-attribute.png',
+                  title: 'Derived Attribute Diagram',
+                  desc: 'Dashed Oval - -: Dynamically computed on query from stored attribute (e.g. Age computed from Date_of_Birth).',
+                })
+              }
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-all hover:border-amber-400 hover:shadow-lg hover:shadow-amber-950/40"
+            >
               <img
-                src="/images/gfg-derived-attr.webp"
-                alt="Derived Attribute Diagram (GeeksforGeeks)"
-                className="max-h-20 md:max-h-24 object-contain"
+                src="/images/attr-derived-attribute.png"
+                alt="Derived Attribute Diagram"
+                className="w-full h-auto max-h-36 sm:max-h-40 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
               />
-              <span className="text-[10px] font-mono text-zinc-600 mt-1">
-                GeeksforGeeks: Derived Attribute (Dashed Oval: Age from DOB)
-              </span>
+              <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
+              </div>
+              <div className="px-3 py-1 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+                <span className="text-amber-300 font-semibold font-mono">- - Dashed Oval - -</span>
+                <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
+              </div>
             </div>
           </div>
         </div>
@@ -335,6 +416,53 @@ export default function Lesson5Part2Attributes() {
           </table>
         </div>
       </div>
+
+      {/* ========================================================
+          FULL-SCREEN IMAGE MODAL / LIGHTBOX
+         ======================================================== */}
+      {modalImage && (
+        <div
+          onClick={() => setModalImage(null)}
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-amber-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div>
+                <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
+                  <span className="text-amber-400">▣</span>
+                  {modalImage.title}
+                </h3>
+                <p className="text-xs text-zinc-400 font-sans mt-0.5">{modalImage.desc}</p>
+              </div>
+              <button
+                onClick={() => setModalImage(null)}
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Image Body */}
+            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-slate-800/80">
+              <img
+                src={modalImage.src}
+                alt={modalImage.title}
+                className="w-full max-h-[75vh] object-contain rounded-lg"
+              />
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex items-center justify-between text-[11px] font-mono text-zinc-500 pt-1">
+              <span>Press ESC or click anywhere outside to close</span>
+              <span className="text-amber-400 font-semibold">High-Resolution Thematic Asset</span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
