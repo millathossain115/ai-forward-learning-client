@@ -104,6 +104,18 @@ export default function Lesson5Part6SymbolsAndUniversityER() {
             </tbody>
           </table>
         </div>
+
+        {/* GeeksforGeeks Symbols Diagram */}
+        <div className="p-3 rounded-2xl bg-white border border-slate-700 flex flex-col items-center justify-center">
+          <img
+            src="/images/gfg-er-symbols.webp"
+            alt="Symbols Used in ER Diagram (GeeksforGeeks)"
+            className="w-full max-w-2xl max-h-64 object-contain"
+          />
+          <span className="text-[10px] font-mono text-zinc-600 mt-1">
+            GeeksforGeeks Reference: Standard Peter Chen ER Symbols
+          </span>
+        </div>
       </div>
 
       {/* ========================================================

@@ -194,6 +194,18 @@ export default function Lesson5Part3Relationships() {
                 (একজন ম্যানেজারও কর্মচারী, তার অধীনস্থ ব্যক্তিও কর্মচারী)
               </span>
             </div>
+
+            {/* GfG Unary/Recursive Relationship Diagram */}
+            <div className="p-2 rounded-xl bg-white border border-slate-700 flex flex-col items-center">
+              <img
+                src="/images/gfg-recursive-rel.webp"
+                alt="Unary Recursive Relationship Diagram (GeeksforGeeks)"
+                className="max-h-24 object-contain"
+              />
+              <span className="text-[10px] font-mono text-zinc-600 mt-1">
+                GeeksforGeeks: Unary / Recursive Relationship
+              </span>
+            </div>
           </div>
 
           {/* Binary */}

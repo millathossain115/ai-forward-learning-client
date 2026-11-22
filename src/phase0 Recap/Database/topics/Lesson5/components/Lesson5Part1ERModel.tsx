@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Workflow, Building2, Sparkles, Layers, Eye, CheckCircle2, Compass, Image as ImageIcon, Table as TableIcon } from 'lucide-react';
+import { Workflow, Building2, Sparkles, Layers, Eye, CheckCircle2, Compass, Image as ImageIcon, Table as TableIcon, PlayCircle, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
 
@@ -307,6 +307,45 @@ export default function Lesson5Part1ERModel() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Recommended Video Lecture: Neso Academy ER Diagram */}
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-[#171226] via-[#101322] to-[#0c0e18] border border-rose-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-xl bg-rose-600/20 text-rose-400 border border-rose-600/30 shrink-0">
+            <PlayCircle className="w-6 h-6" />
+          </div>
+          <div className="space-y-0.5">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold border border-rose-500/30">
+                YouTube • Neso Academy
+              </span>
+              <span className="text-[10px] text-zinc-400 font-mono">1.2M+ Views</span>
+            </div>
+            <h4 className="text-xs md:text-sm font-bold text-white font-sans">
+              <DualText
+                en="Recommended Video: Entity-Relationship (ER) Diagram"
+                bn="প্রস্তাবিত ভিডিও লেকচার: এনটিটি-রিলেশনশিপ (ইআর) ডায়াগ্রাম"
+              />
+            </h4>
+            <div className="text-[11px] text-zinc-400 font-sans">
+              <DualText
+                en="Visual walkthrough covering Entities, Attribute sets, Recursive links, and Cardinality limits."
+                bn="এনটিটি, অ্যাট্রিবিউট সেট, রিকার্সিভ রিলেশন ও কার্ডিনালিটি সীমার পরিষ্কার ভিডিও ব্যাখ্যা।"
+              />
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="https://www.youtube.com/watch?v=rorft23glC0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold font-mono flex items-center gap-1.5 transition-all shadow-md shadow-rose-900/30 shrink-0 cursor-pointer self-stretch sm:self-auto justify-center"
+        >
+          <span>{language === 'bn' ? 'ভিডিও দেখুন' : 'Watch Video'}</span>
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
       </div>
     </section>
   );
