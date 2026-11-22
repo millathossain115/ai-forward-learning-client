@@ -16,7 +16,7 @@ interface DatabaseLesson4TopicProps {
 
 export default function DatabaseLesson4Topic({ onNavigate }: DatabaseLesson4TopicProps) {
   return (
-    <div className="max-w-5xl mx-auto space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
+    <div className="w-full space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
       {/* 1. Header Hero Banner & Recap */}
       <Lesson4Hero onNavigate={onNavigate} />
 
@@ -32,7 +32,7 @@ export default function DatabaseLesson4Topic({ onNavigate }: DatabaseLesson4Topi
       {/* Part 4 & 5: Practical University Schema & SQL DDL Code */}
       <Lesson4Part4SchemaSql />
 
-      {/* Part 6: University Exam Preparation (Q&A Accordion) */}
+      {/* Part 6: Technical Interview Preparation (High-Yield Q&A) */}
       <Lesson4Part5ExamPrep />
 
       {/* Part 8: Practical Case Study (EMPLOYEE Analysis) & Roadmap Bridge */}

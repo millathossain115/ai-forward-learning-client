@@ -366,6 +366,25 @@ export default function Lesson4Part2KeyTypes() {
     msgEn: string;
     msgBn: string;
   } | null>(null);
+  const [collidingCompositePair, setCollidingCompositePair] = useState<{ studentId: string; courseId: string } | null>(null);
+  const [lastInsertedCompositePair, setLastInsertedCompositePair] = useState<{ studentId: string; courseId: string } | null>(null);
+  const [customStudentId, setCustomStudentId] = useState<string>('104');
+  const [customCourseId, setCustomCourseId] = useState<string>('CSE201');
+
+  const compositeStudentDirectory: Record<string, string> = {
+    '101': 'Rahim',
+    '102': 'Karim',
+    '103': 'Nila',
+    '104': 'Afsana',
+    '105': 'Tanvir',
+  };
+
+  const compositeCourseDirectory: Record<string, string> = {
+    'CSE101': 'Structured Programming',
+    'CSE201': 'Database Systems',
+    'MAT101': 'Linear Algebra',
+    'CSE301': 'Algorithms',
+  };
 
   const initialEnrollments = [
     { studentId: '101', studentName: 'Rahim', courseId: 'CSE101', courseName: 'Structured Programming', semester: 'Spring 2026', grade: 'A' },
@@ -377,27 +396,34 @@ export default function Lesson4Part2KeyTypes() {
   const [enrollments, setEnrollments] = useState(initialEnrollments);
 
   const handleTestCompositeCollision = (studentId: string, courseId: string) => {
-    const exists = enrollments.some((e) => e.studentId === studentId && e.courseId === courseId);
-    if (exists) {
+    const studentName = compositeStudentDirectory[studentId] || `Student ${studentId}`;
+    const courseName = compositeCourseDirectory[courseId] || `Course ${courseId}`;
+    const existingIndex = enrollments.findIndex((e) => e.studentId === studentId && e.courseId === courseId);
+
+    if (existingIndex !== -1) {
+      setCollidingCompositePair({ studentId, courseId });
+      setLastInsertedCompositePair(null);
       setCompositeAlert({
         type: 'error',
-        msgEn: `❌ Composite Primary Key Violation! Student "${studentId}" is ALREADY enrolled in Course "${courseId}"! The composite pair (${studentId}, ${courseId}) cannot be duplicated.`,
-        msgBn: `❌ কম্পোজিট প্রাইমারি কি লঙ্ঘন! শিক্ষার্থী "${studentId}" ইতিমধ্যে কোর্স "${courseId}"-এ নিবন্ধিত! এই যৌথ জোড়া (${studentId}, ${courseId}) কখনোই ডুপ্লিকেট হতে পারে না।`,
+        msgEn: `❌ Composite Primary Key Violation! Student "${studentName}" (${studentId}) is ALREADY enrolled in Course "${courseName}" (${courseId}) at Row #${existingIndex + 1}! The composite pair (${studentId}, ${courseId}) cannot be duplicated in the ENROLLMENT table.`,
+        msgBn: `❌ কম্পোজিট প্রাইমারি কি লঙ্ঘন! শিক্ষার্থী "${studentName}" (${studentId}) ইতিমধ্যে #${existingIndex + 1} নম্বর সারিতে "${courseName}" (${courseId}) কোর্সে নিবন্ধিত! এই যৌথ জোড়া (${studentId}, ${courseId}) ENROLLMENT টেবিলে দ্বিতীয়বার ইনসার্ট হতে পারে না।`,
       });
     } else {
+      setCollidingCompositePair(null);
+      setLastInsertedCompositePair({ studentId, courseId });
       const newEnrollment = {
         studentId,
-        studentName: 'Afsana',
+        studentName,
         courseId,
-        courseName: 'Algorithms',
+        courseName,
         semester: 'Fall 2026',
         grade: 'Enrolled',
       };
       setEnrollments((prev) => [...prev, newEnrollment]);
       setCompositeAlert({
         type: 'success',
-        msgEn: `✓ Success! The composite pair (${studentId}, ${courseId}) is unique and was successfully inserted into ENROLLMENT!`,
-        msgBn: `✓ সফল! যৌথ জোড়া (${studentId}, ${courseId}) সম্পূর্ণ ইউনিক এবং এটি সফলভাবে ENROLLMENT টেবিলে যুক্ত হয়েছে!`,
+        msgEn: `✓ Success! The composite pair (${studentId}, ${courseId}) is unique. Student "${studentName}" was successfully enrolled in "${courseName}" and appended as Row #${enrollments.length + 1} below!`,
+        msgBn: `✓ সফল! যৌথ জোড়া (${studentId}, ${courseId}) সম্পূর্ণ ইউনিক। শিক্ষার্থী "${studentName}" সফলভাবে "${courseName}" কোর্সে নিবন্ধিত হয়েছে এবং নিচের টেবিলে #${enrollments.length + 1} নম্বর সারি হিসেবে যুক্ত হয়েছে!`,
       });
     }
   };
@@ -405,6 +431,8 @@ export default function Lesson4Part2KeyTypes() {
   const handleResetEnrollments = () => {
     setEnrollments(initialEnrollments);
     setCompositeAlert(null);
+    setCollidingCompositePair(null);
+    setLastInsertedCompositePair(null);
   };
 
   // Unique Key Playground State & Live Accounts Table
@@ -477,56 +505,167 @@ export default function Lesson4Part2KeyTypes() {
   const [activeKeyArch, setActiveKeyArch] = useState<'surrogate' | 'natural'>('surrogate');
 
   const keyTabs = [
-    { id: 'super', labelEn: '1. Super Key', labelBn: '১. সুপার কী', tagEn: 'All Unique Combos', tagBn: 'সকল অনন্য কম্বিনেশন' },
-    { id: 'candidate', labelEn: '2. Candidate Key', labelBn: '২. ক্যান্ডিডেট কী', tagEn: 'Minimal Super Key', tagBn: 'ন্যূনতম সুপার কী' },
-    { id: 'primary', labelEn: '3. Primary Key', labelBn: '৩. প্রাইমারি কী', tagEn: 'Main Unique ID', tagBn: 'প্রধান অনন্য আইডি' },
-    { id: 'alternate', labelEn: '4. Alternate Key', labelBn: '৪. অল্টারনেট কী', tagEn: 'Remaining Candidates', tagBn: 'বিকল্প ক্যান্ডিডেটসমূহ' },
-    { id: 'foreign', labelEn: '5. Foreign Key', labelBn: '৫. ফরেন কী', tagEn: 'Connects Tables', tagBn: 'টেবিলের সংযোগ' },
-    { id: 'composite', labelEn: '6. Composite Key', labelBn: '৬. কম্পোজিট কী', tagEn: 'Multiple Columns', tagBn: 'একাধিক কলামের কি' },
-    { id: 'unique', labelEn: '7. Unique Key', labelBn: '৭. ইউনিক কী', tagEn: 'No Duplicates', tagBn: 'ডুপ্লিকেটহীন' },
-    { id: 'surrogate', labelEn: '8. Natural and Surrogate', labelBn: '৮. ন্যাচারাল অ্যান্ড সারোগেট', tagEn: 'Real & Artificial', tagBn: 'বাস্তব ও কৃত্রিম' },
+    {
+      id: 'super',
+      num: '1',
+      labelEn: 'Super Key',
+      labelBn: 'সুপার কী',
+      tagEn: 'All Unique Sets',
+      tagBn: 'সকল অনন্য কম্বিনেশন',
+      icon: KeyRound,
+    },
+    {
+      id: 'candidate',
+      num: '2',
+      labelEn: 'Candidate Key',
+      labelBn: 'ক্যান্ডিডেট কী',
+      tagEn: 'Minimal Super Key',
+      tagBn: 'ন্যূনতম সুপার কী',
+      icon: Sparkles,
+    },
+    {
+      id: 'primary',
+      num: '3',
+      labelEn: 'Primary Key',
+      labelBn: 'প্রাইমারি কী',
+      tagEn: 'Main ID (NOT NULL)',
+      tagBn: 'প্রধান অনন্য আইডি',
+      icon: Lock,
+    },
+    {
+      id: 'alternate',
+      num: '4',
+      labelEn: 'Alternate Key',
+      labelBn: 'অল্টারনেট কী',
+      tagEn: 'Remaining Candidates',
+      tagBn: 'বিকল্প ক্যান্ডিডেটসমূহ',
+      icon: Layers,
+    },
+    {
+      id: 'foreign',
+      num: '5',
+      labelEn: 'Foreign Key',
+      labelBn: 'ফরেন কী',
+      tagEn: 'Parent ← Child Link',
+      tagBn: 'রেফারেন্সিয়াল ইন্টিগ্রিটি',
+      icon: Link2,
+    },
+    {
+      id: 'composite',
+      num: '6',
+      labelEn: 'Composite Key',
+      labelBn: 'কম্পোজিট কী',
+      tagEn: '≥ 2 Combined Columns',
+      tagBn: 'একাধিক কলামের কি',
+      icon: Hash,
+    },
+    {
+      id: 'unique',
+      num: '7',
+      labelEn: 'Unique Key',
+      labelBn: 'ইউনিক কী',
+      tagEn: 'No Duplicates (NULL OK)',
+      tagBn: 'ডুপ্লিকেটহীন (NULL অনুমোদন)',
+      icon: ShieldCheck,
+    },
+    {
+      id: 'surrogate',
+      num: '8',
+      labelEn: 'Natural & Surrogate',
+      labelBn: 'ন্যাচারাল ও সারোগেট',
+      tagEn: 'Real vs Synthetic ID',
+      tagBn: 'বাস্তব বনাম কৃত্রিম আইডি',
+      icon: Database,
+    },
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-          <KeyRound className="w-6 h-6" />
+    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 sm:p-6 md:p-8 space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <KeyRound className="w-6 h-6" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-bold">
+                {language === 'bn' ? 'পর্ব ২ / ৮' : 'Part 2 of 8'}
+              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold hidden sm:inline">
+                Interactive Multi-Key Workbench
+              </span>
+            </div>
+            <h2 className="text-xl font-bold text-white mt-1">
+              <DualText
+                en="The Types of Keys in DBMS"
+                bn="ডিবিএমএস-এ বিভিন্ন ধরনের কী (Types of Keys in DBMS)"
+              />
+            </h2>
+          </div>
         </div>
-        <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ২ / ৮' : 'Part 2 of 8'}
+
+        <div className="text-xs font-mono text-zinc-400 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-800 self-start sm:self-auto flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>
+            {language === 'bn' ? 'সক্রিয় কী:' : 'Active Key:'}{' '}
+            <strong className="text-white">
+              {keyTabs.find((t) => t.id === activeKeyType)?.[language === 'bn' ? 'labelBn' : 'labelEn']}
+            </strong>
           </span>
-          <h2 className="text-xl font-bold text-white mt-1">
-            <DualText
-              en="The Types of Keys in DBMS"
-              bn="ডিবিএমএস-এ বিভিন্ন ধরনের কী (Types of Keys in DBMS)"
-            />
-          </h2>
         </div>
       </div>
 
-      {/* 8 Key Selector Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+      {/* 8 Key Selector Tabs (Full-Width Responsive Grid Across Top) */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
         {keyTabs.map((tab) => {
           const isActive = activeKeyType === tab.id;
+          const Icon = tab.icon;
 
           return (
             <button
               key={tab.id}
               onClick={() => setActiveKeyType(tab.id as typeof activeKeyType)}
-              className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-1 ${
+              className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 group ${
                 isActive
-                  ? 'bg-indigo-600/20 border-indigo-500 text-white ring-1 ring-indigo-500/40 shadow-md'
-                  : 'bg-[#101322] border-slate-800 text-zinc-400 hover:border-slate-700'
+                  ? 'bg-gradient-to-br from-indigo-950/90 via-[#191e38] to-purple-950/70 border-indigo-500 text-white ring-1 ring-indigo-500/60 shadow-lg shadow-indigo-950/60'
+                  : 'bg-[#101322] border-slate-800/90 text-zinc-400 hover:border-slate-700 hover:bg-[#14182b] hover:text-zinc-200'
               }`}
             >
-              <span className={`text-xs font-bold line-clamp-1 ${isActive ? 'text-white' : 'text-zinc-300'}`}>
-                {language === 'bn' ? tab.labelBn : tab.labelEn}
-              </span>
-              <span className="text-[10px] text-zinc-500 font-mono">
-                {language === 'bn' ? tab.tagBn : tab.tagEn}
-              </span>
+              <div className="flex items-center justify-between">
+                <span
+                  className={`p-1.5 rounded-lg border shrink-0 transition-colors ${
+                    isActive
+                      ? 'bg-indigo-500/20 border-indigo-500/50 text-indigo-300'
+                      : 'bg-black/40 border-slate-800 text-zinc-500 group-hover:text-zinc-300'
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                </span>
+                <span
+                  className={`text-[10px] font-mono font-bold ${
+                    isActive ? 'text-indigo-400' : 'text-zinc-500'
+                  }`}
+                >
+                  #{tab.num}
+                </span>
+              </div>
+
+              <div>
+                <span
+                  className={`text-xs font-bold block truncate ${
+                    isActive ? 'text-white' : 'text-zinc-300'
+                  }`}
+                >
+                  {language === 'bn' ? tab.labelBn : tab.labelEn}
+                </span>
+                <span
+                  className={`text-[10px] font-mono block truncate ${
+                    isActive ? 'text-indigo-300/80 font-medium' : 'text-zinc-500'
+                  }`}
+                >
+                  {language === 'bn' ? tab.tagBn : tab.tagEn}
+                </span>
+              </div>
             </button>
           );
         })}
@@ -2586,42 +2725,183 @@ export default function Lesson4Part2KeyTypes() {
             </div>
 
             {/* Live Interactive Collision Tester Buttons */}
-            <div className="pt-2 border-t border-slate-800/80 space-y-2">
-              <span className="text-[11px] text-zinc-400 font-sans block">
-                {language === 'bn'
-                  ? 'নতুন এনরোলমেন্ট ইনসার্ট করার চেষ্টা করুন (ডুপ্লিকেট কোলাইশন টেস্ট):'
-                  : 'Attempt inserting enrollment records to test duplicate collision handling:'}
-              </span>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => handleTestCompositeCollision('101', 'CSE101')}
-                  className="px-3 py-1.5 rounded-lg border border-rose-500/40 bg-rose-950/20 text-rose-300 hover:bg-rose-900/30 text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5"
-                >
-                  <XCircle className="w-3.5 h-3.5 text-rose-400" />
+            <div className="pt-3 border-t border-slate-800/80 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span className="text-xs font-semibold text-zinc-300 font-sans flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-pink-400" />
                   {language === 'bn'
-                    ? '🔴 ডুপ্লিকেট ইনসার্ট: Rahim (101) → CSE101'
-                    : '🔴 Try Duplicate: Rahim (101) → CSE101'}
+                    ? 'টেস্ট ১: রিয়েল-টাইম কুইক সিনারিও (ডুপ্লিকেট কোলাইশন টেস্ট):'
+                    : 'Test 1: Real-Time Quick Scenarios (Duplicate Collision Testing):'}
+                </span>
+                <button
+                  onClick={handleResetEnrollments}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono text-zinc-400 bg-slate-900 border border-slate-800 hover:text-white hover:border-slate-700 transition-colors w-fit"
+                  title="Reset enrollments table to initial 5 rows"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  {language === 'bn' ? 'টেবিল রিসেট' : 'Reset Table'}
                 </button>
+              </div>
 
-                <button
-                  onClick={() => handleTestCompositeCollision('103', 'CSE201')}
-                  className="px-3 py-1.5 rounded-lg border border-emerald-500/40 bg-emerald-950/20 text-emerald-300 hover:bg-emerald-900/30 text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  {language === 'bn'
-                    ? '🟢 বৈধ ইনসার্ট: Nila (103) → CSE201'
-                    : '🟢 Valid Insert: Nila (103) → CSE201'}
-                </button>
+              {/* Scenario Quick Buttons */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                {(() => {
+                  const isRahimDuplicate = enrollments.some((e) => e.studentId === '101' && e.courseId === 'CSE101');
+                  return (
+                    <button
+                      onClick={() => handleTestCompositeCollision('101', 'CSE101')}
+                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-all cursor-pointer flex items-center justify-between gap-2 text-left ${
+                        isRahimDuplicate
+                          ? 'border-rose-500/50 bg-rose-950/30 text-rose-300 hover:bg-rose-900/40'
+                          : 'border-emerald-500/50 bg-emerald-950/30 text-emerald-300 hover:bg-emerald-900/40'
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5 truncate">
+                        {isRahimDuplicate ? (
+                          <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                        ) : (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                        )}
+                        <span className="truncate">Rahim (101) → CSE101</span>
+                      </div>
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase shrink-0 ${
+                          isRahimDuplicate
+                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                            : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        }`}
+                      >
+                        {isRahimDuplicate
+                          ? language === 'bn'
+                            ? 'কোলাইশন টেস্ট'
+                            : 'Collision'
+                          : language === 'bn'
+                          ? 'বৈধ ইনসার্ট'
+                          : 'Valid Insert'}
+                      </span>
+                    </button>
+                  );
+                })()}
 
-                <button
-                  onClick={() => handleTestCompositeCollision('102', 'CSE201')}
-                  className="px-3 py-1.5 rounded-lg border border-emerald-500/40 bg-emerald-950/20 text-emerald-300 hover:bg-emerald-900/30 text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                {(() => {
+                  const isNilaEnrolled = enrollments.some((e) => e.studentId === '103' && e.courseId === 'CSE201');
+                  return (
+                    <button
+                      onClick={() => handleTestCompositeCollision('103', 'CSE201')}
+                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-all cursor-pointer flex items-center justify-between gap-2 text-left ${
+                        isNilaEnrolled
+                          ? 'border-rose-500/50 bg-rose-950/30 text-rose-300 hover:bg-rose-900/40'
+                          : 'border-emerald-500/50 bg-emerald-950/30 text-emerald-300 hover:bg-emerald-900/40'
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5 truncate">
+                        {isNilaEnrolled ? (
+                          <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                        ) : (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                        )}
+                        <span className="truncate">Nila (103) → CSE201</span>
+                      </div>
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase shrink-0 ${
+                          isNilaEnrolled
+                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                            : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        }`}
+                      >
+                        {isNilaEnrolled
+                          ? language === 'bn'
+                            ? 'ডুপ্লিকেট হবে'
+                            : 'Already In'
+                          : language === 'bn'
+                          ? 'বৈধ ইনসার্ট'
+                          : 'Valid Insert'}
+                      </span>
+                    </button>
+                  );
+                })()}
+
+                {(() => {
+                  const isKarimEnrolled = enrollments.some((e) => e.studentId === '102' && e.courseId === 'CSE201');
+                  return (
+                    <button
+                      onClick={() => handleTestCompositeCollision('102', 'CSE201')}
+                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-all cursor-pointer flex items-center justify-between gap-2 text-left ${
+                        isKarimEnrolled
+                          ? 'border-rose-500/50 bg-rose-950/30 text-rose-300 hover:bg-rose-900/40'
+                          : 'border-emerald-500/50 bg-emerald-950/30 text-emerald-300 hover:bg-emerald-900/40'
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5 truncate">
+                        {isKarimEnrolled ? (
+                          <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                        ) : (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                        )}
+                        <span className="truncate">Karim (102) → CSE201</span>
+                      </div>
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase shrink-0 ${
+                          isKarimEnrolled
+                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                            : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        }`}
+                      >
+                        {isKarimEnrolled
+                          ? language === 'bn'
+                            ? 'ডুপ্লিকেট হবে'
+                            : 'Already In'
+                          : language === 'bn'
+                          ? 'বৈধ ইনসার্ট'
+                          : 'Valid Insert'}
+                      </span>
+                    </button>
+                  );
+                })()}
+              </div>
+
+              {/* Custom Combination Interactive Sandbox */}
+              <div className="p-3 rounded-lg bg-[#0c0e1a] border border-slate-800/80 space-y-2">
+                <span className="text-[11px] text-zinc-400 font-sans block font-semibold">
                   {language === 'bn'
-                    ? '🟢 বৈধ ইনসার্ট: Karim (102) → CSE201'
-                    : '🟢 Valid Insert: Karim (102) → CSE201'}
-                </button>
+                    ? 'টেস্ট ২: কাস্টম শিক্ষার্থী ও কোর্স কম্বিনেশন বিল্ডার (যেকোনো জোড়া টেস্ট করুন):'
+                    : 'Test 2: Custom Student & Course Combo Builder (Test Any Pair):'}
+                </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <select
+                    value={customStudentId}
+                    onChange={(e) => setCustomStudentId(e.target.value)}
+                    className="bg-[#121629] border border-slate-700 text-zinc-200 text-xs rounded-lg px-2.5 py-1.5 focus:border-pink-500 focus:outline-none font-mono"
+                  >
+                    {Object.entries(compositeStudentDirectory).map(([id, name]) => (
+                      <option key={id} value={id}>
+                        {name} ({id})
+                      </option>
+                    ))}
+                  </select>
+
+                  <span className="text-zinc-500 text-xs font-mono">+</span>
+
+                  <select
+                    value={customCourseId}
+                    onChange={(e) => setCustomCourseId(e.target.value)}
+                    className="bg-[#121629] border border-slate-700 text-zinc-200 text-xs rounded-lg px-2.5 py-1.5 focus:border-pink-500 focus:outline-none font-mono"
+                  >
+                    {Object.entries(compositeCourseDirectory).map(([id, name]) => (
+                      <option key={id} value={id}>
+                        {id}: {name}
+                      </option>
+                    ))}
+                  </select>
+
+                  <button
+                    onClick={() => handleTestCompositeCollision(customStudentId, customCourseId)}
+                    className="px-3.5 py-1.5 rounded-lg border border-pink-500/50 bg-pink-600/20 text-pink-200 hover:bg-pink-600/30 text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                  >
+                    <UserPlus className="w-3.5 h-3.5 text-pink-400" />
+                    {language === 'bn' ? 'কম্বিনেশন ইনসার্ট টেস্ট' : 'Test Insert Combination'}
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -2748,15 +3028,29 @@ export default function Lesson4Part2KeyTypes() {
                       compositeTestMode === 'course_only' &&
                       enrollments.filter((e) => e.courseId === enr.courseId).length > 1;
 
+                    const isColliding =
+                      collidingCompositePair?.studentId === enr.studentId &&
+                      collidingCompositePair?.courseId === enr.courseId;
+
+                    const isJustInserted =
+                      lastInsertedCompositePair?.studentId === enr.studentId &&
+                      lastInsertedCompositePair?.courseId === enr.courseId;
+
                     return (
                       <tr
                         key={`${enr.studentId}-${enr.courseId}-${idx}`}
-                        className={`transition-colors ${
-                          idx % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#0c0e18]'
+                        className={`transition-all duration-300 ${
+                          isColliding
+                            ? 'bg-rose-950/60 ring-2 ring-rose-500/80 animate-pulse text-white'
+                            : isJustInserted
+                            ? 'bg-emerald-950/50 ring-2 ring-emerald-500/70 text-white'
+                            : idx % 2 === 0
+                            ? 'bg-[#0f1224]/30'
+                            : 'bg-[#0c0e18]'
                         } ${
                           isDupStudent || isDupCourse
                             ? 'bg-rose-950/20'
-                            : compositeTestMode === 'both'
+                            : compositeTestMode === 'both' && !isColliding && !isJustInserted
                             ? 'hover:bg-pink-950/10'
                             : ''
                         }`}
@@ -2767,7 +3061,11 @@ export default function Lesson4Part2KeyTypes() {
 
                         <td
                           className={`py-2 px-3 font-bold ${
-                            compositeTestMode === 'student_only'
+                            isColliding
+                              ? 'bg-rose-900/60 text-rose-100'
+                              : isJustInserted
+                              ? 'bg-emerald-900/50 text-emerald-100'
+                              : compositeTestMode === 'student_only'
                               ? 'bg-rose-950/30 text-rose-300'
                               : compositeTestMode === 'both'
                               ? 'bg-pink-950/20 text-pink-300'
@@ -2781,7 +3079,11 @@ export default function Lesson4Part2KeyTypes() {
 
                         <td
                           className={`py-2 px-3 font-bold ${
-                            compositeTestMode === 'course_only'
+                            isColliding
+                              ? 'bg-rose-900/60 text-rose-100'
+                              : isJustInserted
+                              ? 'bg-emerald-900/50 text-emerald-100'
+                              : compositeTestMode === 'course_only'
                               ? 'bg-rose-950/30 text-rose-300'
                               : compositeTestMode === 'both'
                               ? 'bg-pink-950/20 text-pink-300'
@@ -2797,21 +3099,35 @@ export default function Lesson4Part2KeyTypes() {
 
                         {/* Audit Result Column */}
                         <td className="py-2 px-3 text-right border-l border-slate-800 font-mono text-[11px]">
-                          {compositeTestMode === 'student_only' && (
+                          {isColliding ? (
+                            <span className="text-rose-300 font-bold flex items-center justify-end gap-1 bg-rose-500/20 px-2 py-0.5 rounded border border-rose-500/40">
+                              <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+                              {language === 'bn'
+                                ? `ডুপ্লিকেট টার্গেট (Row #${idx + 1})`
+                                : `Collision Target (Row #${idx + 1})`}
+                            </span>
+                          ) : isJustInserted ? (
+                            <span className="text-emerald-300 font-bold flex items-center justify-end gap-1 bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/40">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                              {language === 'bn'
+                                ? `সফলভাবে যুক্ত হয়েছে (Row #${idx + 1})`
+                                : `Just Inserted (Row #${idx + 1})`}
+                            </span>
+                          ) : compositeTestMode === 'student_only' ? (
                             <span className="text-rose-400 font-bold flex items-center justify-end gap-1">
                               <XCircle className="w-3.5 h-3.5" />
-                              {language === 'bn' ? `Student ${enr.studentId} ডুপ্লিকেট!` : `ID ${enr.studentId} Repeats!`}
+                              {language === 'bn'
+                                ? `Student ${enr.studentId} ডুপ্লিকেট!`
+                                : `ID ${enr.studentId} Repeats!`}
                             </span>
-                          )}
-
-                          {compositeTestMode === 'course_only' && (
+                          ) : compositeTestMode === 'course_only' ? (
                             <span className="text-rose-400 font-bold flex items-center justify-end gap-1">
                               <XCircle className="w-3.5 h-3.5" />
-                              {language === 'bn' ? `${enr.courseId} ডুপ্লিকেট!` : `${enr.courseId} Repeats!`}
+                              {language === 'bn'
+                                ? `${enr.courseId} ডুপ্লিকেট!`
+                                : `${enr.courseId} Repeats!`}
                             </span>
-                          )}
-
-                          {compositeTestMode === 'both' && (
+                          ) : (
                             <span className="text-emerald-400 font-bold flex items-center justify-end gap-1">
                               <CheckCircle2 className="w-3.5 h-3.5" />
                               ({enr.studentId}, {enr.courseId}){' '}
