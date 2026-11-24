@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#9333ea" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="grad-full" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.85" />
+    </linearGradient>
+    <clipPath id="clip-left-circle">
+      <circle cx="190" cy="150" r="90" />
+    </clipPath>
+  </defs>
+
+  <!-- Dark Background Card -->
+  <rect width="480" height="300" rx="16" fill="#0b0f19" />
+  <rect width="480" height="300" rx="16" fill="none" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Badge -->
+  <rect x="20" y="16" width="140" height="26" rx="6" fill="#1e293b" />
+  <text x="32" y="34" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold">RIGHT JOIN</text>
+  <text x="240" y="34" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="12">All Table B + Matches</text>
+
+  <!-- Left Circle Base: Table A (Students) -->
+  <circle cx="190" cy="150" r="90" fill="#1e293b" stroke="#334155" stroke-width="3" opacity="0.9" />
+
+  <!-- Right Circle Base: Table B (Departments) -->
+  <circle cx="290" cy="150" r="90" fill="url(#grad-purple)" stroke="#a855f7" stroke-width="3" opacity="0.9" />
+
+  <!-- Intersection Lens: Clipped Circle -->
+  <g clip-path="url(#clip-left-circle)">
+    <circle cx="290" cy="150" r="90" fill="url(#grad-purple)" stroke="#a855f7" stroke-width="3" />
+  </g>
+
+  <!-- Outlines for clean definition -->
+  <circle cx="190" cy="150" r="90" fill="none" stroke="#334155" stroke-width="2.5" />
+  <circle cx="290" cy="150" r="90" fill="none" stroke="#a855f7" stroke-width="2.5" />
+
+  <!-- Labels -->
+  <text x="135" y="145" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="bold">Students</text>
+  <text x="135" y="165" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">(Table A)</text>
+
+  <text x="240" y="145" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="bold">MATCH</text>
+  <text x="240" y="163" text-anchor="middle" fill="#e2e8f0" font-family="monospace" font-size="10">deptId = id</text>
+
+  <text x="345" y="145" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="bold">Departments</text>
+  <text x="345" y="165" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">(Table B)</text>
+
+  <!-- Bottom Legend / Status -->
+  <rect x="20" y="255" width="440" height="30" rx="8" fill="#111827" stroke="#1f2937" stroke-width="1" />
+  <circle cx="36" cy="270" r="5" fill="#a855f7" />
+  <text x="50" y="274" fill="#cbd5e1" font-family="sans-serif" font-size="11">Result: All Depts + Matched Students (empty Civil Dept included)</text>
+</svg>
