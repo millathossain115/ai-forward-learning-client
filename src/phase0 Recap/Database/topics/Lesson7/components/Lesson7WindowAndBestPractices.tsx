@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, ShieldCheck } from 'lucide-react';
+import { Sparkles, ShieldCheck, TrendingUp } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
 import { STUDENTS_DATA, DEPT_AVERAGES } from '../types';
@@ -10,6 +10,7 @@ export default function Lesson7WindowAndBestPractices() {
   const { language } = useLanguage();
   const [windowDemoMode, setWindowDemoMode] = useState<'window' | 'groupby'>('window');
   const [hasRankingTies, setHasRankingTies] = useState<boolean>(false);
+  const [advWindowTab, setAdvWindowTab] = useState<'topn' | 'lag' | 'running'>('topn');
 
   return (
     <>
@@ -177,6 +178,128 @@ export default function Lesson7WindowAndBestPractices() {
                 )}
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Advanced Window Functions Lab: ROW_NUMBER Top-N, LAG/LEAD, Running Total */}
+        <div className="p-4 rounded-xl bg-[#0b0e1c] border border-purple-500/30 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <span className="text-xs font-mono font-bold text-purple-300 flex items-center gap-1.5">
+              <TrendingUp className="w-4 h-4" />
+              <DualText
+                as="span"
+                en="Interactive Window Lab: Top-N per Group, LAG/LEAD & Running Total"
+                bn="ইন্টারঅ্যাক্টিভ উইন্ডো ল্যাব: Top-N, LAG/LEAD ও Running Total"
+              />
+            </span>
+            <div className="flex flex-wrap gap-1.5">
+              {[
+                { id: 'topn' as const, label: 'ROW_NUMBER() Top-1/Dept' },
+                { id: 'lag' as const, label: 'LAG() / LEAD() Delta' },
+                { id: 'running' as const, label: 'Running Avg / Sum' },
+              ].map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => setAdvWindowTab(t.id)}
+                  className={`px-2.5 py-1 rounded text-[11px] font-mono font-bold cursor-pointer transition-all ${
+                    advWindowTab === t.id
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-slate-800 text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            <pre className="p-3 bg-black/60 rounded text-[11px] font-mono text-emerald-400 overflow-x-auto">
+              {advWindowTab === 'topn' &&
+`WITH Ranked AS (
+  SELECT Name, Department, GPA,
+    ROW_NUMBER() OVER (
+      PARTITION BY Department ORDER BY GPA DESC
+    ) AS rn
+  FROM Students
+)
+SELECT Name, Department, GPA
+FROM Ranked WHERE rn = 1;`}
+              {advWindowTab === 'lag' &&
+`SELECT Name, Admission_Date, GPA,
+  LAG(GPA) OVER (ORDER BY Admission_Date) AS Prev_GPA,
+  ROUND(GPA - LAG(GPA) OVER (ORDER BY Admission_Date), 2) AS Delta
+FROM Students;`}
+              {advWindowTab === 'running' &&
+`SELECT Name, Admission_Date, GPA,
+  ROUND(AVG(GPA) OVER (
+    ORDER BY Admission_Date
+    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+  ), 2) AS Running_Avg_GPA
+FROM Students;`}
+            </pre>
+
+            <div className="rounded-lg bg-[#14182d] border border-slate-800 overflow-hidden">
+              {advWindowTab === 'topn' && (
+                <table className="w-full text-[11px] font-mono text-left">
+                  <thead className="bg-slate-900 text-cyan-300 border-b border-slate-800">
+                    <tr><th className="px-3 py-1.5">Name</th><th className="px-3 py-1.5">Department</th><th className="px-3 py-1.5">GPA</th></tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/60 text-zinc-200">
+                    <tr><td className="px-3 py-1.5">Sumaiya</td><td className="px-3 py-1.5">CSE</td><td className="px-3 py-1.5 text-emerald-400">3.90</td></tr>
+                    <tr><td className="px-3 py-1.5">Ayesha</td><td className="px-3 py-1.5">BBA</td><td className="px-3 py-1.5 text-emerald-400">3.70</td></tr>
+                    <tr><td className="px-3 py-1.5">Nabila</td><td className="px-3 py-1.5">EEE</td><td className="px-3 py-1.5 text-emerald-400">3.20</td></tr>
+                  </tbody>
+                </table>
+              )}
+              {advWindowTab === 'lag' && (
+                <table className="w-full text-[11px] font-mono text-left">
+                  <thead className="bg-slate-900 text-cyan-300 border-b border-slate-800">
+                    <tr><th className="px-3 py-1.5">Name</th><th className="px-3 py-1.5">GPA</th><th className="px-3 py-1.5">Prev_GPA</th><th className="px-3 py-1.5">Delta</th></tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/60 text-zinc-200">
+                    {[...STUDENTS_DATA]
+                      .sort((a, b) => a.admissionDate.localeCompare(b.admissionDate))
+                      .map((s, i, arr) => {
+                        const prev = i > 0 ? arr[i - 1].gpa : null;
+                        const delta = prev !== null ? (s.gpa - prev).toFixed(2) : 'NULL';
+                        return (
+                          <tr key={s.id}>
+                            <td className="px-3 py-1">{s.name}</td>
+                            <td className="px-3 py-1 text-emerald-400">{s.gpa.toFixed(2)}</td>
+                            <td className="px-3 py-1 text-zinc-400">{prev !== null ? prev.toFixed(2) : 'NULL'}</td>
+                            <td className={`px-3 py-1 font-bold ${delta.startsWith('-') ? 'text-rose-400' : 'text-cyan-300'}`}>
+                              {delta !== 'NULL' && !delta.startsWith('-') ? `+${delta}` : delta}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              )}
+              {advWindowTab === 'running' && (
+                <table className="w-full text-[11px] font-mono text-left">
+                  <thead className="bg-slate-900 text-cyan-300 border-b border-slate-800">
+                    <tr><th className="px-3 py-1.5">Name</th><th className="px-3 py-1.5">Admission</th><th className="px-3 py-1.5">GPA</th><th className="px-3 py-1.5">Running_Avg</th></tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/60 text-zinc-200">
+                    {[...STUDENTS_DATA]
+                      .sort((a, b) => a.admissionDate.localeCompare(b.admissionDate))
+                      .map((s, i, arr) => {
+                        const running = arr.slice(0, i + 1).reduce((acc, x) => acc + x.gpa, 0) / (i + 1);
+                        return (
+                          <tr key={s.id}>
+                            <td className="px-3 py-1">{s.name}</td>
+                            <td className="px-3 py-1 text-zinc-400">{s.admissionDate}</td>
+                            <td className="px-3 py-1 text-emerald-400">{s.gpa.toFixed(2)}</td>
+                            <td className="px-3 py-1 text-purple-300 font-bold">{running.toFixed(2)}</td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              )}
+            </div>
           </div>
         </div>
       </section>

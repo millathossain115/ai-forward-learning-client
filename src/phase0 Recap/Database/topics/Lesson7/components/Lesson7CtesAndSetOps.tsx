@@ -1,14 +1,78 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Code2, Split, Sparkles } from 'lucide-react';
+import { Check, Code2, Copy, GitBranch, Layers, Split, Sparkles, Table2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
+
+const RECURSIVE_TRACE = [
+  {
+    depth: 0,
+    phaseEn: 'Anchor Member (Base Case)',
+    phaseBn: 'অ্যাঙ্কর মেম্বার (বেস কেস)',
+    course: 'CSE-101 • Programming',
+    prereq: 'NULL (Root)',
+    path: 'CSE-101',
+  },
+  {
+    depth: 1,
+    phaseEn: 'Recursive Iteration 1',
+    phaseBn: 'রিকার্সিভ ধাপ ১',
+    course: 'CSE-301 • DBMS',
+    prereq: 'CSE-101',
+    path: 'CSE-101 → CSE-301',
+  },
+  {
+    depth: 2,
+    phaseEn: 'Recursive Iteration 2',
+    phaseBn: 'রিকার্সিভ ধাপ ২',
+    course: 'CSE-305 • Networking',
+    prereq: 'CSE-301',
+    path: 'CSE-101 → CSE-301 → CSE-305',
+  },
+];
 
 export default function Lesson7CtesAndSetOps() {
   const { language } = useLanguage();
   const [activeSetOp, setActiveSetOp] = useState<'UNION' | 'UNION_ALL' | 'INTERSECT' | 'EXCEPT'>('UNION');
   const [activeFunctionCat, setActiveFunctionCat] = useState<'string' | 'numeric' | 'date' | 'null'>('string');
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [recursiveStep, setRecursiveStep] = useState<number>(2);
+
+  const handleCopy = (code: string, id: string) => {
+    navigator.clipboard.writeText(code);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 1800);
+  };
+
+  const cte1Sql = `WITH AverageGPA AS (
+    SELECT AVG(GPA) AS Avg_GPA 
+    FROM Students
+)
+SELECT Name, GPA 
+FROM Students, AverageGPA
+WHERE GPA > Avg_GPA;`;
+
+  const cte2Sql = `WITH CSE_Students AS (
+    SELECT Student_ID, Name, GPA 
+    FROM Students 
+    WHERE Department = 'CSE'
+)
+SELECT Name, GPA 
+FROM CSE_Students 
+WHERE GPA >= 3.80;`;
+
+  const recursiveSql = `WITH RECURSIVE CoursePath AS (
+    -- Anchor: Root course with no prerequisite
+    SELECT Course_ID, Title, Prereq_ID, 0 AS Depth
+    FROM Courses WHERE Prereq_ID IS NULL
+    UNION ALL
+    -- Recursive: Join next dependent course
+    SELECT c.Course_ID, c.Title, c.Prereq_ID, cp.Depth + 1
+    FROM Courses c
+    INNER JOIN CoursePath cp ON c.Prereq_ID = cp.Course_ID
+)
+SELECT * FROM CoursePath;`;
 
   return (
     <>
@@ -25,8 +89,8 @@ export default function Lesson7CtesAndSetOps() {
             <h2 className="text-xl font-bold text-white mt-1">
               <DualText
                 as="span"
-                en="Common Table Expressions (CTEs) — The WITH Clause"
-                bn="Common Table Expressions (CTEs) — WITH ক্লজের ব্যবহার"
+                en="Common Table Expressions (CTEs), Recursive CTEs & Views"
+                bn="Common Table Expressions (CTEs), Recursive CTE ও Views"
               />
             </h2>
           </div>
@@ -40,47 +104,180 @@ export default function Lesson7CtesAndSetOps() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-2">
-            <span className="text-xs font-mono font-bold text-cyan-400 uppercase">
-              <DualText as="span" en="Example 1: Average GPA CTE" bn="উদাহরণ ১: গড় GPA CTE" />
-            </span>
+          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-3">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs font-mono font-bold text-cyan-400 uppercase">
+                <DualText as="span" en="Example 1: Average GPA CTE" bn="উদাহরণ ১: গড় GPA CTE" />
+              </span>
+              <button
+                onClick={() => handleCopy(cte1Sql, 'cte1')}
+                className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-zinc-300 text-[10px] font-mono flex items-center gap-1 cursor-pointer"
+              >
+                {copiedId === 'cte1' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                <span>{copiedId === 'cte1' ? 'Copied' : 'Copy'}</span>
+              </button>
+            </div>
             <pre className="p-3 bg-black/60 rounded text-xs font-mono text-emerald-400 overflow-x-auto">
-{`WITH AverageGPA AS (
-    SELECT AVG(GPA) AS Avg_GPA 
-    FROM Students
-)
-SELECT Name, GPA 
-FROM Students, AverageGPA
-WHERE GPA > Avg_GPA;`}
+              {cte1Sql}
             </pre>
-            <DualText
-              as="p"
-              className="text-[11px] text-zinc-400"
-              en="The CTE computes Avg_GPA once, and the outer SELECT joins with it cleanly."
-              bn="CTE একবার Avg_GPA হিসাব করে এবং বাইরের SELECT পরিচ্ছন্নভাবে সেটির সাথে তুলনা করে।"
-            />
+            <div className="rounded-lg bg-[#0b0e1b] border border-emerald-500/20 overflow-hidden">
+              <div className="px-3 py-1.5 bg-emerald-950/30 border-b border-emerald-500/20 text-[10px] font-mono text-emerald-300 flex items-center gap-1.5">
+                <Table2 className="w-3 h-3" />
+                <span>Output (Avg_GPA = 3.5833 • 3 rows)</span>
+              </div>
+              <table className="w-full text-[11px] font-mono text-left">
+                <thead className="text-cyan-300 border-b border-slate-800">
+                  <tr><th className="px-3 py-1">Name</th><th className="px-3 py-1">GPA</th></tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60 text-zinc-200">
+                  <tr><td className="px-3 py-1">Rahim</td><td className="px-3 py-1 text-emerald-400">3.80</td></tr>
+                  <tr><td className="px-3 py-1">Sumaiya</td><td className="px-3 py-1 text-emerald-400">3.90</td></tr>
+                  <tr><td className="px-3 py-1">Ayesha</td><td className="px-3 py-1 text-emerald-400">3.70</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-2">
-            <span className="text-xs font-mono font-bold text-purple-400 uppercase">
-              <DualText as="span" en="Example 2: Chaining & Filtering CTE" bn="উদাহরণ ২: ফিল্টারিং CTE" />
-            </span>
+          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-3">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs font-mono font-bold text-purple-400 uppercase">
+                <DualText as="span" en="Example 2: Chaining & Filtering CTE" bn="উদাহরণ ২: ফিল্টারিং CTE" />
+              </span>
+              <button
+                onClick={() => handleCopy(cte2Sql, 'cte2')}
+                className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-zinc-300 text-[10px] font-mono flex items-center gap-1 cursor-pointer"
+              >
+                {copiedId === 'cte2' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                <span>{copiedId === 'cte2' ? 'Copied' : 'Copy'}</span>
+              </button>
+            </div>
             <pre className="p-3 bg-black/60 rounded text-xs font-mono text-emerald-400 overflow-x-auto">
-{`WITH CSE_Students AS (
-    SELECT Student_ID, Name, GPA 
-    FROM Students 
-    WHERE Department = 'CSE'
-)
-SELECT Name, GPA 
-FROM CSE_Students 
-WHERE GPA >= 3.80;`}
+              {cte2Sql}
             </pre>
+            <div className="rounded-lg bg-[#0b0e1b] border border-purple-500/20 overflow-hidden">
+              <div className="px-3 py-1.5 bg-purple-950/30 border-b border-purple-500/20 text-[10px] font-mono text-purple-300 flex items-center gap-1.5">
+                <Table2 className="w-3 h-3" />
+                <span>Output (CSE &amp; GPA &gt;= 3.80 • 2 rows)</span>
+              </div>
+              <table className="w-full text-[11px] font-mono text-left">
+                <thead className="text-cyan-300 border-b border-slate-800">
+                  <tr><th className="px-3 py-1">Name</th><th className="px-3 py-1">GPA</th></tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60 text-zinc-200">
+                  <tr><td className="px-3 py-1">Rahim</td><td className="px-3 py-1 text-emerald-400">3.80</td></tr>
+                  <tr><td className="px-3 py-1">Sumaiya</td><td className="px-3 py-1 text-emerald-400">3.90</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* Recursive CTE Interactive Tracer */}
+        <div className="p-4 rounded-xl bg-[#0b0e1c] border border-cyan-500/30 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-300">
+              <GitBranch className="w-4 h-4" />
+              <DualText
+                as="span"
+                en="WITH RECURSIVE CTE — Course Prerequisite Chain"
+                bn="WITH RECURSIVE CTE — কোর্স প্রিরিকুইজিট চেইন"
+              />
+            </div>
+            <div className="flex items-center gap-1.5">
+              {[0, 1, 2].map((d) => (
+                <button
+                  key={d}
+                  onClick={() => setRecursiveStep(d)}
+                  className={`px-2.5 py-1 rounded text-[11px] font-mono font-bold cursor-pointer transition-all ${
+                    recursiveStep === d
+                      ? 'bg-cyan-600 text-white'
+                      : 'bg-slate-800 text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  {d === 0 ? 'Depth 0 (Anchor)' : `Depth ${d}`}
+                </button>
+              ))}
+              <button
+                onClick={() => handleCopy(recursiveSql, 'rec')}
+                className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-zinc-300 text-[10px] font-mono flex items-center gap-1 cursor-pointer ml-1"
+              >
+                {copiedId === 'rec' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                <span>{copiedId === 'rec' ? 'Copied' : 'Copy'}</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            <pre className="p-3 bg-black/60 rounded text-[11px] font-mono text-emerald-400 overflow-x-auto">
+              {recursiveSql}
+            </pre>
+            <div className="rounded-lg bg-[#14182d] border border-slate-800 overflow-hidden">
+              <div className="px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-[10px] font-mono text-cyan-300">
+                Accumulated Rows up to Depth {recursiveStep}
+              </div>
+              <table className="w-full text-[11px] font-mono text-left">
+                <thead className="text-zinc-400 border-b border-slate-800">
+                  <tr>
+                    <th className="px-3 py-1.5">Depth</th>
+                    <th className="px-3 py-1.5">Course</th>
+                    <th className="px-3 py-1.5">Prerequisite Path</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60">
+                  {RECURSIVE_TRACE.filter((r) => r.depth <= recursiveStep).map((r) => (
+                    <tr key={r.depth} className={r.depth === recursiveStep ? 'bg-cyan-500/10' : ''}>
+                      <td className="px-3 py-1.5 text-amber-300 font-bold">{r.depth}</td>
+                      <td className="px-3 py-1.5 text-white">{r.course}</td>
+                      <td className="px-3 py-1.5 text-emerald-400">{r.path}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* VIEW vs CTE vs Derived Table Comparison */}
+        <div className="p-4 rounded-xl bg-[#14182d] border border-slate-800 space-y-2">
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-indigo-300">
+            <Layers className="w-4 h-4" />
             <DualText
-              as="p"
-              className="text-[11px] text-zinc-400"
-              en="Breaks complex multi-stage pipelines into isolated, testable modules."
-              bn="জটিল বহু-ধাপের কুয়েরিকে ছোট ও পরীক্ষাযোগ্য অংশে ভাগ করতে সাহায্য করে।"
+              as="span"
+              en="CREATE VIEW vs CTE (WITH) vs Derived Table"
+              bn="CREATE VIEW বনাম CTE (WITH) বনাম Derived Table"
             />
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs text-left font-sans">
+              <thead className="text-[11px] font-mono text-zinc-400 border-b border-slate-800">
+                <tr>
+                  <th className="py-1.5 px-2.5">Feature</th>
+                  <th className="py-1.5 px-2.5 text-cyan-300">Derived Table (FROM (...))</th>
+                  <th className="py-1.5 px-2.5 text-emerald-300">CTE (WITH ...)</th>
+                  <th className="py-1.5 px-2.5 text-purple-300">CREATE VIEW</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 text-zinc-300 text-[11px]">
+                <tr>
+                  <td className="py-1.5 px-2.5 font-semibold text-white">Lifespan</td>
+                  <td className="py-1.5 px-2.5">Single query only</td>
+                  <td className="py-1.5 px-2.5">Single query only</td>
+                  <td className="py-1.5 px-2.5">Persisted in DB schema</td>
+                </tr>
+                <tr>
+                  <td className="py-1.5 px-2.5 font-semibold text-white">Reusability</td>
+                  <td className="py-1.5 px-2.5">Inline, cannot reference twice</td>
+                  <td className="py-1.5 px-2.5">Reusable across query + supports recursion</td>
+                  <td className="py-1.5 px-2.5">Shared across all users &amp; queries</td>
+                </tr>
+                <tr>
+                  <td className="py-1.5 px-2.5 font-semibold text-white">Best Use Case</td>
+                  <td className="py-1.5 px-2.5">Quick one-off sub-aggregation</td>
+                  <td className="py-1.5 px-2.5">Readable multi-step analytics &amp; trees</td>
+                  <td className="py-1.5 px-2.5">Security abstraction &amp; standard reports</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

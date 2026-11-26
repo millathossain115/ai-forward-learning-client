@@ -19,7 +19,7 @@ export default function Lesson7Hero() {
             {language === 'bn' ? 'ফেজ ১ • ডেটা কোর' : 'Phase 1 • Data Core'}
           </span>
           <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-            {language === 'bn' ? 'লেসন ৭ • অ্যাডভান্সড SQL কুয়েরিজ' : 'Lesson 7 of 7 • Advanced SQL Queries'}
+            {language === 'bn' ? 'লেসন ৭ • অ্যাডভান্সড SQL কুয়েরিজ' : 'Lesson 7 of 18 • Advanced SQL Queries'}
           </span>
           <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">
             {language === 'bn' ? 'ইন্টারমিডিয়েট থেকে অ্যাডভান্সড' : 'Intermediate to Advanced'}

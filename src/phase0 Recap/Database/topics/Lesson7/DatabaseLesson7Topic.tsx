@@ -8,6 +8,7 @@ import Lesson7Subqueries from './components/Lesson7Subqueries';
 import Lesson7CtesAndSetOps from './components/Lesson7CtesAndSetOps';
 import Lesson7AdvancedJoinsAndOrder from './components/Lesson7AdvancedJoinsAndOrder';
 import Lesson7WindowAndBestPractices from './components/Lesson7WindowAndBestPractices';
+import Lesson7PracticeLab from './components/Lesson7PracticeLab';
 import Lesson7InterviewAndNav from './components/Lesson7InterviewAndNav';
 
 interface DatabaseLesson7TopicProps {
@@ -23,6 +24,7 @@ export default function DatabaseLesson7Topic({ onNavigate }: DatabaseLesson7Topi
       <Lesson7CtesAndSetOps />
       <Lesson7AdvancedJoinsAndOrder />
       <Lesson7WindowAndBestPractices />
+      <Lesson7PracticeLab />
       <Lesson7InterviewAndNav onNavigate={onNavigate} />
     </div>
   );
