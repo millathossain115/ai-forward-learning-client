@@ -841,17 +841,9 @@ CREATE TABLE student_phones (
           </div>
         </div>
 
-        {/* Introductory Description */}
-        <div className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans bg-[#0c101e] p-4 rounded-2xl border border-slate-800/80">
-          <DualText
-            en="Converting an ER diagram into SQL tables is not guesswork—it follows 4 strict mathematical mapping rules. Below is the step-by-step transformation pipeline showing how conceptual entities, attributes, and relationships translate into relational tables, Primary Keys, and Foreign Key constraints:"
-            bn="ইআর ডায়াগ্রাম থেকে ডেটাবেস টেবিল তৈরি কোনো অনুমানের বিষয় নয়—এটি ৪টি সুনির্দিষ্ট গাণিতিক ও কাঠামোগত নিয়ম মেনে চলে। নিচে ধাপে ধাপে রূপান্তর ফ্লো তুলে ধরা হলো, যা দেখে আপনি সহজেই বুঝতে পারবেন কীভাবে কনসেপচুয়াল এনটিটি ও সম্পর্কগুলো বাস্তব এসকিউএল টেবিল, Primary Key ও Foreign Key-তে রূপ নেয়:"
-          />
-        </div>
-
-        {/* VIEW 1: STEP-BY-STEP INTERACTIVE CONVERSION PIPELINE */}
+        {/* VIEW 1: COMPACT STEP-BY-STEP VISUAL CONVERSION PIPELINE */}
         {!showDecisionMatrix && (
-          <div className="space-y-5">
+          <div className="space-y-3.5">
             {/* Horizontal Step Tabs */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               {conversionSteps.map((step, idx) => {
@@ -860,13 +852,13 @@ CREATE TABLE student_phones (
                   <button
                     key={step.id}
                     onClick={() => setActiveConversionStep(idx)}
-                    className={`p-3 rounded-2xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                       isActive
-                        ? 'bg-gradient-to-br from-emerald-950/60 to-slate-900 border-emerald-500/60 shadow-lg shadow-emerald-950/40'
+                        ? 'bg-gradient-to-br from-emerald-950/60 to-slate-900 border-emerald-500/60 shadow-md'
                         : 'bg-[#0a0d18] border-slate-800/80 hover:border-slate-700 text-zinc-400 hover:text-zinc-200'
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center justify-between mb-0.5">
                       <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
                         isActive ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-slate-800/60 text-zinc-500'
                       }`}>
@@ -882,176 +874,169 @@ CREATE TABLE student_phones (
               })}
             </div>
 
-            {/* Active Step Detailed Showcase Card */}
+            {/* Active Step Compact Showcase */}
             {(() => {
               const currentStep = conversionSteps[activeConversionStep];
               return (
-                <div className="p-5 md:p-6 rounded-2xl bg-[#090c1a] border border-slate-800 space-y-6 shadow-xl animate-in fade-in duration-200">
-                  {/* Step Title & Core Conversion Rule Callout */}
-                  <div className="space-y-3">
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
-                      <div>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold uppercase">
-                          {language === 'bn' ? currentStep.badgeBn : currentStep.badgeEn}
-                        </span>
-                        <h4 className="text-base md:text-lg font-bold text-white mt-1">
-                          {language === 'bn' ? currentStep.titleBn : currentStep.titleEn}
-                        </h4>
-                      </div>
-                      <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-mono">
-                        <span>{language === 'bn' ? 'ধাপ' : 'Step'}</span>
-                        <span className="font-bold text-emerald-400">{activeConversionStep + 1} / 4</span>
-                      </div>
+                <div className="p-4 rounded-2xl bg-[#090c1a] border border-slate-800 space-y-3.5 shadow-xl">
+                  {/* Compact Header + Rule Banner */}
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-950/40 via-cyan-950/20 to-slate-900 border border-emerald-500/30 space-y-1">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="text-xs md:text-sm font-bold text-white flex items-center gap-2">
+                        <Workflow className="w-4 h-4 text-emerald-400 shrink-0" />
+                        {language === 'bn' ? currentStep.titleBn : currentStep.titleEn}
+                      </span>
+                      <span className="text-[10px] font-mono text-emerald-300 font-bold">
+                        {language === 'bn' ? `ধাপ ${activeConversionStep + 1} / ৪` : `Step ${activeConversionStep + 1} / 4`}
+                      </span>
                     </div>
-
-                    {/* Rule Highlight Box */}
-                    <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-950/40 via-cyan-950/20 to-slate-900 border border-emerald-500/30 flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0 mt-0.5">
-                        <Workflow className="w-4 h-4" />
-                      </div>
-                      <div className="space-y-1 text-xs md:text-sm">
-                        <span className="font-bold text-emerald-300 font-mono uppercase tracking-wider text-[11px] block">
-                          {language === 'bn' ? 'রূপান্তরের মূল সূত্র (Transformation Rule):' : 'Transformation Rule:'}
-                        </span>
-                        <p className="text-zinc-200 leading-relaxed font-sans">
-                          {language === 'bn' ? currentStep.ruleBn : currentStep.ruleEn}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* VISUAL TRANSFORMATION PIPELINE (ER ➔ LOGIC ➔ SQL TABLE) */}
-                  <div className="space-y-3">
-                    <span className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <Split className="w-3.5 h-3.5 text-cyan-400" />
-                      <span>{language === 'bn' ? 'রূপান্তর ফ্লো ডায়াগ্রাম (Transformation Flow):' : 'Visual Transformation Flow:'}</span>
-                    </span>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
-                      {/* Box 1: ER Model Input */}
-                      <div className="lg:col-span-5 p-4 rounded-xl bg-[#0c1020] border border-cyan-900/40 space-y-3 flex flex-col justify-between shadow-inner">
-                        <div className="space-y-1">
-                          <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
-                            {language === 'bn' ? currentStep.erSourceTitleBn : currentStep.erSourceTitleEn}
-                          </span>
-                          <div className={`px-2 py-0.5 rounded text-[10px] font-mono border font-bold w-fit ${currentStep.erTagColor}`}>
-                            {currentStep.erTag}
-                          </div>
-                        </div>
-                        <div className="p-3 rounded-lg bg-[#060914] border border-slate-800 font-mono text-xs text-cyan-300 text-center font-bold tracking-wide">
-                          {currentStep.erSymbolText}
-                        </div>
-                        <div className="text-[11px] text-zinc-400 font-sans border-t border-slate-800/60 pt-2">
-                          {language === 'bn'
-                            ? 'কনসেপচুয়াল মডেলের এই উপাদানটি থেকে টেবিল তৈরি শুরু হয়।'
-                            : 'This conceptual model component is the input for mapping.'}
-                        </div>
-                      </div>
-
-                      {/* Box 2: Mapping Mechanism (The Middle Arrow / Bridge) */}
-                      <div className="lg:col-span-2 flex flex-col items-center justify-center p-3 rounded-xl bg-[#070914] border border-slate-800/80 text-center gap-2">
-                        <div className="p-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                          <ArrowRight className="w-4 h-4 hidden lg:block" />
-                          <ChevronRight className="w-4 h-4 lg:hidden rotate-90" />
-                        </div>
-                        <span className="text-[10.5px] font-mono text-emerald-300 font-bold leading-tight">
-                          {language === 'bn' ? currentStep.flowArrowBn : currentStep.flowArrowEn}
-                        </span>
-                      </div>
-
-                      {/* Box 3: Generated Database Table Output */}
-                      <div className="lg:col-span-5 p-4 rounded-xl bg-[#0c1020] border border-emerald-900/40 space-y-3 flex flex-col justify-between shadow-inner">
-                        <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                          <div>
-                            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
-                              {language === 'bn' ? 'আউটপুট ডেটাবেস টেবিল:' : 'Generated SQL Table:'}
-                            </span>
-                            <div className="font-mono text-xs font-bold text-white flex items-center gap-1.5 mt-0.5">
-                              <Database className="w-3.5 h-3.5 text-emerald-400" />
-                              <span>{currentStep.tableName}</span>
-                            </div>
-                          </div>
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-800/40 font-bold">
-                            {language === 'bn' ? currentStep.tableCategoryBn : currentStep.tableCategoryEn}
-                          </span>
-                        </div>
-
-                        {/* Columns List Preview */}
-                        <div className="space-y-1 font-mono text-[11px] bg-[#060914] p-2.5 rounded-lg border border-slate-800/80">
-                          {currentStep.columns.map((col) => (
-                            <div key={col.name} className="flex items-center justify-between gap-2 py-0.5">
-                              <div className="flex items-center gap-1.5">
-                                <span className={col.isPk ? 'text-amber-300 font-bold' : col.isFk ? 'text-indigo-400 font-bold' : 'text-zinc-300'}>
-                                  {col.name}
-                                </span>
-                                <span className="text-[10px] text-zinc-500">({col.type})</span>
-                              </div>
-                              <div className="flex items-center gap-1 text-[9.5px]">
-                                {col.isPk && (
-                                  <span className="px-1 py-0.2 rounded bg-amber-950/80 text-amber-300 border border-amber-500/30 font-bold">
-                                    PK
-                                  </span>
-                                )}
-                                {col.isFk && (
-                                  <span className="px-1 py-0.2 rounded bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 font-bold">
-                                    FK
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="text-[10.5px] font-mono text-zinc-400 space-y-0.5 border-t border-slate-800/60 pt-1.5">
-                          <div className="text-amber-300 truncate font-semibold">
-                            🔑 PK: {currentStep.primaryKeyText}
-                          </div>
-                          <div className="text-indigo-300 truncate">
-                            🔗 FK: {currentStep.foreignKeyText}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Why this rule exists - In-depth engineering rationale */}
-                  <div className="p-4 rounded-xl bg-[#070a16] border border-slate-800/90 space-y-1.5">
-                    <div className="flex items-center gap-2 text-xs font-bold text-amber-300 font-mono">
-                      <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-                      <span>{language === 'bn' ? 'কেন এই নিয়মটি তৈরি হয়েছে? (System Design Logic)' : 'Why does this rule exist? (Engineering Rationale)'}</span>
-                    </div>
-                    <p className="text-xs text-zinc-300 leading-relaxed font-sans">
-                      {language === 'bn' ? currentStep.whyLogicBn : currentStep.whyLogicEn}
+                    <p className="text-xs text-zinc-200 font-sans leading-snug">
+                      <strong className="text-emerald-300 font-mono">
+                        {language === 'bn' ? 'নিয়ম: ' : 'Rule: '}
+                      </strong>
+                      {language === 'bn' ? currentStep.ruleBn : currentStep.ruleEn}{' '}
+                      <span className="text-zinc-400">
+                        ({language === 'bn' ? currentStep.whyLogicBn : currentStep.whyLogicEn})
+                      </span>
                     </p>
                   </div>
 
-                  {/* Production SQL Code Box with Copy */}
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono font-bold text-zinc-400 flex items-center gap-1.5">
-                        <Code2 className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>{language === 'bn' ? 'বাস্তব এসকিউএল স্ক্রিপ্ট (SQL Implementation):' : 'Production SQL Implementation:'}</span>
-                      </span>
-                      <button
-                        onClick={() => handleCopySql(currentStep.sqlCode, activeConversionStep)}
-                        className="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 hover:text-white text-[11px] font-mono flex items-center gap-1.5 transition-colors cursor-pointer border border-slate-700/60"
-                      >
-                        {copiedStep === activeConversionStep ? (
-                          <>
-                            <Check className="w-3 h-3 text-emerald-400" />
-                            <span className="text-emerald-400 font-bold">{language === 'bn' ? 'কপি হয়েছে!' : 'Copied!'}</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="w-3 h-3" />
-                            <span>{language === 'bn' ? 'কোড কপি করুন' : 'Copy SQL'}</span>
-                          </>
+                  {/* 3-Stage Visual Flow: Chen ER SVG ➔ Mapping Arrow ➔ Table + SQL */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+                    {/* Stage 1: Authentic Chen ER SVG Diagram */}
+                    <div className="lg:col-span-5 p-3 rounded-xl bg-[#0c1020] border border-cyan-900/40 flex flex-col justify-between space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono text-zinc-400 uppercase">
+                          {language === 'bn' ? currentStep.erSourceTitleBn : currentStep.erSourceTitleEn}
+                        </span>
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-mono border font-bold ${currentStep.erTagColor}`}>
+                          {currentStep.erTag}
+                        </span>
+                      </div>
+
+                      <div className="rounded-lg bg-[#060914] border border-slate-800 p-2 flex items-center justify-center min-h-[135px]">
+                        {activeConversionStep === 0 && (
+                          <svg viewBox="0 0 320 130" className="w-full h-32">
+                            <line x1="160" y1="75" x2="65" y2="30" stroke="#475569" strokeWidth="1.5" />
+                            <line x1="160" y1="75" x2="160" y2="26" stroke="#475569" strokeWidth="1.5" />
+                            <line x1="160" y1="75" x2="255" y2="30" stroke="#475569" strokeWidth="1.5" />
+                            <ellipse cx="65" cy="26" rx="44" ry="16" fill="#0f172a" stroke="#f59e0b" strokeWidth="1.5" />
+                            <text x="65" y="30" textAnchor="middle" fill="#fcd34d" fontSize="10" fontFamily="monospace" textDecoration="underline">student_id</text>
+                            <ellipse cx="160" cy="22" rx="34" ry="15" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.5" />
+                            <text x="160" y="26" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontFamily="monospace">name</text>
+                            <ellipse cx="255" cy="26" rx="36" ry="15" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.5" />
+                            <text x="255" y="30" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontFamily="monospace">email</text>
+                            <rect x="105" y="72" width="110" height="36" fill="#0c192c" stroke="#22d3ee" strokeWidth="2" />
+                            <text x="160" y="94" textAnchor="middle" fill="#67e8f9" fontSize="12" fontWeight="bold" fontFamily="monospace">STUDENT</text>
+                          </svg>
                         )}
-                      </button>
+                        {activeConversionStep === 1 && (
+                          <svg viewBox="0 0 320 130" className="w-full h-32">
+                            <line x1="95" y1="65" x2="132" y2="65" stroke="#64748b" strokeWidth="2" />
+                            <line x1="188" y1="65" x2="225" y2="65" stroke="#64748b" strokeWidth="2" />
+                            <text x="110" y="55" fill="#34d399" fontSize="11" fontWeight="bold" fontFamily="monospace">1</text>
+                            <text x="203" y="55" fill="#818cf8" fontSize="11" fontWeight="bold" fontFamily="monospace">N</text>
+                            <rect x="15" y="45" width="80" height="40" fill="#0c192c" stroke="#22d3ee" strokeWidth="2" />
+                            <text x="55" y="69" textAnchor="middle" fill="#67e8f9" fontSize="10" fontWeight="bold" fontFamily="monospace">DEPT</text>
+                            <polygon points="160,35 190,65 160,95 130,65" fill="#1e1b4b" stroke="#818cf8" strokeWidth="2" />
+                            <text x="160" y="68" textAnchor="middle" fill="#c7d2fe" fontSize="9" fontWeight="bold" fontFamily="monospace">Offers</text>
+                            <rect x="225" y="45" width="80" height="40" fill="#0c192c" stroke="#22d3ee" strokeWidth="2" />
+                            <text x="265" y="69" textAnchor="middle" fill="#67e8f9" fontSize="10" fontWeight="bold" fontFamily="monospace">COURSE</text>
+                          </svg>
+                        )}
+                        {activeConversionStep === 2 && (
+                          <svg viewBox="0 0 320 130" className="w-full h-32">
+                            <line x1="90" y1="75" x2="128" y2="75" stroke="#64748b" strokeWidth="2" />
+                            <line x1="192" y1="75" x2="230" y2="75" stroke="#64748b" strokeWidth="2" />
+                            <line x1="160" y1="45" x2="160" y2="28" stroke="#475569" strokeWidth="1.5" />
+                            <ellipse cx="160" cy="20" rx="34" ry="13" fill="#0f172a" stroke="#f472b6" strokeWidth="1.5" />
+                            <text x="160" y="24" textAnchor="middle" fill="#f9a8d4" fontSize="9" fontFamily="monospace">grade</text>
+                            <text x="105" y="65" fill="#38bdf8" fontSize="11" fontWeight="bold" fontFamily="monospace">M</text>
+                            <text x="208" y="65" fill="#c084fc" fontSize="11" fontWeight="bold" fontFamily="monospace">N</text>
+                            <rect x="12" y="55" width="78" height="40" fill="#0c192c" stroke="#22d3ee" strokeWidth="2" />
+                            <text x="51" y="79" textAnchor="middle" fill="#67e8f9" fontSize="10" fontWeight="bold" fontFamily="monospace">STUDENT</text>
+                            <polygon points="160,45 194,75 160,105 126,75" fill="#2e1065" stroke="#c084fc" strokeWidth="2" />
+                            <text x="160" y="78" textAnchor="middle" fill="#e9d5ff" fontSize="9" fontWeight="bold" fontFamily="monospace">Enrolls</text>
+                            <rect x="230" y="55" width="78" height="40" fill="#0c192c" stroke="#22d3ee" strokeWidth="2" />
+                            <text x="269" y="79" textAnchor="middle" fill="#67e8f9" fontSize="10" fontWeight="bold" fontFamily="monospace">COURSE</text>
+                          </svg>
+                        )}
+                        {activeConversionStep === 3 && (
+                          <svg viewBox="0 0 320 130" className="w-full h-32">
+                            <line x1="160" y1="75" x2="72" y2="30" stroke="#475569" strokeWidth="1.5" />
+                            <line x1="160" y1="75" x2="248" y2="30" stroke="#475569" strokeWidth="1.5" />
+                            <ellipse cx="72" cy="26" rx="46" ry="15" fill="#0f172a" stroke="#f59e0b" strokeWidth="1.5" />
+                            <ellipse cx="72" cy="26" rx="41" ry="11" fill="none" stroke="#f59e0b" strokeWidth="1" />
+                            <text x="72" y="30" textAnchor="middle" fill="#fcd34d" fontSize="9" fontFamily="monospace">phones (Multi)</text>
+                            <ellipse cx="248" cy="26" rx="46" ry="15" fill="#0f172a" stroke="#34d399" strokeWidth="1.5" strokeDasharray="4 3" />
+                            <text x="248" y="30" textAnchor="middle" fill="#6ee7b7" fontSize="9" fontFamily="monospace">age (Derived)</text>
+                            <rect x="105" y="72" width="110" height="36" fill="#0c192c" stroke="#22d3ee" strokeWidth="2" />
+                            <text x="160" y="94" textAnchor="middle" fill="#67e8f9" fontSize="11" fontWeight="bold" fontFamily="monospace">STUDENT</text>
+                          </svg>
+                        )}
+                      </div>
+
+                      <div className="text-[11px] font-mono text-cyan-300 bg-[#060914] px-2.5 py-1.5 rounded border border-slate-800 truncate text-center">
+                        {currentStep.erSymbolText}
+                      </div>
                     </div>
 
-                    <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-[#050711]">
-                      <pre className="p-4 text-xs font-mono text-emerald-300/90 leading-relaxed overflow-x-auto">
+                    {/* Stage 2: Mapping Bridge */}
+                    <div className="lg:col-span-2 flex flex-col items-center justify-center p-2.5 rounded-xl bg-[#070914] border border-slate-800/80 text-center gap-1.5">
+                      <div className="p-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                        <ArrowRight className="w-4 h-4 hidden lg:block" />
+                        <ChevronRight className="w-4 h-4 lg:hidden rotate-90" />
+                      </div>
+                      <span className="text-[10px] font-mono text-emerald-300 font-bold leading-tight">
+                        {language === 'bn' ? currentStep.flowArrowBn : currentStep.flowArrowEn}
+                      </span>
+                    </div>
+
+                    {/* Stage 3: Output Table + Copyable SQL */}
+                    <div className="lg:col-span-5 p-3 rounded-xl bg-[#0c1020] border border-emerald-900/40 flex flex-col justify-between space-y-2">
+                      <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+                        <div className="font-mono text-xs font-bold text-white flex items-center gap-1.5">
+                          <Database className="w-3.5 h-3.5 text-emerald-400" />
+                          <span>{currentStep.tableName}</span>
+                        </div>
+                        <button
+                          onClick={() => handleCopySql(currentStep.sqlCode, activeConversionStep)}
+                          className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white text-[10px] font-mono flex items-center gap-1 cursor-pointer border border-slate-700/60"
+                        >
+                          {copiedStep === activeConversionStep ? (
+                            <>
+                              <Check className="w-3 h-3 text-emerald-400" />
+                              <span className="text-emerald-400 font-bold">{language === 'bn' ? 'কপি!' : 'Copied'}</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3 h-3" />
+                              <span>Copy SQL</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+
+                      {/* Compact Column Pills */}
+                      <div className="flex flex-wrap gap-1.5 bg-[#060914] p-2 rounded-lg border border-slate-800/80 font-mono text-[10px]">
+                        {currentStep.columns.map((col) => (
+                          <span
+                            key={col.name}
+                            className={`px-2 py-0.5 rounded border ${
+                              col.isPk
+                                ? 'bg-amber-950/60 border-amber-500/40 text-amber-300 font-bold'
+                                : col.isFk
+                                ? 'bg-indigo-950/60 border-indigo-500/40 text-indigo-300 font-bold'
+                                : 'bg-slate-900 border-slate-800 text-zinc-300'
+                            }`}
+                          >
+                            {col.name} {col.isPk ? '[PK]' : col.isFk ? '[FK]' : ''}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Compact SQL */}
+                      <pre className="p-2.5 rounded-lg bg-[#050711] border border-slate-800 text-[10.5px] font-mono text-emerald-300/90 leading-snug overflow-x-auto max-h-32">
                         <code>{currentStep.sqlCode}</code>
                       </pre>
                     </div>
@@ -1064,117 +1049,73 @@ CREATE TABLE student_phones (
 
         {/* VIEW 2: UNIVERSITY EXAM CHEAT SHEET MATRIX TABLE */}
         {showDecisionMatrix && (
-          <div className="space-y-4 animate-in fade-in duration-200">
-            <div className="text-xs text-zinc-400 font-mono">
-              {language === 'bn'
-                ? 'ইআর ডায়াগ্রামের প্রতিটি উপাদানের সাথে রিলেশনাল টেবিলের ম্যাপিং নিয়ম ও ফরেন কি কৌশলের সংক্ষিপ্ত তালিকা:'
-                : 'Canonical cheat sheet mapping every ER component to its relational schema rule, Primary Key, and Foreign Key logic:'}
-            </div>
-
-            <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14] shadow-xl">
-              <table className="w-full text-left font-sans text-xs">
-                <thead>
-                  <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px] font-mono">
-                    <th className="py-3 px-4 w-44">{language === 'bn' ? 'ইআর উপাদান (ER Component)' : 'ER Component'}</th>
-                    <th className="py-3 px-4 w-52">{language === 'bn' ? 'টেবিল তৈরির নিয়ম (Relational Rule)' : 'Relational Rule'}</th>
-                    <th className="py-3 px-4 w-48">{language === 'bn' ? 'Primary Key (PK) কৌশল' : 'Primary Key (PK) Logic'}</th>
-                    <th className="py-3 px-4 w-52">{language === 'bn' ? 'Foreign Key (FK) কৌশল' : 'Foreign Key (FK) Logic'}</th>
-                    <th className="py-3 px-4">{language === 'bn' ? 'বাস্তব উদাহরণ (Live SQL Schema)' : 'Live SQL Schema Example'}</th>
+          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14] shadow-xl">
+            <table className="w-full text-left font-sans text-xs">
+              <thead>
+                <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px] font-mono">
+                  <th className="py-2.5 px-3">{language === 'bn' ? 'ইআর উপাদান' : 'ER Component'}</th>
+                  <th className="py-2.5 px-3">{language === 'bn' ? 'টেবিল তৈরির নিয়ম' : 'Relational Rule'}</th>
+                  <th className="py-2.5 px-3">{language === 'bn' ? 'PK কৌশল' : 'PK Logic'}</th>
+                  <th className="py-2.5 px-3">{language === 'bn' ? 'FK কৌশল' : 'FK Logic'}</th>
+                  <th className="py-2.5 px-3">{language === 'bn' ? 'উদাহরণ' : 'SQL Example'}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/70 text-xs font-sans">
+                {mappingDecisionMatrix.map((item, idx) => (
+                  <tr
+                    key={item.erElementEn}
+                    className={`hover:bg-slate-800/30 transition-colors ${
+                      idx % 2 === 0 ? 'bg-[#0a0d18]' : 'bg-[#070912]'
+                    }`}
+                  >
+                    <td className="py-2.5 px-3 font-mono font-bold">
+                      <span className={`px-2 py-0.5 rounded border text-[10px] inline-block ${item.badgeColor}`}>
+                        {language === 'bn' ? item.erElementBn : item.erElementEn}
+                      </span>
+                    </td>
+                    <td className="py-2.5 px-3 font-bold text-white">
+                      {language === 'bn' ? item.relationalRuleBn : item.relationalRuleEn}
+                    </td>
+                    <td className="py-2.5 px-3 text-amber-300 font-mono text-[11px]">
+                      {language === 'bn' ? item.pkMechanismBn : item.pkMechanismEn}
+                    </td>
+                    <td className="py-2.5 px-3 text-indigo-300 font-mono text-[11px]">
+                      {language === 'bn' ? item.fkMechanismBn : item.fkMechanismEn}
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-[10px]">
+                      <span className="text-cyan-300 bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/40 block w-fit">
+                        {item.example}
+                      </span>
+                    </td>
                   </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-800/70 text-xs font-sans">
-                  {mappingDecisionMatrix.map((item, idx) => (
-                    <tr
-                      key={item.erElementEn}
-                      className={`hover:bg-slate-800/30 transition-colors ${
-                        idx % 2 === 0 ? 'bg-[#0a0d18]' : 'bg-[#070912]'
-                      }`}
-                    >
-                      <td className="py-3 px-4 font-mono font-bold">
-                        <span className={`px-2 py-0.5 rounded border text-[11px] inline-block ${item.badgeColor}`}>
-                          {language === 'bn' ? item.erElementBn : item.erElementEn}
-                        </span>
-                      </td>
-                      <td className="py-3 px-4 font-bold text-white">
-                        {language === 'bn' ? item.relationalRuleBn : item.relationalRuleEn}
-                      </td>
-                      <td className="py-3 px-4 text-amber-300 font-mono text-[11px]">
-                        {language === 'bn' ? item.pkMechanismBn : item.pkMechanismEn}
-                      </td>
-                      <td className="py-3 px-4 text-indigo-300 font-mono text-[11px]">
-                        {language === 'bn' ? item.fkMechanismBn : item.fkMechanismEn}
-                      </td>
-                      <td className="py-3 px-4 font-mono text-[11px]">
-                        <span className="text-cyan-300 bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/40 block w-fit">
-                          {item.example}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
 
-        {/* SUMMARY: SYNCHRONIZED UNIVERSITY RELATIONAL ARCHITECTURE */}
-        <div className="p-4 md:p-5 rounded-2xl bg-[#0a0d1a] border border-slate-800 space-y-3">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-300">
-            <Layers3 className="w-4 h-4 text-cyan-400" />
-            <span>
-              {language === 'bn'
-                ? 'চূড়ান্ত সমন্বিত রিলেশনাল টেবিল নেটওয়ার্ক (Foreign Key Synchronization)'
-                : 'Final Synchronized Relational Tables Architecture (Foreign Key Graph)'}
+        {/* COMPACT SUMMARY STRIP */}
+        <div className="p-3.5 rounded-xl bg-[#0a0d1a] border border-slate-800 space-y-2">
+          <div className="flex items-center justify-between text-xs font-mono font-bold text-cyan-300">
+            <span className="flex items-center gap-1.5">
+              <Layers3 className="w-4 h-4 text-cyan-400" />
+              {language === 'bn' ? 'সমন্বিত ফলাফল: ৩টি সংযুক্ত টেবিল' : 'Synchronized Result: 3 Linked Tables'}
             </span>
+            <span className="text-[10px] text-zinc-400 font-normal">PK + FK Graph</span>
           </div>
 
-          <p className="text-xs text-zinc-300 leading-relaxed font-sans">
-            <DualText
-              en="Notice how these 4 conversion steps harmonize together to form our complete University Database Schema. There is ZERO data duplication, and Foreign Keys maintain referential integrity:"
-              bn="খেয়াল করুন কীভাবে এই ৪টি রূপান্তর ধাপ একত্রিত হয়ে আমাদের পূর্ণাঙ্গ বিশ্ববিদ্যালয় ডেটাবেস স্কিমা গঠন করে। এতে কোনো ডেটা ডুপ্লিকেশন থাকে না এবং Foreign Key কনস্ট্রেইন্ট দিয়ে রেফারেন্সিয়াল ইন্টিগ্রিটি অটুট থাকে:"
-            />
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs pt-1">
-            {/* Table 1: Departments */}
-            <div className="p-3.5 rounded-xl bg-[#060914] border border-slate-800/90 space-y-1.5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-1 text-[11px]">
-                <span className="text-cyan-400 font-bold">1. DEPARTMENTS</span>
-                <span className="text-[9.5px] text-zinc-500">Parent Table</span>
-              </div>
-              <div className="text-[11px] space-y-0.5 text-zinc-300">
-                <div className="text-amber-300 font-bold">dept_id [PK]</div>
-                <div>dept_name, office_location</div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 font-mono text-[11px]">
+            <div className="p-2.5 rounded-lg bg-[#060914] border border-slate-800/90">
+              <span className="text-cyan-400 font-bold">1. DEPARTMENTS</span>
+              <div className="text-zinc-300 mt-0.5"><span className="text-amber-300">dept_id [PK]</span>, dept_name</div>
             </div>
-
-            {/* Table 2: Courses */}
-            <div className="p-3.5 rounded-xl bg-[#060914] border border-slate-800/90 space-y-1.5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-1 text-[11px]">
-                <span className="text-indigo-300 font-bold">2. COURSES</span>
-                <span className="text-[9.5px] text-indigo-400 font-semibold">1:N Child Table</span>
-              </div>
-              <div className="text-[11px] space-y-0.5 text-zinc-300">
-                <div className="text-amber-300 font-bold">course_id [PK]</div>
-                <div>course_title, credits</div>
-                <div className="text-indigo-400 font-semibold">dept_id [FK ➔ DEPARTMENTS]</div>
-              </div>
+            <div className="p-2.5 rounded-lg bg-[#060914] border border-slate-800/90">
+              <span className="text-indigo-300 font-bold">2. COURSES (1:N)</span>
+              <div className="text-zinc-300 mt-0.5"><span className="text-amber-300">course_id [PK]</span>, <span className="text-indigo-400">dept_id [FK]</span></div>
             </div>
-
-            {/* Table 3: Enrollments */}
-            <div className="p-3.5 rounded-xl bg-[#060914] border border-purple-900/60 ring-1 ring-purple-500/20 space-y-1.5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-1 text-[11px]">
-                <span className="text-purple-300 font-bold">3. ENROLLMENTS</span>
-                <span className="text-[9.5px] text-pink-400 font-semibold">M:N Junction Table</span>
-              </div>
-              <div className="text-[11px] space-y-0.5 text-zinc-300">
-                <div className="text-indigo-400 font-semibold">student_id [FK ➔ STUDENTS]</div>
-                <div className="text-cyan-400 font-semibold">course_id [FK ➔ COURSES]</div>
-                <div>enrollment_date, grade</div>
-                <div className="text-pink-400 font-bold text-[10px] pt-0.5">
-                  Composite PK: (student_id, course_id)
-                </div>
-              </div>
+            <div className="p-2.5 rounded-lg bg-[#060914] border border-purple-900/60">
+              <span className="text-purple-300 font-bold">3. ENROLLMENTS (M:N)</span>
+              <div className="text-zinc-300 mt-0.5"><span className="text-pink-400">PK(student_id, course_id)</span>, grade</div>
             </div>
           </div>
         </div>

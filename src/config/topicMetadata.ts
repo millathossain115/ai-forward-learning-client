@@ -7,6 +7,11 @@ export interface TopicMeta {
 }
 
 export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
+  'dsa-directory': {
+    category: '0. Foundations & Roadmap',
+    title: '0. DSA & Algorithms Directory',
+    description: 'Clickable hierarchical directory covering all Data Structures & Algorithms modules from Foundations and Linear Structures to Trees, Graphs, Sorting, Recursion, and Paradigms.',
+  },
   foundations: {
     category: '0. Foundations & Roadmap',
     title: '0. DSA & Systems Foundations',
@@ -129,8 +134,8 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
   },
   'backend-basics': {
     category: '4. Database & Systems',
-    title: '0. Database 101: Zero to Hero',
-    description: 'Relational database fundamentals: University scenario, tables, rows/tuples, columns/attributes, keys (PK, FK, Candidate, Composite), relationships (1:1, 1:N, M:N), constraints, indexes, views, and Database vs DBMS.',
+    title: '0. Database & DBMS Directory',
+    description: 'Clickable hierarchical directory covering Lessons 1 to 6: Data & DBMS fundamentals, Database Models, Relational Databases, Keys, ER Modeling, and SQL.',
   },
   'backend-lesson1': {
     category: '4. Database & Systems',
@@ -221,21 +226,6 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     category: '4. Database & Systems',
     title: '18. Lesson 18: Complete DBMS Revision & University Mock Exam',
     description: 'Final Lesson 18 of 18 • University Exam Preparation: Complete 18-lesson syllabus revision, Database Models, ER Model & Cardinality, Normalization (1NF–BCNF), Practical SQL, Transactions & ACID, Concurrency Control, Indexing & Query Optimization, NoSQL, Database Security (CIA, RBAC), DBA Responsibilities, Distributed DDBMS, Data Warehousing, Top 14 Comparison Matrix, Top 20 Broad Questions, 6 Essential Diagram Blueprints, and Full 60-Mark University Mock Examination.',
-  },
-  'backend-sql': {
-    category: '4. Database & Systems',
-    title: 'SQL & Query Planner (EXPLAIN ANALYZE)',
-    description: 'Interactive execution plans, sequential scans vs B-Tree searches on 5,000 synthetic rows.',
-  },
-  'backend-indexing': {
-    category: '4. Database & Systems',
-    title: 'B-Tree Indexing Benchmarks',
-    description: 'Measuring latency drops and composite index selectivity on high-throughput tables.',
-  },
-  'backend-pgvector': {
-    category: '4. Database & Systems',
-    title: 'pgvector & High-Dimensional Vectors',
-    description: 'IVFFlat vs HNSW indexing for storing and querying AI embeddings directly in PostgreSQL.',
   },
   'ai-llm': {
     category: '5. Forward AI Engineering',

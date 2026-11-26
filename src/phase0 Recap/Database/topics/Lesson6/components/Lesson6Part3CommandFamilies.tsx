@@ -30,7 +30,7 @@ export default function Lesson6Part3CommandFamilies() {
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ৩ • ৫টি কমান্ড ফ্যামিলি' : 'Part 3 of 20'}
+              {language === 'bn' ? 'পার্ট ৩ • ৫টি কমান্ড ফ্যামিলি' : 'Part 3 of 13'}
             </span>
             <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
               <DualText

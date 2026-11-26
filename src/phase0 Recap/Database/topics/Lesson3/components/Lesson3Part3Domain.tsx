@@ -110,7 +110,7 @@ export default function Lesson3Part3Domain() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ৫ / ১৩' : 'Part 5 of 13'}
+            {language === 'bn' ? 'পর্ব ৩ / ৯' : 'Part 3 of 9'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText

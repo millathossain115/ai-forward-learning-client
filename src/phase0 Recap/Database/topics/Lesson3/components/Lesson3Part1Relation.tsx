@@ -31,7 +31,7 @@ export default function Lesson3Part1Relation() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ১ ও ২ / ১৩' : 'Part 1 & 2 of 13'}
+            {language === 'bn' ? 'পর্ব ১ / ৯' : 'Part 1 of 9'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText

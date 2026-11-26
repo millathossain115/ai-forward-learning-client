@@ -16,7 +16,7 @@ export default function Lesson4Part3Comparison() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ৩ / ৮' : 'Part 3 of 8'}
+            {language === 'bn' ? 'পর্ব ৩ / ৬' : 'Part 3 of 6'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText
@@ -105,6 +105,15 @@ export default function Lesson4Part3Comparison() {
                   : 'Enforces uniqueness constraint on column'}
               </td>
               <td className="py-2 px-4 text-cyan-300">Phone_Number</td>
+            </tr>
+            <tr>
+              <td className="py-2 px-4 font-bold text-sky-300">Surrogate Key</td>
+              <td className="py-2 px-4">
+                {language === 'bn'
+                  ? 'সিস্টেম-উৎপন্ন কৃত্রিম আইডি (বাস্তব অর্থহীন, অপরিবর্তনীয়)'
+                  : 'System-generated synthetic ID (immutable, no business meaning)'}
+              </td>
+              <td className="py-2 px-4 text-cyan-300">id AUTO_INCREMENT / UUIDv7</td>
             </tr>
           </tbody>
         </table>

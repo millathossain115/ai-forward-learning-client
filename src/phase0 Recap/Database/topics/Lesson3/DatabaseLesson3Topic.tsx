@@ -18,32 +18,32 @@ interface DatabaseLesson3TopicProps {
 
 export default function DatabaseLesson3Topic({ onNavigate }: DatabaseLesson3TopicProps) {
   return (
-    <div className="max-w-5xl mx-auto space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
-      {/* 1. Header Hero Banner */}
+    <div className="w-full space-y-10 py-2 pb-24 animate-in fade-in duration-300 text-zinc-100 font-sans">
+      {/* Header Hero Banner */}
       <Lesson3Hero onNavigate={onNavigate} />
 
-      {/* Part 1 & 2: What is a Relational Database & a Relation? */}
-      <Lesson3Part1Relation />
+      {/* Part 1: What is a Relational Database & a Relation? */}
+      <div id="l3-relation" className="scroll-mt-4"><Lesson3Part1Relation /></div>
 
-      {/* Part 3 & 4: Tuples (Rows) & Attributes (Columns) */}
-      <Lesson3Part2TuplesAttrs />
+      {/* Part 2: Tuples (Rows) & Attributes (Columns) */}
+      <div id="l3-tuples-attrs" className="scroll-mt-4"><Lesson3Part2TuplesAttrs /></div>
 
-      {/* Part 5: What is a Domain? Interactive Validator */}
-      <Lesson3Part3Domain />
+      {/* Part 3: What is a Domain? Interactive Validator */}
+      <div id="l3-domain" className="scroll-mt-4"><Lesson3Part3Domain /></div>
 
-      {/* Part 6 & 7: Degree vs Cardinality */}
-      <Lesson3Part5DegreeCard />
+      {/* Part 4: Degree vs Cardinality */}
+      <div id="l3-degree-card" className="scroll-mt-4"><Lesson3Part5DegreeCard /></div>
 
-      {/* Part 8: What is NULL in a Database? */}
-      <Lesson3Part6NullConcept />
+      {/* Part 5: Relational Schema vs Relational Instance */}
+      <div id="l3-schema-instance" className="scroll-mt-4"><Lesson3Part4SchemaInstance /></div>
 
-      {/* Part 9: 7 Fundamental Properties of a Relational Table */}
-      <Lesson3Part7Properties />
+      {/* Part 6: What is NULL in a Database? */}
+      <div id="l3-null" className="scroll-mt-4"><Lesson3Part6NullConcept /></div>
 
-      {/* Part 10 & 11: Relational Schema vs Relational Instance */}
-      <Lesson3Part4SchemaInstance />
+      {/* Part 7: 7 Fundamental Properties of a Relational Table */}
+      <div id="l3-properties" className="scroll-mt-4"><Lesson3Part7Properties /></div>
 
-      {/* Part 12 & 13: Master Summary & University Exam Preparation */}
+      {/* Part 8 & 9: Master Summary & Selective Interview Q&A */}
       <Lesson3Part8SummaryExam onNavigate={onNavigate} />
     </div>
   );

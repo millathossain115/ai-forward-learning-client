@@ -191,12 +191,12 @@ export default function Lesson5Part7InterviewPrep() {
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
-              {language === 'bn' ? 'পার্ট ১২ • ইন্টারভিউ প্রস্তুতি' : 'Part 12 • Interview Preparation'}
+              {language === 'bn' ? 'পার্ট ৮ • ইন্টারভিউ প্রস্তুতি' : 'Part 8 • Interview Preparation'}
             </span>
             <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
               <DualText
-                en="12. Selective Technical Interview Questions (ER Modeling & System Design)"
-                bn="১২. বাছাইকৃত টেকনিক্যাল ইন্টারভিউ প্রশ্নোত্তর (ইআর মডেল ও সিস্টেম ডিজাইন)"
+                en="8. Selective Technical Interview Questions (ER Modeling & System Design)"
+                bn="৮. বাছাইকৃত টেকনিক্যাল ইন্টারভিউ প্রশ্নোত্তর (ইআর মডেল ও সিস্টেম ডিজাইন)"
               />
             </h2>
           </div>

@@ -32,12 +32,12 @@ export default function Lesson6Part5CreatingDbAndTables() {
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ৫ ও ৬ • ডেটাবেস, টেবিল ও ডেটা টাইপ' : 'Part 5 & 6 of 20'}
+              {language === 'bn' ? 'পার্ট ৪ • ডেটাবেস, টেবিল ও ডেটা টাইপ' : 'Part 4 of 13'}
             </span>
             <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
               <DualText
                 en="Creating Databases, Tables & SQL Data Types"
-                bn="৫ ও ৬. ডেটাবেস ও টেবিল তৈরি এবং প্রয়োজনীয় ডেটা টাইপস"
+                bn="৪. ডেটাবেস ও টেবিল তৈরি এবং প্রয়োজনীয় ডেটা টাইপস"
               />
             </h2>
           </div>

@@ -10,6 +10,7 @@ import Lesson5Part2Attributes from './components/Lesson5Part2Attributes';
 import Lesson5Part3Relationships from './components/Lesson5Part3Relationships';
 import Lesson5Part4CardinalityParticipation from './components/Lesson5Part4CardinalityParticipation';
 import Lesson5Part6SymbolsAndUniversityER from './components/Lesson5Part6SymbolsAndUniversityER';
+import Lesson5ERPracticeProblems from './components/Lesson5ERPracticeProblems';
 import Lesson5Part7InterviewPrep from './components/Lesson5Part7InterviewPrep';
 import Lesson5BottomNav from './components/Lesson5BottomNav';
 
@@ -20,34 +21,16 @@ interface DatabaseLesson5TopicProps {
 export default function DatabaseLesson5Topic({ onNavigate }: DatabaseLesson5TopicProps) {
   return (
     <div className="w-full space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
-      {/* Hero Banner with Breadcrumbs, Objectives & Symbol Ribbon */}
       <Lesson5Hero onNavigate={onNavigate} />
-
-      {/* Part 1: What is an ER Model? (With University Blueprint Visualizer) */}
-      <Lesson5Part1ERModel />
-
-      {/* Core Components & Key Concepts (Entities, Attributes, Relationships, Cardinality, Participation, Design Levels) */}
-      <Lesson5CoreConcepts />
-
-      {/* Part 2: What is an Entity? (With Strict Sharp Chen Rectangle Showcase) */}
-      <Lesson5Part2Entity />
-
-      {/* Part 3: What are Attributes? & 5 Core Attribute Types */}
-      <Lesson5Part2Attributes />
-
-      {/* Part 4: Relationships & Degree of Relationship */}
-      <Lesson5Part3Relationships />
-
-      {/* Part 5: Structural Constraints (Cardinality Ratios & Participation Constraints) */}
-      <Lesson5Part4CardinalityParticipation />
-
-      {/* Part 6: ER Diagram Symbols Cheat Sheet */}
+      <div id="l5-er-model" className="scroll-mt-4"><Lesson5Part1ERModel /></div>
+      <div id="l5-core-concepts" className="scroll-mt-4"><Lesson5CoreConcepts /></div>
+      <div id="l5-entity" className="scroll-mt-4"><Lesson5Part2Entity /></div>
+      <div id="l5-attributes" className="scroll-mt-4"><Lesson5Part2Attributes /></div>
+      <div id="l5-relationships" className="scroll-mt-4"><Lesson5Part3Relationships /></div>
+      <div id="l5-cardinality" className="scroll-mt-4"><Lesson5Part4CardinalityParticipation /></div>
       <Lesson5Part6SymbolsAndUniversityER />
-
-      {/* Part 7: Selective Technical Interview Questions (System Design & Relational Mapping) */}
+      <Lesson5ERPracticeProblems />
       <Lesson5Part7InterviewPrep />
-
-      {/* Lesson 5 Roadmap Bridge & Navigation */}
       <Lesson5BottomNav onNavigate={onNavigate} />
     </div>
   );

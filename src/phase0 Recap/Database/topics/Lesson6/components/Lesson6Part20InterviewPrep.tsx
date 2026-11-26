@@ -39,7 +39,7 @@ export default function Lesson6Part20InterviewPrep() {
             </div>
             <div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
-                {language === 'bn' ? 'বাছাইকৃত টেকনিক্যাল ইন্টারভিউ প্রস্তুতি' : 'Selective Technical Interview Questions'}
+                {language === 'bn' ? 'পার্ট ১৩ • বাছাইকৃত টেকনিক্যাল ইন্টারভিউ প্রস্তুতি' : 'Part 13 of 13 • Interview Prep'}
               </span>
               <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
                 <DualText

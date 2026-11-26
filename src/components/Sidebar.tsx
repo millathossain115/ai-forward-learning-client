@@ -35,10 +35,10 @@ export default function Sidebar({
   onToggleCollapse,
 }: SidebarProps) {
   const [filterQuery, setFilterQuery] = useState('');
-  const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({});
-  const [expandedSubmenus, setExpandedSubmenus] = useState<Record<string, boolean>>({
-    sorting: true,
-  });
+  const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(NAV_SECTIONS.map(sec => [sec.title, true]))
+  );
+  const [expandedSubmenus, setExpandedSubmenus] = useState<Record<string, boolean>>({});
 
   const toggleSection = (title: string) => {
     setCollapsedSections(prev => ({ ...prev, [title]: !prev[title] }));
@@ -157,7 +157,7 @@ export default function Sidebar({
       {/* Topics Tree */}
       <div className="flex-1 overflow-y-auto px-2.5 py-3.5 space-y-4">
         {filteredSections.map(sec => {
-          const isSecCollapsed = collapsedSections[sec.title];
+          const isSecCollapsed = !filterQuery.trim() && collapsedSections[sec.title];
           return (
             <div key={sec.title} className="space-y-1">
               <button

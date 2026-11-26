@@ -355,9 +355,7 @@ typedef struct PageHeaderData {
             ext: 'sql',
             tag: 'O(N)',
             paradigm: 'sql',
-            note: 'শুরু থেকে শেষ পর্যন্ত প্রতিটি রো একে একে চেক (ছোট টেবিলে ভালো, বড়তে স্লো)।',
-            labId: 'backend-sql',
-            labLabel: 'SQL কুয়েরি প্ল্যানার ল্যাবে দেখুন'
+            note: 'শুরু থেকে শেষ পর্যন্ত প্রতিটি রো একে একে চেক (ছোট টেবিলে ভালো, বড়তে স্লো)।'
           },
           {
             name: 'index_scan_btree.sql',
@@ -365,9 +363,7 @@ typedef struct PageHeaderData {
             ext: 'sql',
             tag: 'O(log N)',
             paradigm: 'sql',
-            note: 'ইনডেক্স ট্রি থেকে সরাসরি রো-এর ঠিকানা (ctid) বের করে তাৎক্ষণিক রিড।',
-            labId: 'backend-sql',
-            labLabel: 'SQL কুয়েরি প্ল্যানার ল্যাবে দেখুন'
+            note: 'ইনডেক্স ট্রি থেকে সরাসরি রো-এর ঠিকানা (ctid) বের করে তাৎক্ষণিক রিড।'
           },
           {
             name: 'bitmap_index_scan.sql',
@@ -425,9 +421,7 @@ typedef struct PageHeaderData {
             ext: 'tree',
             tag: 'Shallow Depth',
             paradigm: 'sql',
-            note: 'প্রতি নোডে শত শত কী থাকে, ফলে ট্রির গভীরতা সবসময় ছোট থাকে (কম ডিস্ক I/O)।',
-            labId: 'backend-indexing',
-            labLabel: 'B-Tree ইনডেক্স বেঞ্চমার্ক ল্যাব'
+            note: 'প্রতি নোডে শত শত কী থাকে, ফলে ট্রির গভীরতা সবসময় ছোট থাকে (কম ডিস্ক I/O)।'
           },
           {
             name: 'leaf_node_chain.linked',
@@ -597,9 +591,7 @@ typedef struct PageHeaderData {
             ext: 'kmeans',
             tag: 'Voronoi Cells',
             paradigm: 'hybrid',
-            note: 'ভেক্টর স্পেসকে ক্লাস্টারে ভাগ করে সার্চের পরিধি ছোট করা (মেমরি সাশ্রয়ী)।',
-            labId: 'backend-pgvector',
-            labLabel: 'pgvector ভেক্টর ল্যাব চালান'
+            note: 'ভেক্টর স্পেসকে ক্লাস্টারে ভাগ করে সার্চের পরিধি ছোট করা (মেমরি সাশ্রয়ী)।'
           },
           {
             name: 'hnsw_multilevel_graph.hnsw',
@@ -607,9 +599,7 @@ typedef struct PageHeaderData {
             ext: 'hnsw',
             tag: 'Gold Standard',
             paradigm: 'hybrid',
-            note: 'মাল্টি-লেয়ার জ্যামিতিক গ্রাফ স্কিপ-লিস্ট; সাব-মিলিসেকেন্ডে ৯৮%+ নিখুঁত রেজাল্ট দেয়।',
-            labId: 'backend-pgvector',
-            labLabel: 'pgvector ভেক্টর ল্যাব চালান'
+            note: 'মাল্টি-লেয়ার জ্যামিতিক গ্রাফ স্কিপ-লিস্ট; সাব-মিলিসেকেন্ডে ৯৮%+ নিখুঁত রেজাল্ট দেয়।'
           },
           {
             name: 'quantization_pq_sq.compress',

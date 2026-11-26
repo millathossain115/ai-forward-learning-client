@@ -13,6 +13,7 @@ import {
   Sparkles
 } from 'lucide-react';
 
+const DsaDirectoryTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Directory/DsaDirectoryTopic'), { loading: () => <TopicSkeleton /> });
 const FoundationsTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Foundations/FoundationsTopic'), { loading: () => <TopicSkeleton /> });
 const ArrayTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/Array/ArrayTopic'), { loading: () => <TopicSkeleton /> });
 const LinkedListTopic = dynamic(() => import('@/phase0 Recap/DSA/topics/LinkedList/LinkedListTopic'), { loading: () => <TopicSkeleton /> });
@@ -56,11 +57,10 @@ const DatabaseLesson15Topic = dynamic(() => import('@/phase0 Recap/Database/topi
 const DatabaseLesson16Topic = dynamic(() => import('@/phase0 Recap/Database/topics/Lesson16/DatabaseLesson16Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseLesson17Topic = dynamic(() => import('@/phase0 Recap/Database/topics/Lesson17/DatabaseLesson17Topic'), { loading: () => <TopicSkeleton /> });
 const DatabaseLesson18Topic = dynamic(() => import('@/phase0 Recap/Database/topics/Lesson18/DatabaseLesson18Topic'), { loading: () => <TopicSkeleton /> });
-const DatabasePlayground = dynamic(() => import('@/phase0 Recap/Database/topics/Playground/DatabasePlayground'), { loading: () => <TopicSkeleton /> });
-const PgVectorTopic = dynamic(() => import('@/phase0 Recap/Database/topics/PgVector/PgVectorTopic'), { loading: () => <TopicSkeleton /> });
 
 export default function Home() {
   const [activeTopic, setActiveTopic] = useState<TopicId>('foundations');
+  const [pendingSection, setPendingSection] = useState<string | null>(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
 
@@ -76,13 +76,17 @@ export default function Home() {
     }
   }, []);
 
-  // Sync topic from URL query param on load & browser back/forward buttons
+  // Sync topic & optional section hash from URL on load & browser back/forward buttons
   useEffect(() => {
     const syncTopicFromUrl = () => {
       const params = new URLSearchParams(window.location.search);
       const topic = params.get('topic') as TopicId | null;
       if (topic && topic in TOPIC_METADATA) {
         setActiveTopic(topic);
+      }
+      const hash = window.location.hash ? window.location.hash.slice(1) : null;
+      if (hash) {
+        setPendingSection(hash);
       }
     };
 
@@ -91,17 +95,48 @@ export default function Home() {
     return () => window.removeEventListener('popstate', syncTopicFromUrl);
   }, []);
 
-  const handleSelectTopic = (id: TopicId) => {
+  // Scroll to target section once dynamically loaded topic mounts
+  useEffect(() => {
+    if (!pendingSection) return;
+    let attempts = 0;
+    const maxAttempts = 40;
+
+    const tryScroll = () => {
+      const el = document.getElementById(pendingSection);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setPendingSection(null);
+        return true;
+      }
+      return false;
+    };
+
+    if (tryScroll()) return;
+
+    const timer = window.setInterval(() => {
+      attempts += 1;
+      if (tryScroll() || attempts >= maxAttempts) {
+        window.clearInterval(timer);
+        if (attempts >= maxAttempts) setPendingSection(null);
+      }
+    }, 75);
+
+    return () => window.clearInterval(timer);
+  }, [activeTopic, pendingSection]);
+
+  const handleSelectTopic = (id: TopicId, sectionId?: string) => {
     setActiveTopic(id);
+    setPendingSection(sectionId ?? null);
     if (typeof window !== 'undefined') {
       const url = new URL(window.location.href);
       url.searchParams.set('topic', id);
-      window.history.pushState({ topic: id }, '', url.toString());
+      url.hash = sectionId ? `#${sectionId}` : '';
+      window.history.pushState({ topic: id, sectionId }, '', url.toString());
     }
   };
 
-  const handleNavigateTopic = (id: string) => {
-    handleSelectTopic(id as TopicId);
+  const handleNavigateTopic = (id: string, sectionId?: string) => {
+    handleSelectTopic(id as TopicId, sectionId);
   };
 
   const meta = TOPIC_METADATA[activeTopic] || {
@@ -149,6 +184,7 @@ export default function Home() {
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <div className="w-full space-y-8">
             {/* Active Topic Router */}
+            {activeTopic === 'dsa-directory' && <DsaDirectoryTopic onNavigate={handleNavigateTopic} />}
             {activeTopic === 'foundations' && <FoundationsTopic />}
             {activeTopic === 'array' && <ArrayTopic />}
             {activeTopic === 'linkedlist' && <LinkedListTopic />}
@@ -250,18 +286,6 @@ export default function Home() {
             {activeTopic === 'backend-lesson18' && (
               <DatabaseLesson18Topic onNavigate={handleNavigateTopic} />
             )}
-
-            {(activeTopic === 'backend-sql' || activeTopic === 'backend-indexing') && (
-              <div className="space-y-6">
-                <div className="border-b border-[#1e2130] pb-4">
-                  <h2 className="text-xl font-bold text-zinc-100">{meta.title}</h2>
-                  <p className="text-xs text-zinc-400 mt-1">{meta.description}</p>
-                </div>
-                <DatabasePlayground />
-              </div>
-            )}
-
-            {activeTopic === 'backend-pgvector' && <PgVectorTopic />}
 
             {/* Upcoming Chapters (Phase 1 AI Core) */}
             {[

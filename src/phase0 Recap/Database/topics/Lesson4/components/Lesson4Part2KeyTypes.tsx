@@ -589,7 +589,7 @@ export default function Lesson4Part2KeyTypes() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-bold">
-                {language === 'bn' ? 'পর্ব ২ / ৮' : 'Part 2 of 8'}
+                {language === 'bn' ? 'পর্ব ২ / ৬' : 'Part 2 of 6'}
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold hidden sm:inline">
                 Interactive Multi-Key Workbench

@@ -2240,13 +2240,6 @@ export default function DatabaseLesson18Topic({ onNavigate }: DatabaseLesson18To
               <ArrowLeft className="w-4 h-4" />
               <span>Review Lesson 17: Data Warehousing</span>
             </button>
-            <button
-              onClick={() => onNavigate?.('backend-sql')}
-              className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-amber-600/20 cursor-pointer"
-            >
-              <span>Next: SQL & Query Planner</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
           </div>
         </div>
       </section>

@@ -1,95 +1,83 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Building2, ArrowRight, ArrowLeft } from 'lucide-react';
-import { TopicId } from '@/components/Sidebar';
+import { Building2, ChevronDown, ChevronUp } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
 
-interface Lesson4Part6CaseStudyProps {
-  onNavigate?: (id: TopicId) => void;
-}
+const EMPLOYEE_ROWS = [
+  { id: 'E01', nid: 'NID-8801', email: 'rahim@corp.com', name: 'Rahim', deptId: 'D01', mgrId: null, phone: '01711-110011' },
+  { id: 'E02', nid: 'NID-8802', email: 'karim@corp.com', name: 'Karim', deptId: 'D02', mgrId: 'E01', phone: '01811-220022' },
+  { id: 'E03', nid: 'NID-8803', email: 'nila@corp.com', name: 'Nila', deptId: 'D01', mgrId: 'E01', phone: null },
+  { id: 'E04', nid: 'NID-8804', email: 'rahim.s@corp.com', name: 'Rahim', deptId: 'D03', mgrId: 'E02', phone: '01911-440044' },
+];
 
-export default function Lesson4Part6CaseStudy({ onNavigate }: Lesson4Part6CaseStudyProps) {
+export default function Lesson4Part6CaseStudy() {
   const { language } = useLanguage();
+  const [revealed, setRevealed] = useState<Record<number, boolean>>({});
 
-  const [revealedHomework, setRevealedHomework] = useState<Record<number, boolean>>({});
-
-  const toggleHomework = (id: number) => {
-    setRevealedHomework((prev) => ({ ...prev, [id]: !prev[id] }));
+  const toggle = (id: number) => {
+    setRevealed((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const caseStudyQuestions = [
     {
       id: 1,
-      qEn: '1. Identify all Candidate Keys in this table.',
-      qBn: '১. এই টেবিলের সকল ক্যান্ডিডেট কী শনাক্ত করুন।',
-      aEn: 'Candidate Keys: {Employee_ID} and {Email}. Both can independently and minimally identify every employee uniquely.',
-      aBn: 'ক্যান্ডিডেট কীসমূহ: {Employee_ID} এবং {Email}। উভয়েই স্বতন্ত্রভাবে ও ন্যূনতম কলাম দিয়ে প্রতিটি কর্মীকে অনন্যভাবে শনাক্ত করতে পারে।',
+      qEn: '1. Identify all Candidate Keys (and why Full_Name fails).',
+      qBn: '১. সকল ক্যান্ডিডেট কী শনাক্ত করুন (Full_Name কেন নয়?)।',
+      aEn: 'Candidate Keys: {Employee_ID}, {National_ID}, {Email}. All 3 are minimal & unique. {Full_Name} fails because "Rahim" repeats (E01 & E04).',
+      aBn: 'Candidate Keys: {Employee_ID}, {National_ID}, {Email} — প্রতিটি ন্যূনতম ও ইউনিক। Full_Name হবে না কারণ "Rahim" দুবার আছে (E01 ও E04)।',
     },
     {
       id: 2,
-      qEn: '2. If Employee_ID is selected as Primary Key, what is the Alternate Key?',
-      qBn: '২. Employee_ID-কে প্রাইমারি কি হিসেবে নির্বাচন করলে অল্টারনেট কি কোনটি হবে?',
-      aEn: 'Alternate Key: {Email}. It was a candidate key that was not chosen as the primary identifier.',
-      aBn: 'অল্টারনেট কী: {Email}। এটি একটি ক্যান্ডিডেট কি ছিল যা প্রধান কি হিসেবে মনোনীত হয়নি।',
+      qEn: '2. If Employee_ID is Primary Key, what are the Alternate Keys?',
+      qBn: '২. Employee_ID প্রাইমারি কি হলে অল্টারনেট কি কোনগুলো?',
+      aEn: 'Alternate Keys: {National_ID} and {Email}. Employee_ID is preferred as PK because it is compact, internal, and immutable.',
+      aBn: 'Alternate Keys: {National_ID} ও {Email}। Employee_ID ছোট ও অপরিবর্তনীয় হওয়ায় Primary Key হিসেবে সেরা।',
     },
     {
       id: 3,
-      qEn: '3. Is {Employee_ID + Name} a Super Key?',
-      qBn: '৩. {Employee_ID + Name} কি একটি সুপার কী?',
-      aEn: 'YES! Because Employee_ID is already unique, adding Name will still uniquely identify every row. Any superset of a candidate key is a Super Key.',
-      aBn: 'হ্যাঁ! কারণ Employee_ID একাই ইউনিক, তার সাথে Name যোগ করলেও তা প্রতিটি সারিকে ইউনিকভাবেই বের করবে। ক্যান্ডিডেট কি-এর যেকোনো সুপারসেটই একটি সুপার কী।',
+      qEn: '3. Is {Employee_ID, Full_Name} a Super Key or Candidate Key?',
+      qBn: '৩. {Employee_ID, Full_Name} কি সুপার কী নাকি ক্যান্ডিডেট কী?',
+      aEn: 'Super Key only! It uniquely identifies rows, but fails minimality for Candidate Key because Full_Name is redundant.',
+      aBn: 'শুধু Super Key! Full_Name অপ্রয়োজনীয় হওয়ায় এটি ন্যূনতম নয়, তাই Candidate Key নয়।',
     },
     {
       id: 4,
-      qEn: '4. Is {Employee_ID + Name} a Candidate Key?',
-      qBn: '৪. {Employee_ID + Name} কি একটি ক্যান্ডিডেট কী হতে পারে?',
-      aEn: 'NO! A Candidate Key must be minimal. Since "Name" is redundant and can be removed without losing uniqueness, {Employee_ID + Name} is not minimal.',
-      aBn: 'না! ক্যান্ডিডেট কি অবশ্যই ন্যূনতম হতে হবে। যেহেতু "Name" বাদ দিলেও ইউনিকনেস বজায় থাকে, তাই এটি ন্যূনতম নয়।',
+      qEn: '4. Find both Foreign Keys in this EMPLOYEE relation.',
+      qBn: '৪. এই EMPLOYEE টেবিলে দুটি Foreign Key খুঁজে বের করুন।',
+      aEn: '1) Department_ID -> DEPARTMENT(Dept_ID) (duplicates like D01 allowed). 2) Manager_ID -> EMPLOYEE(Employee_ID) (Self-Referencing FK; NULL for CEO E01).',
+      aBn: '১) Department_ID -> DEPARTMENT(Dept_ID) (ডুপ্লিকেট D01 বৈধ)। ২) Manager_ID -> EMPLOYEE(Employee_ID) (সেলফ-ফরেন কি; CEO E01-এর জন্য NULL)।',
     },
     {
       id: 5,
-      qEn: '5. Can Department_ID be a Foreign Key?',
-      qBn: '৫. Department_ID কি একটি ফরেন কী হতে পারে?',
-      aEn: 'YES! Department_ID in EMPLOYEE can reference the Dept_ID Primary Key in the DEPARTMENT table.',
-      aBn: 'হ্যাঁ! EMPLOYEE টেবিলের Department_ID প্যারেন্ট টেবিল DEPARTMENT-এর Dept_ID প্রাইমারি কি-কে রেফারেন্স করতে পারে।',
+      qEn: '5. Why can Phone be NULL if marked UNIQUE, while Employee_ID cannot?',
+      qBn: '৫. Phone UNIQUE হলে NULL নেওয়া যায়, কিন্তু Employee_ID কেন পারে না?',
+      aEn: 'UNIQUE allows NULLs (Nila has NULL Phone) since NULL != NULL, whereas a Primary Key strictly enforces NOT NULL + UNIQUE.',
+      aBn: 'UNIQUE কনস্ট্রেইন্টে NULL অনুমোদিত (Nila-র Phone NULL), কিন্তু Primary Key-তে NOT NULL ও UNIQUE দুটোই বাধ্যতামূলক।',
     },
     {
       id: 6,
-      qEn: '6. Can Department_ID contain duplicate values in EMPLOYEE?',
-      qBn: '৬. EMPLOYEE টেবিলে Department_ID কি ডুপ্লিকেট মান গ্রহণ করতে পারে?',
-      aEn: 'YES! Notice that Rahim and Nila both have Department_ID = D01. Foreign keys are allowed to have duplicates because multiple employees work in the same department (1:N relationship).',
-      aBn: 'হ্যাঁ! রহিম ও নীলা উভয়েরই Department_ID = D01। একই বিভাগে একাধিক কর্মী কাজ করতে পারে (1:N সম্পর্ক), তাই ফরেন কীতে ডুপ্লিকেট মান সম্পূর্ণ অনুমোদিত।',
-    },
-    {
-      id: 7,
-      qEn: '7. What happens if two employees try to register with the same Employee_ID?',
-      qBn: '৭. দুজন কর্মী যদি একই Employee_ID দিয়ে নিবন্ধন করতে চায়, তবে কী ঘটবে?',
-      aEn: 'The DBMS rejects the second insert with a "PRIMARY KEY constraint violation" error, keeping the database consistent.',
-      aBn: 'ডেটাবেস ইঞ্জিন দ্বিতীয় ইনসার্টটিকে "PRIMARY KEY constraint violation" ত্রুটি প্রদর্শন করে প্রত্যাখ্যান করবে এবং ডেটার সামঞ্জস্য রক্ষা করবে।',
-    },
-    {
-      id: 8,
-      qEn: '8. Which key would you use to uniquely identify an employee?',
-      qBn: '৮. কোনো কর্মীকে স্বতন্ত্রভাবে চেনার জন্য আপনি কোন কি ব্যবহার করবেন?',
-      aEn: 'Employee_ID is the recommended Primary Key (often as a compact surrogate or business identifier).',
-      aBn: 'Employee_ID হলো সবচেয়ে আদর্শ প্রাইমারি কি (একটি সংক্ষিপ্ত ও নিখুঁত শনাক্তকারী)।',
+      qEn: '6. If employees work on multiple projects, how do we key EMPLOYEE_PROJECT?',
+      qBn: '৬. কর্মীরা একাধিক প্রজেক্টে কাজ করলে EMPLOYEE_PROJECT-এর কি কী হবে?',
+      aEn: 'Use a Composite Primary Key: (Employee_ID, Project_ID) so one employee cannot be assigned twice to the same project.',
+      aBn: 'Composite Primary Key: (Employee_ID, Project_ID) ব্যবহার করতে হবে, যাতে একই কর্মী এক প্রজেক্টে দুবার যুক্ত না হয়।',
     },
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
+    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-5 md:p-7 space-y-5">
       <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
         <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           <Building2 className="w-6 h-6" />
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ৮ / ৮' : 'Part 8 of 8'}
+            {language === 'bn' ? 'পর্ব ৫ / ৬ • বাস্তব কেস স্টাডি' : 'Part 5 of 6 • Case Study'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText
+              as="span"
               en="Practical Case Study: EMPLOYEE Relation Analysis"
               bn="বাস্তব কেস স্টাডি: EMPLOYEE রিলেশন বিশ্লেষণ"
             />
@@ -97,140 +85,92 @@ export default function Lesson4Part6CaseStudy({ onNavigate }: Lesson4Part6CaseSt
         </div>
       </div>
 
-      <div className="text-xs text-zinc-300 leading-relaxed font-sans">
-        <DualText
-          en="Consider the following employee relation where both Employee_ID and Email are unique:"
-          bn="নিচের কর্মী (EMPLOYEE) রিলেশনটি লক্ষ্য করুন, যেখানে Employee_ID এবং Email উভয় কলামের মানই অনন্য (Unique):"
-        />
-      </div>
+      <DualText
+        as="p"
+        className="text-xs text-zinc-300 leading-relaxed font-sans"
+        en="Analyze this enriched EMPLOYEE relation featuring Surrogate ID, Natural ID, Unique Email, Nullable Phone, Department FK, and Self-Referencing Manager FK:"
+        bn="নিচের সমৃদ্ধ EMPLOYEE টেবিলটি বিশ্লেষণ করুন যেখানে Surrogate ID, Natural ID, Unique Email, Nullable Phone, Department FK ও Manager Self-FK রয়েছে:"
+      />
 
-      {/* Employee Table */}
+      {/* Enriched Employee Table */}
       <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
-              <th className="py-2 px-4 text-amber-400">Employee_ID</th>
-              <th className="py-2 px-4 text-cyan-400">Email</th>
-              <th className="py-2 px-4 text-white">
-                {language === 'bn' ? 'নাম' : 'Name'}
-              </th>
-              <th className="py-2 px-4 text-emerald-400">Department_ID</th>
+            <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300 text-[11px]">
+              <th className="py-2 px-3 text-amber-400">Employee_ID (PK)</th>
+              <th className="py-2 px-3 text-purple-300">National_ID</th>
+              <th className="py-2 px-3 text-cyan-400">Email</th>
+              <th className="py-2 px-3 text-white">Full_Name</th>
+              <th className="py-2 px-3 text-emerald-400">Department_ID (FK)</th>
+              <th className="py-2 px-3 text-pink-300">Manager_ID (Self-FK)</th>
+              <th className="py-2 px-3 text-indigo-300">Phone (UNIQUE)</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-zinc-300">
-            <tr>
-              <td className="py-2 px-4 font-bold text-amber-300">E01</td>
-              <td className="py-2 px-4">a@gmail.com</td>
-              <td className="py-2 px-4">Rahim</td>
-              <td className="py-2 px-4 text-emerald-300">D01</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-4 font-bold text-amber-300">E02</td>
-              <td className="py-2 px-4">b@gmail.com</td>
-              <td className="py-2 px-4">Karim</td>
-              <td className="py-2 px-4 text-emerald-300">D02</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-4 font-bold text-amber-300">E03</td>
-              <td className="py-2 px-4">c@gmail.com</td>
-              <td className="py-2 px-4">Nila</td>
-              <td className="py-2 px-4 text-emerald-300">D01</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-4 font-bold text-amber-300">E04</td>
-              <td className="py-2 px-4">d@gmail.com</td>
-              <td className="py-2 px-4">Sami</td>
-              <td className="py-2 px-4 text-emerald-300">D03</td>
-            </tr>
+          <tbody className="divide-y divide-slate-800/60 text-zinc-300 text-[11px]">
+            {EMPLOYEE_ROWS.map((row) => (
+              <tr key={row.id} className="hover:bg-slate-800/30">
+                <td className="py-2 px-3 font-bold text-amber-300">{row.id}</td>
+                <td className="py-2 px-3 text-purple-200">{row.nid}</td>
+                <td className="py-2 px-3 text-cyan-200">{row.email}</td>
+                <td className="py-2 px-3 text-white font-sans font-medium">{row.name}</td>
+                <td className="py-2 px-3 text-emerald-300">{row.deptId}</td>
+                <td className="py-2 px-3">
+                  {row.mgrId ?? (
+                    <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold">
+                      NULL
+                    </span>
+                  )}
+                </td>
+                <td className="py-2 px-3">
+                  {row.phone ?? (
+                    <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold">
+                      NULL
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      {/* 8 Case Study Questions with Click to Reveal Mentor Solution */}
-      <div className="space-y-3 pt-2">
-        <span className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider block">
+      {/* Compact 2-Column Interactive Case Study Questions (Low Vertical Overhead) */}
+      <div className="space-y-2.5">
+        <span className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider block">
           {language === 'bn'
-            ? 'যাচাইকৃত মেন্টর সমাধান দেখতে প্রতিটি প্রশ্নে ক্লিক করুন:'
-            : 'Click each question to inspect the verified mentor analysis:'}
+            ? 'উত্তর দেখতে যেকোনো প্রশ্নে ক্লিক করুন:'
+            : 'Click any question to reveal the key analysis:'}
         </span>
 
-        {caseStudyQuestions.map((item) => {
-          const isRevealed = revealedHomework[item.id];
-
-          return (
-            <div
-              key={item.id}
-              className="p-3.5 rounded-xl border border-slate-800 bg-[#121526] space-y-2 transition-all"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-bold text-white font-sans">
-                  {language === 'bn' ? item.qBn : item.qEn}
-                </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+          {caseStudyQuestions.map((item) => {
+            const isOpen = !!revealed[item.id];
+            return (
+              <div
+                key={item.id}
+                className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden"
+              >
                 <button
-                  onClick={() => toggleHomework(item.id)}
-                  className="px-2.5 py-1 rounded-lg bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 font-mono text-[11px] font-bold cursor-pointer transition-all border border-indigo-500/40 shrink-0"
+                  onClick={() => toggle(item.id)}
+                  className="w-full p-3 text-left flex items-center justify-between gap-2 cursor-pointer hover:bg-slate-800/40 transition-colors"
                 >
-                  {isRevealed
-                    ? language === 'bn'
-                      ? 'উত্তর লুকান'
-                      : 'Hide Solution'
-                    : language === 'bn'
-                    ? 'উত্তর দেখুন'
-                    : 'Reveal Solution'}
+                  <span className="text-xs font-bold text-white font-sans leading-snug">
+                    {language === 'bn' ? item.qBn : item.qEn}
+                  </span>
+                  {isOpen ? (
+                    <ChevronUp className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4 text-zinc-500 shrink-0" />
+                  )}
                 </button>
+                {isOpen && (
+                  <div className="px-3 pb-3 pt-2 border-t border-slate-800/70 bg-emerald-950/15 text-[11px] text-emerald-200 leading-relaxed font-sans">
+                    {language === 'bn' ? item.aBn : item.aEn}
+                  </div>
+                )}
               </div>
-
-              {isRevealed && (
-                <div className="p-2.5 rounded-lg bg-emerald-950/20 border border-emerald-900/40 text-xs text-emerald-300 font-mono">
-                  💡 <strong>{language === 'bn' ? 'মেন্টর উত্তর:' : 'Mentor Answer:'}</strong>{' '}
-                  {language === 'bn' ? item.aBn : item.aEn}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Bottom Roadmap Bridge Navigation */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#14182e] via-[#101326] to-[#0d1020] border border-indigo-500/40 space-y-3 shadow-xl mt-6">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">
-            {language === 'bn' ? 'লেসন ৪ সম্পন্ন' : 'Lesson 4 Completed'}
-          </span>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">
-            {language === 'bn' ? '✓ রিলেশনাল কি ও ইন্টিগ্রিটি করায়ত্ত' : '✓ Keys & Integrity Mastered'}
-          </span>
-        </div>
-
-        <h3 className="text-base font-bold text-white">
-          <DualText
-            en="What's Next: Database Systems Architecture Roadmap & ER Model"
-            bn="পরবর্তী ধাপ: ডেটাবেস সিস্টেম আর্কিটেকচার ও ই-আর মডেল (ER Model)"
-          />
-        </h3>
-
-        <div className="text-xs text-zinc-300 leading-relaxed font-sans">
-          <DualText
-            en="Now that you have mastered Relational Keys, Foreign Key Constraints, and Referential Integrity, you are ready to explore Entity-Relationship (ER) modeling, schemas, and real-world database design!"
-            bn="এখন যেহেতু আপনি রিলেশনাল কি, ফরেন কি কনস্ট্রেইন্ট এবং রেফারেন্সিয়াল ইন্টিগ্রিটি ভালোভাবে আয়ত্ত করেছেন, আপনি প্রস্তুত পরবর্তী ধাপের জন্য: এন্টিটি-রিলেশনশিপ (ER) মডেল ও বাস্তব ডেটাবেস আর্কিটেকচার ডিজাইন!"
-          />
-        </div>
-
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <button
-            onClick={() => onNavigate?.('backend-lesson3')}
-            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-all border border-slate-700 cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>{language === 'bn' ? 'লেসন ৩-এ ফিরে যান' : 'Back to Lesson 3'}</span>
-          </button>
-          <button
-            onClick={() => onNavigate?.('backend-lesson5')}
-            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
-          >
-            <span>{language === 'bn' ? 'লেসন ৫-এ যান: ER Model' : 'Go to Lesson 5: ER Model'}</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+            );
+          })}
         </div>
       </div>
     </section>

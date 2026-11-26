@@ -29,16 +29,16 @@ export default function FoundationsTopic() {
       </div>
 
       {/* 2. Interactive Simulation: Data Structure vs Algorithm */}
-      <RamSimulationCanvas />
+      <div id="dsa-ram" className="scroll-mt-4"><RamSimulationCanvas /></div>
 
       {/* 3. Efficiency Dashboard: Time & Memory Complexity */}
-      <ComplexityDashboard />
+      <div id="dsa-complexity" className="scroll-mt-4"><ComplexityDashboard /></div>
 
       {/* 4. Practical Domain Architecture Navigator */}
-      <DomainArchitectureNavigator />
+      <div id="dsa-domains" className="scroll-mt-4"><DomainArchitectureNavigator /></div>
 
       {/* 5. Complete Forward Engineering Roadmap */}
-      <EngineeringRoadmap />
+      <div id="dsa-roadmap" className="scroll-mt-4"><EngineeringRoadmap /></div>
     </div>
   );
 }

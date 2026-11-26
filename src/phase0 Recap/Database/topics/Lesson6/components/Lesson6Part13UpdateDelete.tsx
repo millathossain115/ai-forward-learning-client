@@ -32,7 +32,7 @@ export default function Lesson6Part13UpdateDelete() {
             </div>
             <div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30 font-bold">
-                {language === 'bn' ? 'পার্ট ১৩ ও ১৪ • আপডেট ও ডিলিট সতর্কতা' : 'Part 13 & 14 of 20 • DML Safety'}
+                {language === 'bn' ? 'পার্ট ৭ • আপডেট ও ডিলিট সতর্কতা' : 'Part 7 of 13 • DML Safety'}
               </span>
               <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
                 <DualText

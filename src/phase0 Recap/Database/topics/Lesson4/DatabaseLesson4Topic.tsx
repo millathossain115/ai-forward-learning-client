@@ -21,22 +21,22 @@ export default function DatabaseLesson4Topic({ onNavigate }: DatabaseLesson4Topi
       <Lesson4Hero onNavigate={onNavigate} />
 
       {/* Part 1: Why do we need keys? (The Problem of Ambiguity) */}
-      <Lesson4Part1WhyKeys />
+      <div id="l4-why-keys" className="scroll-mt-4"><Lesson4Part1WhyKeys /></div>
 
       {/* Part 2: The Types of Keys in DBMS (Interactive PK & FK Testers) */}
-      <Lesson4Part2KeyTypes />
+      <div id="l4-key-types" className="scroll-mt-4"><Lesson4Part2KeyTypes /></div>
 
       {/* Part 3: Master Key Comparison & Hierarchy */}
       <Lesson4Part3Comparison />
 
-      {/* Part 4 & 5: Practical University Schema & SQL DDL Code */}
+      {/* Part 4: Practical University Schema & SQL DDL Code */}
       <Lesson4Part4SchemaSql />
 
-      {/* Part 6: Technical Interview Preparation (High-Yield Q&A) */}
-      <Lesson4Part5ExamPrep />
+      {/* Part 5: Practical Case Study (EMPLOYEE Analysis) */}
+      <Lesson4Part6CaseStudy />
 
-      {/* Part 8: Practical Case Study (EMPLOYEE Analysis) & Roadmap Bridge */}
-      <Lesson4Part6CaseStudy onNavigate={onNavigate} />
+      {/* Part 6: Selective Technical Interview Q&A & Roadmap Bridge */}
+      <Lesson4Part5ExamPrep onNavigate={onNavigate} />
     </div>
   );
 }

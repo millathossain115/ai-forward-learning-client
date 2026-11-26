@@ -20,16 +20,16 @@ export default function DatabaseLesson2Topic({ onNavigate }: DatabaseLesson2Topi
       <Lesson2Hero onNavigate={onNavigate} />
 
       {/* Part 1: Why do we have different types of databases? */}
-      <Lesson2Part1WhyTypes />
+      <div id="l2-why-types" className="scroll-mt-4"><Lesson2Part1WhyTypes /></div>
 
       {/* Part 2: What is a Database Model? (Blueprint Analogy) */}
-      <Lesson2Part2ModelConcept />
+      <div id="l2-model-concept" className="scroll-mt-4"><Lesson2Part2ModelConcept /></div>
 
       {/* Part 3: The 6 Core Database Models */}
-      <Lesson2Part3SixModels />
+      <div id="l2-six-models" className="scroll-mt-4"><Lesson2Part3SixModels /></div>
 
       {/* Part 4: Comparing All 6 Models */}
-      <Lesson2Part4Comparison />
+      <div id="l2-comparison" className="scroll-mt-4"><Lesson2Part4Comparison /></div>
 
       {/* Part 5: Important Exam & Interview Questions + Next Lesson Bridge */}
       <Lesson2Part5ExamQuestions onNavigate={onNavigate} />

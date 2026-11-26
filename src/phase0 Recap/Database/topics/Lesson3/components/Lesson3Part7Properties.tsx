@@ -26,7 +26,7 @@ export default function Lesson3Part7Properties() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ৯ / ১৩' : 'Part 9 of 13'}
+            {language === 'bn' ? 'পর্ব ৭ / ৯' : 'Part 7 of 9'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText

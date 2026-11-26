@@ -17,7 +17,7 @@ export default function Lesson4Part1WhyKeys() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
-            {language === 'bn' ? 'পর্ব ১ / ৮' : 'Part 1 of 8'}
+            {language === 'bn' ? 'পর্ব ১ / ৬' : 'Part 1 of 6'}
           </span>
           <h2 className="text-xl font-bold text-white mt-1">
             <DualText

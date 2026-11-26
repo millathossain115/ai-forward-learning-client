@@ -164,7 +164,7 @@ export default function Lesson6Part15AggregatesGroupBy() {
             </div>
             <div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/30 font-bold">
-                {language === 'bn' ? 'পার্ট ১৫ ও ১৬ • ধাপে ধাপে এগ্রিগেশন গাইড' : 'Part 15 & 16 of 20 • Step-by-Step Aggregation Guide'}
+                {language === 'bn' ? 'পার্ট ৮ • ধাপে ধাপে এগ্রিগেশন গাইড' : 'Part 8 of 13 • Step-by-Step Aggregation Guide'}
               </span>
               <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
                 <DualText

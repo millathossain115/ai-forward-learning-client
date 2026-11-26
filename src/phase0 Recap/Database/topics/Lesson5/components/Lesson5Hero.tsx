@@ -19,7 +19,7 @@ export default function Lesson5Hero({ onNavigate }: Lesson5HeroProps) {
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Left Side: Badge, Title & Short Intro */}
-        <div className="space-y-2 max-w-2xl">
+        <div className="space-y-2 flex-1">
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold flex items-center gap-1.5">
               <Sparkles className="w-3 h-3" />

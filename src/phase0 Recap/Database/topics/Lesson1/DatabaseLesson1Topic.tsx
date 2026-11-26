@@ -23,22 +23,22 @@ export default function DatabaseLesson1Topic({ onNavigate }: DatabaseLesson1Topi
       <Lesson1Hero onNavigate={onNavigate} />
 
       {/* Part 1: What is Data? */}
-      <Lesson1Part1Data />
+      <div id="l1-data" className="scroll-mt-4"><Lesson1Part1Data /></div>
 
       {/* Part 2: What is Information? */}
-      <Lesson1Part2Info />
+      <div id="l1-info" className="scroll-mt-4"><Lesson1Part2Info /></div>
 
       {/* Part 3: What is a Database? */}
-      <Lesson1Part3Database />
+      <div id="l1-database" className="scroll-mt-4"><Lesson1Part3Database /></div>
 
       {/* Part 4: What is a DBMS? */}
-      <Lesson1Part4DBMS />
+      <div id="l1-dbms" className="scroll-mt-4"><Lesson1Part4DBMS /></div>
 
       {/* Part 5: Database vs DBMS Difference */}
-      <Lesson1Part5Diff />
+      <div id="l1-diff" className="scroll-mt-4"><Lesson1Part5Diff /></div>
 
       {/* Part 6: Why do we need databases? */}
-      <Lesson1Part6Need />
+      <div id="l1-need" className="scroll-mt-4"><Lesson1Part6Need /></div>
 
       {/* Part 7: Summary Comparison & Mentor Advice */}
       <Lesson1Part7Summary />

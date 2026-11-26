@@ -36,7 +36,7 @@ export default function Lesson6Part2HowSqlWorks() {
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ২ • ইঞ্জিন পাইপলাইন ও বাস্তব দৃশ্যপট' : 'Part 2 of 20'}
+              {language === 'bn' ? 'পার্ট ২ • ইঞ্জিন পাইপলাইন ও বাস্তব দৃশ্যপট' : 'Part 2 of 13'}
             </span>
             <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
               <DualText

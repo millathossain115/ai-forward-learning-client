@@ -8,7 +8,7 @@ import Lesson6Part2HowSqlWorks from './components/Lesson6Part2HowSqlWorks';
 import Lesson6Part3CommandFamilies from './components/Lesson6Part3CommandFamilies';
 import Lesson6Part5CreatingDbAndTables from './components/Lesson6Part5CreatingDbAndTables';
 import Lesson6Part7ConstraintsSandbox from './components/Lesson6Part7ConstraintsSandbox';
-import Lesson6Part8QueryWorkbench from './components/Lesson6Part8QueryWorkbench';
+import Lesson6SelectBasics from './components/Lesson6SelectBasics';
 import Lesson6Part13UpdateDelete from './components/Lesson6Part13UpdateDelete';
 import Lesson6Part15AggregatesGroupBy from './components/Lesson6Part15AggregatesGroupBy';
 import Lesson6Part17JoinsVisualizer from './components/Lesson6Part17JoinsVisualizer';
@@ -26,19 +26,19 @@ export default function DatabaseLesson6Topic({ onNavigate }: DatabaseLesson6Topi
   return (
     <div className="w-full space-y-10 pb-24 text-slate-200 animate-in fade-in duration-300 font-sans">
       <Lesson6Hero />
-      <Lesson6Part1WhatIsSql />
-      <Lesson6Part2HowSqlWorks />
-      <Lesson6Part3CommandFamilies />
-      <Lesson6Part5CreatingDbAndTables />
-      <Lesson6Part7ConstraintsSandbox />
-      <Lesson6Part8QueryWorkbench />
-      <Lesson6Part13UpdateDelete />
-      <Lesson6Part15AggregatesGroupBy />
-      <Lesson6Part17JoinsVisualizer />
-      <Lesson6Part18AlterDropTruncate />
+      <div id="l6-what-is-sql" className="scroll-mt-4"><Lesson6Part1WhatIsSql /></div>
+      <div id="l6-how-sql-works" className="scroll-mt-4"><Lesson6Part2HowSqlWorks /></div>
+      <div id="l6-command-families" className="scroll-mt-4"><Lesson6Part3CommandFamilies /></div>
+      <div id="l6-create-db-tables" className="scroll-mt-4"><Lesson6Part5CreatingDbAndTables /></div>
+      <div id="l6-constraints" className="scroll-mt-4"><Lesson6Part7ConstraintsSandbox /></div>
+      <div id="l6-select-basics" className="scroll-mt-4"><Lesson6SelectBasics /></div>
+      <div id="l6-update-delete" className="scroll-mt-4"><Lesson6Part13UpdateDelete /></div>
+      <div id="l6-aggregates" className="scroll-mt-4"><Lesson6Part15AggregatesGroupBy /></div>
+      <div id="l6-joins" className="scroll-mt-4"><Lesson6Part17JoinsVisualizer /></div>
+      <div id="l6-alter-drop-truncate" className="scroll-mt-4"><Lesson6Part18AlterDropTruncate /></div>
       <Lesson6Part19ProjectWalkthrough />
-      <Lesson6Part20InterviewPrep />
       <Lesson6Part22HomeworkCaseStudy />
+      <Lesson6Part20InterviewPrep />
       <Lesson6BottomNav onNavigate={onNavigate} />
     </div>
   );

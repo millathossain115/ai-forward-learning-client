@@ -34,84 +34,61 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
     'all' | 'degree' | 'cardinality' | 'tuple' | 'attribute' | 'domain'
   >('degree');
 
-  const [expandedExamQuestions, setExpandedExamQuestions] = useState<Record<number, boolean>>({
-    1: true,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false,
-    7: false,
-    8: false,
-  });
+  const [expandedExamQuestions, setExpandedExamQuestions] = useState<Record<number, boolean>>({});
 
   const toggleExamQuestion = (id: number) => {
     setExpandedExamQuestions((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const examQuestions = [
+  const interviewQuestions = [
     {
       id: 1,
-      qEn: 'Q1. Define a relation in database terms.',
-      qBn: 'প্রশ্ন ১: রিলেশনাল ডেটাবেসে রিলেশন (Relation) কাকে বলে?',
-      aEn: 'A relation is a two-dimensional mathematical structure consisting of named columns (attributes) and horizontal rows (tuples) representing data about a particular entity or subject.',
-      aBn: 'রিলেশন হলো একটি দ্বিমাত্রিক গাণিতিক টেবিল যা নামযুক্ত উলম্ব কলাম (অ্যাট্রিবিউট) এবং অনুভূমিক সারি (টাপল) নিয়ে গঠিত এবং কোনো নির্দিষ্ট বিষয় বা সত্তার তথ্য উপস্থাপন করে।',
+      qEn: 'Q1. Schema vs Instance: which changes on ALTER TABLE vs INSERT?',
+      qBn: 'প্রশ্ন ১: Schema বনাম Instance — ALTER TABLE এবং INSERT-এ কোনটি পরিবর্তিত হয়?',
+      aEn: 'ALTER TABLE modifies the Relational Schema (column definitions/constraints). INSERT, UPDATE, and DELETE modify the Relational Instance (the live rows) while the Schema stays unchanged.',
+      aBn: 'ALTER TABLE রিলেশনাল স্কিমা (কলাম বা কনস্ট্রেইন্ট) পরিবর্তন করে। আর INSERT, UPDATE ও DELETE স্কিমা অপরিবর্তিত রেখে কেবল রিলেশনাল ইনস্ট্যান্স (লাইভ সারি) পরিবর্তন করে।',
     },
     {
       id: 2,
-      qEn: 'Q2. What is a tuple?',
-      qBn: 'প্রশ্ন ২: টাপল (Tuple) কী?',
-      aEn: 'A tuple is a single row or record in a relational database table that contains specific values corresponding to each attribute in that relation.',
-      aBn: 'একটি রিলেশনাল টেবিলের প্রতিটি একক সারি বা রেকর্ডকে টাপল বলে। এটি ঐ সত্তার সকল বৈশিষ্ট্যের সুনির্দিষ্ট মান ধারণ করে।',
+      qEn: 'Q2. Why does WHERE Phone = NULL return 0 rows even when NULLs exist?',
+      qBn: 'প্রশ্ন ২: টেবিলে NULL মান থাকা সত্ত্বেও WHERE Phone = NULL কেন ০টি সারি ফেরত দেয়?',
+      aEn: 'Because NULL represents an unknown value, any comparison with "=" evaluates to UNKNOWN in SQL 3-valued logic (not TRUE). Always use WHERE Phone IS NULL or IS NOT NULL.',
+      aBn: 'NULL একটি অজানা মান হওয়ায় "=" দিয়ে তুলনা করলে SQL-এ ফলাফল UNKNOWN আসে (TRUE নয়)। তাই সর্বদা WHERE Phone IS NULL বা IS NOT NULL ব্যবহার করতে হয়।',
     },
     {
       id: 3,
-      qEn: 'Q3. What is an attribute?',
-      qBn: 'প্রশ্ন ৩: অ্যাট্রিবিউট (Attribute) বলতে কী বোঝায়?',
-      aEn: 'An attribute is a named property, characteristic, or field of an entity, represented by a column in a relational table.',
-      aBn: 'অ্যাট্রিবিউট হলো কোনো এনটিটি বা সত্তার নামযুক্ত সুনির্দিষ্ট বৈশিষ্ট্য বা ফিল্ড, যা রিলেশনাল টেবিলে উলম্ব কলাম আকারে থাকে।',
+      qEn: 'Q3. How does NULL behave differently from 0 or "" in AVG() and COUNT()?',
+      qBn: 'প্রশ্ন ৩: AVG() এবং COUNT()-এ NULL, 0 এবং ""-এর আচরণ কীভাবে আলাদা?',
+      aEn: 'COUNT(*) counts all rows including NULLs, whereas COUNT(col) and AVG(col) skip NULLs completely. Numeric 0 is included in AVG() denominator, and "" counts as a non-NULL string (except in Oracle).',
+      aBn: 'COUNT(*) NULL-সহ সব সারি গুনে, কিন্তু COUNT(col) ও AVG(col) NULL-কে সম্পূর্ণ বাদ দেয়। অন্যদিকে ০ সংখ্যাটি AVG()-এর হিসাবে যুক্ত হয় এবং "" নন-নাল স্ট্রিং হিসেবে গণ্য হয় (Oracle ব্যতীত)।',
     },
     {
       id: 4,
-      qEn: 'Q4. Define domain in relational databases.',
-      qBn: 'প্রশ্ন ৪: রিলেশনাল ডেটাবেসে ডোমেইন (Domain) বলতে কী বোঝায়?',
-      aEn: 'A domain is the set of all permissible, valid atomic values that an attribute is allowed to hold (e.g. CGPA domain: 0.00 to 4.00; Age: positive integers).',
-      aBn: 'ডোমেইন হলো কোনো নির্দিষ্ট অ্যাট্রিবিউটের জন্য গ্রহণযোগ্য বা অনুমোদিত বৈধ ও অবিভাজ্য মানের সেট (যেমন: সিজিপিএ ডোমেইন: ০.০০ থেকে ৪.০০; বয়স: ধনাত্মক পূর্ণসংখ্যা)।',
+      qEn: 'Q4. If you run DELETE FROM Students, what happens to Degree and Cardinality?',
+      qBn: 'প্রশ্ন ৪: DELETE FROM Students চালালে টেবিলের Degree এবং Cardinality-তে কী পরিবর্তন হয়?',
+      aEn: 'Cardinality drops to 0 because all tuples (rows) are removed. Degree stays unchanged (e.g., 5) because the table attributes (columns) defined in the Schema remain intact.',
+      aBn: 'সব সারি মুছে যাওয়ায় Cardinality ০ হয়ে যায়। কিন্তু স্কিমার কলামগুলো অক্ষুণ্ণ থাকায় Degree অপরিবর্তিত থাকে।',
     },
     {
       id: 5,
-      qEn: 'Q5. What is a relational schema?',
-      qBn: 'প্রশ্ন ৫: রিলেশনাল স্কিমা (Relational Schema) কী?',
-      aEn: 'A relational schema defines the logical blueprint or design of a relation, specifying its relation name, attribute names, data types, and integrity constraints without any actual data records.',
-      aBn: 'রিলেশনাল স্কিমা হলো কোনো টেবিলের যৌক্তিক নকশা বা ব্লুপ্রিন্ট, যা টেবিলের নাম, কলামসমূহের নাম, তাদের ডেটা টাইপ ও শর্ত নির্ধারণ করে, যাতে কোনো বাস্তব ডেটা থাকে না।',
+      qEn: 'Q5. What is an Atomic Value (1NF), and why are comma-separated values in a cell bad?',
+      qBn: 'প্রশ্ন ৫: Atomic Value (1NF) কী এবং এক ঘরে কমা-দিয়ে একাধিক মান রাখা কেন ক্ষতিকর?',
+      aEn: 'Atomic means indivisible (one value per cell). Storing "0171, 0182" in one cell violates 1NF, breaks indexing, prevents foreign key joins, and forces slow string pattern matching.',
+      aBn: 'Atomic অর্থ অবিভাজ্য (প্রতি ঘরে একটিমাত্র মান)। এক ঘরে "0171, 0182" রাখলে 1NF ভঙ্গ হয়, ইনডেক্সিং ও জয়েন কাজ করে না এবং সার্চ ধীর হয়ে যায়।',
     },
     {
       id: 6,
-      qEn: 'Q6. Differentiate between relational schema and relational instance.',
-      qBn: 'প্রশ্ন ৬: রিলেশনাল স্কিমা ও রিলেশনাল ইনস্ট্যান্সের মধ্যকার মূল পার্থক্য লিখুন।',
-      aEn: 'Schema is the static structural design (like a blank application form) that changes very rarely. Instance is the actual snapshot of records stored in the relation at a given moment in time (like completed forms), which changes frequently.',
-      aBn: 'স্কিমা হলো টেবিলের স্থায়ী কাঠামোগত ব্লুপ্রিন্ট (যেমন: খালি আবেদনপত্র) যা কদাচিৎ পরিবর্তিত হয়। আর ইনস্ট্যান্স হলো নির্দিষ্ট মুহূর্তে টেবিলে রক্ষিত বাস্তব ডেটার স্ন্যাপশট (যেমন: পূরণ করা আবেদনপত্র), যা ডেটা যোগ বা পরিবর্তনের সাথে প্রতিনিয়ত পরিবর্তিত হয়।',
-    },
-    {
-      id: 7,
-      qEn: 'Q7. What is degree of a relation?',
-      qBn: 'প্রশ্ন ৭: একটি রিলেশনের ডিগ্রি (Degree / Arity) কী?',
-      aEn: 'Degree (also called arity) is the total number of attributes (columns) present in a relation.',
-      aBn: 'একটি রিলেশন বা টেবিলে মোট যতগুলো কলাম বা অ্যাট্রিবিউট থাকে, তাকে ঐ রিলেশনের ডিগ্রি (Degree) বা অ্যারাইটি (Arity) বলে।',
-    },
-    {
-      id: 8,
-      qEn: 'Q8. What is cardinality of a relation?',
-      qBn: 'প্রশ্ন ৮: একটি রিলেশনের কার্ডিনালিটি (Cardinality) কী?',
-      aEn: 'Cardinality is the total number of tuples (rows) currently stored in a relation.',
-      aBn: 'একটি রিলেশন বা টেবিলে নির্দিষ্ট সময়ে মোট যতগুলো রেকর্ড বা সারি জমা থাকে, তাকে তার কার্ডিনালিটি (Cardinality) বলে।',
+      qEn: 'Q6. Why are duplicate tuples disallowed in the Relational Model, and how do DBMSs enforce it?',
+      qBn: 'প্রশ্ন ৬: রিলেশনাল মডেলে ডুপ্লিকেট টাপল নিষিদ্ধ কেন এবং বাস্তব DBMS কীভাবে এটি নিশ্চিত করে?',
+      aEn: 'In E.F. Codd’s set theory, a relation is a mathematical set (no duplicate elements, order-independent). Real SQL tables enforce uniqueness using a PRIMARY KEY or UNIQUE constraint.',
+      aBn: 'ই. এফ. কডের সেট থিওরি অনুযায়ী রিলেশন একটি সেট, যেখানে ডুপ্লিকেট উপাদান থাকে না। বাস্তব DBMS-এ PRIMARY KEY বা UNIQUE কনস্ট্রেইন্ট দিয়ে এটি নিশ্চিত করা হয়।',
     },
   ];
 
   return (
     <div className="space-y-10">
       {/* ========================================================
-          PART 12: LET'S PUT EVERYTHING TOGETHER (MASTER VOCAB)
+          PART 8: LET'S PUT EVERYTHING TOGETHER (MASTER VOCAB)
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -120,7 +97,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-              {language === 'bn' ? 'পর্ব ১২ / ১৩' : 'Part 12 of 13'}
+              {language === 'bn' ? 'পর্ব ৮ / ৯' : 'Part 8 of 9'}
             </span>
             <h2 className="text-xl font-bold text-white mt-1">
               <DualText
@@ -385,7 +362,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
       </section>
 
       {/* ========================================================
-          PART 13: UNIVERSITY EXAM PREPARATION (Q&A STUDY GUIDE)
+          PART 9: SELECTIVE INTERVIEW QUESTIONS ONLY
          ======================================================== */}
       <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
@@ -394,12 +371,12 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
-              {language === 'bn' ? 'পর্ব ১৩ / ১৩' : 'Part 13 of 13'}
+              {language === 'bn' ? 'পর্ব ৯ / ৯ • বাছাইকৃত ইন্টারভিউ প্রশ্নোত্তর' : 'Part 9 of 9 • Selective Interview Q&A'}
             </span>
             <h2 className="text-xl font-bold text-white mt-1">
               <DualText
-                en="University Exam Preparation (Short & Long Q&A)"
-                bn="বিশ্ববিদ্যালয় পরীক্ষার প্রশ্নোত্তর ও প্রস্তুতি গাইড"
+                en="Selective Interview Questions (Relational Model)"
+                bn="বাছাইকৃত ইন্টারভিউ প্রশ্নোত্তর (রিলেশনাল মডেল)"
               />
             </h2>
           </div>
@@ -407,14 +384,14 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
 
         <div className="text-xs text-zinc-400 font-sans">
           <DualText
-            en="Click on each question to review the concise, high-scoring university examination answers:"
-            bn="পরীক্ষায় সর্বোচ্চ নম্বর পাওয়ার উপযোগী সংক্ষিপ্ত ও নির্ভুল উত্তর দেখতে প্রতিটি প্রশ্নে ক্লিক করুন:"
+            en="Click any question below to reveal the concise interview answer:"
+            bn="উত্তর দেখতে নিচের যেকোনো প্রশ্নে ক্লিক করুন:"
           />
         </div>
 
-        {/* 8 Short Exam Questions Accordion */}
+        {/* 6 Selective Interview Questions Accordion (All closed by default) */}
         <div className="space-y-3">
-          {examQuestions.map((item) => {
+          {interviewQuestions.map((item) => {
             const isExpanded = expandedExamQuestions[item.id];
 
             return (
@@ -446,38 +423,6 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
               </div>
             );
           })}
-        </div>
-
-        {/* Descriptive Exam Topics Box */}
-        <div className="p-4 rounded-xl bg-[#14182e] border border-slate-800 space-y-2 text-xs font-sans">
-          <span className="font-bold text-amber-300 font-mono uppercase block">
-            <DualText
-              en="Long Descriptive Questions to Practice for Exams (5–10 Marks):"
-              bn="পরীক্ষার জন্য বড় বর্ণনামূলক প্রশ্নসমূহ (৫–১০ নম্বর):"
-            />
-          </span>
-          <ul className="list-disc list-inside text-zinc-300 space-y-1 text-[11px] leading-relaxed">
-            <li>
-              {language === 'bn'
-                ? 'একটি উপযুক্ত বিশ্ববিদ্যালয়ের উদাহরণসহ রিলেশনাল ডেটাবেস মডেল ব্যাখ্যা করুন।'
-                : 'Explain the relational database model with a suitable university example.'}
-            </li>
-            <li>
-              {language === 'bn'
-                ? 'বাস্তব জীবনের উদাহরণসহ রিলেশন, টাপল এবং অ্যাট্রিবিউটের মধ্যকার পার্থক্য বর্ণনা করুন।'
-                : 'Differentiate between relation, tuple, and attribute with real-world scenarios.'}
-            </li>
-            <li>
-              {language === 'bn'
-                ? 'একটি আদর্শ রিলেশনাল টেবিলের ৭টি মৌলিক বৈশিষ্ট্য বিস্তারিত লিখুন।'
-                : 'Explain the 7 core properties of a relational table.'}
-            </li>
-            <li>
-              {language === 'bn'
-                ? 'NULL কী? NULL, শূন্য (০) এবং ফাঁকা স্ট্রিং (“”)-এর মধ্যে পার্থক্য স্পষ্টভাবে ব্যাখ্যা করুন।'
-                : 'What is NULL? Differentiate clearly between NULL, zero (0), and empty string (“”).'}
-            </li>
-          </ul>
         </div>
 
         {/* Bottom Roadmap Bridge Navigation */}

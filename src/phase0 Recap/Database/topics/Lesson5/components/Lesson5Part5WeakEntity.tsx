@@ -60,12 +60,12 @@ export default function Lesson5Part5WeakEntity() {
         </div>
         <div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-bold">
-            {language === 'bn' ? 'পার্ট ৮ • স্ট্রং ও উইক এনটিটি' : 'Part 8 • Strong & Weak Entities'}
+            {language === 'bn' ? 'পার্ট ৬ • স্ট্রং ও উইক এনটিটি' : 'Part 6 • Strong & Weak Entities'}
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
             <DualText
-              en="8. Strong Entity and Weak Entity (পরীক্ষার জন্য অত্যন্ত গুরুত্বপূর্ণ)"
-              bn="৮. স্ট্রং এনটিটি এবং উইক এনটিটি (Strong vs Weak Entity)"
+              en="6. Strong Entity and Weak Entity"
+              bn="৬. স্ট্রং এনটিটি এবং উইক এনটিটি (Strong vs Weak Entity)"
             />
           </h2>
         </div>

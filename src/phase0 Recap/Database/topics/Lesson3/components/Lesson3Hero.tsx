@@ -35,7 +35,7 @@ export default function Lesson3Hero({ onNavigate }: Lesson3HeroProps) {
       </div>
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div className="space-y-3 max-w-2xl">
+        <div className="space-y-3 flex-1">
           <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
             <DualText
               en="Lesson 3: Introduction to Relational Databases"

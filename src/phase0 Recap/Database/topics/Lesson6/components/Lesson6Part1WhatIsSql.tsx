@@ -22,7 +22,7 @@ export default function Lesson6Part1WhatIsSql() {
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ১ • এসকিউএল পরিচিতি' : 'Part 1 of 21'}
+              {language === 'bn' ? 'পার্ট ১ • এসকিউএল পরিচিতি' : 'Part 1 of 13'}
             </span>
             <h2 className="text-xl font-bold text-white mt-1">
               <DualText

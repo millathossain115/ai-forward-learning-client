@@ -26,12 +26,12 @@ export default function Lesson6Part7ConstraintsSandbox() {
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ৭ • কনস্ট্রেইন্টস ও ইন্টিগ্রিটি রুলস' : 'Part 7 of 20'}
+              {language === 'bn' ? 'পার্ট ৫ • কনস্ট্রেইন্টস ও ইন্টিগ্রিটি রুলস' : 'Part 5 of 13'}
             </span>
             <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
               <DualText
                 en="SQL Constraints & Integrity Rules Sandbox"
-                bn="৭. এসকিউএল কনস্ট্রেইন্টস ও ডেটা ইন্টিগ্রিটি স্যান্ডবক্স"
+                bn="৫. এসকিউএল কনস্ট্রেইন্টস ও ডেটা ইন্টিগ্রিটি স্যান্ডবক্স"
               />
             </h2>
           </div>

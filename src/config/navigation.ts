@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 
 export type TopicId =
+  | 'dsa-directory'
   | 'foundations'
   | 'array'
   | 'linkedlist'
@@ -70,9 +71,6 @@ export type TopicId =
   | 'backend-lesson16'
   | 'backend-lesson17'
   | 'backend-lesson18'
-  | 'backend-sql'
-  | 'backend-indexing'
-  | 'backend-pgvector'
   | 'ai-llm'
   | 'ai-rag'
   | 'ai-mcp'
@@ -106,7 +104,8 @@ export const NAV_SECTIONS: NavSection[] = [
     title: '0. Foundations & Roadmap',
     phase: 'Phase 0 • Foundations',
     items: [
-      { id: 'foundations', label: '0. DSA & Systems Foundations', icon: BookOpen, status: 'ready', tag: 'Core Roadmap' },
+      { id: 'dsa-directory', label: '0. DSA & Algorithms Directory', icon: Binary, status: 'ready', tag: 'Directory' },
+      { id: 'foundations', label: '0.1 DSA & Systems Foundations', icon: BookOpen, status: 'ready', tag: 'Core Roadmap' },
     ],
   },
   {
@@ -163,7 +162,7 @@ export const NAV_SECTIONS: NavSection[] = [
     title: '4. Database & Systems',
     phase: 'Phase 1 • Data Core',
     items: [
-      { id: 'backend-basics', label: '0. Database 101: Zero to Hero', icon: Table, status: 'ready', tag: 'Foundations' },
+      { id: 'backend-basics', label: '0. Database & DBMS Directory', icon: Database, status: 'ready', tag: 'Directory' },
       { id: 'backend-lesson1', label: '1. Lesson 1: Data, Information, DB & DBMS', icon: BookOpen, status: 'ready', tag: 'Beginner' },
       { id: 'backend-lesson2', label: '2. Lesson 2: Database Models & Types', icon: Layers, status: 'ready', tag: 'Models' },
       { id: 'backend-lesson3', label: '3. Lesson 3: Relational Database Model', icon: Table, status: 'ready', tag: 'Relations' },
@@ -182,9 +181,6 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'backend-lesson16', label: '16. Lesson 16: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: 'Fragmentation, 2PC & CAP' },
       { id: 'backend-lesson17', label: '17. Lesson 17: Data Warehousing & Data Mining', icon: Layers, status: 'ready', tag: 'ETL, OLAP & KDD' },
       { id: 'backend-lesson18', label: '18. Lesson 18: Complete DBMS Revision & Mock Exam', icon: GraduationCap, status: 'ready', tag: 'Final Review & 60-Mark Exam' },
-      { id: 'backend-sql', label: '19. SQL & Query Planner', icon: Database, status: 'ready', tag: 'EXPLAIN' },
-      { id: 'backend-indexing', label: '20. B-Tree Index Benchmarks', icon: Table, status: 'ready', tag: 'O(log N)' },
-      { id: 'backend-pgvector', label: '21. pgvector & Embeddings', icon: Cpu, status: 'ready', tag: 'HNSW' },
     ],
   },
   {

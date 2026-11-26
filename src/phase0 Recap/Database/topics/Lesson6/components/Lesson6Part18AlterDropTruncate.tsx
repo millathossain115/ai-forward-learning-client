@@ -22,7 +22,7 @@ export default function Lesson6Part18AlterDropTruncate() {
           </div>
           <div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ১৮ • অল্টার, ড্রপ ও ট্রাঙ্কেট তুলনা' : 'Part 18 of 21'}
+              {language === 'bn' ? 'পার্ট ১০ • অল্টার, ড্রপ ও ট্রাঙ্কেট তুলনা' : 'Part 10 of 13'}
             </span>
             <h2 className="text-xl font-bold text-white mt-1">
               <DualText
