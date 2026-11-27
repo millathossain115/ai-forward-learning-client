@@ -15,16 +15,16 @@ export default function Lesson7WindowAndBestPractices() {
   return (
     <>
       {/* PART 14: WINDOW FUNCTIONS */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
-            <Sparkles className="w-6 h-6" />
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <Sparkles className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
+            <span className="text-[11px] font-mono text-zinc-400">
               {language === 'bn' ? 'পার্ট ১৪ • উইন্ডো ফাংশন' : 'Part 14 • Window Functions'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
               <DualText
                 as="span"
                 en="Window Functions: OVER, PARTITION BY, RANK & DENSE_RANK"
@@ -36,28 +36,28 @@ export default function Lesson7WindowAndBestPractices() {
 
         <DualText
           as="p"
-          className="text-xs text-zinc-300 leading-relaxed font-sans"
-          en="Unlike GROUP BY (which collapses multiple rows into one summary row), Window Functions compute aggregates across related rows while preserving every individual row!"
-          bn="GROUP BY যেমন একাধিক সারিকে ভেঙে একটি সামারি সারিতে পরিণত করে, Window Functions তা করে না—বরং প্রতিটি ব্যক্তিগত সারি অক্ষুণ্ণ রেখেই গ্রুপভিত্তিক হিসাব দেখায়!"
+          className="text-xs text-zinc-400 leading-relaxed font-sans"
+          en="Unlike GROUP BY (which collapses multiple rows into one summary row), Window Functions compute aggregates across related rows while preserving every individual row."
+          bn="GROUP BY যেমন একাধিক সারিকে ভেঙে একটি সামারি সারিতে পরিণত করে, Window Functions তা করে না—বরং প্রতিটি ব্যক্তিগত সারি অক্ষুণ্ণ রেখেই গ্রুপভিত্তিক হিসাব দেখায়।"
         />
 
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setWindowDemoMode('window')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium cursor-pointer transition-colors ${
               windowDemoMode === 'window'
-                ? 'bg-purple-600 text-white '
-                : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+                ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40'
+                : 'bg-[#131824] text-zinc-400 hover:text-zinc-100 border border-white/[0.08]'
             }`}
           >
             Window: OVER (PARTITION BY Department)
           </button>
           <button
             onClick={() => setWindowDemoMode('groupby')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium cursor-pointer transition-colors ${
               windowDemoMode === 'groupby'
-                ? 'bg-amber-600 text-white '
-                : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+                ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40'
+                : 'bg-[#131824] text-zinc-400 hover:text-zinc-100 border border-white/[0.08]'
             }`}
           >
             Traditional GROUP BY Department
@@ -304,65 +304,65 @@ FROM Students;`}
         </div>
       </section>
 
-      {/* PART 15: SQL PERFORMANCE & PRODUCTION BEST PRACTICES */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            <ShieldCheck className="w-6 h-6" />
+      {/* PART 15: SQL QUERY PERFORMANCE & OPTIMIZATION */}
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <ShieldCheck className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ১৫ • প্রোডাকশন বেস্ট প্র্যাকটিস' : 'Part 15 • Performance & Best Practices'}
+            <span className="text-[11px] font-mono text-zinc-400">
+              {language === 'bn' ? 'পার্ট ১৫ • কুয়েরি পারফরম্যান্স ও অপটিমাইজেশন' : 'Part 15 • Query Performance & Optimization'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
-              <DualText as="span" en="SQL Performance & Production Best Practices" bn="SQL পারফরম্যান্স ও প্রোডাকশন বেস্ট প্র্যাকটিস" />
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
+              <DualText as="span" en="SQL Query Performance & Optimization" bn="SQL কুয়েরি পারফরম্যান্স ও অপটিমাইজেশন" />
             </h2>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-2">
-            <span className="text-xs font-mono font-bold text-cyan-400">
-              <DualText as="span" en="1. Avoid SELECT * in Production APIs" bn="১. প্রোডাকশন API-তে SELECT * এড়িয়ে চলুন" />
+          <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-2">
+            <span className="text-xs font-mono font-medium text-cyan-300">
+              <DualText as="span" en="1. Avoid SELECT * in Production Queries" bn="১. প্রোডাকশন কুয়েরিতে SELECT * এড়িয়ে চলুন" />
             </span>
             <DualText
               as="p"
-              className="text-xs text-zinc-300 font-sans"
-              en="Fetching unnecessary columns wastes network bandwidth and memory. Always specify only required columns."
-              bn="অপ্রয়োজনীয় কলাম আনলে নেটওয়ার্ক ব্যান্ডউইথ ও সার্ভার মেমোরি নষ্ট হয়। সর্বদা নির্দিষ্ট কলাম উল্লেখ করুন।"
+              className="text-xs text-zinc-400 font-sans leading-relaxed"
+              en="Fetching unnecessary columns wastes network bandwidth, blocks covering indexes, and slows down sorting."
+              bn="অপ্রয়োজনীয় কলাম আনলে নেটওয়ার্ক ব্যান্ডউইথ নষ্ট হয় এবং সর্টিং ধীর হয়ে যায়।"
             />
           </div>
-          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-2">
-            <span className="text-xs font-mono font-bold text-cyan-400">
-              <DualText as="span" en="2. Meaningful Table Aliases" bn="২. অর্থবহ টেবিল Alias ব্যবহার" />
+          <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-2">
+            <span className="text-xs font-mono font-medium text-cyan-300">
+              <DualText as="span" en="2. Keep WHERE Predicates Sargable" bn="২. WHERE শর্ত Sargable রাখুন" />
             </span>
             <DualText
               as="p"
-              className="text-xs text-zinc-300 font-sans"
-              en="Use clean short aliases (Students S, Enrollments E) so multi-table joins stay readable."
-              bn="সংক্ষিপ্ত ও পরিষ্কার Alias (Students S, Enrollments E) ব্যবহার করলে জটিল জয়েন সহজে পড়া যায়।"
+              className="text-xs text-zinc-400 font-sans leading-relaxed"
+              en="Avoid wrapping indexed columns in functions like YEAR(Admission_Date) = 2024; use range checks (>= '2024-01-01') instead."
+              bn="WHERE-এ কলামের ওপর ফাংশন (যেমন YEAR(col) = 2024) না বসিয়ে রেঞ্জ তুলনা (>= '2024-01-01') ব্যবহার করুন।"
             />
           </div>
-          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-2">
-            <span className="text-xs font-mono font-bold text-cyan-400">
-              <DualText as="span" en="3. Strategic Indexing (B-Tree)" bn="৩. কৌশলগত ইনডেক্সিং (B-Tree)" />
+          <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-2">
+            <span className="text-xs font-mono font-medium text-cyan-300">
+              <DualText as="span" en="3. Prefer EXISTS & UNION ALL" bn="৩. EXISTS ও UNION ALL অগ্রাধিকার দিন" />
             </span>
             <DualText
               as="p"
-              className="text-xs text-zinc-300 font-sans"
-              en="Index foreign keys and columns frequently used in WHERE and JOIN ON. Too many indexes slow down INSERT/UPDATE."
-              bn="WHERE ও JOIN ON-এ ব্যবহৃত কলাম ও Foreign Key ইনডেক্স করুন। তবে অতিরিক্ত ইনডেক্স INSERT/UPDATE ধীর করে দেয়।"
+              className="text-xs text-zinc-400 font-sans leading-relaxed"
+              en="EXISTS short-circuits on the first match and is NULL-safe; UNION ALL skips expensive duplicate sorting when rows are already distinct."
+              bn="EXISTS প্রথম মিল পেলেই থামে এবং NULL-নিরাপদ; ডুপ্লিকেট না থাকলে UNION ALL অযথা সর্টিং এড়ায়।"
             />
           </div>
-          <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-2">
-            <span className="text-xs font-mono font-bold text-cyan-400">
-              <DualText as="span" en="4. Parameterized Queries (Anti-SQLi)" bn="৪. প্যারামিটারাইজড কুয়েরি (SQL Injection প্রতিরোধ)" />
+          <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-2">
+            <span className="text-xs font-mono font-medium text-cyan-300">
+              <DualText as="span" en="4. Replace Deep Subqueries with CTEs" bn="৪. জটিল Subquery-র বদলে CTE ব্যবহার" />
             </span>
             <DualText
               as="p"
-              className="text-xs text-zinc-300 font-sans"
-              en="Never concatenate user input directly into SQL strings. Always use prepared statements to prevent SQL Injection."
-              bn="ইউজার ইনপুট সরাসরি SQL স্ট্রিংয়ে যোগ করবেন না। SQL Injection ঠেকাতে সর্বদা prepared statement ব্যবহার করুন।"
+              className="text-xs text-zinc-400 font-sans leading-relaxed"
+              en="Break multi-step analytics into named WITH blocks and clear table aliases (S, C, E) so queries stay readable and debuggable."
+              bn="একাধিক ধাপের কুয়েরিকে WITH ব্লক ও পরিষ্কার Alias (S, C, E) দিয়ে ভাগ করলে ডিবাগ করা সহজ হয়।"
             />
           </div>
         </div>

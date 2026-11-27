@@ -10,32 +10,32 @@ export default function Lesson8Part1WhatIsNorm() {
   const [normalizationView, setNormalizationView] = useState<'unnormalized' | 'normalized'>('unnormalized');
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-          <Minimize2 className="w-6 h-6" />
+    <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+        <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+          <Minimize2 className="w-4 h-4 stroke-[1.5]" />
         </div>
         <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
+          <span className="text-[11px] font-mono text-zinc-400">
             {language === 'bn' ? 'পার্ট ১ • নরমালাইজেশন পরিচিতি' : 'Part 1 of 8'}
           </span>
-          <h2 className="text-xl font-bold text-white mt-1">
+          <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
             <DualText as="span" en="What is Database Normalization?" bn="১. ডেটাবেস নরমালাইজেশন কী?" />
           </h2>
         </div>
       </div>
 
-      <div className="p-4 rounded-xl bg-[#14182d] border border-slate-700/60 space-y-2">
-        <span className="text-xs font-mono font-bold text-cyan-300 uppercase">
-          <DualText as="span" en="Formal Definition" bn="মূল সংজ্ঞা" />
+      <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-2">
+        <span className="text-xs font-mono font-medium text-cyan-300">
+          <DualText as="span" en="Formal definition" bn="মূল সংজ্ঞা" />
         </span>
         <DualText
           as="p"
           className="text-xs text-zinc-300 leading-relaxed font-sans"
-          en={<><strong className="text-white">Database Normalization</strong> is the systematic process of organizing and decomposing relational tables to <strong>eliminate data redundancy</strong> and prevent <strong>insertion, update, and deletion anomalies</strong> while maintaining data integrity.</>}
-          bn={<><strong className="text-white">ডেটাবেস নরমালাইজেশন</strong> হলো রিলেশনাল টেবিলগুলোকে সুশৃঙ্খলভাবে ছোট টেবিলে ভাগ করার প্রক্রিয়া, যা <strong>ডেটা ডুপ্লিকেসি দূর করে</strong> এবং <strong>Insertion, Update ও Deletion অ্যানোমালি</strong> প্রতিরোধ করে।</>}
+          en={<><strong className="text-zinc-100 font-medium">Database Normalization</strong> is the systematic process of organizing and decomposing relational tables to <strong className="text-zinc-100 font-medium">eliminate data redundancy</strong> and prevent <strong className="text-zinc-100 font-medium">insertion, update, and deletion anomalies</strong> while maintaining data integrity.</>}
+          bn={<><strong className="text-zinc-100 font-medium">ডেটাবেস নরমালাইজেশন</strong> হলো রিলেশনাল টেবিলগুলোকে সুশৃঙ্খলভাবে ছোট টেবিলে ভাগ করার প্রক্রিয়া, যা <strong className="text-zinc-100 font-medium">ডেটা ডুপ্লিকেসি দূর করে</strong> এবং <strong className="text-zinc-100 font-medium">Insertion, Update ও Deletion অ্যানোমালি</strong> প্রতিরোধ করে।</>}
         />
-        <blockquote className="p-3 bg-black/40 border-l-2 border-indigo-400 rounded text-xs text-indigo-200 italic font-sans mt-2">
+        <blockquote className="p-3 bg-[#0a0d14] border-l-2 border-cyan-500/60 rounded text-xs text-zinc-300 font-sans mt-2">
           <DualText
             as="span"
             en='"Divide large, poorly organized tables into smaller, well-organized tables and link them losslessly using Primary and Foreign Keys."'
@@ -47,30 +47,30 @@ export default function Lesson8Part1WhatIsNorm() {
       {/* Before vs After View Switcher */}
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <span className="text-xs font-mono font-bold text-slate-300 uppercase">
+          <span className="text-xs font-mono font-medium text-zinc-300">
             <DualText
               as="span"
-              en="Visualizing Normalization: Monolithic vs Decomposed Tables"
+              en="Visualizing normalization: Monolithic vs Decomposed tables"
               bn="ভিজ্যুয়ালাইজেশন: অপরিকল্পিত বনাম নরমালাইজড টেবিল"
             />
           </span>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setNormalizationView('unnormalized')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium cursor-pointer transition-colors ${
                 normalizationView === 'unnormalized'
-                  ? 'bg-rose-600 text-white '
-                  : 'bg-slate-800 text-zinc-400 hover:text-white'
+                  ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40'
+                  : 'bg-[#131824] text-zinc-400 hover:text-zinc-100 border border-white/[0.08]'
               }`}
             >
               {language === 'bn' ? '১. অপরিকল্পিত (Unnormalized)' : '1. Unnormalized'}
             </button>
             <button
               onClick={() => setNormalizationView('normalized')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium cursor-pointer transition-colors ${
                 normalizationView === 'normalized'
-                  ? 'bg-emerald-600 text-white '
-                  : 'bg-slate-800 text-zinc-400 hover:text-white'
+                  ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40'
+                  : 'bg-[#131824] text-zinc-400 hover:text-zinc-100 border border-white/[0.08]'
               }`}
             >
               {language === 'bn' ? '২. নরমালাইজড (৩টি ক্লিন টেবিল)' : '2. Normalized (3 Clean Tables)'}

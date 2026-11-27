@@ -72,16 +72,16 @@ export default function Lesson7PracticeLab() {
   };
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-5">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-          <Code className="w-6 h-6" />
+    <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+        <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+          <Code className="w-4 h-4 stroke-[1.5]" />
         </div>
         <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-            {language === 'bn' ? 'পার্ট ১৫.৫ • অ্যাডভান্সড প্র্যাকটিস ল্যাব' : 'Practice Lab • Real-World Queries'}
+          <span className="text-[11px] font-mono text-zinc-400">
+            {language === 'bn' ? 'পার্ট ১৬ • অ্যাডভান্সড প্র্যাকটিস ল্যাব' : 'Part 16 • Practice Lab'}
           </span>
-          <h2 className="text-xl font-bold text-white mt-1">
+          <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
             <DualText
               as="span"
               en="Advanced SQL Practice Lab (University Schema)"
@@ -95,22 +95,22 @@ export default function Lesson7PracticeLab() {
         {PRACTICE_PROBLEMS.map((prob) => (
           <div
             key={prob.num}
-            className="p-4 rounded-xl bg-[#14182d] border border-slate-800 space-y-2.5 flex flex-col justify-between"
+            className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-2.5 flex flex-col justify-between"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1">
-                <span className="inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold">
+                <span className="inline-block text-[11px] font-mono text-zinc-400">
                   #{prob.num} • {prob.tag}
                 </span>
-                <p className="text-xs font-bold text-white font-sans leading-snug">
+                <p className="text-xs font-medium text-zinc-100 font-sans leading-snug">
                   <DualText as="span" en={prob.en} bn={prob.bn} />
                 </p>
               </div>
               <button
                 onClick={() => toggle(prob.num)}
-                className="px-2.5 py-1 rounded bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 border border-indigo-500/30 text-[11px] font-mono cursor-pointer flex items-center gap-1 shrink-0"
+                className="px-2.5 py-1 rounded-lg bg-white/[0.04] hover:bg-cyan-500/15 text-zinc-300 hover:text-cyan-300 border border-white/[0.08] text-[11px] font-mono cursor-pointer flex items-center gap-1 shrink-0 transition-colors"
               >
-                <Eye className="w-3.5 h-3.5" />
+                <Eye className="w-3.5 h-3.5 stroke-[1.5]" />
                 <span>{revealed[prob.num] ? (language === 'bn' ? 'লুকান' : 'Hide') : (language === 'bn' ? 'সমাধান' : 'Solution')}</span>
               </button>
             </div>

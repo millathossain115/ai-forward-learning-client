@@ -116,16 +116,16 @@ CROSS JOIN Sizes;`;
   return (
     <>
       {/* PART 11: ADVANCED JOIN PRACTICE (SELF JOIN & CROSS JOIN) */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
-            <GitMerge className="w-6 h-6" />
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <GitMerge className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
+            <span className="text-[11px] font-mono text-zinc-400">
               {language === 'bn' ? 'পার্ট ১১ • SELF ও CROSS JOIN' : 'Part 11 • SELF & CROSS JOIN'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
               <DualText
                 as="span"
                 en="Advanced JOIN Practice: SELF JOIN & CROSS JOIN"
@@ -135,8 +135,8 @@ CROSS JOIN Sizes;`;
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-700/60 space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono font-bold text-purple-400 uppercase">11.1 SELF JOIN (Hierarchy)</span>
               <button
@@ -180,6 +180,25 @@ CROSS JOIN Sizes;`;
             </pre>
           </div>
         </div>
+
+        <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-2.5">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs font-mono font-medium text-cyan-300">11.3 Anti-Join (LEFT JOIN ... WHERE IS NULL)</span>
+            <span className="text-[11px] font-mono text-zinc-400">Alternative to NOT EXISTS</span>
+          </div>
+          <DualText
+            as="p"
+            className="text-xs text-zinc-400 font-sans"
+            en="Find rows in the left table that have zero matches in the right table by filtering for NULL on the right primary key after a LEFT JOIN."
+            bn="LEFT JOIN করার পর ডান টেবিলের প্রাইমারি কি NULL কিনা ফিল্টার করে ডান টেবিলে মিল নেই এমন সারি খুঁজে বের করা যায়।"
+          />
+          <pre className="p-3 bg-black/60 rounded text-xs font-mono text-emerald-400 overflow-x-auto">
+{`SELECT S.Name
+FROM Students S
+LEFT JOIN Enrollments E ON S.Student_ID = E.Student_ID
+WHERE E.Student_ID IS NULL;`}
+          </pre>
+        </div>
       </section>
 
       {/* PART 12: SQL LOGICAL QUERY EXECUTION ORDER + CASE WHEN */}
@@ -210,8 +229,8 @@ CROSS JOIN Sizes;`;
           <DualText
             as="p"
             className="text-[11px] text-zinc-300 font-sans"
-            en="FROM and WHERE execute BEFORE SELECT runs. Click any step below to watch how the 6 Students rows shrink through the SQL pipeline:"
-            bn="SELECT চলার আগেই FROM এবং WHERE এক্সিকিউট হয়। নিচের যেকোনো ধাপে ক্লিক করে দেখুন ৬টি সারি কীভাবে ফিল্টার ও প্রসেস হয়:"
+            en="FROM and WHERE execute BEFORE SELECT runs. Window functions (OVER) run AFTER HAVING and BEFORE ORDER BY—which is why you cannot filter ROW_NUMBER() in WHERE and must wrap it in a CTE."
+            bn="SELECT চলার আগেই FROM এবং WHERE এক্সিকিউট হয়। আর Window Function (OVER) চলে HAVING-এর পরে ও ORDER BY-এর আগে—তাই WHERE-এ ROW_NUMBER() ব্যবহার করা যায় না, CTE দরকার হয়।"
           />
         </div>
 

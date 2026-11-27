@@ -10,16 +10,16 @@ export default function Lesson8Part4NormalForms() {
   const [activeNormalFormStep, setActiveNormalFormStep] = useState<'1NF' | '2NF' | '3NF' | 'BCNF'>('1NF');
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
-          <Layers className="w-6 h-6" />
+    <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+        <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+          <Layers className="w-4 h-4 stroke-[1.5]" />
         </div>
         <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
+          <span className="text-[11px] font-mono text-zinc-400">
             {language === 'bn' ? 'পার্ট ৪ • নরমাল ফর্মস (1NF - BCNF)' : 'Part 4 of 8'}
           </span>
-          <h2 className="text-xl font-bold text-white mt-1">
+          <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
             <DualText
               as="span"
               en="Step-by-Step Normal Forms: 1NF, 2NF, 3NF & BCNF"
@@ -41,18 +41,18 @@ export default function Lesson8Part4NormalForms() {
             onClick={() => setActiveNormalFormStep(nf.id)}
             className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
               activeNormalFormStep === nf.id
-                ? 'bg-purple-600/30 border-purple-400 text-white '
-                : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
+                ? 'bg-cyan-500/10 border-cyan-500/40 text-zinc-100'
+                : 'bg-[#131824] border-white/[0.08] text-zinc-400 hover:text-zinc-100'
             }`}
           >
-            <div className="text-xs font-mono font-bold text-cyan-300">{nf.id}</div>
-            <div className="text-xs font-bold text-white mt-0.5 font-sans">{language === 'bn' ? nf.labelBn : nf.labelEn}</div>
-            <div className="text-[10px] text-zinc-400 mt-0.5 font-sans">{language === 'bn' ? nf.ruleBn : nf.ruleEn}</div>
+            <div className="text-xs font-mono font-medium text-cyan-300">{nf.id}</div>
+            <div className="text-xs font-medium text-zinc-100 mt-0.5 font-sans">{language === 'bn' ? nf.labelBn : nf.labelEn}</div>
+            <div className="text-[11px] text-zinc-400 mt-0.5 font-sans">{language === 'bn' ? nf.ruleBn : nf.ruleEn}</div>
           </button>
         ))}
       </div>
 
-      <div className="p-6 rounded-2xl bg-[#14182d] border border-slate-700/60 space-y-4">
+      <div className="p-5 rounded-xl bg-[#131824] border border-white/[0.08] space-y-4">
         {activeNormalFormStep === '1NF' && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">

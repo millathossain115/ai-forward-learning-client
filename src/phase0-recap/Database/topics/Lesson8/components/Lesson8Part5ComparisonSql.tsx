@@ -48,16 +48,16 @@ export default function Lesson8Part5ComparisonSql() {
   return (
     <>
       {/* PART 5: CHEAT SHEET COMPARISON */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-            <Sparkles className="w-6 h-6" />
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <Sparkles className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
+            <span className="text-[11px] font-mono text-zinc-400">
               {language === 'bn' ? 'পার্ট ৫ • তুলনামূলক ছক' : 'Part 5 of 8'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
               <DualText
                 as="span"
                 en="Comparison: 1NF, 2NF, 3NF & BCNF Cheat Sheet"
@@ -67,9 +67,9 @@ export default function Lesson8Part5ComparisonSql() {
           </div>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border border-slate-800">
+        <div className="overflow-x-auto rounded-xl border border-white/[0.08]">
           <table className="w-full text-xs text-left">
-            <thead className="bg-[#14182d] text-zinc-300 font-mono border-b border-slate-800">
+            <thead className="bg-[#131824] text-zinc-300 font-mono border-b border-white/[0.08]">
               <tr>
                 <th className="py-2.5 px-3">Normal Form</th>
                 <th className="py-2.5 px-3">Primary Condition</th>

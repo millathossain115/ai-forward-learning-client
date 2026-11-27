@@ -11,26 +11,26 @@ export default function Lesson8Part2Anomalies() {
   const [anomalySimulated, setAnomalySimulated] = useState<boolean>(false);
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-2.5 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20">
-          <AlertOctagon className="w-6 h-6" />
+    <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+        <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+          <AlertOctagon className="w-4 h-4 stroke-[1.5]" />
         </div>
         <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/30 font-bold">
+          <span className="text-[11px] font-mono text-zinc-400">
             {language === 'bn' ? 'পার্ট ২ • ডেটাবেস অ্যানোমালি' : 'Part 2 of 8'}
           </span>
-          <h2 className="text-xl font-bold text-white mt-1">
-            <DualText as="span" en="The 3 Deadly Database Anomalies" bn="২. তিনটি মারাত্মক ডেটাবেস অ্যানোমালি" />
+          <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
+            <DualText as="span" en="The 3 Database Anomalies" bn="২. তিনটি প্রধান ডেটাবেস অ্যানোমালি" />
           </h2>
         </div>
       </div>
 
       <DualText
         as="p"
-        className="text-xs text-zinc-300 leading-relaxed font-sans"
-        en={<>An <strong className="text-white">anomaly</strong> is a fatal side-effect during insertion, update, or deletion in unnormalized tables. Select an anomaly below to simulate its failure:</>}
-        bn={<><strong className="text-white">অ্যানোমালি</strong> হলো অপরিকল্পিত টেবিলে ডেটা ইনসার্ট, আপডেট বা ডিলিট করার সময় সৃষ্ট মারাত্মক ত্রুটি। নিচে ক্লিক করে প্রতিটি ত্রুটি সিমুলেট করুন:</>}
+        className="text-xs text-zinc-400 leading-relaxed font-sans"
+        en={<>An <strong className="text-zinc-200 font-medium">anomaly</strong> is a side-effect during insertion, update, or deletion in unnormalized tables. Select an anomaly below to simulate its failure:</>}
+        bn={<><strong className="text-zinc-200 font-medium">অ্যানোমালি</strong> হলো অপরিকল্পিত টেবিলে ডেটা ইনসার্ট, আপডেট বা ডিলিট করার সময় সৃষ্ট ত্রুটি। নিচে ক্লিক করে প্রতিটি ত্রুটি সিমুলেট করুন:</>}
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -47,17 +47,17 @@ export default function Lesson8Part2Anomalies() {
             }}
             className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
               activeAnomaly === a.id
-                ? 'bg-rose-500/20 border-rose-400 text-white '
-                : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
+                ? 'bg-cyan-500/10 border-cyan-500/40 text-zinc-100'
+                : 'bg-[#131824] border-white/[0.08] text-zinc-400 hover:text-zinc-100'
             }`}
           >
-            <div className="text-xs font-mono font-bold">{language === 'bn' ? a.titleBn : a.titleEn}</div>
-            <div className="text-[10px] text-zinc-400 mt-0.5">{language === 'bn' ? a.descBn : a.descEn}</div>
+            <div className="text-xs font-mono font-medium">{language === 'bn' ? a.titleBn : a.titleEn}</div>
+            <div className="text-[11px] text-zinc-400 mt-0.5">{language === 'bn' ? a.descBn : a.descEn}</div>
           </button>
         ))}
       </div>
 
-      <div className="p-5 rounded-2xl bg-[#14182d] border border-rose-900/40 space-y-4">
+      <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-4">
         {activeAnomaly === 'insertion' && (
           <div className="space-y-3">
             <div className="flex items-center justify-between">

@@ -30,17 +30,17 @@ export default function Lesson8Part8InterviewNav({ onNavigate }: Lesson8Part8Int
   return (
     <>
       {/* PART 8: SELECTIVE INTERVIEW QUESTIONS */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-              <Briefcase className="w-6 h-6" />
+            <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+              <Briefcase className="w-4 h-4 stroke-[1.5]" />
             </div>
             <div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
+              <span className="text-[11px] font-mono text-zinc-400">
                 {language === 'bn' ? 'পার্ট ৮ • বাছাইকৃত ইন্টারভিউ প্রশ্নোত্তর' : 'Part 8 of 8 • Interview Prep'}
               </span>
-              <h2 className="text-xl font-bold text-white mt-1">
+              <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
                 <DualText
                   as="span"
                   en="Selective Technical Interview Questions (Normalization)"
@@ -53,35 +53,35 @@ export default function Lesson8Part8InterviewNav({ onNavigate }: Lesson8Part8Int
           <div className="flex items-center gap-2 self-start sm:self-auto">
             <button
               onClick={expandAll}
-              className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-[#131824] hover:bg-[#1a2130] text-zinc-300 text-xs font-mono border border-white/[0.08] cursor-pointer transition-colors"
             >
               {language === 'bn' ? 'সব প্রসারিত করুন' : 'Expand All'}
             </button>
             <button
               onClick={collapseAll}
-              className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-[#131824] hover:bg-[#1a2130] text-zinc-300 text-xs font-mono border border-white/[0.08] cursor-pointer transition-colors"
             >
               {language === 'bn' ? 'সব বন্ধ করুন' : 'Collapse All'}
             </button>
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {LESSON8_INTERVIEW_QA.map((item) => (
-            <div key={item.id} className="rounded-xl border border-slate-800 bg-[#14182d] overflow-hidden">
+            <div key={item.id} className="rounded-xl border border-white/[0.08] bg-[#131824] overflow-hidden">
               <button
                 onClick={() => toggleExamQ(item.id)}
-                className="w-full p-3.5 text-left flex items-center justify-between gap-2 text-xs font-bold text-white hover:text-cyan-300 transition-colors cursor-pointer"
+                className="w-full p-3.5 text-left flex items-center justify-between gap-2 text-xs font-medium text-zinc-100 hover:text-cyan-300 transition-colors cursor-pointer"
               >
                 <span>{language === 'bn' ? item.qBn : item.qEn}</span>
                 {openExamQ[item.id] ? (
-                  <ChevronUp className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <ChevronUp className="w-4 h-4 stroke-[1.5] text-cyan-400 shrink-0" />
                 ) : (
-                  <ChevronDown className="w-4 h-4 text-zinc-500 shrink-0" />
+                  <ChevronDown className="w-4 h-4 stroke-[1.5] text-zinc-500 shrink-0" />
                 )}
               </button>
               {openExamQ[item.id] && (
-                <div className="p-3.5 bg-slate-900/80 border-t border-slate-800 text-xs text-zinc-300 leading-relaxed font-sans">
+                <div className="p-3.5 bg-[#0a0d14] border-t border-white/[0.08] text-xs text-zinc-300 leading-relaxed font-sans">
                   {language === 'bn' ? item.aBn : item.aEn}
                 </div>
               )}
@@ -91,17 +91,17 @@ export default function Lesson8Part8InterviewNav({ onNavigate }: Lesson8Part8Int
       </section>
 
       {/* BOTTOM NAVIGATION BRIDGE */}
-      <div className="p-6 rounded-2xl bg-[#15171e] border border-indigo-500/40 space-y-3">
+      <div className="p-6 rounded-2xl bg-[#0d1117] border border-white/[0.08] space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-indigo-400 font-bold">
+          <span className="text-xs font-mono text-zinc-400">
             <DualText as="span" en="Next in Series • Concurrency & Reliability" bn="পরবর্তী অধ্যায় • কনকারেন্সি ও নির্ভরযোগ্যতা" />
           </span>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">
-            Module 9 Preview
+          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-zinc-300">
+            Module 9
           </span>
         </div>
 
-        <h3 className="text-base font-bold text-white">
+        <h3 className="text-base font-semibold text-zinc-100">
           <DualText
             as="span"
             en="Lesson 9: Database Transactions & Concurrency Control"
@@ -111,7 +111,7 @@ export default function Lesson8Part8InterviewNav({ onNavigate }: Lesson8Part8Int
 
         <DualText
           as="p"
-          className="text-xs text-zinc-300 leading-relaxed font-sans"
+          className="text-xs text-zinc-400 leading-relaxed font-sans"
           en="Explore transactional integrity: ACID properties, transaction state machines, COMMIT & ROLLBACK, concurrency anomalies, Two-Phase Locking (2PL), and deadlock recovery."
           bn="ট্রানজ্যাকশনাল ইন্টিগ্রিটি শিখুন: ACID প্রোপার্টি, COMMIT ও ROLLBACK, কনকারেন্সি অ্যানোমালি, 2PL এবং ডেডলক রিকভারি।"
         />
@@ -119,17 +119,17 @@ export default function Lesson8Part8InterviewNav({ onNavigate }: Lesson8Part8Int
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('db-lesson7')}
-            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
+            className="px-4 py-2 rounded-lg bg-[#131824] hover:bg-[#1a2130] text-zinc-200 font-medium text-xs flex items-center gap-2 transition-colors border border-white/[0.08] cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 stroke-[1.5]" />
             <span>{language === 'bn' ? 'লেসন ৭: অ্যাডভান্সড SQL' : 'Review Lesson 7: Advanced SQL'}</span>
           </button>
           <button
             onClick={() => onNavigate?.('db-lesson9')}
-            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
+            className="px-5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs flex items-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'পরবর্তী: লেসন ৯ (ট্রানজ্যাকশন)' : 'Go to Lesson 9: Transactions & Concurrency'}</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 stroke-[1.5]" />
           </button>
         </div>
       </div>

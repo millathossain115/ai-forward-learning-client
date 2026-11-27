@@ -13,28 +13,28 @@ export default function SubqueryOperatorsSection() {
   const { language } = useLanguage();
 
   return (
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            <Filter className="w-6 h-6" />
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <Filter className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
+            <span className="text-[11px] font-mono text-zinc-400">
               {language === 'bn' ? 'পার্ট ৪ ও ৫ • IN, EXISTS ও NULL ফাঁদ' : 'Part 4 & 5 • IN, EXISTS & NULL Trap'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
               <DualText
                 as="span"
-                en="IN, NOT IN, EXISTS, NOT EXISTS & The Dangerous NULL Trap"
-                bn="IN, NOT IN, EXISTS, NOT EXISTS এবং বিপজ্জনক NULL ফাঁদ"
+                en="IN, NOT IN, EXISTS, NOT EXISTS & The NULL Trap"
+                bn="IN, NOT IN, EXISTS, NOT EXISTS এবং NULL ফাঁদ"
               />
             </h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-700/60 space-y-3">
-            <span className="text-xs font-mono font-bold text-cyan-300 uppercase">IN / NOT IN</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-3">
+            <span className="text-xs font-mono font-medium text-cyan-300">IN / NOT IN</span>
             <DualText
               as="p"
               className="text-xs text-zinc-300 font-sans leading-relaxed"
@@ -49,7 +49,7 @@ WHERE Student_ID NOT IN (
     WHERE Course_ID = 'C01'
 );`}
             </pre>
-            <div className="p-3 rounded-xl bg-rose-950/30 border border-rose-500/30 text-xs text-rose-300 space-y-1">
+            <div className="p-3 rounded-xl bg-rose-950/30 border border-rose-500/30 text-xs text-rose-300 space-y-2">
               <strong className="font-bold flex items-center gap-1.5">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <DualText as="span" en="Warning: The NULL Trap with NOT IN!" bn="সতর্কতা: NOT IN-এর NULL ফাঁদ!" />
@@ -57,9 +57,14 @@ WHERE Student_ID NOT IN (
               <DualText
                 as="p"
                 className="text-[11px] text-zinc-300"
-                en="If the subquery returns even one NULL value, NOT IN evaluates to UNKNOWN for all records and returns 0 rows! Always prefer NOT EXISTS for anti-matching."
-                bn="Subquery থেকে একটি মাত্র NULL মান এলেও NOT IN পুরো শর্তকে UNKNOWN করে দেয় এবং ০টি সারি দেখায়! তাই নিরাপদ থাকতে সর্বদা NOT EXISTS ব্যবহার করুন।"
+                en="If the subquery returns even one NULL value, NOT IN evaluates to UNKNOWN for all records and returns 0 rows! Always prefer NOT EXISTS for anti-matching (excluding unmatched rows)."
+                bn="Subquery থেকে একটি মাত্র NULL মান এলেও NOT IN পুরো শর্তকে UNKNOWN করে দেয় এবং ০টি সারি দেখায়! তাই নিরাপদে অমিল সারি বাদ দিতে (anti-matching) সর্বদা NOT EXISTS ব্যবহার করুন।"
               />
+              <div className="p-2.5 rounded-lg bg-black/50 border border-rose-500/20 font-mono text-[11px] space-y-1 text-zinc-300">
+                <div><span className="text-zinc-400">Suppose subquery returns:</span> <span className="text-amber-300">[101, 102, NULL]</span></div>
+                <div><span className="text-zinc-400">Check for 104:</span> 104 != 101 <span className="text-cyan-400">AND</span> 104 != 102 <span className="text-cyan-400">AND</span> <span className="text-rose-400">104 != NULL (UNKNOWN!)</span></div>
+                <div><span className="text-zinc-400">Result:</span> <span className="text-rose-400 font-bold">TRUE AND TRUE AND UNKNOWN =&gt; UNKNOWN (0 rows!)</span></div>
+              </div>
             </div>
           </div>
 

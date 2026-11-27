@@ -16,16 +16,16 @@ export default function CorrelatedSubquerySection() {
   const isCorrelatedQualified = currentCorrelatedStudent.gpa > currentDeptAvg;
 
   return (
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
-            <Zap className="w-6 h-6" />
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <Zap className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
+            <span className="text-[11px] font-mono text-zinc-400">
               {language === 'bn' ? 'পার্ট ৭ • কোরিলেটেড সাবকুয়েরি' : 'Part 7 • Correlated Subqueries'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
               <DualText
                 as="span"
                 en="Correlated Subqueries: Row-by-Row Execution Tracer"
@@ -67,19 +67,19 @@ WHERE S.GPA > (
               <button
                 key={s.id}
                 onClick={() => setCorrelatedActiveStudentIdx(idx)}
-                className={`p-2.5 rounded-xl text-left border transition-colors cursor-pointer ${
+                className={`p-2.5 rounded-lg text-left border transition-colors cursor-pointer ${
                   correlatedActiveStudentIdx === idx
-                    ? 'bg-purple-600/30 border-purple-400 text-white '
-                    : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
+                    ? 'bg-cyan-500/15 border-cyan-500/40 text-zinc-100'
+                    : 'bg-[#131824] border-white/[0.08] text-zinc-400 hover:text-zinc-100'
                 }`}
               >
-                <div className="text-xs font-bold font-mono">{s.name}</div>
-                <div className="text-[10px] text-zinc-400">{s.dept} • GPA {s.gpa.toFixed(2)}</div>
+                <div className="text-xs font-medium font-mono">{s.name}</div>
+                <div className="text-[11px] text-zinc-400 tabular-nums">{s.dept} • GPA {s.gpa.toFixed(2)}</div>
               </button>
             ))}
           </div>
 
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-purple-900/40 space-y-3">
+          <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-3">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <div>
                 <span className="text-[10px] font-mono text-purple-400 uppercase font-bold">

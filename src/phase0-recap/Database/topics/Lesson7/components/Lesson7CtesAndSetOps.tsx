@@ -35,7 +35,7 @@ const RECURSIVE_TRACE = [
 export default function Lesson7CtesAndSetOps() {
   const { language } = useLanguage();
   const [activeSetOp, setActiveSetOp] = useState<'UNION' | 'UNION_ALL' | 'INTERSECT' | 'EXCEPT'>('UNION');
-  const [activeFunctionCat, setActiveFunctionCat] = useState<'string' | 'numeric' | 'date' | 'null'>('string');
+  const [activeFunctionCat, setActiveFunctionCat] = useState<'string' | 'numeric' | 'date' | 'null'>('null');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [recursiveStep, setRecursiveStep] = useState<number>(2);
 
@@ -77,16 +77,16 @@ SELECT * FROM CoursePath;`;
   return (
     <>
       {/* PART 8: COMMON TABLE EXPRESSIONS (CTEs) */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-            <Code2 className="w-6 h-6" />
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <Code2 className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
+            <span className="text-[11px] font-mono text-zinc-400">
               {language === 'bn' ? 'পার্ট ৮ • CTE (WITH ক্লজ)' : 'Part 8 • CTEs (WITH Clause)'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
               <DualText
                 as="span"
                 en="Common Table Expressions (CTEs), Recursive CTEs & Views"
@@ -398,116 +398,123 @@ SELECT * FROM CoursePath;`;
         </div>
       </section>
 
-      {/* PART 10: SQL BUILT-IN FUNCTIONS */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-          <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            <Sparkles className="w-6 h-6" />
+      {/* PART 10: NULL-SAFE & CONDITIONAL ANALYTICS */}
+      <section className="bg-[#0d1117] border border-white/[0.08] rounded-2xl p-6 space-y-5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+          <div className="p-2 rounded-lg bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+            <Sparkles className="w-4 h-4 stroke-[1.5]" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-              {language === 'bn' ? 'পার্ট ১০ • বিল্ট-ইন ফাংশন' : 'Part 10 • Built-in Functions'}
+            <span className="text-[11px] font-mono text-zinc-400">
+              {language === 'bn' ? 'পার্ট ১০ • NULL-নিরাপদ ও কন্ডিশনাল SQL' : 'Part 10 • NULL-Safe & Conditional SQL'}
             </span>
-            <h2 className="text-xl font-bold text-white mt-1">
+            <h2 className="text-lg font-semibold text-zinc-100 mt-0.5">
               <DualText
                 as="span"
-                en="SQL Functions: String, Numeric, Date & NULL Helpers"
-                bn="SQL ফাংশন: String, Numeric, Date ও NULL হেল্পার"
+                en="COALESCE, NULLIF & Conditional Analytics"
+                bn="COALESCE, NULLIF ও কন্ডিশনাল অ্যানালিটিক্স"
               />
             </h2>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {(['string', 'numeric', 'date', 'null'] as const).map(cat => (
+          {([
+            { id: 'null' as const, label: 'COALESCE & NULLIF' },
+            { id: 'string' as const, label: 'CASE WHEN Bucketing' },
+            { id: 'date' as const, label: 'Date & Temporal' },
+            { id: 'numeric' as const, label: 'Safe Math & Rounding' },
+          ]).map(cat => (
             <button
-              key={cat}
-              onClick={() => setActiveFunctionCat(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold capitalize cursor-pointer transition-colors ${
-                activeFunctionCat === cat
-                  ? 'bg-emerald-600 text-white '
-                  : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+              key={cat.id}
+              onClick={() => setActiveFunctionCat(cat.id)}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium cursor-pointer transition-colors ${
+                activeFunctionCat === cat.id
+                  ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40'
+                  : 'bg-[#131824] text-zinc-400 hover:text-zinc-100 border border-white/[0.08]'
               }`}
             >
-              {cat} Functions
+              {cat.label}
             </button>
           ))}
         </div>
 
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-700/60 space-y-3">
-          {activeFunctionCat === 'string' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs font-mono">
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">UPPER(str) / LOWER(str)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Case conversion" bn="বড়/ছোট হাতের অক্ষরে রূপান্তর" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">UPPER(&apos;rahim&apos;) =&gt; &apos;RAHIM&apos;</code>
+        <div className="p-4 rounded-xl bg-[#131824] border border-white/[0.08] space-y-3">
+          {activeFunctionCat === 'null' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div className="p-3.5 bg-[#0a0d14] rounded-xl border border-white/[0.08] space-y-2">
+                <span className="text-cyan-300 font-mono font-medium">COALESCE(val1, val2, ... fallback)</span>
+                <DualText
+                  as="p"
+                  className="text-zinc-400 font-sans leading-relaxed"
+                  en="Returns the first non-NULL value. Replaces missing values (like Nabila's NULL Email) with safe defaults."
+                  bn="তালিকার প্রথম non-NULL মান ফেরত দেয়। অনুপস্থিত মানের (যেমন Nabila-র NULL Email) বদলে নিরাপদ ডিফল্ট বসায়।"
+                />
+                <pre className="p-2.5 bg-black/50 rounded font-mono text-[11px] text-emerald-400 overflow-x-auto">
+{`SELECT Name, COALESCE(Email, 'No Email') AS Contact
+FROM Students;`}
+                </pre>
               </div>
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">CONCAT(s1, s2, ...)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="String concatenation" bn="একাধিক স্ট্রিং জোড়া লাগানো" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">CONCAT(Name, &apos; - &apos;, Dept)</code>
-              </div>
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">SUBSTRING(str, pos, len)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Extract sub-part" bn="স্ট্রিং থেকে নির্দিষ্ট অংশ কাটা" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">SUBSTRING(&apos;Database&apos;, 1, 4) =&gt; &apos;Data&apos;</code>
+              <div className="p-3.5 bg-[#0a0d14] rounded-xl border border-white/[0.08] space-y-2">
+                <span className="text-cyan-300 font-mono font-medium">NULLIF(expr1, expr2) — Safe Division</span>
+                <DualText
+                  as="p"
+                  className="text-zinc-400 font-sans leading-relaxed"
+                  en="Returns NULL if expr1 = expr2, otherwise returns expr1. Essential to prevent division-by-zero errors in analytics."
+                  bn="expr1 = expr2 হলে NULL ফেরত দেয়। অ্যানালিটিক্সে শূন্য দিয়ে ভাগ করার (division-by-zero) এরর ঠেকাতে অপরিহার্য।"
+                />
+                <pre className="p-2.5 bg-black/50 rounded font-mono text-[11px] text-emerald-400 overflow-x-auto">
+{`SELECT Total_Points / NULLIF(Credits, 0) AS GPA
+FROM Courses;`}
+                </pre>
               </div>
             </div>
           )}
 
+          {activeFunctionCat === 'string' && (
+            <div className="p-3.5 bg-[#0a0d14] rounded-xl border border-white/[0.08] space-y-2 text-xs">
+              <span className="text-cyan-300 font-mono font-medium">CASE WHEN — Conditional Bucketing</span>
+              <DualText
+                as="p"
+                className="text-zinc-400 font-sans"
+                en="Classify rows dynamically inside SELECT or inside SUM(...) for conditional pivot counts."
+                bn="SELECT বা SUM(...)-এর ভেতরে শর্তসাপেক্ষ ক্যাটাগরি ও পিভট গণনা করতে ব্যবহৃত হয়।"
+              />
+              <pre className="p-2.5 bg-black/50 rounded font-mono text-[11px] text-emerald-400 overflow-x-auto">
+{`SELECT Name, GPA,
+  CASE WHEN GPA >= 3.80 THEN 'Dean List' WHEN GPA >= 3.50 THEN 'Honors' ELSE 'Standard' END AS Standing
+FROM Students;`}
+              </pre>
+            </div>
+          )}
+
           {activeFunctionCat === 'numeric' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs font-mono">
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">ROUND(val, decimals)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Standard rounding" bn="দশমিক সংখ্যা রাউন্ড করা" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">ROUND(3.567, 2) =&gt; 3.57</code>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+              <div className="p-3 bg-[#0a0d14] rounded-xl border border-white/[0.08]">
+                <span className="text-cyan-300 font-medium">ROUND(val, decimals)</span>
+                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Standard rounding for averages" bn="গড় মান রাউন্ড করা" />
+                <code className="text-[11px] text-emerald-300 block bg-black/40 p-1.5 rounded mt-1.5">ROUND(3.5833, 2) =&gt; 3.58</code>
               </div>
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">CEIL(val) / FLOOR(val)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Ceiling and Floor bounds" bn="উপরের বা নিচের পূর্ণসংখ্যা" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">CEIL(3.1) =&gt; 4 | FLOOR(3.9) =&gt; 3</code>
-              </div>
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">MOD(N, M)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Remainder of division" bn="ভাগশেষ নির্ণয়" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">MOD(10, 3) =&gt; 1</code>
+              <div className="p-3 bg-[#0a0d14] rounded-xl border border-white/[0.08]">
+                <span className="text-cyan-300 font-medium">COALESCE(SUM(x), 0)</span>
+                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Turn empty aggregate NULL into 0" bn="খালি অ্যাগ্রিগেটের NULL-কে 0 করা" />
+                <code className="text-[11px] text-emerald-300 block bg-black/40 p-1.5 rounded mt-1.5">COALESCE(SUM(Credits), 0)</code>
               </div>
             </div>
           )}
 
           {activeFunctionCat === 'date' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs font-mono">
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">CURRENT_DATE()</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Today's system date" bn="আজকের সিস্টেম তারিখ" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">Returns &apos;2026-11-17&apos;</code>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+              <div className="p-3 bg-[#0a0d14] rounded-xl border border-white/[0.08]">
+                <span className="text-cyan-300 font-medium">YEAR(date) / DATE_TRUNC</span>
+                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Group admissions by year or month" bn="বছর বা মাস অনুযায়ী গ্রুপিং" />
+                <code className="text-[11px] text-emerald-300 block bg-black/40 p-1.5 rounded mt-1.5">YEAR(&apos;2024-01-15&apos;) =&gt; 2024</code>
               </div>
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">YEAR(date) / MONTH(date)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Extract temporal parts" bn="বছর বা মাস আলাদা করা" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">YEAR(&apos;2024-01-15&apos;) =&gt; 2024</code>
+              <div className="p-3 bg-[#0a0d14] rounded-xl border border-white/[0.08]">
+                <span className="text-cyan-300 font-medium">DATEDIFF(d1, d2)</span>
+                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Days elapsed since admission" bn="ভর্তির পর থেকে অতিবাহিত দিন" />
+                <code className="text-[11px] text-emerald-300 block bg-black/40 p-1.5 rounded mt-1.5">DATEDIFF(CURRENT_DATE(), Admission_Date)</code>
               </div>
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-cyan-400 font-bold">DATEDIFF(d1, d2)</span>
-                <DualText as="p" className="text-[11px] text-zinc-400 font-sans mt-1" en="Days between two dates" bn="দুটি তারিখের দিনের পার্থক্য" />
-                <code className="text-[10px] text-emerald-300 block bg-black/40 p-1 rounded mt-1">DATEDIFF(CURRENT_DATE(), Admission_Date)</code>
-              </div>
-            </div>
-          )}
-
-          {activeFunctionCat === 'null' && (
-            <div className="p-4 bg-slate-900 rounded-xl border border-slate-800 space-y-2 text-xs">
-              <span className="text-cyan-400 font-mono font-bold">COALESCE(val1, val2, ... fallback)</span>
-              <DualText
-                as="p"
-                className="text-zinc-300 font-sans"
-                en="Returns the first non-NULL value in the list. Essential for replacing missing values (like Nabila's NULL Email) with safe defaults:"
-                bn="তালিকার প্রথম non-NULL মানটি ফেরত দেয়। অনুপস্থিত মানের (যেমন Nabila-র NULL Email) বদলে ডিফল্ট টেক্সট দেখাতে অপরিহার্য:"
-              />
-              <pre className="p-2.5 bg-black/50 rounded font-mono text-emerald-400">
-{`SELECT Name, COALESCE(Email, 'No Email Provided') AS Contact_Status
-FROM Students;`}
-              </pre>
             </div>
           )}
         </div>
