@@ -28,12 +28,12 @@ export default function ColumnFamilyTab() {
           </div>
 
           {/* Sparse Column Matrix Demo */}
-          <div className="p-5 rounded-2xl bg-[#0c0e18] border border-purple-900/40 space-y-3 font-mono text-xs">
+          <div className="p-5 rounded-2xl bg-[#101116] border border-purple-900/40 space-y-3 font-mono text-xs">
             <span className="text-purple-300 font-bold uppercase text-[11px]">
               Column Family: StudentActivityLogs (Sparse Dynamic Columns):
             </span>
 
-            <div className="overflow-x-auto rounded-xl border border-slate-800 bg-black/60">
+            <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-black/60">
               <table className="w-full text-left text-xs font-mono">
                 <thead>
                   <tr className="bg-[#141228] border-b border-purple-900/50 text-zinc-300 text-[11px]">
@@ -44,7 +44,7 @@ export default function ColumnFamilyTab() {
                     <th className="py-2.5 px-3 text-pink-300">col: quiz_score</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800 text-[11px]">
+                <tbody className="divide-y divide-white/[0.08] text-[11px]">
                   <tr>
                     <td className="py-2.5 px-3 font-bold text-white">Student:101:2026-11</td>
                     <td className="py-2.5 px-3 text-zinc-300">103.205.71.2</td>

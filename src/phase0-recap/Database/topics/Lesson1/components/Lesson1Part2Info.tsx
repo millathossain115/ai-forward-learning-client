@@ -51,8 +51,8 @@ export default function Lesson1Part2Info() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
           <Calculator className="w-6 h-6" />
         </div>
@@ -87,7 +87,7 @@ export default function Lesson1Part2Info() {
         </div>
 
         {/* Interactive Processing Pipeline */}
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-cyan-950 space-y-5">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-cyan-950 space-y-5">
           <h3 className="text-xs font-bold text-cyan-300 uppercase font-mono flex items-center gap-2">
             <Calculator className="w-4 h-4 text-cyan-400" />
             {language === 'bn'
@@ -96,7 +96,7 @@ export default function Lesson1Part2Info() {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div className="p-3.5 rounded-xl bg-black/40 border border-slate-800 space-y-2">
+            <div className="p-3.5 rounded-xl bg-black/40 border border-white/[0.08] space-y-2">
               <span className="text-[10px] font-mono text-zinc-400 uppercase">
                 {language === 'bn' ? 'বিষয় ১ (গণিত):' : 'Subject 1 (Math):'}
               </span>
@@ -106,11 +106,11 @@ export default function Lesson1Part2Info() {
                 max="100"
                 value={mark1}
                 onChange={(e) => setMark1(Math.max(0, Math.min(100, Number(e.target.value) || 0)))}
-                className="w-full bg-[#0c0e18] border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-mono text-white focus:outline-none focus:border-cyan-500"
+                className="w-full bg-[#101116] border border-white/[0.12] rounded-lg px-3 py-1.5 text-sm font-mono text-white focus:outline-none focus:border-cyan-500"
               />
             </div>
 
-            <div className="p-3.5 rounded-xl bg-black/40 border border-slate-800 space-y-2">
+            <div className="p-3.5 rounded-xl bg-black/40 border border-white/[0.08] space-y-2">
               <span className="text-[10px] font-mono text-zinc-400 uppercase">
                 {language === 'bn' ? 'বিষয় ২ (বিজ্ঞান):' : 'Subject 2 (Science):'}
               </span>
@@ -120,11 +120,11 @@ export default function Lesson1Part2Info() {
                 max="100"
                 value={mark2}
                 onChange={(e) => setMark2(Math.max(0, Math.min(100, Number(e.target.value) || 0)))}
-                className="w-full bg-[#0c0e18] border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-mono text-white focus:outline-none focus:border-cyan-500"
+                className="w-full bg-[#101116] border border-white/[0.12] rounded-lg px-3 py-1.5 text-sm font-mono text-white focus:outline-none focus:border-cyan-500"
               />
             </div>
 
-            <div className="p-3.5 rounded-xl bg-black/40 border border-slate-800 space-y-2">
+            <div className="p-3.5 rounded-xl bg-black/40 border border-white/[0.08] space-y-2">
               <span className="text-[10px] font-mono text-zinc-400 uppercase">
                 {language === 'bn' ? 'বিষয় ৩ (ইংরেজি):' : 'Subject 3 (English):'}
               </span>
@@ -134,14 +134,14 @@ export default function Lesson1Part2Info() {
                 max="100"
                 value={mark3}
                 onChange={(e) => setMark3(Math.max(0, Math.min(100, Number(e.target.value) || 0)))}
-                className="w-full bg-[#0c0e18] border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-mono text-white focus:outline-none focus:border-cyan-500"
+                className="w-full bg-[#101116] border border-white/[0.12] rounded-lg px-3 py-1.5 text-sm font-mono text-white focus:outline-none focus:border-cyan-500"
               />
             </div>
           </div>
 
           {/* Visual Step-by-Step Flow */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-center">
-            <div className="p-4 rounded-xl bg-[#0c0e18] border border-amber-900/40 text-center space-y-1">
+            <div className="p-4 rounded-xl bg-[#101116] border border-amber-900/40 text-center space-y-1">
               <span className="text-[10px] font-mono text-amber-400 uppercase font-bold">
                 {language === 'bn' ? 'ধাপ ১: কাঁচা ডেটা' : 'Step 1: Raw Data'}
               </span>
@@ -151,7 +151,7 @@ export default function Lesson1Part2Info() {
               </span>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#0c0e18] border border-indigo-900/40 text-center space-y-1">
+            <div className="p-4 rounded-xl bg-[#101116] border border-indigo-900/40 text-center space-y-1">
               <span className="text-[10px] font-mono text-indigo-400 uppercase font-bold">
                 {language === 'bn' ? 'ধাপ ২: প্রসেসিং বা প্রক্রিয়াকরণ' : 'Step 2: Processing'}
               </span>
@@ -179,10 +179,10 @@ export default function Lesson1Part2Info() {
           <h4 className="text-xs font-mono font-bold text-zinc-300">
             {language === 'bn' ? 'ডেটা বনাম ইনফরমেশন: সরাসরি তুলনা' : 'Data vs Information: Direct Comparison'}
           </h4>
-          <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+          <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
             <table className="w-full text-left text-xs font-mono">
               <thead>
-                <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+                <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
                   <th className="py-2.5 px-4 font-bold text-amber-400 w-1/4">
                     {language === 'bn' ? 'তুলনার বিষয়' : 'Aspect'}
                   </th>
@@ -194,7 +194,7 @@ export default function Lesson1Part2Info() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+              <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                 {comparisonRows.map((r, i) => (
                   <tr key={i}>
                     <td className="py-2.5 px-4 font-bold text-white">

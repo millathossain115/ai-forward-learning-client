@@ -35,7 +35,7 @@ export default function GraphDbTab() {
           {/* Interactive Graph Canvas matching Image 2 style */}
           <div className="overflow-x-auto pb-2">
             <div className="min-w-[760px] p-6 rounded-2xl bg-[#060814] border border-emerald-900/40 relative">
-              <div className="flex items-center justify-between mb-4 border-b border-slate-800 pb-2">
+              <div className="flex items-center justify-between mb-4 border-b border-white/[0.08] pb-2">
                 <span className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
                   <Share2 className="w-3.5 h-3.5" />
                   University Social &amp; Academic Property Graph:
@@ -262,12 +262,12 @@ export default function GraphDbTab() {
           {/* Node Inspector Bar */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
             {/* Properties Card */}
-            <div className="p-4 rounded-xl bg-[#0c0e18] border border-emerald-900/50 space-y-2">
+            <div className="p-4 rounded-xl bg-[#101116] border border-emerald-900/50 space-y-2">
               <span className="text-[11px] font-bold text-emerald-400 uppercase flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 Selected Node Properties ({activeGraph.type}):
               </span>
-              <div className="p-2.5 rounded-lg bg-black/50 border border-slate-800 text-[11px] text-zinc-300 space-y-1">
+              <div className="p-2.5 rounded-lg bg-black/50 border border-white/[0.08] text-[11px] text-zinc-300 space-y-1">
                 {Object.entries(activeGraph.properties).map(([k, v]) => (
                   <div key={k} className="flex justify-between">
                     <span className="text-zinc-500">{k}:</span>
@@ -278,12 +278,12 @@ export default function GraphDbTab() {
             </div>
 
             {/* Traversed Edges */}
-            <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-2">
+            <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-2">
               <span className="text-[11px] font-bold text-cyan-400 uppercase flex items-center gap-1.5">
                 <Share2 className="w-3.5 h-3.5" />
                 Connected Relationship Edges:
               </span>
-              <div className="p-2.5 rounded-lg bg-black/50 border border-slate-800 text-[11px] space-y-1">
+              <div className="p-2.5 rounded-lg bg-black/50 border border-white/[0.08] text-[11px] space-y-1">
                 {activeGraph.relations.map((rel, idx) => (
                   <div key={idx} className="text-zinc-300 font-mono">
                     &bull; <span className="text-cyan-300">{rel}</span>

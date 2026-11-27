@@ -66,8 +66,8 @@ export default function Lesson2Part4Comparison() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           <CheckCircle2 className="w-6 h-6" />
         </div>
@@ -84,10 +84,10 @@ export default function Lesson2Part4Comparison() {
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+      <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+            <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
               <th className="py-2.5 px-4 font-bold text-indigo-400">
                 {language === 'bn' ? 'মডেল (Model)' : 'Model'}
               </th>
@@ -102,7 +102,7 @@ export default function Lesson2Part4Comparison() {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+          <tbody className="divide-y divide-white/[0.08] text-zinc-300">
             {rows.map((row, idx) => (
               <tr key={idx} className={row.isHighlight ? 'bg-indigo-950/20 font-semibold' : ''}>
                 <td className={`py-2.5 px-4 font-bold ${row.isHighlight ? 'text-indigo-300' : 'text-white'}`}>

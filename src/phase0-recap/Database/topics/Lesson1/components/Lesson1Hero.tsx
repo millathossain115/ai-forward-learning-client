@@ -16,7 +16,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
     <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#202744] p-6 md:p-8">
 
       {/* Top Banner Actions: Lesson Status */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800/60">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-white/[0.08]">
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
@@ -81,7 +81,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
           </button>
           <button
             onClick={() => onNavigate?.('db-directory')}
-            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-slate-700"
+            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-white/[0.12]"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>{language === 'bn' ? 'ডেটাবেস ১০১ বেসিক্স' : 'Back to Database 101 Basics'}</span>
@@ -90,7 +90,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
       </div>
 
       {/* 4 Pillars Quick Preview */}
-      <div className="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="mt-8 pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
           {
             title: '1. Data',
@@ -117,7 +117,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
             descBn: 'ডেটাবেস তৈরি, নিয়ন্ত্রণ ও সুরক্ষার সফটওয়্যার ইঞ্জিন',
           },
         ].map((item, idx) => (
-          <div key={idx} className="p-3 rounded-xl bg-[#101322] border border-slate-800 space-y-1">
+          <div key={idx} className="p-3 rounded-xl bg-[#101116] border border-white/[0.08] space-y-1">
             <span className="text-xs font-mono font-bold text-indigo-400">
               {language === 'bn' ? item.titleBn : language === 'en' ? item.title : `${item.title} • ${item.titleBn.split('.')[1]}`}
             </span>

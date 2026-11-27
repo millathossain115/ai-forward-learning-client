@@ -16,9 +16,9 @@ export default function AlternateKeyTab() {
   const [selectedPkForAk, setSelectedPkForAk] = useState<'id' | 'nid' | 'email'>('id');
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-purple-500/40 space-y-6 animate-in fade-in duration-200">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-purple-500/40 space-y-6 animate-in fade-in duration-200">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <KeyRound className="w-5 h-5 text-purple-400" />
@@ -48,7 +48,7 @@ export default function AlternateKeyTab() {
 
           {/* Mathematical Relationship Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs font-mono text-center">
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-slate-800">
+            <div className="p-3 rounded-xl bg-[#101116] border border-white/[0.08]">
               <span className="text-[10px] text-zinc-400 block uppercase">
                 {language === 'bn' ? 'উপলব্ধ ক্যান্ডিডেট কী' : 'Available Candidate Keys'}
               </span>
@@ -56,7 +56,7 @@ export default function AlternateKeyTab() {
                 CK = &#123;ID, NID, Email&#125;
               </strong>
             </div>
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-amber-500/30">
+            <div className="p-3 rounded-xl bg-[#101116] border border-amber-500/30">
               <span className="text-[10px] text-zinc-400 block uppercase">
                 {language === 'bn' ? 'নির্বাচিত প্রাইমারি কি' : 'Elected Primary Key'}
               </span>
@@ -64,7 +64,7 @@ export default function AlternateKeyTab() {
                 PK = 1 Attribute
               </strong>
             </div>
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-purple-500/30">
+            <div className="p-3 rounded-xl bg-[#101116] border border-purple-500/30">
               <span className="text-[10px] text-zinc-400 block uppercase">
                 {language === 'bn' ? 'অল্টারনেট কী-এর সূত্র' : 'Alternate Keys Formula'}
               </span>
@@ -75,8 +75,8 @@ export default function AlternateKeyTab() {
           </div>
 
           {/* Primary Key Election Controller */}
-          <div className="p-5 rounded-2xl bg-[#0c0e18] border border-slate-800 space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-800/80 pb-3">
+          <div className="p-5 rounded-2xl bg-[#101116] border border-white/[0.08] space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-white/[0.08] pb-3">
               <span className="text-xs font-mono font-bold text-white uppercase flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-purple-400" />
                 <DualText
@@ -185,11 +185,11 @@ export default function AlternateKeyTab() {
               </div>
             </div>
 
-            <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+            <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
               <table className="w-full text-left text-xs font-mono">
                 <thead>
-                  <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
-                    <th className="py-2.5 px-3 text-zinc-500 text-center w-16 border-r border-slate-800/60">
+                  <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
+                    <th className="py-2.5 px-3 text-zinc-500 text-center w-16 border-r border-white/[0.08]">
                       {language === 'bn' ? 'রো #' : 'Row #'}
                     </th>
 
@@ -280,12 +280,12 @@ export default function AlternateKeyTab() {
                     </th>
 
                     {/* Verification Status */}
-                    <th className="py-2.5 px-3 text-right bg-slate-900/80 text-purple-300 border-l border-slate-800">
+                    <th className="py-2.5 px-3 text-right bg-[#15171e] text-purple-300 border-l border-white/[0.08]">
                       {language === 'bn' ? 'কী ভূমিকা বিশ্লেষণ' : 'Key Hierarchy Mapping'}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                   {STUDENT_SAMPLE_ROWS.map((student, idx) => {
                     const pkVal =
                       selectedPkForAk === 'id'
@@ -297,9 +297,9 @@ export default function AlternateKeyTab() {
                     return (
                       <tr
                         key={student.id}
-                        className={idx % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#0c0e18]'}
+                        className={idx % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#101116]'}
                       >
-                        <td className="py-2 px-3 text-center text-zinc-500 border-r border-slate-800/60">
+                        <td className="py-2 px-3 text-center text-zinc-500 border-r border-white/[0.08]">
                           {idx + 1}
                         </td>
 
@@ -336,7 +336,7 @@ export default function AlternateKeyTab() {
                         <td className="py-2 px-3 text-zinc-300">{student.name}</td>
                         <td className="py-2 px-3 text-zinc-400">{student.dept}</td>
 
-                        <td className="py-2 px-3 text-right border-l border-slate-800 font-mono text-[11px]">
+                        <td className="py-2 px-3 text-right border-l border-white/[0.08] font-mono text-[11px]">
                           <span className="text-amber-300 font-bold">
                             PK: {pkVal}
                           </span>
@@ -353,8 +353,8 @@ export default function AlternateKeyTab() {
             </div>
 
             {/* Live SQL DDL Code Preview */}
-            <div className="p-4 rounded-xl bg-[#090b14] border border-slate-800 font-mono text-xs space-y-2">
-              <div className="flex items-center justify-between text-zinc-400 border-b border-slate-800/80 pb-2">
+            <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] font-mono text-xs space-y-2">
+              <div className="flex items-center justify-between text-zinc-400 border-b border-white/[0.08] pb-2">
                 <span className="text-zinc-300 font-bold flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
                   {language === 'bn'
@@ -376,7 +376,7 @@ export default function AlternateKeyTab() {
             </div>
 
             {/* Real World Portal Login Application Insight */}
-            <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
+            <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] text-xs font-sans flex items-start sm:items-center gap-3">
               <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20 shrink-0">
                 <Layers className="w-4 h-4" />
               </span>

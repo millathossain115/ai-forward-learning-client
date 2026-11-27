@@ -25,9 +25,9 @@ export default function Lesson5CoreConcepts() {
         {/* ========================================================
             CARD 1: CORE COMPONENTS (৩টি মূল উপাদান)
            ======================================================== */}
-        <div className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5">
+        <div className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
             <div className="flex items-center gap-2.5">
               <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 <Boxes className="w-4 h-4" />
@@ -46,7 +46,7 @@ export default function Lesson5CoreConcepts() {
             </div>
 
             {/* Compact View Toggle (Tree vs Image) */}
-            <div className="flex items-center gap-1 p-0.5 rounded-lg bg-[#0c1020] border border-slate-800 text-[10px] font-mono">
+            <div className="flex items-center gap-1 p-0.5 rounded-lg bg-[#0c1020] border border-white/[0.08] text-[10px] font-mono">
               <button
                 onClick={() => setViewMode('tree')}
                 className={`px-2 py-0.5 rounded font-bold flex items-center gap-1 transition-colors cursor-pointer ${
@@ -92,7 +92,7 @@ export default function Lesson5CoreConcepts() {
                       <span className="text-zinc-300">Weak</span>
                     </li>
                   </ul>
-                  <span className="text-[9px] font-mono text-zinc-500 border-t border-slate-800/80 pt-1">
+                  <span className="text-[9px] font-mono text-zinc-500 border-t border-white/[0.08] pt-1">
                     {language === 'bn' ? 'বাস্তব বস্তু' : 'Real Objects'}
                   </span>
                 </div>
@@ -120,7 +120,7 @@ export default function Lesson5CoreConcepts() {
                       <span className="text-zinc-300">Derived</span>
                     </li>
                   </ul>
-                  <span className="text-[9px] font-mono text-zinc-500 border-t border-slate-800/80 pt-1">
+                  <span className="text-[9px] font-mono text-zinc-500 border-t border-white/[0.08] pt-1">
                     {language === 'bn' ? 'বৈশিষ্ট্যাবলী' : 'Properties'}
                   </span>
                 </div>
@@ -148,13 +148,13 @@ export default function Lesson5CoreConcepts() {
                       <span className="text-zinc-300">M:N</span>
                     </li>
                   </ul>
-                  <span className="text-[9px] font-mono text-zinc-500 border-t border-slate-800/80 pt-1">
+                  <span className="text-[9px] font-mono text-zinc-500 border-t border-white/[0.08] pt-1">
                     {language === 'bn' ? 'সংযোগ' : 'Associations'}
                   </span>
                 </div>
               </div>
 
-              <div className="p-2 rounded-lg bg-[#080b16] border border-slate-800 text-[10px] font-mono text-zinc-400 flex items-center justify-between">
+              <div className="p-2 rounded-lg bg-[#080b16] border border-white/[0.08] text-[10px] font-mono text-zinc-400 flex items-center justify-between">
                 <span>Chen ER: ▭ Entity • ⬭ Attribute • ◇ Relationship</span>
                 <span className="text-emerald-400 font-semibold">Hierarchy</span>
               </div>
@@ -162,7 +162,7 @@ export default function Lesson5CoreConcepts() {
           ) : (
             <div
               onClick={() => setIsModalOpen(true)}
-              className="group relative cursor-pointer p-2 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center transition-colors hover:border-emerald-400 flex-1 min-h-[140px]"
+              className="group relative cursor-pointer p-2 rounded-xl bg-white border border-white/[0.12] flex flex-col items-center justify-center transition-colors hover:border-emerald-400 flex-1 min-h-[140px]"
             >
               <img
                 src="/images/lesson5-er-model-hierarchy.jpg"
@@ -182,9 +182,9 @@ export default function Lesson5CoreConcepts() {
         {/* ========================================================
             CARD 2: KEY CONCEPTS (৩টি প্রধান ধারণা)
            ======================================================== */}
-        <div className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5">
+        <div className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
             <div className="flex items-center gap-2.5">
               <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                 <Sparkles className="w-4 h-4" />
@@ -209,7 +209,7 @@ export default function Lesson5CoreConcepts() {
           {/* 3 Equal Concept Rows */}
           <div className="space-y-2 flex-1 flex flex-col justify-between text-xs font-sans">
             {/* Concept 1: Cardinality */}
-            <div className="p-2.5 rounded-xl bg-[#0a0d18] border border-emerald-900/40 space-y-1">
+            <div className="p-2.5 rounded-xl bg-[#101116] border border-emerald-900/40 space-y-1">
               <div className="flex items-center justify-between">
                 <div className="font-bold text-white font-mono flex items-center gap-1.5 text-xs">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -228,7 +228,7 @@ export default function Lesson5CoreConcepts() {
             </div>
 
             {/* Concept 2: Participation */}
-            <div className="p-2.5 rounded-xl bg-[#0a0d18] border border-amber-900/40 space-y-1">
+            <div className="p-2.5 rounded-xl bg-[#101116] border border-amber-900/40 space-y-1">
               <div className="flex items-center justify-between">
                 <div className="font-bold text-white font-mono flex items-center gap-1.5 text-xs">
                   <span className="w-2 h-2 rounded-full bg-amber-400" />
@@ -247,7 +247,7 @@ export default function Lesson5CoreConcepts() {
             </div>
 
             {/* Concept 3: Design Levels */}
-            <div className="p-2.5 rounded-xl bg-[#0a0d18] border border-cyan-900/40 space-y-1">
+            <div className="p-2.5 rounded-xl bg-[#101116] border border-cyan-900/40 space-y-1">
               <div className="flex items-center justify-between">
                 <div className="font-bold text-white font-mono flex items-center gap-1.5 text-xs">
                   <span className="w-2 h-2 rounded-full bg-cyan-400" />
@@ -278,7 +278,7 @@ export default function Lesson5CoreConcepts() {
             onClick={(e) => e.stopPropagation()}
             className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-emerald-500/40 p-4 md:p-6 space-y-3"
           >
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
               <div>
                 <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-emerald-400">▣</span>
@@ -290,12 +290,12 @@ export default function Lesson5CoreConcepts() {
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-white/[0.12]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="flex items-center justify-center p-3 rounded-xl bg-white border border-slate-700">
+            <div className="flex items-center justify-center p-3 rounded-xl bg-white border border-white/[0.12]">
               <img
                 src="/images/lesson5-er-model-hierarchy.jpg"
                 alt="ER Model Hierarchy"

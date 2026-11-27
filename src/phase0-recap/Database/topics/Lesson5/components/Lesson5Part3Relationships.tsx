@@ -23,9 +23,9 @@ export default function Lesson5Part3Relationships() {
   }, [modalImage]);
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-8">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-3xl p-6 md:p-8 space-y-8">
       {/* Section Header */}
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
           <Share2 className="w-6 h-6" />
         </div>
@@ -60,7 +60,7 @@ export default function Lesson5Part3Relationships() {
 
         {/* Visual Mapping Model: Entity Sets vs Relationship Set (Textbook Bipartite Mapping) */}
         <div className="p-4 md:p-5 rounded-2xl bg-[#090D18] border border-purple-500/30 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-2.5">
             <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-wide">
               {language === 'bn' ? 'ম্যাপিং মডেল: এনটিটি সেটদ্বয় বনাম রিলেশনশিপ সেট' : 'Mapping Model: Entity Sets vs Relationship Set'}
             </span>
@@ -148,7 +148,7 @@ export default function Lesson5Part3Relationships() {
           </div>
 
           {/* Mathematical Definition Callout */}
-          <div className="p-3 rounded-xl bg-[#060914] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
+          <div className="p-3 rounded-xl bg-[#090a0d] border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
             <div className="text-zinc-300 text-[11px] font-sans">
               <span className="text-purple-300 font-mono font-bold">Mathematical Formulation: </span>
               {language === 'bn'
@@ -163,7 +163,7 @@ export default function Lesson5Part3Relationships() {
 
         {/* 2-Column: Relationship Instance vs Relationship Set */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-sans">
-          <div className="p-3.5 rounded-2xl bg-[#121526] border border-cyan-900/40 space-y-1.5">
+          <div className="p-3.5 rounded-2xl bg-[#15171e] border border-cyan-900/40 space-y-1.5">
             <div className="flex items-center justify-between font-mono">
               <span className="text-cyan-300 font-bold text-xs">১. রিলেশনশিপ ইনস্ট্যান্স (Instance)</span>
               <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-950 text-cyan-300 border border-cyan-800">
@@ -177,7 +177,7 @@ export default function Lesson5Part3Relationships() {
             </p>
           </div>
 
-          <div className="p-3.5 rounded-2xl bg-[#121526] border border-purple-900/40 space-y-1.5">
+          <div className="p-3.5 rounded-2xl bg-[#15171e] border border-purple-900/40 space-y-1.5">
             <div className="flex items-center justify-between font-mono">
               <span className="text-purple-300 font-bold text-xs">২. রিলেশনশিপ সেট (Relationship Set)</span>
               <span className="text-[9px] px-1.5 py-0.2 rounded bg-purple-950 text-purple-300 border border-purple-800">
@@ -194,9 +194,9 @@ export default function Lesson5Part3Relationships() {
 
         {/* 3 Real-World Notation Examples */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
-          <div className="p-3 rounded-2xl bg-[#121526] border border-slate-800 space-y-1.5">
+          <div className="p-3 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-1.5">
             <div className="text-zinc-400 text-[10px] uppercase font-bold">University</div>
-            <div className="p-2 rounded-xl bg-[#0c0e18] border border-cyan-800/40 text-cyan-300 text-center font-bold text-[11px]">
+            <div className="p-2 rounded-xl bg-[#101116] border border-cyan-800/40 text-cyan-300 text-center font-bold text-[11px]">
               [ Student ] ── &lt; ENROLLS &gt; ── [ Course ]
             </div>
             <div className="text-[10px] text-zinc-400 font-sans text-center">
@@ -204,9 +204,9 @@ export default function Lesson5Part3Relationships() {
             </div>
           </div>
 
-          <div className="p-3 rounded-2xl bg-[#121526] border border-slate-800 space-y-1.5">
+          <div className="p-3 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-1.5">
             <div className="text-zinc-400 text-[10px] uppercase font-bold">Faculty</div>
-            <div className="p-2 rounded-xl bg-[#0c0e18] border border-amber-800/40 text-amber-300 text-center font-bold text-[11px]">
+            <div className="p-2 rounded-xl bg-[#101116] border border-amber-800/40 text-amber-300 text-center font-bold text-[11px]">
               [ Teacher ] ── &lt; TEACHES &gt; ── [ Course ]
             </div>
             <div className="text-[10px] text-zinc-400 font-sans text-center">
@@ -214,9 +214,9 @@ export default function Lesson5Part3Relationships() {
             </div>
           </div>
 
-          <div className="p-3 rounded-2xl bg-[#121526] border border-slate-800 space-y-1.5">
+          <div className="p-3 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-1.5">
             <div className="text-zinc-400 text-[10px] uppercase font-bold">Hospital</div>
-            <div className="p-2 rounded-xl bg-[#0c0e18] border border-purple-800/40 text-purple-300 text-center font-bold text-[11px]">
+            <div className="p-2 rounded-xl bg-[#101116] border border-purple-800/40 text-purple-300 text-center font-bold text-[11px]">
               [ Doctor ] ── &lt; TREATS &gt; ── [ Patient ]
             </div>
             <div className="text-[10px] text-zinc-400 font-sans text-center">
@@ -230,7 +230,7 @@ export default function Lesson5Part3Relationships() {
           4.2 DEGREE OF RELATIONSHIP (Unary, Binary, Ternary, N-ary)
           High-Quality Thematic Image Assets with Full-Screen Modal!
          ======================================================== */}
-      <div className="space-y-4 pt-4 border-t border-slate-800">
+      <div className="space-y-4 pt-4 border-t border-white/[0.08]">
         <div className="flex items-center gap-2 text-sm font-bold text-cyan-300 font-mono">
           <Workflow className="w-4 h-4 text-cyan-400" />
           <span>{language === 'bn' ? '৪.২ ডিগ্রি অফ রিলেশনশিপ (Degree of Relationship)' : '4.2 Degree of Relationship'}</span>
@@ -246,9 +246,9 @@ export default function Lesson5Part3Relationships() {
         {/* 4 Degrees Detailed Cards with Thematic High-Resolution Images */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
           {/* 4.2.1 Unary Relationship (Degree 1 • Recursive) */}
-          <div className="p-4 md:p-5 rounded-2xl bg-[#121526] border border-amber-900/40 space-y-3 flex flex-col justify-between">
+          <div className="p-4 md:p-5 rounded-2xl bg-[#15171e] border border-amber-900/40 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-amber-400 font-bold uppercase text-xs md:text-sm">
                   4.2.1 Unary Relationship (Degree 1 • Recursive)
                 </span>
@@ -283,7 +283,7 @@ export default function Lesson5Part3Relationships() {
               <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
               </div>
-              <div className="px-3 py-1.5 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+              <div className="px-3 py-1.5 bg-[#090a0d] border-t border-white/[0.08] flex items-center justify-between text-[10px] text-zinc-400">
                 <span className="text-amber-300 font-semibold">[Degree 1] Employee ↔ Manages ↔ Employee</span>
                 <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
               </div>
@@ -291,9 +291,9 @@ export default function Lesson5Part3Relationships() {
           </div>
 
           {/* 4.2.2 Binary Relationship (Degree 2) */}
-          <div className="p-4 md:p-5 rounded-2xl bg-[#121526] border border-cyan-900/40 space-y-3 flex flex-col justify-between">
+          <div className="p-4 md:p-5 rounded-2xl bg-[#15171e] border border-cyan-900/40 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-cyan-400 font-bold uppercase text-xs md:text-sm">
                   4.2.2 Binary Relationship (Degree 2)
                 </span>
@@ -328,7 +328,7 @@ export default function Lesson5Part3Relationships() {
               <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5 text-cyan-300" />
               </div>
-              <div className="px-3 py-1.5 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+              <div className="px-3 py-1.5 bg-[#090a0d] border-t border-white/[0.08] flex items-center justify-between text-[10px] text-zinc-400">
                 <span className="text-cyan-300 font-semibold">[Degree 2] Student ── Enrolls ── Course</span>
                 <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
               </div>
@@ -336,9 +336,9 @@ export default function Lesson5Part3Relationships() {
           </div>
 
           {/* 4.2.3 Ternary Relationship (Degree 3) */}
-          <div className="p-4 md:p-5 rounded-2xl bg-[#121526] border border-purple-900/40 space-y-3 flex flex-col justify-between">
+          <div className="p-4 md:p-5 rounded-2xl bg-[#15171e] border border-purple-900/40 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-purple-400 font-bold uppercase text-xs md:text-sm">
                   4.2.3 Ternary Relationship (Degree 3)
                 </span>
@@ -373,7 +373,7 @@ export default function Lesson5Part3Relationships() {
               <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5 text-purple-300" />
               </div>
-              <div className="px-3 py-1.5 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+              <div className="px-3 py-1.5 bg-[#090a0d] border-t border-white/[0.08] flex items-center justify-between text-[10px] text-zinc-400">
                 <span className="text-purple-300 font-semibold">[Degree 3] Supplier + Part + Project</span>
                 <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
               </div>
@@ -381,9 +381,9 @@ export default function Lesson5Part3Relationships() {
           </div>
 
           {/* 4.2.4 N-ary Relationship (Degree N) */}
-          <div className="p-4 md:p-5 rounded-2xl bg-[#121526] border border-pink-900/40 space-y-3 flex flex-col justify-between">
+          <div className="p-4 md:p-5 rounded-2xl bg-[#15171e] border border-pink-900/40 space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-pink-400 font-bold uppercase text-xs md:text-sm">
                   4.2.4 N-ary Relationship (Degree N)
                 </span>
@@ -418,7 +418,7 @@ export default function Lesson5Part3Relationships() {
               <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5 text-pink-300" />
               </div>
-              <div className="px-3 py-1.5 bg-[#070A12] border-t border-slate-800/80 flex items-center justify-between text-[10px] text-zinc-400">
+              <div className="px-3 py-1.5 bg-[#090a0d] border-t border-white/[0.08] flex items-center justify-between text-[10px] text-zinc-400">
                 <span className="text-pink-300 font-semibold">[Degree N] E1, E2, ... En Connected</span>
                 <span className="flex items-center gap-1 text-zinc-500 font-sans">Click to expand ⤢</span>
               </div>
@@ -440,7 +440,7 @@ export default function Lesson5Part3Relationships() {
             className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 space-y-3"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
               <div>
                 <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-cyan-400">▣</span>
@@ -450,14 +450,14 @@ export default function Lesson5Part3Relationships() {
               </div>
               <button
                 onClick={() => setModalImage(null)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-white/[0.12]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Modal Image Body */}
-            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-slate-800/80">
+            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-white/[0.08]">
               <img
                 src={modalImage.src}
                 alt={modalImage.title}

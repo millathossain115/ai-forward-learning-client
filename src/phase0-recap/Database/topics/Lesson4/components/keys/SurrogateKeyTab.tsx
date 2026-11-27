@@ -18,8 +18,8 @@ export default function SurrogateKeyTab() {
   const [activeKeyArch, setActiveKeyArch] = useState<'surrogate' | 'natural'>('surrogate');
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-indigo-500/40 space-y-6 animate-in fade-in duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-indigo-500/40 space-y-6 animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
@@ -45,7 +45,7 @@ export default function SurrogateKeyTab() {
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800/80 text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
+          <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
             <div className="flex items-center gap-2 text-indigo-400 font-bold">
               <Sparkles className="w-4 h-4" />
               <DualText
@@ -60,8 +60,8 @@ export default function SurrogateKeyTab() {
           </div>
 
           {/* Interactive Architectural Model Switcher */}
-          <div className="p-4 rounded-xl bg-[#0a0d1a] border border-indigo-500/30 space-y-4 font-mono text-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="p-4 rounded-xl bg-[#101116] border border-indigo-500/30 space-y-4 font-mono text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
                 <span className="w-2 h-2 rounded-full bg-indigo-400" />
                 <DualText
@@ -87,7 +87,7 @@ export default function SurrogateKeyTab() {
                 className={`p-3 rounded-xl border text-left transition-colors cursor-pointer space-y-1 ${
                   activeKeyArch === 'surrogate'
                     ? 'bg-emerald-500/15 border-emerald-400  '
-                    : 'bg-[#121526] border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
+                    : 'bg-[#15171e] border-white/[0.08] opacity-70 hover:opacity-100 hover:border-white/[0.12]'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -111,7 +111,7 @@ export default function SurrogateKeyTab() {
                 className={`p-3 rounded-xl border text-left transition-colors cursor-pointer space-y-1 ${
                   activeKeyArch === 'natural'
                     ? 'bg-amber-500/15 border-amber-400  '
-                    : 'bg-[#121526] border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
+                    : 'bg-[#15171e] border-white/[0.08] opacity-70 hover:opacity-100 hover:border-white/[0.12]'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -175,8 +175,8 @@ export default function SurrogateKeyTab() {
               </div>
 
               {/* Surrogate SQL Schema */}
-              <div className="p-4 rounded-xl bg-[#090b14] border border-emerald-500/30 font-mono text-xs space-y-2">
-                <div className="flex items-center justify-between text-zinc-400 border-b border-slate-800/80 pb-2">
+              <div className="p-4 rounded-xl bg-[#101116] border border-emerald-500/30 font-mono text-xs space-y-2">
+                <div className="flex items-center justify-between text-zinc-400 border-b border-white/[0.08] pb-2">
                   <span className="text-emerald-300 font-bold flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     {language === 'bn'
@@ -244,8 +244,8 @@ export default function SurrogateKeyTab() {
               </div>
 
               {/* Natural SQL Schema */}
-              <div className="p-4 rounded-xl bg-[#090b14] border border-amber-500/30 font-mono text-xs space-y-2">
-                <div className="flex items-center justify-between text-zinc-400 border-b border-slate-800/80 pb-2">
+              <div className="p-4 rounded-xl bg-[#101116] border border-amber-500/30 font-mono text-xs space-y-2">
+                <div className="flex items-center justify-between text-zinc-400 border-b border-white/[0.08] pb-2">
                   <span className="text-amber-300 font-bold flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-amber-400" />
                     {language === 'bn'

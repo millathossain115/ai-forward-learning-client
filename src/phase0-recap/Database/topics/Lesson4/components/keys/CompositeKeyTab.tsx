@@ -94,8 +94,8 @@ export default function CompositeKeyTab() {
   };
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-pink-500/40 space-y-6 animate-in fade-in duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-pink-500/40 space-y-6 animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-pink-500/20 text-pink-400 border border-pink-500/30">
@@ -121,7 +121,7 @@ export default function CompositeKeyTab() {
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800/80 text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
+          <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
             <div className="flex items-center gap-2 text-pink-400 font-bold">
               <Sparkles className="w-4 h-4" />
               <DualText
@@ -136,8 +136,8 @@ export default function CompositeKeyTab() {
           </div>
 
           {/* Interactive Column Mode Switcher & Collision Simulator */}
-          <div className="p-4 rounded-xl bg-[#0a0d1a] border border-pink-500/30 space-y-4 font-mono text-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="p-4 rounded-xl bg-[#101116] border border-pink-500/30 space-y-4 font-mono text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
                 <span className="w-2 h-2 rounded-full bg-pink-400" />
                 <DualText
@@ -167,7 +167,7 @@ export default function CompositeKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     compositeTestMode === 'student_only'
                       ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold  '
-                      : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
+                      : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
                   }`}
                 >
                   <XCircle className="w-3.5 h-3.5 text-rose-400" />
@@ -179,7 +179,7 @@ export default function CompositeKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     compositeTestMode === 'course_only'
                       ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold  '
-                      : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
+                      : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
                   }`}
                 >
                   <XCircle className="w-3.5 h-3.5 text-rose-400" />
@@ -191,7 +191,7 @@ export default function CompositeKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     compositeTestMode === 'both'
                       ? 'bg-pink-500/20 border-pink-400 text-pink-200 font-bold  '
-                      : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
+                      : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
                   }`}
                 >
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
@@ -201,7 +201,7 @@ export default function CompositeKeyTab() {
             </div>
 
             {/* Live Interactive Collision Tester Buttons */}
-            <div className="pt-3 border-t border-slate-800/80 space-y-3">
+            <div className="pt-3 border-t border-white/[0.08] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <span className="text-xs font-semibold text-zinc-300 font-sans flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-pink-400" />
@@ -211,7 +211,7 @@ export default function CompositeKeyTab() {
                 </span>
                 <button
                   onClick={handleResetEnrollments}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono text-zinc-400 bg-slate-900 border border-slate-800 hover:text-white hover:border-slate-700 transition-colors w-fit"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono text-zinc-400 bg-[#15171e] border border-white/[0.08] hover:text-white hover:border-white/[0.12] transition-colors w-fit"
                   title="Reset enrollments table to initial 5 rows"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
@@ -337,7 +337,7 @@ export default function CompositeKeyTab() {
               </div>
 
               {/* Custom Combination Interactive Sandbox */}
-              <div className="p-3 rounded-lg bg-[#0c0e1a] border border-slate-800/80 space-y-2">
+              <div className="p-3 rounded-lg bg-[#0c0e1a] border border-white/[0.08] space-y-2">
                 <span className="text-[11px] text-zinc-400 font-sans block font-semibold">
                   {language === 'bn'
                     ? 'টেস্ট ২: কাস্টম শিক্ষার্থী ও কোর্স কম্বিনেশন বিল্ডার (যেকোনো জোড়া টেস্ট করুন):'
@@ -347,7 +347,7 @@ export default function CompositeKeyTab() {
                   <select
                     value={customStudentId}
                     onChange={(e) => setCustomStudentId(e.target.value)}
-                    className="bg-[#121629] border border-slate-700 text-zinc-200 text-xs rounded-lg px-2.5 py-1.5 focus:border-pink-500 focus:outline-none font-mono"
+                    className="bg-[#15171e] border border-white/[0.12] text-zinc-200 text-xs rounded-lg px-2.5 py-1.5 focus:border-pink-500 focus:outline-none font-mono"
                   >
                     {Object.entries(compositeStudentDirectory).map(([id, name]) => (
                       <option key={id} value={id}>
@@ -361,7 +361,7 @@ export default function CompositeKeyTab() {
                   <select
                     value={customCourseId}
                     onChange={(e) => setCustomCourseId(e.target.value)}
-                    className="bg-[#121629] border border-slate-700 text-zinc-200 text-xs rounded-lg px-2.5 py-1.5 focus:border-pink-500 focus:outline-none font-mono"
+                    className="bg-[#15171e] border border-white/[0.12] text-zinc-200 text-xs rounded-lg px-2.5 py-1.5 focus:border-pink-500 focus:outline-none font-mono"
                   >
                     {Object.entries(compositeCourseDirectory).map(([id, name]) => (
                       <option key={id} value={id}>
@@ -427,10 +427,10 @@ export default function CompositeKeyTab() {
               </span>
             </div>
 
-            <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#090b14]">
+            <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
               <table className="w-full text-left font-mono text-xs">
                 <thead>
-                  <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px]">
+                  <tr className="bg-[#15171e] text-zinc-300 border-b border-white/[0.08] text-[11px]">
                     <th className="py-2.5 px-3 text-center w-12 text-zinc-500">#</th>
 
                     {/* Column: Student_ID */}
@@ -488,13 +488,13 @@ export default function CompositeKeyTab() {
                     <th className="py-2.5 px-3 text-zinc-400">Grade</th>
 
                     {/* Mode Evaluation Result */}
-                    <th className="py-2.5 px-3 text-right bg-slate-900/80 text-pink-300 border-l border-slate-800">
+                    <th className="py-2.5 px-3 text-right bg-[#15171e] text-pink-300 border-l border-white/[0.08]">
                       {language === 'bn' ? 'ইউনিকনেস নিরীক্ষা' : 'Uniqueness Audit'}
                     </th>
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-slate-800/60 text-zinc-300 text-[11px]">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300 text-[11px]">
                   {enrollments.map((enr, idx) => {
                     const isDupStudent =
                       compositeTestMode === 'student_only' &&
@@ -522,7 +522,7 @@ export default function CompositeKeyTab() {
                             ? 'bg-emerald-950/50 ring-2 ring-emerald-500/70 text-white'
                             : idx % 2 === 0
                             ? 'bg-[#0f1224]/30'
-                            : 'bg-[#0c0e18]'
+                            : 'bg-[#101116]'
                         } ${
                           isDupStudent || isDupCourse
                             ? 'bg-rose-950/20'
@@ -531,7 +531,7 @@ export default function CompositeKeyTab() {
                             : ''
                         }`}
                       >
-                        <td className="py-2 px-3 text-center text-zinc-500 border-r border-slate-800/60">
+                        <td className="py-2 px-3 text-center text-zinc-500 border-r border-white/[0.08]">
                           {idx + 1}
                         </td>
 
@@ -574,7 +574,7 @@ export default function CompositeKeyTab() {
                         <td className="py-2 px-3 text-zinc-300 font-bold">{enr.grade}</td>
 
                         {/* Audit Result Column */}
-                        <td className="py-2 px-3 text-right border-l border-slate-800 font-mono text-[11px]">
+                        <td className="py-2 px-3 text-right border-l border-white/[0.08] font-mono text-[11px]">
                           {isColliding ? (
                             <span className="text-rose-300 font-bold flex items-center justify-end gap-1 bg-rose-500/20 px-2 py-0.5 rounded border border-rose-500/40">
                               <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
@@ -622,8 +622,8 @@ export default function CompositeKeyTab() {
           </div>
 
           {/* Live Generated SQL DDL Schema */}
-          <div className="p-4 rounded-xl bg-[#090b14] border border-slate-800 font-mono text-xs space-y-2">
-            <div className="flex items-center justify-between text-zinc-400 border-b border-slate-800/80 pb-2">
+          <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] font-mono text-xs space-y-2">
+            <div className="flex items-center justify-between text-zinc-400 border-b border-white/[0.08] pb-2">
               <span className="text-zinc-300 font-bold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-pink-400" />
                 {language === 'bn'

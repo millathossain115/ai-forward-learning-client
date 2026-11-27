@@ -24,8 +24,8 @@ export default function Lesson3Part1Relation() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
           <TableIcon className="w-6 h-6" />
         </div>
@@ -67,7 +67,7 @@ export default function Lesson3Part1Relation() {
         </div>
 
         {/* Interactive Inspection Callout */}
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-800 space-y-4">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <span className="text-xs font-mono font-bold text-white uppercase flex items-center gap-1.5">
               <TableIcon className="w-4 h-4 text-indigo-400" />
@@ -81,10 +81,10 @@ export default function Lesson3Part1Relation() {
           </div>
 
           {/* Students Table with Interactive Clicks */}
-          <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+          <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
             <table className="w-full text-left text-xs font-mono">
               <thead>
-                <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+                <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
                   {[
                     { col: 'Student_ID', bn: 'শিক্ষার্থী আইডি', detailEn: '"Student_ID" is an ATTRIBUTE (Column). It is a unique identifier.', detailBn: '"Student_ID" হলো একটি অ্যাট্রিবিউট (কলাম), যা প্রতিটি শিক্ষার্থীকে অনন্যভাবে চিহ্নিত করে।' },
                     { col: 'Name', bn: 'নাম', detailEn: '"Name" is an ATTRIBUTE (Column). Represents student text name.', detailBn: '"Name" হলো অ্যাট্রিবিউট (কলাম), যা শিক্ষার্থীর নাম সংরক্ষণ করে।' },
@@ -112,7 +112,7 @@ export default function Lesson3Part1Relation() {
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+              <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                 {baseStudents.map((st, idx) => (
                   <tr
                     key={st.id}

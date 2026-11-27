@@ -25,8 +25,8 @@ export default function NoSqlModelVisualizer() {
   const [activeTab, setActiveTab] = useState<NoSqlSubTab>('document');
 
   return (
-    <div className="p-5 md:p-7 rounded-2xl bg-[#090b17] border border-cyan-500/40 space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+    <div className="p-5 md:p-7 rounded-2xl bg-[#101116] border border-cyan-500/40 space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
         <div>
           <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1.5">
             <Boxes className="w-4 h-4 text-cyan-400" />
@@ -42,7 +42,7 @@ export default function NoSqlModelVisualizer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-1.5 bg-[#0f1220] p-1 rounded-xl border border-slate-800 text-[11px] font-mono">
+        <div className="flex flex-wrap gap-1.5 bg-[#15171e] p-1 rounded-xl border border-white/[0.08] text-[11px] font-mono">
           {TABS.map((tab) => {
             const Icon = tab.icon;
             return (

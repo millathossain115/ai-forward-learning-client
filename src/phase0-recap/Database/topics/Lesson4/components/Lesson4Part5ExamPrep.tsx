@@ -106,8 +106,8 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
   };
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
             <Briefcase className="w-6 h-6" />
@@ -143,7 +143,7 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
               className={`rounded-xl border transition-colors ${
                 isExpanded
                   ? 'border-amber-500/40 bg-[#121528]  shadow-black/40'
-                  : 'border-slate-800/80 bg-[#0e1122] hover:border-slate-700'
+                  : 'border-white/[0.08] bg-[#0e1122] hover:border-white/[0.12]'
               }`}
             >
               <button
@@ -174,7 +174,7 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
               </button>
 
               {isExpanded && (
-                <div className="px-4 pb-4 pt-2 space-y-3 border-t border-slate-800/60 bg-black/30">
+                <div className="px-4 pb-4 pt-2 space-y-3 border-t border-white/[0.08] bg-black/30">
                   <div className="p-3 rounded-xl bg-amber-950/20 border border-amber-500/30 text-amber-200 text-xs font-sans flex items-start gap-2">
                     <Sparkles className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                     <p className="leading-relaxed">
@@ -187,7 +187,7 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
                   </div>
 
                   {item.codeSnippet && (
-                    <pre className="p-3 rounded-xl bg-[#090b14] border border-slate-800 font-mono text-[11px] overflow-x-auto text-emerald-300 leading-relaxed">
+                    <pre className="p-3 rounded-xl bg-[#101116] border border-white/[0.08] font-mono text-[11px] overflow-x-auto text-emerald-300 leading-relaxed">
                       {item.codeSnippet}
                     </pre>
                   )}
@@ -227,7 +227,7 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('db-lesson3')}
-            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-white/[0.12] cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ৩-এ ফিরে যান' : 'Back to Lesson 3'}</span>

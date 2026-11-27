@@ -90,8 +90,8 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
       {/* ========================================================
           PART 8: LET'S PUT EVERYTHING TOGETHER (MASTER VOCAB)
          ======================================================== */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+      <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
           <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             <CheckCircle2 className="w-6 h-6" />
           </div>
@@ -109,8 +109,8 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
         </div>
 
         {/* Master Breakdown Table: Employee Relation */}
-        <div className="p-5 md:p-6 rounded-2xl bg-[#14182e] border border-slate-800 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+        <div className="p-5 md:p-6 rounded-2xl bg-[#14182e] border border-white/[0.08] space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
             <div>
               <h4 className="text-xs font-mono font-bold text-white uppercase flex items-center gap-2">
                 <Building2 className="w-4 h-4 text-emerald-400" />
@@ -142,7 +142,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
                   className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold cursor-pointer transition-colors ${
                     activeHighlight === pill.id
                       ? 'bg-emerald-500 text-black  font-bold'
-                      : 'bg-[#0c0e18] border border-slate-800 text-zinc-400 hover:text-white'
+                      : 'bg-[#101116] border border-white/[0.08] text-zinc-400 hover:text-white'
                   }`}
                 >
                   {language === 'bn' ? pill.labelBn : pill.labelEn}
@@ -156,7 +156,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
             className={`p-2.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-colors ${
               activeHighlight === 'degree' || activeHighlight === 'attribute'
                 ? 'bg-pink-950/40 border-pink-500/60 text-pink-200 ring-1 ring-pink-500/30'
-                : 'bg-[#0c0e18] border-slate-800 text-zinc-400'
+                : 'bg-[#101116] border-white/[0.08] text-zinc-400'
             }`}
           >
             <div className="flex items-center gap-2">
@@ -171,11 +171,11 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
           </div>
 
           {/* Visual Table with Cardinality Left Guides */}
-          <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+          <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
             <table className="w-full text-left text-xs font-mono">
               <thead>
-                <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
-                  <th className="py-2.5 px-3 text-zinc-500 text-center w-20 border-r border-slate-800/60">
+                <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
+                  <th className="py-2.5 px-3 text-zinc-500 text-center w-20 border-r border-white/[0.08]">
                     {language === 'bn' ? 'টাপল নম্বর' : 'Tuple #'}
                   </th>
                   <th
@@ -220,7 +220,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+              <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                 {[
                   { tupleNum: 1, id: 'E01', name: 'Rahim', age: 25, salary: '30,000' },
                   { tupleNum: 2, id: 'E02', name: 'Karim', age: 28, salary: '35,000' },
@@ -234,7 +234,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
                         : 'hover:bg-slate-800/30'
                     }`}
                   >
-                    <td className="py-2.5 px-3 text-center border-r border-slate-800/60 text-indigo-400 font-bold bg-[#101322]">
+                    <td className="py-2.5 px-3 text-center border-r border-white/[0.08] text-indigo-400 font-bold bg-[#101116]">
                       Tuple {row.tupleNum}
                     </td>
                     <td className="py-2.5 px-4 font-bold text-amber-300">{row.id}</td>
@@ -262,7 +262,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
             className={`p-2.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-colors ${
               activeHighlight === 'cardinality' || activeHighlight === 'tuple'
                 ? 'bg-indigo-950/40 border-indigo-500/60 text-indigo-200 ring-1 ring-indigo-500/30'
-                : 'bg-[#0c0e18] border-slate-800 text-zinc-400'
+                : 'bg-[#101116] border-white/[0.08] text-zinc-400'
             }`}
           >
             <div className="flex items-center gap-2">
@@ -277,7 +277,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
           </div>
 
           {/* Contextual Educational Deep-Dive Banner */}
-          <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans text-zinc-300 space-y-1">
+          <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] text-xs font-sans text-zinc-300 space-y-1">
             <span className="font-mono font-bold text-amber-300 uppercase text-[11px] block flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               {activeHighlight === 'degree' && (language === 'bn' ? 'ডিগ্রি (Degree) কী মনে রাখবেন:' : 'Key Takeaway: Degree')}
@@ -329,13 +329,13 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
 
           {/* 4 Summary Stat Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono text-center">
-            <div className="p-3 rounded-xl bg-black/40 border border-slate-800">
+            <div className="p-3 rounded-xl bg-black/40 border border-white/[0.08]">
               <span className="text-[10px] text-zinc-400 block">
                 {language === 'bn' ? 'রিলেশনের নাম (Table)' : 'Relation Name'}
               </span>
               <span className="text-white font-bold">EMPLOYEE</span>
             </div>
-            <div className="p-3 rounded-xl bg-black/40 border border-slate-800">
+            <div className="p-3 rounded-xl bg-black/40 border border-white/[0.08]">
               <span className="text-[10px] text-zinc-400 block">
                 {language === 'bn' ? 'ডিগ্রি (কলাম সংখ্যা)' : 'Degree (Columns)'}
               </span>
@@ -343,7 +343,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
                 {language === 'bn' ? '৪টি কলাম (Attributes)' : '4 Attributes'}
               </span>
             </div>
-            <div className="p-3 rounded-xl bg-black/40 border border-slate-800">
+            <div className="p-3 rounded-xl bg-black/40 border border-white/[0.08]">
               <span className="text-[10px] text-zinc-400 block">
                 {language === 'bn' ? 'কার্ডিনালিটি (সারি সংখ্যা)' : 'Cardinality (Rows)'}
               </span>
@@ -351,7 +351,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
                 {language === 'bn' ? '৩টি সারি (Tuples)' : '3 Tuples'}
               </span>
             </div>
-            <div className="p-3 rounded-xl bg-black/40 border border-slate-800">
+            <div className="p-3 rounded-xl bg-black/40 border border-white/[0.08]">
               <span className="text-[10px] text-zinc-400 block">
                 {language === 'bn' ? 'নমুনা টাপল' : 'Sample Tuple'}
               </span>
@@ -364,8 +364,8 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
       {/* ========================================================
           PART 9: SELECTIVE INTERVIEW QUESTIONS ONLY
          ======================================================== */}
-      <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+      <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
           <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
             <GraduationCap className="w-6 h-6" />
           </div>
@@ -397,7 +397,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
             return (
               <div
                 key={item.id}
-                className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden transition-colors"
+                className="rounded-xl border border-white/[0.08] bg-[#15171e] overflow-hidden transition-colors"
               >
                 <button
                   onClick={() => toggleExamQuestion(item.id)}
@@ -414,7 +414,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
                 </button>
 
                 {isExpanded && (
-                  <div className="px-4 pb-4 pt-1 text-xs text-zinc-300 font-sans leading-relaxed border-t border-slate-800/60 bg-black/30">
+                  <div className="px-4 pb-4 pt-1 text-xs text-zinc-300 font-sans leading-relaxed border-t border-white/[0.08] bg-black/30">
                     <div className="p-3 rounded-lg bg-indigo-950/20 border border-indigo-900/30 text-indigo-200">
                       {language === 'bn' ? item.aBn : item.aEn}
                     </div>
@@ -453,7 +453,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
             <button
               onClick={() => onNavigate?.('db-lesson2')}
-              className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-white/[0.12] cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>{language === 'bn' ? 'লেসন ২-এ ফিরে যান' : 'Back to Lesson 2'}</span>

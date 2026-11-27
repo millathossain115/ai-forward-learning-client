@@ -17,7 +17,7 @@ export default function Lesson4Hero({ onNavigate }: Lesson4HeroProps) {
     <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#202744] p-6 md:p-8">
 
       {/* Top Banner Actions: Lesson Status */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800/60">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-white/[0.08]">
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
@@ -63,7 +63,7 @@ export default function Lesson4Hero({ onNavigate }: Lesson4HeroProps) {
           </button>
           <button
             onClick={() => onNavigate?.('db-lesson3')}
-            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-slate-700"
+            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-white/[0.12]"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>{language === 'bn' ? 'লেসন ৩-এ ফিরে যান' : 'Back to Lesson 3'}</span>
@@ -72,7 +72,7 @@ export default function Lesson4Hero({ onNavigate }: Lesson4HeroProps) {
       </div>
 
       {/* Lesson 3 Recap Ribbon */}
-      <div className="mt-8 pt-6 border-t border-slate-800/80">
+      <div className="mt-8 pt-6 border-t border-white/[0.08]">
         <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-3">
           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           <span>
@@ -80,31 +80,31 @@ export default function Lesson4Hero({ onNavigate }: Lesson4HeroProps) {
           </span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-mono">
-          <div className="p-2 rounded-lg bg-[#101322] border border-slate-800 text-zinc-300">
+          <div className="p-2 rounded-lg bg-[#101116] border border-white/[0.08] text-zinc-300">
             <strong className="text-indigo-400 block">Relation:</strong>
             <span className="text-[11px] text-zinc-400">
               {language === 'bn' ? 'টেবিল (Table)' : 'Table'}
             </span>
           </div>
-          <div className="p-2 rounded-lg bg-[#101322] border border-slate-800 text-zinc-300">
+          <div className="p-2 rounded-lg bg-[#101116] border border-white/[0.08] text-zinc-300">
             <strong className="text-cyan-400 block">Tuple:</strong>
             <span className="text-[11px] text-zinc-400">
               {language === 'bn' ? 'রো / রেকর্ড (Row)' : 'Row / Record'}
             </span>
           </div>
-          <div className="p-2 rounded-lg bg-[#101322] border border-slate-800 text-zinc-300">
+          <div className="p-2 rounded-lg bg-[#101116] border border-white/[0.08] text-zinc-300">
             <strong className="text-purple-400 block">Attribute:</strong>
             <span className="text-[11px] text-zinc-400">
               {language === 'bn' ? 'কলাম / ফিল্ড (Column)' : 'Column / Field'}
             </span>
           </div>
-          <div className="p-2 rounded-lg bg-[#101322] border border-slate-800 text-zinc-300">
+          <div className="p-2 rounded-lg bg-[#101116] border border-white/[0.08] text-zinc-300">
             <strong className="text-pink-400 block">Degree:</strong>
             <span className="text-[11px] text-zinc-400">
               {language === 'bn' ? 'কলাম সংখ্যা' : 'Column Count'}
             </span>
           </div>
-          <div className="p-2 rounded-lg bg-[#101322] border border-slate-800 text-zinc-300">
+          <div className="p-2 rounded-lg bg-[#101116] border border-white/[0.08] text-zinc-300">
             <strong className="text-emerald-400 block">Cardinality:</strong>
             <span className="text-[11px] text-zinc-400">
               {language === 'bn' ? 'সারি সংখ্যা' : 'Row Count'}

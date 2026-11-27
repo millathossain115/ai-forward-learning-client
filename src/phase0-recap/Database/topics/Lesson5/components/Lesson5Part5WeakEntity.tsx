@@ -52,9 +52,9 @@ export default function Lesson5Part5WeakEntity() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-8">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-3xl p-6 md:p-8 space-y-8">
       {/* Section Header */}
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
           <Box className="w-6 h-6" />
         </div>
@@ -74,7 +74,7 @@ export default function Lesson5Part5WeakEntity() {
       {/* Intro Definition Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
         {/* Strong Entity */}
-        <div className="p-5 rounded-2xl bg-[#121526] border border-indigo-900/50 space-y-3">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-indigo-900/50 space-y-3">
           <div className="flex items-center justify-between font-mono">
             <span className="text-sm font-bold text-indigo-300">8.1 Strong Entity</span>
             <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-950 border border-indigo-600 text-indigo-200 font-bold">
@@ -87,12 +87,12 @@ export default function Lesson5Part5WeakEntity() {
               bn="যে এনটিটির নিজস্ব স্বয়ংসম্পূর্ণ প্রাইমারি কি থাকে এবং অন্য কোনো এনটিটির সাহায্য ছাড়াই স্বাধীনভাবে যাকে অদ্বিতীয়ভাবে চেনা যায়, তাকে স্ট্রং এনটিটি বলে।"
             />
           </div>
-          <div className="p-3 rounded-xl bg-[#090b14] border border-slate-800 font-mono text-[11px] text-indigo-300 space-y-1">
+          <div className="p-3 rounded-xl bg-[#101116] border border-white/[0.08] font-mono text-[11px] text-indigo-300 space-y-1">
             <div><strong>Example:</strong> STUDENT Entity</div>
             <div className="text-zinc-400 text-[10px]">
               <code>Student_ID = 101</code>, <code>Name = &apos;Rahim&apos;</code>, <code>Dept = &apos;CSE&apos;</code>
             </div>
-            <div className="text-zinc-500 text-[10px] pt-1 border-t border-slate-800/80">
+            <div className="text-zinc-500 text-[10px] pt-1 border-t border-white/[0.08]">
               {language === 'bn'
                 ? 'Student এনটিটি শনাক্ত হতে অন্য কোনো টেবিলের ওপর নির্ভর করে না।'
                 : 'Student does not rely on any parent table for identification.'}
@@ -101,7 +101,7 @@ export default function Lesson5Part5WeakEntity() {
         </div>
 
         {/* Weak Entity */}
-        <div className="p-5 rounded-2xl bg-[#121526] border border-rose-900/50 space-y-3 ring-1 ring-rose-500/20">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-rose-900/50 space-y-3 ring-1 ring-rose-500/20">
           <div className="flex items-center justify-between font-mono">
             <span className="text-sm font-bold text-rose-300">8.2 Weak Entity</span>
             <span className="text-[10px] px-2 py-0.5 rounded bg-rose-950 border border-rose-600 text-rose-200 font-bold">
@@ -114,12 +114,12 @@ export default function Lesson5Part5WeakEntity() {
               bn="যে এনটিটি কেবল নিজের অ্যাট্রিবিউট দিয়ে এককভাবে শনাক্ত হতে পারে না এবং অস্তিত্ব ও চেনার জন্য একটি ওনার (স্ট্রং) এনটিটির ওপর নির্ভর করে, তাকে উইক এনটিটি বলে।"
             />
           </div>
-          <div className="p-3 rounded-xl bg-[#090b14] border border-slate-800 font-mono text-[11px] text-rose-300 space-y-1">
+          <div className="p-3 rounded-xl bg-[#101116] border border-white/[0.08] font-mono text-[11px] text-rose-300 space-y-1">
             <div><strong>Example:</strong> DEPENDENT (কর্মচারীর সন্তান/পরিবার)</div>
             <div className="text-zinc-400 text-[10px]">
               <code>Dependent_Name = &apos;Rahim&apos;</code>, <code>Relationship = &apos;Son&apos;</code>
             </div>
-            <div className="text-zinc-500 text-[10px] pt-1 border-t border-slate-800/80">
+            <div className="text-zinc-500 text-[10px] pt-1 border-t border-white/[0.08]">
               {language === 'bn'
                 ? 'একাধিক কর্মীর সন্তানের নাম "Rahim" হতে পারে। তাই এটি উইক এনটিটি।'
                 : 'Multiple employees may have a son named "Rahim". Name alone is not unique!'}
@@ -129,8 +129,8 @@ export default function Lesson5Part5WeakEntity() {
       </div>
 
       {/* Real-World Visual Architecture: Employee & Dependent */}
-      <div className="p-6 rounded-2xl bg-[#14182e] border border-slate-800 space-y-4 font-mono text-xs">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="p-6 rounded-2xl bg-[#14182e] border border-white/[0.08] space-y-4 font-mono text-xs">
+        <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
           <span className="text-xs font-bold text-white uppercase flex items-center gap-2">
             <KeyRound className="w-4 h-4 text-amber-400" />
             {language === 'bn' ? 'বাস্তব দৃশ্যপট: Employee বনাম Dependent রিলেশন' : 'Real-World Architecture: Employee & Family Dependents'}
@@ -168,7 +168,7 @@ export default function Lesson5Part5WeakEntity() {
         </div>
 
         {/* Detailed Explanation */}
-        <div className="p-4 rounded-xl bg-[#090b14] border border-slate-800 space-y-2 text-[11px] text-zinc-300 font-sans leading-relaxed">
+        <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-2 text-[11px] text-zinc-300 font-sans leading-relaxed">
           <div className="text-amber-300 font-bold font-mono">
             {language === 'bn' ? '💡 DEPENDENT কেন উইক এনটিটি?' : '💡 Why is DEPENDENT classified as a Weak Entity?'}
           </div>
@@ -187,7 +187,7 @@ export default function Lesson5Part5WeakEntity() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
-          <div className="p-4 rounded-2xl bg-[#121526] border border-slate-800 space-y-1.5">
+          <div className="p-4 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-1.5">
             <span className="text-[10px] text-indigo-400 uppercase font-bold block">1. Owner Entity</span>
             <div className="text-white font-bold text-sm">
               {language === 'bn' ? 'ওনার এনটিটি' : 'Owner / Parent Entity'}
@@ -200,7 +200,7 @@ export default function Lesson5Part5WeakEntity() {
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-[#121526] border border-slate-800 space-y-1.5">
+          <div className="p-4 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-1.5">
             <span className="text-[10px] text-rose-400 uppercase font-bold block">2. Partial Key</span>
             <div className="text-white font-bold text-sm">
               {language === 'bn' ? 'পার্শিয়াল কি (ডিসক্রিমিনেটর)' : 'Partial Key (Discriminator)'}
@@ -213,7 +213,7 @@ export default function Lesson5Part5WeakEntity() {
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-[#121526] border border-slate-800 space-y-1.5">
+          <div className="p-4 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-1.5">
             <span className="text-[10px] text-purple-400 uppercase font-bold block">3. Identifying Rel.</span>
             <div className="text-white font-bold text-sm">
               {language === 'bn' ? 'আইডেন্টিফাইং রিলেশনশিপ' : 'Identifying Relationship'}
@@ -235,18 +235,18 @@ export default function Lesson5Part5WeakEntity() {
           <span className="text-[10px] text-zinc-400">Direct Exam Question</span>
         </div>
 
-        <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
+        <div className="overflow-x-auto rounded-2xl border border-white/[0.08] bg-[#101116]">
           <table className="w-full text-left font-mono text-xs">
             <thead>
-              <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px]">
+              <tr className="bg-[#15171e] text-zinc-300 border-b border-white/[0.08] text-[11px]">
                 <th className="py-2.5 px-4">{language === 'bn' ? 'পার্থক্যের বিষয়' : 'Feature'}</th>
                 <th className="py-2.5 px-4 text-indigo-400">{language === 'bn' ? 'স্ট্রং এনটিটি (Strong)' : 'Strong Entity'}</th>
                 <th className="py-2.5 px-4 text-rose-400">{language === 'bn' ? 'উইক এনটিটি (Weak)' : 'Weak Entity'}</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-[11px] text-zinc-300 font-sans">
+            <tbody className="divide-y divide-white/[0.08] text-[11px] text-zinc-300 font-sans">
               {strongVsWeakTable.map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#0c0e18]'}>
+                <tr key={i} className={i % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#101116]'}>
                   <td className="py-3 px-4 font-bold text-white font-mono">
                     {language === 'bn' ? row.featureBn : row.featureEn}
                   </td>

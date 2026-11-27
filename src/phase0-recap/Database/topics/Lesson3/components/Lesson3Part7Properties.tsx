@@ -19,8 +19,8 @@ export default function Lesson3Part7Properties() {
   const displayedStudents = rowOrderReversed ? [...baseStudents].reverse() : baseStudents;
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
           <BookOpen className="w-6 h-6" />
         </div>
@@ -46,7 +46,7 @@ export default function Lesson3Part7Properties() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-sans">
         {/* Rule 1 */}
-        <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-1">
+        <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
           <span className="font-bold text-white font-mono flex items-center gap-2">
             <span className="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] flex items-center justify-center font-bold">
               1
@@ -62,7 +62,7 @@ export default function Lesson3Part7Properties() {
         </div>
 
         {/* Rule 2 */}
-        <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-1">
+        <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
           <span className="font-bold text-white font-mono flex items-center gap-2">
             <span className="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] flex items-center justify-center font-bold">
               2
@@ -78,7 +78,7 @@ export default function Lesson3Part7Properties() {
         </div>
 
         {/* Rule 3 */}
-        <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-1">
+        <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
           <span className="font-bold text-white font-mono flex items-center gap-2">
             <span className="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] flex items-center justify-center font-bold">
               3
@@ -94,7 +94,7 @@ export default function Lesson3Part7Properties() {
         </div>
 
         {/* Rule 4 */}
-        <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-1">
+        <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
           <span className="font-bold text-white font-mono flex items-center gap-2">
             <span className="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] flex items-center justify-center font-bold">
               4
@@ -110,7 +110,7 @@ export default function Lesson3Part7Properties() {
         </div>
 
         {/* Rule 5 */}
-        <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-1">
+        <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
           <span className="font-bold text-white font-mono flex items-center gap-2">
             <span className="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] flex items-center justify-center font-bold">
               5
@@ -126,7 +126,7 @@ export default function Lesson3Part7Properties() {
         </div>
 
         {/* Rule 6 & 7 */}
-        <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-1">
+        <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
           <span className="font-bold text-white font-mono flex items-center gap-2">
             <span className="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] flex items-center justify-center font-bold">
               6 &amp; 7
@@ -146,7 +146,7 @@ export default function Lesson3Part7Properties() {
       </div>
 
       {/* Order Shuffle Simulator */}
-      <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-3">
+      <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <span className="text-xs font-mono font-bold text-indigo-300 uppercase flex items-center gap-1.5">
             <Shuffle className="w-4 h-4" />
@@ -172,13 +172,13 @@ export default function Lesson3Part7Properties() {
         <div className="overflow-x-auto text-[11px] font-mono">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-slate-800 text-zinc-400">
+              <tr className="border-b border-white/[0.08] text-zinc-400">
                 <th className="py-1 px-3">Student_ID</th>
                 <th className="py-1 px-3">Name</th>
                 <th className="py-1 px-3">Department</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+            <tbody className="divide-y divide-white/[0.08] text-zinc-300">
               {displayedStudents.map((st) => (
                 <tr key={st.id}>
                   <td className="py-1 px-3 text-amber-300 font-bold">{st.id}</td>

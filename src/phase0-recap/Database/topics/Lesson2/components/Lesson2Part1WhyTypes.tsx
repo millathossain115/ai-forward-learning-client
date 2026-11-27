@@ -43,8 +43,8 @@ export default function Lesson2Part1WhyTypes() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
           <Building2 className="w-6 h-6" />
         </div>
@@ -82,7 +82,7 @@ export default function Lesson2Part1WhyTypes() {
                 className={`p-4 rounded-xl border text-left transition-colors cursor-pointer space-y-2 ${
                   isSelected
                     ? org.borderActive
-                    : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-slate-700'
+                    : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-white/[0.12]'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -101,7 +101,7 @@ export default function Lesson2Part1WhyTypes() {
         </div>
 
         {/* Dynamic Insight based on selected Org */}
-        <div className="p-5 rounded-2xl bg-[#14182e] border border-slate-800 space-y-3">
+        <div className="p-5 rounded-2xl bg-[#14182e] border border-white/[0.08] space-y-3">
           <h4 className="text-xs font-bold text-white uppercase font-mono flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-indigo-400" />
             <span>

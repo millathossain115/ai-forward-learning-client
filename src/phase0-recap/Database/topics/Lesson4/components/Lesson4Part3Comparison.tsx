@@ -9,8 +9,8 @@ export default function Lesson4Part3Comparison() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
           <Layers className="w-6 h-6" />
         </div>
@@ -27,10 +27,10 @@ export default function Lesson4Part3Comparison() {
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+      <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+            <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
               <th className="py-2.5 px-4 font-bold text-amber-400">
                 {language === 'bn' ? 'কী-এর ধরন' : 'Key Type'}
               </th>
@@ -42,7 +42,7 @@ export default function Lesson4Part3Comparison() {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+          <tbody className="divide-y divide-white/[0.08] text-zinc-300">
             <tr>
               <td className="py-2 px-4 font-bold text-amber-300">Super Key</td>
               <td className="py-2 px-4">
@@ -120,7 +120,7 @@ export default function Lesson4Part3Comparison() {
       </div>
 
       {/* Visual Hierarchy Diagram */}
-      <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-2 text-center font-mono text-xs">
+      <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-2 text-center font-mono text-xs">
         <span className="text-[10px] text-zinc-400 uppercase font-bold block">
           {language === 'bn' ? 'কী-এর অনুক্রম কাঠামো (Key Hierarchy):' : 'The Hierarchy of Keys:'}
         </span>

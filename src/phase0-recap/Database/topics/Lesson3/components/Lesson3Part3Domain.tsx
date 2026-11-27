@@ -103,8 +103,8 @@ export default function Lesson3Part3Domain() {
   const domainValidationResult = validateDomain();
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           <ShieldCheck className="w-6 h-6" />
         </div>
@@ -130,7 +130,7 @@ export default function Lesson3Part3Domain() {
         </div>
 
         {/* Interactive Domain Validator Simulator */}
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-emerald-950 space-y-4">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-emerald-950 space-y-4">
           <h3 className="text-xs font-mono font-bold text-emerald-300 uppercase flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <DualText
@@ -158,7 +158,7 @@ export default function Lesson3Part3Domain() {
                     className={`py-1.5 px-2 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors border ${
                       domainAttribute === attr
                         ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300'
-                        : 'bg-[#101322] border-slate-800 text-zinc-400'
+                        : 'bg-[#101116] border-white/[0.08] text-zinc-400'
                     }`}
                   >
                     {attr}
@@ -178,7 +178,7 @@ export default function Lesson3Part3Domain() {
                 value={testValue}
                 onChange={(e) => setTestValue(e.target.value)}
                 placeholder="e.g. 3.80, Hello, -5"
-                className="w-full bg-[#0c0e18] border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-emerald-500"
+                className="w-full bg-[#101116] border border-white/[0.12] rounded-lg px-3 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-emerald-500"
               />
             </div>
           </div>
@@ -202,10 +202,10 @@ export default function Lesson3Part3Domain() {
           </div>
 
           {/* Domain Table Guide */}
-          <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18] text-xs font-mono">
+          <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116] text-xs font-mono">
             <table className="w-full text-left">
               <thead>
-                <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+                <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
                   <th className="py-2 px-3 text-indigo-400">
                     {language === 'bn' ? 'অ্যাট্রিবিউট' : 'Attribute'}
                   </th>
@@ -217,7 +217,7 @@ export default function Lesson3Part3Domain() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-zinc-300 text-[11px]">
+              <tbody className="divide-y divide-white/[0.08] text-zinc-300 text-[11px]">
                 <tr>
                   <td className="py-2 px-3 font-bold text-white">Age</td>
                   <td className="py-2 px-3">

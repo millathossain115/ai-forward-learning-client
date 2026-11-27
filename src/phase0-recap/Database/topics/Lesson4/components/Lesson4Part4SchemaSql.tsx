@@ -50,8 +50,8 @@ export default function Lesson4Part4SchemaSql() {
   };
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
           <FileCode2 className="w-6 h-6" />
         </div>
@@ -70,24 +70,24 @@ export default function Lesson4Part4SchemaSql() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Table Architecture */}
-        <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-3 font-mono text-xs">
+        <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-3 font-mono text-xs">
           <span className="text-cyan-400 font-bold block uppercase text-[11px]">
             {language === 'bn' ? 'রিলেশনাল টেবিল সংযোগসমূহ:' : 'Relational Linkages (4 Tables):'}
           </span>
           <div className="space-y-2 text-[11px] text-zinc-300">
-            <div className="p-2.5 rounded bg-black/40 border border-slate-800">
+            <div className="p-2.5 rounded bg-black/40 border border-white/[0.08]">
               <strong className="text-amber-400 block">1. DEPARTMENT</strong>
               <span>Dept_ID [PRIMARY KEY], Dept_Name [UNIQUE]</span>
             </div>
-            <div className="p-2.5 rounded bg-black/40 border border-slate-800">
+            <div className="p-2.5 rounded bg-black/40 border border-white/[0.08]">
               <strong className="text-indigo-400 block">2. STUDENT</strong>
               <span>Student_ID [PK], Email [UNIQUE], Dept_ID [FK &rarr; Department]</span>
             </div>
-            <div className="p-2.5 rounded bg-black/40 border border-slate-800">
+            <div className="p-2.5 rounded bg-black/40 border border-white/[0.08]">
               <strong className="text-emerald-400 block">3. COURSE</strong>
               <span>Course_ID [PRIMARY KEY], Title, Credits</span>
             </div>
-            <div className="p-2.5 rounded bg-black/40 border border-slate-800">
+            <div className="p-2.5 rounded bg-black/40 border border-white/[0.08]">
               <strong className="text-pink-400 block">4. ENROLLMENT (M:N Junction)</strong>
               <span>(Student_ID, Course_ID, Semester) [COMPOSITE PK] + 2 FKs</span>
             </div>
@@ -95,9 +95,9 @@ export default function Lesson4Part4SchemaSql() {
         </div>
 
         {/* SQL DDL Snippet with 2-Tab Switcher */}
-        <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-2.5 font-mono text-xs flex flex-col">
+        <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-2.5 font-mono text-xs flex flex-col">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="flex items-center gap-1 bg-black/60 p-0.5 rounded-lg border border-slate-800 text-[10px]">
+            <div className="flex items-center gap-1 bg-black/60 p-0.5 rounded-lg border border-white/[0.08] text-[10px]">
               <button
                 onClick={() => setActiveSqlTab('core')}
                 className={`px-2.5 py-1 rounded transition cursor-pointer ${
@@ -128,7 +128,7 @@ export default function Lesson4Part4SchemaSql() {
               <span>{copied ? 'Copied' : 'Copy'}</span>
             </button>
           </div>
-          <pre className="p-3 rounded-lg bg-black/60 text-emerald-300 overflow-x-auto text-[11px] leading-relaxed border border-slate-800 font-mono flex-1">
+          <pre className="p-3 rounded-lg bg-black/60 text-emerald-300 overflow-x-auto text-[11px] leading-relaxed border border-white/[0.08] font-mono flex-1">
             {activeSql}
           </pre>
         </div>

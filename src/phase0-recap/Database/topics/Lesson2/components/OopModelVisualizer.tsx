@@ -63,7 +63,7 @@ export default function OopModelVisualizer() {
   return (
     <div className="p-5 md:p-7 rounded-2xl bg-[#0d1022] border border-pink-500/40 space-y-6">
       {/* Header and Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
         <div>
           <span className="text-xs font-mono font-bold text-pink-400 flex items-center gap-1.5">
             <Gamepad2 className="w-4 h-4 text-pink-400" />
@@ -83,7 +83,7 @@ export default function OopModelVisualizer() {
         {/* Direction Toggle & Class Selectors */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Direction toggle */}
-          <div className="flex items-center rounded-lg bg-black/50 border border-slate-800 p-0.5 font-mono text-[11px]">
+          <div className="flex items-center rounded-lg bg-black/50 border border-white/[0.08] p-0.5 font-mono text-[11px]">
             <button
               onClick={() => setDirection('inheritance')}
               className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
@@ -485,8 +485,8 @@ export default function OopModelVisualizer() {
       {/* Interactive Object Inspector & Method Execution */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Active Class Inspection Card */}
-        <div className="p-4 rounded-xl bg-[#090b17] border border-pink-900/50 space-y-3 font-mono text-xs">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+        <div className="p-4 rounded-xl bg-[#101116] border border-pink-900/50 space-y-3 font-mono text-xs">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
             <span className="font-bold text-pink-400 uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-pink-400" />
               {active.name}
@@ -540,14 +540,14 @@ export default function OopModelVisualizer() {
         </div>
 
         {/* Live Method Simulation Console */}
-        <div className="p-4 rounded-xl bg-[#090b17] border border-slate-800 space-y-3 font-mono text-xs flex flex-col justify-between">
+        <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-3 font-mono text-xs flex flex-col justify-between">
           <div className="space-y-2">
             <span className="text-[10px] uppercase font-bold text-zinc-400 flex items-center gap-1.5">
               <Play className="w-3.5 h-3.5 text-pink-400" />
               {language === 'bn' ? 'মেথড এক্সিকিউশন কনসোল (Live Method Invocation):' : 'Live Object Method Invocation:'}
             </span>
 
-            <div className="p-3 rounded-lg bg-black/60 border border-slate-800 text-[11px] space-y-1.5">
+            <div className="p-3 rounded-lg bg-black/60 border border-white/[0.08] text-[11px] space-y-1.5">
               <span className="text-zinc-500 block">{'// In Relational SQL: Only passive data rows exist.'}</span>
               <span className="text-zinc-500 block">{'// In OODBMS: You invoke methods directly on stored objects!'}</span>
               <div className="pt-1 text-pink-300 font-bold">

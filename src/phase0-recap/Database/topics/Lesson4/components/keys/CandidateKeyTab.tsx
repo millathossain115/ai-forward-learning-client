@@ -20,9 +20,9 @@ export default function CandidateKeyTab() {
   const [selectedCandidateKeyCombo, setSelectedCandidateKeyCombo] = useState<number>(0);
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-slate-800 space-y-6 animate-in fade-in duration-200">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-6 animate-in fade-in duration-200">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-cyan-400" />
@@ -75,7 +75,7 @@ export default function CandidateKeyTab() {
                           : combo.isSuperKey
                           ? 'bg-amber-950/50 border-amber-400 text-white   ring-1 ring-amber-400/50'
                           : 'bg-rose-950/50 border-rose-400 text-white   ring-1 ring-rose-400/50'
-                        : 'bg-[#0c0e18] border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
+                        : 'bg-[#101116] border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/[0.12]'
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -135,11 +135,11 @@ export default function CandidateKeyTab() {
                   </div>
                 </div>
 
-                <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+                <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
                   <table className="w-full text-left text-xs font-mono">
                     <thead>
-                      <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
-                        <th className="py-2.5 px-3 text-zinc-500 text-center w-16 border-r border-slate-800/60">
+                      <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
+                        <th className="py-2.5 px-3 text-zinc-500 text-center w-16 border-r border-white/[0.08]">
                           {language === 'bn' ? 'রো #' : 'Row #'}
                         </th>
 
@@ -234,14 +234,14 @@ export default function CandidateKeyTab() {
                         </th>
 
                         {/* Combined Key Value Column */}
-                        <th className="py-2.5 px-3 text-right bg-slate-900/80 text-cyan-300 border-l border-slate-800">
+                        <th className="py-2.5 px-3 text-right bg-[#15171e] text-cyan-300 border-l border-white/[0.08]">
                           {language === 'bn'
                             ? 'সিলেক্টেড মান ও ফলাফল'
                             : 'Selected Values & Minimality'}
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+                    <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                       {STUDENT_SAMPLE_ROWS.map((student, idx) => {
                         const rowVal = activeCombo.columns
                           .map((c) => student[c as keyof typeof student])
@@ -257,10 +257,10 @@ export default function CandidateKeyTab() {
                                 ? 'bg-rose-950/20'
                                 : idx % 2 === 0
                                 ? 'bg-[#0f1224]/30'
-                                : 'bg-[#0c0e18]'
+                                : 'bg-[#101116]'
                             }`}
                           >
-                            <td className="py-2 px-3 text-center text-zinc-500 border-r border-slate-800/60">
+                            <td className="py-2 px-3 text-center text-zinc-500 border-r border-white/[0.08]">
                               {idx + 1}
                             </td>
 
@@ -318,7 +318,7 @@ export default function CandidateKeyTab() {
                               {student.dept}
                             </td>
 
-                            <td className="py-2 px-3 text-right border-l border-slate-800 font-mono">
+                            <td className="py-2 px-3 text-right border-l border-white/[0.08] font-mono">
                               <div className="flex items-center justify-end gap-2">
                                 <span className="text-zinc-200 font-bold">
                                   ({rowVal})
@@ -358,7 +358,7 @@ export default function CandidateKeyTab() {
                       : 'bg-[#15171e] border-rose-500/30 text-rose-200'
                   }`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-800/80 mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-white/[0.08] mb-3">
                     <div className="flex items-center gap-2">
                       {activeCombo.isCandidateKey ? (
                         <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0" />
@@ -399,7 +399,7 @@ export default function CandidateKeyTab() {
 
                   {/* 2-Step Evaluation Cards */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3 text-xs font-mono">
-                    <div className="p-2.5 rounded-lg bg-black/40 border border-slate-800">
+                    <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.08]">
                       <span className="text-[10px] text-zinc-400 uppercase block mb-1">
                         {language === 'bn' ? 'শর্ত ১: ইউনিকনেস (সুপার কী টেস্ট):' : 'Test 1: Uniqueness (Super Key Test):'}
                       </span>
@@ -416,7 +416,7 @@ export default function CandidateKeyTab() {
                       )}
                     </div>
 
-                    <div className="p-2.5 rounded-lg bg-black/40 border border-slate-800">
+                    <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.08]">
                       <span className="text-[10px] text-zinc-400 uppercase block mb-1">
                         {language === 'bn' ? 'শর্ত ২: ন্যূনতমতা (Minimality Test):' : 'Test 2: Minimality (Irreducibility):'}
                       </span>
@@ -442,7 +442,7 @@ export default function CandidateKeyTab() {
                 </div>
 
                 {/* Candidate Key vs Primary Key Takeaway */}
-                <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] text-xs font-sans flex items-start sm:items-center gap-3">
                   <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0">
                     <KeyRound className="w-4 h-4" />
                   </span>
@@ -455,7 +455,7 @@ export default function CandidateKeyTab() {
                 </div>
 
                 {/* Core Golden Rule Banner */}
-                <div className="p-3.5 rounded-xl bg-[#0c0e18] border border-amber-500/30 text-xs font-mono text-center text-amber-300 font-bold">
+                <div className="p-3.5 rounded-xl bg-[#101116] border border-amber-500/30 text-xs font-mono text-center text-amber-300 font-bold">
                   <DualText
                     en="“Every Candidate Key is a Super Key, but every Super Key is NOT a Candidate Key!”"
                     bn="“প্রতিটি ক্যান্ডিডেট কী-ই একটি সুপার কী, কিন্তু প্রতিটি সুপার কী ক্যান্ডিডেট কী নয়!”"

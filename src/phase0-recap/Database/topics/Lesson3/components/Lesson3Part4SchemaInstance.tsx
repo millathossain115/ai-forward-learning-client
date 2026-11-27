@@ -51,8 +51,8 @@ export default function Lesson3Part4SchemaInstance() {
   const currentSnapshot = instanceSnapshots[timeSnapshot];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
           <Layers className="w-6 h-6" />
         </div>
@@ -88,7 +88,7 @@ export default function Lesson3Part4SchemaInstance() {
       </div>
 
       {/* Interactive Toggle: Schema vs Instance */}
-      <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-800 space-y-4">
+      <div className="p-5 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <span className="text-xs font-mono font-bold text-white uppercase flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-purple-500" />
@@ -100,7 +100,7 @@ export default function Lesson3Part4SchemaInstance() {
               className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
                 viewMode === 'schema'
                   ? 'bg-purple-600 text-white   ring-1 ring-purple-400'
-                  : 'bg-[#101322] border border-slate-800 text-zinc-400 hover:text-white'
+                  : 'bg-[#101116] border border-white/[0.08] text-zinc-400 hover:text-white'
               }`}
             >
               {language === 'bn' ? '১. রিলেশনাল স্কিমা (ব্লুপ্রিন্ট)' : '1. Relational Schema (Blueprint)'}
@@ -110,7 +110,7 @@ export default function Lesson3Part4SchemaInstance() {
               className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
                 viewMode === 'instance'
                   ? 'bg-emerald-600 text-white   ring-1 ring-emerald-400'
-                  : 'bg-[#101322] border border-slate-800 text-zinc-400 hover:text-white'
+                  : 'bg-[#101116] border border-white/[0.08] text-zinc-400 hover:text-white'
               }`}
             >
               {language === 'bn' ? '২. রিলেশনাল ইনস্ট্যান্স (টাইম স্ন্যাপশট)' : '2. Relational Instance (Time Snapshots)'}
@@ -119,8 +119,8 @@ export default function Lesson3Part4SchemaInstance() {
         </div>
 
         {viewMode === 'schema' ? (
-          <div className="p-5 rounded-xl bg-[#0c0e18] border border-purple-900/50 space-y-4 font-mono text-xs animate-in fade-in duration-200">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="p-5 rounded-xl bg-[#101116] border border-purple-900/50 space-y-4 font-mono text-xs animate-in fade-in duration-200">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
               <div>
                 <span className="text-[10px] text-purple-400 uppercase font-bold block">
                   {language === 'bn' ? 'গাণিতিক স্কিমা সংকেত:' : 'Mathematical Schema Notation:'}
@@ -143,25 +143,25 @@ export default function Lesson3Part4SchemaInstance() {
                 <span className="text-[10px] text-zinc-400 block">VARCHAR(10)</span>
                 <span className="text-[9px] text-amber-400/90 block">Unique / Not NULL</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#121526] border border-slate-800 text-left space-y-1">
+              <div className="p-3 rounded-xl bg-[#15171e] border border-white/[0.08] text-left space-y-1">
                 <span className="text-[10px] text-zinc-400 font-bold uppercase block">Attribute 2</span>
                 <span className="text-white font-bold text-xs block">Name</span>
                 <span className="text-[10px] text-zinc-400 block">VARCHAR(50)</span>
                 <span className="text-[9px] text-zinc-500 block">Alphabetical</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#121526] border border-slate-800 text-left space-y-1">
+              <div className="p-3 rounded-xl bg-[#15171e] border border-white/[0.08] text-left space-y-1">
                 <span className="text-[10px] text-zinc-400 font-bold uppercase block">Attribute 3</span>
                 <span className="text-white font-bold text-xs block">Age</span>
                 <span className="text-[10px] text-zinc-400 block">INT</span>
                 <span className="text-[9px] text-zinc-500 block">Range: 16–100</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#121526] border border-slate-800 text-left space-y-1">
+              <div className="p-3 rounded-xl bg-[#15171e] border border-white/[0.08] text-left space-y-1">
                 <span className="text-[10px] text-zinc-400 font-bold uppercase block">Attribute 4</span>
                 <span className="text-white font-bold text-xs block">Department</span>
                 <span className="text-[10px] text-zinc-400 block">VARCHAR(20)</span>
                 <span className="text-[9px] text-zinc-500 block">Academic Dept</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#121526] border border-slate-800 text-left space-y-1">
+              <div className="p-3 rounded-xl bg-[#15171e] border border-white/[0.08] text-left space-y-1">
                 <span className="text-[10px] text-zinc-400 font-bold uppercase block">Attribute 5</span>
                 <span className="text-white font-bold text-xs block">CGPA</span>
                 <span className="text-[10px] text-zinc-400 block">DECIMAL(3,2)</span>
@@ -170,8 +170,8 @@ export default function Lesson3Part4SchemaInstance() {
             </div>
           </div>
         ) : (
-          <div className="p-5 rounded-xl bg-[#0c0e18] border border-emerald-900/50 space-y-4 font-mono text-xs animate-in fade-in duration-200">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div className="p-5 rounded-xl bg-[#101116] border border-emerald-900/50 space-y-4 font-mono text-xs animate-in fade-in duration-200">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-3">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-emerald-400" />
                 <span className="text-emerald-400 font-bold text-xs">
@@ -186,7 +186,7 @@ export default function Lesson3Part4SchemaInstance() {
                     className={`px-3 py-1 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
                       timeSnapshot === snapKey
                         ? 'bg-emerald-500 text-black  font-extrabold'
-                        : 'bg-[#121526] text-zinc-400 hover:text-white border border-slate-800'
+                        : 'bg-[#15171e] text-zinc-400 hover:text-white border border-white/[0.08]'
                     }`}
                   >
                     {snapKey} {snapKey === 'T0' ? '(Morning)' : snapKey === 'T1' ? '(Afternoon)' : '(Semester 2)'}
@@ -203,10 +203,10 @@ export default function Lesson3Part4SchemaInstance() {
               </div>
             </div>
 
-            <div className="overflow-x-auto text-[11px] rounded-lg border border-slate-800">
+            <div className="overflow-x-auto text-[11px] rounded-lg border border-white/[0.08]">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-[#12162a] border-b border-slate-800 text-zinc-300">
+                  <tr className="bg-[#12162a] border-b border-white/[0.08] text-zinc-300">
                     <th className="py-2 px-3">Student_ID</th>
                     <th className="py-2 px-3">Name</th>
                     <th className="py-2 px-3">Age</th>
@@ -215,7 +215,7 @@ export default function Lesson3Part4SchemaInstance() {
                     <th className="py-2 px-3 text-right">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                   {currentSnapshot.rows.map((s) => (
                     <tr
                       key={s.id}
@@ -254,10 +254,10 @@ export default function Lesson3Part4SchemaInstance() {
         )}
 
         {/* Comparison Table */}
-        <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18] text-xs font-mono">
+        <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116] text-xs font-mono">
           <table className="w-full text-left">
             <thead>
-              <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+              <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
                 <th className="py-2 px-3 text-purple-400 w-1/2">
                   {language === 'bn' ? 'রিলেশনাল স্কিমা (Schema)' : 'Relational Schema'}
                 </th>
@@ -266,7 +266,7 @@ export default function Lesson3Part4SchemaInstance() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-zinc-300 text-[11px]">
+            <tbody className="divide-y divide-white/[0.08] text-zinc-300 text-[11px]">
               <tr>
                 <td className="py-2 px-3 font-bold text-white">
                   {language === 'bn' ? 'টেবিলের স্থায়ী গঠন, কলাম ও ডেটা টাইপ' : 'Static table structure, columns & types'}

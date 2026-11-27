@@ -274,8 +274,8 @@ export default function Lesson5ERPracticeProblems() {
   const isSolutionOpen = !!showSolution[problem.id];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-3xl p-6 md:p-8 space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             <PenTool className="w-6 h-6" />
@@ -293,7 +293,7 @@ export default function Lesson5ERPracticeProblems() {
             </h2>
           </div>
         </div>
-        <span className="text-xs font-mono text-zinc-400 bg-slate-900 px-3 py-1 rounded-xl border border-slate-800 self-start sm:self-auto">
+        <span className="text-xs font-mono text-zinc-400 bg-[#15171e] px-3 py-1 rounded-xl border border-white/[0.08] self-start sm:self-auto">
           4 Exam Cases
         </span>
       </div>
@@ -309,7 +309,7 @@ export default function Lesson5ERPracticeProblems() {
               className={`p-3 rounded-xl border text-left transition-colors cursor-pointer ${
                 isActive
                   ? 'bg-emerald-950/50 border-emerald-500 text-white  ring-1 ring-emerald-500/40'
-                  : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
+                  : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/[0.12]'
               }`}
             >
               <span className="text-[10px] font-mono text-emerald-400 font-bold block">
@@ -324,8 +324,8 @@ export default function Lesson5ERPracticeProblems() {
       </div>
 
       {/* Active Exam Case Card */}
-      <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-800 space-y-4">
-        <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-2.5">
+      <div className="p-5 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-4">
+        <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-2.5">
           <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 uppercase">
             <FileText className="w-4 h-4 shrink-0" />
             <span>{language === 'bn' ? problem.titleBn : problem.titleEn}</span>
@@ -351,7 +351,7 @@ export default function Lesson5ERPracticeProblems() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
             {problem.options.map((opt) => {
               const isPicked = pickedOptionId === opt.id;
-              let btnStyle = 'bg-[#0c0e18] border-slate-800 text-zinc-300 hover:border-slate-600';
+              let btnStyle = 'bg-[#101116] border-white/[0.08] text-zinc-300 hover:border-slate-600';
               if (isPicked) {
                 btnStyle = opt.isCorrect
                   ? 'bg-emerald-950/40 border-emerald-500 text-emerald-200 ring-1 ring-emerald-500/40'
@@ -415,13 +415,13 @@ export default function Lesson5ERPracticeProblems() {
           </button>
 
           {isSolutionOpen && (
-            <div className="mt-4 p-4 rounded-xl bg-[#0c0e18] border border-indigo-500/30 space-y-3.5">
+            <div className="mt-4 p-4 rounded-xl bg-[#101116] border border-indigo-500/30 space-y-3.5">
               <div className="space-y-1.5">
                 <span className="text-[11px] font-mono font-bold text-cyan-400 uppercase flex items-center gap-1.5">
                   <GitBranch className="w-3.5 h-3.5" />
                   {language === 'bn' ? 'ER ডায়াগ্রাম ব্লুপ্রিন্ট:' : 'ER Diagram Blueprint:'}
                 </span>
-                <pre className="p-3 rounded-lg bg-black/60 border border-slate-800 text-xs font-mono text-amber-300 overflow-x-auto leading-relaxed">
+                <pre className="p-3 rounded-lg bg-black/60 border border-white/[0.08] text-xs font-mono text-amber-300 overflow-x-auto leading-relaxed">
                   {problem.erBlueprint}
                 </pre>
               </div>
@@ -433,7 +433,7 @@ export default function Lesson5ERPracticeProblems() {
                   </span>
                   <ul className="space-y-1 text-xs font-mono text-zinc-300">
                     {(language === 'bn' ? problem.entitiesBn : problem.entitiesEn).map((ent, idx) => (
-                      <li key={idx} className="p-2 rounded bg-slate-900/70 border border-slate-800/80">
+                      <li key={idx} className="p-2 rounded bg-[#15171e] border border-white/[0.08]">
                         {ent}
                       </li>
                     ))}

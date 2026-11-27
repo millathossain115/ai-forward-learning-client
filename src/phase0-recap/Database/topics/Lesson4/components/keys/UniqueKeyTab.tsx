@@ -84,8 +84,8 @@ export default function UniqueKeyTab() {
   };
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-cyan-500/40 space-y-6 animate-in fade-in duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-cyan-500/40 space-y-6 animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
@@ -111,7 +111,7 @@ export default function UniqueKeyTab() {
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800/80 text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
+          <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
             <div className="flex items-center gap-2 text-cyan-400 font-bold">
               <Sparkles className="w-4 h-4" />
               <DualText
@@ -126,8 +126,8 @@ export default function UniqueKeyTab() {
           </div>
 
           {/* Interactive Constraint Violation Playground */}
-          <div className="p-4 rounded-xl bg-[#0a0d1a] border border-cyan-500/30 space-y-4 font-mono text-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="p-4 rounded-xl bg-[#101116] border border-cyan-500/30 space-y-4 font-mono text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
                 <span className="w-2 h-2 rounded-full bg-cyan-400" />
                 <DualText
@@ -240,10 +240,10 @@ export default function UniqueKeyTab() {
               </span>
             </div>
 
-            <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#090b14]">
+            <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
               <table className="w-full text-left font-mono text-xs">
                 <thead>
-                  <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px]">
+                  <tr className="bg-[#15171e] text-zinc-300 border-b border-white/[0.08] text-[11px]">
                     <th className="py-2.5 px-3 text-amber-400 font-bold w-16">
                       User_ID <span className="text-[9px] text-amber-500 block font-normal">[PK]</span>
                     </th>
@@ -281,17 +281,17 @@ export default function UniqueKeyTab() {
                       </span>
                     </th>
 
-                    <th className="py-2.5 px-3 text-right bg-slate-900/80 text-zinc-300 border-l border-slate-800">
+                    <th className="py-2.5 px-3 text-right bg-[#15171e] text-zinc-300 border-l border-white/[0.08]">
                       Status
                     </th>
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-slate-800/60 text-zinc-300 text-[11px]">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300 text-[11px]">
                   {uniqueAccounts.map((acc, idx) => (
                     <tr
                       key={acc.id}
-                      className={idx % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#0c0e18]'}
+                      className={idx % 2 === 0 ? 'bg-[#0f1224]/30' : 'bg-[#101116]'}
                     >
                       <td className="py-2 px-3 font-bold text-amber-300">{acc.id}</td>
 
@@ -333,7 +333,7 @@ export default function UniqueKeyTab() {
                         )}
                       </td>
 
-                      <td className="py-2 px-3 text-right border-l border-slate-800 font-mono text-[10px] text-emerald-400">
+                      <td className="py-2 px-3 text-right border-l border-white/[0.08] font-mono text-[10px] text-emerald-400">
                         ✓ Enforced
                       </td>
                     </tr>
@@ -353,10 +353,10 @@ export default function UniqueKeyTab() {
               />
             </span>
 
-            <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#090b14] text-xs font-mono">
+            <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116] text-xs font-mono">
               <table className="w-full text-left text-[11px]">
                 <thead>
-                  <tr className="bg-[#121629] border-b border-slate-800 text-zinc-300">
+                  <tr className="bg-[#15171e] border-b border-white/[0.08] text-zinc-300">
                     <th className="py-2.5 px-3 text-zinc-400 w-1/4">Feature / মানদণ্ড</th>
                     <th className="py-2.5 px-3 text-amber-400 font-bold w-3/8">
                       Primary Key (প্রধান কী)
@@ -366,7 +366,7 @@ export default function UniqueKeyTab() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                   <tr>
                     <td className="py-2 px-3 font-bold text-zinc-400">Purpose</td>
                     <td className="py-2 px-3">
@@ -428,8 +428,8 @@ export default function UniqueKeyTab() {
           </div>
 
           {/* Live Generated SQL DDL Schema */}
-          <div className="p-4 rounded-xl bg-[#090b14] border border-slate-800 font-mono text-xs space-y-2">
-            <div className="flex items-center justify-between text-zinc-400 border-b border-slate-800/80 pb-2">
+          <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] font-mono text-xs space-y-2">
+            <div className="flex items-center justify-between text-zinc-400 border-b border-white/[0.08] pb-2">
               <span className="text-zinc-300 font-bold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-cyan-400" />
                 {language === 'bn'

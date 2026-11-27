@@ -33,8 +33,8 @@ export default function KeyValueDbTab() {
           </div>
 
           {/* Key Selection and Live Inspector */}
-          <div className="p-5 rounded-2xl bg-[#0c0e18] border border-amber-900/40 space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="p-5 rounded-2xl bg-[#101116] border border-amber-900/40 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
               <span className="text-xs font-mono font-bold text-amber-400 flex items-center gap-1.5">
                 <Zap className="w-4 h-4 text-amber-400" /> Redis RAM Cache (Click Key to Simulate Instant GET):
               </span>
@@ -54,7 +54,7 @@ export default function KeyValueDbTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-colors cursor-pointer ${
                     lookupKey === key
                       ? 'bg-amber-500/25 border-amber-400 text-amber-300 font-bold ring-1 ring-amber-400'
-                      : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-slate-700'
+                      : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-white/[0.12]'
                   }`}
                 >
                   {key}
@@ -63,8 +63,8 @@ export default function KeyValueDbTab() {
             </div>
 
             {/* Simulated Redis Response Terminal */}
-            <div className="p-4 rounded-xl bg-black/80 border border-slate-800 font-mono text-xs space-y-2">
-              <div className="flex items-center justify-between text-[11px] text-zinc-500 border-b border-slate-800 pb-1.5">
+            <div className="p-4 rounded-xl bg-black/80 border border-white/[0.08] font-mono text-xs space-y-2">
+              <div className="flex items-center justify-between text-[11px] text-zinc-500 border-b border-white/[0.08] pb-1.5">
                 <span>redis-cli &gt; GET {lookupKey}</span>
                 <span className="text-emerald-400 font-bold">Latency: 0.28ms (RAM Hit)</span>
               </div>

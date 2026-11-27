@@ -10,8 +10,8 @@ export default function Lesson4Part1WhyKeys() {
   const [simulatedUpdateMode, setSimulatedUpdateMode] = useState<'none' | 'by-name' | 'by-id'>('none');
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
           <KeyRound className="w-6 h-6" />
         </div>
@@ -37,7 +37,7 @@ export default function Lesson4Part1WhyKeys() {
         </div>
 
         {/* Interactive Simulation Controls */}
-        <div className="flex flex-wrap items-center gap-2 p-3 rounded-xl bg-[#0c0e18] border border-slate-800 text-xs font-mono">
+        <div className="flex flex-wrap items-center gap-2 p-3 rounded-xl bg-[#101116] border border-white/[0.08] text-xs font-mono">
           <span className="text-zinc-400 font-bold">
             {language === 'bn' ? 'ইন্টারেক্টিভ আপডেট পরীক্ষা করুন:' : 'Try Interactive Update:'}
           </span>
@@ -46,7 +46,7 @@ export default function Lesson4Part1WhyKeys() {
             className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors ${
               simulatedUpdateMode === 'by-name'
                 ? 'bg-rose-500/20 border-rose-500 text-rose-300 font-bold'
-                : 'bg-[#121526] border-slate-700 text-zinc-300 hover:border-slate-500'
+                : 'bg-[#15171e] border-white/[0.12] text-zinc-300 hover:border-slate-500'
             }`}
           >
             {language === 'bn' ? '১. নাম দিয়ে আপডেট: WHERE Name=\'Rahim\'' : '1. UPDATE Age = 23 WHERE Name = \'Rahim\''}
@@ -56,7 +56,7 @@ export default function Lesson4Part1WhyKeys() {
             className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors ${
               simulatedUpdateMode === 'by-id'
                 ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-bold'
-                : 'bg-[#121526] border-slate-700 text-zinc-300 hover:border-slate-500'
+                : 'bg-[#15171e] border-white/[0.12] text-zinc-300 hover:border-slate-500'
             }`}
           >
             {language === 'bn' ? '২. আইডি দিয়ে আপডেট: WHERE Student_ID=101' : '2. UPDATE Age = 23 WHERE Student_ID = 101'}
@@ -74,7 +74,7 @@ export default function Lesson4Part1WhyKeys() {
         {/* Problem Table without Keys vs Solution Table with Keys */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div
-            className={`p-4 rounded-xl bg-[#0c0e18] border transition-colors space-y-2 ${
+            className={`p-4 rounded-xl bg-[#101116] border transition-colors space-y-2 ${
               simulatedUpdateMode === 'by-name'
                 ? 'border-rose-500 ring-1 ring-rose-500/30'
                 : 'border-rose-900/50'
@@ -90,13 +90,13 @@ export default function Lesson4Part1WhyKeys() {
             <div className="overflow-x-auto text-[11px] font-mono">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-slate-800 text-zinc-400">
+                  <tr className="border-b border-white/[0.08] text-zinc-400">
                     <th className="py-1 px-2">{language === 'bn' ? 'নাম' : 'Name'}</th>
                     <th className="py-1 px-2">{language === 'bn' ? 'বয়স' : 'Age'}</th>
                     <th className="py-1 px-2">{language === 'bn' ? 'বিভাগ' : 'Department'}</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                   <tr
                     className={
                       simulatedUpdateMode === 'by-name'
@@ -153,7 +153,7 @@ export default function Lesson4Part1WhyKeys() {
 
           {/* Solution Table with Student_ID Key */}
           <div
-            className={`p-4 rounded-xl bg-[#0c0e18] border transition-colors space-y-2 ${
+            className={`p-4 rounded-xl bg-[#101116] border transition-colors space-y-2 ${
               simulatedUpdateMode === 'by-id'
                 ? 'border-emerald-500 ring-1 ring-emerald-500/30'
                 : 'border-emerald-900/50'
@@ -169,14 +169,14 @@ export default function Lesson4Part1WhyKeys() {
             <div className="overflow-x-auto text-[11px] font-mono">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-slate-800 text-zinc-400">
+                  <tr className="border-b border-white/[0.08] text-zinc-400">
                     <th className="py-1 px-2 text-amber-400">Student_ID (Key)</th>
                     <th className="py-1 px-2">{language === 'bn' ? 'নাম' : 'Name'}</th>
                     <th className="py-1 px-2">{language === 'bn' ? 'বয়স' : 'Age'}</th>
                     <th className="py-1 px-2">{language === 'bn' ? 'বিভাগ' : 'Department'}</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                   <tr
                     className={
                       simulatedUpdateMode === 'by-id'

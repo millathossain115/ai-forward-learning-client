@@ -39,8 +39,8 @@ export default function Lesson1Part4DBMS() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           <Server className="w-6 h-6" />
         </div>
@@ -146,7 +146,7 @@ export default function Lesson1Part4DBMS() {
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {dbmsList.map((d, i) => (
-              <div key={i} className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-1">
+              <div key={i} className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
                 <span className="text-xs font-bold text-white font-mono">{d.name}</span>
                 <span className="text-[10px] font-mono text-indigo-400 block">
                   {language === 'bn' ? d.typeBn : d.typeEn}

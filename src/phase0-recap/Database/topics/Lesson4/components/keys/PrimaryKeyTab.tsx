@@ -96,9 +96,9 @@ export default function PrimaryKeyTab() {
   };
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-amber-500/40 space-y-6 animate-in fade-in duration-200">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-amber-500/40 space-y-6 animate-in fade-in duration-200">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <KeyRound className="w-5 h-5 text-amber-400" />
@@ -125,25 +125,25 @@ export default function PrimaryKeyTab() {
 
           {/* 4 Strict Rules of Primary Key */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono text-center">
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-amber-500/30">
+            <div className="p-3 rounded-xl bg-[#101116] border border-amber-500/30">
               <strong className="text-amber-400 block font-bold">1. 100% Unique</strong>
               <span className="text-[10px] text-zinc-400">
                 {language === 'bn' ? 'কোনো ডুপ্লিকেট নেই' : 'No duplicates allowed'}
               </span>
             </div>
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-rose-500/30">
+            <div className="p-3 rounded-xl bg-[#101116] border border-rose-500/30">
               <strong className="text-rose-400 block font-bold">2. NOT NULL</strong>
               <span className="text-[10px] text-zinc-400">
                 {language === 'bn' ? 'ফাঁকা থাকা অসম্ভব' : 'Cannot be empty or NULL'}
               </span>
             </div>
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-cyan-500/30">
+            <div className="p-3 rounded-xl bg-[#101116] border border-cyan-500/30">
               <strong className="text-cyan-400 block font-bold">3. Only One PK</strong>
               <span className="text-[10px] text-zinc-400">
                 {language === 'bn' ? 'টেবিল প্রতি মাত্র ১টি' : 'Single key per relation'}
               </span>
             </div>
-            <div className="p-3 rounded-xl bg-[#0c0e18] border border-emerald-500/30">
+            <div className="p-3 rounded-xl bg-[#101116] border border-emerald-500/30">
               <strong className="text-emerald-400 block font-bold">4. Fast Index</strong>
               <span className="text-[10px] text-zinc-400">
                 {language === 'bn' ? 'স্বয়ংক্রিয় B-Tree ইনডেক্স' : 'Clustered Index O(log N)'}
@@ -152,8 +152,8 @@ export default function PrimaryKeyTab() {
           </div>
 
           {/* Interactive Simulation & Test Control Center */}
-          <div className="p-5 rounded-2xl bg-[#0c0e18] border border-slate-800 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+          <div className="p-5 rounded-2xl bg-[#101116] border border-white/[0.08] space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
               <div>
                 <span className="text-xs font-mono font-bold text-white uppercase flex items-center gap-2">
                   <UserPlus className="w-4 h-4 text-amber-400" />
@@ -172,7 +172,7 @@ export default function PrimaryKeyTab() {
               {pkStudents.length > initialPkStudents.length && (
                 <button
                   onClick={handleResetPkTable}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border border-slate-700 shrink-0"
+                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border border-white/[0.12] shrink-0"
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
                   <span>{language === 'bn' ? 'টেবিল রিসেট করুন' : 'Reset Table'}</span>
@@ -216,7 +216,7 @@ export default function PrimaryKeyTab() {
                 <button
                   type="button"
                   onClick={handleResetPkTable}
-                  className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-zinc-400 hover:text-white cursor-pointer transition-colors flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-[#15171e] hover:bg-slate-800 border border-white/[0.12] text-zinc-400 hover:text-white cursor-pointer transition-colors flex items-center gap-1.5"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{language === 'bn' ? 'রিসেট' : 'Reset'}</span>
@@ -232,7 +232,7 @@ export default function PrimaryKeyTab() {
                   value={testPkId}
                   onChange={(e) => setTestPkId(e.target.value)}
                   placeholder="Student_ID (Primary Key)"
-                  className="bg-[#121526] border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500 font-mono w-full"
+                  className="bg-[#15171e] border border-white/[0.12] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500 font-mono w-full"
                 />
                 <span className="absolute right-2.5 top-2.5 text-[9px] font-mono text-amber-400 font-bold">
                   [PK]
@@ -243,7 +243,7 @@ export default function PrimaryKeyTab() {
                 value={testPkName}
                 onChange={(e) => setTestPkName(e.target.value)}
                 placeholder="Student Name (e.g. Tanvir)"
-                className="bg-[#121526] border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500 font-sans sm:w-1/3"
+                className="bg-[#15171e] border border-white/[0.12] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500 font-sans sm:w-1/3"
               />
               <button
                 type="submit"
@@ -306,11 +306,11 @@ export default function PrimaryKeyTab() {
               </div>
             </div>
 
-            <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+            <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
               <table className="w-full text-left text-xs font-mono">
                 <thead>
-                  <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
-                    <th className="py-2.5 px-3 text-zinc-500 text-center w-16 border-r border-slate-800/60">
+                  <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
+                    <th className="py-2.5 px-3 text-zinc-500 text-center w-16 border-r border-white/[0.08]">
                       {language === 'bn' ? 'রো #' : 'Row #'}
                     </th>
 
@@ -335,12 +335,12 @@ export default function PrimaryKeyTab() {
                     <th className="py-2.5 px-4 text-zinc-300">Department</th>
 
                     {/* Verification Status */}
-                    <th className="py-2.5 px-3 text-right bg-slate-900/80 text-amber-300 border-l border-slate-800 w-52">
+                    <th className="py-2.5 px-3 text-right bg-[#15171e] text-amber-300 border-l border-white/[0.08] w-52">
                       {language === 'bn' ? 'প্রাইমারি কি স্ট্যাটাস' : 'PK Integrity Status'}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                   {pkStudents.map((student, idx) => {
                     const isColliding = student.id === collidingId;
                     const isNew = student.id === lastInsertedId;
@@ -355,10 +355,10 @@ export default function PrimaryKeyTab() {
                             ? 'bg-emerald-950/40 border-2 border-emerald-500 text-white font-bold'
                             : idx % 2 === 0
                             ? 'bg-[#0f1224]/30'
-                            : 'bg-[#0c0e18]'
+                            : 'bg-[#101116]'
                         }`}
                       >
-                        <td className="py-2.5 px-3 text-center text-zinc-500 border-r border-slate-800/60 font-mono">
+                        <td className="py-2.5 px-3 text-center text-zinc-500 border-r border-white/[0.08] font-mono">
                           {idx + 1}
                         </td>
 
@@ -385,7 +385,7 @@ export default function PrimaryKeyTab() {
                         <td className="py-2.5 px-4 text-zinc-400">{student.email}</td>
                         <td className="py-2.5 px-4 text-zinc-400">{student.dept}</td>
 
-                        <td className="py-2.5 px-3 text-right border-l border-slate-800 font-mono">
+                        <td className="py-2.5 px-3 text-right border-l border-white/[0.08] font-mono">
                           {isColliding ? (
                             <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-rose-500/30 text-rose-300 border border-rose-500/50 inline-flex items-center gap-1">
                               <X className="w-3 h-3" />
@@ -397,7 +397,7 @@ export default function PrimaryKeyTab() {
                               {language === 'bn' ? 'নতুন সারি যুক্ত হয়েছে' : 'New Row Inserted'}
                             </span>
                           ) : (
-                            <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-black/40 text-zinc-400 border border-slate-800 inline-flex items-center gap-1">
+                            <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-black/40 text-zinc-400 border border-white/[0.08] inline-flex items-center gap-1">
                               <Check className="w-3 h-3 text-emerald-400" />
                               {language === 'bn' ? 'অনন্য ও বৈধ' : 'Unique & Valid'}
                             </span>
@@ -411,7 +411,7 @@ export default function PrimaryKeyTab() {
             </div>
 
             {/* Educational Takeaway Callout */}
-            <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
+            <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] text-xs font-sans flex items-start sm:items-center gap-3">
               <span className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
                 <Layers className="w-4 h-4" />
               </span>

@@ -20,9 +20,9 @@ export default function Lesson5Part2Entity() {
   }, [modalImage]);
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 space-y-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-4 md:p-5 space-y-4">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
         <div className="flex items-center gap-2.5">
           <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
             <User className="w-4 h-4" />
@@ -50,7 +50,7 @@ export default function Lesson5Part2Entity() {
       </div>
 
       {/* Intro Definition & Quick Examples */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl bg-[#080b16] border border-slate-800 text-xs font-sans">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl bg-[#080b16] border border-white/[0.08] text-xs font-sans">
         <div className="text-zinc-300 leading-relaxed">
           <DualText
             en="An Entity is any real-world person, place, object, or concept stored in a database. In Chen ER notation, entities are drawn as sharp 90-degree rectangles (0px radius)."
@@ -58,13 +58,13 @@ export default function Lesson5Part2Entity() {
           />
         </div>
         <div className="flex flex-wrap items-center gap-1 shrink-0 font-mono text-[10px]">
-          <span className="px-2 py-0.5 rounded bg-[#101426] border border-slate-800 text-zinc-300">
+          <span className="px-2 py-0.5 rounded bg-[#101426] border border-white/[0.08] text-zinc-300">
             Student <span className="text-amber-400">(Rahim)</span>
           </span>
-          <span className="px-2 py-0.5 rounded bg-[#101426] border border-slate-800 text-zinc-300">
+          <span className="px-2 py-0.5 rounded bg-[#101426] border border-white/[0.08] text-zinc-300">
             Course <span className="text-cyan-400">(DBMS)</span>
           </span>
-          <span className="px-2 py-0.5 rounded bg-[#101426] border border-slate-800 text-zinc-300">
+          <span className="px-2 py-0.5 rounded bg-[#101426] border border-white/[0.08] text-zinc-300">
             Department
           </span>
         </div>
@@ -78,7 +78,7 @@ export default function Lesson5Part2Entity() {
         {/* 1. Strong Entity Card */}
         <div className="p-3.5 rounded-2xl bg-[#0b0e1b] border border-cyan-900/40 flex flex-col justify-between space-y-3">
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
               <span className="font-mono font-bold text-cyan-300 text-xs flex items-center gap-1.5">
                 <Shield className="w-3.5 h-3.5 text-cyan-400" />
                 {language === 'bn' ? '১. স্ট্রং এনটিটি (Strong Entity)' : '1. Strong Entity Type'}
@@ -114,7 +114,7 @@ export default function Lesson5Part2Entity() {
             <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
               <Maximize2 className="w-3.5 h-3.5 text-cyan-300" />
             </div>
-            <div className="w-full mt-1.5 pt-1 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+            <div className="w-full mt-1.5 pt-1 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-zinc-400">
               <span className="text-cyan-300 font-semibold">Single Rectangle [ EMPLOYEE ]</span>
               <span className="text-zinc-500 group-hover:text-cyan-400 transition-colors">Click to expand ⤢</span>
             </div>
@@ -124,7 +124,7 @@ export default function Lesson5Part2Entity() {
         {/* 2. Weak Entity Card */}
         <div className="p-3.5 rounded-2xl bg-[#0b0e1b] border border-amber-900/40 flex flex-col justify-between space-y-3">
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
               <span className="font-mono font-bold text-amber-300 text-xs flex items-center gap-1.5">
                 <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
                 {language === 'bn' ? '২. উইক এনটিটি (Weak Entity)' : '2. Weak Entity Type'}
@@ -160,7 +160,7 @@ export default function Lesson5Part2Entity() {
             <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
               <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
             </div>
-            <div className="w-full mt-1.5 pt-1 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+            <div className="w-full mt-1.5 pt-1 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-zinc-400">
               <span className="text-amber-300 font-semibold">Double Rectangle [[ DEPENDENT (Family) ]]</span>
               <span className="text-zinc-500 group-hover:text-amber-400 transition-colors">Click to expand ⤢</span>
             </div>
@@ -169,7 +169,7 @@ export default function Lesson5Part2Entity() {
       </div>
 
       {/* Crucial Distinction: Entity vs Entity Type vs Entity Set (3-Column Row) */}
-      <div className="space-y-2 pt-2 border-t border-slate-800/80">
+      <div className="space-y-2 pt-2 border-t border-white/[0.08]">
         <span className="text-[11px] font-mono font-bold text-purple-300 uppercase tracking-wide flex items-center gap-1.5">
           <Layers className="w-3.5 h-3.5 text-purple-400" />
           {language === 'bn' ? 'পার্থক্য: Entity বনাম Entity Type বনাম Entity Set' : 'Crucial Distinction: Entity vs Entity Type vs Entity Set'}
@@ -230,7 +230,7 @@ export default function Lesson5Part2Entity() {
             onClick={(e) => e.stopPropagation()}
             className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 space-y-3"
           >
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
               <div>
                 <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-cyan-400">▣</span>
@@ -240,12 +240,12 @@ export default function Lesson5Part2Entity() {
               </div>
               <button
                 onClick={() => setModalImage(null)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-white/[0.12]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-slate-800/80">
+            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-white/[0.08]">
               <img
                 src={modalImage.src}
                 alt={modalImage.title}

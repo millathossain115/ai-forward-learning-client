@@ -186,9 +186,9 @@ export default function Lesson5Part1ERModel() {
   };
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-8">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-3xl p-6 md:p-8 space-y-8">
       {/* Header Badge */}
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
           <Workflow className="w-6 h-6" />
         </div>
@@ -216,7 +216,7 @@ export default function Lesson5Part1ERModel() {
 
         {/* 3 Fundamental Questions Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <div className="p-4 rounded-2xl bg-[#121526] border border-cyan-900/40 space-y-1.5">
+          <div className="p-4 rounded-2xl bg-[#15171e] border border-cyan-900/40 space-y-1.5">
             <span className="text-[10px] font-mono text-cyan-400 uppercase font-bold block">
               {language === 'bn' ? 'প্রশ্ন ১: কী তথ্য?' : 'Question 1: What Info?'}
             </span>
@@ -228,7 +228,7 @@ export default function Lesson5Part1ERModel() {
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-[#121526] border border-indigo-900/40 space-y-1.5">
+          <div className="p-4 rounded-2xl bg-[#15171e] border border-indigo-900/40 space-y-1.5">
             <span className="text-[10px] font-mono text-indigo-400 uppercase font-bold block">
               {language === 'bn' ? 'প্রশ্ন ২: কারা জড়িত?' : 'Question 2: What Things?'}
             </span>
@@ -240,7 +240,7 @@ export default function Lesson5Part1ERModel() {
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-[#121526] border border-purple-900/40 space-y-1.5">
+          <div className="p-4 rounded-2xl bg-[#15171e] border border-purple-900/40 space-y-1.5">
             <span className="text-[10px] font-mono text-purple-400 uppercase font-bold block">
               {language === 'bn' ? 'প্রশ্ন ৩: কীভাবে যুক্ত?' : 'Question 3: How Connected?'}
             </span>
@@ -274,7 +274,7 @@ export default function Lesson5Part1ERModel() {
         </div>
 
         {/* Blueprint Analogy Card */}
-        <div className="p-4 rounded-2xl bg-[#090b14] border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+        <div className="p-4 rounded-2xl bg-[#101116] border border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
           <div className="space-y-1 text-center sm:text-left">
             <span className="text-amber-400 font-bold block text-sm">
               {language === 'bn' ? 'স্থাপত্যের ব্লুপ্রিন্ট রূপক (Architectural Blueprint):' : 'Architectural Blueprint Analogy:'}
@@ -297,7 +297,7 @@ export default function Lesson5Part1ERModel() {
          ======================================================== */}
       <div className="p-5 md:p-7 rounded-3xl bg-[#080c18] border-2 border-cyan-500/40 space-y-6">
         {/* Card Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-3">
           <div className="flex items-center gap-2.5">
             <Compass className="w-5 h-5 text-cyan-400" />
             <div>
@@ -329,10 +329,10 @@ export default function Lesson5Part1ERModel() {
               alt="University Database Thematic ER Diagram (Peter Chen Notation)"
               className="w-full h-auto max-h-[440px] md:max-h-[520px] object-contain rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
             />
-            <div className="absolute top-3 right-3 p-2 rounded-xl bg-black/75 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity border border-slate-700">
+            <div className="absolute top-3 right-3 p-2 rounded-xl bg-black/75 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity border border-white/[0.12]">
               <Maximize2 className="w-5 h-5 text-cyan-400" />
             </div>
-            <div className="w-full mt-2 pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-400 gap-1">
+            <div className="w-full mt-2 pt-2 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-400 gap-1">
               <span className="text-cyan-300 font-semibold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-cyan-400" />
                 4 Entities (▭) • 3 Relationships (◇) • 15 Attributes (⬭)
@@ -345,8 +345,8 @@ export default function Lesson5Part1ERModel() {
         </div>
 
         {/* 2. DYNAMIC COMPONENT BREAKDOWN (Interactive Entity Explorer) */}
-        <div className="p-4 md:p-5 rounded-2xl bg-[#0c1020] border border-slate-800 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#0c1020] border border-white/[0.08] space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
             <div>
               <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5 uppercase">
                 <Layers className="w-4 h-4 text-cyan-400" />
@@ -371,7 +371,7 @@ export default function Lesson5Part1ERModel() {
                     className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-colors cursor-pointer border ${
                       isActive
                         ? ent.activeTab
-                        : 'bg-[#101428] text-zinc-400 border-slate-800 hover:text-white hover:border-slate-700'
+                        : 'bg-[#101428] text-zinc-400 border-white/[0.08] hover:text-white hover:border-white/[0.12]'
                     }`}
                   >
                     [{ent.name}]
@@ -387,7 +387,7 @@ export default function Lesson5Part1ERModel() {
             return (
               <div className="space-y-4 animate-in fade-in duration-200">
                 {/* Active Entity Header Badge */}
-                <div className="flex flex-wrap items-center justify-between gap-2 p-3 rounded-xl bg-[#080b16] border border-slate-800">
+                <div className="flex flex-wrap items-center justify-between gap-2 p-3 rounded-xl bg-[#080b16] border border-white/[0.08]">
                   <div className="flex items-center gap-2">
                     <span className={`px-2.5 py-1 rounded-lg font-mono font-bold text-xs border ${active.badgeBg}`}>
                       [ {active.name} ]
@@ -407,7 +407,7 @@ export default function Lesson5Part1ERModel() {
                 {/* 2-Column Grid: Attributes & Relationships */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Left Box: Attributes Breakdown */}
-                  <div className="p-3.5 rounded-xl bg-[#090d1c] border border-slate-800/90 space-y-2.5">
+                  <div className="p-3.5 rounded-xl bg-[#090d1c] border border-white/[0.08] space-y-2.5">
                     <span className="text-[11px] font-mono font-bold text-cyan-300 uppercase flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                       {language === 'bn' ? 'অ্যাট্রিবিউট তালিকা (Ovals ⬭):' : 'Attributes Breakdown (Ovals):'}
@@ -416,7 +416,7 @@ export default function Lesson5Part1ERModel() {
                       {active.attributes.map((attr, i) => (
                         <div
                           key={i}
-                          className="flex items-center justify-between p-2 rounded-lg bg-[#0e1326] border border-slate-800/80 text-[11px]"
+                          className="flex items-center justify-between p-2 rounded-lg bg-[#0e1326] border border-white/[0.08] text-[11px]"
                         >
                           <div className="flex items-center gap-2">
                             <span className={attr.isPk ? 'text-amber-300 font-mono font-bold' : 'text-zinc-200 font-mono'}>
@@ -437,7 +437,7 @@ export default function Lesson5Part1ERModel() {
                   </div>
 
                   {/* Right Box: Connected Relationships */}
-                  <div className="p-3.5 rounded-xl bg-[#090d1c] border border-slate-800/90 space-y-2.5">
+                  <div className="p-3.5 rounded-xl bg-[#090d1c] border border-white/[0.08] space-y-2.5">
                     <span className="text-[11px] font-mono font-bold text-purple-300 uppercase flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                       {language === 'bn' ? 'সংযুক্ত রিলেশনশিপ (Diamonds ◇):' : 'Connected Relationships (Diamonds):'}
@@ -469,8 +469,8 @@ export default function Lesson5Part1ERModel() {
                 </div>
 
                 {/* Bottom Box: SQL Table Translation */}
-                <div className="p-3.5 rounded-xl bg-[#060812] border border-slate-800 space-y-1.5 font-mono text-xs">
-                  <div className="flex items-center justify-between text-[11px] text-zinc-400 border-b border-slate-800/80 pb-1.5">
+                <div className="p-3.5 rounded-xl bg-[#060812] border border-white/[0.08] space-y-1.5 font-mono text-xs">
+                  <div className="flex items-center justify-between text-[11px] text-zinc-400 border-b border-white/[0.08] pb-1.5">
                     <span className="flex items-center gap-1.5 text-cyan-300 font-bold">
                       <Code2 className="w-3.5 h-3.5" />
                       {language === 'bn' ? `SQL টেবিল ম্যাপিং: ${active.name}` : `SQL Physical Table Mapping: ${active.name}`}
@@ -536,7 +536,7 @@ export default function Lesson5Part1ERModel() {
             onClick={(e) => e.stopPropagation()}
             className="relative max-w-6xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 space-y-3"
           >
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
               <div>
                 <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-cyan-400">▣</span>
@@ -548,12 +548,12 @@ export default function Lesson5Part1ERModel() {
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-white/[0.12]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-slate-800/80">
+            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-white/[0.08]">
               <img
                 src="/images/thematic-university-er-diagram.png"
                 alt="University Database Thematic ER Diagram"

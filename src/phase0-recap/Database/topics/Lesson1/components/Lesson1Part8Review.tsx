@@ -44,8 +44,8 @@ export default function Lesson1Part8Review({ onNavigate }: Lesson1Part8ReviewPro
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           <Sparkles className="w-6 h-6" />
         </div>
@@ -64,7 +64,7 @@ export default function Lesson1Part8Review({ onNavigate }: Lesson1Part8ReviewPro
       {/* 4 Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {takeaways.map((item, idx) => (
-          <div key={idx} className={`p-4 rounded-xl bg-[#14182d] border ${item.color.split(' ')[0]} space-y-1`}>
+          <div key={idx} className={`p-4 rounded-xl bg-[#15171e] border ${item.color.split(' ')[0]} space-y-1`}>
             <span className={`text-xs font-mono font-bold uppercase ${item.color.split(' ')[1]}`}>
               {language === 'bn' ? item.titleBn : item.titleEn}
             </span>
@@ -111,7 +111,7 @@ export default function Lesson1Part8Review({ onNavigate }: Lesson1Part8ReviewPro
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('db-directory')}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-slate-700 cursor-pointer"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-white/[0.12] cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'ডেটাবেস ১০১ বেসিক্স রিভিশন' : 'Review Database 101 Basics'}</span>

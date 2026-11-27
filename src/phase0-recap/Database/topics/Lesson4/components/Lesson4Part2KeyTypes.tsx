@@ -26,7 +26,7 @@ type KeyTypeId =
   | 'surrogate';
 
 const TabLoadingFallback = () => (
-  <div className="p-6 rounded-2xl bg-[#13172c] border border-slate-800 space-y-4">
+  <div className="p-6 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-4">
     <div className="h-6 w-1/3 bg-slate-800 rounded" />
     <div className="h-32 w-full bg-slate-800/60 rounded-xl" />
   </div>
@@ -57,8 +57,8 @@ export default function Lesson4Part2KeyTypes() {
   const [activeKeyType, setActiveKeyType] = useState<KeyTypeId>('super');
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 sm:p-6 md:p-8 space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-4 sm:p-6 md:p-8 space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
             <KeyRound className="w-6 h-6" />
@@ -81,7 +81,7 @@ export default function Lesson4Part2KeyTypes() {
           </div>
         </div>
 
-        <div className="text-xs font-mono text-zinc-400 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-800 self-start sm:self-auto flex items-center gap-2">
+        <div className="text-xs font-mono text-zinc-400 bg-[#15171e] px-3 py-1.5 rounded-xl border border-white/[0.08] self-start sm:self-auto flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400" />
           <span>
             {language === 'bn' ? 'সক্রিয় কী:' : 'Active Key:'}{' '}
@@ -105,7 +105,7 @@ export default function Lesson4Part2KeyTypes() {
               className={`p-3 rounded-xl border text-left transition-colors cursor-pointer flex flex-col justify-between gap-2 group ${
                 isActive
                   ? 'bg-[#15171e] border-indigo-500 text-white ring-1 ring-indigo-500/60  '
-                  : 'bg-[#101322] border-slate-800/90 text-zinc-400 hover:border-slate-700 hover:bg-[#14182b] hover:text-zinc-200'
+                  : 'bg-[#101116] border-white/[0.08] text-zinc-400 hover:border-white/[0.12] hover:bg-[#101116] hover:text-zinc-200'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -113,7 +113,7 @@ export default function Lesson4Part2KeyTypes() {
                   className={`p-1.5 rounded-lg border shrink-0 transition-colors ${
                     isActive
                       ? 'bg-indigo-500/20 border-indigo-500/50 text-indigo-300'
-                      : 'bg-black/40 border-slate-800 text-zinc-500 group-hover:text-zinc-300'
+                      : 'bg-black/40 border-white/[0.08] text-zinc-500 group-hover:text-zinc-300'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />

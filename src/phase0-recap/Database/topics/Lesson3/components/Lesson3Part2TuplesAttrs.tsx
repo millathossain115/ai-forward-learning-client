@@ -9,8 +9,8 @@ export default function Lesson3Part2TuplesAttrs() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
           <Rows3 className="w-6 h-6" />
         </div>
@@ -29,7 +29,7 @@ export default function Lesson3Part2TuplesAttrs() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Tuples Card */}
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-cyan-900/40 space-y-3">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-cyan-900/40 space-y-3">
           <span className="text-xs font-mono font-bold text-cyan-400 uppercase flex items-center gap-1.5">
             <Rows3 className="w-4 h-4 text-cyan-400" />
             <DualText
@@ -43,7 +43,7 @@ export default function Lesson3Part2TuplesAttrs() {
               bn="সংজ্ঞা: একটি রিলেশন বা টেবিলের প্রতিটি অনুভূমিক সারিকে টাপল (Tuple) বলে। এটি একটি নির্দিষ্ট সত্তার সমস্ত বৈশিষ্ট্যের মান বহন করে।"
             />
           </div>
-          <div className="p-3 rounded-xl bg-[#0c0e18] border border-slate-800 text-xs font-mono text-zinc-300 space-y-1">
+          <div className="p-3 rounded-xl bg-[#101116] border border-white/[0.08] text-xs font-mono text-zinc-300 space-y-1">
             <span className="text-zinc-500 text-[10px] block">
               {language === 'bn' ? 'হাসপাতালের রোগীর টাপলের বাস্তব উদাহরণ:' : 'Hospital Patient Tuple Example:'}
             </span>
@@ -60,7 +60,7 @@ export default function Lesson3Part2TuplesAttrs() {
         </div>
 
         {/* Attributes Card */}
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-purple-900/40 space-y-3">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-purple-900/40 space-y-3">
           <span className="text-xs font-mono font-bold text-purple-400 uppercase flex items-center gap-1.5">
             <Columns3 className="w-4 h-4 text-purple-400" />
             <DualText
@@ -74,15 +74,15 @@ export default function Lesson3Part2TuplesAttrs() {
               bn="সংজ্ঞা: কোনো সত্তার (Entity) নির্দিষ্ট বৈশিষ্ট্য বা গুণাবলীকে অ্যাট্রিবিউট বলে, যা টেবিলে উলম্ব কলাম আকারে সংরক্ষিত থাকে।"
             />
           </div>
-          <div className="p-3 rounded-xl bg-[#0c0e18] border border-slate-800 text-xs font-mono text-zinc-300 space-y-1">
+          <div className="p-3 rounded-xl bg-[#101116] border border-white/[0.08] text-xs font-mono text-zinc-300 space-y-1">
             <span className="text-zinc-500 text-[10px] block">
               {language === 'bn' ? 'গাড়ি (Car Entity)-র অ্যাট্রিবিউটের উদাহরণ:' : 'Car Entity Attributes:'}
             </span>
             <div className="flex flex-wrap gap-1.5 text-purple-300 font-bold">
-              <span className="px-2 py-0.5 rounded bg-black/40 border border-slate-800">Car_ID</span>
-              <span className="px-2 py-0.5 rounded bg-black/40 border border-slate-800">Brand</span>
-              <span className="px-2 py-0.5 rounded bg-black/40 border border-slate-800">Model</span>
-              <span className="px-2 py-0.5 rounded bg-black/40 border border-slate-800">Price</span>
+              <span className="px-2 py-0.5 rounded bg-black/40 border border-white/[0.08]">Car_ID</span>
+              <span className="px-2 py-0.5 rounded bg-black/40 border border-white/[0.08]">Brand</span>
+              <span className="px-2 py-0.5 rounded bg-black/40 border border-white/[0.08]">Model</span>
+              <span className="px-2 py-0.5 rounded bg-black/40 border border-white/[0.08]">Price</span>
             </div>
           </div>
           <div className="text-[11px] text-zinc-400 font-sans">

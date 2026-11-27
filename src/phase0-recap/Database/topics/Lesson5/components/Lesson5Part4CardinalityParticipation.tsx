@@ -86,9 +86,9 @@ export default function Lesson5Part4CardinalityParticipation() {
   const current = cardinalityData[activeCardinality];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-5 md:p-7 space-y-7">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-3xl p-5 md:p-7 space-y-7">
       {/* Section Header: Unified & Professional */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             <Layers className="w-5 h-5" />
@@ -150,12 +150,12 @@ export default function Lesson5Part4CardinalityParticipation() {
                 className={`p-2.5 rounded-xl border text-left transition-colors cursor-pointer font-mono ${
                   isActive
                     ? 'bg-[#12192e] border-emerald-500 text-white font-bold ring-1 ring-emerald-500/50 '
-                    : 'bg-[#0a0d18] border-slate-800 text-zinc-400 hover:border-slate-700 hover:text-zinc-200'
+                    : 'bg-[#101116] border-white/[0.08] text-zinc-400 hover:border-white/[0.12] hover:text-zinc-200'
                 }`}
               >
                 <div className="flex items-center justify-between text-xs">
                   <span className={isActive ? 'text-emerald-300 font-bold' : 'text-zinc-300'}>{key}</span>
-                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-black/40 border border-slate-800 text-zinc-400">
+                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-black/40 border border-white/[0.08] text-zinc-400">
                     {item.badge}
                   </span>
                 </div>
@@ -168,11 +168,11 @@ export default function Lesson5Part4CardinalityParticipation() {
         </div>
 
         {/* Active Ratio 2-Column Showcase */}
-        <div className="p-4 md:p-5 rounded-2xl bg-[#0a0d18] border border-slate-800">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#101116] border border-white/[0.08]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
             {/* Left Column: Context, Examples & SQL Rule (5 cols) */}
             <div className="lg:col-span-5 space-y-3">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="font-mono font-bold text-white text-sm">
                   {language === 'bn' ? current.titleBn : current.titleEn}
                 </span>
@@ -186,7 +186,7 @@ export default function Lesson5Part4CardinalityParticipation() {
               </div>
 
               {/* Real World Scenario Box */}
-              <div className="p-3 rounded-xl bg-[#070913] border border-slate-800/80 space-y-1 text-xs">
+              <div className="p-3 rounded-xl bg-[#070913] border border-white/[0.08] space-y-1 text-xs">
                 <span className="text-[10px] font-mono text-zinc-400 uppercase font-semibold block">
                   {language === 'bn' ? 'বাস্তব দৃশ্যপট:' : 'Real-World Scenario:'}
                 </span>
@@ -220,7 +220,7 @@ export default function Lesson5Part4CardinalityParticipation() {
                     desc: `${current.exampleTitle} — ${current.descEn}`,
                   })
                 }
-                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-colors hover:border-emerald-500/50 hover: hover: p-2.5 flex flex-col items-center justify-center"
+                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-white/[0.08] transition-colors hover:border-emerald-500/50 hover: hover: p-2.5 flex flex-col items-center justify-center"
               >
                 <img
                   src={current.image}
@@ -230,7 +230,7 @@ export default function Lesson5Part4CardinalityParticipation() {
                 <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Maximize2 className="w-4 h-4 text-emerald-300" />
                 </div>
-                <div className="w-full mt-2 pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                <div className="w-full mt-2 pt-1.5 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-zinc-400">
                   <span className="text-emerald-300 font-semibold">{current.exampleTitle}</span>
                   <span className="text-zinc-500 group-hover:text-emerald-400 transition-colors">Click to expand full screen ⤢</span>
                 </div>
@@ -243,7 +243,7 @@ export default function Lesson5Part4CardinalityParticipation() {
       {/* ========================================================
           5.2 PARTICIPATION CONSTRAINTS (Total vs Partial)
          ======================================================== */}
-      <div className="space-y-4 pt-4 border-t border-slate-800">
+      <div className="space-y-4 pt-4 border-t border-white/[0.08]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-sm font-bold text-pink-300 font-mono">
             <ShieldCheck className="w-4 h-4 text-pink-400" />
@@ -312,7 +312,7 @@ export default function Lesson5Part4CardinalityParticipation() {
             </div>
 
             {/* Core Exam Takeaway Pill */}
-            <div className="p-2.5 rounded-xl bg-[#070b16] border border-slate-800 text-[10px] font-mono text-zinc-400 flex items-center justify-between">
+            <div className="p-2.5 rounded-xl bg-[#070b16] border border-white/[0.08] text-[10px] font-mono text-zinc-400 flex items-center justify-between">
               <span>Exam Formula: (Min, Max) = (0/1, 1/N)</span>
               <span className="text-pink-400 font-semibold">Notation Rule</span>
             </div>
@@ -328,7 +328,7 @@ export default function Lesson5Part4CardinalityParticipation() {
                   desc: 'Total (Double Line ════: EMPLOYEE belongs to DEPARTMENT) vs Partial (Single Line ────: EMPLOYEE manages DEPARTMENT)',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-colors hover:border-pink-500/50 hover: hover: p-2.5 flex flex-col items-center justify-center"
+              className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-white/[0.08] transition-colors hover:border-pink-500/50 hover: hover: p-2.5 flex flex-col items-center justify-center"
             >
               <img
                 src="/images/participation-constraints.png"
@@ -338,7 +338,7 @@ export default function Lesson5Part4CardinalityParticipation() {
               <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/70 text-zinc-300 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-4 h-4 text-pink-300" />
               </div>
-              <div className="w-full mt-2 pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+              <div className="w-full mt-2 pt-1.5 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-zinc-400">
                 <span className="text-pink-300 font-semibold">Total (════) vs Partial (────) Notation</span>
                 <span className="text-zinc-500 group-hover:text-pink-400 transition-colors">Click to expand full screen ⤢</span>
               </div>
@@ -359,7 +359,7 @@ export default function Lesson5Part4CardinalityParticipation() {
             onClick={(e) => e.stopPropagation()}
             className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-emerald-500/40 p-4 md:p-6 space-y-3"
           >
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
               <div>
                 <h3 className="text-sm md:text-base font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-emerald-400">▣</span>
@@ -369,13 +369,13 @@ export default function Lesson5Part4CardinalityParticipation() {
               </div>
               <button
                 onClick={() => setModalImage(null)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-white/[0.12]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-slate-800/80">
+            <div className="flex items-center justify-center p-2 rounded-xl bg-[#060911] border border-white/[0.08]">
               <img
                 src={modalImage.src}
                 alt={modalImage.title}

@@ -64,8 +64,8 @@ export default function Lesson2Part5ExamQuestions({ onNavigate }: Lesson2Part5Ex
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
           <HelpCircle className="w-6 h-6" />
         </div>
@@ -97,7 +97,7 @@ export default function Lesson2Part5ExamQuestions({ onNavigate }: Lesson2Part5Ex
           return (
             <div
               key={item.id}
-              className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden transition-colors"
+              className="rounded-xl border border-white/[0.08] bg-[#15171e] overflow-hidden transition-colors"
             >
               <button
                 onClick={() => toggleQuestion(item.id)}
@@ -119,7 +119,7 @@ export default function Lesson2Part5ExamQuestions({ onNavigate }: Lesson2Part5Ex
               </button>
 
               {isExpanded && (
-                <div className="px-4 pb-4 pt-1 text-xs text-zinc-300 font-sans leading-relaxed border-t border-slate-800/60 bg-black/30">
+                <div className="px-4 pb-4 pt-1 text-xs text-zinc-300 font-sans leading-relaxed border-t border-white/[0.08] bg-black/30">
                   <div className="p-3 rounded-lg bg-indigo-950/20 border border-indigo-900/30 text-indigo-200 whitespace-pre-line">
                     <DualText en={item.enA} bn={item.bnA} />
                   </div>
@@ -158,7 +158,7 @@ export default function Lesson2Part5ExamQuestions({ onNavigate }: Lesson2Part5Ex
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('db-lesson1')}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-slate-700 cursor-pointer"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-white/[0.12] cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ১-এ ফিরে যান' : 'Back to Lesson 1'}</span>

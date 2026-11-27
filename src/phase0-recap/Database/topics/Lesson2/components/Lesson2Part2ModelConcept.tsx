@@ -9,8 +9,8 @@ export default function Lesson2Part2ModelConcept() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
           <Workflow className="w-6 h-6" />
         </div>
@@ -41,7 +41,7 @@ export default function Lesson2Part2ModelConcept() {
 
         {/* Architectural Blueprint Analogy */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-800 space-y-2">
+          <div className="p-5 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-2">
             <div className="flex items-center gap-2">
               <Compass className="w-4 h-4 text-amber-400" />
               <span className="text-[10px] font-mono text-amber-400 uppercase font-bold">
@@ -61,7 +61,7 @@ export default function Lesson2Part2ModelConcept() {
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[#14182d] border border-indigo-900/40 space-y-2 ring-1 ring-indigo-500/30">
+          <div className="p-5 rounded-2xl bg-[#15171e] border border-indigo-900/40 space-y-2 ring-1 ring-indigo-500/30">
             <div className="flex items-center gap-2">
               <Box className="w-4 h-4 text-indigo-400" />
               <span className="text-[10px] font-mono text-indigo-400 uppercase font-bold">

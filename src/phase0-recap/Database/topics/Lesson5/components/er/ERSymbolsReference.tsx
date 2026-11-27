@@ -24,7 +24,7 @@ export default function ERSymbolsReference() {
   return (
     <div className="space-y-6">
       {/* Section Header */}
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
           <Workflow className="w-6 h-6" />
         </div>
@@ -58,7 +58,7 @@ export default function ERSymbolsReference() {
           </div>
 
           {/* View Mode Toggle: Cards vs Table */}
-          <div className="flex items-center gap-1.5 self-start sm:self-auto bg-[#090c18] p-1 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1.5 self-start sm:self-auto bg-[#090c18] p-1 rounded-xl border border-white/[0.08]">
             <button
               onClick={() => setViewMode('cards')}
               className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer ${
@@ -98,7 +98,7 @@ export default function ERSymbolsReference() {
             className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-colors cursor-pointer border ${
               activeCategory === 'all'
                 ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/60 font-bold  '
-                : 'bg-[#0a0d18] text-zinc-400 border-slate-800 hover:text-zinc-200 hover:border-slate-700'
+                : 'bg-[#101116] text-zinc-400 border-white/[0.08] hover:text-zinc-200 hover:border-white/[0.12]'
             }`}
           >
             {language === 'bn' ? 'সবগুলো প্রতীক (১২)' : 'All 12 Symbols'}
@@ -108,7 +108,7 @@ export default function ERSymbolsReference() {
             className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-colors cursor-pointer border ${
               activeCategory === 'entity_attr'
                 ? 'bg-amber-950/80 text-amber-300 border-amber-500/60 font-bold  '
-                : 'bg-[#0a0d18] text-zinc-400 border-slate-800 hover:text-zinc-200 hover:border-slate-700'
+                : 'bg-[#101116] text-zinc-400 border-white/[0.08] hover:text-zinc-200 hover:border-white/[0.12]'
             }`}
           >
             {language === 'bn' ? 'এনটিটি ও অ্যাট্রিবিউট (৭)' : 'Entities & Attributes (7)'}
@@ -118,7 +118,7 @@ export default function ERSymbolsReference() {
             className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-colors cursor-pointer border ${
               activeCategory === 'rel_constraint'
                 ? 'bg-purple-950/80 text-purple-300 border-purple-500/60 font-bold  '
-                : 'bg-[#0a0d18] text-zinc-400 border-slate-800 hover:text-zinc-200 hover:border-slate-700'
+                : 'bg-[#101116] text-zinc-400 border-white/[0.08] hover:text-zinc-200 hover:border-white/[0.12]'
             }`}
           >
             {language === 'bn' ? 'রিলেশনশিপ ও কনস্ট্রেইন্টস (৫)' : 'Relationships & Constraints (5)'}
@@ -131,9 +131,9 @@ export default function ERSymbolsReference() {
             {filteredSymbols.map((item) => (
               <div
                 key={item.id}
-                className="p-4 rounded-2xl bg-[#0a0d1a] border border-slate-800/90 hover:border-slate-700 transition-colors flex flex-col sm:flex-row items-start sm:items-center gap-4 group"
+                className="p-4 rounded-2xl bg-[#101116] border border-white/[0.08] hover:border-white/[0.12] transition-colors flex flex-col sm:flex-row items-start sm:items-center gap-4 group"
               >
-                <div className="w-full sm:w-32 h-16 rounded-xl bg-[#050813] border border-slate-800/80 group-hover:border-slate-700 transition-colors flex items-center justify-center p-1.5 shrink-0 shadow-inner">
+                <div className="w-full sm:w-32 h-16 rounded-xl bg-[#050813] border border-white/[0.08] group-hover:border-white/[0.12] transition-colors flex items-center justify-center p-1.5 shrink-0 shadow-inner">
                   {item.svg}
                 </div>
                 <div className="flex-1 space-y-1.5 min-w-0">
@@ -165,22 +165,22 @@ export default function ERSymbolsReference() {
 
         {/* VIEW MODE B: STRUCTURED CHEAT SHEET TABLE */}
         {viewMode === 'table' && (
-          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
+          <div className="overflow-x-auto rounded-2xl border border-white/[0.08] bg-[#101116]">
             <table className="w-full text-left font-sans text-xs">
               <thead>
-                <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px] font-mono">
+                <tr className="bg-[#15171e] text-zinc-300 border-b border-white/[0.08] text-[11px] font-mono">
                   <th className="py-3 px-4 w-36">{language === 'bn' ? 'জ্যামিতিক আকার (Figure)' : 'Geometric Figure'}</th>
                   <th className="py-3 px-4 w-36 text-center">{language === 'bn' ? 'প্রতীক চিত্র (Symbol)' : 'Drawn Symbol'}</th>
                   <th className="py-3 px-4">{language === 'bn' ? 'অর্থ ও তাৎপর্য (Represents)' : 'Concept & Purpose'}</th>
                   <th className="py-3 px-4 w-44">{language === 'bn' ? 'বাস্তব উদাহরণ (Real Example)' : 'Example & Notation'}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/70 text-xs">
+              <tbody className="divide-y divide-white/[0.08] text-xs">
                 {filteredSymbols.map((item, idx) => (
                   <tr
                     key={item.id}
                     className={`hover:bg-slate-800/30 transition-colors ${
-                      idx % 2 === 0 ? 'bg-[#0a0d18]' : 'bg-[#070912]'
+                      idx % 2 === 0 ? 'bg-[#101116]' : 'bg-[#090a0d]'
                     }`}
                   >
                     <td className="py-3 px-4">
@@ -192,7 +192,7 @@ export default function ERSymbolsReference() {
                       </div>
                     </td>
                     <td className="py-2.5 px-4">
-                      <div className="w-28 h-12 mx-auto rounded-lg bg-[#050813] border border-slate-800 p-1 flex items-center justify-center">
+                      <div className="w-28 h-12 mx-auto rounded-lg bg-[#050813] border border-white/[0.08] p-1 flex items-center justify-center">
                         {item.svg}
                       </div>
                     </td>

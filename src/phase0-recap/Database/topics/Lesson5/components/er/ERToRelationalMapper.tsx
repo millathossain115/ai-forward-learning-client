@@ -30,7 +30,7 @@ export default function ERToRelationalMapper() {
   };
 
   return (
-      <div className="space-y-6 pt-6 border-t border-slate-800">
+      <div className="space-y-6 pt-6 border-t border-white/[0.08]">
         {/* Section 6.2 Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="space-y-1">
@@ -53,7 +53,7 @@ export default function ERToRelationalMapper() {
           </div>
 
           {/* Toggle between Step Pipeline & Decision Matrix */}
-          <div className="flex items-center gap-1.5 self-start sm:self-auto bg-[#090c18] p-1 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1.5 self-start sm:self-auto bg-[#090c18] p-1 rounded-xl border border-white/[0.08]">
             <button
               onClick={() => setShowDecisionMatrix(false)}
               className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer ${
@@ -93,7 +93,7 @@ export default function ERToRelationalMapper() {
                     className={`p-2.5 rounded-xl border text-left transition-colors cursor-pointer ${
                       isActive
                         ? 'bg-[#15171e] border-emerald-500/60 '
-                        : 'bg-[#0a0d18] border-slate-800/80 hover:border-slate-700 text-zinc-400 hover:text-zinc-200'
+                        : 'bg-[#101116] border-white/[0.08] hover:border-white/[0.12] text-zinc-400 hover:text-zinc-200'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-0.5">
@@ -116,7 +116,7 @@ export default function ERToRelationalMapper() {
             {(() => {
               const currentStep = ER_CONVERSION_STEPS[activeConversionStep];
               return (
-                <div className="p-4 rounded-2xl bg-[#090c1a] border border-slate-800 space-y-3.5">
+                <div className="p-4 rounded-2xl bg-[#090c1a] border border-white/[0.08] space-y-3.5">
                   {/* Compact Header + Rule Banner */}
                   <div className="p-3 rounded-xl bg-[#15171e] border border-emerald-500/30 space-y-1">
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -152,7 +152,7 @@ export default function ERToRelationalMapper() {
                         </span>
                       </div>
 
-                      <div className="rounded-lg bg-[#060914] border border-slate-800 p-2 flex items-center justify-center min-h-[135px]">
+                      <div className="rounded-lg bg-[#090a0d] border border-white/[0.08] p-2 flex items-center justify-center min-h-[135px]">
                         {activeConversionStep === 0 && (
                           <svg viewBox="0 0 320 130" className="w-full h-32">
                             <line x1="160" y1="75" x2="65" y2="30" stroke="#475569" strokeWidth="1.5" />
@@ -214,13 +214,13 @@ export default function ERToRelationalMapper() {
                         )}
                       </div>
 
-                      <div className="text-[11px] font-mono text-cyan-300 bg-[#060914] px-2.5 py-1.5 rounded border border-slate-800 truncate text-center">
+                      <div className="text-[11px] font-mono text-cyan-300 bg-[#090a0d] px-2.5 py-1.5 rounded border border-white/[0.08] truncate text-center">
                         {currentStep.erSymbolText}
                       </div>
                     </div>
 
                     {/* Stage 2: Mapping Bridge */}
-                    <div className="lg:col-span-2 flex flex-col items-center justify-center p-2.5 rounded-xl bg-[#070914] border border-slate-800/80 text-center gap-1.5">
+                    <div className="lg:col-span-2 flex flex-col items-center justify-center p-2.5 rounded-xl bg-[#070914] border border-white/[0.08] text-center gap-1.5">
                       <div className="p-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                         <ArrowRight className="w-4 h-4 hidden lg:block" />
                         <ChevronRight className="w-4 h-4 lg:hidden rotate-90" />
@@ -232,14 +232,14 @@ export default function ERToRelationalMapper() {
 
                     {/* Stage 3: Output Table + Copyable SQL */}
                     <div className="lg:col-span-5 p-3 rounded-xl bg-[#0c1020] border border-emerald-900/40 flex flex-col justify-between space-y-2">
-                      <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+                      <div className="flex items-center justify-between border-b border-white/[0.08] pb-1.5">
                         <div className="font-mono text-xs font-bold text-white flex items-center gap-1.5">
                           <Database className="w-3.5 h-3.5 text-emerald-400" />
                           <span>{currentStep.tableName}</span>
                         </div>
                         <button
                           onClick={() => handleCopySql(currentStep.sqlCode, activeConversionStep)}
-                          className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white text-[10px] font-mono flex items-center gap-1 cursor-pointer border border-slate-700/60"
+                          className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white text-[10px] font-mono flex items-center gap-1 cursor-pointer border border-white/[0.12]"
                         >
                           {copiedStep === activeConversionStep ? (
                             <>
@@ -256,7 +256,7 @@ export default function ERToRelationalMapper() {
                       </div>
 
                       {/* Compact Column Pills */}
-                      <div className="flex flex-wrap gap-1.5 bg-[#060914] p-2 rounded-lg border border-slate-800/80 font-mono text-[10px]">
+                      <div className="flex flex-wrap gap-1.5 bg-[#090a0d] p-2 rounded-lg border border-white/[0.08] font-mono text-[10px]">
                         {currentStep.columns.map((col) => (
                           <span
                             key={col.name}
@@ -265,7 +265,7 @@ export default function ERToRelationalMapper() {
                                 ? 'bg-amber-950/60 border-amber-500/40 text-amber-300 font-bold'
                                 : col.isFk
                                 ? 'bg-indigo-950/60 border-indigo-500/40 text-indigo-300 font-bold'
-                                : 'bg-slate-900 border-slate-800 text-zinc-300'
+                                : 'bg-[#15171e] border-white/[0.08] text-zinc-300'
                             }`}
                           >
                             {col.name} {col.isPk ? '[PK]' : col.isFk ? '[FK]' : ''}
@@ -274,7 +274,7 @@ export default function ERToRelationalMapper() {
                       </div>
 
                       {/* Compact SQL */}
-                      <pre className="p-2.5 rounded-lg bg-[#050711] border border-slate-800 text-[10.5px] font-mono text-emerald-300/90 leading-snug overflow-x-auto max-h-32">
+                      <pre className="p-2.5 rounded-lg bg-[#050711] border border-white/[0.08] text-[10.5px] font-mono text-emerald-300/90 leading-snug overflow-x-auto max-h-32">
                         <code>{currentStep.sqlCode}</code>
                       </pre>
                     </div>
@@ -287,10 +287,10 @@ export default function ERToRelationalMapper() {
 
         {/* VIEW 2: UNIVERSITY EXAM CHEAT SHEET MATRIX TABLE */}
         {showDecisionMatrix && (
-          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
+          <div className="overflow-x-auto rounded-2xl border border-white/[0.08] bg-[#101116]">
             <table className="w-full text-left font-sans text-xs">
               <thead>
-                <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px] font-mono">
+                <tr className="bg-[#15171e] text-zinc-300 border-b border-white/[0.08] text-[11px] font-mono">
                   <th className="py-2.5 px-3">{language === 'bn' ? 'ইআর উপাদান' : 'ER Component'}</th>
                   <th className="py-2.5 px-3">{language === 'bn' ? 'টেবিল তৈরির নিয়ম' : 'Relational Rule'}</th>
                   <th className="py-2.5 px-3">{language === 'bn' ? 'PK কৌশল' : 'PK Logic'}</th>
@@ -298,12 +298,12 @@ export default function ERToRelationalMapper() {
                   <th className="py-2.5 px-3">{language === 'bn' ? 'উদাহরণ' : 'SQL Example'}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/70 text-xs font-sans">
+              <tbody className="divide-y divide-white/[0.08] text-xs font-sans">
                 {ER_MAPPING_DECISION_MATRIX.map((item, idx) => (
                   <tr
                     key={item.erElementEn}
                     className={`hover:bg-slate-800/30 transition-colors ${
-                      idx % 2 === 0 ? 'bg-[#0a0d18]' : 'bg-[#070912]'
+                      idx % 2 === 0 ? 'bg-[#101116]' : 'bg-[#090a0d]'
                     }`}
                   >
                     <td className="py-2.5 px-3 font-mono font-bold">
@@ -333,7 +333,7 @@ export default function ERToRelationalMapper() {
         )}
 
         {/* COMPACT SUMMARY STRIP */}
-        <div className="p-3.5 rounded-xl bg-[#0a0d1a] border border-slate-800 space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#101116] border border-white/[0.08] space-y-2">
           <div className="flex items-center justify-between text-xs font-mono font-bold text-cyan-300">
             <span className="flex items-center gap-1.5">
               <Layers3 className="w-4 h-4 text-cyan-400" />
@@ -343,15 +343,15 @@ export default function ERToRelationalMapper() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 font-mono text-[11px]">
-            <div className="p-2.5 rounded-lg bg-[#060914] border border-slate-800/90">
+            <div className="p-2.5 rounded-lg bg-[#090a0d] border border-white/[0.08]">
               <span className="text-cyan-400 font-bold">1. DEPARTMENTS</span>
               <div className="text-zinc-300 mt-0.5"><span className="text-amber-300">dept_id [PK]</span>, dept_name</div>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#060914] border border-slate-800/90">
+            <div className="p-2.5 rounded-lg bg-[#090a0d] border border-white/[0.08]">
               <span className="text-indigo-300 font-bold">2. COURSES (1:N)</span>
               <div className="text-zinc-300 mt-0.5"><span className="text-amber-300">course_id [PK]</span>, <span className="text-indigo-400">dept_id [FK]</span></div>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#060914] border border-purple-900/60">
+            <div className="p-2.5 rounded-lg bg-[#090a0d] border border-purple-900/60">
               <span className="text-purple-300 font-bold">3. ENROLLMENTS (M:N)</span>
               <div className="text-zinc-300 mt-0.5"><span className="text-pink-400">PK(student_id, course_id)</span>, grade</div>
             </div>

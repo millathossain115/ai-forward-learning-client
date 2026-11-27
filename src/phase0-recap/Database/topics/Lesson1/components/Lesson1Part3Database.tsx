@@ -8,8 +8,8 @@ export default function Lesson1Part3Database() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
           <Database className="w-6 h-6" />
         </div>
@@ -71,8 +71,8 @@ export default function Lesson1Part3Database() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Table 1: Students */}
-            <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-xs font-bold text-amber-400 font-mono flex items-center gap-1.5">
                   <TableIcon className="w-3.5 h-3.5" />
                   {language === 'bn' ? 'টেবিল ১: শিক্ষার্থী (Students)' : 'Table 1: Students'}
@@ -84,13 +84,13 @@ export default function Lesson1Part3Database() {
               <div className="overflow-x-auto text-[11px] font-mono">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="text-zinc-400 border-b border-slate-800/80">
+                    <tr className="text-zinc-400 border-b border-white/[0.08]">
                       <th className="py-1 px-2">StudentID</th>
                       <th className="py-1 px-2">Name</th>
                       <th className="py-1 px-2">Department</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+                  <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                     <tr><td className="py-1 px-2 font-bold text-indigo-400">101</td><td className="py-1 px-2">Rahim</td><td className="py-1 px-2">CSE</td></tr>
                     <tr><td className="py-1 px-2 font-bold text-indigo-400">102</td><td className="py-1 px-2">Karim</td><td className="py-1 px-2">BBA</td></tr>
                     <tr><td className="py-1 px-2 font-bold text-indigo-400">103</td><td className="py-1 px-2">Nila</td><td className="py-1 px-2">EEE</td></tr>
@@ -100,8 +100,8 @@ export default function Lesson1Part3Database() {
             </div>
 
             {/* Table 2: Courses */}
-            <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-xs font-bold text-cyan-400 font-mono flex items-center gap-1.5">
                   <TableIcon className="w-3.5 h-3.5" />
                   {language === 'bn' ? 'টেবিল ২: কোর্স (Courses)' : 'Table 2: Courses'}
@@ -113,13 +113,13 @@ export default function Lesson1Part3Database() {
               <div className="overflow-x-auto text-[11px] font-mono">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="text-zinc-400 border-b border-slate-800/80">
+                    <tr className="text-zinc-400 border-b border-white/[0.08]">
                       <th className="py-1 px-2">CourseID</th>
                       <th className="py-1 px-2">CourseTitle</th>
                       <th className="py-1 px-2">Credits</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+                  <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                     <tr><td className="py-1 px-2 font-bold text-cyan-400">CSE101</td><td className="py-1 px-2">Intro to Programming</td><td className="py-1 px-2">3</td></tr>
                     <tr><td className="py-1 px-2 font-bold text-cyan-400">CSE201</td><td className="py-1 px-2">Database Systems</td><td className="py-1 px-2">3</td></tr>
                     <tr><td className="py-1 px-2 font-bold text-cyan-400">EEE101</td><td className="py-1 px-2">Basic Electrical Eng</td><td className="py-1 px-2">4</td></tr>
@@ -129,8 +129,8 @@ export default function Lesson1Part3Database() {
             </div>
 
             {/* Table 3: Teachers */}
-            <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-xs font-bold text-emerald-400 font-mono flex items-center gap-1.5">
                   <TableIcon className="w-3.5 h-3.5" />
                   {language === 'bn' ? 'টেবিল ৩: শিক্ষক (Teachers)' : 'Table 3: Teachers / Instructors'}
@@ -142,13 +142,13 @@ export default function Lesson1Part3Database() {
               <div className="overflow-x-auto text-[11px] font-mono">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="text-zinc-400 border-b border-slate-800/80">
+                    <tr className="text-zinc-400 border-b border-white/[0.08]">
                       <th className="py-1 px-2">TeacherID</th>
                       <th className="py-1 px-2">Name</th>
                       <th className="py-1 px-2">Specialization</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+                  <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                     <tr><td className="py-1 px-2 font-bold text-emerald-400">T-01</td><td className="py-1 px-2">Dr. Hasan</td><td className="py-1 px-2">Distributed Databases</td></tr>
                     <tr><td className="py-1 px-2 font-bold text-emerald-400">T-02</td><td className="py-1 px-2">Prof. Farhana</td><td className="py-1 px-2">Marketing Analytics</td></tr>
                   </tbody>
@@ -157,8 +157,8 @@ export default function Lesson1Part3Database() {
             </div>
 
             {/* Table 4: Enrollments */}
-            <div className="p-4 rounded-xl bg-[#121526] border border-slate-800 space-y-2">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-2">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-xs font-bold text-pink-400 font-mono flex items-center gap-1.5">
                   <TableIcon className="w-3.5 h-3.5" />
                   {language === 'bn' ? 'টেবিল ৪: এনরোলমেন্ট (Enrollments)' : 'Table 4: Enrollments (Relationship)'}
@@ -170,13 +170,13 @@ export default function Lesson1Part3Database() {
               <div className="overflow-x-auto text-[11px] font-mono">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="text-zinc-400 border-b border-slate-800/80">
+                    <tr className="text-zinc-400 border-b border-white/[0.08]">
                       <th className="py-1 px-2">StudentID</th>
                       <th className="py-1 px-2">CourseID</th>
                       <th className="py-1 px-2">Semester</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/40 text-zinc-300">
+                  <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                     <tr><td className="py-1 px-2 text-indigo-400 font-bold">101</td><td className="py-1 px-2 text-cyan-400 font-bold">CSE201</td><td className="py-1 px-2">Spring 2026</td></tr>
                     <tr><td className="py-1 px-2 text-indigo-400 font-bold">102</td><td className="py-1 px-2 text-cyan-400 font-bold">CSE101</td><td className="py-1 px-2">Spring 2026</td></tr>
                     <tr><td className="py-1 px-2 text-indigo-400 font-bold">103</td><td className="py-1 px-2 text-cyan-400 font-bold">EEE101</td><td className="py-1 px-2">Spring 2026</td></tr>

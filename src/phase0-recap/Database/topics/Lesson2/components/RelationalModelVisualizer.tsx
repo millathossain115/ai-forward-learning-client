@@ -115,9 +115,9 @@ export default function RelationalModelVisualizer() {
   const summary = getActiveSummary();
 
   return (
-    <div className="p-5 md:p-7 rounded-2xl bg-[#0a0d18] border border-emerald-500/40 space-y-6">
+    <div className="p-5 md:p-7 rounded-2xl bg-[#101116] border border-emerald-500/40 space-y-6">
       {/* Header and Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
         <div>
           <span className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
             <TableIcon className="w-4 h-4 text-emerald-400" />
@@ -224,7 +224,7 @@ export default function RelationalModelVisualizer() {
                   <div className="col-span-4 text-right text-zinc-400">Dept</div>
                 </div>
                 {/* Rows */}
-                <div className="divide-y divide-slate-800 text-xs font-mono">
+                <div className="divide-y divide-white/[0.08] text-xs font-mono">
                   {students.map((st) => {
                     const isRowActive = isStudentRowHighlighted(st.id);
                     const isDirect = selected?.type === 'student' && selected.id === st.id;
@@ -266,10 +266,10 @@ export default function RelationalModelVisualizer() {
                 </div>
                 {/* Columns */}
                 <div className="grid grid-cols-12 bg-[#1b253b] border-b border-emerald-900/60 text-xs font-mono font-bold text-zinc-200 py-1.5 px-3 text-center">
-                  <div className="col-span-4 text-emerald-300 border-r border-slate-700/60">
+                  <div className="col-span-4 text-emerald-300 border-r border-white/[0.12]">
                     StudentId (FK)
                   </div>
-                  <div className="col-span-4 text-cyan-300 border-r border-slate-700/60">
+                  <div className="col-span-4 text-cyan-300 border-r border-white/[0.12]">
                     CourseId (FK)
                   </div>
                   <div className="col-span-4 text-zinc-400 text-[11px]">
@@ -277,7 +277,7 @@ export default function RelationalModelVisualizer() {
                   </div>
                 </div>
                 {/* Rows */}
-                <div className="divide-y divide-slate-800 text-xs font-mono">
+                <div className="divide-y divide-white/[0.08] text-xs font-mono">
                   {enrollments.map((enr, idx) => {
                     const isRowActive = isEnrollmentRowHighlighted(enr.studentId, enr.courseId);
                     const isDirect =
@@ -303,10 +303,10 @@ export default function RelationalModelVisualizer() {
                             : 'text-zinc-500 opacity-40 hover:opacity-100 hover:bg-slate-800/40'
                         }`}
                       >
-                        <div className="col-span-4 border-r border-slate-800/80 font-bold text-amber-400">
+                        <div className="col-span-4 border-r border-white/[0.08] font-bold text-amber-400">
                           {enr.studentId}
                         </div>
-                        <div className="col-span-4 border-r border-slate-800/80 font-bold text-cyan-400">
+                        <div className="col-span-4 border-r border-white/[0.08] font-bold text-cyan-400">
                           {enr.courseId}
                         </div>
                         <div className="col-span-4 text-[10px] text-zinc-400">
@@ -340,7 +340,7 @@ export default function RelationalModelVisualizer() {
                   <div className="col-span-3 text-right text-zinc-400 text-[10px]">Code</div>
                 </div>
                 {/* Rows */}
-                <div className="divide-y divide-slate-800 text-xs font-mono">
+                <div className="divide-y divide-white/[0.08] text-xs font-mono">
                   {courses.map((co) => {
                     const isRowActive = isCourseRowHighlighted(co.id);
                     const isDirect = selected?.type === 'course' && selected.id === co.id;
@@ -369,7 +369,7 @@ export default function RelationalModelVisualizer() {
           </div>
 
           {/* SVG Orthogonal Relationship Connectors matching the uploaded diagram */}
-          <div className="mt-4 pt-3 border-t border-slate-800/80">
+          <div className="mt-4 pt-3 border-t border-white/[0.08]">
             <svg viewBox="0 0 760 70" className="w-full h-auto select-none">
               <defs>
                 <marker id="rel-arrow-left" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
@@ -425,7 +425,7 @@ export default function RelationalModelVisualizer() {
           <DualText en={summary.en} bn={summary.bn} />
         </div>
 
-        <div className="pt-1 text-[11px] text-zinc-400 border-t border-slate-800/80 leading-relaxed">
+        <div className="pt-1 text-[11px] text-zinc-400 border-t border-white/[0.08] leading-relaxed">
           <DualText
             en="💡 Why not store courses inside Students? Because Rahim takes 2 courses (Database & Math). Storing multiple courses in one cell violates 1st Normal Form (Atomic Values), while duplicating Rahim's row creates redundant data. The Enrollments Junction Table resolves this with mathematical integrity!"
             bn="💡 কেন ছাত্রদের ভেতরেই কোর্সের নাম বারবার লিখছি না? কারণ রহিম একই সাথে ২টি কোর্স করছে (Database ও Math)। একটি ঘরে কমা দিয়ে একাধিক কোর্স লিখলে 1NF নিয়ম ভঙ্গ হয়, আবার রহিমের সারি বারবার ডুপ্লিকেট করলে ডেটা অসঙ্গতি ঘটে। মাঝখানের Enrollments জাংশন টেবিল ফরেন কি-এর মাধ্যমে নিখুঁত গাণিতিক সমাধান নিশ্চিত করে!"
@@ -439,19 +439,19 @@ export default function RelationalModelVisualizer() {
           {language === 'bn' ? 'শীর্ষস্থানীয় রিলেশনাল ইঞ্জিনসমূহ:' : 'Leading Relational Engines Implementing This:'}
         </span>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
-          <div className="p-3 rounded-lg bg-[#0e1122] border border-slate-800 text-center">
+          <div className="p-3 rounded-lg bg-[#0e1122] border border-white/[0.08] text-center">
             <strong className="text-cyan-400 block">PostgreSQL</strong>
             <span className="text-[10px] text-zinc-500">ACID + JSONB</span>
           </div>
-          <div className="p-3 rounded-lg bg-[#0e1122] border border-slate-800 text-center">
+          <div className="p-3 rounded-lg bg-[#0e1122] border border-white/[0.08] text-center">
             <strong className="text-amber-400 block">MySQL</strong>
             <span className="text-[10px] text-zinc-500">InnoDB FK Constraints</span>
           </div>
-          <div className="p-3 rounded-lg bg-[#0e1122] border border-slate-800 text-center">
+          <div className="p-3 rounded-lg bg-[#0e1122] border border-white/[0.08] text-center">
             <strong className="text-rose-400 block">Oracle DB</strong>
             <span className="text-[10px] text-zinc-500">Enterprise High Availability</span>
           </div>
-          <div className="p-3 rounded-lg bg-[#0e1122] border border-slate-800 text-center">
+          <div className="p-3 rounded-lg bg-[#0e1122] border border-white/[0.08] text-center">
             <strong className="text-emerald-400 block">SQL Server</strong>
             <span className="text-[10px] text-zinc-500">T-SQL &amp; Foreign Keys</span>
           </div>

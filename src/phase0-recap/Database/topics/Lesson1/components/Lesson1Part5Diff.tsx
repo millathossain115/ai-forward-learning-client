@@ -43,8 +43,8 @@ export default function Lesson1Part5Diff() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
           <CheckCircle2 className="w-6 h-6" />
         </div>
@@ -73,10 +73,10 @@ export default function Lesson1Part5Diff() {
         )}
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+      <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+            <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
               <th className="py-2.5 px-4 font-bold text-purple-400 w-1/2">
                 {language === 'bn' ? 'ডেটাবেস (Database)' : 'Database'}
               </th>
@@ -85,7 +85,7 @@ export default function Lesson1Part5Diff() {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+          <tbody className="divide-y divide-white/[0.08] text-zinc-300">
             {diffRows.map((r, i) => (
               <tr key={i}>
                 <td className="py-2.5 px-4">
@@ -107,7 +107,7 @@ export default function Lesson1Part5Diff() {
       </div>
 
       {/* Practical Example: Banking App Balance Check */}
-      <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-800 space-y-4">
+      <div className="p-5 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h4 className="text-xs font-bold text-white uppercase font-mono flex items-center gap-1.5">
             <CreditCard className="w-4 h-4 text-emerald-400" />
@@ -128,7 +128,7 @@ export default function Lesson1Part5Diff() {
             className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 1
                 ? 'bg-indigo-950/40 border-indigo-500 text-white'
-                : 'bg-black/30 border-slate-800 text-zinc-500'
+                : 'bg-black/30 border-white/[0.08] text-zinc-500'
             }`}
           >
             <span className="text-[10px] block text-zinc-400">Step 1</span>
@@ -139,7 +139,7 @@ export default function Lesson1Part5Diff() {
             className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 2
                 ? 'bg-indigo-950/40 border-indigo-500 text-white'
-                : 'bg-black/30 border-slate-800 text-zinc-500'
+                : 'bg-black/30 border-white/[0.08] text-zinc-500'
             }`}
           >
             <span className="text-[10px] block text-zinc-400">Step 2</span>
@@ -150,7 +150,7 @@ export default function Lesson1Part5Diff() {
             className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 3
                 ? 'bg-indigo-950/40 border-indigo-500 text-white'
-                : 'bg-black/30 border-slate-800 text-zinc-500'
+                : 'bg-black/30 border-white/[0.08] text-zinc-500'
             }`}
           >
             <span className="text-[10px] block text-zinc-400">Step 3</span>
@@ -161,7 +161,7 @@ export default function Lesson1Part5Diff() {
             className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 4
                 ? 'bg-emerald-950/40 border-emerald-500 text-emerald-300 font-bold'
-                : 'bg-black/30 border-slate-800 text-zinc-500'
+                : 'bg-black/30 border-white/[0.08] text-zinc-500'
             }`}
           >
             <span className="text-[10px] block text-zinc-400">Step 4</span>

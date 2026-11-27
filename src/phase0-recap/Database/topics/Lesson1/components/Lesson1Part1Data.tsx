@@ -70,8 +70,8 @@ export default function Lesson1Part1Data() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
           <BookOpen className="w-6 h-6" />
         </div>
@@ -106,7 +106,7 @@ export default function Lesson1Part1Data() {
         </div>
 
         {/* Interactive Raw Data Example Box */}
-        <div className="p-5 rounded-2xl bg-[#14182d] border border-indigo-950 space-y-4">
+        <div className="p-5 rounded-2xl bg-[#15171e] border border-indigo-950 space-y-4">
           <h3 className="text-xs font-bold text-indigo-300 uppercase font-mono flex items-center gap-2">
             <GraduationCap className="w-4 h-4 text-indigo-400" />
             {language === 'bn'
@@ -122,7 +122,7 @@ export default function Lesson1Part1Data() {
                 className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-colors cursor-pointer border ${
                   inspectedRawToken === token.val
                     ? 'bg-amber-500/20 border-amber-500 text-amber-300 ring-2 ring-amber-500/40 '
-                    : 'bg-[#101324] border-slate-700 text-zinc-300 hover:border-slate-500'
+                    : 'bg-[#101324] border-white/[0.12] text-zinc-300 hover:border-slate-500'
                 }`}
               >
                 &ldquo;{token.val}&rdquo;
@@ -179,10 +179,10 @@ export default function Lesson1Part1Data() {
               ? 'বাস্তব জীবনে অপরিশোধিত ডেটার আরও কিছু উদাহরণ:'
               : 'More examples of raw data in daily life:'}
           </h4>
-          <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+          <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
             <table className="w-full text-left text-xs font-mono">
               <thead>
-                <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+                <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
                   <th className="py-2.5 px-4 font-bold text-indigo-400 w-1/3">
                     {language === 'bn' ? 'ক্ষেত্র / ক্ষেত্রসমূহ' : 'Situation / Domain'}
                   </th>
@@ -191,7 +191,7 @@ export default function Lesson1Part1Data() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+              <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                 {tableData.map((row, idx) => (
                   <tr key={idx}>
                     <td className="py-2.5 px-4 font-bold text-white">

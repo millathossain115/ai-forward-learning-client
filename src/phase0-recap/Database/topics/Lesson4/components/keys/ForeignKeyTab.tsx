@@ -68,8 +68,8 @@ export default function ForeignKeyTab() {
   };
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-emerald-500/40 space-y-6 animate-in fade-in duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-emerald-500/40 space-y-6 animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -95,7 +95,7 @@ export default function ForeignKeyTab() {
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800/80 text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
+          <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] text-xs text-zinc-300 leading-relaxed font-sans space-y-2">
             <div className="flex items-center gap-2 text-emerald-400 font-bold">
               <Sparkles className="w-4 h-4" />
               <DualText
@@ -110,8 +110,8 @@ export default function ForeignKeyTab() {
           </div>
 
           {/* Interactive Referential Integrity Simulator */}
-          <div className="p-4 rounded-xl bg-[#0a0d1a] border border-emerald-500/30 space-y-4 font-mono text-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="p-4 rounded-xl bg-[#101116] border border-emerald-500/30 space-y-4 font-mono text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <DualText
@@ -141,7 +141,7 @@ export default function ForeignKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D01'
                       ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold  '
-                      : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
+                      : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
                   }`}
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -153,7 +153,7 @@ export default function ForeignKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D02'
                       ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold  '
-                      : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
+                      : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
                   }`}
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -165,7 +165,7 @@ export default function ForeignKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D03'
                       ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold  '
-                      : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
+                      : 'bg-[#15171e] border-white/[0.08] text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
                   }`}
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -177,7 +177,7 @@ export default function ForeignKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D99'
                       ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold   '
-                      : 'bg-[#121526] border-slate-800 text-rose-400/80 hover:border-rose-500/50 hover:text-rose-300'
+                      : 'bg-[#15171e] border-white/[0.08] text-rose-400/80 hover:border-rose-500/50 hover:text-rose-300'
                   }`}
                 >
                   <XCircle className="w-3.5 h-3.5 text-rose-400" />
@@ -189,7 +189,7 @@ export default function ForeignKeyTab() {
                   className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'NULL'
                       ? 'bg-amber-500/20 border-amber-400 text-amber-200 font-bold  '
-                      : 'bg-[#121526] border-slate-800 text-amber-400/80 hover:border-amber-500/50 hover:text-amber-300'
+                      : 'bg-[#15171e] border-white/[0.08] text-amber-400/80 hover:border-amber-500/50 hover:text-amber-300'
                   }`}
                 >
                   <span className="w-2 h-2 rounded-full bg-amber-400" />
@@ -233,15 +233,15 @@ export default function ForeignKeyTab() {
           {/* Visual Side-by-Side Dual Table Representation */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-xs font-mono">
             {/* Parent Table: DEPARTMENT */}
-            <div className="p-4 rounded-xl bg-[#090b14] border border-amber-500/30 space-y-3 shadow-inner">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="p-4 rounded-xl bg-[#101116] border border-amber-500/30 space-y-3 shadow-inner">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <div className="flex items-center gap-2">
                   <span className="p-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-bold">
                     PARENT
                   </span>
                   <span className="text-amber-300 font-bold">DEPARTMENT</span>
                 </div>
-                <span className="text-[10px] text-zinc-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                <span className="text-[10px] text-zinc-400 bg-[#15171e] px-2 py-0.5 rounded border border-white/[0.08]">
                   Primary Key: <span className="text-amber-300 font-bold">Dept_ID</span>
                 </span>
               </div>
@@ -249,7 +249,7 @@ export default function ForeignKeyTab() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-[11px]">
                   <thead>
-                    <tr className="border-b border-slate-800 text-zinc-400 bg-slate-900/60">
+                    <tr className="border-b border-white/[0.08] text-zinc-400 bg-[#15171e]">
                       <th className="py-2 px-2.5 text-amber-400 font-bold">
                         Dept_ID <span className="text-[9px] text-amber-500">[PK]</span>
                       </th>
@@ -258,7 +258,7 @@ export default function ForeignKeyTab() {
                       <th className="py-2 px-2.5 text-right">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/50 text-zinc-300">
+                  <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                     {fkDepartments.map((dept) => {
                       const isTargetParent = selectedDeptId === dept.id;
                       return (
@@ -291,22 +291,22 @@ export default function ForeignKeyTab() {
                 </table>
               </div>
 
-              <div className="text-[10px] text-zinc-400 font-sans border-t border-slate-800/80 pt-2 flex items-center justify-between">
+              <div className="text-[10px] text-zinc-400 font-sans border-t border-white/[0.08] pt-2 flex items-center justify-between">
                 <span>{language === 'bn' ? 'মূল টেবিল কখনো চাইল্ড টেবিলের ওপর নির্ভর করে না।' : 'The Parent table exists independently of child records.'}</span>
                 <span className="text-amber-400 font-mono">3 Departments</span>
               </div>
             </div>
 
             {/* Child Table: STUDENT */}
-            <div className="p-4 rounded-xl bg-[#090b14] border border-emerald-500/30 space-y-3 shadow-inner">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="p-4 rounded-xl bg-[#101116] border border-emerald-500/30 space-y-3 shadow-inner">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
                 <div className="flex items-center gap-2">
                   <span className="p-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold">
                     CHILD
                   </span>
                   <span className="text-emerald-300 font-bold">STUDENT</span>
                 </div>
-                <span className="text-[10px] text-zinc-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                <span className="text-[10px] text-zinc-400 bg-[#15171e] px-2 py-0.5 rounded border border-white/[0.08]">
                   Foreign Key: <span className="text-emerald-300 font-bold">Dept_ID → Dept</span>
                 </span>
               </div>
@@ -314,7 +314,7 @@ export default function ForeignKeyTab() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-[11px]">
                   <thead>
-                    <tr className="border-b border-slate-800 text-zinc-400 bg-slate-900/60">
+                    <tr className="border-b border-white/[0.08] text-zinc-400 bg-[#15171e]">
                       <th className="py-2 px-2.5 text-amber-400 font-bold">
                         ID <span className="text-[9px] text-amber-500">[PK]</span>
                       </th>
@@ -325,7 +325,7 @@ export default function ForeignKeyTab() {
                       <th className="py-2 px-2.5 text-right">Integrity</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/50 text-zinc-300">
+                  <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                     {fkStudents.map((student) => {
                       const isLinkedToSelected = selectedDeptId === student.deptId;
                       return (
@@ -398,7 +398,7 @@ export default function ForeignKeyTab() {
                 </table>
               </div>
 
-              <div className="text-[10px] text-zinc-400 font-sans border-t border-slate-800/80 pt-2 flex items-center justify-between">
+              <div className="text-[10px] text-zinc-400 font-sans border-t border-white/[0.08] pt-2 flex items-center justify-between">
                 <span>{language === 'bn' ? 'চাইল্ড টেবিল ডিপার্টমেন্ট ছাড়া অস্তিত্বহীন হতে পারে না।' : 'Foreign key values must point to existing parent rows.'}</span>
                 <span className="text-emerald-400 font-mono">
                   {selectedDeptId === 'D99' ? '4 Records (1 Rejected)' : selectedDeptId === 'NULL' ? '5 Records' : '4 Records'}
@@ -408,8 +408,8 @@ export default function ForeignKeyTab() {
           </div>
 
           {/* Live SQL DDL Definition Preview */}
-          <div className="p-4 rounded-xl bg-[#090b14] border border-slate-800 font-mono text-xs space-y-2">
-            <div className="flex items-center justify-between text-zinc-400 border-b border-slate-800/80 pb-2">
+          <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] font-mono text-xs space-y-2">
+            <div className="flex items-center justify-between text-zinc-400 border-b border-white/[0.08] pb-2">
               <span className="text-zinc-300 font-bold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 {language === 'bn'
@@ -442,7 +442,7 @@ export default function ForeignKeyTab() {
 
           {/* Foreign Key Principles Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-sans">
-            <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
+            <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
               <span className="text-emerald-400 font-bold block flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4" />
                 {language === 'bn' ? '১. অনাথ রেকর্ড প্রতিরোধ' : '1. Orphan Prevention'}
@@ -454,7 +454,7 @@ export default function ForeignKeyTab() {
               </p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
+            <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
               <span className="text-amber-400 font-bold block flex items-center gap-1.5">
                 <Layers className="w-4 h-4" />
                 {language === 'bn' ? '২. ডুপ্লিকেট মান বৈধ' : '2. Duplicates Permitted'}
@@ -466,7 +466,7 @@ export default function ForeignKeyTab() {
               </p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
+            <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] space-y-1">
               <span className="text-cyan-400 font-bold block flex items-center gap-1.5">
                 <Cpu className="w-4 h-4" />
                 {language === 'bn' ? '৩. ডিলিট রুলস (ON DELETE)' : '3. Deletion Rules'}

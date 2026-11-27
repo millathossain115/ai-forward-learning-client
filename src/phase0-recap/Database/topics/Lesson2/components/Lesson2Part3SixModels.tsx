@@ -38,8 +38,8 @@ export default function Lesson2Part3SixModels() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
           <Layers className="w-6 h-6" />
         </div>
@@ -69,7 +69,7 @@ export default function Lesson2Part3SixModels() {
               className={`p-3 rounded-xl border text-left transition-colors cursor-pointer flex flex-col justify-between gap-1.5 ${
                 isActive
                   ? 'bg-indigo-600/20 border-indigo-500 text-white ring-1 ring-indigo-500/40 '
-                  : 'bg-[#101322] border-slate-800 text-zinc-400 hover:border-slate-700'
+                  : 'bg-[#101116] border-white/[0.08] text-zinc-400 hover:border-white/[0.12]'
               }`}
             >
               <div className="flex items-center justify-between">
@@ -93,7 +93,7 @@ export default function Lesson2Part3SixModels() {
           MODEL 1: FLAT FILE
          ---------------------------------------------------- */}
       {activeModel === 'flat' && (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-slate-800 space-y-5 animate-in fade-in duration-200">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-5 animate-in fade-in duration-200">
           <div className="flex items-center justify-between">
             <div>
               <span className="text-[10px] font-mono uppercase text-amber-400 font-bold">Model 01</span>
@@ -122,17 +122,17 @@ export default function Lesson2Part3SixModels() {
               <FileCode2 className="w-3.5 h-3.5 text-amber-400" />
               <span>Example File: Students.csv</span>
             </span>
-            <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+            <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
               <table className="w-full text-left text-xs font-mono">
                 <thead>
-                  <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+                  <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
                     <th className="py-2 px-4 text-amber-400">ID</th>
                     <th className="py-2 px-4 text-cyan-400">Name</th>
                     <th className="py-2 px-4 text-purple-400">Department</th>
                     <th className="py-2 px-4 text-emerald-400 text-right">CGPA</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+                <tbody className="divide-y divide-white/[0.08] text-zinc-300">
                   <tr><td className="py-2 px-4">101</td><td className="py-2 px-4">Rahim</td><td className="py-2 px-4">CSE</td><td className="py-2 px-4 text-right">3.80</td></tr>
                   <tr><td className="py-2 px-4">102</td><td className="py-2 px-4">Karim</td><td className="py-2 px-4">BBA</td><td className="py-2 px-4 text-right">3.65</td></tr>
                   <tr><td className="py-2 px-4">103</td><td className="py-2 px-4">Nila</td><td className="py-2 px-4">EEE</td><td className="py-2 px-4 text-right">3.90</td></tr>
@@ -172,7 +172,7 @@ export default function Lesson2Part3SixModels() {
           MODEL 2: HIERARCHICAL MODEL
          ---------------------------------------------------- */}
       {activeModel === 'hierarchical' && (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-slate-800 space-y-5 animate-in fade-in duration-200">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-5 animate-in fade-in duration-200">
           <div className="flex items-center justify-between">
             <div>
               <span className="text-[10px] font-mono uppercase text-sky-400 font-bold">Model 02</span>
@@ -196,13 +196,13 @@ export default function Lesson2Part3SixModels() {
           </div>
 
           {/* Tree Structure Visualizer */}
-          <div className="p-5 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-3 font-mono text-xs">
+          <div className="p-5 rounded-xl bg-[#101116] border border-white/[0.08] space-y-3 font-mono text-xs">
             <span className="text-[10px] text-zinc-400 uppercase font-bold">
               {language === 'bn'
                 ? 'বৃক্ষ বা ফোল্ডার কাঠামো (Tree Hierarchy Visualizer):'
                 : 'Tree Hierarchy Representation (Like PC Folders):'}
             </span>
-            <div className="p-4 rounded-lg bg-black/50 border border-slate-800 text-zinc-300 space-y-2">
+            <div className="p-4 rounded-lg bg-black/50 border border-white/[0.08] text-zinc-300 space-y-2">
               <div className="flex items-center gap-2 text-indigo-400 font-bold">
                 <FolderTree className="w-4 h-4" /> [Root Parent] University
               </div>
@@ -250,7 +250,7 @@ export default function Lesson2Part3SixModels() {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-[#0e1122] border border-slate-800 text-[11px] text-zinc-400 font-mono flex items-center gap-2">
+          <div className="p-3 rounded-lg bg-[#0e1122] border border-white/[0.08] text-[11px] text-zinc-400 font-mono flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-sky-400" />
             <span>
               <strong>Historical Landmark:</strong> IBM IMS (Information Management System) launched for NASA&apos;s Apollo program in 1968.
@@ -263,7 +263,7 @@ export default function Lesson2Part3SixModels() {
           MODEL 3: NETWORK MODEL
          ---------------------------------------------------- */}
       {activeModel === 'network' && (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-slate-800 space-y-5 animate-in fade-in duration-200">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-5 animate-in fade-in duration-200">
           <div className="flex items-center justify-between">
             <div>
               <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold">Model 03</span>
@@ -314,7 +314,7 @@ export default function Lesson2Part3SixModels() {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-[#0e1122] border border-slate-800 text-[11px] text-zinc-400 font-mono flex items-center gap-2">
+          <div className="p-3 rounded-lg bg-[#0e1122] border border-white/[0.08] text-[11px] text-zinc-400 font-mono flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
             <span>
               <strong>Historical Landmark:</strong> IDMS (Integrated Database Management System) standardized by CODASYL in 1971.

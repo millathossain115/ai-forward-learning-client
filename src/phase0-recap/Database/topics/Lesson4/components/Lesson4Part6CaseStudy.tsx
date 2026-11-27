@@ -66,8 +66,8 @@ export default function Lesson4Part6CaseStudy() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-5 md:p-7 space-y-5">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-5 md:p-7 space-y-5">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           <Building2 className="w-6 h-6" />
         </div>
@@ -93,10 +93,10 @@ export default function Lesson4Part6CaseStudy() {
       />
 
       {/* Enriched Employee Table */}
-      <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+      <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300 text-[11px]">
+            <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300 text-[11px]">
               <th className="py-2 px-3 text-amber-400">Employee_ID (PK)</th>
               <th className="py-2 px-3 text-purple-300">National_ID</th>
               <th className="py-2 px-3 text-cyan-400">Email</th>
@@ -106,7 +106,7 @@ export default function Lesson4Part6CaseStudy() {
               <th className="py-2 px-3 text-indigo-300">Phone (UNIQUE)</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-zinc-300 text-[11px]">
+          <tbody className="divide-y divide-white/[0.08] text-zinc-300 text-[11px]">
             {EMPLOYEE_ROWS.map((row) => (
               <tr key={row.id} className="hover:bg-slate-800/30">
                 <td className="py-2 px-3 font-bold text-amber-300">{row.id}</td>
@@ -148,7 +148,7 @@ export default function Lesson4Part6CaseStudy() {
             return (
               <div
                 key={item.id}
-                className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden"
+                className="rounded-xl border border-white/[0.08] bg-[#15171e] overflow-hidden"
               >
                 <button
                   onClick={() => toggle(item.id)}
@@ -164,7 +164,7 @@ export default function Lesson4Part6CaseStudy() {
                   )}
                 </button>
                 {isOpen && (
-                  <div className="px-3 pb-3 pt-2 border-t border-slate-800/70 bg-emerald-950/15 text-[11px] text-emerald-200 leading-relaxed font-sans">
+                  <div className="px-3 pb-3 pt-2 border-t border-white/[0.08] bg-emerald-950/15 text-[11px] text-emerald-200 leading-relaxed font-sans">
                     {language === 'bn' ? item.aBn : item.aEn}
                   </div>
                 )}

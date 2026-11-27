@@ -182,9 +182,9 @@ export default function Lesson5Part7InterviewPrep() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-3xl p-6 md:p-8 space-y-6">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.08] pb-5">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
             <Briefcase className="w-6 h-6" />
@@ -206,13 +206,13 @@ export default function Lesson5Part7InterviewPrep() {
         <div className="flex items-center gap-2 self-start sm:self-auto">
           <button
             onClick={expandAll}
-            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-colors cursor-pointer"
+            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-white/[0.12] transition-colors cursor-pointer"
           >
             {language === 'bn' ? 'সব প্রসারিত করুন' : 'Expand All'}
           </button>
           <button
             onClick={collapseAll}
-            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-colors cursor-pointer"
+            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-white/[0.12] transition-colors cursor-pointer"
           >
             {language === 'bn' ? 'সব বন্ধ করুন' : 'Collapse All'}
           </button>
@@ -220,7 +220,7 @@ export default function Lesson5Part7InterviewPrep() {
       </div>
 
       {/* Intro Subtitle - Crisp and short */}
-      <div className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans bg-slate-900/60 p-4 rounded-2xl border border-slate-800/80">
+      <div className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans bg-[#15171e] p-4 rounded-2xl border border-white/[0.08]">
         <DualText
           en="Top 5 high-yield database architecture questions frequently asked in backend, full-stack, and system design interviews. Focused on practical mapping trade-offs rather than memorized definitions."
           bn="ব্যাকএন্ড, ফুল-স্ট্যাক ও সিস্টেম ডিজাইন ইন্টারভিউতে বারবার জিজ্ঞেস করা সেরা ৫টি হাই-ইল্ড ডেটাবেস আর্কিটেকচার প্রশ্ন। অপ্রয়োজনীয় মুখস্থ সংজ্ঞার বদলে এখানে বাস্তব টেবিল রূপান্তর ও সিস্টেম ডিজাইনের মূল টেকনিক তুলে ধরা হয়েছে।"
@@ -237,8 +237,8 @@ export default function Lesson5Part7InterviewPrep() {
               key={q.id}
               className={`rounded-2xl border transition-colors duration-200 overflow-hidden ${
                 isOpen
-                  ? 'bg-[#121629] border-indigo-500/40  '
-                  : 'bg-[#101322] border-slate-800 hover:border-slate-700'
+                  ? 'bg-[#15171e] border-indigo-500/40  '
+                  : 'bg-[#101116] border-white/[0.08] hover:border-white/[0.12]'
               }`}
             >
               {/* Question Header (Clickable Accordion) */}
@@ -269,7 +269,7 @@ export default function Lesson5Part7InterviewPrep() {
 
               {/* Collapsible Answer Body */}
               {isOpen && (
-                <div className="px-4 pb-5 md:px-5 space-y-4 border-t border-slate-800/60 pt-4">
+                <div className="px-4 pb-5 md:px-5 space-y-4 border-t border-white/[0.08] pt-4">
                   {/* Punchy Core Answer / TL;DR Box */}
                   <div className="p-3.5 rounded-xl bg-indigo-950/30 border border-indigo-500/30 space-y-1">
                     <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-indigo-300 uppercase">
@@ -290,7 +290,7 @@ export default function Lesson5Part7InterviewPrep() {
                       {(language === 'bn' ? q.bulletsBn : q.bulletsEn).map((bullet, idx) => (
                         <div
                           key={idx}
-                          className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-zinc-300 font-sans"
+                          className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#15171e] border border-white/[0.08] text-xs text-zinc-300 font-sans"
                         >
                           <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                           <span className="leading-relaxed">{bullet}</span>
@@ -309,7 +309,7 @@ export default function Lesson5Part7InterviewPrep() {
                         </span>
                         <span className="text-[10px] text-zinc-500 uppercase">{q.codeSnippet.lang}</span>
                       </div>
-                      <pre className="p-3 rounded-xl bg-[#090b14] border border-slate-800 text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
+                      <pre className="p-3 rounded-xl bg-[#101116] border border-white/[0.08] text-emerald-300 font-mono text-xs overflow-x-auto leading-relaxed">
                         <code>{q.codeSnippet.code}</code>
                       </pre>
                     </div>

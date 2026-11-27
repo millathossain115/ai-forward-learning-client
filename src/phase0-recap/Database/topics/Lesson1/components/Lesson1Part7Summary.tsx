@@ -55,8 +55,8 @@ export default function Lesson1Part7Summary() {
   ];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
           <Layers className="w-6 h-6" />
         </div>
@@ -72,10 +72,10 @@ export default function Lesson1Part7Summary() {
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">
+      <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-[#101116]">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="bg-[#14182a] border-b border-slate-800 text-zinc-300">
+            <tr className="bg-[#14182a] border-b border-white/[0.08] text-zinc-300">
               <th className="py-2.5 px-4 font-bold text-amber-400">
                 {language === 'bn' ? 'ধারণা / পরিভাষা' : 'Concept'}
               </th>
@@ -90,7 +90,7 @@ export default function Lesson1Part7Summary() {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-zinc-300">
+          <tbody className="divide-y divide-white/[0.08] text-zinc-300">
             {summaryRows.map((r, i) => (
               <tr key={i}>
                 <td className={`py-2.5 px-4 font-bold ${r.color}`}>

@@ -55,8 +55,8 @@ export default function Lesson3Part6NullConcept() {
   const activeItem = comparisonItems.find(i => i.id === nullCompVal) || comparisonItems[0];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+    <section className="bg-[#15171e] border border-white/[0.08] rounded-2xl p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-3 border-b border-white/[0.08] pb-4">
         <div className="p-2.5 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20">
           <AlertCircle className="w-6 h-6" />
         </div>
@@ -100,7 +100,7 @@ export default function Lesson3Part6NullConcept() {
               className={`p-3 rounded-xl border text-left transition-colors cursor-pointer ${
                 nullCompVal === item.id
                   ? 'bg-[#15192e] border-indigo-500 ring-1 ring-indigo-500/40'
-                  : 'bg-[#0c0e18] border-slate-800 text-zinc-400 hover:border-slate-700'
+                  : 'bg-[#101116] border-white/[0.08] text-zinc-400 hover:border-white/[0.12]'
               }`}
             >
               <span className={`font-bold block ${item.color}`}>{item.title}</span>
@@ -111,8 +111,8 @@ export default function Lesson3Part6NullConcept() {
           ))}
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-2">
-          <div className="text-[11px] font-mono text-emerald-400 bg-black/50 p-2.5 rounded-lg border border-slate-800/80 overflow-x-auto">
+        <div className="p-4 rounded-xl bg-[#101116] border border-white/[0.08] space-y-2">
+          <div className="text-[11px] font-mono text-emerald-400 bg-black/50 p-2.5 rounded-lg border border-white/[0.08] overflow-x-auto">
             {activeItem.sqlTest}
           </div>
           <p className="text-xs text-zinc-300 font-sans leading-relaxed">

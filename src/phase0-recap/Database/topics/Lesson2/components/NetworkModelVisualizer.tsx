@@ -103,9 +103,9 @@ export default function NetworkModelVisualizer() {
   };
 
   return (
-    <div className="p-5 md:p-6 rounded-2xl bg-[#0c0e18] border border-emerald-900/40 space-y-5">
+    <div className="p-5 md:p-6 rounded-2xl bg-[#101116] border border-emerald-900/40 space-y-5">
       {/* Header and Quick Exploration Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-3">
         <div className="space-y-0.5">
           <span className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
             <Network className="w-4 h-4 text-emerald-400" />
@@ -165,7 +165,7 @@ export default function NetworkModelVisualizer() {
 
       {/* SVG Canvas for Network Graph */}
       <div className="overflow-x-auto pb-2">
-        <div className="min-w-[760px] relative bg-[#090b14] rounded-xl border border-slate-800/80 p-4">
+        <div className="min-w-[760px] relative bg-[#101116] rounded-xl border border-white/[0.08] p-4">
           {/* Column Titles */}
           <div className="grid grid-cols-3 text-center mb-3 font-mono text-xs font-bold">
             <div className="text-indigo-400 flex items-center justify-center gap-1.5">
@@ -437,7 +437,7 @@ export default function NetworkModelVisualizer() {
       </div>
 
       {/* Dynamic Pointer Explanation Strip */}
-      <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans leading-relaxed space-y-1.5">
+      <div className="p-3.5 rounded-xl bg-[#15171e] border border-white/[0.08] text-xs font-sans leading-relaxed space-y-1.5">
         <div className="flex items-center gap-2 font-mono text-[11px] text-emerald-400 font-bold">
           <Link2 className="w-3.5 h-3.5" />
           <span>
@@ -474,7 +474,7 @@ export default function NetworkModelVisualizer() {
       </div>
 
       {/* Landmark CODASYL Quote */}
-      <div className="text-[11px] text-zinc-400 font-mono italic border-t border-slate-800/80 pt-2.5 flex items-center gap-2">
+      <div className="text-[11px] text-zinc-400 font-mono italic border-t border-white/[0.08] pt-2.5 flex items-center gap-2">
         <span className="text-emerald-400">Pojedini zapisi sadrže pokazivače na druge zapise:</span>
         <span className="text-zinc-300">Individual records contain direct pointers to other records they are connected with.</span>
       </div>

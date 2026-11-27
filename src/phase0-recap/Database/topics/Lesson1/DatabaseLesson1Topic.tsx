@@ -18,7 +18,7 @@ interface DatabaseLesson1TopicProps {
 
 export default function DatabaseLesson1Topic({ onNavigate }: DatabaseLesson1TopicProps) {
   return (
-    <div className="max-w-5xl mx-auto space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
+    <div className="w-full space-y-10 py-2 animate-in fade-in duration-300 text-zinc-100 font-sans">
       {/* Hero Banner */}
       <Lesson1Hero onNavigate={onNavigate} />
 

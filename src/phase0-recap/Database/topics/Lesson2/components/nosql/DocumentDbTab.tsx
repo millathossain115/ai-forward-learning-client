@@ -24,7 +24,7 @@ export default function DocumentDbTab() {
               </h4>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-black/40 border border-slate-800 rounded-lg p-0.5 font-mono text-[11px]">
+            <div className="flex items-center gap-1.5 bg-black/40 border border-white/[0.08] rounded-lg p-0.5 font-mono text-[11px]">
               <button
                 onClick={() => setDocView('diagram')}
                 className={`px-3 py-1 rounded-md transition-colors cursor-pointer ${
@@ -143,7 +143,7 @@ export default function DocumentDbTab() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800 text-center font-mono text-[11px] text-zinc-400">
+                <div className="mt-4 pt-3 border-t border-white/[0.08] text-center font-mono text-[11px] text-zinc-400">
                   <span className="text-cyan-400 font-bold">&larr; Embedded Sub-documents &rarr;</span>
                   <span className="ml-2">All student data loaded in a single disk read without JOIN overhead.</span>
                 </div>
@@ -151,9 +151,9 @@ export default function DocumentDbTab() {
             </div>
           ) : (
             /* Raw JSON representation */
-            <div className="p-4 rounded-xl bg-black/70 border border-slate-800 font-mono text-xs space-y-2">
+            <div className="p-4 rounded-xl bg-black/70 border border-white/[0.08] font-mono text-xs space-y-2">
               <span className="text-cyan-400 font-bold block">{'// MongoDB Collection: students.find({ studentId: "101" })'}</span>
-              <pre className="text-emerald-300 text-[11px] leading-relaxed overflow-x-auto p-3 rounded-lg bg-black/40 border border-slate-800">
+              <pre className="text-emerald-300 text-[11px] leading-relaxed overflow-x-auto p-3 rounded-lg bg-black/40 border border-white/[0.08]">
 {`{
   "_id": "673b01a189f2",
   "studentId": "101",
