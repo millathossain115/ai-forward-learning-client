@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import FlowLogicLogo from '@/components/FlowLogicLogo';
 import {
   ChevronDown,
@@ -35,10 +35,65 @@ export default function Sidebar({
   onToggleCollapse,
 }: SidebarProps) {
   const [filterQuery, setFilterQuery] = useState('');
-  const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(NAV_SECTIONS.map(sec => [sec.title, true]))
-  );
-  const [expandedSubmenus, setExpandedSubmenus] = useState<Record<string, boolean>>({});
+  const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    for (const sec of NAV_SECTIONS) {
+      const containsActive = sec.items.some(
+        it => it.id === activeTopic || it.subItems?.some(sub => sub.id === activeTopic)
+      );
+      initial[sec.title] = !containsActive;
+    }
+    return initial;
+  });
+  const [expandedSubmenus, setExpandedSubmenus] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    for (const sec of NAV_SECTIONS) {
+      for (const it of sec.items) {
+        if (it.subItems?.some(sub => sub.id === activeTopic)) {
+          initial[it.id] = true;
+        }
+      }
+    }
+    return initial;
+  });
+
+  const activeItemRef = useRef<HTMLDivElement | null>(null);
+
+  // Sync mega-menu section & submenu expansion whenever activeTopic changes (e.g. from Directory click)
+  useEffect(() => {
+    const targetSection = NAV_SECTIONS.find(sec =>
+      sec.items.some(
+        it => it.id === activeTopic || it.subItems?.some(sub => sub.id === activeTopic)
+      )
+    );
+
+    if (targetSection) {
+      setCollapsedSections(prev => {
+        if (prev[targetSection.title] === false) return prev;
+        return {
+          ...prev,
+          [targetSection.title]: false,
+        };
+      });
+    }
+
+    const parentItem = NAV_SECTIONS.flatMap(s => s.items).find(
+      it => it.subItems?.some(sub => sub.id === activeTopic)
+    );
+    if (parentItem) {
+      setExpandedSubmenus(prev => {
+        if (prev[parentItem.id]) return prev;
+        return {
+          ...prev,
+          [parentItem.id]: true,
+        };
+      });
+    }
+
+    if (activeItemRef.current) {
+      activeItemRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [activeTopic]);
 
   const toggleSection = (title: string) => {
     setCollapsedSections(prev => ({ ...prev, [title]: !prev[title] }));
@@ -185,7 +240,11 @@ export default function Sidebar({
                     const isSubExpanded = expandedSubmenus[item.id] || isSubActive;
 
                     return (
-                      <div key={item.id} className="space-y-0.5">
+                      <div
+                        key={item.id}
+                        ref={isActive || isSubActive ? activeItemRef : undefined}
+                        className="space-y-0.5"
+                      >
                         <button
                           onClick={() => {
                             if (hasSubItems) {

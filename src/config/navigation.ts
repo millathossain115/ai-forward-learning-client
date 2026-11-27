@@ -101,15 +101,22 @@ export interface NavSection {
 
 export const NAV_SECTIONS: NavSection[] = [
   {
-    title: '0. Foundations & Roadmap',
-    phase: 'Phase 0 • Foundations',
+    title: '0. Directories',
+    phase: 'Course Navigation',
     items: [
-      { id: 'dsa-directory', label: '0. DSA & Algorithms Directory', icon: Binary, status: 'ready', tag: 'Directory' },
-      { id: 'foundations', label: '0.1 DSA & Systems Foundations', icon: BookOpen, status: 'ready', tag: 'Core Roadmap' },
+      { id: 'dsa-directory', label: 'DSA & Algorithms Directory', icon: Binary, status: 'ready', tag: 'DSA' },
+      { id: 'backend-basics', label: 'Database & DBMS Directory', icon: Database, status: 'ready', tag: 'DBMS' },
     ],
   },
   {
-    title: '1. Linear Data Structures',
+    title: '1. Foundations & Roadmap',
+    phase: 'Phase 0 • Foundations',
+    items: [
+      { id: 'foundations', label: '0. DSA & Systems Foundations', icon: BookOpen, status: 'ready', tag: 'Core Roadmap' },
+    ],
+  },
+  {
+    title: '2. Linear Data Structures',
     phase: 'Phase 0 • Recap',
     items: [
       { id: 'array', label: '1. Array (Contiguous RAM)', icon: Binary, status: 'ready', tag: 'O(1) index' },
@@ -119,7 +126,7 @@ export const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    title: '2. Fast Access & Hierarchies',
+    title: '3. Fast Access & Hierarchies',
     phase: 'Phase 0 • Recap',
     items: [
       { id: 'heap', label: '5. Priority Queue & Heap', icon: Boxes, status: 'ready', tag: 'Sift-Up/Down' },
@@ -130,7 +137,7 @@ export const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    title: '3. Graphs & Algorithms',
+    title: '4. Graphs & Algorithms',
     phase: 'Phase 0 • Recap',
     items: [
       { id: 'graphs', label: '10. Graph Basics & Types', icon: Network, status: 'ready', tag: 'V & E' },
@@ -159,22 +166,39 @@ export const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    title: '4. Database & Systems',
+    title: '5. DB Foundations & Modeling',
     phase: 'Phase 1 • Data Core',
     items: [
-      { id: 'backend-basics', label: '0. Database & DBMS Directory', icon: Database, status: 'ready', tag: 'Directory' },
       { id: 'backend-lesson1', label: '1. Lesson 1: Data, Information, DB & DBMS', icon: BookOpen, status: 'ready', tag: 'Beginner' },
       { id: 'backend-lesson2', label: '2. Lesson 2: Database Models & Types', icon: Layers, status: 'ready', tag: 'Models' },
       { id: 'backend-lesson3', label: '3. Lesson 3: Relational Database Model', icon: Table, status: 'ready', tag: 'Relations' },
       { id: 'backend-lesson4', label: '4. Lesson 4: Keys in DBMS', icon: KeyRound, status: 'ready', tag: 'Keys & FK' },
       { id: 'backend-lesson5', label: '5. Lesson 5: ER Model & Diagrams', icon: Workflow, status: 'ready', tag: 'ER Model' },
+    ],
+  },
+  {
+    title: '6. SQL & Schema Design',
+    phase: 'Phase 1 • Data Core',
+    items: [
       { id: 'backend-lesson6', label: '6. Lesson 6: Introduction to SQL', icon: Terminal, status: 'ready', tag: 'SQL Basics' },
       { id: 'backend-lesson7', label: '7. Lesson 7: Advanced SQL Queries', icon: FileCode2, status: 'ready', tag: 'Subqueries & CTEs' },
       { id: 'backend-lesson8', label: '8. Lesson 8: Database Normalization', icon: Layers, status: 'ready', tag: '1NF to BCNF' },
+    ],
+  },
+  {
+    title: '7. Internals, Recovery & DDBMS',
+    phase: 'Phase 1 • Data Core',
+    items: [
       { id: 'backend-lesson9', label: '9. Lesson 9: Transactions & Concurrency', icon: ShieldCheck, status: 'ready', tag: 'ACID & 2PL' },
       { id: 'backend-lesson10', label: '10. Lesson 10: Indexing & Query Optimization', icon: Search, status: 'ready', tag: 'B+ Tree & EXPLAIN' },
       { id: 'backend-lesson11', label: '11. Lesson 11: Security, Backup & Recovery', icon: ShieldCheck, status: 'ready', tag: 'RBAC, WAL & PITR' },
       { id: 'backend-lesson12', label: '12. Lesson 12: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: '2PC, CAP & Sharding' },
+    ],
+  },
+  {
+    title: '8. Modern DB, DBA & Exam Prep',
+    phase: 'Phase 1 • Data Core',
+    items: [
       { id: 'backend-lesson13', label: '13. Lesson 13: NoSQL & Modern Database Systems', icon: Boxes, status: 'ready', tag: 'MongoDB, Redis & Sharding' },
       { id: 'backend-lesson14', label: '14. Lesson 14: Database Security & Authorization', icon: ShieldCheck, status: 'ready', tag: 'CIA, RBAC & SQLi' },
       { id: 'backend-lesson15', label: '15. Lesson 15: Database Administration & Management (DBA)', icon: Server, status: 'ready', tag: 'DBA Ops, HA & DR' },
@@ -184,7 +208,7 @@ export const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    title: '5. Forward AI Engineering',
+    title: '9. Forward AI Engineering',
     phase: 'Phase 1 • AI Core',
     items: [
       { id: 'ai-llm', label: 'LLM APIs & Streaming', icon: FileCode2, status: 'upcoming', tag: 'Tokens' },
