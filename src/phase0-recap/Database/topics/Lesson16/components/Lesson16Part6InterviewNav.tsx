@@ -118,14 +118,14 @@ export default function Lesson16Part6InterviewNav({ onNavigate }: Lesson16Part6I
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
-            onClick={() => onNavigate?.('backend-lesson15')}
+            onClick={() => onNavigate?.('db-lesson15')}
             className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ১৫: DBA' : 'Review Lesson 15: DBA Operations'}</span>
           </button>
           <button
-            onClick={() => onNavigate?.('backend-lesson17')}
+            onClick={() => onNavigate?.('db-lesson17')}
             className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'পরবর্তী: লেসন ১৭ (ডেটা ওয়্যারহাউজিং)' : 'Go to Lesson 17: Data Warehousing'}</span>

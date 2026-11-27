@@ -52,7 +52,7 @@ export default function Lesson3Hero({ onNavigate }: Lesson3HeroProps) {
 
         <div className="flex flex-col sm:flex-row md:flex-col items-end gap-2 shrink-0">
           <button
-            onClick={() => onNavigate?.('backend-lesson4')}
+            onClick={() => onNavigate?.('db-lesson4')}
             className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <KeyRound className="w-4 h-4" />
@@ -62,7 +62,7 @@ export default function Lesson3Hero({ onNavigate }: Lesson3HeroProps) {
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           <button
-            onClick={() => onNavigate?.('backend-lesson2')}
+            onClick={() => onNavigate?.('db-lesson2')}
             className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-slate-700"
           >
             <ArrowLeft className="w-3.5 h-3.5" />

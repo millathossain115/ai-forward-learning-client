@@ -25,7 +25,7 @@ interface DirectorySubTopic {
 
 interface DirectoryTopicNode {
   title: string;
-  sectionId: string;
+  sectionId?: string;
   children?: (string | DirectorySubTopic)[];
 }
 
@@ -41,7 +41,7 @@ interface DirectoryLesson {
 const DIRECTORY_LESSONS: DirectoryLesson[] = [
   {
     id: 'L1',
-    topicId: 'backend-lesson1',
+    topicId: 'db-lesson1',
     title: 'Lesson 1: Understanding Data, Information, Database, and DBMS',
     accent: 'text-cyan-400',
     badgeBg: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
@@ -56,7 +56,7 @@ const DIRECTORY_LESSONS: DirectoryLesson[] = [
   },
   {
     id: 'L2',
-    topicId: 'backend-lesson2',
+    topicId: 'db-lesson2',
     title: 'Lesson 2: Types of Databases and Database Models',
     accent: 'text-indigo-400',
     badgeBg: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30',
@@ -80,7 +80,7 @@ const DIRECTORY_LESSONS: DirectoryLesson[] = [
   },
   {
     id: 'L3',
-    topicId: 'backend-lesson3',
+    topicId: 'db-lesson3',
     title: 'Lesson 3: Introduction to Relational Databases',
     accent: 'text-emerald-400',
     badgeBg: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
@@ -96,7 +96,7 @@ const DIRECTORY_LESSONS: DirectoryLesson[] = [
   },
   {
     id: 'L4',
-    topicId: 'backend-lesson4',
+    topicId: 'db-lesson4',
     title: "Lesson 4: Keys in DBMS – Complete Beginner's Guide",
     accent: 'text-amber-400',
     badgeBg: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
@@ -113,7 +113,7 @@ const DIRECTORY_LESSONS: DirectoryLesson[] = [
   },
   {
     id: 'L5',
-    topicId: 'backend-lesson5',
+    topicId: 'db-lesson5',
     title: 'Lesson 5: Entity Relationship (ER) Model',
     accent: 'text-purple-400',
     badgeBg: 'bg-purple-500/10 text-purple-300 border-purple-500/30',
@@ -141,7 +141,7 @@ const DIRECTORY_LESSONS: DirectoryLesson[] = [
   },
   {
     id: 'L6',
-    topicId: 'backend-lesson6',
+    topicId: 'db-lesson6',
     title: 'Lesson 6: Introduction to SQL Structured Query Language',
     accent: 'text-sky-400',
     badgeBg: 'bg-sky-500/10 text-sky-300 border-sky-500/30',
@@ -177,6 +177,162 @@ const DIRECTORY_LESSONS: DirectoryLesson[] = [
         children: ['INNER | LEFT | RIGHT | FULL'],
       },
       { title: 'ALTER, DROP, and TRUNCATE Comparison', sectionId: 'l6-alter-drop-truncate' },
+    ],
+  },
+  {
+    id: 'L7',
+    topicId: 'db-lesson7',
+    title: 'Lesson 7: Advanced SQL Queries',
+    accent: 'text-sky-400',
+    badgeBg: 'bg-sky-500/10 text-sky-300 border-sky-500/30',
+    topics: [
+      { title: 'Subqueries & Execution Flow (Single-Row, Multi-Row, Multi-Column, Correlated)' },
+      { title: 'IN, NOT IN, EXISTS, ANY & ALL Operators (and the NULL Trap)' },
+      { title: 'Common Table Expressions (CTEs) & Set Operations (UNION, INTERSECT, EXCEPT)' },
+      { title: 'Window Functions (ROW_NUMBER, RANK, DENSE_RANK) & Relational Division' },
+    ],
+  },
+  {
+    id: 'L8',
+    topicId: 'db-lesson8',
+    title: 'Lesson 8: Database Normalization',
+    accent: 'text-emerald-400',
+    badgeBg: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
+    topics: [
+      { title: 'Data Redundancy & Anomalies (Insertion, Update, Deletion)' },
+      { title: 'Functional Dependencies (Trivial, Full, Partial, Transitive)' },
+      { title: 'Normal Forms: 1NF, 2NF, 3NF & BCNF' },
+      { title: 'Normalized SQL Schemas & Comparison' },
+    ],
+  },
+  {
+    id: 'L9',
+    topicId: 'db-lesson9',
+    title: 'Lesson 9: Database Transactions & Concurrency Control',
+    accent: 'text-amber-400',
+    badgeBg: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
+    topics: [
+      { title: 'Transactions & ACID Properties (Atomicity, Consistency, Isolation, Durability)' },
+      { title: 'Transaction Lifecycle & Savepoints' },
+      { title: 'Concurrency Problems (Lost Update, Dirty Read, Unrepeatable Read, Phantom Read)' },
+      { title: 'Conflict Serializability, Two-Phase Locking (2PL), Deadlocks & WAL Recovery' },
+    ],
+  },
+  {
+    id: 'L10',
+    topicId: 'db-lesson10',
+    title: 'Lesson 10: Database Indexing & Query Optimization',
+    accent: 'text-cyan-400',
+    badgeBg: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
+    topics: [
+      { title: 'Full Table Scan vs Index Lookup' },
+      { title: 'Index Types (Primary, Secondary, Clustered, Non-Clustered, Dense, Sparse)' },
+      { title: 'B-Tree vs B+ Tree & Hash Indexing' },
+      { title: '5-Stage Query Processing Engine, EXPLAIN Plans & 10 Optimization Rules' },
+    ],
+  },
+  {
+    id: 'L11',
+    topicId: 'db-lesson11',
+    title: 'Lesson 11: Database Security, Authorization, Backup & Recovery',
+    accent: 'text-rose-400',
+    badgeBg: 'bg-rose-500/10 text-rose-300 border-rose-500/30',
+    topics: [
+      { title: 'CIA Triad, Authentication vs Authorization & RBAC' },
+      { title: 'SQL GRANT / REVOKE & SQL Injection Prevention' },
+      { title: 'Backup Types (Full, Incremental, Differential) & 3-2-1 Rule' },
+      { title: 'Failure Types, UNDO/REDO, WAL, Checkpoints, PITR & RPO/RTO' },
+    ],
+  },
+  {
+    id: 'L12',
+    topicId: 'db-lesson12',
+    title: 'Lesson 12: Distributed Databases & Distributed DBMS',
+    accent: 'text-indigo-400',
+    badgeBg: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30',
+    topics: [
+      { title: 'Centralized vs Distributed & DDBMS Architectures' },
+      { title: '4 Distribution Transparencies (Location, Fragmentation, Replication, Local Mapping)' },
+      { title: 'Data Fragmentation (Horizontal, Vertical, Hybrid) & Replication' },
+      { title: 'Two-Phase Commit (2PC), Brewer’s CAP Theorem & Consistency Models' },
+    ],
+  },
+  {
+    id: 'L13',
+    topicId: 'db-lesson13',
+    title: 'Lesson 13: NoSQL and Modern Database Systems',
+    accent: 'text-teal-400',
+    badgeBg: 'bg-teal-500/10 text-teal-300 border-teal-500/30',
+    topics: [
+      { title: 'SQL vs NoSQL & Polyglot Persistence' },
+      { title: '4 NoSQL Models (Document, Key-Value, Column-Family, Graph)' },
+      { title: 'MongoDB BSON & CRUD Operations' },
+      { title: 'Vertical vs Horizontal Scaling, Sharding & CAP Theorem in NoSQL' },
+    ],
+  },
+  {
+    id: 'L14',
+    topicId: 'db-lesson14',
+    title: 'Lesson 14: Database Security & Authorization',
+    accent: 'text-rose-400',
+    badgeBg: 'bg-rose-500/10 text-rose-300 border-rose-500/30',
+    topics: [
+      { title: 'CIA Triad, Authentication & Authorization' },
+      { title: 'Access Control Models (DAC, MAC, RBAC) & Principle of Least Privilege' },
+      { title: 'SQL GRANT / REVOKE & Prepared Statements against SQL Injection' },
+      { title: 'Encryption (at Rest & in Transit), Auditing & Recovery Strategies' },
+    ],
+  },
+  {
+    id: 'L15',
+    topicId: 'db-lesson15',
+    title: 'Lesson 15: Database Administration & Management (DBA)',
+    accent: 'text-amber-400',
+    badgeBg: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
+    topics: [
+      { title: 'Role & Responsibilities of a DBA (System, Application, Dev, Production)' },
+      { title: 'Installation, Configuration & User/Permission Management' },
+      { title: 'Monitoring, Performance Tuning & Maintenance' },
+      { title: 'High Availability (HA), Replication & Disaster Recovery (RPO/RTO)' },
+    ],
+  },
+  {
+    id: 'L16',
+    topicId: 'db-lesson16',
+    title: 'Lesson 16: Distributed Databases & Distributed DBMS (DDBMS)',
+    accent: 'text-indigo-400',
+    badgeBg: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30',
+    topics: [
+      { title: 'DDBMS Architectures (Peer-to-Peer, Three-Tier, Homogeneous vs Heterogeneous)' },
+      { title: '4 Distribution Transparencies & Data Allocation' },
+      { title: 'Fragmentation (Horizontal, Vertical, Hybrid) & Primary-Replica Replication' },
+      { title: 'Distributed Query Processing, 2PC & CAP Theorem' },
+    ],
+  },
+  {
+    id: 'L17',
+    topicId: 'db-lesson17',
+    title: 'Lesson 17: Data Warehousing and Data Mining',
+    accent: 'text-purple-400',
+    badgeBg: 'bg-purple-500/10 text-purple-300 border-purple-500/30',
+    topics: [
+      { title: '4 Inmon Characteristics (Subject-Oriented, Integrated, Time-Variant, Non-Volatile)' },
+      { title: 'ETL Pipeline (Extract, Transform, Load) & OLTP vs OLAP' },
+      { title: 'EDW vs Data Mart vs Virtual Data Warehouse' },
+      { title: 'Data Mining Techniques (Classification, Clustering, Association, Anomaly) & KDD' },
+    ],
+  },
+  {
+    id: 'L18',
+    topicId: 'db-lesson18',
+    title: 'Lesson 18: Complete DBMS Revision & University Mock Exam',
+    accent: 'text-emerald-400',
+    badgeBg: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
+    topics: [
+      { title: 'Complete 18-Lesson Syllabus Revision' },
+      { title: 'Top 14 Comparison Matrix & Top 20 Broad Questions' },
+      { title: '6 Essential Diagram Blueprints' },
+      { title: 'Full 60-Mark University Mock Examination' },
     ],
   },
 ];

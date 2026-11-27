@@ -226,14 +226,14 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
-            onClick={() => onNavigate?.('backend-lesson3')}
+            onClick={() => onNavigate?.('db-lesson3')}
             className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ৩-এ ফিরে যান' : 'Back to Lesson 3'}</span>
           </button>
           <button
-            onClick={() => onNavigate?.('backend-lesson5')}
+            onClick={() => onNavigate?.('db-lesson5')}
             className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'লেসন ৫-এ যান: ER Model' : 'Go to Lesson 5: ER Model'}</span>

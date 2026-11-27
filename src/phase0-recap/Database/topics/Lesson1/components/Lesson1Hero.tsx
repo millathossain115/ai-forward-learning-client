@@ -70,7 +70,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
 
         <div className="flex flex-col sm:flex-row md:flex-col items-end gap-2 shrink-0">
           <button
-            onClick={() => onNavigate?.('backend-lesson2')}
+            onClick={() => onNavigate?.('db-lesson2')}
             className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <BookOpen className="w-4 h-4" />
@@ -80,7 +80,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           <button
-            onClick={() => onNavigate?.('backend-basics')}
+            onClick={() => onNavigate?.('db-directory')}
             className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-slate-700"
           >
             <ArrowLeft className="w-3.5 h-3.5" />

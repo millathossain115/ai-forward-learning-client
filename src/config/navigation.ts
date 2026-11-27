@@ -52,25 +52,25 @@ export type TopicId =
   | 'sorting-quick'
   | 'recursion'
   | 'paradigms'
-  | 'backend-basics'
-  | 'backend-lesson1'
-  | 'backend-lesson2'
-  | 'backend-lesson3'
-  | 'backend-lesson4'
-  | 'backend-lesson5'
-  | 'backend-lesson6'
-  | 'backend-lesson7'
-  | 'backend-lesson8'
-  | 'backend-lesson9'
-  | 'backend-lesson10'
-  | 'backend-lesson11'
-  | 'backend-lesson12'
-  | 'backend-lesson13'
-  | 'backend-lesson14'
-  | 'backend-lesson15'
-  | 'backend-lesson16'
-  | 'backend-lesson17'
-  | 'backend-lesson18'
+  | 'db-directory'
+  | 'db-lesson1'
+  | 'db-lesson2'
+  | 'db-lesson3'
+  | 'db-lesson4'
+  | 'db-lesson5'
+  | 'db-lesson6'
+  | 'db-lesson7'
+  | 'db-lesson8'
+  | 'db-lesson9'
+  | 'db-lesson10'
+  | 'db-lesson11'
+  | 'db-lesson12'
+  | 'db-lesson13'
+  | 'db-lesson14'
+  | 'db-lesson15'
+  | 'db-lesson16'
+  | 'db-lesson17'
+  | 'db-lesson18'
   | 'ai-llm'
   | 'ai-rag'
   | 'ai-mcp'
@@ -105,7 +105,7 @@ export const NAV_SECTIONS: NavSection[] = [
     phase: 'Course Navigation',
     items: [
       { id: 'dsa-directory', label: 'DSA & Algorithms Directory', icon: Binary, status: 'ready', tag: 'DSA' },
-      { id: 'backend-basics', label: 'Database & DBMS Directory', icon: Database, status: 'ready', tag: 'DBMS' },
+      { id: 'db-directory', label: 'Database & DBMS Directory', icon: Database, status: 'ready', tag: 'DBMS' },
     ],
   },
   {
@@ -169,42 +169,42 @@ export const NAV_SECTIONS: NavSection[] = [
     title: '5. DB Foundations & Modeling',
     phase: 'Phase 1 • Data Core',
     items: [
-      { id: 'backend-lesson1', label: '1. Lesson 1: Data, Information, DB & DBMS', icon: BookOpen, status: 'ready', tag: 'Beginner' },
-      { id: 'backend-lesson2', label: '2. Lesson 2: Database Models & Types', icon: Layers, status: 'ready', tag: 'Models' },
-      { id: 'backend-lesson3', label: '3. Lesson 3: Relational Database Model', icon: Table, status: 'ready', tag: 'Relations' },
-      { id: 'backend-lesson4', label: '4. Lesson 4: Keys in DBMS', icon: KeyRound, status: 'ready', tag: 'Keys & FK' },
-      { id: 'backend-lesson5', label: '5. Lesson 5: ER Model & Diagrams', icon: Workflow, status: 'ready', tag: 'ER Model' },
+      { id: 'db-lesson1', label: '1. Lesson 1: Data, Information, DB & DBMS', icon: BookOpen, status: 'ready', tag: 'Beginner' },
+      { id: 'db-lesson2', label: '2. Lesson 2: Database Models & Types', icon: Layers, status: 'ready', tag: 'Models' },
+      { id: 'db-lesson3', label: '3. Lesson 3: Relational Database Model', icon: Table, status: 'ready', tag: 'Relations' },
+      { id: 'db-lesson4', label: '4. Lesson 4: Keys in DBMS', icon: KeyRound, status: 'ready', tag: 'Keys & FK' },
+      { id: 'db-lesson5', label: '5. Lesson 5: ER Model & Diagrams', icon: Workflow, status: 'ready', tag: 'ER Model' },
     ],
   },
   {
     title: '6. SQL & Schema Design',
     phase: 'Phase 1 • Data Core',
     items: [
-      { id: 'backend-lesson6', label: '6. Lesson 6: Introduction to SQL', icon: Terminal, status: 'ready', tag: 'SQL Basics' },
-      { id: 'backend-lesson7', label: '7. Lesson 7: Advanced SQL Queries', icon: FileCode2, status: 'ready', tag: 'Subqueries & CTEs' },
-      { id: 'backend-lesson8', label: '8. Lesson 8: Database Normalization', icon: Layers, status: 'ready', tag: '1NF to BCNF' },
+      { id: 'db-lesson6', label: '6. Lesson 6: Introduction to SQL', icon: Terminal, status: 'ready', tag: 'SQL Basics' },
+      { id: 'db-lesson7', label: '7. Lesson 7: Advanced SQL Queries', icon: FileCode2, status: 'ready', tag: 'Subqueries & CTEs' },
+      { id: 'db-lesson8', label: '8. Lesson 8: Database Normalization', icon: Layers, status: 'ready', tag: '1NF to BCNF' },
     ],
   },
   {
     title: '7. Internals, Recovery & DDBMS',
     phase: 'Phase 1 • Data Core',
     items: [
-      { id: 'backend-lesson9', label: '9. Lesson 9: Transactions & Concurrency', icon: ShieldCheck, status: 'ready', tag: 'ACID & 2PL' },
-      { id: 'backend-lesson10', label: '10. Lesson 10: Indexing & Query Optimization', icon: Search, status: 'ready', tag: 'B+ Tree & EXPLAIN' },
-      { id: 'backend-lesson11', label: '11. Lesson 11: Security, Backup & Recovery', icon: ShieldCheck, status: 'ready', tag: 'RBAC, WAL & PITR' },
-      { id: 'backend-lesson12', label: '12. Lesson 12: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: '2PC, CAP & Sharding' },
+      { id: 'db-lesson9', label: '9. Lesson 9: Transactions & Concurrency', icon: ShieldCheck, status: 'ready', tag: 'ACID & 2PL' },
+      { id: 'db-lesson10', label: '10. Lesson 10: Indexing & Query Optimization', icon: Search, status: 'ready', tag: 'B+ Tree & EXPLAIN' },
+      { id: 'db-lesson11', label: '11. Lesson 11: Security, Backup & Recovery', icon: ShieldCheck, status: 'ready', tag: 'RBAC, WAL & PITR' },
+      { id: 'db-lesson12', label: '12. Lesson 12: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: '2PC, CAP & Sharding' },
     ],
   },
   {
     title: '8. Modern DB, DBA & Exam Prep',
     phase: 'Phase 1 • Data Core',
     items: [
-      { id: 'backend-lesson13', label: '13. Lesson 13: NoSQL & Modern Database Systems', icon: Boxes, status: 'ready', tag: 'MongoDB, Redis & Sharding' },
-      { id: 'backend-lesson14', label: '14. Lesson 14: Database Security & Authorization', icon: ShieldCheck, status: 'ready', tag: 'CIA, RBAC & SQLi' },
-      { id: 'backend-lesson15', label: '15. Lesson 15: Database Administration & Management (DBA)', icon: Server, status: 'ready', tag: 'DBA Ops, HA & DR' },
-      { id: 'backend-lesson16', label: '16. Lesson 16: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: 'Fragmentation, 2PC & CAP' },
-      { id: 'backend-lesson17', label: '17. Lesson 17: Data Warehousing & Data Mining', icon: Layers, status: 'ready', tag: 'ETL, OLAP & KDD' },
-      { id: 'backend-lesson18', label: '18. Lesson 18: Complete DBMS Revision & Mock Exam', icon: GraduationCap, status: 'ready', tag: 'Final Review & 60-Mark Exam' },
+      { id: 'db-lesson13', label: '13. Lesson 13: NoSQL & Modern Database Systems', icon: Boxes, status: 'ready', tag: 'MongoDB, Redis & Sharding' },
+      { id: 'db-lesson14', label: '14. Lesson 14: Database Security & Authorization', icon: ShieldCheck, status: 'ready', tag: 'CIA, RBAC & SQLi' },
+      { id: 'db-lesson15', label: '15. Lesson 15: Database Administration & Management (DBA)', icon: Server, status: 'ready', tag: 'DBA Ops, HA & DR' },
+      { id: 'db-lesson16', label: '16. Lesson 16: Distributed Databases & DDBMS', icon: Network, status: 'ready', tag: 'Fragmentation, 2PC & CAP' },
+      { id: 'db-lesson17', label: '17. Lesson 17: Data Warehousing & Data Mining', icon: Layers, status: 'ready', tag: 'ETL, OLAP & KDD' },
+      { id: 'db-lesson18', label: '18. Lesson 18: Complete DBMS Revision & Mock Exam', icon: GraduationCap, status: 'ready', tag: 'Final Review & 60-Mark Exam' },
     ],
   },
   {

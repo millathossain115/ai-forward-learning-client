@@ -141,43 +141,43 @@ export default function TopicRenderer({ topicId }: { topicId: TopicId }) {
       return <BfsTopic />;
     case 'graph-dijkstra':
       return <DijkstraTopic />;
-    case 'backend-basics':
+    case 'db-directory':
       return <DatabaseBasicsTopic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson1':
+    case 'db-lesson1':
       return <DatabaseLesson1Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson2':
+    case 'db-lesson2':
       return <DatabaseLesson2Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson3':
+    case 'db-lesson3':
       return <DatabaseLesson3Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson4':
+    case 'db-lesson4':
       return <DatabaseLesson4Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson5':
+    case 'db-lesson5':
       return <DatabaseLesson5Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson6':
+    case 'db-lesson6':
       return <DatabaseLesson6Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson7':
+    case 'db-lesson7':
       return <DatabaseLesson7Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson8':
+    case 'db-lesson8':
       return <DatabaseLesson8Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson9':
+    case 'db-lesson9':
       return <DatabaseLesson9Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson10':
+    case 'db-lesson10':
       return <DatabaseLesson10Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson11':
+    case 'db-lesson11':
       return <DatabaseLesson11Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson12':
+    case 'db-lesson12':
       return <DatabaseLesson12Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson13':
+    case 'db-lesson13':
       return <DatabaseLesson13Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson14':
+    case 'db-lesson14':
       return <DatabaseLesson14Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson15':
+    case 'db-lesson15':
       return <DatabaseLesson15Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson16':
+    case 'db-lesson16':
       return <DatabaseLesson16Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson17':
+    case 'db-lesson17':
       return <DatabaseLesson17Topic onNavigate={handleNavigateTopic} />;
-    case 'backend-lesson18':
+    case 'db-lesson18':
       return <DatabaseLesson18Topic onNavigate={handleNavigateTopic} />;
     default:
       return <FoundationsTopic />;

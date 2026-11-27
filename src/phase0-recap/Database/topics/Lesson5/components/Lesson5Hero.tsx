@@ -49,7 +49,7 @@ export default function Lesson5Hero({ onNavigate }: Lesson5HeroProps) {
         {/* Right Side: Quick Compact Navigation */}
         <div className="flex sm:flex-row md:flex-col items-stretch md:items-end gap-2 shrink-0">
           <button
-            onClick={() => onNavigate?.('backend-lesson4')}
+            onClick={() => onNavigate?.('db-lesson4')}
             className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-slate-700"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -58,7 +58,7 @@ export default function Lesson5Hero({ onNavigate }: Lesson5HeroProps) {
             </span>
           </button>
           <button
-            onClick={() => onNavigate?.('backend-lesson6')}
+            onClick={() => onNavigate?.('db-lesson6')}
             className="px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
           >
             <span>

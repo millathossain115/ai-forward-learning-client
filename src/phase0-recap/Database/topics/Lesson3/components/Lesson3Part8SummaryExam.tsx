@@ -452,14 +452,14 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
             <button
-              onClick={() => onNavigate?.('backend-lesson2')}
+              onClick={() => onNavigate?.('db-lesson2')}
               className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>{language === 'bn' ? 'লেসন ২-এ ফিরে যান' : 'Back to Lesson 2'}</span>
             </button>
             <button
-              onClick={() => onNavigate?.('backend-lesson4')}
+              onClick={() => onNavigate?.('db-lesson4')}
               className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
             >
               <span>

@@ -110,14 +110,14 @@ export default function Lesson1Part8Review({ onNavigate }: Lesson1Part8ReviewPro
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
-            onClick={() => onNavigate?.('backend-basics')}
+            onClick={() => onNavigate?.('db-directory')}
             className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'ডেটাবেস ১০১ বেসিক্স রিভিশন' : 'Review Database 101 Basics'}</span>
           </button>
           <button
-            onClick={() => onNavigate?.('backend-lesson2')}
+            onClick={() => onNavigate?.('db-lesson2')}
             className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <span>

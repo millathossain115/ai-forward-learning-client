@@ -132,97 +132,97 @@ export const TOPIC_METADATA: Record<TopicId, TopicMeta> = {
     title: '15. The 4 Core Algorithmic Paradigms',
     description: 'Greedy approach, Divide & Conquer, Dynamic Programming memoization, and Backtracking.',
   },
-  'backend-basics': {
+  'db-directory': {
     category: '0. Directories',
     title: '0. Database & DBMS Directory',
-    description: 'Clickable hierarchical directory covering Lessons 1 to 6: Data & DBMS fundamentals, Database Models, Relational Databases, Keys, ER Modeling, and SQL.',
+    description: 'Clickable hierarchical directory covering Lessons 1 to 18: Data & DBMS fundamentals, Modeling, SQL, Normalization, Transactions, Indexing, Security, NoSQL, DBA, DDBMS, Data Warehousing, and Exam Prep.',
   },
-  'backend-lesson1': {
+  'db-lesson1': {
     category: '5. DB Foundations & Modeling',
     title: '1. Lesson 1: Understanding Data, Information, Database, and DBMS',
     description: 'Beginner level • Lesson 1 of your DBMS journey. Start from absolute zero: What is Data, Information, Database, DBMS, University scenario, Mobile banking balance simulation flow, and Summary matrix.',
   },
-  'backend-lesson2': {
+  'db-lesson2': {
     category: '5. DB Foundations & Modeling',
     title: '2. Lesson 2: Types of Databases and Database Models',
     description: 'Beginner level • Lesson 2: Why different databases exist, blueprint concepts, 6 models (Flat File, Hierarchical, Network, Relational, Object-Oriented, NoSQL), comparison matrix, and key exam questions.',
   },
-  'backend-lesson3': {
+  'db-lesson3': {
     category: '5. DB Foundations & Modeling',
     title: '3. Lesson 3: Introduction to Relational Databases',
     description: 'Beginner level • Lesson 3: What is a relation, tuple, attribute, domain validator, relational schema vs instance, degree, cardinality, NULL values, and 7 core relational properties.',
   },
-  'backend-lesson4': {
+  'db-lesson4': {
     category: '5. DB Foundations & Modeling',
     title: '4. Lesson 4: Keys in DBMS – Complete Beginner\'s Guide',
     description: 'Beginner level • Lesson 4: Why keys are essential, key types (Super, Candidate, Primary, Alternate, Foreign, Composite, Unique, Natural and Surrogate), referential integrity tester, and exam prep.',
   },
-  'backend-lesson5': {
+  'db-lesson5': {
     category: '5. DB Foundations & Modeling',
     title: '5. Lesson 5: Entity Relationship (ER) Model',
     description: 'Beginner level • University exam prep: Entities, attributes (simple, composite, multivalued, derived), relationships, degree, cardinality (1:1, 1:N, M:N), participation constraints, strong vs weak entities, and ER-to-table conversion.',
   },
-  'backend-lesson6': {
+  'db-lesson6': {
     category: '6. SQL & Schema Design',
     title: '6. Lesson 6: Introduction to SQL (Structured Query Language)',
     description: 'Beginner level • University exam prep: DDL, DML, DQL, DCL, TCL, table creation, constraints, WHERE filtering, operators, ORDER BY, aggregate functions, GROUP BY, HAVING, and SQL joins.',
   },
-  'backend-lesson7': {
+  'db-lesson7': {
     category: '6. SQL & Schema Design',
     title: '7. Lesson 7: Advanced SQL Queries',
     description: 'Intermediate level • University exam prep: Subqueries, correlated subqueries, IN/EXISTS, ANY/ALL, Common Table Expressions (CTEs), set operations (UNION, INTERSECT, EXCEPT), window functions (ROW_NUMBER, RANK, DENSE_RANK), and relational division.',
   },
-  'backend-lesson8': {
+  'db-lesson8': {
     category: '6. SQL & Schema Design',
     title: '8. Lesson 8: Database Normalization',
     description: 'Beginner to University Exam Level: Database normalization, data redundancy and consistency, insertion/update/deletion anomalies, functional dependencies (trivial, full, partial, transitive), 1NF, 2NF, 3NF, BCNF, and normalized SQL schemas.',
   },
-  'backend-lesson9': {
+  'db-lesson9': {
     category: '7. Internals, Recovery & DDBMS',
     title: '9. Lesson 9: Database Transactions & Concurrency Control',
     description: 'Beginner to University Exam Level: Database transactions, ACID properties, transaction lifecycle, lost update, dirty read, unrepeatable read, phantom read, conflict serializability, Two-Phase Locking (2PL), deadlock Coffman conditions, isolation levels, and Write-Ahead Log recovery.',
   },
-  'backend-lesson10': {
+  'db-lesson10': {
     category: '7. Internals, Recovery & DDBMS',
     title: '10. Lesson 10: Database Indexing & Query Optimization',
     description: 'Beginner to University Exam Level: Full table scan vs index lookup, primary vs secondary, clustered vs non-clustered, dense vs sparse, B-Tree vs B+ Tree, hash indexing, 5-stage query processing engine, EXPLAIN plans, and 10 query optimization rules.',
   },
-  'backend-lesson11': {
+  'db-lesson11': {
     category: '7. Internals, Recovery & DDBMS',
     title: '11. Lesson 11: Database Security, Authorization, Backup & Recovery',
     description: 'Beginner to University Exam Level: Confidentiality, Integrity, Availability (CIA Triad), Authentication vs Authorization, RBAC, Least Privilege, SQL GRANT and REVOKE, SQL injection prevention, Full/Incremental/Differential backups, Transaction/System/Media failures, UNDO & REDO, WAL, Checkpoints, PITR, Disaster Recovery (RPO & RTO), 3-2-1 backup rule, and interactive MCQ test.',
   },
-  'backend-lesson12': {
+  'db-lesson12': {
     category: '7. Internals, Recovery & DDBMS',
     title: '12. Lesson 12: Distributed Databases & Distributed DBMS',
     description: 'Beginner to University Exam Level: Distributed databases and DDBMS, Centralized vs Distributed, Client-Server vs Peer-to-Peer vs Three-Tier architectures, Homogeneous vs Heterogeneous systems, 4 Distribution Transparencies, Horizontal/Vertical/Hybrid Fragmentation, Data Replication & Allocation, Two-Phase Commit (2PC), Brewer’s CAP Theorem, and Strong vs Eventual Consistency.',
   },
-  'backend-lesson13': {
+  'db-lesson13': {
     category: '8. Modern DB, DBA & Exam Prep',
     title: '13. Lesson 13: NoSQL and Modern Database Systems',
     description: 'Beginner to University Exam Level: NoSQL fundamentals, SQL vs NoSQL, 4 NoSQL models (Document, Key-Value, Column-Family, Graph), MongoDB BSON & CRUD operations, Vertical vs Horizontal scaling, Database Sharding, CAP Theorem in NoSQL, and multi-model modern systems.',
   },
-  'backend-lesson14': {
+  'db-lesson14': {
     category: '8. Modern DB, DBA & Exam Prep',
     title: '14. Lesson 14: Database Security & Authorization',
     description: 'Beginner to University Exam Level: Database security fundamentals, CIA Triad, Authentication vs Authorization, Access Control Models (DAC, MAC, RBAC), SQL GRANT & REVOKE, Principle of Least Privilege, SQL Injection defense via Prepared Statements, Encryption at Rest & in Transit, Auditing, and Backup & Recovery strategies.',
   },
-  'backend-lesson15': {
+  'db-lesson15': {
     category: '8. Modern DB, DBA & Exam Prep',
     title: '15. Lesson 15: Database Administration & Management (DBA)',
     description: 'Beginner to University Exam Level: Role and responsibilities of a Database Administrator (DBA), Types of DBAs (System, Application, Development, Production), Installation & Configuration, User & Permission Management, Monitoring & Performance Tuning, Backup & Recovery, High Availability (HA) & Replication, and Disaster Recovery (DR, RPO, RTO).',
   },
-  'backend-lesson16': {
+  'db-lesson16': {
     category: '8. Modern DB, DBA & Exam Prep',
     title: '16. Lesson 16: Distributed Databases & Distributed DBMS (DDBMS)',
     description: 'Beginner to University Exam Level: Distributed databases and DDBMS architecture, Centralized vs Distributed, Peer-to-Peer vs Three-Tier models, Homogeneous vs Heterogeneous, 4 Distribution Transparencies, Data Fragmentation (Horizontal, Vertical, Hybrid), Data Replication (Primary-to-Replica) & Allocation, Distributed Query Processing, Two-Phase Commit (2PC), Data Consistency, and CAP Theorem.',
   },
-  'backend-lesson17': {
+  'db-lesson17': {
     category: '8. Modern DB, DBA & Exam Prep',
     title: '17. Lesson 17: Data Warehousing and Data Mining',
     description: 'Beginner to University Exam Level: Fundamentals of Data Warehousing, 4 Inmon Characteristics (Subject-Oriented, Integrated, Time-Variant, Non-Volatile), ETL Pipeline (Extract, Transform, Load), OLTP vs OLAP, EDW vs Data Mart vs Virtual DW, Data Mining Techniques (Classification, Clustering, Association Rules, Prediction, Anomaly Detection), KDD Process, and Business Analytics.',
   },
-  'backend-lesson18': {
+  'db-lesson18': {
     category: '8. Modern DB, DBA & Exam Prep',
     title: '18. Lesson 18: Complete DBMS Revision & University Mock Exam',
     description: 'Final Lesson 18 of 18 • University Exam Preparation: Complete 18-lesson syllabus revision, Database Models, ER Model & Cardinality, Normalization (1NF–BCNF), Practical SQL, Transactions & ACID, Concurrency Control, Indexing & Query Optimization, NoSQL, Database Security (CIA, RBAC), DBA Responsibilities, Distributed DDBMS, Data Warehousing, Top 14 Comparison Matrix, Top 20 Broad Questions, 6 Essential Diagram Blueprints, and Full 60-Mark University Mock Examination.',

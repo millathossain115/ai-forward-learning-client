@@ -46,14 +46,14 @@ export default function Lesson6BottomNav({ onNavigate }: Lesson6BottomNavProps) 
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
-            onClick={() => onNavigate?.('backend-lesson5')}
+            onClick={() => onNavigate?.('db-lesson5')}
             className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'পূর্ববর্তী: লেসন ৫ (ER Model)' : 'Back to Lesson 5: ER Model'}</span>
           </button>
           <button
-            onClick={() => onNavigate?.('backend-lesson7')}
+            onClick={() => onNavigate?.('db-lesson7')}
             className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'লেসন ৭ শুরু করুন (Advanced SQL)' : 'Go to Lesson 7: Advanced SQL Queries'}</span>

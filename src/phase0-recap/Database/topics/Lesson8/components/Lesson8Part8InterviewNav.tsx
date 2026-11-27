@@ -118,14 +118,14 @@ export default function Lesson8Part8InterviewNav({ onNavigate }: Lesson8Part8Int
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
-            onClick={() => onNavigate?.('backend-lesson7')}
+            onClick={() => onNavigate?.('db-lesson7')}
             className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ৭: অ্যাডভান্সড SQL' : 'Review Lesson 7: Advanced SQL'}</span>
           </button>
           <button
-            onClick={() => onNavigate?.('backend-lesson9')}
+            onClick={() => onNavigate?.('db-lesson9')}
             className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'পরবর্তী: লেসন ৯ (ট্রানজ্যাকশন)' : 'Go to Lesson 9: Transactions & Concurrency'}</span>
