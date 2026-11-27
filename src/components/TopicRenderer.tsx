@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Sparkles } from 'lucide-react';
 import { TopicId } from '@/config/navigation';
 import { TOPIC_METADATA } from '@/config/topicMetadata';
+import { useLanguage } from '@/context/LanguageContext';
 import TopicSkeleton from '@/components/TopicSkeleton';
 
 const DsaDirectoryTopic = dynamic(() => import('@/phase0-recap/DSA/topics/Directory/DsaDirectoryTopic'), { loading: () => <TopicSkeleton /> });
@@ -61,8 +62,17 @@ const UPCOMING_AI_TOPICS = new Set<TopicId>([
   'ai-eval',
 ]);
 
+const DSA_TOPIC_IDS = new Set<TopicId>([
+  'array', 'linkedlist', 'stack', 'queue', 'heap', 'hashtable',
+  'tree', 'balanced-tree', 'trie', 'searching', 'sorting',
+  'sorting-bubble', 'sorting-selection', 'sorting-insertion',
+  'sorting-merge', 'sorting-quick', 'recursion', 'paradigms',
+  'graphs', 'graph-dag', 'graph-dfs', 'graph-bfs', 'graph-dijkstra',
+]);
+
 export default function TopicRenderer({ topicId }: { topicId: TopicId }) {
   const router = useRouter();
+  const { language } = useLanguage();
 
   const handleNavigateTopic = (id: string, sectionId?: string) => {
     const hash = sectionId ? `#${sectionId}` : '';
@@ -90,7 +100,8 @@ export default function TopicRenderer({ topicId }: { topicId: TopicId }) {
     );
   }
 
-  switch (topicId) {
+  const renderTopicBody = () => {
+    switch (topicId) {
     case 'dsa-directory':
       return <DsaDirectoryTopic onNavigate={handleNavigateTopic} />;
     case 'foundations':
@@ -181,5 +192,24 @@ export default function TopicRenderer({ topicId }: { topicId: TopicId }) {
       return <DatabaseLesson18Topic onNavigate={handleNavigateTopic} />;
     default:
       return <FoundationsTopic />;
-  }
+    }
+  };
+
+  const isDsaModule = DSA_TOPIC_IDS.has(topicId);
+  const meta = TOPIC_METADATA[topicId];
+
+  return (
+    <>
+      {isDsaModule && language === 'en' && meta && (
+        <div className="p-4 rounded-xl bg-[#15171e] border border-white/[0.08] flex flex-col gap-1">
+          <span className="text-xs font-mono text-amber-400">
+            {meta.category} • English Overview
+          </span>
+          <h2 className="text-base font-semibold text-[#f4f4f7]">{meta.title}</h2>
+          <p className="text-xs text-[#9ca0b0] leading-relaxed">{meta.description}</p>
+        </div>
+      )}
+      {renderTopicBody()}
+    </>
+  );
 }

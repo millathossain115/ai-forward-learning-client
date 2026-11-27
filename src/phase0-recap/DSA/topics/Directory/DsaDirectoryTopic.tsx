@@ -13,6 +13,8 @@ import {
   X,
 } from 'lucide-react';
 import { TopicId } from '@/components/Sidebar';
+import { useLanguage } from '@/context/LanguageContext';
+import DualText from '@/components/DualText';
 
 interface DsaDirectoryTopicProps {
   onNavigate?: (id: TopicId, sectionId?: string) => void;
@@ -187,6 +189,7 @@ const DSA_DIRECTORY: DsaCategory[] = [
 ];
 
 export default function DsaDirectoryTopic({ onNavigate }: DsaDirectoryTopicProps) {
+  const { language } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(DSA_DIRECTORY.map((g) => [g.id, true]))
@@ -248,9 +251,12 @@ export default function DsaDirectoryTopic({ onNavigate }: DsaDirectoryTopicProps
               <h1 className="text-xl md:text-2xl font-bold text-white mt-1 tracking-tight font-mono">
                 DATA STRUCTURES &amp; ALGORITHMS
               </h1>
-              <p className="text-xs text-zinc-400 mt-1">
-                Click any module or subtopic below to jump directly to that page or section.
-              </p>
+              <div className="text-xs text-zinc-400 mt-1">
+                <DualText
+                  en="Click any module or subtopic below to jump directly to that page or section."
+                  bn="যেকোনো মডিউল বা সাবটপিকে ক্লিক করে সরাসরি সেই পেজ বা সেকশনে যান।"
+                />
+              </div>
             </div>
           </div>
 
@@ -296,13 +302,13 @@ export default function DsaDirectoryTopic({ onNavigate }: DsaDirectoryTopicProps
               onClick={expandAll}
               className="px-3 py-1.5 rounded-lg bg-[#14182d] hover:bg-slate-800 border border-slate-800 text-xs font-mono text-zinc-300 cursor-pointer transition-colors"
             >
-              Expand All
+              {language === 'bn' ? 'সব খুলুন' : 'Expand All'}
             </button>
             <button
               onClick={collapseAll}
               className="px-3 py-1.5 rounded-lg bg-[#14182d] hover:bg-slate-800 border border-slate-800 text-xs font-mono text-zinc-300 cursor-pointer transition-colors"
             >
-              Collapse All
+              {language === 'bn' ? 'সব বন্ধ করুন' : 'Collapse All'}
             </button>
           </div>
         </div>
