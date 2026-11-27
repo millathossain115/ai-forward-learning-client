@@ -1,17 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
 import { Hash, Database, Users, Calculator, Layers, Filter } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
+import Step1RecordsTab from './aggregates/Step1RecordsTab';
+import Step2AggregatesTab from './aggregates/Step2AggregatesTab';
+import Step3GroupByTab from './aggregates/Step3GroupByTab';
+import Step4HavingTab from './aggregates/Step4HavingTab';
 
 type StepNumber = 1 | 2 | 3 | 4;
-
-const Step1RecordsTab = dynamic(() => import('./aggregates/Step1RecordsTab'));
-const Step2AggregatesTab = dynamic(() => import('./aggregates/Step2AggregatesTab'));
-const Step3GroupByTab = dynamic(() => import('./aggregates/Step3GroupByTab'));
-const Step4HavingTab = dynamic(() => import('./aggregates/Step4HavingTab'));
 
 export default function Lesson6Part15AggregatesGroupBy() {
   const { language } = useLanguage();

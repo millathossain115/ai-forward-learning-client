@@ -10,12 +10,12 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  language: 'dual',
+  language: 'en',
   setLanguage: () => {},
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<LanguageMode>('dual');
+  const [language, setLanguageState] = useState<LanguageMode>('en');
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {

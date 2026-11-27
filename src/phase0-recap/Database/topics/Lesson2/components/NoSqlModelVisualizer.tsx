@@ -1,17 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
 import { Boxes, FileCode2, Hash, Table as TableIcon, Share2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
+import DocumentDbTab from './nosql/DocumentDbTab';
+import KeyValueDbTab from './nosql/KeyValueDbTab';
+import ColumnFamilyTab from './nosql/ColumnFamilyTab';
+import GraphDbTab from './nosql/GraphDbTab';
 
 type NoSqlSubTab = 'document' | 'key-value' | 'column' | 'graph';
-
-const DocumentDbTab = dynamic(() => import('./nosql/DocumentDbTab'));
-const KeyValueDbTab = dynamic(() => import('./nosql/KeyValueDbTab'));
-const ColumnFamilyTab = dynamic(() => import('./nosql/ColumnFamilyTab'));
-const GraphDbTab = dynamic(() => import('./nosql/GraphDbTab'));
 
 const TABS = [
   { id: 'document', labelEn: '1. Document (MongoDB)', labelBn: '১. ডকুমেন্ট (MongoDB)', icon: FileCode2 },

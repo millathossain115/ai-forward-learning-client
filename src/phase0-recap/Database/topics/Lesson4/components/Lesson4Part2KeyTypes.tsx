@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
 import {
   KeyRound,
   Lock,
@@ -14,6 +13,14 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
+import SuperKeyTab from './keys/SuperKeyTab';
+import CandidateKeyTab from './keys/CandidateKeyTab';
+import PrimaryKeyTab from './keys/PrimaryKeyTab';
+import AlternateKeyTab from './keys/AlternateKeyTab';
+import ForeignKeyTab from './keys/ForeignKeyTab';
+import CompositeKeyTab from './keys/CompositeKeyTab';
+import UniqueKeyTab from './keys/UniqueKeyTab';
+import SurrogateKeyTab from './keys/SurrogateKeyTab';
 
 type KeyTypeId =
   | 'super'
@@ -24,22 +31,6 @@ type KeyTypeId =
   | 'composite'
   | 'unique'
   | 'surrogate';
-
-const TabLoadingFallback = () => (
-  <div className="p-6 rounded-2xl bg-[#15171e] border border-white/[0.08] space-y-4">
-    <div className="h-6 w-1/3 bg-slate-800 rounded" />
-    <div className="h-32 w-full bg-slate-800/60 rounded-xl" />
-  </div>
-);
-
-const SuperKeyTab = dynamic(() => import('./keys/SuperKeyTab'), { loading: TabLoadingFallback });
-const CandidateKeyTab = dynamic(() => import('./keys/CandidateKeyTab'), { loading: TabLoadingFallback });
-const PrimaryKeyTab = dynamic(() => import('./keys/PrimaryKeyTab'), { loading: TabLoadingFallback });
-const AlternateKeyTab = dynamic(() => import('./keys/AlternateKeyTab'), { loading: TabLoadingFallback });
-const ForeignKeyTab = dynamic(() => import('./keys/ForeignKeyTab'), { loading: TabLoadingFallback });
-const CompositeKeyTab = dynamic(() => import('./keys/CompositeKeyTab'), { loading: TabLoadingFallback });
-const UniqueKeyTab = dynamic(() => import('./keys/UniqueKeyTab'), { loading: TabLoadingFallback });
-const SurrogateKeyTab = dynamic(() => import('./keys/SurrogateKeyTab'), { loading: TabLoadingFallback });
 
 const KEY_TABS = [
   { id: 'super', num: '1', labelEn: 'Super Key', labelBn: 'সুপার কী', tagEn: 'All Unique Sets', tagBn: 'সকল অনন্য কম্বিনেশন', icon: KeyRound },

@@ -1,16 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
 import { Layers } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
-
-const DdlTab = dynamic(() => import('./command-families/DdlTab'));
-const DqlTab = dynamic(() => import('./command-families/DqlTab'));
-const DmlTab = dynamic(() => import('./command-families/DmlTab'));
-const DclTab = dynamic(() => import('./command-families/DclTab'));
-const TclTab = dynamic(() => import('./command-families/TclTab'));
+import DdlTab from './command-families/DdlTab';
+import DqlTab from './command-families/DqlTab';
+import DmlTab from './command-families/DmlTab';
+import DclTab from './command-families/DclTab';
+import TclTab from './command-families/TclTab';
 
 export default function Lesson6Part3CommandFamilies() {
   const { language } = useLanguage();

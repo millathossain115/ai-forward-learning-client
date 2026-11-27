@@ -1,15 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
 import { ShieldCheck } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import DualText from '@/components/DualText';
-
-const SandboxTab = dynamic(() => import('./constraints/SandboxTab'));
-const CascadeTab = dynamic(() => import('./constraints/CascadeTab'));
-const TableLevelTab = dynamic(() => import('./constraints/TableLevelTab'));
-const MatrixTab = dynamic(() => import('./constraints/MatrixTab'));
+import SandboxTab from './constraints/SandboxTab';
+import CascadeTab from './constraints/CascadeTab';
+import TableLevelTab from './constraints/TableLevelTab';
+import MatrixTab from './constraints/MatrixTab';
 
 export default function Lesson6Part7ConstraintsSandbox() {
   const { language } = useLanguage();
