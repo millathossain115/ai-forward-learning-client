@@ -60,7 +60,7 @@ export default function Lesson15Part1DbaRoles() {
             key={t.id}
             onClick={() => setDbaType(t.id)}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer ${
-              dbaType === t.id ? 'bg-cyan-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+              dbaType === t.id ? 'bg-cyan-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {t.label}

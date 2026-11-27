@@ -77,7 +77,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#090a0f] text-zinc-100 antialiased font-sans">
+    <div className="flex h-screen w-screen overflow-hidden bg-[#090a0d] text-[#f4f4f7] antialiased font-sans">
       <Sidebar
         activeTopic={activeTopic}
         onSelectTopic={handleSelectTopic}
@@ -85,20 +85,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
       />
 
-      <div className="flex flex-col flex-1 min-w-0 overflow-hidden bg-[#0b0c13]">
-        <header className="h-14 border-b border-[#1b1d2b] px-6 flex items-center justify-between bg-[#0b0c13]/80 backdrop-blur z-20 shrink-0">
-          <div className="flex items-center gap-2.5 font-mono">
-            <span className="text-xs md:text-sm text-zinc-400">{meta.category}</span>
-            <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
-            <span className="text-sm md:text-base text-zinc-100 font-semibold">{meta.title}</span>
+      <div className="flex flex-col flex-1 min-w-0 overflow-hidden bg-[#101116]">
+        <header className="h-14 border-b border-white/[0.08] px-6 flex items-center justify-between bg-[#101116]/90 backdrop-blur z-20 shrink-0">
+          <div className="flex items-center gap-2 font-mono min-w-0">
+            <span className="text-xs text-[#9ca0b0] truncate">{meta.category}</span>
+            <ChevronRight className="w-4 h-4 text-[#686c7d] shrink-0" strokeWidth={1.5} />
+            <span className="text-sm text-[#f4f4f7] font-medium truncate">{meta.title}</span>
           </div>
 
-          <div className="flex items-center gap-3 text-xs md:text-sm font-mono">
+          <div className="flex items-center gap-3 text-xs font-mono shrink-0">
             <LanguageToggle />
           </div>
         </header>
 
-        <main ref={mainRef} className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+        <main ref={mainRef} className="flex-1 overflow-y-auto p-6 lg:p-8">
           <div className="w-full space-y-8">{children}</div>
         </main>
       </div>

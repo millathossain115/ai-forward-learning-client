@@ -63,7 +63,7 @@ export default function SurrogateKeyTab() {
           <div className="p-4 rounded-xl bg-[#0a0d1a] border border-indigo-500/30 space-y-4 font-mono text-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
-                <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-indigo-400" />
                 <DualText
                   en="Select Architectural Design Pattern to Benchmark:"
                   bn="তুলনা করার জন্য আর্কিটেকচারাল প্যাটার্ন নির্বাচন করুন:"
@@ -84,9 +84,9 @@ export default function SurrogateKeyTab() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <button
                 onClick={() => setActiveKeyArch('surrogate')}
-                className={`p-3 rounded-xl border text-left transition-all cursor-pointer space-y-1 ${
+                className={`p-3 rounded-xl border text-left transition-colors cursor-pointer space-y-1 ${
                   activeKeyArch === 'surrogate'
-                    ? 'bg-emerald-500/15 border-emerald-400 shadow-lg shadow-emerald-950/40'
+                    ? 'bg-emerald-500/15 border-emerald-400  '
                     : 'bg-[#121526] border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
                 }`}
               >
@@ -108,9 +108,9 @@ export default function SurrogateKeyTab() {
 
               <button
                 onClick={() => setActiveKeyArch('natural')}
-                className={`p-3 rounded-xl border text-left transition-all cursor-pointer space-y-1 ${
+                className={`p-3 rounded-xl border text-left transition-colors cursor-pointer space-y-1 ${
                   activeKeyArch === 'natural'
-                    ? 'bg-amber-500/15 border-amber-400 shadow-lg shadow-amber-950/40'
+                    ? 'bg-amber-500/15 border-amber-400  '
                     : 'bg-[#121526] border-slate-800 opacity-70 hover:opacity-100 hover:border-slate-700'
                 }`}
               >
@@ -273,7 +273,7 @@ export default function SurrogateKeyTab() {
           )}
 
           {/* Golden Rule Summary Banner */}
-          <div className="p-4 rounded-xl bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-slate-900 border border-indigo-500/40 text-xs font-sans flex items-start sm:items-center gap-3">
+          <div className="p-4 rounded-xl bg-[#15171e] border border-indigo-500/40 text-xs font-sans flex items-start sm:items-center gap-3">
             <span className="p-2 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 shrink-0">
               <Sparkles className="w-5 h-5 text-indigo-400" />
             </span>

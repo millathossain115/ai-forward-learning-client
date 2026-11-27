@@ -63,7 +63,7 @@ export default function VectorCanvas({
                   stroke={c.color}
                   strokeWidth={isActive ? 2 : 1}
                   strokeDasharray="4 4"
-                  className={isActive ? 'animate-pulse' : ''}
+                  className={isActive ? '' : ''}
                 />
                 <circle cx={c.x * canvasW} cy={c.y * canvasH} r={4} fill={c.color} />
                 <text
@@ -93,7 +93,7 @@ export default function VectorCanvas({
               stroke="#818cf8"
               strokeWidth={2.5}
               strokeDasharray="6 3"
-              className="animate-pulse"
+              className=""
             />
           ))}
 

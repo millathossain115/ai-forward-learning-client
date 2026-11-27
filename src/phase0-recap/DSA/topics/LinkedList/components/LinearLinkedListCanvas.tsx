@@ -37,32 +37,32 @@ export default function LinearLinkedListCanvas({
         let extraTransform = '';
 
         if (node.state === 'allocating') {
-          cardBorder = 'border-amber-400 bg-amber-950/40 animate-pulse scale-105';
+          cardBorder = 'border-amber-400 bg-amber-950/40  scale-105';
           badgeText = 'মেমরি বরাদ্দ';
         } else if (node.state === 'linking') {
           cardBorder = 'border-sky-400 bg-sky-950/40 ring-4 ring-sky-500/20 scale-105';
           badgeText = 'পয়েন্টার জোড়া হচ্ছে';
         } else if (node.state === 'connected') {
-          cardBorder = 'border-emerald-400 bg-emerald-950/60 shadow-lg shadow-emerald-500/20 scale-105';
+          cardBorder = 'border-emerald-400 bg-emerald-950/60   scale-105';
           badgeText = 'সংযুক্ত';
         } else if (node.state === 'lift-delete') {
-          cardBorder = 'border-rose-500 bg-rose-950/70 ring-4 ring-rose-500/30 opacity-90 shadow-xl shadow-rose-500/20';
+          cardBorder = 'border-rose-500 bg-rose-950/70 ring-4 ring-rose-500/30 opacity-90  ';
           extraTransform = '-translate-y-6 scale-95 transition-transform duration-700';
           badgeText = 'আলাদা করা হচ্ছে ⬆';
         } else if (node.state === 'bypassing') {
-          cardBorder = 'border-cyan-400 bg-cyan-950/60 ring-4 ring-cyan-500/30 shadow-lg shadow-cyan-500/20 scale-105';
+          cardBorder = 'border-cyan-400 bg-cyan-950/60 ring-4 ring-cyan-500/30   scale-105';
           badgeText = 'বাইপাস আউট ➔';
         } else if (node.state === 'bypassed-target') {
-          cardBorder = 'border-cyan-400 bg-cyan-950/60 ring-4 ring-cyan-500/30 shadow-lg shadow-cyan-500/20 scale-105';
+          cardBorder = 'border-cyan-400 bg-cyan-950/60 ring-4 ring-cyan-500/30   scale-105';
           badgeText = '➔ বাইপাস ইন';
         } else if (isActive) {
           cardBorder = 'border-emerald-400 bg-emerald-950/70 ring-4 ring-emerald-500/20 scale-105';
         }
 
         return (
-          <div key={node.id} className={`flex items-center gap-2 shrink-0 transition-all duration-700 ${extraTransform}`}>
+          <div key={node.id} className={`flex items-center gap-2 shrink-0 transition-colors duration-700 ${extraTransform}`}>
             {/* Single Node Card */}
-            <div className={`flex flex-col rounded-xl border p-2.5 transition-all shadow-lg ${cardBorder}`}>
+            <div className={`flex flex-col rounded-xl border p-2.5 transition-colors  ${cardBorder}`}>
               <div className="flex items-center justify-between text-[9px] font-mono text-zinc-400 mb-1 border-b border-[#202438] pb-1 gap-2">
                 <span className="text-emerald-400 font-semibold">{node.addr}</span>
                 {badgeText && (
@@ -111,8 +111,8 @@ export default function LinearLinkedListCanvas({
             {!isLast ? (
               <div className="flex flex-col items-center text-teal-400 px-0.5">
                 <span className="text-[9px] font-mono leading-none">{isDoubly ? '⇄' : '➔'}</span>
-                <div className={`h-[2px] w-5 transition-all duration-300 ${
-                  node.state === 'linking' ? 'bg-sky-400 shadow-sm shadow-sky-400' : 'bg-teal-500/60'
+                <div className={`h-[2px] w-5 transition-colors duration-300 ${
+                  node.state === 'linking' ? 'bg-sky-400  ' : 'bg-teal-500/60'
                 }`} />
               </div>
             ) : (

@@ -140,7 +140,7 @@ export default function Lesson5Part5WeakEntity() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
           {/* Owner Entity */}
-          <div className="p-4 rounded-xl bg-indigo-950/60 border-2 border-indigo-500 text-center space-y-1.5 shadow-lg">
+          <div className="p-4 rounded-xl bg-indigo-950/60 border-2 border-indigo-500 text-center space-y-1.5">
             <span className="text-[10px] font-bold text-indigo-400 uppercase block">[ Single Rectangle ]</span>
             <h4 className="text-sm font-bold text-white">EMPLOYEE</h4>
             <div className="text-[11px] text-amber-300 font-bold">
@@ -150,14 +150,14 @@ export default function Lesson5Part5WeakEntity() {
           </div>
 
           {/* Identifying Relationship */}
-          <div className="p-4 rounded-xl bg-purple-950/60 border-2 border-purple-500 text-center space-y-1.5 shadow-lg">
+          <div className="p-4 rounded-xl bg-purple-950/60 border-2 border-purple-500 text-center space-y-1.5">
             <span className="text-[10px] font-bold text-purple-400 uppercase block">&lt;&lt; Double Diamond &gt;&gt;</span>
             <h4 className="text-sm font-bold text-purple-200">HAS</h4>
             <span className="text-[10px] text-zinc-400 block">Identifying Relationship</span>
           </div>
 
           {/* Weak Entity */}
-          <div className="p-4 rounded-xl bg-rose-950/60 border-2 border-rose-500 text-center space-y-1.5 shadow-lg ring-2 ring-rose-500/30">
+          <div className="p-4 rounded-xl bg-rose-950/60 border-2 border-rose-500 text-center space-y-1.5 ring-2 ring-rose-500/30">
             <span className="text-[10px] font-bold text-rose-400 uppercase block">[[ Double Rectangle ]]</span>
             <h4 className="text-sm font-bold text-white">DEPENDENT</h4>
             <div className="text-[11px] text-rose-300 font-bold border-b border-dashed border-rose-400 inline-block">

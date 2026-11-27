@@ -25,10 +25,10 @@ export default function NoSqlModelVisualizer() {
   const [activeTab, setActiveTab] = useState<NoSqlSubTab>('document');
 
   return (
-    <div className="p-5 md:p-7 rounded-2xl bg-[#090b17] border border-cyan-500/40 space-y-6 shadow-2xl">
+    <div className="p-5 md:p-7 rounded-2xl bg-[#090b17] border border-cyan-500/40 space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
         <div>
-          <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+          <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1.5">
             <Boxes className="w-4 h-4 text-cyan-400" />
             <DualText
               en="NoSQL Database Models (Polyglot Persistence & Distributed Scale)"
@@ -49,7 +49,7 @@ export default function NoSqlModelVisualizer() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer ${
                   activeTab === tab.id
                     ? 'bg-cyan-600 text-white font-bold shadow'
                     : 'text-zinc-400 hover:text-white hover:bg-slate-800/60'

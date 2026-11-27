@@ -59,7 +59,7 @@ export default function Lesson5Part3Relationships() {
         </div>
 
         {/* Visual Mapping Model: Entity Sets vs Relationship Set (Textbook Bipartite Mapping) */}
-        <div className="p-4 md:p-5 rounded-2xl bg-[#090D18] border border-purple-500/30 space-y-4 shadow-xl">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#090D18] border border-purple-500/30 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
             <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-wide">
               {language === 'bn' ? 'ম্যাপিং মডেল: এনটিটি সেটদ্বয় বনাম রিলেশনশিপ সেট' : 'Mapping Model: Entity Sets vs Relationship Set'}
@@ -273,7 +273,7 @@ export default function Lesson5Part3Relationships() {
                   desc: 'Degree = 1: Employee entity connected to MANAGES relationship in dual roles (Manager & Subordinate).',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-all hover:border-amber-400 hover:shadow-lg hover:shadow-amber-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-colors hover:border-amber-400 hover: hover:"
             >
               <img
                 src="/images/degree-unary-relationship.png"
@@ -318,7 +318,7 @@ export default function Lesson5Part3Relationships() {
                   desc: 'Degree = 2: Two distinct entities (Student and Course) connected via ENROLLS relationship.',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-cyan-500/30 bg-[#0B0F19] transition-all hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-cyan-500/30 bg-[#0B0F19] transition-colors hover:border-cyan-400 hover: hover:"
             >
               <img
                 src="/images/degree-binary-relationship.png"
@@ -363,7 +363,7 @@ export default function Lesson5Part3Relationships() {
                   desc: 'Degree = 3: Three entities (Supplier, Part, and Project) linked simultaneously via SUPPLIES relationship.',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-purple-500/30 bg-[#0B0F19] transition-all hover:border-purple-400 hover:shadow-lg hover:shadow-purple-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-purple-500/30 bg-[#0B0F19] transition-colors hover:border-purple-400 hover: hover:"
             >
               <img
                 src="/images/degree-ternary-relationship.png"
@@ -408,7 +408,7 @@ export default function Lesson5Part3Relationships() {
                   desc: 'Degree = N: General case connecting N distinct entity sets simultaneously.',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-pink-500/30 bg-[#0B0F19] transition-all hover:border-pink-400 hover:shadow-lg hover:shadow-pink-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-pink-500/30 bg-[#0B0F19] transition-colors hover:border-pink-400 hover: hover:"
             >
               <img
                 src="/images/degree-n-ary-relationship.png"
@@ -437,7 +437,7 @@ export default function Lesson5Part3Relationships() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 space-y-3"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -450,7 +450,7 @@ export default function Lesson5Part3Relationships() {
               </div>
               <button
                 onClick={() => setModalImage(null)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>

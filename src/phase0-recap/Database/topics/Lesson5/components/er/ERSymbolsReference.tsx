@@ -29,7 +29,7 @@ export default function ERSymbolsReference() {
           <Workflow className="w-6 h-6" />
         </div>
         <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold uppercase tracking-wider">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
             {language === 'bn'
               ? 'পার্ট ৬ • ইআর প্রতীক ও রিলেশনাল রূপান্তর'
               : 'Part 6 • ER Symbols & Relational Table Conversion'}
@@ -61,7 +61,7 @@ export default function ERSymbolsReference() {
           <div className="flex items-center gap-1.5 self-start sm:self-auto bg-[#090c18] p-1 rounded-xl border border-slate-800">
             <button
               onClick={() => setViewMode('cards')}
-              className={`px-3 py-1 rounded-lg text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer ${
                 viewMode === 'cards'
                   ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -72,7 +72,7 @@ export default function ERSymbolsReference() {
             </button>
             <button
               onClick={() => setViewMode('table')}
-              className={`px-3 py-1 rounded-lg text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer ${
                 viewMode === 'table'
                   ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -95,9 +95,9 @@ export default function ERSymbolsReference() {
         <div className="flex flex-wrap items-center gap-2 pt-1">
           <button
             onClick={() => setActiveCategory('all')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all cursor-pointer border ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-colors cursor-pointer border ${
               activeCategory === 'all'
-                ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/60 font-bold shadow-md shadow-cyan-950/50'
+                ? 'bg-cyan-950/80 text-cyan-300 border-cyan-500/60 font-bold  '
                 : 'bg-[#0a0d18] text-zinc-400 border-slate-800 hover:text-zinc-200 hover:border-slate-700'
             }`}
           >
@@ -105,9 +105,9 @@ export default function ERSymbolsReference() {
           </button>
           <button
             onClick={() => setActiveCategory('entity_attr')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all cursor-pointer border ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-colors cursor-pointer border ${
               activeCategory === 'entity_attr'
-                ? 'bg-amber-950/80 text-amber-300 border-amber-500/60 font-bold shadow-md shadow-amber-950/50'
+                ? 'bg-amber-950/80 text-amber-300 border-amber-500/60 font-bold  '
                 : 'bg-[#0a0d18] text-zinc-400 border-slate-800 hover:text-zinc-200 hover:border-slate-700'
             }`}
           >
@@ -115,9 +115,9 @@ export default function ERSymbolsReference() {
           </button>
           <button
             onClick={() => setActiveCategory('rel_constraint')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all cursor-pointer border ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-colors cursor-pointer border ${
               activeCategory === 'rel_constraint'
-                ? 'bg-purple-950/80 text-purple-300 border-purple-500/60 font-bold shadow-md shadow-purple-950/50'
+                ? 'bg-purple-950/80 text-purple-300 border-purple-500/60 font-bold  '
                 : 'bg-[#0a0d18] text-zinc-400 border-slate-800 hover:text-zinc-200 hover:border-slate-700'
             }`}
           >
@@ -131,7 +131,7 @@ export default function ERSymbolsReference() {
             {filteredSymbols.map((item) => (
               <div
                 key={item.id}
-                className="p-4 rounded-2xl bg-[#0a0d1a] border border-slate-800/90 hover:border-slate-700 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-lg group"
+                className="p-4 rounded-2xl bg-[#0a0d1a] border border-slate-800/90 hover:border-slate-700 transition-colors flex flex-col sm:flex-row items-start sm:items-center gap-4 group"
               >
                 <div className="w-full sm:w-32 h-16 rounded-xl bg-[#050813] border border-slate-800/80 group-hover:border-slate-700 transition-colors flex items-center justify-center p-1.5 shrink-0 shadow-inner">
                   {item.svg}
@@ -165,7 +165,7 @@ export default function ERSymbolsReference() {
 
         {/* VIEW MODE B: STRUCTURED CHEAT SHEET TABLE */}
         {viewMode === 'table' && (
-          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14] shadow-xl">
+          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
             <table className="w-full text-left font-sans text-xs">
               <thead>
                 <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px] font-mono">

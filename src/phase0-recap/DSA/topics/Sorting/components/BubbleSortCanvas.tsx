@@ -39,7 +39,7 @@ export default function BubbleSortCanvas({
 }: BubbleSortCanvasProps) {
   return (
     <div className="space-y-6">
-      <div className="relative rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 shadow-2xl overflow-hidden">
+      <div className="relative rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 overflow-hidden">
         {/* Header Controls Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#1f1933]">
           <div className="flex items-center gap-3">
@@ -52,7 +52,7 @@ export default function BubbleSortCanvas({
                   setIsPlaying(!isPlaying);
                 }
               }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 text-white font-mono text-xs font-bold shadow-lg shadow-fuchsia-600/30 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#15171e] hover:from-fuchsia-500 hover:to-pink-500 text-white font-mono text-xs font-bold shadow-fuchsia-600/30 transition-colors cursor-pointer"
             >
               {isPlaying ? <Pause className="w-4 h-4" /> : isAtEnd ? <RotateCcw className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               <span>{isPlaying ? 'Pause' : isAtEnd ? 'Replay' : 'Play Simulation'}</span>
@@ -145,13 +145,13 @@ export default function BubbleSortCanvas({
                 <div key={idx} className="flex flex-col items-center gap-3">
                   {/* Bubble elevation container */}
                   <div
-                    className={`relative w-14 h-24 md:w-16 md:h-28 rounded-2xl flex flex-col items-center justify-between p-2.5 transition-all duration-500 shadow-xl ${
+                    className={`relative w-14 h-24 md:w-16 md:h-28 rounded-2xl flex flex-col items-center justify-between p-2.5 transition-colors duration-500  ${
                       isSorted
-                        ? 'bg-gradient-to-b from-emerald-900/50 to-emerald-950/80 border-2 border-emerald-500 shadow-emerald-500/20 text-emerald-200'
+                        ? 'bg-[#15171e] border-2 border-emerald-500  text-emerald-200'
                         : isBubbleRising
-                        ? 'bg-gradient-to-b from-fuchsia-600/40 to-pink-900/70 border-2 border-fuchsia-400 -translate-y-4 shadow-fuchsia-500/30 text-white scale-105'
+                        ? 'bg-[#15171e] border-2 border-fuchsia-400 -translate-y-4 shadow-fuchsia-500/30 text-white scale-105'
                         : isComparing
-                        ? 'bg-gradient-to-b from-amber-600/30 to-amber-950/70 border-2 border-amber-400 -translate-y-2 text-amber-200'
+                        ? 'bg-[#15171e] border-2 border-amber-400 -translate-y-2 text-amber-200'
                         : 'bg-[#151224] border border-[#2d2448] text-zinc-300'
                     }`}
                   >
@@ -161,14 +161,14 @@ export default function BubbleSortCanvas({
                     </div>
 
                     {/* Value */}
-                    <div className="text-xl md:text-2xl font-black font-mono tracking-tight">
+                    <div className="text-xl md:text-2xl font-semibold font-mono tracking-tight">
                       {val}
                     </div>
 
                     {/* Bottom Status Indicator */}
                     <div className="w-full flex justify-center">
                       {isSorted ? (
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-emerald-400" />
                       ) : isComparing ? (
                         <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
                       ) : (
@@ -199,7 +199,7 @@ export default function BubbleSortCanvas({
           </div>
 
           {/* Status Explanation Card */}
-          <div className="w-full max-w-2xl mt-4 p-4 rounded-2xl bg-[#141022] border border-[#2a2044] text-center shadow-lg">
+          <div className="w-full max-w-2xl mt-4 p-4 rounded-2xl bg-[#141022] border border-[#2a2044] text-center">
             <p className="text-xs md:text-sm font-medium text-zinc-200 leading-relaxed">
               {currentStep.desc}
             </p>

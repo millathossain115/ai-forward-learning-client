@@ -157,7 +157,7 @@ export default function Lesson3Part7Properties() {
           </span>
           <button
             onClick={() => setRowOrderReversed(!rowOrderReversed)}
-            className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-[11px] font-bold cursor-pointer transition-all self-start sm:self-auto"
+            className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-[11px] font-bold cursor-pointer transition-colors self-start sm:self-auto"
           >
             {rowOrderReversed
               ? language === 'bn'

@@ -4,7 +4,7 @@ import { Layers } from 'lucide-react';
 export default function PgVectorBenchmarkTable() {
   return (
     <div className="bg-[#0f111a] border border-[#1e2233] rounded-2xl p-6 flex flex-col gap-4">
-      <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+      <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 font-mono">
         <Layers className="w-4 h-4 text-cyan-400" />
         pgvector Indexing Architectures Comparison
       </h3>

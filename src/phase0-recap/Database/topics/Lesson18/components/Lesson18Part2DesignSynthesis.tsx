@@ -39,7 +39,7 @@ export default function Lesson18Part2DesignSynthesis() {
             key={t.id}
             onClick={() => setTab(t.id)}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer ${
-              tab === t.id ? 'bg-purple-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+              tab === t.id ? 'bg-purple-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {t.label}

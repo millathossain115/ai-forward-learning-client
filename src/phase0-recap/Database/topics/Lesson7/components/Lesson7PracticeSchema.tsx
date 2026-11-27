@@ -40,9 +40,9 @@ export default function Lesson7PracticeSchema() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setActiveTableTab('students')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-colors cursor-pointer flex items-center gap-2 ${
             activeTableTab === 'students'
-              ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-600/30'
+              ? 'bg-cyan-600 text-white  '
               : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
           }`}
         >
@@ -51,9 +51,9 @@ export default function Lesson7PracticeSchema() {
         </button>
         <button
           onClick={() => setActiveTableTab('courses')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-colors cursor-pointer flex items-center gap-2 ${
             activeTableTab === 'courses'
-              ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-600/30'
+              ? 'bg-cyan-600 text-white  '
               : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
           }`}
         >
@@ -62,9 +62,9 @@ export default function Lesson7PracticeSchema() {
         </button>
         <button
           onClick={() => setActiveTableTab('enrollments')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-colors cursor-pointer flex items-center gap-2 ${
             activeTableTab === 'enrollments'
-              ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-600/30'
+              ? 'bg-cyan-600 text-white  '
               : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
           }`}
         >

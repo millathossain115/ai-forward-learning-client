@@ -79,7 +79,7 @@ export default function Lesson1Part4DBMS() {
         </div>
 
         {/* Library Analogy Visual */}
-        <div className="p-6 rounded-2xl bg-gradient-to-br from-[#12172d] to-[#0c0e1a] border border-indigo-900/40 space-y-4">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-indigo-900/40 space-y-4">
           <h3 className="text-xs font-mono font-bold text-indigo-300 uppercase flex items-center gap-2">
             <Users className="w-4 h-4 text-indigo-400" />
             {language === 'bn' ? 'চিরায়ত লাইব্রেরি অ্যানালজি (বাস্তব উদাহরণ):' : 'The Classic Library Analogy:'}
@@ -141,7 +141,7 @@ export default function Lesson1Part4DBMS() {
 
         {/* Popular DBMS Systems Grid */}
         <div className="space-y-3 pt-2">
-          <h4 className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider">
+          <h4 className="text-xs font-mono font-bold text-zinc-300">
             {language === 'bn' ? 'সফটওয়্যার শিল্পে বহুল ব্যবহৃত DBMS ইঞ্জিনসমূহ:' : 'Popular DBMS Software in the Industry:'}
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">

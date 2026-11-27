@@ -37,7 +37,7 @@ export default function Lesson15Part6InterviewNav({ onNavigate }: Lesson15Part6I
               <Briefcase className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
                 {language === 'bn' ? 'পার্ট ৬ • বাছাইকৃত ইন্টারভিউ প্রশ্নোত্তর' : 'Part 6 of 6 • Interview Prep'}
               </span>
               <h2 className="text-xl font-bold text-white mt-1">
@@ -91,9 +91,9 @@ export default function Lesson15Part6InterviewNav({ onNavigate }: Lesson15Part6I
       </section>
 
       {/* BOTTOM NAVIGATION BRIDGE */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#14182e] via-[#101326] to-[#0d1020] border border-cyan-500/40 space-y-3 shadow-xl">
+      <div className="p-6 rounded-2xl bg-[#15171e] border border-cyan-500/40 space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
+          <span className="text-xs font-mono text-cyan-400 font-bold">
             <DualText as="span" en="Next in Series • Distributed Deep Dive" bn="পরবর্তী অধ্যায় • ডিস্ট্রিবিউটেড DB" />
           </span>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">
@@ -119,14 +119,14 @@ export default function Lesson15Part6InterviewNav({ onNavigate }: Lesson15Part6I
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('backend-lesson14')}
-            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-all border border-slate-700 cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ১৪: সিকিউরিটি' : 'Review Lesson 14: Security & Auth'}</span>
           </button>
           <button
             onClick={() => onNavigate?.('backend-lesson16')}
-            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
+            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'পরবর্তী: লেসন ১৬ (DDBMS)' : 'Go to Lesson 16: DDBMS'}</span>
             <ArrowRight className="w-4 h-4" />

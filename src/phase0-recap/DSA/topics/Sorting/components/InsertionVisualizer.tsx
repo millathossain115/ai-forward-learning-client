@@ -20,7 +20,7 @@ export default function InsertionVisualizer({ step }: InsertionVisualizerProps) 
       <div className="flex flex-col items-center gap-3">
         <div className="h-10 flex items-center justify-center">
           {step.handKey !== null ? (
-            <div className="px-3 py-1 rounded-xl bg-amber-400 text-slate-950 font-mono font-bold text-xs shadow-lg animate-pulse flex items-center gap-1.5">
+            <div className="px-3 py-1 rounded-xl bg-amber-400 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5">
               <span>হাতে তোলা Key কার্ড: {step.handKey}</span>
             </div>
           ) : (
@@ -37,7 +37,7 @@ export default function InsertionVisualizer({ step }: InsertionVisualizerProps) 
             return (
               <div key={idx} className="flex flex-col items-center gap-2">
                 <div
-                  className={`w-14 h-20 rounded-2xl border-2 flex flex-col items-center justify-center font-mono font-bold text-sm transition-all duration-300 ${
+                  className={`w-14 h-20 rounded-2xl border-2 flex flex-col items-center justify-center font-mono font-bold text-sm transition-colors duration-300 ${
                     isEmptySlot
                       ? 'border-dashed border-amber-400/60 bg-amber-500/10 text-amber-300'
                       : isSorted

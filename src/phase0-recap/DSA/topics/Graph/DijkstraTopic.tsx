@@ -52,16 +52,15 @@ export default function DijkstraTopic() {
   return (
     <div className="flex flex-col gap-6 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a140a] via-[#120e06] to-[#070603] border border-[#3d2f16] p-6 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#3d2f16] p-6">
         <div className="relative z-10 space-y-2">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-300 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-300 font-bold">
               Topic 11.3 • Most Popular Shortest Path Algorithm
             </span>
             <span className="text-xs text-zinc-500 font-mono">Dijkstra&apos;s Algorithm • Edge Relaxation • Min-Heap</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
             ডাইকস্ট্রা অ্যালগরিদম: ওজনযুক্ত গ্রাফে সর্বনিম্ন পথ নির্ণয়
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-4xl leading-relaxed">
@@ -105,7 +104,7 @@ export default function DijkstraTopic() {
       </div>
 
       {/* 3. Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-[#0d0f1a] border border-[#22273e] p-2.5 rounded-2xl shadow-xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-[#0d0f1a] border border-[#22273e] p-2.5 rounded-2xl">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono font-bold text-white flex items-center gap-2">
             <Route className="w-4 h-4 text-amber-400" />
@@ -139,7 +138,7 @@ export default function DijkstraTopic() {
                 setIsPlaying(!isPlaying);
               }
             }}
-            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all cursor-pointer shadow ${
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-colors cursor-pointer shadow ${
               isPlaying
                 ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
                 : isAtEnd
@@ -193,7 +192,7 @@ export default function DijkstraTopic() {
             <Clock className="w-3 h-3 text-zinc-400 ml-1" />
             <button
               onClick={() => setSpeedMode('slow')}
-              className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded-md transition-colors cursor-pointer ${
                 speedMode === 'slow'
                   ? 'bg-amber-600/60 text-amber-200 font-bold border border-amber-500/40'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -203,7 +202,7 @@ export default function DijkstraTopic() {
             </button>
             <button
               onClick={() => setSpeedMode('normal')}
-              className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded-md transition-colors cursor-pointer ${
                 speedMode === 'normal'
                   ? 'bg-amber-600/60 text-amber-200 font-bold border border-amber-500/40'
                   : 'text-zinc-400 hover:text-zinc-200'

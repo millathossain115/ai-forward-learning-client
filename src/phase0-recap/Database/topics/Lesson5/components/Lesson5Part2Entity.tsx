@@ -20,7 +20,7 @@ export default function Lesson5Part2Entity() {
   }, [modalImage]);
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 space-y-4 shadow-lg">
+    <section className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 space-y-4">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
         <div className="flex items-center gap-2.5">
@@ -28,7 +28,7 @@ export default function Lesson5Part2Entity() {
             <User className="w-4 h-4" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 font-bold uppercase tracking-wider">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 font-bold">
               {language === 'bn' ? 'পার্ট ২ • এনটিটি ও প্রকারভেদ' : 'Part 2 • Entity & Entity Types'}
             </span>
             <h3 className="text-sm md:text-base font-bold text-white mt-0.5">
@@ -104,7 +104,7 @@ export default function Lesson5Part2Entity() {
                 desc: 'Single Sharp Rectangle ▭: Has its own Primary Key (Emp_ID) with independent existence.',
               })
             }
-            className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#070A14] border border-cyan-500/30 transition-all hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-950/40 p-2 flex flex-col items-center justify-center"
+            className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#070A14] border border-cyan-500/30 transition-colors hover:border-cyan-400 hover: hover: p-2 flex flex-col items-center justify-center"
           >
             <img
               src="/images/entity-strong.png"
@@ -150,7 +150,7 @@ export default function Lesson5Part2Entity() {
                 desc: 'Double Sharp Rectangle ⧉: DEPENDENT (Employee Family/Child) entity connected to EMPLOYEE via DEPENDS identifying relationship with Dependent_Name Partial Key.',
               })
             }
-            className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#070A14] border border-amber-500/30 transition-all hover:border-amber-400 hover:shadow-lg hover:shadow-amber-950/40 p-2 flex flex-col items-center justify-center"
+            className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#070A14] border border-amber-500/30 transition-colors hover:border-amber-400 hover: hover: p-2 flex flex-col items-center justify-center"
           >
             <img
               src="/images/entity-weak.png"
@@ -228,7 +228,7 @@ export default function Lesson5Part2Entity() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div>
@@ -240,7 +240,7 @@ export default function Lesson5Part2Entity() {
               </div>
               <button
                 onClick={() => setModalImage(null)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>

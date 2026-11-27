@@ -239,10 +239,10 @@ export default function ArrayVisualizer() {
               let badge = '';
 
               if (state === 'target-vacant') {
-                boxStyle = 'bg-rose-950/20 border-dashed border-rose-500/60 text-rose-400 animate-pulse';
+                boxStyle = 'bg-rose-950/20 border-dashed border-rose-500/60 text-rose-400 ';
                 badge = 'ফাঁকা ঘর';
               } else if (state === 'found') {
-                boxStyle = 'bg-emerald-950/80 border-emerald-400 text-emerald-300 shadow-md shadow-emerald-500/20 scale-105';
+                boxStyle = 'bg-emerald-950/80 border-emerald-400 text-emerald-300   scale-105';
                 badge = 'লক্ষ্য';
               } else if (state === 'comparing') {
                 boxStyle = 'bg-amber-950/80 border-amber-400 text-amber-300 scale-105';
@@ -256,7 +256,7 @@ export default function ArrayVisualizer() {
               }
 
               return (
-                <div key={idx} className="flex flex-col items-center relative transition-all duration-300">
+                <div key={idx} className="flex flex-col items-center relative transition-colors duration-300">
                   {/* Active Pointer */}
                   {isPointer && (
                     <div className="absolute -top-6 flex flex-col items-center z-10 animate-bounce">
@@ -272,7 +272,7 @@ export default function ArrayVisualizer() {
 
                   {/* Cell Box */}
                   <div
-                    className={`w-14 h-14 rounded-xl border-2 flex flex-col items-center justify-center transition-all ${boxStyle}`}
+                    className={`w-14 h-14 rounded-xl border-2 flex flex-col items-center justify-center transition-colors ${boxStyle}`}
                   >
                     <span className="text-base font-bold font-mono">
                       {cell.val !== null ? cell.val : '—'}

@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function QuickSortCodeView() {
   return (
-    <div className="rounded-2xl bg-[#080d14] border border-[#182838] p-5 shadow-xl space-y-3">
+    <div className="rounded-2xl bg-[#080d14] border border-[#182838] p-5 space-y-3">
       <h3 className="text-sm font-bold text-white flex items-center gap-2">
         <span>TypeScript লোমুটো পার্টিশন (Lomuto Partition) কোড</span>
       </h3>

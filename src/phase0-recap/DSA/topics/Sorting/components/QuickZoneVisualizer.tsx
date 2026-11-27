@@ -20,7 +20,7 @@ export default function QuickZoneVisualizer({ step }: QuickZoneVisualizerProps) 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 py-4">
         {/* Left Zone (< Pivot) */}
         <div className="p-4 rounded-2xl bg-indigo-950/30 border border-indigo-700/50 flex flex-col items-center justify-center min-h-[110px] space-y-2">
-          <span className="text-[10px] font-mono text-indigo-400 uppercase font-bold tracking-wider">
+          <span className="text-[10px] font-mono text-indigo-400 uppercase font-bold">
             Left Zone (&lt; Pivot)
           </span>
           <div className="flex items-center gap-2">
@@ -37,18 +37,18 @@ export default function QuickZoneVisualizer({ step }: QuickZoneVisualizerProps) 
         </div>
 
         {/* Center Zone: Pivot */}
-        <div className="p-4 rounded-2xl bg-amber-950/40 border-2 border-amber-400 flex flex-col items-center justify-center min-h-[110px] space-y-2 shadow-lg shadow-amber-500/10">
-          <span className="text-[10px] font-mono text-amber-300 uppercase font-bold tracking-wider">
+        <div className="p-4 rounded-2xl bg-amber-950/40 border-2 border-amber-400 flex flex-col items-center justify-center min-h-[110px] space-y-2">
+          <span className="text-[10px] font-mono text-amber-300 uppercase font-bold">
             🎯 মূল পিভট (Pivot)
           </span>
-          <div className="text-2xl font-mono font-black text-white">
+          <div className="text-2xl font-mono font-semibold text-white">
             {step.pivotVal > 0 ? step.pivotVal : '✓'}
           </div>
         </div>
 
         {/* Right Zone (> Pivot) */}
         <div className="p-4 rounded-2xl bg-rose-950/30 border border-rose-700/50 flex flex-col items-center justify-center min-h-[110px] space-y-2">
-          <span className="text-[10px] font-mono text-rose-400 uppercase font-bold tracking-wider">
+          <span className="text-[10px] font-mono text-rose-400 uppercase font-bold">
             Right Zone (&gt; Pivot)
           </span>
           <div className="flex items-center gap-2">

@@ -32,7 +32,7 @@ export default function PgVectorControls({
           <button
             key={idx}
             onClick={() => onSelectPreset(p)}
-            className={`px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer ${
+            className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors cursor-pointer ${
               queryText === p.text
                 ? 'bg-cyan-500 text-slate-950 font-bold shadow'
                 : 'bg-[#181a28] text-zinc-300 hover:text-zinc-100 border border-[#23273d]'
@@ -50,7 +50,7 @@ export default function PgVectorControls({
           <button
             key={m}
             onClick={() => setMetric(m)}
-            className={`px-2.5 py-1 rounded-md font-mono transition-all text-xs cursor-pointer ${
+            className={`px-2.5 py-1 rounded-md font-mono transition-colors text-xs cursor-pointer ${
               metric === m
                 ? 'bg-cyan-600 text-white font-bold shadow'
                 : 'text-zinc-400 hover:text-zinc-200'
@@ -68,7 +68,7 @@ export default function PgVectorControls({
           <button
             key={idxType}
             onClick={() => setIndexType(idxType)}
-            className={`px-2.5 py-1 rounded-md font-mono transition-all text-xs cursor-pointer ${
+            className={`px-2.5 py-1 rounded-md font-mono transition-colors text-xs cursor-pointer ${
               indexType === idxType
                 ? 'bg-indigo-600 text-white font-bold shadow'
                 : 'text-zinc-400 hover:text-zinc-200'
@@ -83,7 +83,7 @@ export default function PgVectorControls({
       <button
         onClick={onSearch}
         disabled={isSearching}
-        className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-md shadow-cyan-500/20 transition-all cursor-pointer"
+        className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-colors cursor-pointer"
       >
         <Search className="w-4 h-4" /> Run Vector Search
       </button>

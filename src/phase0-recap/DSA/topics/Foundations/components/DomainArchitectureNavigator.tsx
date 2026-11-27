@@ -9,7 +9,7 @@ export default function DomainArchitectureNavigator() {
   const selectedDomainData = DOMAINS.find((d) => d.id === activeDomain) || DOMAINS[0];
 
   return (
-    <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+    <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#1b1f33] pb-4">
         <div className="space-y-1">
           <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
@@ -32,9 +32,9 @@ export default function DomainArchitectureNavigator() {
             <button
               key={domain.id}
               onClick={() => setActiveDomain(domain.id)}
-              className={`p-4 rounded-2xl border text-left flex flex-col justify-between space-y-3 transition-all cursor-pointer ${
+              className={`p-4 rounded-2xl border text-left flex flex-col justify-between space-y-3 transition-colors cursor-pointer ${
                 isSelected
-                  ? 'bg-[#181d33] border-amber-500/60 shadow-lg shadow-amber-500/10'
+                  ? 'bg-[#181d33] border-amber-500/60  '
                   : 'bg-[#101322] border-[#1c2238] hover:bg-[#141829] text-zinc-400 hover:text-zinc-200'
               }`}
             >
@@ -64,7 +64,7 @@ export default function DomainArchitectureNavigator() {
       <div className="bg-[#090b14] border border-[#1d2238] rounded-2xl p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         {/* Left Diagram */}
         <div className="lg:col-span-5 bg-[#0e101c] border border-[#232a45] rounded-xl p-4 flex flex-col items-center justify-center min-h-[220px]">
-          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider mb-2">
+          <span className="text-[10px] font-mono text-zinc-500 mb-2">
             তুলনামূলক চিত্র (Visual Preview)
           </span>
 

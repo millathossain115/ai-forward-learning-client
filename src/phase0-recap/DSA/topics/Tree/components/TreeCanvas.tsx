@@ -37,7 +37,7 @@ export default function TreeCanvas({
   return (
     <div className="min-h-[380px] bg-[#07080e] rounded-xl border border-[#1a1d2e] p-4 flex flex-col items-center justify-center relative overflow-x-auto">
       {/* Integrated Playback Controls (Top-Left Corner) */}
-      <div className="absolute top-3 left-3 z-10 bg-[#0d101d]/90 backdrop-blur border border-[#1e243a] p-1.5 rounded-lg flex items-center gap-2 shadow-lg">
+      <div className="absolute top-3 left-3 z-10 bg-[#0d101d]/90 backdrop-blur border border-[#1e243a] p-1.5 rounded-lg flex items-center gap-2">
         {/* Step Back */}
         <button
           onClick={onStepBack}
@@ -52,7 +52,7 @@ export default function TreeCanvas({
         <button
           onClick={onPlayPause}
           disabled={steps.length === 0 || currentStepIndex >= steps.length - 1}
-          className="flex items-center gap-1.5 px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-30 text-xs font-mono text-slate-950 font-bold shadow transition-all cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-30 text-xs font-mono text-slate-950 font-bold shadow transition-colors cursor-pointer"
         >
           {isPlaying ? (
             <>
@@ -136,7 +136,7 @@ export default function TreeCanvas({
                   }
                   strokeWidth={isActiveEdge ? 3.5 : isTraversed ? 2.5 : 2}
                   strokeDasharray={isActiveEdge ? '6,3' : 'none'}
-                  className={isActiveEdge ? 'animate-pulse' : ''}
+                  className={isActiveEdge ? '' : ''}
                 />
                 {/* Directional Inequality Pill (e.g., < or >) */}
                 <rect
@@ -176,7 +176,7 @@ export default function TreeCanvas({
             const visitIndex = currentStep?.visitedPath.indexOf(n.val);
 
             return (
-              <g key={`node-${n.val}`} className="transition-all duration-300">
+              <g key={`node-${n.val}`} className="transition-colors duration-300">
                 {/* Outer Glow Ring for Current / Found */}
                 {(isCurrent || isFound || isNewlyInserted) && (
                   <circle

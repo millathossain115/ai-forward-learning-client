@@ -99,16 +99,15 @@ export default function SearchingTopic() {
   return (
     <div className="flex flex-col gap-10 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#12192a] via-[#0d121f] to-[#070912] border border-[#212c48] p-6 md:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#212c48] p-6 md:p-8">
         <div className="relative z-10 space-y-3">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 font-bold">
               Topic 12 • Core Search Algorithms
             </span>
             <span className="text-xs text-zinc-500 font-mono">Sequential O(N) vs Divide &amp; Conquer O(log N)</span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white">
             সার্চিং অ্যালগরিদম: লিনিয়ার ও বাইনারি সার্চ
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-3xl leading-relaxed">
@@ -121,7 +120,7 @@ export default function SearchingTopic() {
       {/* 2. Clear Conceptual Definition Cards: What is Linear & What is Binary? */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Card 1: Linear Search */}
-        <div className="p-6 rounded-3xl bg-[#0f111a] border border-[#1e2233] space-y-4 shadow-xl">
+        <div className="p-6 rounded-3xl bg-[#0f111a] border border-[#1e2233] space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5 text-rose-400">
               <div className="w-8 h-8 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center font-bold">
@@ -155,7 +154,7 @@ export default function SearchingTopic() {
         </div>
 
         {/* Card 2: Binary Search */}
-        <div className="p-6 rounded-3xl bg-[#0f111a] border border-[#1e2233] space-y-4 shadow-xl">
+        <div className="p-6 rounded-3xl bg-[#0f111a] border border-[#1e2233] space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5 text-emerald-400">
               <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center font-bold">
@@ -190,7 +189,7 @@ export default function SearchingTopic() {
       </div>
 
       {/* 3. INTERACTIVE SIMULATION LAB */}
-      <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+      <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-[#1b1f33] pb-4">
           <div className="space-y-1">
             <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
@@ -206,7 +205,7 @@ export default function SearchingTopic() {
           <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#090b14] border border-[#1d2238]">
             <button
               onClick={() => handleModeChange('binary')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer ${
                 activeMode === 'binary'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
@@ -216,7 +215,7 @@ export default function SearchingTopic() {
             </button>
             <button
               onClick={() => handleModeChange('linear')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer ${
                 activeMode === 'linear'
                   ? 'bg-rose-600 text-white shadow'
                   : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
@@ -226,7 +225,7 @@ export default function SearchingTopic() {
             </button>
             <button
               onClick={() => handleModeChange('race')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer ${
                 activeMode === 'race'
                   ? 'bg-sky-600 text-white shadow'
                   : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
@@ -260,7 +259,7 @@ export default function SearchingTopic() {
               <button
                 key={num}
                 onClick={() => handleTargetChange(num)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer border ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-colors cursor-pointer border ${
                   target === num
                     ? 'bg-sky-500/20 border-sky-400 text-sky-200 font-bold'
                     : 'bg-[#121524] border-[#1f2642] text-zinc-400 hover:text-zinc-200'
@@ -276,7 +275,7 @@ export default function SearchingTopic() {
         <div className="bg-[#080911] border border-[#1d2238] rounded-2xl p-6 relative overflow-hidden min-h-[380px] flex flex-col justify-between space-y-6">
           {/* Integrated Playback Controls */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#1b1f33]">
-            <div className="bg-[#0d101e]/90 backdrop-blur-md border border-[#212742] p-1.5 rounded-xl flex items-center gap-2 shadow-xl">
+            <div className="bg-[#0d101e]/90 backdrop-blur-md border border-[#212742] p-1.5 rounded-xl flex items-center gap-2">
               {/* Step Back */}
               <button
                 onClick={() => {
@@ -299,7 +298,7 @@ export default function SearchingTopic() {
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
                 disabled={isAtEnd}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold text-xs font-mono transition-all cursor-pointer shadow ${
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold text-xs font-mono transition-colors cursor-pointer shadow ${
                   isPlaying
                     ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
                     : 'bg-emerald-600 hover:bg-emerald-500 text-slate-950'

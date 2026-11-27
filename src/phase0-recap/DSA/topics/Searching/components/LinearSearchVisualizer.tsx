@@ -47,11 +47,11 @@ export default function LinearSearchVisualizer({ currentStep, stepIdx }: LinearS
             return (
               <div
                 key={i}
-                className={`h-14 rounded-xl border font-mono flex flex-col items-center justify-center transition-all ${
+                className={`h-14 rounded-xl border font-mono flex flex-col items-center justify-center transition-colors ${
                   isFound
-                    ? 'bg-emerald-500 text-slate-950 font-black ring-4 ring-emerald-500/40 scale-105 shadow-xl'
+                    ? 'bg-emerald-500 text-slate-950 font-semibold ring-4 ring-emerald-500/40 scale-105 '
                     : isCurrent
-                    ? 'bg-rose-500 text-white font-black ring-4 ring-rose-500/30 scale-105 shadow-lg'
+                    ? 'bg-rose-500 text-white font-semibold ring-4 ring-rose-500/30 scale-105 '
                     : isPassed
                     ? 'bg-[#0b0d18] border-[#181d30] text-zinc-500 opacity-40'
                     : 'bg-[#13172b] border-[#293354] text-zinc-100 font-bold'

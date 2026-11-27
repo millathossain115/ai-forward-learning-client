@@ -39,8 +39,8 @@ export default function Lesson11Part5Backups() {
           <button
             key={b.id}
             onClick={() => setBackupTab(b.id)}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              backupTab === b.id ? 'bg-cyan-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              backupTab === b.id ? 'bg-cyan-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {b.label}

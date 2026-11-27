@@ -36,16 +36,16 @@ export default function Lesson10Part4TreesAndHash() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setTreeTab('bplus')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            treeTab === 'bplus' ? 'bg-emerald-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            treeTab === 'bplus' ? 'bg-emerald-600 text-white ' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
           }`}
         >
           B+ Tree (Industry Standard)
         </button>
         <button
           onClick={() => setTreeTab('btree')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            treeTab === 'btree' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            treeTab === 'btree' ? 'bg-indigo-600 text-white ' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
           }`}
         >
           Standard B-Tree

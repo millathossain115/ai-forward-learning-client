@@ -188,7 +188,7 @@ SELECT * FROM CoursePath;`;
                 <button
                   key={d}
                   onClick={() => setRecursiveStep(d)}
-                  className={`px-2.5 py-1 rounded text-[11px] font-mono font-bold cursor-pointer transition-all ${
+                  className={`px-2.5 py-1 rounded text-[11px] font-mono font-bold cursor-pointer transition-colors ${
                     recursiveStep === d
                       ? 'bg-cyan-600 text-white'
                       : 'bg-slate-800 text-zinc-400 hover:text-white'
@@ -314,9 +314,9 @@ SELECT * FROM CoursePath;`;
             <button
               key={op}
               onClick={() => setActiveSetOp(op)}
-              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-colors cursor-pointer ${
                 activeSetOp === op
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-white  '
                   : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
               }`}
             >
@@ -423,9 +423,9 @@ SELECT * FROM CoursePath;`;
             <button
               key={cat}
               onClick={() => setActiveFunctionCat(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold capitalize cursor-pointer transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold capitalize cursor-pointer transition-colors ${
                 activeFunctionCat === cat
-                  ? 'bg-emerald-600 text-white shadow-lg'
+                  ? 'bg-emerald-600 text-white '
                   : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
               }`}
             >

@@ -29,14 +29,14 @@ import RecursionInspector from './components/RecursionInspector';
 
 const BacktrackingVisualizer = dynamic(() => import('./components/BacktrackingVisualizer'), {
   loading: () => (
-    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading backtracking visualizer...
     </div>
   )
 });
 const FibonacciVisualizer = dynamic(() => import('./components/FibonacciVisualizer'), {
   loading: () => (
-    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading tree visualizer...
     </div>
   )
@@ -107,16 +107,15 @@ export default function RecursionTopic() {
   return (
     <div className="flex flex-col gap-6 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#16122a] via-[#100d20] to-[#080711] border border-[#2d224d] p-6 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#2d224d] p-6">
         <div className="relative z-10 space-y-2">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-500/35 text-purple-300 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-500/35 text-purple-300 font-bold">
               Topic 13 • Core Recursion &amp; Backtracking
             </span>
             <span className="text-xs text-zinc-500 font-mono">Base Case Anchor • Choose &amp; Unchoose • Call Stack</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
             রিকার্শন ও ব্যাকট্র্যাকিং: মূল ভিত্তি ও সিমুলেটর
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-4xl leading-relaxed">
@@ -127,7 +126,7 @@ export default function RecursionTopic() {
 
       {/* 2. Definition Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-4 rounded-2xl bg-[#0c0e18] border border-[#202742] space-y-2 shadow-lg">
+        <div className="p-4 rounded-2xl bg-[#0c0e18] border border-[#202742] space-y-2">
           <div className="flex items-center gap-2 text-purple-400">
             <RefreshCw className="w-4 h-4" />
             <h3 className="font-bold text-sm text-white">১. রিকার্শন (Recursion)</h3>
@@ -140,7 +139,7 @@ export default function RecursionTopic() {
           </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#0c0e18] border border-[#202742] space-y-2 shadow-lg">
+        <div className="p-4 rounded-2xl bg-[#0c0e18] border border-[#202742] space-y-2">
           <div className="flex items-center gap-2 text-amber-400">
             <ShieldAlert className="w-4 h-4" />
             <h3 className="font-bold text-sm text-white">২. বেস কেস (Base Case)</h3>
@@ -153,7 +152,7 @@ export default function RecursionTopic() {
           </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#0c0e18] border border-[#202742] space-y-2 shadow-lg">
+        <div className="p-4 rounded-2xl bg-[#0c0e18] border border-[#202742] space-y-2">
           <div className="flex items-center gap-2 text-rose-400">
             <Undo2 className="w-4 h-4" />
             <h3 className="font-bold text-sm text-white">৩. ব্যাকট্র্যাকিং (Backtracking)</h3>
@@ -168,13 +167,13 @@ export default function RecursionTopic() {
       </div>
 
       {/* 3. Studio Mode Navigation Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-[#0d0f1a] border border-[#22273e] p-2.5 rounded-2xl shadow-xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-[#0d0f1a] border border-[#22273e] p-2.5 rounded-2xl">
         <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-[#07080f] border border-[#1a1e30]">
           <button
             onClick={() => handleModeChange('base_case')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors cursor-pointer ${
               activeMode === 'base_case'
-                ? 'bg-amber-600 text-white shadow-md'
+                ? 'bg-amber-600 text-white '
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
             }`}
           >
@@ -184,9 +183,9 @@ export default function RecursionTopic() {
 
           <button
             onClick={() => handleModeChange('backtracking')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors cursor-pointer ${
               activeMode === 'backtracking'
-                ? 'bg-rose-600 text-white shadow-md'
+                ? 'bg-rose-600 text-white '
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
             }`}
           >
@@ -196,9 +195,9 @@ export default function RecursionTopic() {
 
           <button
             onClick={() => handleModeChange('fibonacci')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors cursor-pointer ${
               activeMode === 'fibonacci'
-                ? 'bg-purple-600 text-white shadow-md'
+                ? 'bg-purple-600 text-white '
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
             }`}
           >
@@ -219,7 +218,7 @@ export default function RecursionTopic() {
                     setCurrentStepIdx(0);
                     setIsPlaying(false);
                   }}
-                  className={`px-2 py-0.5 rounded-md transition-all cursor-pointer font-bold ${
+                  className={`px-2 py-0.5 rounded-md transition-colors cursor-pointer font-bold ${
                     factN === n
                       ? 'bg-amber-600 text-white shadow'
                       : 'text-zinc-400 hover:text-zinc-200'
@@ -237,10 +236,10 @@ export default function RecursionTopic() {
                 setCurrentStepIdx(0);
                 setIsPlaying(false);
               }}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-mono border transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-mono border transition-colors cursor-pointer ${
                 hasBaseCase
                   ? 'bg-emerald-950/60 border-emerald-500 text-emerald-300'
-                  : 'bg-rose-950/80 border-rose-500 text-rose-300 font-bold animate-pulse'
+                  : 'bg-rose-950/80 border-rose-500 text-rose-300 font-bold '
               }`}
             >
               <AlertTriangle className="w-3.5 h-3.5" />
@@ -271,7 +270,7 @@ export default function RecursionTopic() {
                 setIsPlaying(!isPlaying);
               }
             }}
-            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all cursor-pointer shadow ${
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-colors cursor-pointer shadow ${
               isPlaying
                 ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
                 : isAtEnd
@@ -321,7 +320,7 @@ export default function RecursionTopic() {
             <Clock className="w-3 h-3 text-zinc-400 ml-1" />
             <button
               onClick={() => setSpeedMode('slow')}
-              className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded-md transition-colors cursor-pointer ${
                 speedMode === 'slow'
                   ? 'bg-purple-600/50 text-purple-200 font-bold border border-purple-500/40'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -332,7 +331,7 @@ export default function RecursionTopic() {
             </button>
             <button
               onClick={() => setSpeedMode('normal')}
-              className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded-md transition-colors cursor-pointer ${
                 speedMode === 'normal'
                   ? 'bg-purple-600/50 text-purple-200 font-bold border border-purple-500/40'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -352,7 +351,7 @@ export default function RecursionTopic() {
       {/* 4. Main Simulation Arena */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         {/* Left Visual Stage */}
-        <div className="lg:col-span-8 bg-[#090b14] border border-[#1e2338] rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[490px] shadow-2xl relative overflow-hidden space-y-5">
+        <div className="lg:col-span-8 bg-[#090b14] border border-[#1e2338] rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[490px] relative overflow-hidden space-y-5">
           {activeMode === 'base_case' && (
             <BaseCaseVisualizer
               currentBaseStep={currentBaseStep}
@@ -380,7 +379,7 @@ export default function RecursionTopic() {
           )}
 
           {/* Unified Step Explanation Card */}
-          <div className="p-4 rounded-2xl bg-[#0b0e1a] border border-[#1b2238] shadow-lg space-y-1">
+          <div className="p-4 rounded-2xl bg-[#0b0e1a] border border-[#1b2238] space-y-1">
             <div className="flex items-center gap-2 text-xs font-mono">
               <span className="text-zinc-400">ধাপ {currentStepIdx + 1}:</span>
               <span className="text-white font-bold">

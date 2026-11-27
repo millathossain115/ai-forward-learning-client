@@ -14,13 +14,12 @@ export default function Lesson3Hero({ onNavigate }: Lesson3HeroProps) {
   const { language } = useLanguage();
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#12162a] via-[#0d1020] to-[#070810] border border-[#202744] p-6 md:p-8 shadow-2xl">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#202744] p-6 md:p-8">
 
       {/* Top Banner Actions: Lesson Status */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800/60">
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold flex items-center gap-1.5">
+          <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
             {language === 'bn'
               ? 'লেসন ৩ • রিলেশনাল ডেটাবেস ভিত্তি'
@@ -36,7 +35,7 @@ export default function Lesson3Hero({ onNavigate }: Lesson3HeroProps) {
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="space-y-3 flex-1">
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
             <DualText
               en="Lesson 3: Introduction to Relational Databases"
               bn="লেসন ৩: রিলেশনাল ডেটাবেসের মৌলিক পরিচিতি ও গাণিতিক টার্মিনোলজি"
@@ -54,7 +53,7 @@ export default function Lesson3Hero({ onNavigate }: Lesson3HeroProps) {
         <div className="flex flex-col sm:flex-row md:flex-col items-end gap-2 shrink-0">
           <button
             onClick={() => onNavigate?.('backend-lesson4')}
-            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-600/20 cursor-pointer"
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <KeyRound className="w-4 h-4" />
             <span>
@@ -64,7 +63,7 @@ export default function Lesson3Hero({ onNavigate }: Lesson3HeroProps) {
           </button>
           <button
             onClick={() => onNavigate?.('backend-lesson2')}
-            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer border border-slate-700"
+            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-slate-700"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>{language === 'bn' ? 'লেসন ২-এ ফিরে যান' : 'Back to Lesson 2'}</span>

@@ -23,7 +23,7 @@ import {
 } from './utils/sortingOverviewTraces';
 
 const TabFallback = () => (
-  <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+  <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500">
     Loading visualizer...
   </div>
 );
@@ -45,7 +45,7 @@ const QuickZoneVisualizer = dynamic(() => import('./components/QuickZoneVisualiz
 });
 const ComplexityGrowthTable = dynamic(() => import('./components/ComplexityGrowthTable'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading table...
     </div>
   )
@@ -102,16 +102,15 @@ export default function SortingTopic() {
   return (
     <div className="flex flex-col gap-10 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1429] via-[#100d1c] to-[#080710] border border-[#33224f] p-6 md:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#33224f] p-6 md:p-8">
         <div className="relative z-10 space-y-3">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
               Topic 13 • Sorting Algorithms
             </span>
             <span className="text-xs text-zinc-500 font-mono">Dedicated Visual Metaphors</span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white">
             সর্টিং অ্যালগরিদম: নিজস্ব মেকানিজম ও ভিজ্যুয়াল সিমুলেশন
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-3xl leading-relaxed">
@@ -123,7 +122,7 @@ export default function SortingTopic() {
       {/* 2. THE 5 DEDICATED ALGORITHM SELECTOR CARDS */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold flex items-center gap-2">
+          <span className="text-xs font-mono text-zinc-400 font-semibold flex items-center gap-2">
             <Layers className="w-4 h-4 text-amber-400" />
             <span>সর্টিং অ্যালগরিদম বেছে নিন (Choose Algorithm):</span>
           </span>
@@ -137,9 +136,9 @@ export default function SortingTopic() {
               <button
                 key={item.id}
                 onClick={() => handleSelectAlgo(item.id)}
-                className={`p-3.5 rounded-2xl border text-left flex flex-col justify-between space-y-2.5 transition-all cursor-pointer ${
+                className={`p-3.5 rounded-2xl border text-left flex flex-col justify-between space-y-2.5 transition-colors cursor-pointer ${
                   isSelected
-                    ? 'bg-[#18152e] border-amber-500/80 shadow-lg shadow-amber-500/15'
+                    ? 'bg-[#18152e] border-amber-500/80  '
                     : 'bg-[#0f111a] border-[#1d2235] hover:border-[#2f3856] text-zinc-400 hover:text-zinc-200'
                 }`}
               >
@@ -176,7 +175,7 @@ export default function SortingTopic() {
       </div>
 
       {/* 3. DEDICATED VISUAL CANVAS FOR THE SELECTED ALGORITHM */}
-      <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+      <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6">
         {/* Top Control Overlay & Context */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1b1f33] pb-4">
           <div className="space-y-1">
@@ -188,7 +187,7 @@ export default function SortingTopic() {
           </div>
 
           {/* Integrated Playback Controls */}
-          <div className="bg-[#0d101e]/90 backdrop-blur-md border border-[#212742] p-1.5 rounded-xl flex items-center gap-2 shadow-xl">
+          <div className="bg-[#0d101e]/90 backdrop-blur-md border border-[#212742] p-1.5 rounded-xl flex items-center gap-2">
             {/* Step Back */}
             <button
               onClick={() => {
@@ -206,7 +205,7 @@ export default function SortingTopic() {
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               disabled={isAtEnd}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold text-xs font-mono transition-all cursor-pointer shadow ${
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold text-xs font-mono transition-colors cursor-pointer shadow ${
                 isPlaying
                   ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
                   : 'bg-emerald-600 hover:bg-emerald-500 text-slate-950'

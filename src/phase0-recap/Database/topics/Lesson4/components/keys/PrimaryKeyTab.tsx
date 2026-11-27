@@ -96,7 +96,7 @@ export default function PrimaryKeyTab() {
   };
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-amber-500/40 space-y-6 animate-in fade-in duration-200 shadow-xl">
+        <div className="p-6 rounded-2xl bg-[#13172c] border border-amber-500/40 space-y-6 animate-in fade-in duration-200">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
             <div>
@@ -172,7 +172,7 @@ export default function PrimaryKeyTab() {
               {pkStudents.length > initialPkStudents.length && (
                 <button
                   onClick={handleResetPkTable}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer border border-slate-700 shrink-0"
+                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border border-slate-700 shrink-0"
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
                   <span>{language === 'bn' ? 'টেবিল রিসেট করুন' : 'Reset Table'}</span>
@@ -189,7 +189,7 @@ export default function PrimaryKeyTab() {
                 <button
                   type="button"
                   onClick={() => executePkTest('101', 'Sabbir')}
-                  className="px-3 py-1.5 rounded-lg bg-rose-950/40 hover:bg-rose-900/50 border border-rose-500/50 text-rose-300 cursor-pointer transition-all flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-rose-950/40 hover:bg-rose-900/50 border border-rose-500/50 text-rose-300 cursor-pointer transition-colors flex items-center gap-1.5"
                 >
                   <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping" />
                   <span>{language === 'bn' ? '🔴 টেস্ট ১: ডুপ্লিকেট ID (101 ইনসার্ট করুন)' : '🔴 Test 1: Duplicate ID (101)'}</span>
@@ -198,7 +198,7 @@ export default function PrimaryKeyTab() {
                 <button
                   type="button"
                   onClick={() => executePkTest('', 'Fahim')}
-                  className="px-3 py-1.5 rounded-lg bg-amber-950/40 hover:bg-amber-900/50 border border-amber-500/50 text-amber-300 cursor-pointer transition-all flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-amber-950/40 hover:bg-amber-900/50 border border-amber-500/50 text-amber-300 cursor-pointer transition-colors flex items-center gap-1.5"
                 >
                   <span className="w-2 h-2 rounded-full bg-amber-400" />
                   <span>{language === 'bn' ? '🟡 টেস্ট ২: ফাঁকা / NULL ID ইনসার্ট' : '🟡 Test 2: NULL / Empty ID'}</span>
@@ -207,7 +207,7 @@ export default function PrimaryKeyTab() {
                 <button
                   type="button"
                   onClick={() => executePkTest('105', 'Tanvir')}
-                  className="px-3 py-1.5 rounded-lg bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/50 text-emerald-300 cursor-pointer transition-all flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/50 text-emerald-300 cursor-pointer transition-colors flex items-center gap-1.5"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
                   <span>{language === 'bn' ? '🟢 টেস্ট ৩: নতুন ইউনিক ID (105 ইনসার্ট করুন)' : '🟢 Test 3: Valid New ID (105)'}</span>
@@ -216,7 +216,7 @@ export default function PrimaryKeyTab() {
                 <button
                   type="button"
                   onClick={handleResetPkTable}
-                  className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-zinc-400 hover:text-white cursor-pointer transition-all flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-zinc-400 hover:text-white cursor-pointer transition-colors flex items-center gap-1.5"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{language === 'bn' ? 'রিসেট' : 'Reset'}</span>
@@ -247,7 +247,7 @@ export default function PrimaryKeyTab() {
               />
               <button
                 type="submit"
-                className="px-5 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-mono text-xs font-bold cursor-pointer transition-all shadow-md shadow-amber-600/20 shrink-0 flex items-center justify-center gap-1.5"
+                className="px-5 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-mono text-xs font-bold cursor-pointer transition-colors shrink-0 flex items-center justify-center gap-1.5"
               >
                 <UserPlus className="w-4 h-4" />
                 <span>{language === 'bn' ? 'ইনসার্ট টেস্ট চালান' : 'Execute Test Insert'}</span>
@@ -257,7 +257,7 @@ export default function PrimaryKeyTab() {
             {/* Visual Constraint Feedback Notification */}
             {pkAlert && (
               <div
-                className={`p-3.5 rounded-xl border text-xs font-sans flex items-start gap-3 transition-all ${
+                className={`p-3.5 rounded-xl border text-xs font-sans flex items-start gap-3 transition-colors ${
                   pkAlert.type === 'error'
                     ? 'bg-rose-950/40 border-rose-500/50 text-rose-200'
                     : 'bg-emerald-950/40 border-emerald-500/50 text-emerald-200'
@@ -348,9 +348,9 @@ export default function PrimaryKeyTab() {
                     return (
                       <tr
                         key={student.id}
-                        className={`transition-all duration-300 ${
+                        className={`transition-colors duration-300 ${
                           isColliding
-                            ? 'bg-rose-950/50 border-2 border-rose-500 text-white font-bold animate-pulse'
+                            ? 'bg-rose-950/50 border-2 border-rose-500 text-white font-bold '
                             : isNew
                             ? 'bg-emerald-950/40 border-2 border-emerald-500 text-white font-bold'
                             : idx % 2 === 0
@@ -411,7 +411,7 @@ export default function PrimaryKeyTab() {
             </div>
 
             {/* Educational Takeaway Callout */}
-            <div className="p-3.5 rounded-xl bg-gradient-to-r from-amber-950/20 via-slate-900 to-indigo-950/20 border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
+            <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
               <span className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
                 <Layers className="w-4 h-4" />
               </span>

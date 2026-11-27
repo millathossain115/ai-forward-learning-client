@@ -12,7 +12,7 @@ export default function DijkstraQueueDistancePanel({ currentStep }: DijkstraQueu
   return (
     <div className="lg:col-span-4 flex flex-col gap-4">
       {/* Card 1: Min-Heap Priority Queue */}
-      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-3 shadow-xl">
+      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
             <Compass className="w-3.5 h-3.5 text-amber-400" />
@@ -47,7 +47,7 @@ export default function DijkstraQueueDistancePanel({ currentStep }: DijkstraQueu
       </div>
 
       {/* Card 2: Distance Table dist[] */}
-      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 shadow-xl text-xs font-mono">
+      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 text-xs font-mono">
         <span className="font-bold text-white flex items-center gap-1.5">
           <Table className="w-3.5 h-3.5 text-emerald-400" />
           <span>দূরত্ব টেবিল (Tentative Distance Table)</span>

@@ -60,7 +60,7 @@ export default function DdlTab() {
                     </pre>
                     <button
                       onClick={() => handleCopy("CREATE TABLE Student_info (\n    Roll_No INT PRIMARY KEY,\n    Name VARCHAR(30),\n    Branch VARCHAR(10)\n);", "ddl-create")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "ddl-create" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -90,7 +90,7 @@ ADD CGPA DECIMAL(3, 2);`}
                     </pre>
                     <button
                       onClick={() => handleCopy("ALTER TABLE Student_info ADD CGPA DECIMAL(3, 2);", "ddl-alter")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "ddl-alter" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -119,7 +119,7 @@ TRUNCATE TABLE Student_info;`}
                     </pre>
                     <button
                       onClick={() => handleCopy("TRUNCATE TABLE Student_info;", "ddl-truncate")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "ddl-truncate" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -148,7 +148,7 @@ DROP TABLE Student_info;`}
                     </pre>
                     <button
                       onClick={() => handleCopy("DROP TABLE Student_info;", "ddl-drop")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "ddl-drop" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -178,7 +178,7 @@ RENAME TO Students;`}
                     </pre>
                     <button
                       onClick={() => handleCopy("ALTER TABLE Student_info RENAME TO Students;", "ddl-rename")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "ddl-rename" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}

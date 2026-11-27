@@ -10,7 +10,7 @@ interface HashTableModeCardProps {
 
 export default function HashTableModeCard({ tableMode }: HashTableModeCardProps) {
   return (
-    <div className="bg-[#090a10] border border-[#1d2238] p-3 rounded-xl flex items-start gap-3 transition-all duration-300 shadow-sm">
+    <div className="bg-[#090a10] border border-[#1d2238] p-3 rounded-xl flex items-start gap-3 transition-colors duration-300">
       {tableMode === 'chaining' && (
         <div className="flex items-start gap-2.5 text-xs text-zinc-300 w-full animate-in fade-in duration-300">
           <div className="w-6 h-6 rounded-lg bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center shrink-0 mt-0.5">

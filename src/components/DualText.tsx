@@ -40,7 +40,7 @@ export default function DualText({
     return (
       <Component className={className}>
         <span className={enClassName}>{en}</span>
-        <span className={`ml-1.5 text-zinc-400 font-normal ${bnClassName}`.trim()}>({bn})</span>
+        <span className={`ml-1.5 text-[#9ca0b0] font-normal ${bnClassName}`.trim()}>({bn})</span>
       </Component>
     );
   }
@@ -53,7 +53,7 @@ export default function DualText({
     <Component className={`space-y-1 ${className}`.trim()}>
       <Inner className={`${isInlineOrTextTag ? 'block ' : ''}${enClassName}`.trim()}>{en}</Inner>
       <Inner
-        className={`${isInlineOrTextTag ? 'block ' : ''}text-xs text-indigo-300/90 font-sans border-l-2 border-indigo-500/40 pl-2.5 py-0.5 leading-relaxed ${bnClassName}`.trim()}
+        className={`${isInlineOrTextTag ? 'block ' : ''}text-xs text-[#9ca0b0] font-sans border-l-2 border-amber-500/40 pl-2.5 py-0.5 leading-relaxed ${bnClassName}`.trim()}
       >
         {bn}
       </Inner>

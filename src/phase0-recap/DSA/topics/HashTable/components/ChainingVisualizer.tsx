@@ -15,7 +15,7 @@ export default function ChainingVisualizer({ chainBuckets, pipelineState }: Chai
 
   return (
     <div className="bg-[#090a10] rounded-xl border border-[#1a1d2e] p-3.5 sm:p-4 flex flex-col gap-2.5">
-      <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider flex items-center justify-between">
+      <div className="text-[10px] font-mono text-zinc-400 flex items-center justify-between">
         <span>Bucket Array (৭টি বাকেট • ২-কলাম ভিউ)</span>
         <span className="text-pink-400">Index = hash(key) % 7</span>
       </div>
@@ -27,7 +27,7 @@ export default function ChainingVisualizer({ chainBuckets, pipelineState }: Chai
           return (
             <div
               key={bIdx}
-              className={`flex items-center gap-2 px-2.5 py-2 rounded-xl border transition-all duration-300 min-h-[46px] ${
+              className={`flex items-center gap-2 px-2.5 py-2 rounded-xl border transition-colors duration-300 min-h-[46px] ${
                 isTargetBucket
                   ? 'bg-pink-950/40 border-pink-500 ring-2 ring-pink-500/30'
                   : 'bg-[#121422] border-[#1e2236]'
@@ -48,18 +48,18 @@ export default function ChainingVisualizer({ chainBuckets, pipelineState }: Chai
                   chain.map((item, itemIdx) => {
                     let itemBadge = 'bg-[#1c1f33] border-pink-500/40 text-zinc-200';
                     if (item.state === 'inserted') {
-                      itemBadge = 'bg-cyan-500 border-cyan-300 text-slate-950 font-bold scale-105 shadow-md shadow-cyan-500/30 ring-2 ring-cyan-400';
+                      itemBadge = 'bg-cyan-500 border-cyan-300 text-slate-950 font-bold scale-105   ring-2 ring-cyan-400';
                     } else if (item.state === 'found') {
-                      itemBadge = 'bg-emerald-500 border-emerald-300 text-slate-950 font-bold scale-105 shadow-md shadow-emerald-500/30 ring-2 ring-emerald-400 animate-pulse';
+                      itemBadge = 'bg-emerald-500 border-emerald-300 text-slate-950 font-bold scale-105   ring-2 ring-emerald-400 ';
                     } else if (item.state === 'comparing') {
-                      itemBadge = 'bg-amber-500/30 border-amber-400 text-amber-300 ring-2 ring-amber-400/40 animate-pulse';
+                      itemBadge = 'bg-amber-500/30 border-amber-400 text-amber-300 ring-2 ring-amber-400/40 ';
                     }
 
                     return (
                       <React.Fragment key={item.id || itemIdx}>
                         {itemIdx > 0 && <span className="text-pink-500 font-bold text-[10px]">➔</span>}
                         <div
-                          className={`flex items-center gap-1 px-2 py-0.5 rounded-lg border text-[11px] font-mono transition-all duration-300 shrink-0 ${itemBadge}`}
+                          className={`flex items-center gap-1 px-2 py-0.5 rounded-lg border text-[11px] font-mono transition-colors duration-300 shrink-0 ${itemBadge}`}
                         >
                           <span className="font-semibold text-pink-300">{item.key}</span>
                           <span className="opacity-50">:</span>

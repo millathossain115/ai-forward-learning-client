@@ -32,7 +32,7 @@ export default function GraphTypesSimulator({
   weightedEnd,
 }: GraphTypesSimulatorProps) {
   return (
-    <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6 shadow-xl">
+    <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1b1f30] pb-4">
         <div className="space-y-1">
           <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
@@ -48,9 +48,9 @@ export default function GraphTypesSimulator({
         <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#090b14] border border-[#1d2238]">
           <button
             onClick={() => setActiveType('undirected')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeType === 'undirected'
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white '
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
             }`}
           >
@@ -59,9 +59,9 @@ export default function GraphTypesSimulator({
           </button>
           <button
             onClick={() => setActiveType('directed')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeType === 'directed'
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white '
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
             }`}
           >
@@ -70,9 +70,9 @@ export default function GraphTypesSimulator({
           </button>
           <button
             onClick={() => setActiveType('weighted')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
               activeType === 'weighted'
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white '
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
             }`}
           >
@@ -115,7 +115,7 @@ export default function GraphTypesSimulator({
                       stroke={isConnected ? '#818cf8' : '#27304a'}
                       strokeWidth={isConnected ? '3' : '2'}
                       strokeDasharray={isConnected ? '6 4' : undefined}
-                      className={isConnected ? 'animate-pulse' : ''}
+                      className={isConnected ? '' : ''}
                     />
                   </g>
                 );
@@ -205,7 +205,7 @@ export default function GraphTypesSimulator({
                     stroke={isOutgoing ? '#38bdf8' : '#232d45'}
                     strokeWidth={isOutgoing ? '3' : '2'}
                     markerEnd={isOutgoing ? 'url(#arrowhead)' : 'url(#arrowheadInactive)'}
-                    className={isOutgoing ? 'transition-all duration-300' : ''}
+                    className={isOutgoing ? 'transition-colors duration-300' : ''}
                   />
                 );
               })}
@@ -347,7 +347,7 @@ export default function GraphTypesSimulator({
             <div className="p-5 rounded-2xl bg-[#111424] border border-[#232a45] space-y-3">
               <div className="flex items-center gap-2 text-indigo-400">
                 <ArrowLeftRight className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold">
                   ১. আনডিরেক্টেড গ্রাফ (Undirected Graph)
                 </span>
               </div>
@@ -369,7 +369,7 @@ export default function GraphTypesSimulator({
             <div className="p-5 rounded-2xl bg-[#111424] border border-[#232a45] space-y-3">
               <div className="flex items-center gap-2 text-sky-400">
                 <ArrowRight className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold">
                   ২. ডিরেক্টেড গ্রাফ (Directed Graph / Digraph)
                 </span>
               </div>
@@ -391,7 +391,7 @@ export default function GraphTypesSimulator({
             <div className="p-5 rounded-2xl bg-[#111424] border border-[#232a45] space-y-3">
               <div className="flex items-center gap-2 text-amber-400">
                 <Route className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold">
                   ৩. ওয়েটেড গ্রাফ (Weighted Graph)
                 </span>
               </div>

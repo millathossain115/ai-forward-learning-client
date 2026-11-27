@@ -41,9 +41,9 @@ export default function SubqueryTypesSection() {
             <button
               key={t.id}
               onClick={() => setActiveSubqueryType(t.id as 'single' | 'multiple_row' | 'multiple_col' | 'correlated')}
-              className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+              className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
                 activeSubqueryType === t.id
-                  ? 'bg-purple-600/20 border-purple-400 text-white shadow-lg'
+                  ? 'bg-purple-600/20 border-purple-400 text-white '
                   : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
               }`}
             >

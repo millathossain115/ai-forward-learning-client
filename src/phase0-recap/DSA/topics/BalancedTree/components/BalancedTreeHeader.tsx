@@ -7,7 +7,7 @@ export default function BalancedTreeHeader() {
   return (
     <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-5">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-500 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-sky-500/20">
+        <div className="w-10 h-10 rounded-xl bg-[#15171e] text-slate-950 flex items-center justify-center font-bold">
           <Scale className="w-5 h-5" />
         </div>
         <div>
@@ -58,7 +58,7 @@ export default function BalancedTreeHeader() {
         {/* Center: Balance Transformation Arrow */}
         <div className="flex flex-col items-center justify-center text-zinc-500 font-mono text-xs">
           <span className="text-sky-400 font-bold mb-1">Self-Balancing</span>
-          <div className="w-10 h-10 rounded-full bg-[#151928] border border-[#232b45] flex items-center justify-center text-sky-400 shadow-md">
+          <div className="w-10 h-10 rounded-full bg-[#151928] border border-[#232b45] flex items-center justify-center text-sky-400">
             <RefreshCw className="w-5 h-5 animate-spin" style={{ animationDuration: '8s' }} />
           </div>
           <span className="text-[10px] text-zinc-400 mt-1">Rotations</span>

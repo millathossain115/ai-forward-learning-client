@@ -33,16 +33,16 @@ export default function Lesson12Part5CapConsistency() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setCapMode('CP')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            capMode === 'CP' ? 'bg-cyan-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            capMode === 'CP' ? 'bg-cyan-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
           }`}
         >
           CP (Consistency + Partition Tolerance)
         </button>
         <button
           onClick={() => setCapMode('AP')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            capMode === 'AP' ? 'bg-emerald-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            capMode === 'AP' ? 'bg-emerald-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
           }`}
         >
           AP (Availability + Partition Tolerance)

@@ -177,7 +177,7 @@ export default function DatabasePlayground() {
             <button
               onClick={() => runQuery()}
               disabled={isRunning}
-              className="absolute bottom-4 right-4 flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-xs font-medium text-white transition-colors shadow-lg shadow-indigo-600/30"
+              className="absolute bottom-4 right-4 flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-xs font-medium text-white transition-colors"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
               {isRunning ? 'Executing...' : 'Run Query'}

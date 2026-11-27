@@ -16,7 +16,7 @@ export default function RamSimulationCanvas() {
   }, [isPlaying]);
 
   return (
-    <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+    <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1b1f33] pb-4">
         <div className="space-y-1">
           <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
@@ -144,7 +144,7 @@ export default function RamSimulationCanvas() {
               strokeWidth="3.5"
               strokeLinecap="round"
               filter="url(#glowGold)"
-              className="transition-all duration-500 ease-out"
+              className="transition-colors duration-500 ease-out"
             />
 
             <circle
@@ -154,7 +154,7 @@ export default function RamSimulationCanvas() {
               fill="#f59e0b"
               stroke="#fff"
               strokeWidth="2"
-              className="transition-all duration-500 ease-out"
+              className="transition-colors duration-500 ease-out"
             />
 
             <rect x="20" y="215" width="500" height="45" rx="8" fill="#101424" stroke="#1f2640" />
@@ -163,7 +163,7 @@ export default function RamSimulationCanvas() {
               cy="237"
               r="4"
               fill={activeStep === 3 ? '#10b981' : '#f59e0b'}
-              className="animate-pulse"
+              className=""
             />
             <text x="52" y="241" fill="#e2e8f0" fontSize="11" fontFamily="sans-serif">
               {activeStep === 0 && 'ধাপ ১: মেমরির শুরুতে (0x100) সার্চ অপারেশন শুরু হয়েছে।'}
@@ -178,8 +178,8 @@ export default function RamSimulationCanvas() {
               <button
                 key={step}
                 onClick={() => setActiveStep(step)}
-                className={`h-2 rounded-full transition-all cursor-pointer ${
-                  activeStep === step ? 'w-8 bg-amber-400 shadow-md shadow-amber-400/50' : 'w-2 bg-[#252c47]'
+                className={`h-2 rounded-full transition-colors cursor-pointer ${
+                  activeStep === step ? 'w-8 bg-amber-400  ' : 'w-2 bg-[#252c47]'
                 }`}
               />
             ))}
@@ -191,7 +191,7 @@ export default function RamSimulationCanvas() {
           <div className="p-4 rounded-2xl bg-[#111425] border border-[#212742] space-y-2">
             <div className="flex items-center gap-2 text-sky-400">
               <Layers className="w-4 h-4" />
-              <span className="text-xs font-mono font-bold uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold">
                 ১. ডেটা স্ট্রাকচার (Data Structure)
               </span>
             </div>
@@ -205,7 +205,7 @@ export default function RamSimulationCanvas() {
           <div className="p-4 rounded-2xl bg-[#111425] border border-[#212742] space-y-2">
             <div className="flex items-center gap-2 text-amber-400">
               <Compass className="w-4 h-4" />
-              <span className="text-xs font-mono font-bold uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold">
                 ২. অ্যালগরিদম (Algorithm)
               </span>
             </div>

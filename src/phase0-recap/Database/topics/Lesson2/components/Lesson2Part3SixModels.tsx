@@ -66,15 +66,15 @@ export default function Lesson2Part3SixModels() {
             <button
               key={tab.id}
               onClick={() => setActiveModel(tab.id)}
-              className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-1.5 ${
+              className={`p-3 rounded-xl border text-left transition-colors cursor-pointer flex flex-col justify-between gap-1.5 ${
                 isActive
-                  ? 'bg-indigo-600/20 border-indigo-500 text-white ring-1 ring-indigo-500/40 shadow-md'
+                  ? 'bg-indigo-600/20 border-indigo-500 text-white ring-1 ring-indigo-500/40 '
                   : 'bg-[#101322] border-slate-800 text-zinc-400 hover:border-slate-700'
               }`}
             >
               <div className="flex items-center justify-between">
                 <Icon className={`w-4 h-4 ${isActive ? 'text-indigo-400' : 'text-zinc-500'}`} />
-                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />}
+                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />}
               </div>
               <div>
                 <h4 className={`text-xs font-semibold line-clamp-1 ${isActive ? 'text-white' : 'text-zinc-300'}`}>
@@ -197,7 +197,7 @@ export default function Lesson2Part3SixModels() {
 
           {/* Tree Structure Visualizer */}
           <div className="p-5 rounded-xl bg-[#0c0e18] border border-slate-800 space-y-3 font-mono text-xs">
-            <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider">
+            <span className="text-[10px] text-zinc-400 uppercase font-bold">
               {language === 'bn'
                 ? 'বৃক্ষ বা ফোল্ডার কাঠামো (Tree Hierarchy Visualizer):'
                 : 'Tree Hierarchy Representation (Like PC Folders):'}

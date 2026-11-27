@@ -18,7 +18,7 @@ export default function RecursionInspector({
   return (
     <div className="lg:col-span-4 flex flex-col gap-4">
       {/* Card 1: Dynamic Call Stack Frame Inspector */}
-      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-3 shadow-xl">
+      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5 text-indigo-400" />
@@ -82,7 +82,7 @@ export default function RecursionInspector({
 
       {/* Card 2: Backtracking Core Mechanism Formula */}
       {activeMode === 'backtracking' ? (
-        <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 shadow-xl text-xs">
+        <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 text-xs">
           <span className="font-mono font-bold text-white flex items-center gap-1.5">
             <Undo2 className="w-3.5 h-3.5 text-rose-400" />
             <span>ব্যাকট্র্যাকিংয়ের ৩টি মূল নিয়ম</span>
@@ -103,7 +103,7 @@ export default function RecursionInspector({
           </ul>
         </div>
       ) : (
-        <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 shadow-xl text-xs">
+        <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 text-xs">
           <span className="font-mono font-bold text-white flex items-center gap-1.5">
             <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
             <span>বেস কেস কেন বাধ্যতামূলক?</span>

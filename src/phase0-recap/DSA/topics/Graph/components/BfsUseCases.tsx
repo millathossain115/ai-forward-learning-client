@@ -25,7 +25,7 @@ export default function BfsUseCases() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {/* Card 1: Network Routing */}
-        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-sky-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-sky-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <Radio className="w-3.5 h-3.5 text-sky-400" />
@@ -52,7 +52,7 @@ export default function BfsUseCases() {
         </div>
 
         {/* Card 2: Web Crawlers */}
-        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-emerald-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-emerald-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <Globe className="w-3.5 h-3.5 text-emerald-400" />
@@ -79,7 +79,7 @@ export default function BfsUseCases() {
         </div>
 
         {/* Card 3: Garbage Collection */}
-        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-amber-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-amber-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <Trash2 className="w-3.5 h-3.5 text-amber-400" />
@@ -106,7 +106,7 @@ export default function BfsUseCases() {
         </div>
 
         {/* Card 4: Tree Serialization */}
-        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-violet-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#08101a] border border-[#1b2b42] hover:border-violet-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <Binary className="w-3.5 h-3.5 text-violet-400" />

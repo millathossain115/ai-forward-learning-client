@@ -22,7 +22,7 @@ import VectorInspector from './components/VectorInspector';
 
 const PgVectorBenchmarkTable = dynamic(() => import('./components/PgVectorBenchmarkTable'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading benchmark table...
     </div>
   )
@@ -130,7 +130,7 @@ export default function PgVectorTopic() {
       {/* 1. Header Card */}
       <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white flex items-center justify-center font-bold shadow-lg shadow-cyan-500/20">
+          <div className="w-10 h-10 rounded-xl bg-[#15171e] text-white flex items-center justify-center font-bold">
             <Database className="w-5 h-5" />
           </div>
           <div>

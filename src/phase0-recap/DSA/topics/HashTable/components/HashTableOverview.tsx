@@ -5,9 +5,9 @@ import { Database, Key, Hash, Link as LinkIcon, ShieldCheck } from 'lucide-react
 
 export default function HashTableOverview() {
   return (
-    <div className="bg-[#0f111a] border border-[#1e2233] p-5 sm:p-6 rounded-2xl flex flex-col gap-4 shadow-xl shadow-black/40">
+    <div className="bg-[#0f111a] border border-[#1e2233] p-5 sm:p-6 rounded-2xl flex flex-col gap-4 shadow-black/40">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-500 to-rose-500 text-white flex items-center justify-center font-bold shadow-lg shadow-pink-500/20">
+        <div className="w-10 h-10 rounded-xl bg-[#15171e] text-white flex items-center justify-center font-bold">
           <Database className="w-5 h-5" />
         </div>
         <div>

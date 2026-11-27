@@ -155,7 +155,7 @@ export default function Lesson3Part3Domain() {
                       if (attr === 'Email') setTestValue('student@univ.edu');
                       if (attr === 'Name') setTestValue('Rahim');
                     }}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all border ${
+                    className={`py-1.5 px-2 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors border ${
                       domainAttribute === attr
                         ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300'
                         : 'bg-[#101322] border-slate-800 text-zinc-400'

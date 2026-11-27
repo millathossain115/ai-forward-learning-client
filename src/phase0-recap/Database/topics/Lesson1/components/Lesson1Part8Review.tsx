@@ -81,9 +81,9 @@ export default function Lesson1Part8Review({ onNavigate }: Lesson1Part8ReviewPro
       </div>
 
       {/* Coming Next: Lesson 2 Banner */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#14182e] via-[#101326] to-[#0d1020] border border-indigo-500/40 space-y-3 shadow-xl">
+      <div className="p-6 rounded-2xl bg-[#15171e] border border-indigo-500/40 space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">
+          <span className="text-xs font-mono text-indigo-400 font-bold">
             {language === 'bn' ? 'পরবর্তী অধ্যায় • লেসন ২' : 'Coming next • Lesson 2'}
           </span>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">
@@ -111,14 +111,14 @@ export default function Lesson1Part8Review({ onNavigate }: Lesson1Part8ReviewPro
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('backend-basics')}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-all border border-slate-700 cursor-pointer"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'ডেটাবেস ১০১ বেসিক্স রিভিশন' : 'Review Database 101 Basics'}</span>
           </button>
           <button
             onClick={() => onNavigate?.('backend-lesson2')}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-purple-600/20 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <span>
               {language === 'bn' ? 'লেসন ২-এ যান: ডেটাবেস মডেল' : 'Go to Lesson 2: Database Models'}

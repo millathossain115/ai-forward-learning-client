@@ -54,13 +54,13 @@ export default function CircularLinkedListCanvas({
         let badgeText = '';
 
         if (node.state === 'allocating') {
-          cardBorder = 'border-amber-400 bg-amber-950/40 animate-pulse scale-110';
+          cardBorder = 'border-amber-400 bg-amber-950/40  scale-110';
           badgeText = 'মেমরি বরাদ্দ';
         } else if (node.state === 'linking') {
           cardBorder = 'border-sky-400 bg-sky-950/40 ring-4 ring-sky-500/30 scale-110';
           badgeText = 'পয়েন্টার জোড়া';
         } else if (node.state === 'connected') {
-          cardBorder = 'border-emerald-400 bg-emerald-950/60 shadow-lg shadow-emerald-500/20 scale-110';
+          cardBorder = 'border-emerald-400 bg-emerald-950/60   scale-110';
           badgeText = 'সংযুক্ত';
         } else if (node.state === 'lift-delete') {
           cardBorder = 'border-rose-500 bg-rose-950/70 scale-90 opacity-80';
@@ -72,13 +72,13 @@ export default function CircularLinkedListCanvas({
           cardBorder = 'border-cyan-400 bg-cyan-950/60 ring-4 ring-cyan-500/30 scale-110';
           badgeText = 'বাইপাস ইন';
         } else if (isActive) {
-          cardBorder = 'border-amber-400 bg-amber-950/80 ring-4 ring-amber-400/40 scale-115 shadow-xl shadow-amber-500/30';
+          cardBorder = 'border-amber-400 bg-amber-950/80 ring-4 ring-amber-400/40 scale-115  ';
         }
 
         return (
           <div
             key={node.id}
-            className="absolute transition-all duration-700 z-10 flex flex-col items-center"
+            className="absolute transition-colors duration-700 z-10 flex flex-col items-center"
             style={{
               transform: `translate(${x}px, ${y}px)`,
             }}
@@ -91,7 +91,7 @@ export default function CircularLinkedListCanvas({
             )}
 
             {/* Node Card */}
-            <div className={`flex flex-col rounded-xl border p-2 transition-all shadow-md ${cardBorder} w-28`}>
+            <div className={`flex flex-col rounded-xl border p-2 transition-colors  ${cardBorder} w-28`}>
               <div className="flex items-center justify-between text-[8px] font-mono text-zinc-400 mb-0.5 border-b border-[#202438] pb-0.5">
                 <span className="text-amber-300 font-semibold">{node.addr}</span>
                 {badgeText && (

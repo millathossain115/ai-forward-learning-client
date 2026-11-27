@@ -22,21 +22,21 @@ import HashTableControls from './components/HashTableControls';
 
 const LinearProbingVisualizer = dynamic(() => import('./components/LinearProbingVisualizer'), {
   loading: () => (
-    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading linear probing...
     </div>
   )
 });
 const HashSetVisualizer = dynamic(() => import('./components/HashSetVisualizer'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading hash set...
     </div>
   )
 });
 const HashTableRealWorld = dynamic(() => import('./components/HashTableRealWorld'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading scenarios...
     </div>
   )
@@ -332,7 +332,7 @@ export default function HashTableTopic() {
       <HashTableOverview />
 
       {/* 2. Interactive Simulator */}
-      <div className="bg-[#0c0d15] border border-[#1e2233] p-5 rounded-2xl flex flex-col gap-4 shadow-xl">
+      <div className="bg-[#0c0d15] border border-[#1e2233] p-5 rounded-2xl flex flex-col gap-4">
         {/* Controls Bar & Mode Selectors */}
         <HashTableControls
           tableMode={tableMode}

@@ -26,13 +26,13 @@ export default function BubbleVisualizer({ step }: BubbleVisualizerProps) {
           return (
             <div key={idx} className="flex flex-col items-center gap-2">
               <div
-                className={`w-16 h-16 rounded-full flex items-center justify-center font-mono text-base font-black transition-all duration-300 ${
+                className={`w-16 h-16 rounded-full flex items-center justify-center font-mono text-base font-semibold transition-colors duration-300 ${
                   isSorted
-                    ? 'bg-gradient-to-tr from-emerald-600 to-emerald-400 text-slate-950 ring-4 ring-emerald-500/30 scale-105 shadow-xl'
+                    ? 'bg-[#15171e] text-slate-950 ring-4 ring-emerald-500/30 scale-105 '
                     : isSwapped
-                    ? 'bg-rose-500 text-white ring-4 ring-rose-400/50 scale-110 shadow-2xl animate-bounce'
+                    ? 'bg-rose-500 text-white ring-4 ring-rose-400/50 scale-110  animate-bounce'
                     : isComparing
-                    ? 'bg-amber-400 text-slate-950 ring-4 ring-amber-400/40 scale-110 shadow-lg'
+                    ? 'bg-amber-400 text-slate-950 ring-4 ring-amber-400/40 scale-110 '
                     : 'bg-[#15192c] border-2 border-[#283252] text-zinc-200'
                 }`}
               >

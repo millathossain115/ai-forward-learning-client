@@ -59,7 +59,7 @@ TO 'faculty_user';`}
                     </pre>
                     <button
                       onClick={() => handleCopy("GRANT SELECT, INSERT ON Student_info TO 'faculty_user';", "dcl-grant")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "dcl-grant" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -90,7 +90,7 @@ FROM 'faculty_user';`}
                     </pre>
                     <button
                       onClick={() => handleCopy("REVOKE INSERT ON Student_info FROM 'faculty_user';", "dcl-revoke")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "dcl-revoke" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}

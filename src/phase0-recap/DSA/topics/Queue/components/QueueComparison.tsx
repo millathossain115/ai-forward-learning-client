@@ -6,7 +6,7 @@ export default function QueueComparison() {
     <div className="bg-[#0f111a] border border-[#23273e] p-5 rounded-2xl flex flex-col gap-4">
       <div className="flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-500 text-slate-950 flex items-center justify-center font-bold">
+          <div className="w-8 h-8 rounded-lg bg-[#15171e] text-slate-950 flex items-center justify-center font-bold">
             <Repeat className="w-4 h-4" />
           </div>
           <div>

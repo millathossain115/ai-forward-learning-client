@@ -27,11 +27,11 @@ export default function LinearQueueVisualizer({ jobs }: LinearQueueVisualizerPro
             const isHead = idx === 0;
             const isTail = idx === jobs.length - 1;
 
-            let animStyle = 'transition-all duration-500';
+            let animStyle = 'transition-colors duration-500';
             if (job.state === 'entering') {
-              animStyle = 'translate-x-10 opacity-30 scale-90 transition-all duration-500';
+              animStyle = 'translate-x-10 opacity-30 scale-90 transition-colors duration-500';
             } else if (job.state === 'exiting') {
-              animStyle = '-translate-x-16 opacity-0 scale-90 transition-all duration-600';
+              animStyle = '-translate-x-16 opacity-0 scale-90 transition-colors duration-600';
             }
 
             return (
@@ -40,11 +40,11 @@ export default function LinearQueueVisualizer({ jobs }: LinearQueueVisualizerPro
                 className={`flex flex-col items-center gap-1.5 shrink-0 ${animStyle}`}
               >
                 <div
-                  className={`px-3.5 py-2.5 rounded-xl border bg-gradient-to-r ${job.color} text-slate-950 font-mono text-xs font-bold shadow-lg min-w-[120px] text-center transition-all duration-300 ${
-                    isHead ? 'ring-4 ring-emerald-400/40 scale-105 shadow-emerald-500/20' : ''
+                  className={`px-3.5 py-2.5 rounded-xl border bg-[#15171e] ${job.color} text-slate-950 font-mono text-xs font-bold  min-w-[120px] text-center transition-colors duration-300 ${
+                    isHead ? 'ring-4 ring-emerald-400/40 scale-105 ' : ''
                   }`}
                 >
-                  <div className="text-[9px] uppercase tracking-wider opacity-80 font-extrabold mb-0.5">
+                  <div className="text-[9px] opacity-80 font-extrabold mb-0.5">
                     {isHead ? 'HEAD (১ম বের)' : isTail ? 'TAIL (শেষ)' : `#${idx + 1}`}
                   </div>
                   <div className="truncate text-xs font-semibold">{job.name}</div>

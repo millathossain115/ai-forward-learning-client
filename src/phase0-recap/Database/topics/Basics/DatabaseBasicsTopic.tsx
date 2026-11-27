@@ -233,7 +233,7 @@ export default function DatabaseBasicsTopic({ onNavigate }: DatabaseBasicsTopicP
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold uppercase tracking-wider">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold">
                   Database &amp; DBMS Directory
                 </span>
                 <span className="text-[11px] font-mono text-zinc-400">
@@ -255,7 +255,7 @@ export default function DatabaseBasicsTopic({ onNavigate }: DatabaseBasicsTopicP
               <button
                 key={lesson.id}
                 onClick={() => onNavigate?.(lesson.topicId)}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all cursor-pointer hover:brightness-125 ${lesson.badgeBg}`}
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-colors cursor-pointer hover:brightness-125 ${lesson.badgeBg}`}
                 title={lesson.title}
               >
                 {lesson.id}
@@ -340,7 +340,7 @@ export default function DatabaseBasicsTopic({ onNavigate }: DatabaseBasicsTopicP
 
                   <button
                     onClick={() => onNavigate?.(lesson.topicId)}
-                    className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border flex items-center gap-1 shrink-0 cursor-pointer transition-all hover:brightness-125 ${lesson.badgeBg}`}
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border flex items-center gap-1 shrink-0 cursor-pointer transition-colors hover:brightness-125 ${lesson.badgeBg}`}
                   >
                     <span>Open</span>
                     <ArrowRight className="w-3 h-3" />

@@ -39,9 +39,9 @@ export default function Lesson8Part4NormalForms() {
           <button
             key={nf.id}
             onClick={() => setActiveNormalFormStep(nf.id)}
-            className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+            className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
               activeNormalFormStep === nf.id
-                ? 'bg-purple-600/30 border-purple-400 text-white shadow-lg'
+                ? 'bg-purple-600/30 border-purple-400 text-white '
                 : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
             }`}
           >

@@ -88,9 +88,9 @@ export default function Lesson6Part1WhatIsSql() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {/* MySQL */}
-              <div className="p-3.5 rounded-xl bg-[#14182d] border border-cyan-500/20 hover:border-cyan-500/40 transition-all flex flex-col justify-between space-y-2.5 group">
+              <div className="p-3.5 rounded-xl bg-[#14182d] border border-cyan-500/20 hover:border-cyan-500/40 transition-colors flex flex-col justify-between space-y-2.5 group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-cyan-500/30 p-1.5 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-cyan-500/30 p-1.5 flex items-center justify-center shrink-0 group- transition-transform">
                     <img src="/images/logos/mysql.svg" alt="MySQL Logo" className="w-full h-full object-contain" />
                   </div>
                   <div>
@@ -107,9 +107,9 @@ export default function Lesson6Part1WhatIsSql() {
               </div>
 
               {/* PostgreSQL */}
-              <div className="p-3.5 rounded-xl bg-[#14182d] border border-indigo-500/20 hover:border-indigo-500/40 transition-all flex flex-col justify-between space-y-2.5 group">
+              <div className="p-3.5 rounded-xl bg-[#14182d] border border-indigo-500/20 hover:border-indigo-500/40 transition-colors flex flex-col justify-between space-y-2.5 group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-indigo-500/30 p-1.5 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-indigo-500/30 p-1.5 flex items-center justify-center shrink-0 group- transition-transform">
                     <img src="/images/logos/postgresql.svg" alt="PostgreSQL Logo" className="w-full h-full object-contain" />
                   </div>
                   <div>
@@ -126,9 +126,9 @@ export default function Lesson6Part1WhatIsSql() {
               </div>
 
               {/* Oracle Database */}
-              <div className="p-3.5 rounded-xl bg-[#14182d] border border-rose-500/20 hover:border-rose-500/40 transition-all flex flex-col justify-between space-y-2.5 group">
+              <div className="p-3.5 rounded-xl bg-[#14182d] border border-rose-500/20 hover:border-rose-500/40 transition-colors flex flex-col justify-between space-y-2.5 group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-rose-500/30 p-1.5 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-rose-500/30 p-1.5 flex items-center justify-center shrink-0 group- transition-transform">
                     <img src="/images/logos/oracle.svg" alt="Oracle Database Logo" className="w-full h-full object-contain" />
                   </div>
                   <div>
@@ -145,9 +145,9 @@ export default function Lesson6Part1WhatIsSql() {
               </div>
 
               {/* SQLite */}
-              <div className="p-3.5 rounded-xl bg-[#14182d] border border-emerald-500/20 hover:border-emerald-500/40 transition-all flex flex-col justify-between space-y-2.5 group">
+              <div className="p-3.5 rounded-xl bg-[#14182d] border border-emerald-500/20 hover:border-emerald-500/40 transition-colors flex flex-col justify-between space-y-2.5 group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-emerald-500/30 p-1.5 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-emerald-500/30 p-1.5 flex items-center justify-center shrink-0 group- transition-transform">
                     <img src="/images/logos/sqlite.svg" alt="SQLite Logo" className="w-full h-full object-contain" />
                   </div>
                   <div>

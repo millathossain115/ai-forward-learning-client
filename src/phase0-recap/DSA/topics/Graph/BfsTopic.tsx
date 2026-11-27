@@ -53,16 +53,15 @@ export default function BfsTopic() {
   return (
     <div className="flex flex-col gap-6 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1829] via-[#091220] to-[#050912] border border-[#1b2f4d] p-6 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#1b2f4d] p-6">
         <div className="relative z-10 space-y-2">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-300 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-300 font-bold">
               Topic 11.2 • Graph Traversal
             </span>
             <span className="text-xs text-zinc-500 font-mono">Breadth First Search • FIFO Queue • Shortest Hops</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
             ব্রেডথ-ফার্স্ট সার্চ: BFS ও লেভেল-বাই-লেভেল ট্রাভার্সাল
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-4xl leading-relaxed">
@@ -106,7 +105,7 @@ export default function BfsTopic() {
       </div>
 
       {/* 3. Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-[#0d0f1a] border border-[#22273e] p-2.5 rounded-2xl shadow-xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-[#0d0f1a] border border-[#22273e] p-2.5 rounded-2xl">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono font-bold text-white flex items-center gap-2">
             <Network className="w-4 h-4 text-sky-400" />
@@ -140,7 +139,7 @@ export default function BfsTopic() {
                 setIsPlaying(!isPlaying);
               }
             }}
-            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-all cursor-pointer shadow ${
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold text-xs font-mono transition-colors cursor-pointer shadow ${
               isPlaying
                 ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
                 : isAtEnd
@@ -194,7 +193,7 @@ export default function BfsTopic() {
             <Clock className="w-3 h-3 text-zinc-400 ml-1" />
             <button
               onClick={() => setSpeedMode('slow')}
-              className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded-md transition-colors cursor-pointer ${
                 speedMode === 'slow'
                   ? 'bg-sky-600/60 text-sky-200 font-bold border border-sky-500/40'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -204,7 +203,7 @@ export default function BfsTopic() {
             </button>
             <button
               onClick={() => setSpeedMode('normal')}
-              className={`px-1.5 py-0.5 rounded-md transition-all cursor-pointer ${
+              className={`px-1.5 py-0.5 rounded-md transition-colors cursor-pointer ${
                 speedMode === 'normal'
                   ? 'bg-sky-600/60 text-sky-200 font-bold border border-sky-500/40'
                   : 'text-zinc-400 hover:text-zinc-200'

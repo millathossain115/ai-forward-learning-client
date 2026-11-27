@@ -4,7 +4,7 @@ import { Clock, CheckCircle2 } from 'lucide-react';
 export default function BubbleSortCases() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <Clock className="w-4 h-4 text-fuchsia-400" />
           <span>টাইম ও স্পেস কমপ্লেক্সিটি</span>
@@ -33,7 +33,7 @@ export default function BubbleSortCases() {
         </div>
       </div>
 
-      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           <span>কখন বাবল সর্ট ব্যবহার করবেন?</span>

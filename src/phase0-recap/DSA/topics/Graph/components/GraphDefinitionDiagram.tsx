@@ -36,7 +36,7 @@ export default function GraphDefinitionDiagram({
               y2={edge.y2}
               stroke={selectedElement === 'edge' ? '#818cf8' : '#2b3452'}
               strokeWidth={selectedElement === 'edge' ? '3.5' : '2'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
           ))}
 
@@ -66,7 +66,7 @@ export default function GraphDefinitionDiagram({
                 stroke={selectedElement === 'vertex' ? '#818cf8' : '#3e4a70'}
                 strokeWidth={selectedElement === 'vertex' ? '3' : '2'}
                 filter={selectedElement === 'vertex' ? 'url(#glowVertex)' : undefined}
-                className="transition-all duration-300"
+                className="transition-colors duration-300"
               />
               <text
                 x={v.x}
@@ -105,9 +105,9 @@ export default function GraphDefinitionDiagram({
         {/* Vertex Card */}
         <div
           onClick={() => setSelectedElement('vertex')}
-          className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+          className={`p-4 rounded-2xl border transition-colors cursor-pointer ${
             selectedElement === 'vertex'
-              ? 'bg-[#15182e] border-indigo-500 shadow-lg shadow-indigo-500/10'
+              ? 'bg-[#15182e] border-indigo-500  '
               : 'bg-[#101322] border-[#1d2338] hover:border-[#2a3350]'
           }`}
         >
@@ -127,9 +127,9 @@ export default function GraphDefinitionDiagram({
         {/* Edge Card */}
         <div
           onClick={() => setSelectedElement('edge')}
-          className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+          className={`p-4 rounded-2xl border transition-colors cursor-pointer ${
             selectedElement === 'edge'
-              ? 'bg-[#15182e] border-indigo-500 shadow-lg shadow-indigo-500/10'
+              ? 'bg-[#15182e] border-indigo-500  '
               : 'bg-[#101322] border-[#1d2338] hover:border-[#2a3350]'
           }`}
         >

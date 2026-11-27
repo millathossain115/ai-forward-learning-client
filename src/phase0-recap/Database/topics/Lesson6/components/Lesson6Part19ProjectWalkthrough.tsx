@@ -215,9 +215,9 @@ export default function Lesson6Part19ProjectWalkthrough() {
             <button
               key={step}
               onClick={() => setActiveProjectStep(step)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
                 activeProjectStep === step
-                  ? 'bg-emerald-600 text-white shadow-lg'
+                  ? 'bg-emerald-600 text-white '
                   : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
               }`}
             >

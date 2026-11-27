@@ -14,14 +14,13 @@ export default function Lesson5Hero({ onNavigate }: Lesson5HeroProps) {
   const { language } = useLanguage();
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#12162a] via-[#0d1020] to-[#0a0d18] border border-[#202744] p-5 md:p-6 shadow-xl">
-      <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative overflow-hidden rounded-2xl bg-[#15171e] border border-[#202744] p-5 md:p-6">
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Left Side: Badge, Title & Short Intro */}
         <div className="space-y-2 flex-1">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold flex items-center gap-1.5">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold flex items-center gap-1.5">
               <Sparkles className="w-3 h-3" />
               {language === 'bn'
                 ? 'লেসন ৫ • কনসেপচুয়াল ডেটাবেস ডিজাইন'
@@ -32,7 +31,7 @@ export default function Lesson5Hero({ onNavigate }: Lesson5HeroProps) {
             </span>
           </div>
 
-          <h1 className="text-xl md:text-2xl font-black tracking-tight text-white">
+          <h1 className="text-xl md:text-2xl font-semibold tracking-tight text-white">
             <DualText
               en="Lesson 5: Entity Relationship (ER) Model"
               bn="লেসন ৫: এনটিটি রিলেশনশিপ (ইআর) মডেল"
@@ -51,7 +50,7 @@ export default function Lesson5Hero({ onNavigate }: Lesson5HeroProps) {
         <div className="flex sm:flex-row md:flex-col items-stretch md:items-end gap-2 shrink-0">
           <button
             onClick={() => onNavigate?.('backend-lesson4')}
-            className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer border border-slate-700"
+            className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-slate-700"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>
@@ -60,7 +59,7 @@ export default function Lesson5Hero({ onNavigate }: Lesson5HeroProps) {
           </button>
           <button
             onClick={() => onNavigate?.('backend-lesson6')}
-            className="px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md shadow-purple-600/20 cursor-pointer"
+            className="px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
           >
             <span>
               {language === 'bn' ? 'লেসন ৬ (SQL)' : 'Lesson 6 (SQL)'}

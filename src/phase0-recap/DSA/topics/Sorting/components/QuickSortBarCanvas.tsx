@@ -18,7 +18,7 @@ export default function QuickSortBarCanvas({
   totalBarSteps
 }: QuickSortBarCanvasProps) {
   return (
-    <div className="relative rounded-2xl bg-[#07090e] border border-[#1f283d] overflow-hidden shadow-xl p-3 flex flex-col space-y-3">
+    <div className="relative rounded-2xl bg-[#07090e] border border-[#1f283d] overflow-hidden p-3 flex flex-col space-y-3">
       <div className="flex items-center justify-between pb-2 border-b border-[#1b253b] text-xs font-mono">
         <span className="text-orange-400 font-bold flex items-center gap-1.5">
           <Terminal className="w-3.5 h-3.5" />
@@ -55,7 +55,7 @@ export default function QuickSortBarCanvas({
           return (
             <div
               key={idx}
-              className={`flex-1 min-w-[3px] max-w-[12px] rounded-t-sm transition-all duration-75 ${barColor} border-t ${barBorder}`}
+              className={`flex-1 min-w-[3px] max-w-[12px] rounded-t-sm transition-colors duration-75 ${barColor} border-t ${barBorder}`}
               style={{ height: `${val}%` }}
             />
           );

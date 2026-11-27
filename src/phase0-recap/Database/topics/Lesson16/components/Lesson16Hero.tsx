@@ -9,9 +9,7 @@ export default function Lesson16Hero() {
   const { language } = useLanguage();
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1228] via-[#121c42] to-[#070b1a] border border-cyan-900/40 p-6 md:p-10 shadow-2xl">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-cyan-900/40 p-6 md:p-10">
 
       <div className="relative z-10 space-y-4">
         <div className="flex flex-wrap items-center gap-2">
@@ -33,7 +31,7 @@ export default function Lesson16Hero() {
             bn="লেসন ১৬: ডিস্ট্রিবিউটেড ডেটাবেস ও DDBMS"
           />
           <br className="hidden md:block" />
-          <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+          <span className="bg-[#15171e] text-[#f4f4f7]">
             <DualText
               as="span"
               en="Architectures, Transparencies, 2PC & Cloud Scale"

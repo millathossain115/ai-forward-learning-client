@@ -13,13 +13,12 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
   const { language } = useLanguage();
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#12162a] via-[#0d1020] to-[#070810] border border-[#202744] p-6 md:p-8 shadow-2xl">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#202744] p-6 md:p-8">
 
       {/* Top Banner Actions: Lesson Status */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800/60">
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold flex items-center gap-1.5">
+          <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
             {language === 'bn'
               ? 'লেসন ১ • একদম শূন্য থেকে শুরু'
@@ -39,7 +38,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="space-y-3 max-w-2xl">
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
             {language === 'en' && 'Lesson 1: Understanding Data, Information, Database, and DBMS'}
             {language === 'bn' && 'লেসন ১: ডেটা, ইনফরমেশন, ডেটাবেস এবং DBMS পরিচিতি'}
             {language === 'dual' && (
@@ -72,7 +71,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
         <div className="flex flex-col sm:flex-row md:flex-col items-end gap-2 shrink-0">
           <button
             onClick={() => onNavigate?.('backend-lesson2')}
-            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-lg shadow-purple-600/20 cursor-pointer"
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <BookOpen className="w-4 h-4" />
             <span>
@@ -82,7 +81,7 @@ export default function Lesson1Hero({ onNavigate }: Lesson1HeroProps) {
           </button>
           <button
             onClick={() => onNavigate?.('backend-basics')}
-            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer border border-slate-700"
+            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer border border-slate-700"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>{language === 'bn' ? 'ডেটাবেস ১০১ বেসিক্স' : 'Back to Database 101 Basics'}</span>

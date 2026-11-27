@@ -40,8 +40,8 @@ export default function Lesson12Part3FragReplication() {
           <button
             key={f.id}
             onClick={() => setFragTab(f.id)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              fragTab === f.id ? 'bg-emerald-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              fragTab === f.id ? 'bg-emerald-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {f.label}

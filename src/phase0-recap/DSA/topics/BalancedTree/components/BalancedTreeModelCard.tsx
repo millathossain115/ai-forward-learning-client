@@ -9,7 +9,7 @@ interface BalancedTreeModelCardProps {
 export default function BalancedTreeModelCard({ activeModel }: BalancedTreeModelCardProps) {
   return (
     <div
-      className={`p-4 rounded-xl border transition-all ${
+      className={`p-4 rounded-xl border transition-colors ${
         activeModel === 'avl'
           ? 'bg-sky-950/20 border-sky-800/50 text-sky-200'
           : 'bg-rose-950/20 border-rose-800/50 text-rose-200'
@@ -18,8 +18,8 @@ export default function BalancedTreeModelCard({ activeModel }: BalancedTreeModel
       {activeModel === 'avl' ? (
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold font-mono uppercase tracking-wider text-sky-300 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+            <span className="text-xs font-bold font-mono text-sky-300 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-sky-400"></span>
               AVL Tree এর মূল ধারণা ও বৈশিষ্ট্য
             </span>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-900/60 border border-sky-700 text-sky-300">
@@ -36,8 +36,8 @@ export default function BalancedTreeModelCard({ activeModel }: BalancedTreeModel
       ) : (
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold font-mono uppercase tracking-wider text-rose-300 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+            <span className="text-xs font-bold font-mono text-rose-300 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-rose-400"></span>
               Red-Black Tree এর মূল ধারণা ও বৈশিষ্ট্য
             </span>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-900/60 border border-rose-700 text-rose-300">

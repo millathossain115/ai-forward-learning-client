@@ -107,7 +107,7 @@ export default function Step2AggregatesTab({ onNext }: { onNext: () => void }) {
                     onClick={() => setActiveAgg(fn)}
                     className={`p-2 rounded-lg text-left transition border cursor-pointer ${
                       isActive
-                        ? 'bg-purple-600 border-purple-400 text-white shadow-md'
+                        ? 'bg-purple-600 border-purple-400 text-white '
                         : 'bg-black/40 border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
                     }`}
                   >

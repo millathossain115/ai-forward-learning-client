@@ -124,7 +124,7 @@ export default function Lesson6SelectBasics() {
           <button
             key={tabKey}
             onClick={() => setActiveTab(tabKey)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
               activeTab === tabKey
                 ? 'bg-sky-600 text-white shadow'
                 : 'text-zinc-400 hover:text-white hover:bg-slate-800/60'
@@ -158,7 +158,7 @@ export default function Lesson6SelectBasics() {
 
         <div className="p-4 rounded-xl bg-black/50 border border-slate-800 flex flex-col justify-between space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
+            <span className="text-[10px] font-mono text-zinc-400">
               SQL Example
             </span>
             <button

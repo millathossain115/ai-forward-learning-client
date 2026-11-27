@@ -57,7 +57,7 @@ ORDER BY CGPA DESC;`}
                   </pre>
                   <button
                     onClick={() => handleCopy("SELECT Roll_No, Name, Branch, CGPA \nFROM Student_info \nWHERE Branch = 'CSE' AND CGPA >= 3.50\nORDER BY CGPA DESC;", "dql-select")}
-                    className="absolute top-1.5 right-1.5 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                    className="absolute top-1.5 right-1.5 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                     title="Copy SQL"
                   >
                     {copiedSnippet === "dql-select" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}

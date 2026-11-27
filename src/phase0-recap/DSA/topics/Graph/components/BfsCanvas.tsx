@@ -10,7 +10,7 @@ interface BfsCanvasProps {
 
 export default function BfsCanvas({ currentStep, currentStepIdx }: BfsCanvasProps) {
   return (
-    <div className="lg:col-span-8 bg-[#090b14] border border-[#1e2338] rounded-3xl p-5 flex flex-col justify-between min-h-[460px] shadow-2xl relative space-y-4">
+    <div className="lg:col-span-8 bg-[#090b14] border border-[#1e2338] rounded-3xl p-5 flex flex-col justify-between min-h-[460px] relative space-y-4">
       <div className="w-full flex items-center justify-center overflow-x-auto py-2 bg-[#060810] rounded-2xl border border-[#1b2238]">
         <svg viewBox="0 0 660 320" className="w-full h-auto max-h-[360px] select-none">
           <defs>
@@ -98,7 +98,7 @@ export default function BfsCanvas({ currentStep, currentStepIdx }: BfsCanvasProp
                     ? 'url(#bfs-arrow-visited)'
                     : 'url(#bfs-arrow-gray)'
                 }
-                className="transition-all duration-300"
+                className="transition-colors duration-300"
               />
             );
           })}
@@ -133,7 +133,7 @@ export default function BfsCanvas({ currentStep, currentStepIdx }: BfsCanvasProp
                       : '#1e293b'
                   }
                   strokeWidth={isCurrent ? 3 : 2}
-                  className="transition-all duration-300"
+                  className="transition-colors duration-300"
                 />
                 <text
                   textAnchor="middle"
@@ -163,7 +163,7 @@ export default function BfsCanvas({ currentStep, currentStepIdx }: BfsCanvasProp
       </div>
 
       {/* Explanation Step Card */}
-      <div className="p-4 rounded-2xl bg-[#0b0e1a] border border-[#1b2238] shadow-lg space-y-1">
+      <div className="p-4 rounded-2xl bg-[#0b0e1a] border border-[#1b2238] space-y-1">
         <div className="flex items-center gap-2 text-xs font-mono">
           <span className="text-zinc-400">ধাপ {currentStepIdx + 1}:</span>
           <span className="text-white font-bold">{currentStep.title}</span>

@@ -97,7 +97,7 @@ export default function Lesson2Part5ExamQuestions({ onNavigate }: Lesson2Part5Ex
           return (
             <div
               key={item.id}
-              className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden transition-all"
+              className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden transition-colors"
             >
               <button
                 onClick={() => toggleQuestion(item.id)}
@@ -131,9 +131,9 @@ export default function Lesson2Part5ExamQuestions({ onNavigate }: Lesson2Part5Ex
       </div>
 
       {/* Bottom Roadmap Bridge Navigation */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#14182e] via-[#101326] to-[#0d1020] border border-indigo-500/40 space-y-3 shadow-xl mt-6">
+      <div className="p-6 rounded-2xl bg-[#15171e] border border-indigo-500/40 space-y-3 mt-6">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">
+          <span className="text-xs font-mono text-indigo-400 font-bold">
             {language === 'bn' ? 'লেসন ২ সম্পন্ন হয়েছে' : 'Lesson 2 Completed'}
           </span>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">
@@ -158,14 +158,14 @@ export default function Lesson2Part5ExamQuestions({ onNavigate }: Lesson2Part5Ex
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('backend-lesson1')}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-all border border-slate-700 cursor-pointer"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ১-এ ফিরে যান' : 'Back to Lesson 1'}</span>
           </button>
           <button
             onClick={() => onNavigate?.('backend-lesson3')}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-purple-600/20 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'লেসন ৩ শুরু করুন (Relational Model)' : 'Go to Lesson 3: Relational Model'}</span>
             <ArrowRight className="w-4 h-4" />

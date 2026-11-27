@@ -58,7 +58,7 @@ VALUES (101, 'Rahim', 'CSE', 3.85);`}
                     </pre>
                     <button
                       onClick={() => handleCopy("INSERT INTO Student_info (Roll_No, Name, Branch, CGPA) VALUES (101, 'Rahim', 'CSE', 3.85);", "dml-insert")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "dml-insert" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -88,7 +88,7 @@ WHERE Roll_No = 101;`}
                     </pre>
                     <button
                       onClick={() => handleCopy("UPDATE Student_info SET CGPA = 3.92 WHERE Roll_No = 101;", "dml-update")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "dml-update" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -117,7 +117,7 @@ WHERE Roll_No = 101;`}
                     </pre>
                     <button
                       onClick={() => handleCopy("DELETE FROM Student_info WHERE Roll_No = 101;", "dml-delete")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "dml-delete" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}

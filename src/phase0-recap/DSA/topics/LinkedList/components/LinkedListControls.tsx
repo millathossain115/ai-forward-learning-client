@@ -41,7 +41,7 @@ export default function LinkedListControls({
           <button
             onClick={() => setListType('singly')}
             disabled={isAnimating}
-            className={`px-3 py-1.5 rounded-md font-mono transition-all text-xs md:text-sm ${
+            className={`px-3 py-1.5 rounded-md font-mono transition-colors text-xs md:text-sm ${
               listType === 'singly' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -50,7 +50,7 @@ export default function LinkedListControls({
           <button
             onClick={() => setListType('doubly')}
             disabled={isAnimating}
-            className={`px-3 py-1.5 rounded-md font-mono transition-all text-xs md:text-sm ${
+            className={`px-3 py-1.5 rounded-md font-mono transition-colors text-xs md:text-sm ${
               listType === 'doubly' ? 'bg-teal-400 text-slate-950 font-bold' : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -59,7 +59,7 @@ export default function LinkedListControls({
           <button
             onClick={() => setListType('circular')}
             disabled={isAnimating}
-            className={`px-3 py-1.5 rounded-md font-mono transition-all text-xs md:text-sm ${
+            className={`px-3 py-1.5 rounded-md font-mono transition-colors text-xs md:text-sm ${
               listType === 'circular' ? 'bg-amber-400 text-slate-950 font-bold' : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -84,14 +84,14 @@ export default function LinkedListControls({
           <button
             onClick={onInsertHead}
             disabled={isAnimating}
-            className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold shadow-md disabled:opacity-40 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold disabled:opacity-40 transition-colors cursor-pointer"
           >
             <PlusCircle className="w-4 h-4" /> Head O(1)
           </button>
           <button
             onClick={onInsertTail}
             disabled={isAnimating}
-            className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-slate-950 font-bold shadow-md disabled:opacity-40 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-slate-950 font-bold disabled:opacity-40 transition-colors cursor-pointer"
           >
             <PlusCircle className="w-4 h-4" /> Tail
           </button>
@@ -112,7 +112,7 @@ export default function LinkedListControls({
           <button
             onClick={onInsertAt}
             disabled={isAnimating}
-            className="flex items-center gap-1 text-xs md:text-sm font-mono px-3 py-1 rounded bg-sky-600/30 hover:bg-sky-600/40 text-sky-300 border border-sky-500/40 font-semibold disabled:opacity-40 transition-all cursor-pointer"
+            className="flex items-center gap-1 text-xs md:text-sm font-mono px-3 py-1 rounded bg-sky-600/30 hover:bg-sky-600/40 text-sky-300 border border-sky-500/40 font-semibold disabled:opacity-40 transition-colors cursor-pointer"
           >
             <PlusCircle className="w-3.5 h-3.5" /> Insert @
           </button>
@@ -121,7 +121,7 @@ export default function LinkedListControls({
         <button
           onClick={onTraverse}
           disabled={isAnimating}
-          className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-md disabled:opacity-40 transition-all cursor-pointer"
+          className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold disabled:opacity-40 transition-colors cursor-pointer"
         >
           <Play className="w-3.5 h-3.5 fill-current" /> Traverse
         </button>

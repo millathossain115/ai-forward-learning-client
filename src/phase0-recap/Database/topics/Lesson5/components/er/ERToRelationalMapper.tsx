@@ -35,7 +35,7 @@ export default function ERToRelationalMapper() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold uppercase tracking-wider">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
                 {language === 'bn' ? 'কনভারশন আর্কিটেকচার' : 'Relational Mapping Flow'}
               </span>
               <span className="text-xs text-zinc-500 font-mono">
@@ -56,7 +56,7 @@ export default function ERToRelationalMapper() {
           <div className="flex items-center gap-1.5 self-start sm:self-auto bg-[#090c18] p-1 rounded-xl border border-slate-800">
             <button
               onClick={() => setShowDecisionMatrix(false)}
-              className={`px-3 py-1 rounded-lg text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer ${
                 !showDecisionMatrix
                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -67,7 +67,7 @@ export default function ERToRelationalMapper() {
             </button>
             <button
               onClick={() => setShowDecisionMatrix(true)}
-              className={`px-3 py-1 rounded-lg text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer ${
                 showDecisionMatrix
                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -90,9 +90,9 @@ export default function ERToRelationalMapper() {
                   <button
                     key={step.id}
                     onClick={() => setActiveConversionStep(idx)}
-                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                    className={`p-2.5 rounded-xl border text-left transition-colors cursor-pointer ${
                       isActive
-                        ? 'bg-gradient-to-br from-emerald-950/60 to-slate-900 border-emerald-500/60 shadow-md'
+                        ? 'bg-[#15171e] border-emerald-500/60 '
                         : 'bg-[#0a0d18] border-slate-800/80 hover:border-slate-700 text-zinc-400 hover:text-zinc-200'
                     }`}
                   >
@@ -116,9 +116,9 @@ export default function ERToRelationalMapper() {
             {(() => {
               const currentStep = ER_CONVERSION_STEPS[activeConversionStep];
               return (
-                <div className="p-4 rounded-2xl bg-[#090c1a] border border-slate-800 space-y-3.5 shadow-xl">
+                <div className="p-4 rounded-2xl bg-[#090c1a] border border-slate-800 space-y-3.5">
                   {/* Compact Header + Rule Banner */}
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-950/40 via-cyan-950/20 to-slate-900 border border-emerald-500/30 space-y-1">
+                  <div className="p-3 rounded-xl bg-[#15171e] border border-emerald-500/30 space-y-1">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <span className="text-xs md:text-sm font-bold text-white flex items-center gap-2">
                         <Workflow className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -287,7 +287,7 @@ export default function ERToRelationalMapper() {
 
         {/* VIEW 2: UNIVERSITY EXAM CHEAT SHEET MATRIX TABLE */}
         {showDecisionMatrix && (
-          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14] shadow-xl">
+          <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-[#090b14]">
             <table className="w-full text-left font-sans text-xs">
               <thead>
                 <tr className="bg-[#121629] text-zinc-300 border-b border-slate-800 text-[11px] font-mono">

@@ -33,16 +33,16 @@ export default function Lesson10Part3ClusteredDenseSparse() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setActiveClusterTab('clustered')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            activeClusterTab === 'clustered' ? 'bg-purple-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            activeClusterTab === 'clustered' ? 'bg-purple-600 text-white ' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
           }`}
         >
           Clustered Index (Physical Data Order)
         </button>
         <button
           onClick={() => setActiveClusterTab('non_clustered')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            activeClusterTab === 'non_clustered' ? 'bg-cyan-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            activeClusterTab === 'non_clustered' ? 'bg-cyan-600 text-white ' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
           }`}
         >
           Non-Clustered Index (Secondary Pointer)

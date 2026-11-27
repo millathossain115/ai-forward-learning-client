@@ -25,7 +25,7 @@ export default function Lesson5CoreConcepts() {
         {/* ========================================================
             CARD 1: CORE COMPONENTS (৩টি মূল উপাদান)
            ======================================================== */}
-        <div className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5 shadow-lg">
+        <div className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
             <div className="flex items-center gap-2.5">
@@ -33,7 +33,7 @@ export default function Lesson5CoreConcepts() {
                 <Boxes className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-bold uppercase tracking-wider">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-bold">
                   {language === 'bn' ? 'পার্ট ১ • স্থাপত্য উপাদান' : 'Part A • Architecture'}
                 </span>
                 <h3 className="text-sm md:text-base font-bold text-white mt-0.5">
@@ -49,9 +49,9 @@ export default function Lesson5CoreConcepts() {
             <div className="flex items-center gap-1 p-0.5 rounded-lg bg-[#0c1020] border border-slate-800 text-[10px] font-mono">
               <button
                 onClick={() => setViewMode('tree')}
-                className={`px-2 py-0.5 rounded font-bold flex items-center gap-1 transition-all cursor-pointer ${
+                className={`px-2 py-0.5 rounded font-bold flex items-center gap-1 transition-colors cursor-pointer ${
                   viewMode === 'tree'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-emerald-600 text-white '
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -60,9 +60,9 @@ export default function Lesson5CoreConcepts() {
               </button>
               <button
                 onClick={() => setViewMode('image')}
-                className={`px-2 py-0.5 rounded font-bold flex items-center gap-1 transition-all cursor-pointer ${
+                className={`px-2 py-0.5 rounded font-bold flex items-center gap-1 transition-colors cursor-pointer ${
                   viewMode === 'image'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-emerald-600 text-white '
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -162,7 +162,7 @@ export default function Lesson5CoreConcepts() {
           ) : (
             <div
               onClick={() => setIsModalOpen(true)}
-              className="group relative cursor-pointer p-2 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center transition-all hover:border-emerald-400 flex-1 min-h-[140px]"
+              className="group relative cursor-pointer p-2 rounded-xl bg-white border border-slate-700 flex flex-col items-center justify-center transition-colors hover:border-emerald-400 flex-1 min-h-[140px]"
             >
               <img
                 src="/images/lesson5-er-model-hierarchy.jpg"
@@ -182,7 +182,7 @@ export default function Lesson5CoreConcepts() {
         {/* ========================================================
             CARD 2: KEY CONCEPTS (৩টি প্রধান ধারণা)
            ======================================================== */}
-        <div className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5 shadow-lg">
+        <div className="bg-[#0f1220] border border-slate-800 rounded-2xl p-4 md:p-5 flex flex-col justify-between space-y-3.5">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
             <div className="flex items-center gap-2.5">
@@ -190,7 +190,7 @@ export default function Lesson5CoreConcepts() {
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-bold uppercase tracking-wider">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-bold">
                   {language === 'bn' ? 'পার্ট ২ • নিয়ম ও সীমাবদ্ধতা' : 'Part B • Rules & Constraints'}
                 </span>
                 <h3 className="text-sm md:text-base font-bold text-white mt-0.5">
@@ -276,7 +276,7 @@ export default function Lesson5CoreConcepts() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-emerald-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-emerald-500/40 p-4 md:p-6 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div>
@@ -290,7 +290,7 @@ export default function Lesson5CoreConcepts() {
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>

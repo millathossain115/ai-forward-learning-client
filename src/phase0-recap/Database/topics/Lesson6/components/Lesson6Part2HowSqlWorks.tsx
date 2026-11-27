@@ -56,11 +56,11 @@ export default function Lesson6Part2HowSqlWorks() {
           />
 
           {/* Interactive Visual Blueprint Canvas */}
-          <div className="relative group rounded-2xl border border-indigo-500/30 bg-[#090d20] p-4 md:p-5 overflow-hidden shadow-2xl space-y-3">
+          <div className="relative group rounded-2xl border border-indigo-500/30 bg-[#090d20] p-4 md:p-5 overflow-hidden space-y-3">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
               <div className="flex items-center gap-2">
                 <Workflow className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold text-white">
                   <DualText
                     en="SQL Query Processing Lifecycle (Rahim's GPA Query Flow)"
                     bn="এসকিউএল কোয়েরি প্রসেসিং লাইফসাইকেল (রহিমের রেজাল্ট কোয়েরি জার্নি)"
@@ -69,7 +69,7 @@ export default function Lesson6Part2HowSqlWorks() {
               </div>
               <button
                 onClick={() => setIsPipelineModalOpen(true)}
-                className="px-3 py-1.5 rounded-lg bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/40 text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer shadow-sm hover:text-white"
+                className="px-3 py-1.5 rounded-lg bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/40 text-xs font-mono flex items-center gap-1.5 transition-colors cursor-pointer hover:text-white"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
                 <span>{language === 'bn' ? 'ফুল-স্ক্রিন মোডে দেখুন' : 'Click to Expand (Full Screen)'}</span>
@@ -90,7 +90,7 @@ export default function Lesson6Part2HowSqlWorks() {
 
             <div className="flex flex-wrap items-center justify-between text-[11px] font-mono text-zinc-400 pt-1">
               <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 {language === 'bn' ? 'ইউনিভার্সিটি জার্নি: পোর্টাল রিকোয়েস্ট ➔ পার্সার ➔ ক্যাটালগ ➔ অপ্টিমাইজার ➔ এক্সিকিউটর ➔ বাফার পুল ➔ রেজাল্ট' : 'Student Journey: Portal Request ➔ Parser ➔ Catalog ➔ Optimizer ➔ Executor ➔ Buffer Pool ➔ Result'}
               </span>
               <span className="text-cyan-400 font-semibold">
@@ -115,9 +115,9 @@ export default function Lesson6Part2HowSqlWorks() {
                 <button
                   key={item.step}
                   onClick={() => setActivePipelineStep(item.step)}
-                  className={`p-2.5 rounded-xl text-left border transition-all cursor-pointer flex flex-col gap-1 ${
+                  className={`p-2.5 rounded-xl text-left border transition-colors cursor-pointer flex flex-col gap-1 ${
                     activePipelineStep === item.step
-                      ? 'bg-slate-800 border-emerald-400/80 text-white shadow-lg shadow-emerald-950/40'
+                      ? 'bg-slate-800 border-emerald-400/80 text-white  '
                       : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
                   }`}
                 >
@@ -203,7 +203,7 @@ export default function Lesson6Part2HowSqlWorks() {
             {/* Modal Top Bar */}
             <div 
               onClick={(e) => e.stopPropagation()}
-              className="flex items-center justify-between bg-[#0e142e] border border-slate-700/80 px-5 py-3 rounded-2xl mb-3 shadow-2xl"
+              className="flex items-center justify-between bg-[#0e142e] border border-slate-700/80 px-5 py-3 rounded-2xl mb-3"
             >
               <div className="flex items-center gap-2.5">
                 <Workflow className="w-5 h-5 text-emerald-400" />
@@ -221,7 +221,7 @@ export default function Lesson6Part2HowSqlWorks() {
               </div>
               <button
                 onClick={() => setIsPipelineModalOpen(false)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white border border-slate-700 transition-all cursor-pointer flex items-center gap-1.5 text-xs font-mono"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white border border-slate-700 transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-mono"
               >
                 <X className="w-4 h-4" />
                 <span className="hidden sm:inline">{language === 'bn' ? 'বন্ধ করুন (ESC)' : 'Close (ESC)'}</span>
@@ -236,7 +236,7 @@ export default function Lesson6Part2HowSqlWorks() {
               <img
                 src="/images/sql-engine-pipeline-7steps.png"
                 alt="SQL Internal Engine Query Processing Pipeline Full Resolution"
-                className="max-w-none w-full min-w-[1200px] h-auto object-contain rounded-xl shadow-2xl"
+                className="max-w-none w-full min-w-[1200px] h-auto object-contain rounded-xl"
               />
             </div>
 

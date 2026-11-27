@@ -18,14 +18,14 @@ import BalancedTreeControls from './components/BalancedTreeControls';
 
 const RotationGuide = dynamic(() => import('./components/RotationGuide'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading rotation playbook...
     </div>
   )
 });
 const BalancedTreeRealWorld = dynamic(() => import('./components/BalancedTreeRealWorld'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading scenarios...
     </div>
   )
@@ -256,7 +256,7 @@ export default function BalancedTreeTopic() {
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-zinc-100 font-bold uppercase tracking-wider text-xs md:text-sm">
+              <span className="text-zinc-100 font-bold text-xs md:text-sm">
                 {currentStep?.title || `${activeModel.toUpperCase()} SIMULATOR`}
               </span>
               {currentStep && (

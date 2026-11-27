@@ -39,8 +39,8 @@ export default function Lesson12Part2ArchTransparency() {
           <button
             key={a.id}
             onClick={() => setArchTab(a.id)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              archTab === a.id ? 'bg-indigo-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              archTab === a.id ? 'bg-indigo-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {a.label}

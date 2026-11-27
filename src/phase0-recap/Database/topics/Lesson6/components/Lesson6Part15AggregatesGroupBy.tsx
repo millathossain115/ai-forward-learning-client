@@ -90,7 +90,7 @@ export default function Lesson6Part15AggregatesGroupBy() {
                 onClick={() => setCurrentStep(item.step)}
                 className={`p-2.5 rounded-xl text-left transition border cursor-pointer ${
                   isActive
-                    ? 'bg-purple-600/20 border-purple-500 shadow-md ring-1 ring-purple-500/50'
+                    ? 'bg-purple-600/20 border-purple-500  ring-1 ring-purple-500/50'
                     : 'bg-slate-900/80 border-slate-800 hover:bg-slate-800 text-zinc-400 hover:text-white'
                 }`}
               >

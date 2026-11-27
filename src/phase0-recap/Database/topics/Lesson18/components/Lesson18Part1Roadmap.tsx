@@ -58,7 +58,7 @@ export default function Lesson18Part1Roadmap({ onNavigate }: Lesson18Part1Roadma
           <button
             key={l.id}
             onClick={() => onNavigate?.(l.id)}
-            className="px-3 py-1.5 rounded-xl bg-[#14182d] hover:bg-cyan-600/20 border border-slate-800 hover:border-cyan-500/40 text-xs font-mono text-zinc-300 hover:text-cyan-300 transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-xl bg-[#14182d] hover:bg-cyan-600/20 border border-slate-800 hover:border-cyan-500/40 text-xs font-mono text-zinc-300 hover:text-cyan-300 transition-colors cursor-pointer"
           >
             {l.label}
           </button>

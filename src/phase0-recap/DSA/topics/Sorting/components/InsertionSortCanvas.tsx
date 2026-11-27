@@ -37,7 +37,7 @@ export default function InsertionSortCanvas({
 }: InsertionSortCanvasProps) {
   return (
     <div className="space-y-6">
-      <div className="relative rounded-3xl bg-[#0c101c] border border-[#253254] p-6 shadow-2xl overflow-hidden">
+      <div className="relative rounded-3xl bg-[#0c101c] border border-[#253254] p-6 overflow-hidden">
         {/* Header Controls Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#1c2642]">
           <div className="flex items-center gap-3">
@@ -50,7 +50,7 @@ export default function InsertionSortCanvas({
                   setIsPlaying(!isPlaying);
                 }
               }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white font-mono text-xs font-bold shadow-lg shadow-indigo-600/30 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#15171e] hover:from-indigo-500 hover:to-blue-500 text-white font-mono text-xs font-bold transition-colors cursor-pointer"
             >
               {isPlaying ? <Pause className="w-4 h-4" /> : isAtEnd ? <RotateCcw className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               <span>{isPlaying ? 'Pause' : isAtEnd ? 'Replay' : 'Play Simulation'}</span>
@@ -135,10 +135,10 @@ export default function InsertionSortCanvas({
           <div className="h-20 flex flex-col items-center justify-center">
             {currentStep.keyVal !== null ? (
               <div className="flex flex-col items-center animate-bounce">
-                <span className="text-[10px] font-mono text-indigo-400 uppercase font-bold tracking-wider mb-1">
+                <span className="text-[10px] font-mono text-indigo-400 uppercase font-bold mb-1">
                   হাতে তোলা কি-কার্ড (Active Key)
                 </span>
-                <div className="w-16 h-12 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 border-2 border-indigo-300 flex items-center justify-center text-xl font-mono font-black text-white shadow-xl shadow-indigo-500/40">
+                <div className="w-16 h-12 rounded-xl bg-[#15171e] border-2 border-indigo-300 flex items-center justify-center text-xl font-mono font-semibold text-white">
                   {currentStep.keyVal}
                 </div>
               </div>
@@ -160,13 +160,13 @@ export default function InsertionSortCanvas({
                 <div key={idx} className="flex flex-col items-center gap-3">
                   {/* Slot Container */}
                   <div
-                    className={`relative w-14 h-24 md:w-16 md:h-28 rounded-2xl flex flex-col items-center justify-between p-2.5 transition-all duration-500 shadow-xl ${
+                    className={`relative w-14 h-24 md:w-16 md:h-28 rounded-2xl flex flex-col items-center justify-between p-2.5 transition-colors duration-500  ${
                       isSlotEmpty
                         ? 'bg-transparent border-2 border-dashed border-indigo-500/40 text-indigo-400/40'
                         : isBeingCompared
-                        ? 'bg-gradient-to-b from-amber-600/40 to-amber-950/70 border-2 border-amber-400 -translate-y-2 text-amber-200'
+                        ? 'bg-[#15171e] border-2 border-amber-400 -translate-y-2 text-amber-200'
                         : isSortedHand
-                        ? 'bg-gradient-to-b from-indigo-900/40 to-indigo-950/80 border-2 border-indigo-500 shadow-indigo-500/20 text-indigo-200'
+                        ? 'bg-[#15171e] border-2 border-indigo-500  text-indigo-200'
                         : 'bg-[#121626] border border-[#212b45] text-zinc-400'
                     }`}
                   >
@@ -176,7 +176,7 @@ export default function InsertionSortCanvas({
                     </div>
 
                     {/* Value */}
-                    <div className="text-xl md:text-2xl font-black font-mono tracking-tight">
+                    <div className="text-xl md:text-2xl font-semibold font-mono tracking-tight">
                       {isSlotEmpty ? '?' : val}
                     </div>
 
@@ -209,7 +209,7 @@ export default function InsertionSortCanvas({
           </div>
 
           {/* Status Explanation Card */}
-          <div className="w-full max-w-2xl mt-4 p-4 rounded-2xl bg-[#12182b] border border-[#202d4e] text-center shadow-lg">
+          <div className="w-full max-w-2xl mt-4 p-4 rounded-2xl bg-[#12182b] border border-[#202d4e] text-center">
             <p className="text-xs md:text-sm font-medium text-zinc-200 leading-relaxed">
               {currentStep.desc}
             </p>

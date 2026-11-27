@@ -26,14 +26,14 @@ import QueueComparison from './components/QueueComparison';
 
 const CircularQueueVisualizer = dynamic(() => import('./components/CircularQueueVisualizer'), {
   loading: () => (
-    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading circular queue...
     </div>
   )
 });
 const QueueApplications = dynamic(() => import('./components/QueueApplications'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading applications...
     </div>
   )
@@ -188,7 +188,7 @@ export default function QueueTopic() {
       {/* 1. Header Card */}
       <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-500 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-cyan-500/20">
+          <div className="w-10 h-10 rounded-xl bg-[#15171e] text-slate-950 flex items-center justify-center font-bold">
             <ListFilter className="w-5 h-5" />
           </div>
           <div>
@@ -219,9 +219,9 @@ export default function QueueTopic() {
                   setMessage('Linear Queue: সাধারণ একমুখী পাইপলাইন। ফ্রন্ট থেকে বের হয়, টেইল-এ প্রবেশ করে।');
                 }}
                 disabled={isAnimating}
-                className={`px-3 py-1.5 rounded-md text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
+                className={`px-3 py-1.5 rounded-md text-xs font-mono font-bold flex items-center gap-1.5 transition-colors ${
                   queueMode === 'linear'
-                    ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
+                    ? 'bg-cyan-500 text-slate-950  '
                     : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
@@ -233,9 +233,9 @@ export default function QueueTopic() {
                   setMessage('সার্কুলার কিউ (Ring Buffer): মডিউলো (% Capacity) দিয়ে মেমরির রি-সাইক্লিং দেখুন।');
                 }}
                 disabled={isAnimating}
-                className={`px-3 py-1.5 rounded-md text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
+                className={`px-3 py-1.5 rounded-md text-xs font-mono font-bold flex items-center gap-1.5 transition-colors ${
                   queueMode === 'circular'
-                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-orange-500/20'
+                    ? 'bg-[#15171e] text-slate-950  shadow-orange-500/20'
                     : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
@@ -260,14 +260,14 @@ export default function QueueTopic() {
                 <button
                   onClick={handleCircularEnqueue}
                   disabled={isAnimating}
-                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-md shadow-amber-500/20 transition-all disabled:opacity-50"
+                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition-colors disabled:opacity-50"
                 >
                   <PlusCircle className="w-3.5 h-3.5" /> ENQUEUE O(1)
                 </button>
                 <button
                   onClick={handleCircularDequeue}
                   disabled={isAnimating}
-                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shadow-md shadow-emerald-500/20 transition-all disabled:opacity-50"
+                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition-colors disabled:opacity-50"
                 >
                   <ArrowRight className="w-3.5 h-3.5" /> DEQUEUE O(1)
                 </button>
@@ -277,14 +277,14 @@ export default function QueueTopic() {
                 <button
                   onClick={handleLinearEnqueue}
                   disabled={isAnimating}
-                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold shadow-md transition-all disabled:opacity-50"
+                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold transition-colors disabled:opacity-50"
                 >
                   <PlusCircle className="w-3.5 h-3.5" /> ENQUEUE (Tail) O(1)
                 </button>
                 <button
                   onClick={handleLinearDequeue}
                   disabled={isAnimating}
-                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold shadow-md transition-all disabled:opacity-50"
+                  className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold transition-colors disabled:opacity-50"
                 >
                   <ArrowRight className="w-3.5 h-3.5" /> DEQUEUE (Head) O(1)
                 </button>

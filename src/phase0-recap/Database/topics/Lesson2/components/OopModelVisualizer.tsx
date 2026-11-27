@@ -61,11 +61,11 @@ export default function OopModelVisualizer() {
   const active = classDetails[selectedClass];
 
   return (
-    <div className="p-5 md:p-7 rounded-2xl bg-[#0d1022] border border-pink-500/40 space-y-6 shadow-2xl">
+    <div className="p-5 md:p-7 rounded-2xl bg-[#0d1022] border border-pink-500/40 space-y-6">
       {/* Header and Controls */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
         <div>
-          <span className="text-xs font-mono font-bold text-pink-400 uppercase tracking-wider flex items-center gap-1.5">
+          <span className="text-xs font-mono font-bold text-pink-400 flex items-center gap-1.5">
             <Gamepad2 className="w-4 h-4 text-pink-400" />
             <DualText
               en="Object-Oriented Database Model (UML Class & Inheritance Hierarchy)"
@@ -86,7 +86,7 @@ export default function OopModelVisualizer() {
           <div className="flex items-center rounded-lg bg-black/50 border border-slate-800 p-0.5 font-mono text-[11px]">
             <button
               onClick={() => setDirection('inheritance')}
-              className={`px-2.5 py-1 rounded-md transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
                 direction === 'inheritance'
                   ? 'bg-pink-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-white'
@@ -98,7 +98,7 @@ export default function OopModelVisualizer() {
             </button>
             <button
               onClick={() => setDirection('specialization')}
-              className={`px-2.5 py-1 rounded-md transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
                 direction === 'specialization'
                   ? 'bg-pink-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-white'
@@ -114,7 +114,7 @@ export default function OopModelVisualizer() {
           <div className="flex items-center gap-1 font-mono text-xs">
             <button
               onClick={() => setSelectedClass('student')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
                 selectedClass === 'student'
                   ? 'bg-pink-600 text-white font-bold shadow'
                   : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -125,7 +125,7 @@ export default function OopModelVisualizer() {
             </button>
             <button
               onClick={() => setSelectedClass('professor')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
                 selectedClass === 'professor'
                   ? 'bg-pink-600 text-white font-bold shadow'
                   : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -136,7 +136,7 @@ export default function OopModelVisualizer() {
             </button>
             <button
               onClick={() => setSelectedClass('staff')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
                 selectedClass === 'staff'
                   ? 'bg-pink-600 text-white font-bold shadow'
                   : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -154,7 +154,7 @@ export default function OopModelVisualizer() {
         <div className="min-w-[760px] mx-auto p-6 rounded-2xl bg-[#080914] border border-pink-900/40 relative">
           {/* Header Title */}
           <div className="text-center mb-6">
-            <h3 className="text-xl md:text-2xl font-black text-pink-400 tracking-tight font-sans">
+            <h3 className="text-xl md:text-2xl font-semibold text-pink-400 tracking-tight font-sans">
               Basic Object Oriented University Data Model
             </h3>
             <p className="text-[11px] font-mono text-zinc-400 mt-0.5">
@@ -180,7 +180,7 @@ export default function OopModelVisualizer() {
                 fill={selectedClass === 'person' ? '#351228' : '#141224'}
                 stroke={selectedClass === 'person' ? '#f472b6' : '#ec4899'}
                 strokeWidth={selectedClass === 'person' ? 2.5 : 1.5}
-                className="transition-all"
+                className="transition-colors"
               />
               {/* Header Banner */}
               <rect x="250" y="15" width="260" height="28" rx="8" fill="#be185d" />
@@ -238,7 +238,7 @@ export default function OopModelVisualizer() {
               stroke={selectedClass === 'student' ? '#f472b6' : '#475569'}
               strokeWidth={selectedClass === 'student' ? 3 : 1.5}
               strokeDasharray={selectedClass === 'student' ? 'none' : '4 3'}
-              className="transition-all duration-200"
+              className="transition-colors duration-200"
             />
             {/* Student Arrow Head */}
             {direction === 'inheritance' ? (
@@ -272,7 +272,7 @@ export default function OopModelVisualizer() {
               stroke={selectedClass === 'professor' ? '#f472b6' : '#475569'}
               strokeWidth={selectedClass === 'professor' ? 3 : 1.5}
               strokeDasharray={selectedClass === 'professor' ? 'none' : '4 3'}
-              className="transition-all duration-200"
+              className="transition-colors duration-200"
             />
             {direction === 'inheritance' ? (
               <polygon
@@ -295,7 +295,7 @@ export default function OopModelVisualizer() {
               stroke={selectedClass === 'staff' ? '#f472b6' : '#475569'}
               strokeWidth={selectedClass === 'staff' ? 3 : 1.5}
               strokeDasharray={selectedClass === 'staff' ? 'none' : '4 3'}
-              className="transition-all duration-200"
+              className="transition-colors duration-200"
             />
             {/* Staff Arrow Head */}
             {direction === 'inheritance' ? (
@@ -338,7 +338,7 @@ export default function OopModelVisualizer() {
                 fill={selectedClass === 'student' ? '#2e1224' : '#121424'}
                 stroke={selectedClass === 'student' ? '#f472b6' : '#334155'}
                 strokeWidth={selectedClass === 'student' ? 2.5 : 1}
-                className="transition-all"
+                className="transition-colors"
               />
               <rect x="30" y="200" width="220" height="28" rx="8" fill={selectedClass === 'student' ? '#db2777' : '#1e2338'} />
               <text x="140" y="219" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
@@ -382,7 +382,7 @@ export default function OopModelVisualizer() {
                 fill={selectedClass === 'professor' ? '#2e1224' : '#121424'}
                 stroke={selectedClass === 'professor' ? '#f472b6' : '#334155'}
                 strokeWidth={selectedClass === 'professor' ? 2.5 : 1}
-                className="transition-all"
+                className="transition-colors"
               />
               <rect x="270" y="200" width="220" height="28" rx="8" fill={selectedClass === 'professor' ? '#db2777' : '#1e2338'} />
               <text x="380" y="219" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
@@ -426,7 +426,7 @@ export default function OopModelVisualizer() {
                 fill={selectedClass === 'staff' ? '#2e1224' : '#121424'}
                 stroke={selectedClass === 'staff' ? '#f472b6' : '#334155'}
                 strokeWidth={selectedClass === 'staff' ? 2.5 : 1}
-                className="transition-all"
+                className="transition-colors"
               />
               <rect x="510" y="200" width="220" height="28" rx="8" fill={selectedClass === 'staff' ? '#db2777' : '#1e2338'} />
               <text x="620" y="219" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace" textAnchor="middle">
@@ -460,7 +460,7 @@ export default function OopModelVisualizer() {
       </div>
 
       {/* Clear Explanation of Arrows & Relations */}
-      <div className="p-4 rounded-xl bg-gradient-to-r from-[#170e24] via-[#120f26] to-[#0a1120] border border-pink-900/60 text-xs font-sans leading-relaxed space-y-2">
+      <div className="p-4 rounded-xl bg-[#15171e] border border-pink-900/60 text-xs font-sans leading-relaxed space-y-2">
         <div className="flex items-center gap-2 font-mono text-[11px] text-pink-400 font-bold uppercase">
           <Info className="w-4 h-4 text-pink-400" />
           <span>

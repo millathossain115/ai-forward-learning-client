@@ -119,9 +119,9 @@ export default function Lesson1Part1Data() {
               <button
                 key={token.val}
                 onClick={() => setInspectedRawToken(token.val)}
-                className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border ${
+                className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-colors cursor-pointer border ${
                   inspectedRawToken === token.val
-                    ? 'bg-amber-500/20 border-amber-500 text-amber-300 ring-2 ring-amber-500/40 shadow-lg'
+                    ? 'bg-amber-500/20 border-amber-500 text-amber-300 ring-2 ring-amber-500/40 '
                     : 'bg-[#101324] border-slate-700 text-zinc-300 hover:border-slate-500'
                 }`}
               >
@@ -174,7 +174,7 @@ export default function Lesson1Part1Data() {
 
         {/* Everyday Examples of Data Table */}
         <div className="space-y-3 pt-2">
-          <h4 className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider">
+          <h4 className="text-xs font-mono font-bold text-zinc-300">
             {language === 'bn'
               ? 'বাস্তব জীবনে অপরিশোধিত ডেটার আরও কিছু উদাহরণ:'
               : 'More examples of raw data in daily life:'}

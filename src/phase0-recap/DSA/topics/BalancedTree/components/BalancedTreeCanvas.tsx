@@ -44,7 +44,7 @@ export default function BalancedTreeCanvas({
   return (
     <div className="min-h-[360px] bg-[#07080e] rounded-xl border border-[#1a1d2e] p-4 flex flex-col items-center justify-center relative overflow-x-auto">
       {/* Integrated Playback Controls (Top Left Corner) */}
-      <div className="absolute top-3 left-3 z-10 bg-[#0d101d]/90 backdrop-blur border border-[#1e243a] p-1.5 rounded-lg flex items-center gap-2 shadow-lg">
+      <div className="absolute top-3 left-3 z-10 bg-[#0d101d]/90 backdrop-blur border border-[#1e243a] p-1.5 rounded-lg flex items-center gap-2">
         <button
           onClick={onStepBack}
           disabled={steps.length === 0 || currentStepIndex === 0 || isPlaying}
@@ -57,7 +57,7 @@ export default function BalancedTreeCanvas({
         <button
           onClick={onTogglePlay}
           disabled={steps.length === 0 || currentStepIndex >= steps.length - 1}
-          className="flex items-center gap-1.5 px-3 py-1 rounded bg-sky-600 hover:bg-sky-500 disabled:opacity-30 text-xs font-mono text-slate-950 font-bold shadow transition-all cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1 rounded bg-sky-600 hover:bg-sky-500 disabled:opacity-30 text-xs font-mono text-slate-950 font-bold shadow transition-colors cursor-pointer"
         >
           {isPlaying ? (
             <>

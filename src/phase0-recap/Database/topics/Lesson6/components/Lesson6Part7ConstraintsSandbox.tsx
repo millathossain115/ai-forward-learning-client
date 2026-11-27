@@ -57,9 +57,9 @@ export default function Lesson6Part7ConstraintsSandbox() {
               onClick={() => {
                 setConstraintSectionTab(tab.id);
               }}
-              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
                 constraintSectionTab === tab.id
-                  ? 'bg-amber-600 text-white font-bold shadow-sm'
+                  ? 'bg-amber-600 text-white font-bold '
                   : 'text-zinc-400 hover:text-white hover:bg-slate-800/60'
               }`}
             >

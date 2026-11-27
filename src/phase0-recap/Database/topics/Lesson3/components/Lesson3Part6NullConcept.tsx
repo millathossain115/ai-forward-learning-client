@@ -97,7 +97,7 @@ export default function Lesson3Part6NullConcept() {
             <button
               key={item.id}
               onClick={() => setNullCompVal(item.id as typeof nullCompVal)}
-              className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+              className={`p-3 rounded-xl border text-left transition-colors cursor-pointer ${
                 nullCompVal === item.id
                   ? 'bg-[#15192e] border-indigo-500 ring-1 ring-indigo-500/40'
                   : 'bg-[#0c0e18] border-slate-800 text-zinc-400 hover:border-slate-700'

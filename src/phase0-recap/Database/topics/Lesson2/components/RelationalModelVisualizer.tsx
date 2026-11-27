@@ -115,11 +115,11 @@ export default function RelationalModelVisualizer() {
   const summary = getActiveSummary();
 
   return (
-    <div className="p-5 md:p-7 rounded-2xl bg-[#0a0d18] border border-emerald-500/40 space-y-6 shadow-2xl">
+    <div className="p-5 md:p-7 rounded-2xl bg-[#0a0d18] border border-emerald-500/40 space-y-6">
       {/* Header and Controls */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
         <div>
-          <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+          <span className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
             <TableIcon className="w-4 h-4 text-emerald-400" />
             <DualText
               en="Relational Database Model (Tables, Foreign Keys & Junction Architecture)"
@@ -138,7 +138,7 @@ export default function RelationalModelVisualizer() {
         <div className="flex items-center gap-1.5 font-mono text-xs">
           <button
             onClick={() => setSelected({ type: 'student', id: '101' })}
-            className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
               selected?.type === 'student' && selected.id === '101'
                 ? 'bg-emerald-600 text-white font-bold shadow'
                 : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -148,7 +148,7 @@ export default function RelationalModelVisualizer() {
           </button>
           <button
             onClick={() => setSelected({ type: 'student', id: '102' })}
-            className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
               selected?.type === 'student' && selected.id === '102'
                 ? 'bg-emerald-600 text-white font-bold shadow'
                 : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -158,7 +158,7 @@ export default function RelationalModelVisualizer() {
           </button>
           <button
             onClick={() => setSelected({ type: 'student', id: '103' })}
-            className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
               selected?.type === 'student' && selected.id === '103'
                 ? 'bg-emerald-600 text-white font-bold shadow'
                 : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -168,7 +168,7 @@ export default function RelationalModelVisualizer() {
           </button>
           <button
             onClick={() => setSelected({ type: 'course', id: 'C01' })}
-            className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
               selected?.type === 'course' && selected.id === 'C01'
                 ? 'bg-cyan-600 text-white font-bold shadow'
                 : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -178,7 +178,7 @@ export default function RelationalModelVisualizer() {
           </button>
           <button
             onClick={() => setSelected(null)}
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
             title="Show all records"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -191,7 +191,7 @@ export default function RelationalModelVisualizer() {
         <div className="min-w-[760px] mx-auto p-6 rounded-2xl bg-[#080a14] border border-emerald-900/40 relative">
           {/* Main Diagram Title like uploaded image */}
           <div className="text-center mb-6">
-            <h3 className="text-2xl md:text-3xl font-black text-emerald-400 tracking-tight font-sans">
+            <h3 className="text-2xl md:text-3xl font-semibold text-emerald-400 tracking-tight font-sans">
               Relational Database
             </h3>
             <p className="text-[11px] font-mono text-zinc-400 mt-1">
@@ -206,11 +206,11 @@ export default function RelationalModelVisualizer() {
             {/* 1. Left Table: Students */}
             <div className="col-span-3 space-y-2">
               <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 font-bold">
-                <span className="text-emerald-500 font-black">&rarr;</span>
+                <span className="text-emerald-500 font-semibold">&rarr;</span>
                 <span>Students</span>
               </div>
 
-              <div className="rounded-xl overflow-hidden border-2 border-emerald-600/80 shadow-lg bg-[#0e1322]">
+              <div className="rounded-xl overflow-hidden border-2 border-emerald-600/80 bg-[#0e1322]">
                 {/* Header banner matching reference image */}
                 <div className="bg-[#15803d] text-white font-bold text-center py-2 px-3 text-sm font-sans tracking-wide">
                   Students
@@ -233,7 +233,7 @@ export default function RelationalModelVisualizer() {
                       <button
                         key={st.id}
                         onClick={() => setSelected({ type: 'student', id: st.id })}
-                        className={`w-full grid grid-cols-12 py-2 px-3 text-left transition-all cursor-pointer ${
+                        className={`w-full grid grid-cols-12 py-2 px-3 text-left transition-colors cursor-pointer ${
                           isDirect
                             ? 'bg-emerald-500/25 text-white font-bold ring-1 ring-emerald-400'
                             : isRowActive
@@ -254,11 +254,11 @@ export default function RelationalModelVisualizer() {
             {/* 2. Middle Column: Connector Line + Junction Table */}
             <div className="col-span-5 space-y-2">
               <div className="flex items-center justify-center gap-1.5 text-[11px] font-mono text-emerald-400 font-bold">
-                <span className="text-emerald-400 font-black">&uarr;</span>
+                <span className="text-emerald-400 font-semibold">&uarr;</span>
                 <span>Enrollments (Junction Table)</span>
               </div>
 
-              <div className="rounded-xl overflow-hidden border-2 border-emerald-500 shadow-xl bg-[#0e1322] ring-1 ring-emerald-500/40">
+              <div className="rounded-xl overflow-hidden border-2 border-emerald-500 bg-[#0e1322] ring-1 ring-emerald-500/40">
                 {/* Header banner */}
                 <div className="bg-[#15803d] text-white font-bold text-center py-2 px-3 text-sm font-sans tracking-wide flex items-center justify-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-amber-300" />
@@ -295,7 +295,7 @@ export default function RelationalModelVisualizer() {
                             courseId: enr.courseId,
                           })
                         }
-                        className={`w-full grid grid-cols-12 py-2 px-3 text-center transition-all cursor-pointer ${
+                        className={`w-full grid grid-cols-12 py-2 px-3 text-center transition-colors cursor-pointer ${
                           isDirect
                             ? 'bg-emerald-500/30 text-white font-bold ring-1 ring-emerald-400'
                             : isRowActive
@@ -323,10 +323,10 @@ export default function RelationalModelVisualizer() {
             <div className="col-span-4 space-y-2">
               <div className="flex items-center justify-end gap-1.5 text-[11px] font-mono text-emerald-400 font-bold">
                 <span>Courses</span>
-                <span className="text-emerald-500 font-black">&larr;</span>
+                <span className="text-emerald-500 font-semibold">&larr;</span>
               </div>
 
-              <div className="rounded-xl overflow-hidden border-2 border-emerald-600/80 shadow-lg bg-[#0e1322]">
+              <div className="rounded-xl overflow-hidden border-2 border-emerald-600/80 bg-[#0e1322]">
                 {/* Header banner */}
                 <div className="bg-[#15803d] text-white font-bold text-center py-2 px-3 text-sm font-sans tracking-wide">
                   Courses
@@ -349,7 +349,7 @@ export default function RelationalModelVisualizer() {
                       <button
                         key={co.id}
                         onClick={() => setSelected({ type: 'course', id: co.id })}
-                        className={`w-full grid grid-cols-12 py-2 px-3 text-left transition-all cursor-pointer ${
+                        className={`w-full grid grid-cols-12 py-2 px-3 text-left transition-colors cursor-pointer ${
                           isDirect
                             ? 'bg-cyan-500/25 text-white font-bold ring-1 ring-cyan-400'
                             : isRowActive
@@ -411,7 +411,7 @@ export default function RelationalModelVisualizer() {
       </div>
 
       {/* Dynamic Foreign Key Explanation Box */}
-      <div className="p-4 rounded-xl bg-gradient-to-r from-[#0d1624] via-[#091a18] to-[#0a1120] border border-emerald-900/60 text-xs font-sans leading-relaxed space-y-2">
+      <div className="p-4 rounded-xl bg-[#15171e] border border-emerald-900/60 text-xs font-sans leading-relaxed space-y-2">
         <div className="flex items-center gap-2 font-mono text-[11px] text-emerald-400 font-bold uppercase">
           <Key className="w-3.5 h-3.5 text-amber-400" />
           <span>
@@ -435,7 +435,7 @@ export default function RelationalModelVisualizer() {
 
       {/* RDBMS Industry Engines Grid */}
       <div className="space-y-2 pt-1">
-        <span className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider">
+        <span className="text-xs font-mono font-bold text-zinc-300">
           {language === 'bn' ? 'শীর্ষস্থানীয় রিলেশনাল ইঞ্জিনসমূহ:' : 'Leading Relational Engines Implementing This:'}
         </span>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">

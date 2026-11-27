@@ -118,19 +118,19 @@ export default function Sidebar({
 
   if (collapsed) {
     return (
-      <aside className="w-14 border-r border-[#1e202e] bg-[#0c0d14] flex flex-col justify-between py-3.5 items-center shrink-0">
+      <aside className="w-14 border-r border-white/[0.08] bg-[#090a0d] flex flex-col justify-between py-4 items-center shrink-0">
         <div className="flex flex-col items-center gap-3">
           <FlowLogicLogo size="xs" />
           <button
             onClick={onToggleCollapse}
-            className="p-1.5 text-zinc-400 hover:text-zinc-100 hover:bg-[#181a26] rounded-md transition-colors"
-            title="Expand Sidebar"
+            className="p-2 text-[#9ca0b0] hover:text-[#f4f4f7] hover:bg-[#15171e] rounded-lg transition-colors cursor-pointer"
+            title="Expand sidebar"
           >
-            <PanelLeftOpen className="w-4 h-4" />
+            <PanelLeftOpen className="w-4 h-4" strokeWidth={1.5} />
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 overflow-y-auto">
+        <div className="flex flex-col gap-1 overflow-y-auto">
           {NAV_SECTIONS.flatMap(s => s.items)
             .filter(i => i.status === 'ready')
             .map(item => {
@@ -140,36 +140,36 @@ export default function Sidebar({
                 <Link
                   key={item.id}
                   href={`/topics/${item.id}`}
-                  className={`p-2 rounded-md transition-colors ${
+                  className={`p-2 rounded-lg transition-colors ${
                     isActive
-                      ? 'bg-[#1e2233] text-amber-400 border border-amber-500/30'
-                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#161822]'
+                      ? 'bg-[#1c1f29] text-amber-400 border border-white/[0.14]'
+                      : 'text-[#9ca0b0] hover:text-[#f4f4f7] hover:bg-[#15171e]'
                   }`}
                   title={item.label}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4" strokeWidth={1.5} />
                 </Link>
               );
             })}
         </div>
 
-        <div className="text-[10px] font-mono text-zinc-600">v0.1</div>
+        <div className="text-[11px] font-mono text-[#686c7d]">v0.1</div>
       </aside>
     );
   }
 
   return (
-    <aside className="w-80 border-r border-[#1e202e] bg-[#0c0d14] flex flex-col justify-between shrink-0 select-none">
+    <aside className="w-72 border-r border-white/[0.08] bg-[#090a0d] flex flex-col justify-between shrink-0 select-none">
       {/* Top Header */}
-      <div className="flex flex-col border-b border-[#1b1d2a]">
+      <div className="flex flex-col border-b border-white/[0.08]">
         <div className="p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <FlowLogicLogo size="sm" />
             <div>
-              <span className="font-bold text-sm tracking-tight text-zinc-100 block">
-                FORWARD LEARNING
+              <span className="font-semibold text-sm text-[#f4f4f7] block leading-tight">
+                Forward Learning
               </span>
-              <span className="text-xs font-mono text-zinc-400 block">
+              <span className="text-xs font-mono text-[#686c7d] block">
                 Systems &amp; AI Engineering
               </span>
             </div>
@@ -177,28 +177,28 @@ export default function Sidebar({
 
           <button
             onClick={onToggleCollapse}
-            className="p-1.5 text-zinc-400 hover:text-zinc-100 hover:bg-[#181a26] rounded-md transition-colors"
-            title="Collapse Sidebar"
+            className="p-2 text-[#9ca0b0] hover:text-[#f4f4f7] hover:bg-[#15171e] rounded-lg transition-colors cursor-pointer"
+            title="Collapse sidebar"
           >
-            <PanelLeftClose className="w-4 h-4" />
+            <PanelLeftClose className="w-4 h-4" strokeWidth={1.5} />
           </button>
         </div>
 
         {/* Filter Input */}
-        <div className="px-3 pb-3">
-          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#13151f] border border-[#1f2233] text-sm">
-            <Search className="w-4 h-4 text-zinc-400 shrink-0" />
+        <div className="px-4 pb-4">
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#15171e] border border-white/[0.08] text-sm focus-within:border-white/[0.2]">
+            <Search className="w-4 h-4 text-[#686c7d] shrink-0" strokeWidth={1.5} />
             <input
               type="text"
               value={filterQuery}
               onChange={e => setFilterQuery(e.target.value)}
-              placeholder="Filter topics..."
-              className="bg-transparent text-zinc-100 placeholder-zinc-500 text-sm focus:outline-none w-full font-mono"
+              placeholder="Filter"
+              className="bg-transparent text-[#f4f4f7] placeholder-[#686c7d] text-xs focus:outline-none w-full font-mono"
             />
             {filterQuery && (
               <button
                 onClick={() => setFilterQuery('')}
-                className="text-xs text-zinc-400 hover:text-zinc-200 font-mono"
+                className="text-xs text-[#9ca0b0] hover:text-[#f4f4f7] font-mono cursor-pointer"
               >
                 Clear
               </button>
@@ -208,27 +208,27 @@ export default function Sidebar({
       </div>
 
       {/* Topics Tree */}
-      <div className="flex-1 overflow-y-auto px-2.5 py-3.5 space-y-4">
+      <div className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
         {filteredSections.map(sec => {
           const isSecCollapsed = !filterQuery.trim() && collapsedSections[sec.title];
           return (
             <div key={sec.title} className="space-y-1">
               <button
                 onClick={() => toggleSection(sec.title)}
-                className="w-full flex items-center justify-between px-2.5 py-1.5 text-xs font-semibold text-zinc-300 hover:text-zinc-100 transition-colors"
+                className="w-full flex items-center justify-between px-2 py-1.5 text-xs font-medium text-[#9ca0b0] hover:text-[#f4f4f7] transition-colors cursor-pointer"
               >
-                <span className="uppercase tracking-wider font-mono text-xs text-zinc-400">
+                <span className="font-mono text-xs text-[#686c7d]">
                   {sec.title}
                 </span>
                 {isSecCollapsed ? (
-                  <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#686c7d]" strokeWidth={1.5} />
                 ) : (
-                  <ChevronDown className="w-3.5 h-3.5 text-zinc-400" />
+                  <ChevronDown className="w-3.5 h-3.5 text-[#686c7d]" strokeWidth={1.5} />
                 )}
               </button>
 
               {!isSecCollapsed && (
-                <div className="space-y-1 pt-0.5">
+                <div className="space-y-0.5 pt-1">
                   {sec.items.map(item => {
                     const Icon = item.icon;
                     const isActive = activeTopic === item.id;
@@ -250,42 +250,43 @@ export default function Sidebar({
                               toggleSubmenu(item.id);
                             }
                           }}
-                          className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors group cursor-pointer ${
+                          className={`w-full h-9 flex items-center justify-between px-2.5 rounded-lg text-xs transition-colors group cursor-pointer ${
                             isActive || isSubActive
-                              ? 'bg-[#181a27] text-zinc-100 font-semibold border border-[#2a2e44] shadow-sm'
-                              : 'text-zinc-300 hover:text-zinc-100 hover:bg-[#12141f]'
+                              ? 'bg-[#1c1f29] text-[#f4f4f7] font-medium border border-white/[0.12]'
+                              : 'text-[#9ca0b0] hover:text-[#f4f4f7] hover:bg-[#15171e]'
                           }`}
                         >
                           <div className="flex items-center gap-2.5 truncate">
                             <Icon
                               className={`w-4 h-4 shrink-0 ${
-                                isActive || isSubActive ? 'text-amber-400' : 'text-zinc-400 group-hover:text-zinc-200'
+                                isActive || isSubActive ? 'text-amber-400' : 'text-[#686c7d] group-hover:text-[#9ca0b0]'
                               }`}
+                              strokeWidth={1.5}
                             />
                             <span className="truncate">{item.label}</span>
                           </div>
 
                           <div className="flex items-center gap-1.5 shrink-0 ml-2">
                             {item.tag && (
-                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#13141f] text-zinc-300 border border-[#1e202e]">
+                              <span className="text-[11px] font-mono text-[#686c7d]">
                                 {item.tag}
                               </span>
                             )}
                             {hasSubItems ? (
                               <span
                                 onClick={(e) => toggleSubmenu(item.id, e)}
-                                className="p-0.5 text-zinc-400 hover:text-zinc-200"
+                                className="p-0.5 text-[#686c7d] hover:text-[#f4f4f7]"
                               >
                                 {isSubExpanded ? (
-                                  <ChevronDown className="w-3.5 h-3.5" />
+                                  <ChevronDown className="w-3.5 h-3.5" strokeWidth={1.5} />
                                 ) : (
-                                  <ChevronRight className="w-3.5 h-3.5" />
+                                  <ChevronRight className="w-3.5 h-3.5" strokeWidth={1.5} />
                                 )}
                               </span>
                             ) : (
                               <span
-                                className={`w-2 h-2 rounded-full ${
-                                  isReady ? 'bg-emerald-400 shadow-sm shadow-emerald-400/50' : 'bg-zinc-700'
+                                className={`w-1.5 h-1.5 rounded-full ${
+                                  isReady ? 'bg-emerald-400' : 'bg-[#2a2d3a]'
                                 }`}
                               />
                             )}
@@ -294,22 +295,22 @@ export default function Sidebar({
 
                         {/* Submenu Dropdown Items */}
                         {hasSubItems && isSubExpanded && (
-                          <div className="border-l-2 border-[#24283d] ml-5 pl-2.5 space-y-1 py-1">
+                          <div className="border-l border-white/[0.08] ml-4 pl-2.5 space-y-0.5 py-1">
                             {item.subItems!.map(sub => {
                               const isChildActive = activeTopic === sub.id;
                               return (
                                 <Link
                                   key={sub.id}
                                   href={`/topics/${sub.id}`}
-                                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-mono transition-colors group cursor-pointer ${
+                                  className={`w-full h-8 flex items-center justify-between px-2.5 rounded-lg text-xs font-mono transition-colors group cursor-pointer ${
                                     isChildActive
-                                      ? 'bg-[#202538] text-amber-300 font-bold border border-amber-500/30 shadow-sm'
-                                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#151724]'
+                                      ? 'bg-[#1c1f29] text-amber-400 font-medium border border-white/[0.12]'
+                                      : 'text-[#9ca0b0] hover:text-[#f4f4f7] hover:bg-[#15171e]'
                                   }`}
                                 >
                                   <span className="truncate">{sub.label}</span>
                                   {sub.tag && (
-                                    <span className="text-[9px] px-1 py-0.2 rounded bg-[#10121c] text-zinc-500 border border-[#1b1e2c]">
+                                    <span className="text-[11px] text-[#686c7d]">
                                       {sub.tag}
                                     </span>
                                   )}
@@ -329,10 +330,10 @@ export default function Sidebar({
       </div>
 
       {/* Footer Info */}
-      <div className="p-3.5 border-t border-[#1b1d2a] text-xs font-mono text-zinc-400 flex items-center justify-between">
+      <div className="px-4 py-3 border-t border-white/[0.08] text-xs font-mono text-[#686c7d] flex items-center justify-between">
         <span>Forward Learning</span>
-        <span className="text-emerald-400 font-medium flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-400" />
+        <span className="text-[#9ca0b0] flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
           Active
         </span>
       </div>

@@ -28,11 +28,11 @@ export default function SelectionVisualizer({ step }: SelectionVisualizerProps) 
           return (
             <div key={idx} className="flex flex-col items-center gap-2">
               <div
-                className={`w-14 h-20 rounded-2xl border-2 flex flex-col items-center justify-center font-mono font-bold text-sm transition-all duration-300 ${
+                className={`w-14 h-20 rounded-2xl border-2 flex flex-col items-center justify-center font-mono font-bold text-sm transition-colors duration-300 ${
                   isSorted
-                    ? 'bg-emerald-950/40 border-emerald-500 text-emerald-300 shadow-lg shadow-emerald-500/10'
+                    ? 'bg-emerald-950/40 border-emerald-500 text-emerald-300  '
                     : isMin
-                    ? 'bg-amber-400 border-amber-300 text-slate-950 ring-4 ring-amber-400/40 scale-105 shadow-xl'
+                    ? 'bg-amber-400 border-amber-300 text-slate-950 ring-4 ring-amber-400/40 scale-105 '
                     : isScanning
                     ? 'bg-sky-600 border-sky-400 text-white ring-2 ring-sky-400'
                     : 'bg-[#121626] border-[#222a44] text-zinc-300'

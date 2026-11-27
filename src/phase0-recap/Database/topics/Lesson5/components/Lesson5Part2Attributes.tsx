@@ -84,7 +84,7 @@ export default function Lesson5Part2Attributes() {
           <Circle className="w-5 h-5" />
         </div>
         <div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
             {language === 'bn' ? 'পার্ট ৩ • অ্যাট্রিবিউট ও প্রকারভেদ' : 'Part 3 • Attributes & Types'}
           </span>
           <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
@@ -145,7 +145,7 @@ export default function Lesson5Part2Attributes() {
                   desc: 'Single Oval ⬭: Atomic attribute that cannot be divided further (e.g. Gender, Salary, Roll_No).',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-cyan-500/30 bg-[#0B0F19] transition-all hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-cyan-500/30 bg-[#0B0F19] transition-colors hover:border-cyan-400 hover: hover:"
             >
               <img
                 src="/images/attr-simple-attribute.png"
@@ -194,7 +194,7 @@ export default function Lesson5Part2Attributes() {
                   desc: 'Hierarchy of Ovals: Main attribute (Address) branches into multiple independent sub-attributes.',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-emerald-500/30 bg-[#0B0F19] transition-all hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-emerald-500/30 bg-[#0B0F19] transition-colors hover:border-emerald-400 hover: hover:"
             >
               <img
                 src="/images/attr-composite-attribute.png"
@@ -242,7 +242,7 @@ export default function Lesson5Part2Attributes() {
                   desc: 'Underlined text in oval: Uniquely identifies each entity instance in an entity set (Primary Key).',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-all hover:border-amber-400 hover:shadow-lg hover:shadow-amber-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-colors hover:border-amber-400 hover: hover:"
             >
               <img
                 src="/images/attr-key-attribute.png"
@@ -290,7 +290,7 @@ export default function Lesson5Part2Attributes() {
                   desc: 'Double Concentric Oval (( )): Capable of holding multiple values for a single entity instance.',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-emerald-500/30 bg-[#0B0F19] transition-all hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-emerald-500/30 bg-[#0B0F19] transition-colors hover:border-emerald-400 hover: hover:"
             >
               <img
                 src="/images/attr-multivalued-attribute.png"
@@ -354,7 +354,7 @@ export default function Lesson5Part2Attributes() {
                   desc: 'Dashed Oval - -: Dynamically computed on query from stored attribute (e.g. Age computed from Date_of_Birth).',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-all hover:border-amber-400 hover:shadow-lg hover:shadow-amber-950/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-amber-500/30 bg-[#0B0F19] transition-colors hover:border-amber-400 hover: hover:"
             >
               <img
                 src="/images/attr-derived-attribute.png"
@@ -427,7 +427,7 @@ export default function Lesson5Part2Attributes() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-amber-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-amber-500/40 p-4 md:p-6 space-y-3"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -440,7 +440,7 @@ export default function Lesson5Part2Attributes() {
               </div>
               <button
                 onClick={() => setModalImage(null)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>

@@ -67,11 +67,11 @@ export default function SuperKeyTab() {
                   <button
                     key={combo.id}
                     onClick={() => setSelectedSuperKeyCombo(combo.id)}
-                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-1.5 ${
+                    className={`p-3 rounded-xl border text-left transition-colors cursor-pointer flex flex-col justify-between gap-1.5 ${
                       isSelected
                         ? combo.isSuperKey
-                          ? 'bg-indigo-950/60 border-indigo-400 text-white shadow-lg shadow-indigo-950/50 ring-1 ring-indigo-400/50'
-                          : 'bg-rose-950/50 border-rose-400 text-white shadow-lg shadow-rose-950/50 ring-1 ring-rose-400/50'
+                          ? 'bg-indigo-950/60 border-indigo-400 text-white   ring-1 ring-indigo-400/50'
+                          : 'bg-rose-950/50 border-rose-400 text-white   ring-1 ring-rose-400/50'
                         : 'bg-[#0c0e18] border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
                     }`}
                   >
@@ -312,10 +312,10 @@ export default function SuperKeyTab() {
 
                 {/* Analysis Box for Selected Combination */}
                 <div
-                  className={`p-4 rounded-xl border transition-all ${
+                  className={`p-4 rounded-xl border transition-colors ${
                     activeCombo.isSuperKey
-                      ? 'bg-gradient-to-r from-indigo-950/40 via-slate-900 to-[#101428] border-indigo-500/30 text-indigo-200'
-                      : 'bg-gradient-to-r from-rose-950/40 via-slate-900 to-[#1c1218] border-rose-500/30 text-rose-200'
+                      ? 'bg-[#15171e] border-indigo-500/30 text-indigo-200'
+                      : 'bg-[#15171e] border-rose-500/30 text-rose-200'
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800/80 mb-2">

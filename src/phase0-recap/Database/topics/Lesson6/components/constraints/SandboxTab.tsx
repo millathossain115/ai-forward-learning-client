@@ -44,7 +44,7 @@ export default function SandboxTab() {
                       setConstraintDemo(c.id);
                       setConstraintTestStatus('idle');
                     }}
-                    className={`p-2 rounded-lg text-left border transition-all cursor-pointer flex flex-col gap-0.5 ${
+                    className={`p-2 rounded-lg text-left border transition-colors cursor-pointer flex flex-col gap-0.5 ${
                       constraintDemo === c.id
                         ? 'bg-amber-500/20 border-amber-400/60 text-white shadow'
                         : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
@@ -125,21 +125,21 @@ FOREIGN KEY (dept_id) REFERENCES departments(id)`}
                     <div className="flex flex-col gap-1.5">
                       <button
                         onClick={() => setConstraintTestStatus('pk_valid')}
-                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (ID: 104, &apos;Nusrat&apos;)</span>
                         <span className="text-[9px] px-1 rounded bg-emerald-950/60 text-emerald-400">Valid</span>
                       </button>
                       <button
                         onClick={() => setConstraintTestStatus('pk_dup')}
-                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (ID: 101, &apos;Duplicate&apos;)</span>
                         <span className="text-[9px] px-1 rounded bg-rose-950/60 text-rose-400">Error 1062</span>
                       </button>
                       <button
                         onClick={() => setConstraintTestStatus('pk_null')}
-                        className="px-2.5 py-1.5 rounded-lg bg-amber-600/20 hover:bg-amber-600/40 text-amber-300 border border-amber-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-amber-600/20 hover:bg-amber-600/40 text-amber-300 border border-amber-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (ID: NULL, &apos;No ID&apos;)</span>
                         <span className="text-[9px] px-1 rounded bg-amber-950/60 text-amber-400">Error 1048</span>
@@ -151,14 +151,14 @@ FOREIGN KEY (dept_id) REFERENCES departments(id)`}
                     <div className="flex flex-col gap-1.5">
                       <button
                         onClick={() => setConstraintTestStatus('not_null_valid')}
-                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (Name = &apos;Nusrat Karim&apos;)</span>
                         <span className="text-[9px] px-1 rounded bg-emerald-950/60 text-emerald-400">Valid</span>
                       </button>
                       <button
                         onClick={() => setConstraintTestStatus('not_null_error')}
-                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (Name = NULL)</span>
                         <span className="text-[9px] px-1 rounded bg-rose-950/60 text-rose-400">Error 1048</span>
@@ -170,14 +170,14 @@ FOREIGN KEY (dept_id) REFERENCES departments(id)`}
                     <div className="flex flex-col gap-1.5">
                       <button
                         onClick={() => setConstraintTestStatus('unique_valid')}
-                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (Email = &apos;nusrat@univ.edu&apos;)</span>
                         <span className="text-[9px] px-1 rounded bg-emerald-950/60 text-emerald-400">Valid</span>
                       </button>
                       <button
                         onClick={() => setConstraintTestStatus('unique_dup')}
-                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (Email = &apos;rahim@univ.edu&apos;)</span>
                         <span className="text-[9px] px-1 rounded bg-rose-950/60 text-rose-400">Error 1062</span>
@@ -189,14 +189,14 @@ FOREIGN KEY (dept_id) REFERENCES departments(id)`}
                     <div className="flex flex-col gap-1.5">
                       <button
                         onClick={() => setConstraintTestStatus('default_implicit')}
-                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT without &apos;country&apos; column</span>
                         <span className="text-[9px] px-1 rounded bg-emerald-950/60 text-emerald-400">Auto Default</span>
                       </button>
                       <button
                         onClick={() => setConstraintTestStatus('default_override')}
-                        className="px-2.5 py-1.5 rounded-lg bg-cyan-600/20 hover:bg-cyan-600/40 text-cyan-300 border border-cyan-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-cyan-600/20 hover:bg-cyan-600/40 text-cyan-300 border border-cyan-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT with country = &apos;Canada&apos;</span>
                         <span className="text-[9px] px-1 rounded bg-cyan-950/60 text-cyan-400">Override</span>
@@ -208,14 +208,14 @@ FOREIGN KEY (dept_id) REFERENCES departments(id)`}
                     <div className="flex flex-col gap-1.5">
                       <button
                         onClick={() => setConstraintTestStatus('check_valid')}
-                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (Age = 19, &gt;= 16)</span>
                         <span className="text-[9px] px-1 rounded bg-emerald-950/60 text-emerald-400">Valid</span>
                       </button>
                       <button
                         onClick={() => setConstraintTestStatus('check_violation')}
-                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (Age = 13, &lt; 16)</span>
                         <span className="text-[9px] px-1 rounded bg-rose-950/60 text-rose-400">Error 3819</span>
@@ -227,14 +227,14 @@ FOREIGN KEY (dept_id) REFERENCES departments(id)`}
                     <div className="flex flex-col gap-1.5">
                       <button
                         onClick={() => setConstraintTestStatus('fk_valid')}
-                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (dept_id = 2, EEE exists)</span>
                         <span className="text-[9px] px-1 rounded bg-emerald-950/60 text-emerald-400">Valid Parent</span>
                       </button>
                       <button
                         onClick={() => setConstraintTestStatus('fk_orphan')}
-                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-all cursor-pointer flex items-center justify-between"
+                        className="px-2.5 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-[10.5px] font-mono text-left transition-colors cursor-pointer flex items-center justify-between"
                       >
                         <span>INSERT (dept_id = 99, Not found)</span>
                         <span className="text-[9px] px-1 rounded bg-rose-950/60 text-rose-400">Error 1452</span>
@@ -247,7 +247,7 @@ FOREIGN KEY (dept_id) REFERENCES departments(id)`}
               {/* Right Column (7 Cols): Engine Terminal & Live Table */}
               <div className="lg:col-span-7 space-y-2.5">
                 {/* Live Engine Console Terminal */}
-                <div className="rounded-xl border border-slate-800 bg-black/80 p-3 font-mono space-y-1.5 shadow-lg">
+                <div className="rounded-xl border border-slate-800 bg-black/80 p-3 font-mono space-y-1.5">
                   <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5 text-[10px]">
                     <div className="flex items-center gap-1.5 text-zinc-400">
                       <Terminal className="w-3.5 h-3.5 text-cyan-400" />

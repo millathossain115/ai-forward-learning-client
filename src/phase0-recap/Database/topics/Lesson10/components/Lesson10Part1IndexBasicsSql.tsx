@@ -61,7 +61,7 @@ export default function Lesson10Part1IndexBasicsSql() {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setScanDemoMode('scan')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono cursor-pointer transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-mono cursor-pointer transition-colors ${
                   scanDemoMode === 'scan' ? 'bg-rose-600 text-white font-bold' : 'bg-slate-800 text-zinc-400'
                 }`}
               >
@@ -69,7 +69,7 @@ export default function Lesson10Part1IndexBasicsSql() {
               </button>
               <button
                 onClick={() => setScanDemoMode('index')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono cursor-pointer transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-mono cursor-pointer transition-colors ${
                   scanDemoMode === 'index' ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-800 text-zinc-400'
                 }`}
               >

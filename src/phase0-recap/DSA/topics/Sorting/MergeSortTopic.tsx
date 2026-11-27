@@ -23,14 +23,14 @@ import MergeSortInspector from './components/MergeSortInspector';
 
 const MergeSortCodeView = dynamic(() => import('./components/MergeSortCodeView'), {
   loading: () => (
-    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="p-8 text-center text-xs font-mono text-zinc-500">
       Loading code view...
     </div>
   )
 });
 const MergeSortCases = dynamic(() => import('./components/MergeSortCases'), {
   loading: () => (
-    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="p-8 text-center text-xs font-mono text-zinc-500">
       Loading case studies...
     </div>
   )
@@ -88,11 +88,11 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
   return (
     <div className="flex flex-col gap-4 w-full text-zinc-100">
       {/* 1. COMPACT UNIFIED TOP TOOLBAR */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#090e17] border border-[#1b2b3f] shadow-lg">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#090e17] border border-[#1b2b3f]">
         {/* Left: Brand Pill & Preset / Randomize */}
         <div className="flex flex-wrap items-center gap-2.5">
           <div className="flex items-center gap-2 pr-2 border-r border-[#1a283b]">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 font-bold">
+            <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 font-bold">
               Topic 13.4 • Merge Sort
             </span>
             <span className="text-xs font-mono font-bold text-teal-300 hidden sm:inline">
@@ -106,7 +106,7 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
               <button
                 key={idx}
                 onClick={() => handlePresetSelect(p.array)}
-                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                   JSON.stringify(arrayData) === JSON.stringify(p.array)
                     ? 'bg-sky-500/30 text-sky-200 font-bold border border-sky-500/40'
                     : 'text-zinc-400 hover:text-zinc-200'
@@ -120,7 +120,7 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
           {/* Randomize Button */}
           <button
             onClick={handleRandomize}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-teal-600/30 to-emerald-600/30 hover:from-teal-600/50 hover:to-emerald-600/50 border border-teal-500/40 text-teal-200 font-mono text-xs font-bold transition-all shadow cursor-pointer hover:scale-105"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#15171e] hover:from-teal-600/50 hover:to-emerald-600/50 border border-teal-500/40 text-teal-200 font-mono text-xs font-bold transition-colors shadow cursor-pointer"
             title="নতুন ৮টি র্যান্ডম সংখ্যা তৈরি করুন"
           >
             <Shuffle className="w-3.5 h-3.5 text-teal-300" />
@@ -141,7 +141,7 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
                   setIsPlaying(!isPlaying);
                 }
               }}
-              className="flex items-center gap-1 px-3 py-1 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-mono text-xs font-bold transition-all cursor-pointer shadow"
+              className="flex items-center gap-1 px-3 py-1 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-mono text-xs font-bold transition-colors cursor-pointer shadow"
             >
               {isPlaying ? (
                 <Pause className="w-3.5 h-3.5" />
@@ -193,7 +193,7 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
           <div className="flex items-center gap-1 bg-[#0d1624] p-1 rounded-xl border border-[#1d3049] text-xs font-mono">
             <button
               onClick={() => setActiveTab('visualizer')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 activeTab === 'visualizer'
                   ? 'bg-teal-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -203,7 +203,7 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
             </button>
             <button
               onClick={() => setActiveTab('code')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 activeTab === 'code'
                   ? 'bg-teal-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -213,7 +213,7 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
             </button>
             <button
               onClick={() => setActiveTab('cases')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 activeTab === 'cases'
                   ? 'bg-teal-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -267,7 +267,7 @@ export default function MergeSortTopic({ onNavigate }: { onNavigate?: (id: strin
 
         <button
           onClick={() => onNavigate && onNavigate('sorting-quick')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-bold transition-all shadow cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#15171e] hover:from-teal-500 hover:to-emerald-500 text-white font-bold transition-colors shadow cursor-pointer"
         >
           <span>পরবর্তী: কুইক সর্ট (Quick Sort)</span>
           <ArrowRight className="w-3.5 h-3.5" />

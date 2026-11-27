@@ -29,15 +29,15 @@ export default function BalancedTreeControls({
       {/* Simulator Top Filter Bar */}
       <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-[#1b1e2e]">
         <div className="flex items-center gap-2.5">
-          <span className="text-xs font-mono text-zinc-400 font-semibold uppercase tracking-wider">
+          <span className="text-xs font-mono text-zinc-400 font-semibold">
             ট্রি মডেল ফিল্টার:
           </span>
           <div className="flex items-center bg-[#090a10] p-1 rounded-xl border border-[#1f2338]">
             <button
               onClick={() => onSelectModel('avl')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors cursor-pointer ${
                 activeModel === 'avl'
-                  ? 'bg-sky-600 text-white shadow-md'
+                  ? 'bg-sky-600 text-white '
                   : 'text-zinc-400 hover:text-zinc-200'
               }`}
             >
@@ -46,9 +46,9 @@ export default function BalancedTreeControls({
             </button>
             <button
               onClick={() => onSelectModel('redblack')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors cursor-pointer ${
                 activeModel === 'redblack'
-                  ? 'bg-rose-600 text-white shadow-md'
+                  ? 'bg-rose-600 text-white '
                   : 'text-zinc-400 hover:text-zinc-200'
               }`}
             >
@@ -77,7 +77,7 @@ export default function BalancedTreeControls({
             <button
               onClick={onInsert}
               disabled={isPlaying}
-              className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded bg-sky-600 hover:bg-sky-500 disabled:opacity-40 text-slate-950 font-bold shadow-md transition-all cursor-pointer"
+              className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded bg-sky-600 hover:bg-sky-500 disabled:opacity-40 text-slate-950 font-bold transition-colors cursor-pointer"
             >
               <PlusCircle className="w-4 h-4" /> Insert
             </button>

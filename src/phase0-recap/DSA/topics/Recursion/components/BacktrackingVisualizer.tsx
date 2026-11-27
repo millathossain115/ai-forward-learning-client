@@ -19,7 +19,7 @@ export default function BacktrackingVisualizer({
         <span
           className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${
             currentBacktrackStep.action === 'dead_end'
-              ? 'bg-rose-950 border-rose-500 text-rose-200 animate-pulse'
+              ? 'bg-rose-950 border-rose-500 text-rose-200 '
               : currentBacktrackStep.action === 'backtrack'
               ? 'bg-amber-950 border-amber-500 text-amber-200'
               : currentBacktrackStep.action === 'goal'
@@ -51,9 +51,9 @@ export default function BacktrackingVisualizer({
               return (
                 <div
                   key={`${r}-${c}`}
-                  className={`aspect-square rounded-xl border flex flex-col items-center justify-center relative font-mono text-xs transition-all duration-300 ${
+                  className={`aspect-square rounded-xl border flex flex-col items-center justify-center relative font-mono text-xs transition-colors duration-300 ${
                     isCurrent
-                      ? 'bg-amber-500/30 border-amber-400 ring-2 ring-amber-400 shadow-lg scale-105 z-10'
+                      ? 'bg-amber-500/30 border-amber-400 ring-2 ring-amber-400  scale-105 z-10'
                       : isDeadEnd
                       ? 'bg-rose-950/60 border-rose-700 text-rose-400 opacity-60'
                       : isInPath

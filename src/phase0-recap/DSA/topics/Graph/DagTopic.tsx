@@ -19,7 +19,7 @@ import {
 
 const GraphVisualizer = dynamic(() => import('./GraphVisualizer'), {
   loading: () => (
-    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse border border-[#1e2233] rounded-3xl bg-[#090b14]">
+    <div className="h-96 flex items-center justify-center text-xs font-mono text-zinc-500 border border-[#1e2233] rounded-3xl bg-[#090b14]">
       Loading graph pipeline simulator...
     </div>
   )
@@ -87,16 +87,15 @@ export default function DagTopic() {
   return (
     <div className="flex flex-col gap-10 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#13162b] via-[#0d0f1b] to-[#070912] border border-[#232945] p-6 md:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#232945] p-6 md:p-8">
         <div className="relative z-10 space-y-3">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-bold">
               Topic 11 • Graphs &amp; Pipelines
             </span>
             <span className="text-xs text-zinc-500 font-mono">Dependency Resolution &amp; Topo Sort</span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white">
             সাইক্লিক গ্রাফ বনাম ডিএজি (Cyclic vs DAG)
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-3xl leading-relaxed">
@@ -106,7 +105,7 @@ export default function DagTopic() {
       </div>
 
       {/* 2. Visual Comparison: Cyclic Deadlock vs Acyclic Workflow (Animated Vector Canvas) */}
-      <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6 shadow-xl">
+      <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1b1f30] pb-4">
           <div className="space-y-1">
             <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
@@ -294,7 +293,7 @@ export default function DagTopic() {
       {/* 4. Interactive Simulation Playground */}
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+          <h3 className="text-xs font-semibold text-zinc-200 flex items-center gap-2 font-mono">
             <Zap className="w-3.5 h-3.5 text-indigo-400" />
             ইন্টারঅ্যাক্টিভ গ্রাফ পাইপলাইন ও সাইকেল চেকার (Live Engine)
           </h3>
@@ -306,8 +305,8 @@ export default function DagTopic() {
       </div>
 
       {/* 5. Time & Space Complexity Benchmark Table */}
-      <div className="bg-[#0f111a] border border-[#1e2233] rounded-3xl p-6 md:p-8 flex flex-col gap-4 shadow-xl">
-        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+      <div className="bg-[#0f111a] border border-[#1e2233] rounded-3xl p-6 md:p-8 flex flex-col gap-4">
+        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 font-mono">
           <Table className="w-4 h-4 text-zinc-400" />
           Time &amp; Space Complexity Benchmarks
         </h3>
@@ -342,7 +341,7 @@ export default function DagTopic() {
 
       {/* 6. Real-World Systems & AI Engineering Applications */}
       <div className="flex flex-col gap-3.5">
-        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 font-mono">
           <Sparkles className="w-4 h-4 text-zinc-400" />
           বাস্তব সিস্টেমস ও AI ইঞ্জিনিয়ারিংয়ে ব্যবহার (Production Usages)
         </h3>

@@ -58,11 +58,11 @@ export default function BinarySearchVisualizer({ currentStep }: BinarySearchVisu
             return (
               <div
                 key={i}
-                className={`h-14 rounded-xl border font-mono flex flex-col items-center justify-center transition-all ${
+                className={`h-14 rounded-xl border font-mono flex flex-col items-center justify-center transition-colors ${
                   isFound
-                    ? 'bg-emerald-500 text-slate-950 font-black ring-4 ring-emerald-500/40 scale-105 shadow-xl'
+                    ? 'bg-emerald-500 text-slate-950 font-semibold ring-4 ring-emerald-500/40 scale-105 '
                     : isMid
-                    ? 'bg-amber-400 text-slate-950 font-black ring-4 ring-amber-400/30 scale-105 shadow-lg'
+                    ? 'bg-amber-400 text-slate-950 font-semibold ring-4 ring-amber-400/30 scale-105 '
                     : inRange
                     ? 'bg-[#13172b] border-[#293354] text-zinc-100 font-bold hover:border-sky-500'
                     : 'bg-[#090b14] border-[#141829] text-zinc-600 opacity-30 line-through'

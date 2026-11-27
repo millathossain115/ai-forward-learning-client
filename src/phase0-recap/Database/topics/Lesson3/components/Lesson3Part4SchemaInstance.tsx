@@ -70,7 +70,7 @@ export default function Lesson3Part4SchemaInstance() {
       </div>
 
       {/* Core Insight */}
-      <div className="p-4 rounded-xl bg-gradient-to-r from-purple-950/40 via-indigo-950/30 to-[#0e1224] border border-purple-800/40 space-y-1.5">
+      <div className="p-4 rounded-xl bg-[#15171e] border border-purple-800/40 space-y-1.5">
         <div className="flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-purple-400 shrink-0" />
           <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-wide">
@@ -91,15 +91,15 @@ export default function Lesson3Part4SchemaInstance() {
       <div className="p-5 rounded-2xl bg-[#14182d] border border-slate-800 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <span className="text-xs font-mono font-bold text-white uppercase flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-purple-500" />
             {language === 'bn' ? 'লাইভ আর্কিটেকচার ভিউ (টগল করুন):' : 'Live Architecture View (Toggle):'}
           </span>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setViewMode('schema')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
                 viewMode === 'schema'
-                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30 ring-1 ring-purple-400'
+                  ? 'bg-purple-600 text-white   ring-1 ring-purple-400'
                   : 'bg-[#101322] border border-slate-800 text-zinc-400 hover:text-white'
               }`}
             >
@@ -107,9 +107,9 @@ export default function Lesson3Part4SchemaInstance() {
             </button>
             <button
               onClick={() => setViewMode('instance')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
                 viewMode === 'instance'
-                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 ring-1 ring-emerald-400'
+                  ? 'bg-emerald-600 text-white   ring-1 ring-emerald-400'
                   : 'bg-[#101322] border border-slate-800 text-zinc-400 hover:text-white'
               }`}
             >
@@ -183,9 +183,9 @@ export default function Lesson3Part4SchemaInstance() {
                   <button
                     key={snapKey}
                     onClick={() => setTimeSnapshot(snapKey)}
-                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold cursor-pointer transition-all ${
+                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors ${
                       timeSnapshot === snapKey
-                        ? 'bg-emerald-500 text-black shadow-md font-extrabold'
+                        ? 'bg-emerald-500 text-black  font-extrabold'
                         : 'bg-[#121526] text-zinc-400 hover:text-white border border-slate-800'
                     }`}
                   >

@@ -133,7 +133,7 @@ export default function TreeTopic() {
       {/* 1. Header Card */}
       <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-lime-400 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-emerald-500/20">
+          <div className="w-10 h-10 rounded-xl bg-[#15171e] text-slate-950 flex items-center justify-center font-bold">
             <Network className="w-5 h-5" />
           </div>
           <div>
@@ -193,7 +193,7 @@ export default function TreeTopic() {
               <button
                 onClick={startInsert}
                 disabled={isPlaying}
-                className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-slate-950 font-bold shadow-md transition-all cursor-pointer"
+                className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-slate-950 font-bold transition-colors cursor-pointer"
               >
                 <PlusCircle className="w-4 h-4" /> Insert
               </button>
@@ -211,7 +211,7 @@ export default function TreeTopic() {
               <button
                 onClick={startSearch}
                 disabled={isPlaying}
-                className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded bg-lime-500 hover:bg-lime-400 disabled:opacity-40 text-slate-950 font-bold shadow-md transition-all cursor-pointer"
+                className="flex items-center gap-1.5 text-xs md:text-sm font-mono px-3.5 py-1.5 rounded bg-lime-500 hover:bg-lime-400 disabled:opacity-40 text-slate-950 font-bold transition-colors cursor-pointer"
               >
                 <Search className="w-4 h-4" /> Search
               </button>
@@ -258,7 +258,7 @@ export default function TreeTopic() {
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-zinc-100 font-bold uppercase tracking-wider text-xs md:text-sm">
+              <span className="text-zinc-100 font-bold text-xs md:text-sm">
                 {currentStep?.type || 'READY'}
               </span>
               {currentStep && (

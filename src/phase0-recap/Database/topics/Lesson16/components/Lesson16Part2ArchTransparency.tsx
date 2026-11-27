@@ -39,7 +39,7 @@ export default function Lesson16Part2ArchTransparency() {
             key={a.id}
             onClick={() => setArchTab(a.id)}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer ${
-              archTab === a.id ? 'bg-indigo-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+              archTab === a.id ? 'bg-indigo-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {a.label}

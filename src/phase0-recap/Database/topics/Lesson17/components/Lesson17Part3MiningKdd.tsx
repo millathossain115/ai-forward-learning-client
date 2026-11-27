@@ -72,7 +72,7 @@ export default function Lesson17Part3MiningKdd() {
             key={k}
             onClick={() => setTech(k)}
             className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold capitalize cursor-pointer ${
-              tech === k ? 'bg-emerald-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+              tech === k ? 'bg-emerald-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {k}

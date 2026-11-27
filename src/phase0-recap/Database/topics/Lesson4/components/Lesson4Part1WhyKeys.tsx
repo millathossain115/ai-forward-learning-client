@@ -43,7 +43,7 @@ export default function Lesson4Part1WhyKeys() {
           </span>
           <button
             onClick={() => setSimulatedUpdateMode('by-name')}
-            className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all ${
+            className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors ${
               simulatedUpdateMode === 'by-name'
                 ? 'bg-rose-500/20 border-rose-500 text-rose-300 font-bold'
                 : 'bg-[#121526] border-slate-700 text-zinc-300 hover:border-slate-500'
@@ -53,7 +53,7 @@ export default function Lesson4Part1WhyKeys() {
           </button>
           <button
             onClick={() => setSimulatedUpdateMode('by-id')}
-            className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all ${
+            className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors ${
               simulatedUpdateMode === 'by-id'
                 ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-bold'
                 : 'bg-[#121526] border-slate-700 text-zinc-300 hover:border-slate-500'
@@ -74,7 +74,7 @@ export default function Lesson4Part1WhyKeys() {
         {/* Problem Table without Keys vs Solution Table with Keys */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div
-            className={`p-4 rounded-xl bg-[#0c0e18] border transition-all space-y-2 ${
+            className={`p-4 rounded-xl bg-[#0c0e18] border transition-colors space-y-2 ${
               simulatedUpdateMode === 'by-name'
                 ? 'border-rose-500 ring-1 ring-rose-500/30'
                 : 'border-rose-900/50'
@@ -153,7 +153,7 @@ export default function Lesson4Part1WhyKeys() {
 
           {/* Solution Table with Student_ID Key */}
           <div
-            className={`p-4 rounded-xl bg-[#0c0e18] border transition-all space-y-2 ${
+            className={`p-4 rounded-xl bg-[#0c0e18] border transition-colors space-y-2 ${
               simulatedUpdateMode === 'by-id'
                 ? 'border-emerald-500 ring-1 ring-emerald-500/30'
                 : 'border-emerald-900/50'

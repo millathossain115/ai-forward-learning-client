@@ -51,7 +51,7 @@ export default function KeyValueDbTab() {
                     setLookupKey(key);
                     setCacheHits((prev) => prev + 1);
                   }}
-                  className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-colors cursor-pointer ${
                     lookupKey === key
                       ? 'bg-amber-500/25 border-amber-400 text-amber-300 font-bold ring-1 ring-amber-400'
                       : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-slate-700'

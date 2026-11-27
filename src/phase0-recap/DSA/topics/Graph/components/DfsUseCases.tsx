@@ -25,7 +25,7 @@ export default function DfsUseCases() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {/* Card 1: Build Systems */}
-        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-indigo-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-indigo-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <Boxes className="w-3.5 h-3.5 text-indigo-400" />
@@ -52,7 +52,7 @@ export default function DfsUseCases() {
         </div>
 
         {/* Card 2: Deadlock Detection */}
-        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-rose-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-rose-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <ShieldAlert className="w-3.5 h-3.5 text-rose-400" />
@@ -79,7 +79,7 @@ export default function DfsUseCases() {
         </div>
 
         {/* Card 3: AST & Tree-shaking */}
-        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-emerald-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-emerald-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <FileCode2 className="w-3.5 h-3.5 text-emerald-400" />
@@ -106,7 +106,7 @@ export default function DfsUseCases() {
         </div>
 
         {/* Card 4: Backtracking & Game AI */}
-        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-amber-500/40 transition-all space-y-2">
+        <div className="p-3.5 rounded-xl bg-[#0a0c16] border border-[#1f2640] hover:border-amber-500/40 transition-colors space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
               <GitBranch className="w-3.5 h-3.5 text-amber-400" />

@@ -129,7 +129,7 @@ export default function UniqueKeyTab() {
           <div className="p-4 rounded-xl bg-[#0a0d1a] border border-cyan-500/30 space-y-4 font-mono text-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-cyan-400" />
                 <DualText
                   en="Interactive UNIQUE Constraint Violation Tester (Live USER_ACCOUNT):"
                   bn="ইন্টারেক্টিভ UNIQUE কনস্ট্রেইন্ট পরীক্ষক (লাইভ USER_ACCOUNT টেবিল):"
@@ -154,7 +154,7 @@ export default function UniqueKeyTab() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => handleTestUniqueScenario('dup_username')}
-                  className="px-3 py-1.5 rounded-lg border border-rose-500/40 bg-rose-950/20 text-rose-300 hover:bg-rose-900/30 text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg border border-rose-500/40 bg-rose-950/20 text-rose-300 hover:bg-rose-900/30 text-xs font-mono transition-colors cursor-pointer flex items-center gap-1.5"
                 >
                   <XCircle className="w-3.5 h-3.5 text-rose-400" />
                   {language === 'bn'
@@ -164,7 +164,7 @@ export default function UniqueKeyTab() {
 
                 <button
                   onClick={() => handleTestUniqueScenario('dup_phone')}
-                  className="px-3 py-1.5 rounded-lg border border-rose-500/40 bg-rose-950/20 text-rose-300 hover:bg-rose-900/30 text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg border border-rose-500/40 bg-rose-950/20 text-rose-300 hover:bg-rose-900/30 text-xs font-mono transition-colors cursor-pointer flex items-center gap-1.5"
                 >
                   <XCircle className="w-3.5 h-3.5 text-rose-400" />
                   {language === 'bn'
@@ -174,7 +174,7 @@ export default function UniqueKeyTab() {
 
                 <button
                   onClick={() => handleTestUniqueScenario('insert_null')}
-                  className="px-3 py-1.5 rounded-lg border border-amber-500/40 bg-amber-950/20 text-amber-300 hover:bg-amber-900/30 text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg border border-amber-500/40 bg-amber-950/20 text-amber-300 hover:bg-amber-900/30 text-xs font-mono transition-colors cursor-pointer flex items-center gap-1.5"
                 >
                   <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
                   {language === 'bn'
@@ -184,7 +184,7 @@ export default function UniqueKeyTab() {
 
                 <button
                   onClick={() => handleTestUniqueScenario('valid_new')}
-                  className="px-3 py-1.5 rounded-lg border border-cyan-500/40 bg-cyan-950/20 text-cyan-300 hover:bg-cyan-900/30 text-xs font-mono transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg border border-cyan-500/40 bg-cyan-950/20 text-cyan-300 hover:bg-cyan-900/30 text-xs font-mono transition-colors cursor-pointer flex items-center gap-1.5"
                 >
                   <UserPlus className="w-3.5 h-3.5 text-cyan-400" />
                   {language === 'bn'
@@ -197,7 +197,7 @@ export default function UniqueKeyTab() {
             {/* Dynamic Alert Banner */}
             {uniqueAlert && (
               <div
-                className={`p-3.5 rounded-xl border text-xs flex items-start gap-2.5 transition-all ${
+                className={`p-3.5 rounded-xl border text-xs flex items-start gap-2.5 transition-colors ${
                   uniqueAlert.type === 'error'
                     ? 'bg-rose-950/40 border-rose-500 text-rose-200 font-sans'
                     : 'bg-cyan-950/40 border-cyan-500 text-cyan-200 font-sans'

@@ -68,13 +68,13 @@ export default function CandidateKeyTab() {
                   <button
                     key={combo.id}
                     onClick={() => setSelectedCandidateKeyCombo(combo.id)}
-                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-1.5 ${
+                    className={`p-3 rounded-xl border text-left transition-colors cursor-pointer flex flex-col justify-between gap-1.5 ${
                       isSelected
                         ? combo.isCandidateKey
-                          ? 'bg-cyan-950/60 border-cyan-400 text-white shadow-lg shadow-cyan-950/50 ring-1 ring-cyan-400/50'
+                          ? 'bg-cyan-950/60 border-cyan-400 text-white   ring-1 ring-cyan-400/50'
                           : combo.isSuperKey
-                          ? 'bg-amber-950/50 border-amber-400 text-white shadow-lg shadow-amber-950/50 ring-1 ring-amber-400/50'
-                          : 'bg-rose-950/50 border-rose-400 text-white shadow-lg shadow-rose-950/50 ring-1 ring-rose-400/50'
+                          ? 'bg-amber-950/50 border-amber-400 text-white   ring-1 ring-amber-400/50'
+                          : 'bg-rose-950/50 border-rose-400 text-white   ring-1 ring-rose-400/50'
                         : 'bg-[#0c0e18] border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
                     }`}
                   >
@@ -350,12 +350,12 @@ export default function CandidateKeyTab() {
 
                 {/* Candidate Key 2-Step Strict Evaluation Matrix */}
                 <div
-                  className={`p-4 rounded-xl border transition-all ${
+                  className={`p-4 rounded-xl border transition-colors ${
                     activeCombo.isCandidateKey
-                      ? 'bg-gradient-to-r from-cyan-950/40 via-slate-900 to-[#101c24] border-cyan-500/40 text-cyan-200'
+                      ? 'bg-[#15171e] border-cyan-500/40 text-cyan-200'
                       : activeCombo.isSuperKey
-                      ? 'bg-gradient-to-r from-amber-950/40 via-slate-900 to-[#1c1810] border-amber-500/40 text-amber-200'
-                      : 'bg-gradient-to-r from-rose-950/40 via-slate-900 to-[#1c1218] border-rose-500/30 text-rose-200'
+                      ? 'bg-[#15171e] border-amber-500/40 text-amber-200'
+                      : 'bg-[#15171e] border-rose-500/30 text-rose-200'
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-800/80 mb-3">
@@ -442,7 +442,7 @@ export default function CandidateKeyTab() {
                 </div>
 
                 {/* Candidate Key vs Primary Key Takeaway */}
-                <div className="p-3.5 rounded-xl bg-gradient-to-r from-cyan-950/20 via-slate-900 to-indigo-950/20 border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
                   <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0">
                     <KeyRound className="w-4 h-4" />
                   </span>
@@ -455,7 +455,7 @@ export default function CandidateKeyTab() {
                 </div>
 
                 {/* Core Golden Rule Banner */}
-                <div className="p-3.5 rounded-xl bg-[#0c0e18] border border-amber-500/30 text-xs font-mono text-center text-amber-300 font-bold shadow-lg shadow-amber-950/20">
+                <div className="p-3.5 rounded-xl bg-[#0c0e18] border border-amber-500/30 text-xs font-mono text-center text-amber-300 font-bold">
                   <DualText
                     en="“Every Candidate Key is a Super Key, but every Super Key is NOT a Candidate Key!”"
                     bn="“প্রতিটি ক্যান্ডিডেট কী-ই একটি সুপার কী, কিন্তু প্রতিটি সুপার কী ক্যান্ডিডেট কী নয়!”"

@@ -27,7 +27,7 @@ export default function DocumentDbTab() {
             <div className="flex items-center gap-1.5 bg-black/40 border border-slate-800 rounded-lg p-0.5 font-mono text-[11px]">
               <button
                 onClick={() => setDocView('diagram')}
-                className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-md transition-colors cursor-pointer ${
                   docView === 'diagram' ? 'bg-cyan-600 text-white font-bold' : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -35,7 +35,7 @@ export default function DocumentDbTab() {
               </button>
               <button
                 onClick={() => setDocView('json')}
-                className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-md transition-colors cursor-pointer ${
                   docView === 'json' ? 'bg-cyan-600 text-white font-bold' : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -56,7 +56,7 @@ export default function DocumentDbTab() {
             <div className="overflow-x-auto pb-2">
               <div className="min-w-[740px] p-6 rounded-2xl bg-[#070914] border border-cyan-900/40 relative">
                 <div className="text-center mb-4">
-                  <span className="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
+                  <span className="text-xs font-mono font-bold text-cyan-300">
                     University Enrollment Document Architecture (MongoDB Collection)
                   </span>
                 </div>
@@ -64,7 +64,7 @@ export default function DocumentDbTab() {
                 <div className="grid grid-cols-12 gap-4 items-center">
                   {/* Left Column: Department & Faculty Documents */}
                   <div className="col-span-3 space-y-3">
-                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1 shadow-md">
+                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1">
                       <div className="bg-blue-600 text-white font-bold py-1 px-2 rounded text-center text-[11px]">
                         Department
                       </div>
@@ -75,7 +75,7 @@ export default function DocumentDbTab() {
                       </div>
                     </div>
 
-                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1 shadow-md">
+                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1">
                       <div className="bg-blue-600 text-white font-bold py-1 px-2 rounded text-center text-[11px]">
                         Faculty (Instructor)
                       </div>
@@ -89,8 +89,8 @@ export default function DocumentDbTab() {
 
                   {/* Middle Column: Central Student Document with Embedded Arrays (Like Competition in Image 1) */}
                   <div className="col-span-6">
-                    <div className="rounded-2xl border-2 border-cyan-400 bg-[#0b162b] p-4 text-xs font-mono space-y-2.5 shadow-2xl ring-2 ring-cyan-500/30">
-                      <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold py-1.5 px-3 rounded-lg text-center text-xs flex items-center justify-center gap-1.5">
+                    <div className="rounded-2xl border-2 border-cyan-400 bg-[#0b162b] p-4 text-xs font-mono space-y-2.5 ring-2 ring-cyan-500/30">
+                      <div className="bg-[#15171e] text-white font-bold py-1.5 px-3 rounded-lg text-center text-xs flex items-center justify-center gap-1.5">
                         <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                         <span>Student Document (Collection Root)</span>
                       </div>
@@ -119,7 +119,7 @@ export default function DocumentDbTab() {
 
                   {/* Right Column: Courses Collection Documents */}
                   <div className="col-span-3 space-y-3">
-                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1 shadow-md">
+                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1">
                       <div className="bg-blue-600 text-white font-bold py-1 px-2 rounded text-center text-[11px]">
                         Course C01
                       </div>
@@ -130,7 +130,7 @@ export default function DocumentDbTab() {
                       </div>
                     </div>
 
-                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1 shadow-md">
+                    <div className="rounded-xl border border-blue-500/60 bg-[#0e162c] p-3 text-xs font-mono space-y-1">
                       <div className="bg-blue-600 text-white font-bold py-1 px-2 rounded text-center text-[11px]">
                         Course C02
                       </div>

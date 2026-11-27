@@ -5,8 +5,8 @@ import { TrendingDown } from 'lucide-react';
 
 export default function SearchGrowthTable() {
   return (
-    <div className="bg-[#0f111a] border border-[#1e2233] rounded-3xl p-6 md:p-8 flex flex-col gap-4 shadow-xl">
-      <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+    <div className="bg-[#0f111a] border border-[#1e2233] rounded-3xl p-6 md:p-8 flex flex-col gap-4">
+      <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 font-mono">
         <TrendingDown className="w-4 h-4 text-emerald-400" />
         <span>ডেটার পরিমাণ বাড়লে স্টেপ সংখ্যার তুলনামূলক বৃদ্ধি (Growth Comparison)</span>
       </h3>

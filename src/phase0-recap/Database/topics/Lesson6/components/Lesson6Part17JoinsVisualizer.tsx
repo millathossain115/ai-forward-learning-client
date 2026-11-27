@@ -181,7 +181,7 @@ export default function Lesson6Part17JoinsVisualizer() {
   }, [activeJoinType]);
 
   return (
-    <section className="bg-[#0c101d] border border-slate-800/90 rounded-2xl p-4 md:p-6 space-y-5 shadow-xl">
+    <section className="bg-[#0c101d] border border-slate-800/90 rounded-2xl p-4 md:p-6 space-y-5">
       {/* Header & Join Type Tabs */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div className="flex items-start gap-3">
@@ -189,7 +189,7 @@ export default function Lesson6Part17JoinsVisualizer() {
             <GitMerge className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold tracking-wider uppercase">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold">
               {language === 'bn' ? 'পার্ট ৯ • জয়েন ভিজ্যুয়ালাইজার' : 'Part 9 of 13 • SQL Joins'}
             </span>
             <h2 className="text-lg md:text-xl font-bold text-slate-100 mt-1 tracking-tight">
@@ -207,9 +207,9 @@ export default function Lesson6Part17JoinsVisualizer() {
             <button
               key={j}
               onClick={() => setActiveJoinType(j)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors duration-200 cursor-pointer flex items-center gap-1.5 ${
                 activeJoinType === j
-                  ? 'bg-cyan-600 text-white shadow-md shadow-cyan-950/60'
+                  ? 'bg-cyan-600 text-white  '
                   : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/60'
               }`}
             >
@@ -243,11 +243,11 @@ export default function Lesson6Part17JoinsVisualizer() {
       </div>
 
       {/* Active Join "When to Use" Spotlight */}
-      <div className="p-3.5 rounded-xl bg-gradient-to-r from-cyan-950/40 via-[#12172a] to-purple-950/30 border border-slate-700/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-700/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-start gap-2.5">
           <Compass className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
           <div className="space-y-0.5">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-300">
+            <span className="text-[11px] font-mono font-bold text-cyan-300">
               {language === 'bn' ? `কখন ${activeJoinType} JOIN ব্যবহার করবেন?` : `When to use ${activeJoinType} JOIN`}
             </span>
             <DualText
@@ -537,7 +537,7 @@ export default function Lesson6Part17JoinsVisualizer() {
       {/* Quick Cheat Sheet: All 4 Joins Compared */}
       <div className="space-y-2 pt-1">
         <div className="flex items-center justify-between text-xs font-mono">
-          <span className="font-bold text-slate-300 uppercase tracking-wider">
+          <span className="font-bold text-slate-300">
             <DualText as="span" en="Quick Cheat Sheet: Which JOIN Should I Pick?" bn="দ্রুত গাইড: কোন JOIN কখন বাছবেন?" />
           </span>
           <span className="text-[10px] text-slate-400">
@@ -552,7 +552,7 @@ export default function Lesson6Part17JoinsVisualizer() {
               <button
                 key={item.type}
                 onClick={() => setActiveJoinType(item.type)}
-                className={`text-left p-3 rounded-xl border transition-all duration-200 cursor-pointer space-y-1.5 ${
+                className={`text-left p-3 rounded-xl border transition-colors duration-200 cursor-pointer space-y-1.5 ${
                   isSelected
                     ? item.activeRing
                     : 'bg-[#12172a] border-slate-800 hover:border-slate-700 hover:bg-[#161d33]'

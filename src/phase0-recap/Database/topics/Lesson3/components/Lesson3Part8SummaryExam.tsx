@@ -139,9 +139,9 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
                 <button
                   key={pill.id}
                   onClick={() => setActiveHighlight(pill.id as typeof activeHighlight)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold cursor-pointer transition-all ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold cursor-pointer transition-colors ${
                     activeHighlight === pill.id
-                      ? 'bg-emerald-500 text-black shadow-md font-bold'
+                      ? 'bg-emerald-500 text-black  font-bold'
                       : 'bg-[#0c0e18] border border-slate-800 text-zinc-400 hover:text-white'
                   }`}
                 >
@@ -153,7 +153,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
 
           {/* Dimension Bracket Top: Degree Indicator */}
           <div
-            className={`p-2.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-all ${
+            className={`p-2.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-colors ${
               activeHighlight === 'degree' || activeHighlight === 'attribute'
                 ? 'bg-pink-950/40 border-pink-500/60 text-pink-200 ring-1 ring-pink-500/30'
                 : 'bg-[#0c0e18] border-slate-800 text-zinc-400'
@@ -259,7 +259,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
 
           {/* Dimension Bracket Bottom: Cardinality Indicator */}
           <div
-            className={`p-2.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-all ${
+            className={`p-2.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-colors ${
               activeHighlight === 'cardinality' || activeHighlight === 'tuple'
                 ? 'bg-indigo-950/40 border-indigo-500/60 text-indigo-200 ring-1 ring-indigo-500/30'
                 : 'bg-[#0c0e18] border-slate-800 text-zinc-400'
@@ -277,7 +277,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
           </div>
 
           {/* Contextual Educational Deep-Dive Banner */}
-          <div className="p-3.5 rounded-xl bg-gradient-to-r from-indigo-950/30 via-slate-900 to-purple-950/20 border border-slate-800 text-xs font-sans text-zinc-300 space-y-1">
+          <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans text-zinc-300 space-y-1">
             <span className="font-mono font-bold text-amber-300 uppercase text-[11px] block flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               {activeHighlight === 'degree' && (language === 'bn' ? 'ডিগ্রি (Degree) কী মনে রাখবেন:' : 'Key Takeaway: Degree')}
@@ -397,7 +397,7 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
             return (
               <div
                 key={item.id}
-                className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden transition-all"
+                className="rounded-xl border border-slate-800 bg-[#121526] overflow-hidden transition-colors"
               >
                 <button
                   onClick={() => toggleExamQuestion(item.id)}
@@ -426,9 +426,9 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
         </div>
 
         {/* Bottom Roadmap Bridge Navigation */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-[#14182e] via-[#101326] to-[#0d1020] border border-indigo-500/40 space-y-3 shadow-xl mt-6">
+        <div className="p-6 rounded-2xl bg-[#15171e] border border-indigo-500/40 space-y-3 mt-6">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">
+            <span className="text-xs font-mono text-indigo-400 font-bold">
               {language === 'bn' ? 'লেসন ৩ সম্পন্ন' : 'Lesson 3 Completed'}
             </span>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">
@@ -453,14 +453,14 @@ export default function Lesson3Part8SummaryExam({ onNavigate }: Lesson3Part8Summ
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
             <button
               onClick={() => onNavigate?.('backend-lesson2')}
-              className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-all border border-slate-700 cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>{language === 'bn' ? 'লেসন ২-এ ফিরে যান' : 'Back to Lesson 2'}</span>
             </button>
             <button
               onClick={() => onNavigate?.('backend-lesson4')}
-              className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-amber-600/20 cursor-pointer"
+              className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
             >
               <span>
                 {language === 'bn' ? 'লেসন ৪-এ যান: Keys in DBMS' : 'Go to Lesson 4: Keys in DBMS'}

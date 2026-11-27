@@ -36,7 +36,7 @@ export default function CascadeTab() {
                   <button
                     key={mode}
                     onClick={() => setCascadeMode(mode)}
-                    className={`px-2.5 py-1 rounded transition-all cursor-pointer ${
+                    className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
                       cascadeMode === mode ? 'bg-indigo-600 text-white font-bold' : 'text-zinc-400 hover:text-white'
                     }`}
                   >

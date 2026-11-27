@@ -190,7 +190,7 @@ export default function Lesson5Part7InterviewPrep() {
             <Briefcase className="w-6 h-6" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
               {language === 'bn' ? 'পার্ট ৮ • ইন্টারভিউ প্রস্তুতি' : 'Part 8 • Interview Preparation'}
             </span>
             <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
@@ -206,13 +206,13 @@ export default function Lesson5Part7InterviewPrep() {
         <div className="flex items-center gap-2 self-start sm:self-auto">
           <button
             onClick={expandAll}
-            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-colors cursor-pointer"
           >
             {language === 'bn' ? 'সব প্রসারিত করুন' : 'Expand All'}
           </button>
           <button
             onClick={collapseAll}
-            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-colors cursor-pointer"
           >
             {language === 'bn' ? 'সব বন্ধ করুন' : 'Collapse All'}
           </button>
@@ -235,9 +235,9 @@ export default function Lesson5Part7InterviewPrep() {
           return (
             <div
               key={q.id}
-              className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+              className={`rounded-2xl border transition-colors duration-200 overflow-hidden ${
                 isOpen
-                  ? 'bg-[#121629] border-indigo-500/40 shadow-lg shadow-indigo-950/20'
+                  ? 'bg-[#121629] border-indigo-500/40  '
                   : 'bg-[#101322] border-slate-800 hover:border-slate-700'
               }`}
             >
@@ -283,7 +283,7 @@ export default function Lesson5Part7InterviewPrep() {
 
                   {/* Bullet Points: Key Architectural Takeaways */}
                   <div className="space-y-2">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-bold">
+                    <div className="text-[11px] font-mono text-zinc-400 font-bold">
                       {language === 'bn' ? 'ইন্টারভিউতে বলার মতো মূল পয়েন্টসমূহ:' : 'Key Architectural Takeaways:'}
                     </div>
                     <div className="grid grid-cols-1 gap-2">

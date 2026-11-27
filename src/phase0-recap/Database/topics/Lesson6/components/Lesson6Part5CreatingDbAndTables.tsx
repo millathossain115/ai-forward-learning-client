@@ -90,7 +90,7 @@ SHOW DATABASES;
               </pre>
               <button
                 onClick={() => handleCopy("CREATE DATABASE IF NOT EXISTS UniversityDB;\nUSE UniversityDB;\nSHOW DATABASES;", "db-create")}
-                className="absolute top-1.5 right-1.5 px-2 py-1 rounded bg-slate-800/90 hover:bg-slate-700 text-[10px] font-mono text-zinc-300 flex items-center gap-1 transition-all cursor-pointer shadow"
+                className="absolute top-1.5 right-1.5 px-2 py-1 rounded bg-slate-800/90 hover:bg-slate-700 text-[10px] font-mono text-zinc-300 flex items-center gap-1 transition-colors cursor-pointer shadow"
                 title="Copy SQL"
               >
                 {copiedSnippet === "db-create" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -113,7 +113,7 @@ SHOW DATABASES;
                 <div className="flex items-center rounded-lg bg-black/40 p-0.5 border border-slate-800 text-[10px] font-mono">
                   <button
                     onClick={() => setSchemaViewMode('sql')}
-                    className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
+                    className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
                       schemaViewMode === 'sql' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 hover:text-white'
                     }`}
                   >
@@ -121,7 +121,7 @@ SHOW DATABASES;
                   </button>
                   <button
                     onClick={() => setSchemaViewMode('describe')}
-                    className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
+                    className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
                       schemaViewMode === 'describe' ? 'bg-emerald-600 text-white font-bold' : 'text-zinc-400 hover:text-white'
                     }`}
                   >
@@ -152,7 +152,7 @@ SHOW DATABASES;
                 </pre>
                 <button
                   onClick={() => handleCopy("CREATE TABLE IF NOT EXISTS students (\n    student_id     INT PRIMARY KEY,\n    full_name      VARCHAR(50) NOT NULL,\n    email          VARCHAR(100) UNIQUE,\n    cgpa           DECIMAL(3, 2),\n    admission_date DATE,\n    is_active      BOOLEAN DEFAULT TRUE\n);", "tbl-create")}
-                  className="absolute top-1.5 right-1.5 px-2 py-1 rounded bg-slate-800/90 hover:bg-slate-700 text-[10px] font-mono text-zinc-300 flex items-center gap-1 transition-all cursor-pointer shadow"
+                  className="absolute top-1.5 right-1.5 px-2 py-1 rounded bg-slate-800/90 hover:bg-slate-700 text-[10px] font-mono text-zinc-300 flex items-center gap-1 transition-colors cursor-pointer shadow"
                   title="Copy SQL"
                 >
                   {copiedSnippet === "tbl-create" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -217,9 +217,9 @@ SHOW DATABASES;
                 <button
                   key={tab.id}
                   onClick={() => setDataTypeCategoryTab(tab.id)}
-                  className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer ${
                     dataTypeCategoryTab === tab.id
-                      ? 'bg-cyan-600 text-white font-bold shadow-sm'
+                      ? 'bg-cyan-600 text-white font-bold '
                       : 'text-zinc-400 hover:text-white hover:bg-slate-800/60'
                   }`}
                 >

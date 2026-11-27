@@ -136,7 +136,7 @@ export default function StackTopic() {
       {/* 1. Header Card */}
       <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-3.5">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-500 to-fuchsia-500 text-white flex items-center justify-center font-bold shadow-lg shadow-violet-500/20">
+          <div className="w-10 h-10 rounded-xl bg-[#15171e] text-white flex items-center justify-center font-bold">
             <Layers className="w-5 h-5" />
           </div>
           <div>
@@ -155,7 +155,7 @@ export default function StackTopic() {
       <div className="bg-[#0c0d15] border border-[#1e2233] p-6 rounded-2xl grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left: Controls & Scenarios */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-sm font-bold text-zinc-200 uppercase tracking-wider font-mono flex items-center gap-2">
+          <h3 className="text-sm font-bold text-zinc-200 font-mono flex items-center gap-2">
             <Zap className="w-4 h-4 text-violet-400" />
             Stack Controls
           </h3>
@@ -172,14 +172,14 @@ export default function StackTopic() {
             <div className="grid grid-cols-2 gap-2 mt-2">
               <button
                 onClick={handlePush}
-                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-violet-600 hover:bg-violet-500 font-bold text-xs md:text-sm text-white shadow-lg shadow-violet-600/30 transition-all cursor-pointer"
+                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-violet-600 hover:bg-violet-500 font-bold text-xs md:text-sm text-white transition-colors cursor-pointer"
               >
                 <ArrowDown className="w-4 h-4" /> PUSH O(1)
               </button>
 
               <button
                 onClick={handlePop}
-                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-rose-600 hover:bg-rose-500 font-bold text-xs md:text-sm text-white shadow-lg shadow-rose-600/30 transition-all cursor-pointer"
+                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-rose-600 hover:bg-rose-500 font-bold text-xs md:text-sm text-white transition-colors cursor-pointer"
               >
                 <ArrowUp className="w-4 h-4" /> POP O(1)
               </button>
@@ -205,7 +205,7 @@ export default function StackTopic() {
         <div className="lg:col-span-2 flex flex-col items-center justify-end min-h-[380px] bg-[#090a10] rounded-xl border border-[#1a1d2e] p-6">
           {/* Top Indicator Arrow (Dynamic, inside flow to prevent overlapping) */}
           {items.length > 0 && (
-            <div className="flex items-center gap-2 text-xs font-mono text-amber-400 bg-amber-950/40 px-3.5 py-1.5 rounded-full border border-amber-800/80 mb-3 animate-pulse">
+            <div className="flex items-center gap-2 text-xs font-mono text-amber-400 bg-amber-950/40 px-3.5 py-1.5 rounded-full border border-amber-800/80 mb-3">
               <ArrowDown className="w-4 h-4 text-amber-400" />
               <span className="font-bold">TOP OF STACK</span>
               <span className="text-zinc-400 text-xs">• O(1) Access Point</span>
@@ -214,9 +214,9 @@ export default function StackTopic() {
 
           {/* Physical Stack Basket */}
           <div
-            className={`w-full max-w-md border-b-4 border-l-4 border-r-4 rounded-b-2xl p-4 flex flex-col gap-2.5 min-h-[250px] justify-end bg-violet-950/5 transition-all duration-300 relative ${
+            className={`w-full max-w-md border-b-4 border-l-4 border-r-4 rounded-b-2xl p-4 flex flex-col gap-2.5 min-h-[250px] justify-end bg-violet-950/5 transition-colors duration-300 relative ${
               isOverflow
-                ? 'border-rose-500 shadow-2xl shadow-rose-500/30 animate-shake'
+                ? 'border-rose-500   animate-shake'
                 : isUnderflow
                 ? 'border-amber-500 animate-shake'
                 : 'border-violet-500/60'
@@ -242,20 +242,20 @@ export default function StackTopic() {
                 if (item.state === 'dropping') {
                   transformStyle = '-translate-y-8 opacity-40 scale-95';
                 } else if (item.state === 'popping') {
-                  transformStyle = '-translate-y-12 opacity-0 scale-95 transition-all duration-500';
+                  transformStyle = '-translate-y-12 opacity-0 scale-95 transition-colors duration-500';
                 } else if (item.state === 'peeking') {
-                  extraGlow = 'ring-4 ring-amber-400 scale-[1.03] shadow-xl shadow-amber-400/40';
+                  extraGlow = 'ring-4 ring-amber-400 scale-[1.03]  ';
                 }
 
                 return (
                   <div
                     key={item.id}
-                    className={`w-full py-3 px-4 rounded-xl border bg-gradient-to-r ${item.color} text-white font-mono text-sm flex items-center justify-between shadow-lg transition-all duration-500 ${transformStyle} ${
-                      extraGlow ? extraGlow : isTop ? 'ring-2 ring-amber-400/80 shadow-amber-500/10 scale-[1.01]' : 'opacity-85'
+                    className={`w-full py-3 px-4 rounded-xl border bg-[#15171e] ${item.color} text-white font-mono text-sm flex items-center justify-between  transition-colors duration-500 ${transformStyle} ${
+                      extraGlow ? extraGlow : isTop ? 'ring-2 ring-amber-400/80  scale-[1.01]' : 'opacity-85'
                     }`}
                   >
                     <span className="font-semibold">{item.label}</span>
-                    <span className={`text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded ${
+                    <span className={`text-xs uppercase font-bold  px-2.5 py-1 rounded ${
                       isTop ? 'bg-amber-400 text-slate-950 shadow' : 'bg-black/40 text-zinc-200'
                     }`}>
                       {isTop ? 'TOP (O(1))' : `Frame #${items.length - idx}`}

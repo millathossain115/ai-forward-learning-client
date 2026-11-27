@@ -105,9 +105,9 @@ export default function Lesson13Part2FourTypes() {
             <button
               key={item.id}
               onClick={() => setActiveType(item.id)}
-              className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex items-center gap-2 ${
+              className={`p-3 rounded-xl border text-left transition-colors cursor-pointer flex items-center gap-2 ${
                 activeType === item.id
-                  ? 'bg-cyan-600/25 border-cyan-400 text-white shadow-lg'
+                  ? 'bg-cyan-600/25 border-cyan-400 text-white '
                   : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
               }`}
             >

@@ -18,16 +18,15 @@ export default function GraphTopic() {
   return (
     <div className="flex flex-col gap-10 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#13162b] via-[#0d0f1b] to-[#070912] border border-[#232945] p-6 md:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#232945] p-6 md:p-8">
         <div className="relative z-10 space-y-3">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-bold">
               Topic 10 • Non-Linear Topologies
             </span>
             <span className="text-xs text-zinc-500 font-mono">Vertices, Edges &amp; Connectivity</span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white">
             গ্রাফ পরিচিতি ও প্রকারভেদ (Graph Basics &amp; Types)
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-3xl leading-relaxed">
@@ -40,7 +39,7 @@ export default function GraphTopic() {
       <GraphBasics />
 
       {/* 3. Representation in Memory: Adjacency List vs Adjacency Matrix */}
-      <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6 shadow-xl">
+      <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1b1f30] pb-4">
           <div className="space-y-1">
             <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
@@ -55,9 +54,9 @@ export default function GraphTopic() {
           <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#090b14] border border-[#1d2238]">
             <button
               onClick={() => setRepView('list')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                 repView === 'list'
-                  ? 'bg-indigo-600 text-white shadow-sm'
+                  ? 'bg-indigo-600 text-white '
                   : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
               }`}
             >
@@ -66,9 +65,9 @@ export default function GraphTopic() {
             </button>
             <button
               onClick={() => setRepView('matrix')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer flex items-center gap-1.5 ${
                 repView === 'matrix'
-                  ? 'bg-indigo-600 text-white shadow-sm'
+                  ? 'bg-indigo-600 text-white '
                   : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
               }`}
             >

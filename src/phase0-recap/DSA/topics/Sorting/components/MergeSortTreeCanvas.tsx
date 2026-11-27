@@ -57,7 +57,7 @@ export default function MergeSortTreeCanvas({
     return (
       <g
         key={id}
-        className="transition-all duration-300"
+        className="transition-colors duration-300"
         style={{
           opacity: isRevealed ? 1 : 0.15,
           cursor: 'pointer'
@@ -184,7 +184,7 @@ export default function MergeSortTreeCanvas({
   };
 
   return (
-    <div className="relative rounded-2xl bg-[#070b12] border border-[#162538] p-3 shadow-xl overflow-hidden flex flex-col items-center">
+    <div className="relative rounded-2xl bg-[#070b12] border border-[#162538] p-3 overflow-hidden flex flex-col items-center">
       {/* Tree / Blueprint Mode Pill */}
       <div className="w-full flex items-center justify-between pb-2 border-b border-[#121e2d] text-xs font-mono">
         <span className="text-zinc-400 flex items-center gap-1.5">
@@ -194,7 +194,7 @@ export default function MergeSortTreeCanvas({
         <div className="flex items-center gap-1 bg-[#0d1624] p-0.5 rounded-lg border border-[#1a293b]">
           <button
             onClick={() => onSetTreeViewMode('stepper')}
-            className={`px-2 py-0.5 rounded text-[11px] transition-all cursor-pointer ${
+            className={`px-2 py-0.5 rounded text-[11px] transition-colors cursor-pointer ${
               treeViewMode === 'stepper' ? 'bg-teal-700 text-white font-bold' : 'text-zinc-400'
             }`}
           >
@@ -202,7 +202,7 @@ export default function MergeSortTreeCanvas({
           </button>
           <button
             onClick={() => onSetTreeViewMode('blueprint')}
-            className={`px-2 py-0.5 rounded text-[11px] transition-all cursor-pointer ${
+            className={`px-2 py-0.5 rounded text-[11px] transition-colors cursor-pointer ${
               treeViewMode === 'blueprint' ? 'bg-sky-700 text-white font-bold' : 'text-zinc-400'
             }`}
           >

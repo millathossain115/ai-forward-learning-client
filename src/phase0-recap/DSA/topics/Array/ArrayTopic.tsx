@@ -41,7 +41,7 @@ export default function ArrayTopic() {
       {/* 2. Interactive Simulation Playground */}
       <div className="flex flex-col gap-3.5">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+          <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 font-mono">
             <Zap className="w-4 h-4 text-amber-400" />
             Memory Operations Simulator
           </h3>
@@ -99,7 +99,7 @@ export default function ArrayTopic() {
 
       {/* 3. Time & Space Complexity Benchmark Table */}
       <div className="bg-[#0f111a] border border-[#1e2233] rounded-2xl p-6 flex flex-col gap-4">
-        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 font-mono">
           <Table className="w-4 h-4 text-zinc-400" />
           Time &amp; Space Complexity
         </h3>
@@ -132,7 +132,7 @@ export default function ArrayTopic() {
 
       {/* 4. Real-World Systems & AI Engineering Applications */}
       <div className="flex flex-col gap-3.5">
-        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 uppercase tracking-wider font-mono">
+        <h3 className="text-sm font-semibold text-zinc-200 flex items-center gap-2 font-mono">
           <Sparkles className="w-4 h-4 text-zinc-400" />
           Production &amp; AI Engineering Usages
         </h3>

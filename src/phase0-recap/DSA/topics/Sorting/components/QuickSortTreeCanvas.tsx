@@ -29,7 +29,7 @@ export default function QuickSortTreeCanvas({ currentTreeStep }: QuickSortTreeCa
     return (
       <g
         key={id}
-        className="transition-all duration-300"
+        className="transition-colors duration-300"
         style={{ opacity: isRevealed ? 1 : 0.12 }}
       >
         {isActive && (
@@ -146,7 +146,7 @@ export default function QuickSortTreeCanvas({ currentTreeStep }: QuickSortTreeCa
     const midY = (y1 + y2) / 2;
 
     return (
-      <g key={id} style={{ opacity: isRevealed ? 1 : 0.12 }} className="transition-all duration-300">
+      <g key={id} style={{ opacity: isRevealed ? 1 : 0.12 }} className="transition-colors duration-300">
         <path
           d={`M ${x1} ${y1} L ${x2} ${y2}`}
           stroke={isActive ? '#38bdf8' : '#64748b'}
@@ -172,7 +172,7 @@ export default function QuickSortTreeCanvas({ currentTreeStep }: QuickSortTreeCa
   };
 
   return (
-    <div className="relative rounded-2xl bg-[#080d14] border border-[#182838] p-3 shadow-xl overflow-hidden flex flex-col items-center">
+    <div className="relative rounded-2xl bg-[#080d14] border border-[#182838] p-3 overflow-hidden flex flex-col items-center">
       {/* SVG Header Strip */}
       <div className="w-full flex items-center justify-between pb-2 border-b border-[#121e2d] text-xs font-mono">
         <span className="text-zinc-400 flex items-center gap-1.5">

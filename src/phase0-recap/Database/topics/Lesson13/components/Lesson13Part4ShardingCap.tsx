@@ -75,9 +75,9 @@ export default function Lesson13Part4ShardingCap() {
           {[1, 2, 3].map((s) => (
             <div
               key={s}
-              className={`p-3 rounded-xl border text-center transition-all ${
+              className={`p-3 rounded-xl border text-center transition-colors ${
                 targetShard === s
-                  ? 'bg-emerald-950/30 border-emerald-400 text-emerald-300 font-bold shadow-lg'
+                  ? 'bg-emerald-950/30 border-emerald-400 text-emerald-300 font-bold '
                   : 'bg-slate-900 border-slate-800 text-zinc-500'
               }`}
             >

@@ -61,7 +61,7 @@ export default function MergeTreeVisualizer({ step }: MergeTreeVisualizerProps) 
 
         {/* Final Sorted Result Banner */}
         {step.layers.final && (
-          <div className="mt-2 px-4 py-2 rounded-xl bg-emerald-950/60 border border-emerald-500 text-emerald-300 font-mono text-sm font-bold flex items-center gap-2 shadow-xl">
+          <div className="mt-2 px-4 py-2 rounded-xl bg-emerald-950/60 border border-emerald-500 text-emerald-300 font-mono text-sm font-bold flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />
             <span>চূড়ান্ত মার্জড সর্টেড অ্যারে: [{step.layers.final.join(', ')}]</span>
           </div>

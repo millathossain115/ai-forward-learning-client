@@ -52,7 +52,7 @@ export default function HeapTreeCanvas({
               stroke={isComparingBranch ? '#f59e0b' : '#282d46'}
               strokeWidth={isComparingBranch ? '3.5' : '2'}
               strokeDasharray={isComparingBranch ? 'none' : '4 3'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
           );
         })}
@@ -78,8 +78,8 @@ export default function HeapTreeCanvas({
           // Dim nodes NOT currently involved to eliminate visual confusion
           const dimClass =
             isAnyFocus && !isFocused
-              ? 'opacity-35 scale-95 transition-all duration-500'
-              : 'opacity-100 transition-all duration-500';
+              ? 'opacity-35 scale-95 transition-colors duration-500'
+              : 'opacity-100 transition-colors duration-500';
 
           const isDenseLevel = coord.level >= 3;
           const sizeCls = isDenseLevel
@@ -90,24 +90,24 @@ export default function HeapTreeCanvas({
 
           if (isFocusedExtract) {
             nodeClass =
-              'bg-rose-600 border-rose-300 text-white scale-125 shadow-xl shadow-rose-500/50 ring-4 ring-rose-400/50';
+              'bg-rose-600 border-rose-300 text-white scale-125   ring-4 ring-rose-400/50';
           } else if (isFocused && focusedNodes.type === 'swap') {
             nodeClass =
-              'bg-purple-600 border-purple-300 text-white font-extrabold scale-125 shadow-xl shadow-purple-500/50 ring-4 ring-purple-400/50';
+              'bg-purple-600 border-purple-300 text-white font-extrabold scale-125   ring-4 ring-purple-400/50';
           } else if (isFocused && focusedNodes.type === 'compare') {
             if (isFocusedChild) {
               nodeClass =
-                'bg-cyan-500 border-cyan-200 text-slate-950 font-extrabold scale-115 shadow-xl shadow-cyan-500/50 ring-4 ring-cyan-400/40 animate-pulse';
+                'bg-cyan-500 border-cyan-200 text-slate-950 font-extrabold scale-115   ring-4 ring-cyan-400/40 ';
             } else {
               nodeClass =
-                'bg-amber-500 border-amber-200 text-slate-950 font-extrabold scale-115 shadow-xl shadow-amber-500/50 ring-4 ring-amber-400/40 animate-pulse';
+                'bg-amber-500 border-amber-200 text-slate-950 font-extrabold scale-115   ring-4 ring-amber-400/40 ';
             }
           } else if (isFocused && focusedNodes.type === 'settled') {
             nodeClass =
-              'bg-emerald-500 border-emerald-300 text-slate-950 font-extrabold scale-110 shadow-lg shadow-emerald-500/40 ring-4 ring-emerald-400/30';
+              'bg-emerald-500 border-emerald-300 text-slate-950 font-extrabold scale-110   ring-4 ring-emerald-400/30';
           } else if (isRoot) {
             nodeClass =
-              'bg-gradient-to-tr from-amber-500 to-orange-400 text-slate-950 font-extrabold border-amber-300 ring-2 ring-amber-400/30';
+              'bg-[#15171e] text-slate-950 font-extrabold border-amber-300 ring-2 ring-amber-400/30';
           }
 
           return (
@@ -118,9 +118,9 @@ export default function HeapTreeCanvas({
                 top: `${coord.y}%`,
                 transform: 'translate(-50%, -50%)',
               }}
-              className={`absolute rounded-xl border flex flex-col items-center justify-center font-mono shadow-md pointer-events-auto ${sizeCls} ${nodeClass} ${dimClass}`}
+              className={`absolute rounded-xl border flex flex-col items-center justify-center font-mono  pointer-events-auto ${sizeCls} ${nodeClass} ${dimClass}`}
             >
-              <span className="text-[7px] uppercase tracking-wider opacity-75 font-semibold leading-none">
+              <span className="text-[7px] opacity-75 font-semibold leading-none">
                 {isFocusedChild && isAnimating
                   ? 'CHILD'
                   : isFocusedParent && isAnimating

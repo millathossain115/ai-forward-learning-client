@@ -136,7 +136,7 @@ export default function Lesson4Part6CaseStudy() {
 
       {/* Compact 2-Column Interactive Case Study Questions (Low Vertical Overhead) */}
       <div className="space-y-2.5">
-        <span className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider block">
+        <span className="text-xs font-mono font-bold text-zinc-400 block">
           {language === 'bn'
             ? 'উত্তর দেখতে যেকোনো প্রশ্নে ক্লিক করুন:'
             : 'Click any question to reveal the key analysis:'}

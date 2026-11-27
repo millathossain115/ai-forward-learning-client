@@ -63,9 +63,9 @@ export default function Lesson8Part3FunctionalDep() {
             <button
               key={t.id}
               onClick={() => setActiveFdType(t.id)}
-              className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+              className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
                 activeFdType === t.id
-                  ? 'bg-indigo-600/30 border-indigo-400 text-white shadow-lg'
+                  ? 'bg-indigo-600/30 border-indigo-400 text-white '
                   : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
               }`}
             >

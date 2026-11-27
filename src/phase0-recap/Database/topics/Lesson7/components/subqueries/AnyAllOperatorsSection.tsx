@@ -37,9 +37,9 @@ export default function AnyAllOperatorsSection() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setAnyAllOperator('ANY')}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
               anyAllOperator === 'ANY'
-                ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-600/30'
+                ? 'bg-cyan-600 text-white  '
                 : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
             }`}
           >
@@ -47,9 +47,9 @@ export default function AnyAllOperatorsSection() {
           </button>
           <button
             onClick={() => setAnyAllOperator('ALL')}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
               anyAllOperator === 'ALL'
-                ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
+                ? 'bg-purple-600 text-white  '
                 : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
             }`}
           >

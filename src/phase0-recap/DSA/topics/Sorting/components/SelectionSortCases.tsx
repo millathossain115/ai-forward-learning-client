@@ -4,7 +4,7 @@ import { Clock, HardDrive } from 'lucide-react';
 export default function SelectionSortCases() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <Clock className="w-4 h-4 text-amber-400" />
           <span>কমপ্লেক্সিটি ম্যাট্রিক্স</span>
@@ -33,7 +33,7 @@ export default function SelectionSortCases() {
         </div>
       </div>
 
-      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <HardDrive className="w-4 h-4 text-sky-400" />
           <span>হার্ডওয়্যার ও ফ্ল্যাশ মেমোরির বিশেষ সুবিধা</span>

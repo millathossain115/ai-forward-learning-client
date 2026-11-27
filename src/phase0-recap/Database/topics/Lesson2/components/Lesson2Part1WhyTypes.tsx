@@ -79,7 +79,7 @@ export default function Lesson2Part1WhyTypes() {
               <button
                 key={org.id}
                 onClick={() => setSelectedOrg(org.id)}
-                className={`p-4 rounded-xl border text-left transition-all cursor-pointer space-y-2 ${
+                className={`p-4 rounded-xl border text-left transition-colors cursor-pointer space-y-2 ${
                   isSelected
                     ? org.borderActive
                     : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-slate-700'
@@ -90,7 +90,7 @@ export default function Lesson2Part1WhyTypes() {
                     <Icon className={`w-4 h-4 ${org.color}`} />
                     {language === 'bn' ? org.bnTitle : org.enTitle}
                   </span>
-                  {isSelected && <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />}
+                  {isSelected && <span className="w-2 h-2 rounded-full bg-indigo-400" />}
                 </div>
                 <p className="text-[11px] leading-snug">
                   {language === 'bn' ? org.bnSummary : org.enSummary}

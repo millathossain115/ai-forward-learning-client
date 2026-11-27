@@ -139,7 +139,7 @@ export default function CompositeKeyTab() {
           <div className="p-4 rounded-xl bg-[#0a0d1a] border border-pink-500/30 space-y-4 font-mono text-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
-                <span className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-pink-400" />
                 <DualText
                   en="Attribute Uniqueness Tester (Compare Single vs Composite):"
                   bn="অ্যাট্রিবিউট ইউনিকনেস পরীক্ষক (একক বনাম যৌথ তুলনা করুন):"
@@ -164,9 +164,9 @@ export default function CompositeKeyTab() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setCompositeTestMode('student_only')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     compositeTestMode === 'student_only'
-                      ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold shadow-lg shadow-rose-950/50'
+                      ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold  '
                       : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
                   }`}
                 >
@@ -176,9 +176,9 @@ export default function CompositeKeyTab() {
 
                 <button
                   onClick={() => setCompositeTestMode('course_only')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     compositeTestMode === 'course_only'
-                      ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold shadow-lg shadow-rose-950/50'
+                      ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold  '
                       : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
                   }`}
                 >
@@ -188,9 +188,9 @@ export default function CompositeKeyTab() {
 
                 <button
                   onClick={() => setCompositeTestMode('both')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     compositeTestMode === 'both'
-                      ? 'bg-pink-500/20 border-pink-400 text-pink-200 font-bold shadow-lg shadow-pink-950/50'
+                      ? 'bg-pink-500/20 border-pink-400 text-pink-200 font-bold  '
                       : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-pink-500/40 hover:text-zinc-200'
                   }`}
                 >
@@ -226,7 +226,7 @@ export default function CompositeKeyTab() {
                   return (
                     <button
                       onClick={() => handleTestCompositeCollision('101', 'CSE101')}
-                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-all cursor-pointer flex items-center justify-between gap-2 text-left ${
+                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-colors cursor-pointer flex items-center justify-between gap-2 text-left ${
                         isRahimDuplicate
                           ? 'border-rose-500/50 bg-rose-950/30 text-rose-300 hover:bg-rose-900/40'
                           : 'border-emerald-500/50 bg-emerald-950/30 text-emerald-300 hover:bg-emerald-900/40'
@@ -264,7 +264,7 @@ export default function CompositeKeyTab() {
                   return (
                     <button
                       onClick={() => handleTestCompositeCollision('103', 'CSE201')}
-                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-all cursor-pointer flex items-center justify-between gap-2 text-left ${
+                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-colors cursor-pointer flex items-center justify-between gap-2 text-left ${
                         isNilaEnrolled
                           ? 'border-rose-500/50 bg-rose-950/30 text-rose-300 hover:bg-rose-900/40'
                           : 'border-emerald-500/50 bg-emerald-950/30 text-emerald-300 hover:bg-emerald-900/40'
@@ -302,7 +302,7 @@ export default function CompositeKeyTab() {
                   return (
                     <button
                       onClick={() => handleTestCompositeCollision('102', 'CSE201')}
-                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-all cursor-pointer flex items-center justify-between gap-2 text-left ${
+                      className={`px-3 py-2 rounded-lg border text-xs font-mono transition-colors cursor-pointer flex items-center justify-between gap-2 text-left ${
                         isKarimEnrolled
                           ? 'border-rose-500/50 bg-rose-950/30 text-rose-300 hover:bg-rose-900/40'
                           : 'border-emerald-500/50 bg-emerald-950/30 text-emerald-300 hover:bg-emerald-900/40'
@@ -372,7 +372,7 @@ export default function CompositeKeyTab() {
 
                   <button
                     onClick={() => handleTestCompositeCollision(customStudentId, customCourseId)}
-                    className="px-3.5 py-1.5 rounded-lg border border-pink-500/50 bg-pink-600/20 text-pink-200 hover:bg-pink-600/30 text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                    className="px-3.5 py-1.5 rounded-lg border border-pink-500/50 bg-pink-600/20 text-pink-200 hover:bg-pink-600/30 text-xs font-mono font-bold transition-colors cursor-pointer flex items-center gap-1.5"
                   >
                     <UserPlus className="w-3.5 h-3.5 text-pink-400" />
                     {language === 'bn' ? 'কম্বিনেশন ইনসার্ট টেস্ট' : 'Test Insert Combination'}
@@ -384,7 +384,7 @@ export default function CompositeKeyTab() {
             {/* Dynamic Alert Banner */}
             {compositeAlert && (
               <div
-                className={`p-3.5 rounded-xl border text-xs flex items-start gap-2.5 transition-all ${
+                className={`p-3.5 rounded-xl border text-xs flex items-start gap-2.5 transition-colors ${
                   compositeAlert.type === 'error'
                     ? 'bg-rose-950/40 border-rose-500 text-rose-200 font-sans'
                     : 'bg-emerald-950/40 border-emerald-500 text-emerald-200 font-sans'
@@ -515,9 +515,9 @@ export default function CompositeKeyTab() {
                     return (
                       <tr
                         key={`${enr.studentId}-${enr.courseId}-${idx}`}
-                        className={`transition-all duration-300 ${
+                        className={`transition-colors duration-300 ${
                           isColliding
-                            ? 'bg-rose-950/60 ring-2 ring-rose-500/80 animate-pulse text-white'
+                            ? 'bg-rose-950/60 ring-2 ring-rose-500/80  text-white'
                             : isJustInserted
                             ? 'bg-emerald-950/50 ring-2 ring-emerald-500/70 text-white'
                             : idx % 2 === 0

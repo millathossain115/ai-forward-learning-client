@@ -60,8 +60,8 @@ export default function Lesson14Part2AuthModels() {
           <button
             key={m}
             onClick={() => setModelTab(m)}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              modelTab === m ? 'bg-indigo-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              modelTab === m ? 'bg-indigo-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {m}

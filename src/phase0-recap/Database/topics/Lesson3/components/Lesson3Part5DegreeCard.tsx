@@ -84,7 +84,7 @@ export default function Lesson3Part5DegreeCard() {
       </div>
 
       {/* Memory Trick Box */}
-      <div className="p-4 rounded-xl bg-gradient-to-r from-pink-950/30 to-indigo-950/30 border border-slate-700 text-xs font-mono flex flex-col sm:flex-row items-center justify-around gap-3 text-center">
+      <div className="p-4 rounded-xl bg-[#15171e] border border-slate-700 text-xs font-mono flex flex-col sm:flex-row items-center justify-around gap-3 text-center">
         <div>
           <span className="text-zinc-400 block text-[10px]">
             {language === 'bn' ? 'সহজ টেকনিক:' : 'Short Memory Trick:'}

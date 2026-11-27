@@ -38,7 +38,7 @@ export default function Lesson6Part20InterviewPrep() {
               <Briefcase className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
                 {language === 'bn' ? 'পার্ট ১৩ • বাছাইকৃত টেকনিক্যাল ইন্টারভিউ প্রস্তুতি' : 'Part 13 of 13 • Interview Prep'}
               </span>
               <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
@@ -54,13 +54,13 @@ export default function Lesson6Part20InterviewPrep() {
           <div className="flex items-center gap-2 self-start sm:self-auto">
             <button
               onClick={expandAllExamQ}
-              className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-colors cursor-pointer"
             >
               {language === 'bn' ? 'সব প্রসারিত করুন' : 'Expand All'}
             </button>
             <button
               onClick={collapseAllExamQ}
-              className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-zinc-300 text-xs font-mono border border-slate-700 transition-colors cursor-pointer"
             >
               {language === 'bn' ? 'সব বন্ধ করুন' : 'Collapse All'}
             </button>
@@ -81,7 +81,7 @@ export default function Lesson6Part20InterviewPrep() {
             return (
               <div
                 key={item.id}
-                className="rounded-2xl border border-slate-800 bg-[#0e1222] overflow-hidden transition-all shadow-md hover:border-slate-700"
+                className="rounded-2xl border border-slate-800 bg-[#0e1222] overflow-hidden transition-colors hover:border-slate-700"
               >
                 <button
                   onClick={() => toggleExamQ(item.id)}
@@ -107,7 +107,7 @@ export default function Lesson6Part20InterviewPrep() {
                   <div className="p-4 md:p-5 bg-[#090c18] border-t border-slate-800/80 space-y-3 text-xs leading-relaxed font-sans animate-in fade-in duration-150">
                     {/* Summary Card */}
                     <div className="p-3.5 rounded-xl bg-cyan-950/30 border border-cyan-800/40 text-cyan-200">
-                      <strong className="text-cyan-300 block font-mono text-[11px] uppercase tracking-wider mb-1">
+                      <strong className="text-cyan-300 block font-mono text-[11px] mb-1">
                         {language === 'bn' ? 'মূল সিদ্ধান্ত ও সামারি:' : 'Architectural Summary:'}
                       </strong>
                       <p className="text-zinc-200 text-xs leading-relaxed">
@@ -117,7 +117,7 @@ export default function Lesson6Part20InterviewPrep() {
 
                     {/* Bullet Points */}
                     <div className="space-y-1.5 pt-1">
-                      <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                      <span className="text-[11px] font-mono text-zinc-400 font-bold">
                         {language === 'bn' ? 'গুরুত্বপূর্ণ টেকনিক্যাল পয়েন্টসমূহ:' : 'Key Technical Points:'}
                       </span>
                       <ul className="space-y-1.5 pl-4 list-disc marker:text-cyan-400 text-zinc-300 text-xs">
@@ -137,7 +137,7 @@ export default function Lesson6Part20InterviewPrep() {
 
         {/* Quick SQL Cheat Sheet */}
         <div className="p-4 md:p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
-          <span className="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+          <span className="text-xs font-mono font-bold text-amber-300 flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <span>{language === 'bn' ? 'ইন্টারভিউ ও পরীক্ষার জন্য কুইক সিনট্যাক্স চিটশিট' : 'Interview & Exam Syntax Quick Cheat Sheet'}</span>
           </span>

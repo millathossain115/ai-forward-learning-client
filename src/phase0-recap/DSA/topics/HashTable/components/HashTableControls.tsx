@@ -41,9 +41,9 @@ export default function HashTableControls({
           <button
             onClick={() => onSetTableMode('chaining')}
             disabled={isAnimating}
-            className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-all ${
+            className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-colors ${
               tableMode === 'chaining'
-                ? 'bg-pink-600 text-white shadow-md shadow-pink-600/20'
+                ? 'bg-pink-600 text-white  '
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -52,9 +52,9 @@ export default function HashTableControls({
           <button
             onClick={() => onSetTableMode('probing')}
             disabled={isAnimating}
-            className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-all ${
+            className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-colors ${
               tableMode === 'probing'
-                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                ? 'bg-amber-500 text-slate-950  '
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -63,9 +63,9 @@ export default function HashTableControls({
           <button
             onClick={() => onSetTableMode('set')}
             disabled={isAnimating}
-            className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-all ${
+            className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-colors ${
               tableMode === 'set'
-                ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
+                ? 'bg-emerald-500 text-slate-950  '
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -86,7 +86,7 @@ export default function HashTableControls({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 bg-[#11131f] p-3 rounded-xl border border-[#1d2030] items-center">
         {/* Section A: INSERT CONTROLS */}
         <div className="lg:col-span-7 flex flex-wrap items-center gap-2 border-b lg:border-b-0 lg:border-r border-[#1f2336] pb-2.5 lg:pb-0 lg:pr-3">
-          <span className="text-[11px] font-mono text-pink-400 font-bold uppercase tracking-wider flex items-center gap-1 shrink-0">
+          <span className="text-[11px] font-mono text-pink-400 font-bold flex items-center gap-1 shrink-0">
             <PlusCircle className="w-3.5 h-3.5 text-pink-400" /> ইনসার্ট:
           </span>
 
@@ -115,7 +115,7 @@ export default function HashTableControls({
           <button
             onClick={onPut}
             disabled={isAnimating}
-            className="flex items-center gap-1 text-xs font-mono px-3 py-1.5 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-bold shadow-md shadow-pink-600/20 transition-all disabled:opacity-40 shrink-0 cursor-pointer"
+            className="flex items-center gap-1 text-xs font-mono px-3 py-1.5 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-bold transition-colors disabled:opacity-40 shrink-0 cursor-pointer"
           >
             <PlusCircle className="w-3.5 h-3.5" /> PUT
           </button>
@@ -123,7 +123,7 @@ export default function HashTableControls({
 
         {/* Section B: SEARCH CONTROLS */}
         <div className="lg:col-span-5 flex flex-wrap items-center gap-2">
-          <span className="text-[11px] font-mono text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1 shrink-0">
+          <span className="text-[11px] font-mono text-rose-400 font-bold flex items-center gap-1 shrink-0">
             <Search className="w-3.5 h-3.5 text-rose-400" /> সার্চ:
           </span>
 
@@ -141,7 +141,7 @@ export default function HashTableControls({
           <button
             onClick={onSearch}
             disabled={isAnimating}
-            className="flex items-center gap-1 text-xs font-mono px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold shadow-md shadow-rose-600/20 transition-all disabled:opacity-40 shrink-0 cursor-pointer"
+            className="flex items-center gap-1 text-xs font-mono px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold transition-colors disabled:opacity-40 shrink-0 cursor-pointer"
           >
             <Search className="w-3.5 h-3.5" /> GET O(1)
           </button>

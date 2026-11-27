@@ -12,7 +12,7 @@ export default function DfsStackPanel({ currentStep }: DfsStackPanelProps) {
   return (
     <div className="lg:col-span-4 flex flex-col gap-4">
       {/* Card 1: LIFO Call Stack */}
-      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-3 shadow-xl">
+      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5 text-indigo-400" />
@@ -34,7 +34,7 @@ export default function DfsStackPanel({ currentStep }: DfsStackPanelProps) {
               return (
                 <div
                   key={idx}
-                  className={`p-2 rounded-lg font-mono text-xs flex items-center justify-between border transition-all ${
+                  className={`p-2 rounded-lg font-mono text-xs flex items-center justify-between border transition-colors ${
                     isTop
                       ? 'bg-indigo-950/80 border-indigo-400 text-white font-bold ring-1 ring-indigo-400'
                       : 'bg-[#0f1222] border-[#1d243f] text-zinc-400'
@@ -52,7 +52,7 @@ export default function DfsStackPanel({ currentStep }: DfsStackPanelProps) {
       </div>
 
       {/* Card 2: Traversal Order */}
-      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 shadow-xl text-xs font-mono">
+      <div className="bg-[#0c0e18] border border-[#212740] rounded-2xl p-4 space-y-2.5 text-xs font-mono">
         <span className="font-bold text-white flex items-center gap-1.5">
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
           <span>ভিজিট করার ক্রম (Visited Order)</span>

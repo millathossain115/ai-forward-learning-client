@@ -44,9 +44,9 @@ export default function Lesson7WindowAndBestPractices() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setWindowDemoMode('window')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
               windowDemoMode === 'window'
-                ? 'bg-purple-600 text-white shadow-lg'
+                ? 'bg-purple-600 text-white '
                 : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
             }`}
           >
@@ -54,9 +54,9 @@ export default function Lesson7WindowAndBestPractices() {
           </button>
           <button
             onClick={() => setWindowDemoMode('groupby')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
               windowDemoMode === 'groupby'
-                ? 'bg-amber-600 text-white shadow-lg'
+                ? 'bg-amber-600 text-white '
                 : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
             }`}
           >
@@ -201,7 +201,7 @@ export default function Lesson7WindowAndBestPractices() {
                 <button
                   key={t.id}
                   onClick={() => setAdvWindowTab(t.id)}
-                  className={`px-2.5 py-1 rounded text-[11px] font-mono font-bold cursor-pointer transition-all ${
+                  className={`px-2.5 py-1 rounded text-[11px] font-mono font-bold cursor-pointer transition-colors ${
                     advWindowTab === t.id
                       ? 'bg-purple-600 text-white'
                       : 'bg-slate-800 text-zinc-400 hover:text-white'

@@ -73,9 +73,9 @@ export default function DsaCurriculum() {
             <button
               key={t.key}
               onClick={() => setSelectedTopic(t.key)}
-              className={`p-3.5 rounded-xl border text-left flex flex-col justify-between transition-all ${
+              className={`p-3.5 rounded-xl border text-left flex flex-col justify-between transition-colors ${
                 isActive
-                  ? 'bg-sky-500/10 border-sky-500 shadow-lg shadow-sky-500/10'
+                  ? 'bg-sky-500/10 border-sky-500  '
                   : 'bg-slate-950/70 border-slate-800/80 hover:bg-slate-900/60'
               }`}
             >

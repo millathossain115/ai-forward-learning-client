@@ -143,7 +143,7 @@ export default function GraphDbTab() {
                     fill={selectedGraphNode === 'rahim' ? '#059669' : '#10b981'}
                     stroke={selectedGraphNode === 'rahim' ? '#34d399' : '#047857'}
                     strokeWidth={selectedGraphNode === 'rahim' ? 3 : 1.5}
-                    className="transition-all hover:scale-105"
+                    className="transition-colors"
                   />
                   <text x="240" y="136" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">
                     Rahim
@@ -162,7 +162,7 @@ export default function GraphDbTab() {
                     fill={selectedGraphNode === 'karim' ? '#059669' : '#10b981'}
                     stroke={selectedGraphNode === 'karim' ? '#34d399' : '#047857'}
                     strokeWidth={selectedGraphNode === 'karim' ? 3 : 1.5}
-                    className="transition-all hover:scale-105"
+                    className="transition-colors"
                   />
                   <text x="240" y="276" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">
                     Karim
@@ -181,7 +181,7 @@ export default function GraphDbTab() {
                     fill={selectedGraphNode === 'dbCourse' ? '#06b6d4' : '#0891b2'}
                     stroke={selectedGraphNode === 'dbCourse' ? '#67e8f9' : '#0e7490'}
                     strokeWidth={selectedGraphNode === 'dbCourse' ? 3 : 1.5}
-                    className="transition-all hover:scale-105"
+                    className="transition-colors"
                   />
                   <text x="460" y="85" fill="#ffffff" fontSize="11" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">
                     Database
@@ -200,7 +200,7 @@ export default function GraphDbTab() {
                     fill={selectedGraphNode === 'mathCourse' ? '#06b6d4' : '#0891b2'}
                     stroke={selectedGraphNode === 'mathCourse' ? '#67e8f9' : '#0e7490'}
                     strokeWidth={selectedGraphNode === 'mathCourse' ? 3 : 1.5}
-                    className="transition-all hover:scale-105"
+                    className="transition-colors"
                   />
                   <text x="460" y="225" fill="#ffffff" fontSize="11" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">
                     Math
@@ -219,7 +219,7 @@ export default function GraphDbTab() {
                     fill={selectedGraphNode === 'mrAli' ? '#9333ea' : '#7e22ce'}
                     stroke={selectedGraphNode === 'mrAli' ? '#d8b4fe' : '#6b21a8'}
                     strokeWidth={selectedGraphNode === 'mrAli' ? 3 : 1.5}
-                    className="transition-all hover:scale-105"
+                    className="transition-colors"
                   />
                   <text x="660" y="86" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">
                     Mr. Ali

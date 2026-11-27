@@ -107,7 +107,7 @@ export default function NetworkModelVisualizer() {
       {/* Header and Quick Exploration Controls */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
         <div className="space-y-0.5">
-          <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+          <span className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
             <Network className="w-4 h-4 text-emerald-400" />
             <DualText
               en="Interactive Network Model Diagram (CODASYL Set Architecture)"
@@ -125,7 +125,7 @@ export default function NetworkModelVisualizer() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setSelected({ type: 'student', id: 'rahim' })}
-            className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-colors cursor-pointer ${
               selected?.type === 'student' && selected.id === 'rahim'
                 ? 'bg-indigo-600 text-white font-bold'
                 : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -135,7 +135,7 @@ export default function NetworkModelVisualizer() {
           </button>
           <button
             onClick={() => setSelected({ type: 'student', id: 'karim' })}
-            className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-colors cursor-pointer ${
               selected?.type === 'student' && selected.id === 'karim'
                 ? 'bg-amber-600 text-white font-bold'
                 : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -145,7 +145,7 @@ export default function NetworkModelVisualizer() {
           </button>
           <button
             onClick={() => setSelected({ type: 'course', id: 'db' })}
-            className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-colors cursor-pointer ${
               selected?.type === 'course' && selected.id === 'db'
                 ? 'bg-cyan-600 text-white font-bold'
                 : 'bg-slate-800 text-zinc-300 hover:bg-slate-700'
@@ -155,7 +155,7 @@ export default function NetworkModelVisualizer() {
           </button>
           <button
             onClick={() => setSelected(null)}
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
             title="Reset highlights"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -227,7 +227,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isLinkActive('rahim', 'db') ? '2.5' : '1'}
               opacity={isLinkActive('rahim', 'db') ? 1 : 0.25}
               markerEnd={isLinkActive('rahim', 'db') ? 'url(#arrow-active-right)' : 'url(#arrow-right)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* 2. Rahim (x=190, y=60) -> Mathematics (x=310, y=190) */}
@@ -238,7 +238,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isLinkActive('rahim', 'math') ? '2.5' : '1'}
               opacity={isLinkActive('rahim', 'math') ? 1 : 0.25}
               markerEnd={isLinkActive('rahim', 'math') ? 'url(#arrow-active-right)' : 'url(#arrow-right)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* 3. Karim (x=190, y=145) -> Database (x=310, y=90) */}
@@ -249,7 +249,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isLinkActive('karim', 'db') ? '2.5' : '1'}
               opacity={isLinkActive('karim', 'db') ? 1 : 0.25}
               markerEnd={isLinkActive('karim', 'db') ? 'url(#arrow-active-right)' : 'url(#arrow-right)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* 4. Nila (x=190, y=230) -> Mathematics (x=310, y=190) */}
@@ -260,7 +260,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isLinkActive('nila', 'math') ? '2.5' : '1'}
               opacity={isLinkActive('nila', 'math') ? 1 : 0.25}
               markerEnd={isLinkActive('nila', 'math') ? 'url(#arrow-active-right)' : 'url(#arrow-right)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* 5. Nila (x=190, y=230) -> Networks (x=310, y=290) */}
@@ -271,7 +271,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isLinkActive('nila', 'net') ? '2.5' : '1'}
               opacity={isLinkActive('nila', 'net') ? 1 : 0.25}
               markerEnd={isLinkActive('nila', 'net') ? 'url(#arrow-active-right)' : 'url(#arrow-right)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* 6. Sami (x=190, y=315) -> Networks (x=310, y=290) */}
@@ -282,7 +282,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isLinkActive('sami', 'net') ? '2.5' : '1'}
               opacity={isLinkActive('sami', 'net') ? 1 : 0.25}
               markerEnd={isLinkActive('sami', 'net') ? 'url(#arrow-active-right)' : 'url(#arrow-right)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* Pointer Lines: Teachers -> Courses */}
@@ -296,7 +296,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isTeacherLinkActive('ali', 'db') ? '2.5' : '1'}
               opacity={isTeacherLinkActive('ali', 'db') ? 1 : 0.25}
               markerEnd={isTeacherLinkActive('ali', 'db') ? 'url(#arrow-active-left)' : 'url(#arrow-left)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* Ms. Sara (x=600, y=190) -> Mathematics (x=490, y=190) */}
@@ -309,7 +309,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isTeacherLinkActive('sara', 'math') ? '2.5' : '1'}
               opacity={isTeacherLinkActive('sara', 'math') ? 1 : 0.25}
               markerEnd={isTeacherLinkActive('sara', 'math') ? 'url(#arrow-active-left)' : 'url(#arrow-left)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* Dr. Kamal (x=600, y=290) -> Networks (x=490, y=290) */}
@@ -322,7 +322,7 @@ export default function NetworkModelVisualizer() {
               strokeWidth={isTeacherLinkActive('kamal', 'net') ? '2.5' : '1'}
               opacity={isTeacherLinkActive('kamal', 'net') ? 1 : 0.25}
               markerEnd={isTeacherLinkActive('kamal', 'net') ? 'url(#arrow-active-left)' : 'url(#arrow-left)'}
-              className="transition-all duration-300"
+              className="transition-colors duration-300"
             />
 
             {/* 1. Students Column (Cards) */}
@@ -345,7 +345,7 @@ export default function NetworkModelVisualizer() {
                     fill={isDirectlySelected ? '#1e1b4b' : active ? '#181d38' : '#101322'}
                     stroke={isDirectlySelected ? '#818cf8' : active ? '#4f46e5' : '#334155'}
                     strokeWidth={isDirectlySelected ? 2 : 1}
-                    className="transition-all duration-200 hover:stroke-indigo-400"
+                    className="transition-colors duration-200 hover:stroke-indigo-400"
                   />
                   <text x="32" y={s.y + 22} fill={active ? '#ffffff' : '#94a3b8'} fontSize="12" fontWeight="bold" fontFamily="monospace">
                     {s.name}
@@ -380,7 +380,7 @@ export default function NetworkModelVisualizer() {
                     fill={isDirectlySelected ? '#083344' : active ? '#0f2942' : '#101322'}
                     stroke={isDirectlySelected ? '#38bdf8' : active ? '#0284c7' : '#334155'}
                     strokeWidth={isDirectlySelected ? 2 : 1}
-                    className="transition-all duration-200 hover:stroke-cyan-400"
+                    className="transition-colors duration-200 hover:stroke-cyan-400"
                   />
                   <text x="322" y={c.y + 22} fill={active ? '#ffffff' : '#94a3b8'} fontSize="11.5" fontWeight="bold" fontFamily="monospace">
                     {c.name}
@@ -418,7 +418,7 @@ export default function NetworkModelVisualizer() {
                     fill={isDirectlySelected ? '#064e3b' : active ? '#0d3829' : '#101322'}
                     stroke={isDirectlySelected ? '#34d399' : active ? '#059669' : '#334155'}
                     strokeWidth={isDirectlySelected ? 2 : 1}
-                    className="transition-all duration-200 hover:stroke-emerald-400"
+                    className="transition-colors duration-200 hover:stroke-emerald-400"
                   />
                   <text x="612" y={t.y + 22} fill={active ? '#ffffff' : '#94a3b8'} fontSize="12" fontWeight="bold" fontFamily="monospace">
                     {t.name}
@@ -437,7 +437,7 @@ export default function NetworkModelVisualizer() {
       </div>
 
       {/* Dynamic Pointer Explanation Strip */}
-      <div className="p-3.5 rounded-xl bg-gradient-to-r from-[#11162d] via-[#0f172a] to-[#091e1d] border border-slate-800 text-xs font-sans leading-relaxed space-y-1.5">
+      <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans leading-relaxed space-y-1.5">
         <div className="flex items-center gap-2 font-mono text-[11px] text-emerald-400 font-bold">
           <Link2 className="w-3.5 h-3.5" />
           <span>

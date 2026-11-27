@@ -67,9 +67,9 @@ WHERE S.GPA > (
               <button
                 key={s.id}
                 onClick={() => setCorrelatedActiveStudentIdx(idx)}
-                className={`p-2.5 rounded-xl text-left border transition-all cursor-pointer ${
+                className={`p-2.5 rounded-xl text-left border transition-colors cursor-pointer ${
                   correlatedActiveStudentIdx === idx
-                    ? 'bg-purple-600/30 border-purple-400 text-white shadow-lg'
+                    ? 'bg-purple-600/30 border-purple-400 text-white '
                     : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
                 }`}
               >

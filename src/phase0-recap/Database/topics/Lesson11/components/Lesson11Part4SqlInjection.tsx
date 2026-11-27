@@ -32,16 +32,16 @@ export default function Lesson11Part4SqlInjection() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setSqliMode('vulnerable')}
-          className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            sqliMode === 'vulnerable' ? 'bg-rose-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+          className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            sqliMode === 'vulnerable' ? 'bg-rose-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
           }`}
         >
           ✗ Vulnerable String Concatenation
         </button>
         <button
           onClick={() => setSqliMode('safe')}
-          className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-            sqliMode === 'safe' ? 'bg-emerald-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+          className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+            sqliMode === 'safe' ? 'bg-emerald-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
           }`}
         >
           ✓ Safe Parameterized Query

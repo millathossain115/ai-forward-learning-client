@@ -176,7 +176,7 @@ export default function Lesson1Part2Info() {
 
         {/* Data vs Information Comparison Table */}
         <div className="space-y-3 pt-2">
-          <h4 className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider">
+          <h4 className="text-xs font-mono font-bold text-zinc-300">
             {language === 'bn' ? 'ডেটা বনাম ইনফরমেশন: সরাসরি তুলনা' : 'Data vs Information: Direct Comparison'}
           </h4>
           <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#0c0e18]">

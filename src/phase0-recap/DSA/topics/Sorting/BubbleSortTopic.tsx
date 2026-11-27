@@ -16,14 +16,14 @@ import BubbleSortCanvas from './components/BubbleSortCanvas';
 
 const BubbleSortCodeView = dynamic(() => import('./components/BubbleSortCodeView'), {
   loading: () => (
-    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="p-8 text-center text-xs font-mono text-zinc-500">
       Loading code view...
     </div>
   )
 });
 const BubbleSortCases = dynamic(() => import('./components/BubbleSortCases'), {
   loading: () => (
-    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="p-8 text-center text-xs font-mono text-zinc-500">
       Loading case studies...
     </div>
   )
@@ -85,16 +85,15 @@ export default function BubbleSortTopic({ onNavigate }: { onNavigate?: (id: stri
   return (
     <div className="flex flex-col gap-8 w-full text-zinc-100">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1c1328] via-[#110d1c] to-[#0a0712] border border-[#372458] p-6 md:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-fuchsia-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#372458] p-6 md:p-8">
         <div className="relative z-10 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 font-bold">
               Topic 13.1 • Sorting Algorithm
             </span>
             <span className="text-xs text-zinc-400 font-mono">Adjacent Element Swapping</span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white flex items-center gap-3">
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white flex items-center gap-3">
             <span>বাবল সর্ট (Bubble Sort)</span>
             <span className="text-sm font-mono font-normal px-3 py-1 rounded-full bg-[#241a38] border border-fuchsia-500/30 text-fuchsia-300">
               O(N²) Worst • O(N) Best
@@ -111,9 +110,9 @@ export default function BubbleSortTopic({ onNavigate }: { onNavigate?: (id: stri
         <div className="flex items-center gap-2 bg-[#120f1e] p-1.5 rounded-2xl border border-[#26203d]">
           <button
             onClick={() => setActiveTab('visualizer')}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-colors cursor-pointer ${
               activeTab === 'visualizer'
-                ? 'bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-600/30'
+                ? 'bg-fuchsia-600 text-white  shadow-fuchsia-600/30'
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -121,9 +120,9 @@ export default function BubbleSortTopic({ onNavigate }: { onNavigate?: (id: stri
           </button>
           <button
             onClick={() => setActiveTab('code')}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-colors cursor-pointer ${
               activeTab === 'code'
-                ? 'bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-600/30'
+                ? 'bg-fuchsia-600 text-white  shadow-fuchsia-600/30'
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -131,9 +130,9 @@ export default function BubbleSortTopic({ onNavigate }: { onNavigate?: (id: stri
           </button>
           <button
             onClick={() => setActiveTab('cases')}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-colors cursor-pointer ${
               activeTab === 'cases'
-                ? 'bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-600/30'
+                ? 'bg-fuchsia-600 text-white  shadow-fuchsia-600/30'
                 : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
@@ -200,7 +199,7 @@ export default function BubbleSortTopic({ onNavigate }: { onNavigate?: (id: stri
 
         <button
           onClick={() => onNavigate && onNavigate('sorting-selection')}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 text-white font-mono text-xs font-bold shadow-lg shadow-fuchsia-600/20 transition-all cursor-pointer"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#15171e] hover:from-fuchsia-500 hover:to-pink-500 text-white font-mono text-xs font-bold shadow-fuchsia-600/20 transition-colors cursor-pointer"
         >
           <span>পরবর্তী: সিলেকশন সর্ট (Selection Sort)</span>
           <ArrowRight className="w-4 h-4" />

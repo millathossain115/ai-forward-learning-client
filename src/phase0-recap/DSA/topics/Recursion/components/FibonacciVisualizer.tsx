@@ -74,7 +74,7 @@ export default function FibonacciVisualizer({
               <g key={node.id} transform={`translate(${node.x}, ${node.y})`}>
                 <circle
                   r={18}
-                  className={`transition-all duration-300 ${
+                  className={`transition-colors duration-300 ${
                     state === 'base_case'
                       ? 'fill-amber-500 stroke-amber-300 stroke-2'
                       : state === 'returned'

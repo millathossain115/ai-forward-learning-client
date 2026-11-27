@@ -24,7 +24,7 @@ export default function Lesson5Part1ERModel() {
       nameBn: 'STUDENT (শিক্ষার্থী সত্তা)',
       color: 'cyan',
       badgeBg: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
-      activeTab: 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/40',
+      activeTab: 'bg-cyan-600 text-white  ',
       border: 'border-cyan-500/40',
       pk: 'Student_ID',
       pkType: 'INT PRIMARY KEY',
@@ -60,7 +60,7 @@ export default function Lesson5Part1ERModel() {
       nameBn: 'COURSE (কোর্স সত্তা)',
       color: 'emerald',
       badgeBg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-      activeTab: 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/40',
+      activeTab: 'bg-emerald-600 text-white  ',
       border: 'border-emerald-500/40',
       pk: 'Course_ID',
       pkType: 'VARCHAR(10) PRIMARY KEY',
@@ -105,7 +105,7 @@ export default function Lesson5Part1ERModel() {
       nameBn: 'PROFESSOR (অধ্যাপক সত্তা)',
       color: 'purple',
       badgeBg: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
-      activeTab: 'bg-purple-600 text-white shadow-lg shadow-purple-900/40',
+      activeTab: 'bg-purple-600 text-white  ',
       border: 'border-purple-500/40',
       pk: 'Prof_ID',
       pkType: 'INT PRIMARY KEY',
@@ -152,7 +152,7 @@ export default function Lesson5Part1ERModel() {
       nameBn: 'DEPARTMENT (বিভাগ সত্তা)',
       color: 'amber',
       badgeBg: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
-      activeTab: 'bg-amber-600 text-white shadow-lg shadow-amber-900/40',
+      activeTab: 'bg-amber-600 text-white  ',
       border: 'border-amber-500/40',
       pk: 'Dept_ID',
       pkType: 'INT PRIMARY KEY',
@@ -295,13 +295,13 @@ export default function Lesson5Part1ERModel() {
           AUTHENTIC UNIVERSITY DATABASE ER DIAGRAM (REFERENCED SHOWCASE)
           Full-View Thematic ER Diagram + Dynamic Component Breakdown
          ======================================================== */}
-      <div className="p-5 md:p-7 rounded-3xl bg-[#080c18] border-2 border-cyan-500/40 space-y-6 shadow-2xl">
+      <div className="p-5 md:p-7 rounded-3xl bg-[#080c18] border-2 border-cyan-500/40 space-y-6">
         {/* Card Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2.5">
             <Compass className="w-5 h-5 text-cyan-400" />
             <div>
-              <h3 className="text-sm md:text-base font-bold text-white font-mono uppercase tracking-wider">
+              <h3 className="text-sm md:text-base font-bold text-white font-mono">
                 {language === 'bn'
                   ? 'বাস্তব উদাহরণ: বিশ্ববিদ্যালয় ডেটাবেসের পূর্ণাঙ্গ ইআর ডায়াগ্রাম'
                   : 'Real-World Example: University Database Complete ER Diagram'}
@@ -322,7 +322,7 @@ export default function Lesson5Part1ERModel() {
         <div className="space-y-2">
           <div
             onClick={() => setIsModalOpen(true)}
-            className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#070A14] border-2 border-cyan-500/40 transition-all hover:border-cyan-400 hover:shadow-2xl hover:shadow-cyan-950/50 p-2 sm:p-4 flex flex-col items-center justify-center"
+            className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#070A14] border-2 border-cyan-500/40 transition-colors hover:border-cyan-400 hover: hover: p-2 sm:p-4 flex flex-col items-center justify-center"
           >
             <img
               src="/images/thematic-university-er-diagram.png"
@@ -334,7 +334,7 @@ export default function Lesson5Part1ERModel() {
             </div>
             <div className="w-full mt-2 pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-400 gap-1">
               <span className="text-cyan-300 font-semibold flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-cyan-400" />
                 4 Entities (▭) • 3 Relationships (◇) • 15 Attributes (⬭)
               </span>
               <span className="text-zinc-500 flex items-center gap-1 group-hover:text-cyan-400 transition-colors">
@@ -368,7 +368,7 @@ export default function Lesson5Part1ERModel() {
                   <button
                     key={key}
                     onClick={() => setSelectedEntity(key)}
-                    className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer border ${
+                    className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-colors cursor-pointer border ${
                       isActive
                         ? ent.activeTab
                         : 'bg-[#101428] text-zinc-400 border-slate-800 hover:text-white hover:border-slate-700'
@@ -488,7 +488,7 @@ export default function Lesson5Part1ERModel() {
       </div>
 
       {/* Recommended Video Lecture: Neso Academy ER Diagram */}
-      <div className="p-4 rounded-2xl bg-gradient-to-r from-[#171226] via-[#101322] to-[#0c0e18] border border-rose-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-4 rounded-2xl bg-[#15171e] border border-rose-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-rose-600/20 text-rose-400 border border-rose-600/30 shrink-0">
             <PlayCircle className="w-6 h-6" />
@@ -519,7 +519,7 @@ export default function Lesson5Part1ERModel() {
           href="https://www.youtube.com/watch?v=rorft23glC0"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold font-mono flex items-center gap-1.5 transition-all shadow-md shadow-rose-900/30 shrink-0 cursor-pointer self-stretch sm:self-auto justify-center"
+          className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold font-mono flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer self-stretch sm:self-auto justify-center"
         >
           <span>{language === 'bn' ? 'ভিডিও দেখুন' : 'Watch Video'}</span>
           <ExternalLink className="w-3.5 h-3.5" />
@@ -534,7 +534,7 @@ export default function Lesson5Part1ERModel() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-6xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+            className="relative max-w-6xl w-full rounded-2xl bg-[#0B0F19] border border-cyan-500/40 p-4 md:p-6 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div>
@@ -548,7 +548,7 @@ export default function Lesson5Part1ERModel() {
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>

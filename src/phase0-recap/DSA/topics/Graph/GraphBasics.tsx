@@ -23,7 +23,7 @@ export default function GraphBasics() {
   return (
     <div className="flex flex-col gap-8 w-full">
       {/* 1. Definition Card: What is a Graph, Vertex, and Edge? */}
-      <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6 shadow-xl">
+      <div className="bg-[#0f111a] border border-[#1e2233] p-6 md:p-8 rounded-3xl flex flex-col gap-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-[#1b1f30] pb-5">
           <div className="space-y-1">
             <div className="flex items-center gap-2.5">

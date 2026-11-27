@@ -16,7 +16,7 @@ export default function GraphScenarioSelector({
   return (
     <div className="space-y-2.5">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold flex items-center gap-1.5">
+        <span className="text-xs font-mono text-zinc-400 font-semibold flex items-center gap-1.5">
           <Workflow className="w-3.5 h-3.5 text-indigo-400" />
           <span>সিমুলেশন সিনারিও নির্বাচন করুন (Select Test Scenario):</span>
         </span>
@@ -30,9 +30,9 @@ export default function GraphScenarioSelector({
             <button
               key={p.id}
               onClick={() => onSelectPreset(idx)}
-              className={`p-3.5 rounded-2xl border text-left flex flex-col justify-between space-y-2.5 transition-all cursor-pointer ${
+              className={`p-3.5 rounded-2xl border text-left flex flex-col justify-between space-y-2.5 transition-colors cursor-pointer ${
                 isSelected
-                  ? 'bg-[#15182d] border-indigo-500 shadow-lg shadow-indigo-500/15'
+                  ? 'bg-[#15182d] border-indigo-500  '
                   : 'bg-[#0f111a] border-[#1d2235] hover:border-[#2b334d] text-zinc-400 hover:text-zinc-200'
               }`}
             >

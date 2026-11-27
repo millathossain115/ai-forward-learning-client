@@ -45,9 +45,9 @@ export default function Lesson8Part2Anomalies() {
               setActiveAnomaly(a.id);
               setAnomalySimulated(false);
             }}
-            className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+            className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
               activeAnomaly === a.id
-                ? 'bg-rose-500/20 border-rose-400 text-white shadow-lg'
+                ? 'bg-rose-500/20 border-rose-400 text-white '
                 : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
             }`}
           >
@@ -75,7 +75,7 @@ export default function Lesson8Part2Anomalies() {
             </div>
             <button
               onClick={() => setAnomalySimulated(true)}
-              className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold cursor-pointer transition-all"
+              className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold cursor-pointer transition-colors"
             >
               {language === 'bn' ? 'ইনসার্ট সিমুলেট করুন' : 'Simulate Insert Operation'}
             </button>
@@ -116,7 +116,7 @@ export default function Lesson8Part2Anomalies() {
             />
             <button
               onClick={() => setAnomalySimulated(true)}
-              className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-mono text-xs font-bold cursor-pointer transition-all"
+              className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-mono text-xs font-bold cursor-pointer transition-colors"
             >
               {language === 'bn' ? 'আংশিক আপডেট সিমুলেট করুন' : 'Simulate Incomplete Batch Update'}
             </button>
@@ -160,7 +160,7 @@ export default function Lesson8Part2Anomalies() {
             </div>
             <button
               onClick={() => setAnomalySimulated(true)}
-              className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold cursor-pointer transition-all"
+              className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold cursor-pointer transition-colors"
             >
               {language === 'bn' ? 'ডিলিট সিমুলেট করুন' : 'Simulate Row Deletion'}
             </button>

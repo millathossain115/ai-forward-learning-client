@@ -220,9 +220,9 @@ CROSS JOIN Sizes;`;
             <button
               key={s.num}
               onClick={() => setActiveExecStep(s.num)}
-              className={`p-3 rounded-xl border text-center space-y-1 cursor-pointer transition-all ${
+              className={`p-3 rounded-xl border text-center space-y-1 cursor-pointer transition-colors ${
                 activeExecStep === s.num
-                  ? 'bg-amber-600/20 border-amber-400 shadow-lg'
+                  ? 'bg-amber-600/20 border-amber-400 '
                   : 'bg-[#14182d] border-slate-700/60 hover:border-slate-500'
               }`}
             >
@@ -341,9 +341,9 @@ GROUP BY Department;`}
             <button
               key={p.id}
               onClick={() => setActiveProblem(p.id)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
                 activeProblem === p.id
-                  ? 'bg-cyan-600 text-white shadow-lg'
+                  ? 'bg-cyan-600 text-white '
                   : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
               }`}
             >

@@ -39,7 +39,7 @@ export default function SelectionSortCanvas({
 }: SelectionSortCanvasProps) {
   return (
     <div className="space-y-6">
-      <div className="relative rounded-3xl bg-[#0e0c18] border border-[#2d2444] p-6 shadow-2xl overflow-hidden">
+      <div className="relative rounded-3xl bg-[#0e0c18] border border-[#2d2444] p-6 overflow-hidden">
         {/* Header Controls Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#1f1933]">
           <div className="flex items-center gap-3">
@@ -52,7 +52,7 @@ export default function SelectionSortCanvas({
                   setIsPlaying(!isPlaying);
                 }
               }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-mono text-xs font-bold shadow-lg shadow-amber-600/30 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#15171e] hover:from-amber-500 hover:to-orange-500 text-white font-mono text-xs font-bold transition-colors cursor-pointer"
             >
               {isPlaying ? <Pause className="w-4 h-4" /> : isAtEnd ? <RotateCcw className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               <span>{isPlaying ? 'Pause' : isAtEnd ? 'Replay' : 'Play Simulation'}</span>
@@ -135,7 +135,7 @@ export default function SelectionSortCanvas({
         {/* 2-Zone Visual Representation Bar */}
         <div className="grid grid-cols-2 gap-4 py-4 max-w-xl mx-auto text-xs font-mono">
           <div className="p-3 rounded-2xl bg-emerald-950/30 border border-emerald-600/40 flex items-center gap-2.5">
-            <span className="w-3 h-3 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400" />
+            <span className="w-3 h-3 rounded-full bg-emerald-400" />
             <div>
               <span className="text-[10px] text-emerald-400 uppercase font-bold block">
                 Sorted Zone (বাম পাশ)
@@ -149,7 +149,7 @@ export default function SelectionSortCanvas({
           </div>
 
           <div className="p-3 rounded-2xl bg-amber-950/30 border border-amber-600/40 flex items-center gap-2.5">
-            <span className="w-3 h-3 rounded-full bg-amber-400 shadow-sm shadow-amber-400" />
+            <span className="w-3 h-3 rounded-full bg-amber-400" />
             <div>
               <span className="text-[10px] text-amber-400 uppercase font-bold block">
                 Unsorted Scanner Zone
@@ -175,13 +175,13 @@ export default function SelectionSortCanvas({
                 <div key={idx} className="flex flex-col items-center gap-3">
                   {/* Card Container */}
                   <div
-                    className={`relative w-14 h-24 md:w-16 md:h-28 rounded-2xl flex flex-col items-center justify-between p-2.5 transition-all duration-500 shadow-xl ${
+                    className={`relative w-14 h-24 md:w-16 md:h-28 rounded-2xl flex flex-col items-center justify-between p-2.5 transition-colors duration-500  ${
                       isSorted
-                        ? 'bg-gradient-to-b from-emerald-900/50 to-emerald-950/80 border-2 border-emerald-500 shadow-emerald-500/20 text-emerald-200'
+                        ? 'bg-[#15171e] border-2 border-emerald-500  text-emerald-200'
                         : isMin
-                        ? 'bg-gradient-to-b from-amber-500/40 to-amber-900/70 border-2 border-amber-400 -translate-y-4 shadow-amber-500/30 text-white scale-105'
+                        ? 'bg-[#15171e] border-2 border-amber-400 -translate-y-4  text-white scale-105'
                         : isScanning
-                        ? 'bg-gradient-to-b from-sky-600/30 to-sky-950/70 border-2 border-sky-400 -translate-y-2 text-sky-200'
+                        ? 'bg-[#15171e] border-2 border-sky-400 -translate-y-2 text-sky-200'
                         : 'bg-[#151224] border border-[#2d2448] text-zinc-300'
                     }`}
                   >
@@ -192,14 +192,14 @@ export default function SelectionSortCanvas({
                     </div>
 
                     {/* Value */}
-                    <div className="text-xl md:text-2xl font-black font-mono tracking-tight">
+                    <div className="text-xl md:text-2xl font-semibold font-mono tracking-tight">
                       {val}
                     </div>
 
                     {/* Bottom Status Indicator */}
                     <div className="w-full flex justify-center">
                       {isSorted ? (
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-emerald-400" />
                       ) : isMin ? (
                         <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
                       ) : isScanning ? (
@@ -237,7 +237,7 @@ export default function SelectionSortCanvas({
           </div>
 
           {/* Status Explanation Card */}
-          <div className="w-full max-w-2xl mt-4 p-4 rounded-2xl bg-[#141022] border border-[#2a2044] text-center shadow-lg">
+          <div className="w-full max-w-2xl mt-4 p-4 rounded-2xl bg-[#141022] border border-[#2a2044] text-center">
             <p className="text-xs md:text-sm font-medium text-zinc-200 leading-relaxed">
               {currentStep.desc}
             </p>

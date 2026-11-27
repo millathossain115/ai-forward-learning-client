@@ -11,7 +11,7 @@ interface LinearProbingVisualizerProps {
 export default function LinearProbingVisualizer({ probingSlots, pipelineState }: LinearProbingVisualizerProps) {
   return (
     <div className="bg-[#090a10] rounded-xl border border-[#1a1d2e] p-3.5 sm:p-4 flex flex-col gap-2.5">
-      <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider flex items-center justify-between">
+      <div className="text-[10px] font-mono text-zinc-400 flex items-center justify-between">
         <span>Open Addressing: Linear Probing Array (কোনো লিংকড লিস্ট নেই)</span>
         <span className="text-amber-400">Collision: (Index + 1) % 7</span>
       </div>
@@ -23,9 +23,9 @@ export default function LinearProbingVisualizer({ probingSlots, pipelineState }:
 
           let cardStyle = 'bg-black/30 border-zinc-800 text-zinc-600';
           if (slot.state === 'inserted') {
-            cardStyle = 'bg-amber-500 border-amber-300 text-slate-950 font-bold scale-105 shadow-lg shadow-amber-500/30 ring-2 ring-amber-400';
+            cardStyle = 'bg-amber-500 border-amber-300 text-slate-950 font-bold scale-105   ring-2 ring-amber-400';
           } else if (slot.state === 'found') {
-            cardStyle = 'bg-emerald-500 border-emerald-300 text-slate-950 font-bold scale-105 shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400 animate-pulse';
+            cardStyle = 'bg-emerald-500 border-emerald-300 text-slate-950 font-bold scale-105   ring-2 ring-emerald-400 ';
           } else if (slot.state === 'collision') {
             cardStyle = 'bg-rose-950/60 border-rose-500 text-rose-300 ring-2 ring-rose-500/40';
           } else if (isOccupied) {
@@ -36,7 +36,7 @@ export default function LinearProbingVisualizer({ probingSlots, pipelineState }:
             <div key={idx} className="flex flex-col items-center gap-1">
               <span className="text-[10px] font-mono text-zinc-400 font-bold">[{idx}]</span>
               <div
-                className={`w-full h-14 rounded-lg border p-1 flex flex-col items-center justify-center text-center font-mono transition-all duration-300 ${cardStyle} ${
+                className={`w-full h-14 rounded-lg border p-1 flex flex-col items-center justify-center text-center font-mono transition-colors duration-300 ${cardStyle} ${
                   isTarget ? 'ring-2 ring-cyan-400' : ''
                 }`}
               >

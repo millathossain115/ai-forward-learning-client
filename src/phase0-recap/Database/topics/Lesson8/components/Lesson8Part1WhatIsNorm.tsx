@@ -57,9 +57,9 @@ export default function Lesson8Part1WhatIsNorm() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setNormalizationView('unnormalized')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
                 normalizationView === 'unnormalized'
-                  ? 'bg-rose-600 text-white shadow-lg'
+                  ? 'bg-rose-600 text-white '
                   : 'bg-slate-800 text-zinc-400 hover:text-white'
               }`}
             >
@@ -67,9 +67,9 @@ export default function Lesson8Part1WhatIsNorm() {
             </button>
             <button
               onClick={() => setNormalizationView('normalized')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
                 normalizationView === 'normalized'
-                  ? 'bg-emerald-600 text-white shadow-lg'
+                  ? 'bg-emerald-600 text-white '
                   : 'bg-slate-800 text-zinc-400 hover:text-white'
               }`}
             >

@@ -25,7 +25,7 @@ export default function BaseCaseVisualizer({
         <span
           className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${
             currentBaseStep.phase === 'crash'
-              ? 'bg-rose-950 border-rose-500 text-rose-200 animate-pulse'
+              ? 'bg-rose-950 border-rose-500 text-rose-200 '
               : currentBaseStep.phase === 'base_hit'
               ? 'bg-amber-950 border-amber-400 text-amber-200 ring-2 ring-amber-400/30'
               : currentBaseStep.phase === 'pop'
@@ -140,7 +140,7 @@ export default function BaseCaseVisualizer({
                     ? 'url(#arrow-down-green)'
                     : undefined
                 }
-                className="transition-all duration-300"
+                className="transition-colors duration-300"
               />
             );
           })}
@@ -152,7 +152,7 @@ export default function BaseCaseVisualizer({
               const startX = topNode.x + 85;
               const startY = topNode.y;
               return (
-                <g key="ret_final" className="transition-all duration-300">
+                <g key="ret_final" className="transition-colors duration-300">
                   <path
                     d={`M ${startX} ${startY} C ${startX + 30} ${startY - 35}, ${startX - 30} ${startY - 40}, ${startX - 15} ${startY - 22}`}
                     fill="none"
@@ -201,7 +201,7 @@ export default function BaseCaseVisualizer({
             const textWidth = ret.text.length * 7.5 + 18;
 
             return (
-              <g key={`return_arc_${ret.fromN}`} className="transition-all duration-300">
+              <g key={`return_arc_${ret.fromN}`} className="transition-colors duration-300">
                 <path
                   d={pathD}
                   fill="none"
@@ -218,7 +218,7 @@ export default function BaseCaseVisualizer({
                   fill="#042f1a"
                   stroke="#22c55e"
                   strokeWidth="1"
-                  className="shadow-md"
+                  className=""
                 />
                 <text
                   x={labelX + textWidth / 2 - 4}
@@ -248,7 +248,7 @@ export default function BaseCaseVisualizer({
             const isCrash = node.n < 0;
 
             return (
-              <g key={`fact_node_${node.n}`} className="transition-all duration-300">
+              <g key={`fact_node_${node.n}`} className="transition-colors duration-300">
                 <rect
                   x={node.x}
                   y={node.y}

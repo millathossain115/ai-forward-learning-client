@@ -68,8 +68,8 @@ export default function Lesson13Part3MongoCrud() {
           <button
             key={op}
             onClick={() => setCrudOp(op)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              crudOp === op ? 'bg-emerald-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              crudOp === op ? 'bg-emerald-600 text-white ' : 'bg-[#14182d] text-zinc-400 border border-slate-800'
             }`}
           >
             {CRUD_COMMANDS[op].label}

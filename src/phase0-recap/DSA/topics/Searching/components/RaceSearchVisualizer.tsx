@@ -39,7 +39,7 @@ export default function RaceSearchVisualizer({
             return (
               <div
                 key={i}
-                className={`h-10 rounded-lg border font-mono text-xs flex items-center justify-center font-bold transition-all ${
+                className={`h-10 rounded-lg border font-mono text-xs flex items-center justify-center font-bold transition-colors ${
                   isFound
                     ? 'bg-emerald-500 text-slate-950 ring-2 ring-emerald-500'
                     : isMid
@@ -77,7 +77,7 @@ export default function RaceSearchVisualizer({
             return (
               <div
                 key={i}
-                className={`h-10 rounded-lg border font-mono text-xs flex items-center justify-center font-bold transition-all ${
+                className={`h-10 rounded-lg border font-mono text-xs flex items-center justify-center font-bold transition-colors ${
                   isFound
                     ? 'bg-emerald-500 text-slate-950 ring-2 ring-emerald-500'
                     : isCurrent

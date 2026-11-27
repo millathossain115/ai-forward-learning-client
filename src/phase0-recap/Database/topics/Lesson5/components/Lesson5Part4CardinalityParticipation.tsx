@@ -86,7 +86,7 @@ export default function Lesson5Part4CardinalityParticipation() {
   const current = cardinalityData[activeCardinality];
 
   return (
-    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-5 md:p-7 space-y-7 shadow-xl">
+    <section className="bg-[#0f1220] border border-slate-800 rounded-3xl p-5 md:p-7 space-y-7">
       {/* Section Header: Unified & Professional */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -94,7 +94,7 @@ export default function Lesson5Part4CardinalityParticipation() {
             <Layers className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-bold uppercase tracking-wider">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-bold">
               {language === 'bn' ? 'পার্ট ৫ • কাঠামোগত শর্তাবলী' : 'Part 5 • Structural Constraints'}
             </span>
             <h2 className="text-lg md:text-xl font-bold text-white mt-0.5">
@@ -147,9 +147,9 @@ export default function Lesson5Part4CardinalityParticipation() {
               <button
                 key={key}
                 onClick={() => setActiveCardinality(key)}
-                className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer font-mono ${
+                className={`p-2.5 rounded-xl border text-left transition-colors cursor-pointer font-mono ${
                   isActive
-                    ? 'bg-[#12192e] border-emerald-500 text-white font-bold ring-1 ring-emerald-500/50 shadow-md'
+                    ? 'bg-[#12192e] border-emerald-500 text-white font-bold ring-1 ring-emerald-500/50 '
                     : 'bg-[#0a0d18] border-slate-800 text-zinc-400 hover:border-slate-700 hover:text-zinc-200'
                 }`}
               >
@@ -220,7 +220,7 @@ export default function Lesson5Part4CardinalityParticipation() {
                     desc: `${current.exampleTitle} — ${current.descEn}`,
                   })
                 }
-                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-all hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-950/30 p-2.5 flex flex-col items-center justify-center"
+                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-colors hover:border-emerald-500/50 hover: hover: p-2.5 flex flex-col items-center justify-center"
               >
                 <img
                   src={current.image}
@@ -328,7 +328,7 @@ export default function Lesson5Part4CardinalityParticipation() {
                   desc: 'Total (Double Line ════: EMPLOYEE belongs to DEPARTMENT) vs Partial (Single Line ────: EMPLOYEE manages DEPARTMENT)',
                 })
               }
-              className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-all hover:border-pink-500/50 hover:shadow-xl hover:shadow-pink-950/30 p-2.5 flex flex-col items-center justify-center"
+              className="group relative cursor-pointer overflow-hidden rounded-2xl bg-[#0B0F19] border border-slate-800 transition-colors hover:border-pink-500/50 hover: hover: p-2.5 flex flex-col items-center justify-center"
             >
               <img
                 src="/images/participation-constraints.png"
@@ -357,7 +357,7 @@ export default function Lesson5Part4CardinalityParticipation() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-emerald-500/40 p-4 md:p-6 shadow-2xl space-y-3"
+            className="relative max-w-4xl w-full rounded-2xl bg-[#0B0F19] border border-emerald-500/40 p-4 md:p-6 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div>
@@ -369,7 +369,7 @@ export default function Lesson5Part4CardinalityParticipation() {
               </div>
               <button
                 onClick={() => setModalImage(null)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-all cursor-pointer border border-slate-700"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-300 hover:text-white transition-colors cursor-pointer border border-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>

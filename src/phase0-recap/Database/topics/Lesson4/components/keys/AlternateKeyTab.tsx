@@ -16,7 +16,7 @@ export default function AlternateKeyTab() {
   const [selectedPkForAk, setSelectedPkForAk] = useState<'id' | 'nid' | 'email'>('id');
 
   return (
-        <div className="p-6 rounded-2xl bg-[#13172c] border border-purple-500/40 space-y-6 animate-in fade-in duration-200 shadow-xl">
+        <div className="p-6 rounded-2xl bg-[#13172c] border border-purple-500/40 space-y-6 animate-in fade-in duration-200">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
             <div>
@@ -119,9 +119,9 @@ export default function AlternateKeyTab() {
                   <button
                     key={opt.id}
                     onClick={() => setSelectedPkForAk(opt.id as typeof selectedPkForAk)}
-                    className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 ${
+                    className={`p-3.5 rounded-xl border text-left transition-colors cursor-pointer flex flex-col justify-between gap-2 ${
                       isSelectedAsPk
-                        ? 'bg-amber-950/40 border-amber-400 text-white shadow-lg shadow-amber-950/40 ring-1 ring-amber-400/50'
+                        ? 'bg-amber-950/40 border-amber-400 text-white   ring-1 ring-amber-400/50'
                         : 'bg-[#101326] border-purple-900/40 text-zinc-400 hover:text-white hover:border-purple-600/50'
                     }`}
                   >
@@ -376,7 +376,7 @@ export default function AlternateKeyTab() {
             </div>
 
             {/* Real World Portal Login Application Insight */}
-            <div className="p-3.5 rounded-xl bg-gradient-to-r from-purple-950/20 via-slate-900 to-indigo-950/20 border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
+            <div className="p-3.5 rounded-xl bg-[#15171e] border border-slate-800 text-xs font-sans flex items-start sm:items-center gap-3">
               <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20 shrink-0">
                 <Layers className="w-4 h-4" />
               </span>

@@ -281,7 +281,7 @@ export default function Lesson5ERPracticeProblems() {
             <PenTool className="w-6 h-6" />
           </div>
           <div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold uppercase tracking-wider">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
               {language === 'bn' ? 'পার্ট ৭ • পরীক্ষার কেস স্টাডি অনুশীলন' : 'Part 7 • Exam-Style ER Case Studies'}
             </span>
             <h2 className="text-xl md:text-2xl font-bold text-white mt-1">
@@ -306,9 +306,9 @@ export default function Lesson5ERPracticeProblems() {
             <button
               key={p.id}
               onClick={() => setActiveId(p.id)}
-              className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+              className={`p-3 rounded-xl border text-left transition-colors cursor-pointer ${
                 isActive
-                  ? 'bg-emerald-950/50 border-emerald-500 text-white shadow-md ring-1 ring-emerald-500/40'
+                  ? 'bg-emerald-950/50 border-emerald-500 text-white  ring-1 ring-emerald-500/40'
                   : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white hover:border-slate-700'
               }`}
             >
@@ -361,7 +361,7 @@ export default function Lesson5ERPracticeProblems() {
                 <button
                   key={opt.id}
                   onClick={() => setSelectedAnswers((prev) => ({ ...prev, [problem.id]: opt.id }))}
-                  className={`p-3 rounded-xl border text-left text-xs font-sans transition-all cursor-pointer flex items-start gap-2 ${btnStyle}`}
+                  className={`p-3 rounded-xl border text-left text-xs font-sans transition-colors cursor-pointer flex items-start gap-2 ${btnStyle}`}
                 >
                   <span className="font-mono font-bold uppercase text-zinc-400">{opt.id})</span>
                   <span>{language === 'bn' ? opt.labelBn : opt.labelEn}</span>
@@ -400,7 +400,7 @@ export default function Lesson5ERPracticeProblems() {
         <div>
           <button
             onClick={() => setShowSolution((prev) => ({ ...prev, [problem.id]: !prev[problem.id] }))}
-            className="px-4 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 text-xs font-mono font-bold flex items-center gap-2 cursor-pointer transition-all"
+            className="px-4 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 text-xs font-mono font-bold flex items-center gap-2 cursor-pointer transition-colors"
           >
             {isSolutionOpen ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             <span>

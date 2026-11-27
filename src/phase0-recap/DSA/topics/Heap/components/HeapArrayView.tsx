@@ -17,7 +17,7 @@ export default function HeapArrayView({
   return (
     <div className="bg-[#10121d] p-3.5 rounded-xl border border-[#1c1f30] flex flex-col gap-2.5">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
+        <span className="text-[10px] font-mono text-zinc-400">
           Underlying 1D Array Storage ({maxHeapSize}টি স্লট)
         </span>
         <span className="text-[10px] font-mono text-amber-400">
@@ -51,7 +51,7 @@ export default function HeapArrayView({
               <div key={idx} className="flex flex-col items-center gap-1">
                 <span className="text-[8px] font-mono text-zinc-500">[{idx}]</span>
                 <div
-                  className={`w-full h-9 rounded-lg border flex items-center justify-center text-[11px] font-mono font-bold transition-all ${arrBox}`}
+                  className={`w-full h-9 rounded-lg border flex items-center justify-center text-[11px] font-mono font-bold transition-colors ${arrBox}`}
                 >
                   {hasVal ? val : '—'}
                 </div>

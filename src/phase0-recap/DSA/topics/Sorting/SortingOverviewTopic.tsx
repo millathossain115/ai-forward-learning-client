@@ -109,16 +109,15 @@ export default function SortingOverviewTopic({ onNavigate }: SortingOverviewProp
   return (
     <div className="flex flex-col gap-10 w-full text-zinc-100">
       {/* 1. Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#181528] via-[#100d1e] to-[#090712] border border-[#342752] p-6 md:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-[#15171e] border border-[#342752] p-6 md:p-8">
         <div className="relative z-10 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
+            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
               Topic 13 • Sorting Algorithms Architecture
             </span>
             <span className="text-xs text-zinc-400 font-mono">5 Dedicated Deep-Dive Modules</span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-white">
             সর্টিং অ্যালগরিদম মাস্টারক্লাস: নিজস্ব মেকানিজম ও পেজ-বাই-পেজ সিমুলেশন
           </h1>
           <p className="text-xs md:text-sm text-zinc-300 max-w-3xl leading-relaxed">
@@ -130,7 +129,7 @@ export default function SortingOverviewTopic({ onNavigate }: SortingOverviewProp
       {/* 2. THE 5 DEDICATED ALGORITHM MODULE CARDS */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold flex items-center gap-2">
+          <span className="text-xs font-mono text-zinc-400 font-semibold flex items-center gap-2">
             <BarChart3 className="w-4 h-4 text-amber-400" />
             <span>স্বতন্ত্র সর্টিং পেজগুলো এক্সপ্লোর করুন (Choose an Algorithm):</span>
           </span>
@@ -142,11 +141,11 @@ export default function SortingOverviewTopic({ onNavigate }: SortingOverviewProp
             <div
               key={algo.id}
               onClick={() => onNavigate && onNavigate(algo.id)}
-              className={`group relative rounded-3xl bg-gradient-to-br ${algo.theme} border ${algo.border} p-6 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between space-y-4 cursor-pointer hover:-translate-y-1`}
+              className={`group relative rounded-3xl bg-[#15171e] ${algo.theme} border ${algo.border} p-6  hover: transition-colors duration-300 flex flex-col justify-between space-y-4 cursor-pointer hover:-translate-y-1`}
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className={`text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full border font-bold ${algo.badge}`}>
+                  <span className={`text-[10px] font-mono  px-2.5 py-0.5 rounded-full border font-bold ${algo.badge}`}>
                     {algo.category}
                   </span>
                   <span className="text-xs font-mono text-zinc-400">O(1) Memory</span>
@@ -180,7 +179,7 @@ export default function SortingOverviewTopic({ onNavigate }: SortingOverviewProp
                   {algo.metaphor}
                 </span>
                 <button
-                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold text-white shadow-md transition-all ${algo.btnBg}`}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold text-white  transition-colors ${algo.btnBg}`}
                 >
                   <span>সিমুলেশন দেখুন</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -195,14 +194,14 @@ export default function SortingOverviewTopic({ onNavigate }: SortingOverviewProp
       <div className="space-y-4">
         <div className="flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-amber-400" />
-          <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-300 font-bold">
+          <h2 className="text-sm font-mono text-zinc-300 font-bold">
             তুলনামূলক কমপ্লেক্সিটি ও বৈশিষ্ট্য তালিকা (Comparative Complexity Matrix)
           </h2>
         </div>
 
-        <div className="overflow-x-auto rounded-3xl border border-[#2b2545] bg-[#0d0b17] shadow-2xl">
+        <div className="overflow-x-auto rounded-3xl border border-[#2b2545] bg-[#0d0b17]">
           <table className="w-full text-left text-xs font-mono text-zinc-300">
-            <thead className="bg-[#151224] text-[11px] uppercase tracking-wider text-zinc-400 border-b border-[#251e3a]">
+            <thead className="bg-[#151224] text-[11px] text-zinc-400 border-b border-[#251e3a]">
               <tr>
                 <th className="py-3 px-4">অ্যালগরিদম</th>
                 <th className="py-3 px-4">সেরা সময় (Best)</th>
@@ -265,7 +264,7 @@ export default function SortingOverviewTopic({ onNavigate }: SortingOverviewProp
       </div>
 
       {/* 4. REAL-WORLD PRODUCTION DECISION GUIDE */}
-      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <Zap className="w-4 h-4 text-amber-400" />
           <span>বাস্তব ইঞ্জিনিয়ারিং ডিসিশন গাইডলাইন: কোন অ্যালগরিদম কখন বেছে নেবেন?</span>

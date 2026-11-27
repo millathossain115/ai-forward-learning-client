@@ -26,7 +26,7 @@ import HeapArrayView from './components/HeapArrayView';
 
 const HeapApplications = dynamic(() => import('./components/HeapApplications'), {
   loading: () => (
-    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading heap applications...
     </div>
   )
@@ -239,9 +239,9 @@ export default function HeapTopic() {
   return (
     <div className="flex flex-col gap-6 w-full">
       {/* 1. Header & Definition Card */}
-      <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-4 shadow-xl shadow-black/40">
+      <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-4 shadow-black/40">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-amber-500/20">
+          <div className="w-10 h-10 rounded-xl bg-[#15171e] text-slate-950 flex items-center justify-center font-bold">
             <Boxes className="w-5 h-5" />
           </div>
           <div>
@@ -303,7 +303,7 @@ export default function HeapTopic() {
       </div>
 
       {/* 2. Interactive Simulator with Focused Step-by-Step Animation */}
-      <div className="bg-[#0c0d15] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-5 shadow-xl">
+      <div className="bg-[#0c0d15] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-5">
         {/* Controls Bar */}
         <div className="flex flex-wrap items-center justify-between gap-3 bg-[#11131f] p-3 rounded-xl border border-[#1d2030]">
           <div className="flex flex-wrap items-center gap-2.5">
@@ -312,9 +312,9 @@ export default function HeapTopic() {
               <button
                 onClick={() => handleModeSwitch(true)}
                 disabled={isAnimating}
-                className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-colors ${
                   isMaxHeap
-                    ? 'bg-amber-400 text-slate-950 shadow-md shadow-amber-400/20'
+                    ? 'bg-amber-400 text-slate-950  '
                     : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
@@ -323,9 +323,9 @@ export default function HeapTopic() {
               <button
                 onClick={() => handleModeSwitch(false)}
                 disabled={isAnimating}
-                className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-colors ${
                   !isMaxHeap
-                    ? 'bg-orange-500 text-slate-950 shadow-md shadow-orange-500/20'
+                    ? 'bg-orange-500 text-slate-950  shadow-orange-500/20'
                     : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
@@ -348,7 +348,7 @@ export default function HeapTopic() {
             <button
               onClick={handleInsert}
               disabled={isAnimating || heap.length >= MAX_HEAP_SIZE}
-              className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-md shadow-amber-500/20 transition-all disabled:opacity-40"
+              className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition-colors disabled:opacity-40"
             >
               <PlusCircle className="w-3.5 h-3.5" /> Insert &amp; Sift-Up O(log N)
             </button>
@@ -356,7 +356,7 @@ export default function HeapTopic() {
             <button
               onClick={handleExtract}
               disabled={isAnimating || heap.length === 0}
-              className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-bold shadow-md transition-all disabled:opacity-40"
+              className="flex items-center gap-1 text-xs font-mono px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-bold transition-colors disabled:opacity-40"
             >
               <ArrowUp className="w-3.5 h-3.5" /> Extract Root O(1)➔O(log N)
             </button>

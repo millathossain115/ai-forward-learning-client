@@ -194,7 +194,7 @@ export default function GraphVisualizer() {
           <div className="flex bg-[#090a10] border border-[#1e2233] rounded-xl p-0.5 text-xs font-mono">
             <button
               onClick={() => setAlgorithm('dfs')}
-              className={`px-3 py-1 rounded-lg font-medium transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-lg font-medium transition-colors cursor-pointer ${
                 algorithm === 'dfs'
                   ? 'bg-amber-500 text-slate-950 font-bold shadow'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -204,7 +204,7 @@ export default function GraphVisualizer() {
             </button>
             <button
               onClick={() => setAlgorithm('kahn')}
-              className={`px-3 py-1 rounded-lg font-medium transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-lg font-medium transition-colors cursor-pointer ${
                 algorithm === 'kahn'
                   ? 'bg-sky-500 text-slate-950 font-bold shadow'
                   : 'text-zinc-400 hover:text-zinc-200'

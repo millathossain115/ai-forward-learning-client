@@ -154,9 +154,9 @@ export default function Lesson9Part1TxAndAcid() {
             <button
               key={acid.id}
               onClick={() => setActiveAcidTab(acid.id)}
-              className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+              className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
                 activeAcidTab === acid.id
-                  ? 'bg-purple-600/30 border-purple-400 text-white shadow-lg'
+                  ? 'bg-purple-600/30 border-purple-400 text-white '
                   : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
               }`}
             >

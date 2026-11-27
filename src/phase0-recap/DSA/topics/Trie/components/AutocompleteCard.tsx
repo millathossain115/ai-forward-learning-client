@@ -67,7 +67,7 @@ export default function AutocompleteCard({
                   {autoQuery[0]}
                 </text>
 
-                <circle cx="135" cy="50" r="15" fill="#581c87" stroke="#d946ef" strokeWidth="2.5" className="animate-pulse" />
+                <circle cx="135" cy="50" r="15" fill="#581c87" stroke="#d946ef" strokeWidth="2.5" className="" />
                 <text x="135" y="54.5" textAnchor="middle" fill="#fdf4ff" fontSize="12" fontFamily="monospace" fontWeight="bold">
                   {autoQuery[1]}
                 </text>
@@ -97,7 +97,7 @@ export default function AutocompleteCard({
                 <circle cx="30" cy="50" r="14" fill="#1b122e" stroke="#a855f7" strokeWidth="2" />
                 <text x="30" y="53.5" textAnchor="middle" fill="#e9d5ff" fontSize="8" fontFamily="monospace" fontWeight="bold">ROOT</text>
 
-                <circle cx="100" cy="50" r="15" fill="#581c87" stroke="#d946ef" strokeWidth="2.5" className="animate-pulse" />
+                <circle cx="100" cy="50" r="15" fill="#581c87" stroke="#d946ef" strokeWidth="2.5" className="" />
                 <text x="100" y="54.5" textAnchor="middle" fill="#ffffff" fontSize="12" fontFamily="monospace" fontWeight="bold">
                   {autoQuery[0] || '*'}
                 </text>
@@ -124,7 +124,7 @@ export default function AutocompleteCard({
 
         {/* Live Dropdown Preview */}
         <div className="space-y-1.5">
-          <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider block">
+          <span className="text-[10px] font-mono text-zinc-400 block">
             ইন্টেলিসেন্স ড্রপডাউন ({autoMatches.length} matches):
           </span>
           <div className="flex flex-col gap-1 max-h-[85px] overflow-y-auto pr-1">

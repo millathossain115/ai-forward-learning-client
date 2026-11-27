@@ -140,9 +140,9 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
           return (
             <div
               key={item.id}
-              className={`rounded-xl border transition-all ${
+              className={`rounded-xl border transition-colors ${
                 isExpanded
-                  ? 'border-amber-500/40 bg-[#121528] shadow-lg shadow-black/40'
+                  ? 'border-amber-500/40 bg-[#121528]  shadow-black/40'
                   : 'border-slate-800/80 bg-[#0e1122] hover:border-slate-700'
               }`}
             >
@@ -199,9 +199,9 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
       </div>
 
       {/* Bottom Roadmap Bridge Navigation */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#14182e] via-[#101326] to-[#0d1020] border border-indigo-500/40 space-y-3 shadow-xl mt-4">
+      <div className="p-6 rounded-2xl bg-[#15171e] border border-indigo-500/40 space-y-3 mt-4">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">
+          <span className="text-xs font-mono text-indigo-400 font-bold">
             {language === 'bn' ? 'লেসন ৪ সম্পন্ন' : 'Lesson 4 Completed'}
           </span>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">
@@ -227,14 +227,14 @@ export default function Lesson4Part5ExamPrep({ onNavigate }: Lesson4Part5ExamPre
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('backend-lesson3')}
-            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-all border border-slate-700 cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ৩-এ ফিরে যান' : 'Back to Lesson 3'}</span>
           </button>
           <button
             onClick={() => onNavigate?.('backend-lesson5')}
-            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
+            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'লেসন ৫-এ যান: ER Model' : 'Go to Lesson 5: ER Model'}</span>
             <ArrowRight className="w-4 h-4" />

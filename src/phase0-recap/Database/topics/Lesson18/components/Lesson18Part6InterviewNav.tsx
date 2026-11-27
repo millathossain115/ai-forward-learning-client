@@ -37,7 +37,7 @@ export default function Lesson18Part6InterviewNav({ onNavigate }: Lesson18Part6I
               <Briefcase className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
                 {language === 'bn' ? 'পার্ট ৬ • সিনিয়র DBMS ইন্টারভিউ প্রস্তুতি' : 'Part 6 of 6 • Final Interview Prep'}
               </span>
               <h2 className="text-xl font-bold text-white mt-1">
@@ -91,9 +91,9 @@ export default function Lesson18Part6InterviewNav({ onNavigate }: Lesson18Part6I
       </section>
 
       {/* BOTTOM NAVIGATION BRIDGE */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#14182e] via-[#101326] to-[#0d1020] border border-amber-500/40 space-y-3 shadow-xl">
+      <div className="p-6 rounded-2xl bg-[#15171e] border border-amber-500/40 space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
+          <span className="text-xs font-mono text-amber-400 font-bold">
             <DualText as="span" en="Phase 1 Complete • Data Core Mastered" bn="ফেজ ১ সম্পন্ন • ডেটা কোর মাস্টারি" />
           </span>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">
@@ -112,14 +112,14 @@ export default function Lesson18Part6InterviewNav({ onNavigate }: Lesson18Part6I
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={() => onNavigate?.('backend-lesson17')}
-            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-all border border-slate-700 cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-zinc-200 font-bold text-xs flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{language === 'bn' ? 'লেসন ১৭: ডেটা ওয়্যারহাউজিং' : 'Review Lesson 17: Data Warehousing'}</span>
           </button>
           <button
             onClick={() => onNavigate?.('backend-basics')}
-            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-600/20 cursor-pointer"
+            className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
           >
             <span>{language === 'bn' ? 'ডাটাবেস ডিরেক্টরিতে ফিরে যান' : 'Back to Database & DBMS Directory'}</span>
             <ArrowRight className="w-4 h-4" />

@@ -10,7 +10,7 @@ import LinkedListControls from './components/LinkedListControls';
 
 const CircularLinkedListCanvas = dynamic(() => import('./components/CircularLinkedListCanvas'), {
   loading: () => (
-    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading circular list canvas...
     </div>
   )
@@ -280,7 +280,7 @@ export default function LinkedListTopic() {
       {/* 1. Header Card */}
       <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-3.5">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-emerald-500/20">
+          <div className="w-10 h-10 rounded-xl bg-[#15171e] text-slate-950 flex items-center justify-center font-bold">
             <GitCommit className="w-5 h-5" />
           </div>
           <div>

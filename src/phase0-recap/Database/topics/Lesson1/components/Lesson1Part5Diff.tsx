@@ -117,7 +117,7 @@ export default function Lesson1Part5Diff() {
           </h4>
           <button
             onClick={runBankSimulation}
-            className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-[11px] font-bold cursor-pointer transition-all shadow-md shrink-0"
+            className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-[11px] font-bold cursor-pointer transition-colors shrink-0"
           >
             {language === 'bn' ? 'সিমুলেশন চালান (Run Simulation)' : 'Simulate Balance Check'}
           </button>
@@ -125,7 +125,7 @@ export default function Lesson1Part5Diff() {
 
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs font-mono text-center">
           <div
-            className={`p-3 rounded-xl border transition-all ${
+            className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 1
                 ? 'bg-indigo-950/40 border-indigo-500 text-white'
                 : 'bg-black/30 border-slate-800 text-zinc-500'
@@ -136,7 +136,7 @@ export default function Lesson1Part5Diff() {
             <span className="text-[9px] block text-zinc-500 mt-1">Client to Server</span>
           </div>
           <div
-            className={`p-3 rounded-xl border transition-all ${
+            className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 2
                 ? 'bg-indigo-950/40 border-indigo-500 text-white'
                 : 'bg-black/30 border-slate-800 text-zinc-500'
@@ -147,7 +147,7 @@ export default function Lesson1Part5Diff() {
             <span className="text-[9px] block text-zinc-500 mt-1">Auth &amp; Query Planner</span>
           </div>
           <div
-            className={`p-3 rounded-xl border transition-all ${
+            className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 3
                 ? 'bg-indigo-950/40 border-indigo-500 text-white'
                 : 'bg-black/30 border-slate-800 text-zinc-500'
@@ -158,7 +158,7 @@ export default function Lesson1Part5Diff() {
             <span className="text-[9px] block text-zinc-500 mt-1">Storage B-Tree Index</span>
           </div>
           <div
-            className={`p-3 rounded-xl border transition-all ${
+            className={`p-3 rounded-xl border transition-colors ${
               bankStep >= 4
                 ? 'bg-emerald-950/40 border-emerald-500 text-emerald-300 font-bold'
                 : 'bg-black/30 border-slate-800 text-zinc-500'

@@ -49,9 +49,9 @@ export default function Lesson9Part4ConcurrencySerial() {
             <button
               key={a.id}
               onClick={() => setActiveAnomaly(a.id)}
-              className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+              className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
                 activeAnomaly === a.id
-                  ? 'bg-rose-500/20 border-rose-400 text-white shadow-lg'
+                  ? 'bg-rose-500/20 border-rose-400 text-white '
                   : 'bg-[#14182d] border-slate-800 text-zinc-400 hover:text-white'
               }`}
             >
@@ -139,24 +139,24 @@ export default function Lesson9Part4ConcurrencySerial() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setScheduleType('serial')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              scheduleType === 'serial' ? 'bg-cyan-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              scheduleType === 'serial' ? 'bg-cyan-600 text-white ' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
             }`}
           >
             1. Pure Serial (T1 → T2)
           </button>
           <button
             onClick={() => setScheduleType('conflict_serializable')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              scheduleType === 'conflict_serializable' ? 'bg-emerald-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              scheduleType === 'conflict_serializable' ? 'bg-emerald-600 text-white ' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
             }`}
           >
             2. Conflict Serializable (Acyclic)
           </button>
           <button
             onClick={() => setScheduleType('non_serializable')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-all ${
-              scheduleType === 'non_serializable' ? 'bg-rose-600 text-white shadow-lg' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold cursor-pointer transition-colors ${
+              scheduleType === 'non_serializable' ? 'bg-rose-600 text-white ' : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800'
             }`}
           >
             3. Non-Serializable (Cycle: T1 ↔ T2)

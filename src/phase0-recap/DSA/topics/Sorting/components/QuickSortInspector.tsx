@@ -24,7 +24,7 @@ export default function QuickSortInspector({
   return (
     <div className="flex flex-col space-y-3">
       {/* Step Description Card */}
-      <div className="p-4 rounded-2xl bg-[#0e0707] border border-[#2e1414] shadow-lg space-y-2">
+      <div className="p-4 rounded-2xl bg-[#0e0707] border border-[#2e1414] space-y-2">
         <div className="flex items-center justify-between border-b border-[#210f0f] pb-2">
           <span className="text-[10px] font-mono text-zinc-400 font-bold uppercase">
             {visualMode === 'tree'
@@ -51,10 +51,10 @@ export default function QuickSortInspector({
 
       {/* LIVE FINAL ASSEMBLY ARENA (Visible in Tree mode during assembly steps) */}
       {visualMode === 'tree' && currentTreeStep.finalAssembly && (
-        <div className="p-4 rounded-2xl bg-[#09111c] border-2 border-rose-500/40 shadow-xl space-y-3 animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-[#09111c] border-2 border-rose-500/40 space-y-3 animate-in fade-in">
           <div className="flex items-center gap-1.5 border-b border-[#182a40] pb-2">
             <Target className="w-3.5 h-3.5 text-rose-400" />
-            <span className="text-xs font-mono font-bold text-rose-300 uppercase tracking-wider">
+            <span className="text-xs font-mono font-bold text-rose-300">
               চূড়ান্ত সংযোজন (Left + Pivot + Right)
             </span>
           </div>
@@ -83,7 +83,7 @@ export default function QuickSortInspector({
                 <Target className="w-3 h-3 text-amber-400" />
                 <span>২. কেন্দ্রীয় পিভট:</span>
               </span>
-              <span className="px-2 py-0.5 rounded bg-amber-500 border border-amber-300 text-black font-black text-xs">
+              <span className="px-2 py-0.5 rounded bg-amber-500 border border-amber-300 text-black font-semibold text-xs">
                 {currentTreeStep.finalAssembly.pivotVal}
               </span>
             </div>
@@ -117,7 +117,7 @@ export default function QuickSortInspector({
                 return (
                   <span
                     key={idx}
-                    className={`w-6 h-6 rounded flex items-center justify-center font-mono text-xs font-black border ${
+                    className={`w-6 h-6 rounded flex items-center justify-center font-mono text-xs font-semibold border ${
                       isP
                         ? 'bg-amber-500 text-black border-amber-300 scale-105'
                         : 'bg-emerald-950 text-emerald-200 border-emerald-700'

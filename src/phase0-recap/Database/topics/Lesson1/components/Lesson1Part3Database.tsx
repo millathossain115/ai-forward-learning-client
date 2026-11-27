@@ -62,7 +62,7 @@ export default function Lesson1Part3Database() {
 
         {/* 4 University Tables Demo */}
         <div className="space-y-4">
-          <h4 className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
+          <h4 className="text-xs font-mono font-bold text-zinc-300 flex items-center gap-2">
             <Building2 className="w-4 h-4 text-purple-400" />
             {language === 'bn'
               ? 'বিশ্ববিদ্যালয় ডেটাবেস: পরস্পর সম্পর্কিত ৪টি টেবিল'

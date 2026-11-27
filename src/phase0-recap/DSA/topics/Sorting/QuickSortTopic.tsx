@@ -24,21 +24,21 @@ import QuickSortInspector from './components/QuickSortInspector';
 
 const QuickSortBarCanvas = dynamic(() => import('./components/QuickSortBarCanvas'), {
   loading: () => (
-    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="h-64 flex items-center justify-center text-xs font-mono text-zinc-500">
       Loading bar canvas...
     </div>
   )
 });
 const QuickSortCodeView = dynamic(() => import('./components/QuickSortCodeView'), {
   loading: () => (
-    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="p-8 text-center text-xs font-mono text-zinc-500">
       Loading code view...
     </div>
   )
 });
 const QuickSortCases = dynamic(() => import('./components/QuickSortCases'), {
   loading: () => (
-    <div className="p-8 text-center text-xs font-mono text-zinc-500 animate-pulse">
+    <div className="p-8 text-center text-xs font-mono text-zinc-500">
       Loading case studies...
     </div>
   )
@@ -116,11 +116,11 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
   return (
     <div className="flex flex-col gap-4 w-full text-zinc-100">
       {/* 1. COMPACT UNIFIED TOP TOOLBAR */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0e0707] border border-[#2e1414] shadow-lg">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0e0707] border border-[#2e1414]">
         {/* Left: Brand Pill & Visual Mode Switcher */}
         <div className="flex flex-wrap items-center gap-2.5">
           <div className="flex items-center gap-2 pr-2 border-r border-[#241111]">
-            <span className="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-bold">
+            <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-bold">
               Topic 13.5 • Quick Sort
             </span>
             <span className="text-xs font-mono font-bold text-rose-300 hidden sm:inline">
@@ -132,7 +132,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
           <div className="flex items-center gap-1 bg-[#150a0a] p-1 rounded-xl border border-[#2b1212] text-xs font-mono">
             <button
               onClick={() => setVisualMode('tree')}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 visualMode === 'tree'
                   ? 'bg-rose-600 text-white font-bold shadow'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -143,7 +143,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
             </button>
             <button
               onClick={() => setVisualMode('bars')}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 visualMode === 'bars'
                   ? 'bg-rose-600 text-white font-bold shadow'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -157,7 +157,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
           {/* Randomize Button */}
           <button
             onClick={visualMode === 'tree' ? handleRandomizeTree : handleRandomizeBars}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-rose-600/30 to-amber-600/30 hover:from-rose-600/50 hover:to-amber-600/50 border border-rose-500/40 text-rose-200 font-mono text-xs font-bold transition-all shadow cursor-pointer hover:scale-105"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#15171e] hover:from-rose-600/50 hover:to-amber-600/50 border border-rose-500/40 text-rose-200 font-mono text-xs font-bold transition-colors shadow cursor-pointer"
             title="নতুন ডাটাসেট লোড বা রিসেট করুন"
           >
             <Shuffle className="w-3.5 h-3.5 text-rose-300" />
@@ -178,7 +178,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
                     setIsTreePlaying(!isTreePlaying);
                   }
                 }}
-                className="flex items-center gap-1 px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold transition-all cursor-pointer shadow"
+                className="flex items-center gap-1 px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold transition-colors cursor-pointer shadow"
               >
                 {isTreePlaying ? (
                   <Pause className="w-3.5 h-3.5" />
@@ -242,7 +242,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
                     setIsBarPlaying(!isBarPlaying);
                   }
                 }}
-                className="flex items-center gap-1 px-3 py-1 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs font-bold transition-all cursor-pointer shadow"
+                className="flex items-center gap-1 px-3 py-1 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs font-bold transition-colors cursor-pointer shadow"
               >
                 {isBarPlaying ? (
                   <Pause className="w-3.5 h-3.5" />
@@ -276,7 +276,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
           <div className="flex items-center gap-1 bg-[#150a0a] p-1 rounded-xl border border-[#2b1212] text-xs font-mono">
             <button
               onClick={() => setActiveTab('visualizer')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 activeTab === 'visualizer'
                   ? 'bg-rose-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -286,7 +286,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
             </button>
             <button
               onClick={() => setActiveTab('code')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 activeTab === 'code'
                   ? 'bg-rose-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -296,7 +296,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
             </button>
             <button
               onClick={() => setActiveTab('cases')}
-              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                 activeTab === 'cases'
                   ? 'bg-rose-600 text-white font-bold'
                   : 'text-zinc-400 hover:text-zinc-200'
@@ -357,7 +357,7 @@ export default function QuickSortTopic({ onNavigate }: { onNavigate?: (id: strin
 
         <button
           onClick={() => onNavigate && onNavigate('sorting')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold transition-all shadow cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#15171e] hover:from-rose-500 hover:to-red-500 text-white font-bold transition-colors shadow cursor-pointer"
         >
           <span>সর্টিং ওভারভিউ ও ম্যাট্রিক্স</span>
           <ArrowRight className="w-3.5 h-3.5" />

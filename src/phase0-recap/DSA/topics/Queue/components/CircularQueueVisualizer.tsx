@@ -57,8 +57,8 @@ export default function CircularQueueVisualizer({
           </div>
 
           {/* Center Hub */}
-          <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#121422] to-[#0a0b12] border border-[#2b304c] flex flex-col items-center justify-center text-center p-2 z-10 shadow-xl shadow-black/60">
-            <Repeat className="w-5 h-5 text-amber-400 mb-0.5 animate-pulse" />
+          <div className="w-28 h-28 rounded-full bg-[#15171e] border border-[#2b304c] flex flex-col items-center justify-center text-center p-2 z-10 shadow-black/60">
+            <Repeat className="w-5 h-5 text-amber-400 mb-0.5" />
             <span className="text-[10px] font-mono font-bold text-amber-300">Modulo % {maxCapacity}</span>
             <span className="text-[9px] font-mono text-zinc-400">Ring Buffer</span>
           </div>
@@ -77,7 +77,7 @@ export default function CircularQueueVisualizer({
 
             let borderCls = 'border-[#262a40] bg-[#10121d]';
             if (slot.state === 'entering') {
-              borderCls = 'border-amber-400 bg-amber-500/20 scale-110 shadow-lg shadow-amber-500/30';
+              borderCls = 'border-amber-400 bg-amber-500/20 scale-110  ';
             } else if (slot.state === 'exiting') {
               borderCls = 'border-red-400 bg-red-500/20 scale-90 opacity-40';
             } else if (isOccupied) {
@@ -90,7 +90,7 @@ export default function CircularQueueVisualizer({
                 style={{
                   transform: `translate(${x}px, ${y}px)`,
                 }}
-                className={`absolute w-24 h-14 rounded-xl border flex flex-col items-center justify-center transition-all duration-500 z-20 shadow-md p-1 ${borderCls}`}
+                className={`absolute w-24 h-14 rounded-xl border flex flex-col items-center justify-center transition-colors duration-500 z-20  p-1 ${borderCls}`}
               >
                 <div className="flex items-center justify-between w-full px-1 text-[9px] font-mono">
                   <span className="text-zinc-500 font-bold">[{idx}]</span>
@@ -142,7 +142,7 @@ export default function CircularQueueVisualizer({
                   <div key={'arr_' + idx} className="flex flex-col items-center gap-1">
                     <span className="text-[9px] font-mono text-zinc-400">[{idx}]</span>
                     <div
-                      className={`w-full h-12 rounded-lg border flex flex-col items-center justify-center p-1 text-center transition-all ${
+                      className={`w-full h-12 rounded-lg border flex flex-col items-center justify-center p-1 text-center transition-colors ${
                         isOccupied
                           ? 'bg-cyan-950/60 border-cyan-500/60 text-cyan-300 font-bold'
                           : 'bg-black/40 border-zinc-800 text-zinc-600'

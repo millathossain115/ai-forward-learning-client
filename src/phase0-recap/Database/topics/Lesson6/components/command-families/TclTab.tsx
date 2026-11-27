@@ -58,7 +58,7 @@ COMMIT; -- Saved permanently`}
                     </pre>
                     <button
                       onClick={() => handleCopy("INSERT INTO Student_info VALUES (102, 'Karim', 'BBA', 3.45);\nCOMMIT;", "tcl-commit")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "tcl-commit" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -88,7 +88,7 @@ ROLLBACK; -- Rows restored!`}
                     </pre>
                     <button
                       onClick={() => handleCopy("DELETE FROM Student_info WHERE Branch = 'BBA';\nROLLBACK;", "tcl-rollback")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "tcl-rollback" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
@@ -118,7 +118,7 @@ ROLLBACK TO sp_grade_entry;`}
                     </pre>
                     <button
                       onClick={() => handleCopy("SAVEPOINT sp_grade_entry;\nROLLBACK TO sp_grade_entry;", "tcl-savepoint")}
-                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                      className="absolute top-1 right-1 p-1 rounded bg-slate-800/80 hover:bg-slate-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy SQL"
                     >
                       {copiedSnippet === "tcl-savepoint" ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}

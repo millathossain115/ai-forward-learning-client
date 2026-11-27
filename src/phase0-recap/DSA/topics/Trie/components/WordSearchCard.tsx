@@ -57,9 +57,9 @@ export default function WordSearchCard({
               return (
                 <div key={idx} className="flex items-center">
                   <div
-                    className={`w-9 h-9 rounded-xl flex flex-col items-center justify-center font-mono font-bold text-xs transition-all ${
+                    className={`w-9 h-9 rounded-xl flex flex-col items-center justify-center font-mono font-bold text-xs transition-colors ${
                       isCurrent
-                        ? 'bg-emerald-500 text-slate-950 ring-4 ring-emerald-500/30 scale-110 shadow-lg shadow-emerald-500/20'
+                        ? 'bg-emerald-500 text-slate-950 ring-4 ring-emerald-500/30 scale-110  '
                         : isPassed
                         ? 'bg-emerald-950 text-emerald-300 border border-emerald-700'
                         : 'bg-[#121422] text-zinc-500 border border-[#20253b]'

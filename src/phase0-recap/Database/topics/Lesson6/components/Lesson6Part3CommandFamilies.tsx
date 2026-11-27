@@ -110,9 +110,9 @@ export default function Lesson6Part3CommandFamilies() {
             <button
               key={tab}
               onClick={() => setActiveCommandTab(tab)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors cursor-pointer flex items-center gap-1.5 ${
                 activeCommandTab === tab
-                  ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30 border border-purple-400/30'
+                  ? 'bg-purple-600 text-white   border border-purple-400/30'
                   : 'bg-[#14182d] text-zinc-400 hover:text-white border border-slate-800 hover:border-slate-700'
               }`}
             >

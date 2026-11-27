@@ -18,7 +18,7 @@ export default function MergeSortInspector({
   return (
     <div className="flex flex-col space-y-3">
       {/* Step Intuition & Description Card */}
-      <div className="p-4 rounded-2xl bg-[#090e17] border border-[#1b2b3f] shadow-lg space-y-2">
+      <div className="p-4 rounded-2xl bg-[#090e17] border border-[#1b2b3f] space-y-2">
         <div className="flex items-center justify-between border-b border-[#142336] pb-2">
           <span className="text-[10px] font-mono text-zinc-400 font-bold uppercase">
             ধাপ {stepIdx + 1} / {totalSteps}
@@ -45,10 +45,10 @@ export default function MergeSortInspector({
 
       {/* LIVE FINAL GRAND MERGE 2-POINTER INSPECTOR (When merging) */}
       {currentStep.finalZipper && (
-        <div className="p-4 rounded-2xl bg-[#09111c] border-2 border-amber-500/40 shadow-xl space-y-3 animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-[#09111c] border-2 border-amber-500/40 space-y-3 animate-in fade-in">
           <div className="flex items-center gap-1.5 border-b border-[#182a40] pb-2">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span className="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">
+            <span className="text-xs font-mono font-bold text-amber-300">
               চূড়ান্ত ২-পয়েন্টার জিপার তুলনা
             </span>
           </div>
@@ -66,7 +66,7 @@ export default function MergeSortInspector({
                       key={idx}
                       className={`w-6 h-6 rounded flex items-center justify-center text-xs font-bold border ${
                         isPtr
-                          ? 'bg-amber-500 text-black border-amber-300 scale-110 font-black'
+                          ? 'bg-amber-500 text-black border-amber-300 scale-110 font-semibold'
                           : 'bg-sky-950 text-sky-200 border-sky-800 opacity-60'
                       }`}
                     >
@@ -88,7 +88,7 @@ export default function MergeSortInspector({
                       key={idx}
                       className={`w-6 h-6 rounded flex items-center justify-center text-xs font-bold border ${
                         isPtr
-                          ? 'bg-amber-500 text-black border-amber-300 scale-110 font-black'
+                          ? 'bg-amber-500 text-black border-amber-300 scale-110 font-semibold'
                           : 'bg-sky-950 text-sky-200 border-sky-800 opacity-60'
                       }`}
                     >
@@ -113,7 +113,7 @@ export default function MergeSortInspector({
                 return (
                   <span
                     key={slotIdx}
-                    className={`w-7 h-7 rounded flex items-center justify-center font-mono text-xs font-black border transition-all ${
+                    className={`w-7 h-7 rounded flex items-center justify-center font-mono text-xs font-semibold border transition-colors ${
                       isLatest
                         ? 'bg-emerald-500 text-black border-emerald-300 scale-105'
                         : isFilled

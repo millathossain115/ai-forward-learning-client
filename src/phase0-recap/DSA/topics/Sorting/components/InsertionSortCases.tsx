@@ -4,7 +4,7 @@ import { Zap, Clock } from 'lucide-react';
 export default function InsertionSortCases() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="rounded-3xl bg-[#0c101c] border border-[#253254] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0c101c] border border-[#253254] p-6 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <Zap className="w-4 h-4 text-indigo-400" />
           <span>বাস্তব ইঞ্জিনগুলোতে ব্যবহারের গোপন রহস্য</span>
@@ -28,7 +28,7 @@ export default function InsertionSortCases() {
         </ul>
       </div>
 
-      <div className="rounded-3xl bg-[#0c101c] border border-[#253254] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0c101c] border border-[#253254] p-6 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <Clock className="w-4 h-4 text-indigo-400" />
           <span>কমপ্লেক্সিটি চার্ট</span>

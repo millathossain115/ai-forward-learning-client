@@ -37,7 +37,7 @@ export default function GraphFlowCanvas({
   return (
     <div className="lg:col-span-2 h-[480px] rounded-2xl border border-[#1e2233] bg-[#080911] overflow-hidden relative shadow-inner">
       {/* Integrated Playback Controls (Floating in Top-Left Corner) */}
-      <div className="absolute top-3 left-3 z-10 bg-[#0d101e]/90 backdrop-blur-md border border-[#212742] p-1.5 rounded-xl flex items-center gap-2 shadow-2xl">
+      <div className="absolute top-3 left-3 z-10 bg-[#0d101e]/90 backdrop-blur-md border border-[#212742] p-1.5 rounded-xl flex items-center gap-2">
         {/* Step Back */}
         <button
           onClick={() => {
@@ -55,7 +55,7 @@ export default function GraphFlowCanvas({
         <button
           onClick={() => setIsPlaying(!isPlaying)}
           disabled={stepIndex >= totalSteps - 1}
-          className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold text-xs font-mono transition-all cursor-pointer shadow ${
+          className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold text-xs font-mono transition-colors cursor-pointer shadow ${
             isPlaying
               ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
               : 'bg-emerald-600 hover:bg-emerald-500 text-slate-950'
@@ -117,7 +117,7 @@ export default function GraphFlowCanvas({
       </ReactFlow>
 
       {/* Current Step Explanation Bottom Bar */}
-      <div className="absolute bottom-3 left-3 right-3 bg-[#0d101e]/95 backdrop-blur border border-[#1f2642] p-3 rounded-xl shadow-2xl flex items-start gap-2.5">
+      <div className="absolute bottom-3 left-3 right-3 bg-[#0d101e]/95 backdrop-blur border border-[#1f2642] p-3 rounded-xl flex items-start gap-2.5">
         <div className="mt-0.5">
           {algorithm === 'dfs' && (currentStep as DFSStep)?.cyclePath ? (
             <ShieldAlert className="w-5 h-5 text-rose-400 shrink-0" />

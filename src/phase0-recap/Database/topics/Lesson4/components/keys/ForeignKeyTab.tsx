@@ -113,7 +113,7 @@ export default function ForeignKeyTab() {
           <div className="p-4 rounded-xl bg-[#0a0d1a] border border-emerald-500/30 space-y-4 font-mono text-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <span className="text-xs font-bold text-white uppercase flex items-center gap-2 font-sans">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <DualText
                   en="Interactive Referential Integrity Simulator (Test Foreign Key Scenarios):"
                   bn="ইন্টারেক্টিভ রেফারেন্সিয়াল ইন্টিগ্রিটি সিমুলেটর (ফরেন কি সিনারিও পরীক্ষা করুন):"
@@ -138,9 +138,9 @@ export default function ForeignKeyTab() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => handleFkTest('D01')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D01'
-                      ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold shadow-lg shadow-emerald-950/50'
+                      ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold  '
                       : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
                   }`}
                 >
@@ -150,9 +150,9 @@ export default function ForeignKeyTab() {
 
                 <button
                   onClick={() => handleFkTest('D02')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D02'
-                      ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold shadow-lg shadow-emerald-950/50'
+                      ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold  '
                       : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
                   }`}
                 >
@@ -162,9 +162,9 @@ export default function ForeignKeyTab() {
 
                 <button
                   onClick={() => handleFkTest('D03')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D03'
-                      ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold shadow-lg shadow-emerald-950/50'
+                      ? 'bg-emerald-500/20 border-emerald-400 text-emerald-200 font-bold  '
                       : 'bg-[#121526] border-slate-800 text-zinc-400 hover:border-emerald-500/40 hover:text-zinc-200'
                   }`}
                 >
@@ -174,9 +174,9 @@ export default function ForeignKeyTab() {
 
                 <button
                   onClick={() => handleFkTest('D99')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'D99'
-                      ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold shadow-lg shadow-rose-950/50 animate-pulse'
+                      ? 'bg-rose-500/20 border-rose-400 text-rose-200 font-bold   '
                       : 'bg-[#121526] border-slate-800 text-rose-400/80 hover:border-rose-500/50 hover:text-rose-300'
                   }`}
                 >
@@ -186,9 +186,9 @@ export default function ForeignKeyTab() {
 
                 <button
                   onClick={() => handleFkTest('NULL')}
-                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs cursor-pointer transition-colors flex items-center gap-1.5 ${
                     selectedDeptId === 'NULL'
-                      ? 'bg-amber-500/20 border-amber-400 text-amber-200 font-bold shadow-lg shadow-amber-950/50'
+                      ? 'bg-amber-500/20 border-amber-400 text-amber-200 font-bold  '
                       : 'bg-[#121526] border-slate-800 text-amber-400/80 hover:border-amber-500/50 hover:text-amber-300'
                   }`}
                 >
@@ -201,7 +201,7 @@ export default function ForeignKeyTab() {
             {/* Dynamic Status / Alert Banner */}
             {fkAlert && (
               <div
-                className={`p-3.5 rounded-xl border text-xs flex items-start gap-2.5 transition-all ${
+                className={`p-3.5 rounded-xl border text-xs flex items-start gap-2.5 transition-colors ${
                   fkAlert.type === 'error'
                     ? 'bg-rose-950/40 border-rose-500 text-rose-200 font-sans'
                     : 'bg-emerald-950/40 border-emerald-500 text-emerald-200 font-sans'
@@ -366,7 +366,7 @@ export default function ForeignKeyTab() {
 
                     {/* Temporary Simulation Row if D99 or NULL was selected */}
                     {selectedDeptId === 'D99' && (
-                      <tr className="bg-rose-950/40 text-rose-200 font-semibold animate-pulse border-t-2 border-rose-500">
+                      <tr className="bg-rose-950/40 text-rose-200 font-semibold border-t-2 border-rose-500">
                         <td className="py-2 px-2.5 text-rose-300 font-bold">105</td>
                         <td className="py-2 px-2.5 text-rose-200">Reza (New)</td>
                         <td className="py-2 px-2.5 font-mono">

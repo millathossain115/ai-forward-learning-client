@@ -3,7 +3,7 @@ import React from 'react';
 export default function InsertionSortCodeView() {
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-[#0c101c] border border-[#253254] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0c101c] border border-[#253254] p-6 space-y-4">
         <h3 className="text-lg font-bold text-white flex items-center gap-2">
           <span>TypeScript ইমপ্লিমেন্টেশন ও শিফট লুপ</span>
         </h3>

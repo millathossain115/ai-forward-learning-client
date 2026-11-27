@@ -8,7 +8,7 @@ export default function ComplexityDashboard() {
   const [selectedOp, setSelectedOp] = useState<'search' | 'insert' | 'delete' | 'space'>('search');
 
   return (
-    <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+    <div className="bg-[#0e101c] border border-[#1f2438] rounded-3xl p-6 md:p-8 space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#1b1f33] pb-4">
         <div className="space-y-1">
           <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
@@ -33,9 +33,9 @@ export default function ComplexityDashboard() {
             <button
               key={op.id}
               onClick={() => setSelectedOp(op.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors cursor-pointer ${
                 selectedOp === op.id
-                  ? 'bg-amber-500 text-slate-950 shadow-sm'
+                  ? 'bg-amber-500 text-slate-950 '
                   : 'text-zinc-400 hover:text-zinc-200 hover:bg-[#131627]'
               }`}
             >
@@ -63,7 +63,7 @@ export default function ComplexityDashboard() {
           return (
             <div
               key={idx}
-              className="bg-[#111425] border border-[#1e243d] rounded-2xl p-4 flex flex-col justify-between space-y-4 hover:border-[#2d365a] transition-all"
+              className="bg-[#111425] border border-[#1e243d] rounded-2xl p-4 flex flex-col justify-between space-y-4 hover:border-[#2d365a] transition-colors"
             >
               <div className="space-y-3">
                 <div className="flex items-start justify-between">
@@ -95,7 +95,7 @@ export default function ComplexityDashboard() {
                   </div>
                   <div className="w-full h-2 rounded-full bg-[#0a0c16] overflow-hidden p-0.5 border border-[#1b2036]">
                     <div
-                      className={`h-full rounded-full transition-all duration-500 ${
+                      className={`h-full rounded-full transition-colors duration-500 ${
                         isBest ? 'w-1/4 bg-emerald-400' : isMedium ? 'w-1/2 bg-sky-400' : 'w-4/5 bg-amber-400'
                       }`}
                     />

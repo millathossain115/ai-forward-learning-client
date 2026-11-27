@@ -26,7 +26,7 @@ type KeyTypeId =
   | 'surrogate';
 
 const TabLoadingFallback = () => (
-  <div className="p-6 rounded-2xl bg-[#13172c] border border-slate-800 animate-pulse space-y-4">
+  <div className="p-6 rounded-2xl bg-[#13172c] border border-slate-800 space-y-4">
     <div className="h-6 w-1/3 bg-slate-800 rounded" />
     <div className="h-32 w-full bg-slate-800/60 rounded-xl" />
   </div>
@@ -82,7 +82,7 @@ export default function Lesson4Part2KeyTypes() {
         </div>
 
         <div className="text-xs font-mono text-zinc-400 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-800 self-start sm:self-auto flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-emerald-400" />
           <span>
             {language === 'bn' ? 'সক্রিয় কী:' : 'Active Key:'}{' '}
             <strong className="text-white">
@@ -102,9 +102,9 @@ export default function Lesson4Part2KeyTypes() {
             <button
               key={tab.id}
               onClick={() => setActiveKeyType(tab.id)}
-              className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 group ${
+              className={`p-3 rounded-xl border text-left transition-colors cursor-pointer flex flex-col justify-between gap-2 group ${
                 isActive
-                  ? 'bg-gradient-to-br from-indigo-950/90 via-[#191e38] to-purple-950/70 border-indigo-500 text-white ring-1 ring-indigo-500/60 shadow-lg shadow-indigo-950/60'
+                  ? 'bg-[#15171e] border-indigo-500 text-white ring-1 ring-indigo-500/60  '
                   : 'bg-[#101322] border-slate-800/90 text-zinc-400 hover:border-slate-700 hover:bg-[#14182b] hover:text-zinc-200'
               }`}
             >

@@ -35,7 +35,7 @@ export default function ParadigmsTopic() {
       {/* 1. Header Card */}
       <div className="bg-[#0f111a] border border-[#1e2233] p-6 rounded-2xl flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 to-rose-500 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-amber-400/20">
+          <div className="w-9 h-9 rounded-xl bg-[#15171e] text-slate-950 flex items-center justify-center font-bold">
             <Compass className="w-5 h-5" />
           </div>
           <div>
@@ -60,7 +60,7 @@ export default function ParadigmsTopic() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
                 activeTab === tab.id
                   ? 'bg-amber-400 text-slate-950 font-bold shadow'
                   : 'bg-[#141624] text-zinc-400 hover:text-zinc-200 border border-[#202438]'
@@ -146,7 +146,7 @@ export default function ParadigmsTopic() {
 
           {/* Memoization Table Visualizer */}
           <div className="p-5 rounded-xl bg-[#090a10] border border-[#1a1d2e] overflow-x-auto">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block mb-3">
+            <span className="text-[10px] font-mono text-zinc-500 block mb-3">
               Memoization Lookup Cache: dp[i] = dp[i-1] + dp[i-2]
             </span>
 

@@ -3,7 +3,7 @@ import React from 'react';
 export default function BubbleSortCodeView() {
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 shadow-2xl space-y-4">
+      <div className="rounded-3xl bg-[#0e0c18] border border-[#2b2144] p-6 space-y-4">
         <h3 className="text-lg font-bold text-white flex items-center gap-2">
           <span>TypeScript / JavaScript অপ্টিমাইজড ইমপ্লিমেন্টেশন</span>
         </h3>
