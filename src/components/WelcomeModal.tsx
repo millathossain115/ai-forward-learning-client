@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import FlowLogicLogo from '@/components/FlowLogicLogo';
 import {
   X,
-  Compass,
   Database,
   Bot,
   ArrowRight,
@@ -19,19 +18,7 @@ interface WelcomeModalProps {
 export default function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   const [dontShowAgain, setDontShowAgain] = useState(false);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        handleDismiss();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, dontShowAgain]);
-
-  if (!isOpen) return null;
-
-  const handleDismiss = () => {
+  const handleDismiss = useCallback(() => {
     if (dontShowAgain) {
       try {
         localStorage.setItem('fl_welcome_dismissed', 'true');
@@ -40,7 +27,19 @@ export default function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
       }
     }
     onClose();
-  };
+  }, [dontShowAgain, onClose]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        handleDismiss();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, handleDismiss]);
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">

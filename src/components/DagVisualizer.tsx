@@ -13,6 +13,7 @@ import {
   EdgeChange,
 } from '@xyflow/react';
 import { Play, CheckCircle2, AlertTriangle, RefreshCw, Layers } from 'lucide-react';
+import { API_BASE_URL } from '@/config/api';
 
 const initialNodes: Node[] = [
   {
@@ -99,7 +100,7 @@ export default function DagVisualizer() {
         edges: edges.map((e) => ({ source: e.source, target: e.target })),
       };
 
-      const res = await fetch('http://localhost:8000/api/dsa/dag/validate', {
+      const res = await fetch(`${API_BASE_URL}/api/dsa/dag/validate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -136,7 +137,7 @@ export default function DagVisualizer() {
         edges: edges.map((e) => ({ source: e.source, target: e.target })),
       };
 
-      const res = await fetch('http://localhost:8000/api/dsa/dag/execute', {
+      const res = await fetch(`${API_BASE_URL}/api/dsa/dag/execute`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

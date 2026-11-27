@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, LucideIcon, ArrowRight } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export interface ScenarioItem {
   title: string;

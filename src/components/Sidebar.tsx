@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import FlowLogicLogo from '@/components/FlowLogicLogo';
 import {
   ChevronDown,
@@ -23,14 +24,13 @@ export { NAV_SECTIONS };
 
 interface SidebarProps {
   activeTopic: TopicId;
-  onSelectTopic: (id: TopicId) => void;
+  onSelectTopic?: (id: TopicId) => void;
   collapsed: boolean;
   onToggleCollapse: () => void;
 }
 
 export default function Sidebar({
   activeTopic,
-  onSelectTopic,
   collapsed,
   onToggleCollapse,
 }: SidebarProps) {
@@ -57,39 +57,37 @@ export default function Sidebar({
     return initial;
   });
 
+  const [prevActiveTopic, setPrevActiveTopic] = useState<TopicId>(activeTopic);
   const activeItemRef = useRef<HTMLDivElement | null>(null);
 
-  // Sync mega-menu section & submenu expansion whenever activeTopic changes (e.g. from Directory click)
-  useEffect(() => {
+  // Sync mega-menu section & submenu expansion when activeTopic changes without an effect render pass
+  if (activeTopic !== prevActiveTopic) {
+    setPrevActiveTopic(activeTopic);
+
     const targetSection = NAV_SECTIONS.find(sec =>
       sec.items.some(
         it => it.id === activeTopic || it.subItems?.some(sub => sub.id === activeTopic)
       )
     );
-
-    if (targetSection) {
-      setCollapsedSections(prev => {
-        if (prev[targetSection.title] === false) return prev;
-        return {
-          ...prev,
-          [targetSection.title]: false,
-        };
-      });
+    if (targetSection && collapsedSections[targetSection.title] !== false) {
+      setCollapsedSections(prev => ({
+        ...prev,
+        [targetSection.title]: false,
+      }));
     }
 
     const parentItem = NAV_SECTIONS.flatMap(s => s.items).find(
       it => it.subItems?.some(sub => sub.id === activeTopic)
     );
-    if (parentItem) {
-      setExpandedSubmenus(prev => {
-        if (prev[parentItem.id]) return prev;
-        return {
-          ...prev,
-          [parentItem.id]: true,
-        };
-      });
+    if (parentItem && !expandedSubmenus[parentItem.id]) {
+      setExpandedSubmenus(prev => ({
+        ...prev,
+        [parentItem.id]: true,
+      }));
     }
+  }
 
+  useEffect(() => {
     if (activeItemRef.current) {
       activeItemRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -139,9 +137,9 @@ export default function Sidebar({
               const Icon = item.icon;
               const isActive = activeTopic === item.id;
               return (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => onSelectTopic(item.id)}
+                  href={`/topics/${item.id}`}
                   className={`p-2 rounded-md transition-colors ${
                     isActive
                       ? 'bg-[#1e2233] text-amber-400 border border-amber-500/30'
@@ -150,7 +148,7 @@ export default function Sidebar({
                   title={item.label}
                 >
                   <Icon className="w-4 h-4" />
-                </button>
+                </Link>
               );
             })}
         </div>
@@ -245,12 +243,12 @@ export default function Sidebar({
                         ref={isActive || isSubActive ? activeItemRef : undefined}
                         className="space-y-0.5"
                       >
-                        <button
+                        <Link
+                          href={`/topics/${item.id}`}
                           onClick={() => {
                             if (hasSubItems) {
                               toggleSubmenu(item.id);
                             }
-                            onSelectTopic(item.id);
                           }}
                           className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors group cursor-pointer ${
                             isActive || isSubActive
@@ -292,7 +290,7 @@ export default function Sidebar({
                               />
                             )}
                           </div>
-                        </button>
+                        </Link>
 
                         {/* Submenu Dropdown Items */}
                         {hasSubItems && isSubExpanded && (
@@ -300,9 +298,9 @@ export default function Sidebar({
                             {item.subItems!.map(sub => {
                               const isChildActive = activeTopic === sub.id;
                               return (
-                                <button
+                                <Link
                                   key={sub.id}
-                                  onClick={() => onSelectTopic(sub.id)}
+                                  href={`/topics/${sub.id}`}
                                   className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-mono transition-colors group cursor-pointer ${
                                     isChildActive
                                       ? 'bg-[#202538] text-amber-300 font-bold border border-amber-500/30 shadow-sm'
@@ -315,7 +313,7 @@ export default function Sidebar({
                                       {sub.tag}
                                     </span>
                                   )}
-                                </button>
+                                </Link>
                               );
                             })}
                           </div>

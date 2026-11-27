@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 
 export type LanguageMode = 'en' | 'bn' | 'dual';
 
@@ -18,27 +18,32 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<LanguageMode>('dual');
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem('fl_db_lang_mode') as LanguageMode | null;
-      if (saved && (saved === 'en' || saved === 'bn' || saved === 'dual')) {
-        setLanguageState(saved);
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        const saved = localStorage.getItem('fl_db_lang_mode') as LanguageMode | null;
+        if (saved && (saved === 'en' || saved === 'bn' || saved === 'dual')) {
+          setLanguageState(saved);
+        }
+      } catch {
+        // ignore
       }
-    } catch {
-      // ignore
-    }
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  const setLanguage = (lang: LanguageMode) => {
+  const setLanguage = useCallback((lang: LanguageMode) => {
     setLanguageState(lang);
     try {
       localStorage.setItem('fl_db_lang_mode', lang);
     } catch {
       // ignore
     }
-  };
+  }, []);
+
+  const value = useMemo(() => ({ language, setLanguage }), [language, setLanguage]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );
